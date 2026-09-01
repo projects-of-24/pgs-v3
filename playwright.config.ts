@@ -1,5 +1,19 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const chromiumDesktop = {
+  ...devices["Desktop Chrome"],
+  viewport: { width: 1440, height: 1000 }
+} as const;
+
+const chromiumMobile = {
+  ...devices["iPhone 13"],
+  browserName: "chromium" as const,
+  deviceScaleFactor: 1,
+  viewport: { width: 390, height: 844 }
+};
+
+const desktopViewport = { width: 1440, height: 1000 } as const;
+
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
@@ -21,8 +35,12 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 120_000
   },
+  // Default `pnpm test:e2e` pins --project=desktop,mobile (Chromium only).
+  // Firefox/WebKit are available for smoke / explicit --project runs.
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 1000 } } },
-    { name: "mobile", use: { ...devices["iPhone 13"], browserName: "chromium", deviceScaleFactor: 1, viewport: { width: 390, height: 844 } } }
+    { name: "desktop", use: chromiumDesktop },
+    { name: "mobile", use: chromiumMobile },
+    { name: "firefox", use: { ...devices["Desktop Firefox"], viewport: desktopViewport } },
+    { name: "webkit", use: { ...devices["Desktop Safari"], viewport: desktopViewport } }
   ]
 });

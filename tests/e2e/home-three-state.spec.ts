@@ -16,7 +16,7 @@ async function expectRealIdentity(page:import("@playwright/test").Page){
 
 test.describe("anonymous home source",()=>{
   test.use({storageState:emptyState});
-  test("/ serves the recovered anonymous homepage",async({page})=>{
+  test("/ serves the recovered anonymous homepage", { tag: "@smoke" }, async ({ page }) => {
     await page.goto("/",{waitUntil:"domcontentloaded"});
     await expect(page.locator('[data-legacy-page="home"]')).toHaveAttribute("data-student-state","anonymous");
     await expect(page.locator(anonymousSource)).toHaveCount(1);

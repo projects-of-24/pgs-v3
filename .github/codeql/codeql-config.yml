@@ -1,0 +1,21 @@
+name: "PGS V3 CodeQL"
+
+paths:
+  - src
+  - scripts
+  - tests
+  - workers
+
+paths-ignore:
+  - "**/node_modules/**"
+  - "**/.next/**"
+  - public
+  - src/legacy/generated
+  - playwright-report
+  - test-results
+
+query-filters:
+  - exclude:
+      id: js/unused-local-variable
+  - exclude:
+      id: js/useless-assignment-to-local

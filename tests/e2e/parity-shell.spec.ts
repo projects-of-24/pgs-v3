@@ -24,7 +24,7 @@ async function toggleRetainedSidebar(page:import("@playwright/test").Page){
   await expect(toggle.locator("i")).toHaveClass(/bi-arrow-right-square-fill/);
 }
 
-test("homepage preserves the legacy shell and content order", async ({ page }) => {
+test("homepage preserves the legacy shell and content order", { tag: "@smoke" }, async ({ page }) => {
   await goto(page, "/");
   await expect(page.locator('[data-legacy-page="home"]')).toHaveAttribute("data-student-state","anonymous");
   await expect(page.locator("header")).toBeVisible();
@@ -35,7 +35,7 @@ test("homepage preserves the legacy shell and content order", async ({ page }) =
   await expect(page.locator(".footer-bg")).toHaveCount(1);
 });
 
-test("global security headers and same-origin mutation boundary are active",async({page,request})=>{
+test("global security headers and same-origin mutation boundary are active", { tag: "@smoke" }, async ({ page, request }) => {
   const response=await page.goto("/",{waitUntil:"domcontentloaded"});
   expect(response?.headers()["content-security-policy"]).toContain("frame-ancestors 'none'");
   expect(response?.headers()["x-content-type-options"]).toBe("nosniff");
@@ -64,7 +64,7 @@ test("developer Premium Overview remains a distinct recovered route",async({page
   await expect(page.locator("#premiumHeroVideo")).toHaveAttribute("poster","/pgs_admin/assets/images/99421781870876.png");
 });
 
-test("notification panel, fixed sidebar and drawer retain their legacy states", async ({ page }, testInfo) => {
+test("notification panel, fixed sidebar and drawer retain their legacy states", { tag: "@smoke" }, async ({ page }, testInfo) => {
   await goto(page, "/");
   await expect(page.locator("[data-legacy-page]")).toHaveAttribute("data-interactions-ready", "true");
   await toggleRetainedSidebar(page);
@@ -91,7 +91,7 @@ test("Premium application surfaces are absent while the destination contact acti
   await page.waitForURL("**/contact");
 });
 
-test("USA destination keeps its complex tabbed content", async ({ page }) => {
+test("USA destination keeps its complex tabbed content", { tag: "@smoke" }, async ({ page }) => {
   await goto(page, "/countriesusa");
   await expect(page.locator(".countriesUSA")).toBeVisible();
   await expect(page.getByText("Comprehensive Guide to Studying in the USA", { exact: true })).toBeVisible();
