@@ -290,11 +290,11 @@ body {
 .developer-student-shell > .overlay { z-index:var(--pgs-layer-student-overlay); }
 [data-legacy-page] #drawer.drawer,
 .developer-student-shell > .drawer { z-index:var(--pgs-layer-student-drawer); }
-.developer-student-shell .sidebar-box { min-height:0 !important; height:calc(100dvh - 245px) !important; max-height:calc(100dvh - 245px) !important; overflow:hidden; grid-template-rows:auto minmax(0,1fr) auto; box-sizing:border-box; }
-.developer-student-shell .sidebar-box.active { display:grid !important; }
-.developer-student-shell .sidebar-box > ul { min-height:0; overflow-y:auto; }
-[data-legacy-page] #sidebar.active { min-height:0 !important; height:calc(100dvh - 245px) !important; max-height:calc(100dvh - 245px) !important; overflow:hidden; display:grid; grid-template-rows:auto minmax(0,1fr) auto; box-sizing:border-box; }
-[data-legacy-page] #sidebar.active > ul { min-height:0; overflow-y:auto; }
+.developer-student-shell .sidebar-box { min-height:0 !important; height:auto !important; max-height:calc(100dvh - 245px) !important; overflow:hidden; display:flex; flex-direction:column; box-sizing:border-box; }
+.developer-student-shell .sidebar-box.active { display:flex !important; }
+.developer-student-shell .sidebar-box > ul { flex:1 1 auto; min-height:0; overflow-y:auto; }
+[data-legacy-page] #sidebar.active { min-height:0 !important; height:auto !important; max-height:calc(100dvh - 245px) !important; overflow:hidden; display:flex; flex-direction:column; box-sizing:border-box; }
+[data-legacy-page] #sidebar.active > ul { flex:1 1 auto; min-height:0; overflow-y:auto; }
 [data-legacy-page] #sidebar .mt-30 { margin-top:16px !important; }
 .developer-sidebar-close,.developer-sidebar-toggle { padding:0; border:0; cursor:pointer; }
 .developer-sidebar-close { background:transparent; }
@@ -319,8 +319,8 @@ body {
   .developer-student-tools { min-height:70px; padding:8px 18px 8px 82px; }
   .developer-student-tools .search-box,.developer-univ-meet { display:none; }
   .developer-student-shell .mobile-frame-sidebar { position:absolute; top:138px; left:0; width:100%; }
-  .developer-student-shell .sidebar-box { top:0 !important; left:8px; width:min(385px,calc(100% - 16px)); min-height:0 !important; height:calc(100dvh - 154px) !important; max-height:calc(100dvh - 154px) !important; box-sizing:border-box; }
-  [data-legacy-page] #sidebar.active { top:8px !important; left:8px !important; width:min(385px,calc(100% - 16px)) !important; min-height:0 !important; height:calc(100dvh - 16px) !important; max-height:calc(100dvh - 16px) !important; }
+  .developer-student-shell .sidebar-box { top:0 !important; left:8px; width:min(385px,calc(100% - 16px)); min-height:0 !important; height:auto !important; max-height:calc(100dvh - 154px) !important; box-sizing:border-box; }
+  [data-legacy-page] #sidebar.active { top:8px !important; left:8px !important; width:min(385px,calc(100% - 16px)) !important; min-height:0 !important; height:auto !important; max-height:calc(100dvh - 16px) !important; }
   .developer-sidebar-toggle { left:8px; top:0; width:62px; min-height:100px; }
   .developer-sidebar-toggle img { margin-left:20px; }
   .developer-sidebar-account-row { gap:28px; }
