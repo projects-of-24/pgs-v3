@@ -775,3 +775,34 @@ main[data-legacy-page="cvreadyprogram"] .js-filter-tag-box {
     display: inline !important;
   }
 }
+
+/* Purple Premium dashboard explorer: 5 clickable steps, progress bar, image swap */
+main[data-legacy-page] .line-active.pgs-premium-progress::after {
+  width: var(--pgs-line-progress, 20%);
+  transition: width 0.25s ease;
+}
+
+main[data-legacy-page] .pgs-premium-explorer > .w-20 {
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+main[data-legacy-page] .pgs-premium-explorer > .w-20.pgs-premium-step-active .icon-box {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+main[data-legacy-page] .pgs-premium-explorer > .w-20:focus-visible {
+  outline: 2px solid #150035;
+  outline-offset: 3px;
+}
+
+/* Login page: one auth box at a time (legacy login.php inline CSS + toggle) */
+main[data-legacy-page="login"] .mobile-login-box .sinup-box {
+  display: none;
+  flex-direction: column;
+}
+
+main[data-legacy-page="login"] .mobile-login-box .sinup-box.active {
+  display: flex;
+}

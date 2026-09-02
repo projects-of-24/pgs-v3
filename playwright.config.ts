@@ -21,7 +21,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3000",
+    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:7000",
     trace: "retain-on-failure",
     // Preview deployments sit behind Vercel Deployment Protection; the bypass
     // header lets the same specs run against them without a Vercel login.
@@ -30,8 +30,8 @@ export default defineConfig({
       : undefined
   },
   webServer: process.env.PLAYWRIGHT_BASE_URL ? undefined : {
-    command: "./node_modules/.bin/next start",
-    url: "http://127.0.0.1:3000",
+    command: "./node_modules/.bin/next start -p 7000",
+    url: "http://127.0.0.1:7000",
     reuseExistingServer: !process.env.CI,
     timeout: 120_000
   },

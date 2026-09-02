@@ -176,6 +176,100 @@ function wireCvReadyCatalogFilters(root: HTMLElement, signal: AbortSignal) {
   root.querySelector("#programSearch")?.addEventListener("input", applyFilterAndSort, { signal });
 }
 
+const PREMIUM_DASHBOARD_STEP_IMAGES = [
+  "/assets/img/restro-img.jpg",
+  "/assets/img/dashboard-gif.png",
+  "/assets/img/complete-notes.png",
+  "/assets/img/computer.jpg",
+  "/assets/img/premium-3.png"
+] as const;
+
+function wirePremiumDashboardExplorer(root: HTMLElement, signal: AbortSignal) {
+  root.querySelectorAll<HTMLElement>(".line-active").forEach((line) => {
+    const group = line.nextElementSibling;
+    if (!(group instanceof HTMLElement) || !group.classList.contains("group-flex-items") || !group.classList.contains("mobile-scrolling-nowrap")) {
+      return;
+    }
+
+    const section = line.closest("section, .col-lg-11, .mobile-p-0") ?? line.parentElement;
+    const image = section?.querySelector<HTMLImageElement>(".box-img-grid-gorup img");
+    if (!image) return;
+
+    const items = [...group.querySelectorAll<HTMLElement>(":scope > .w-20")];
+    if (items.length !== 5) return;
+
+    group.classList.add("pgs-premium-explorer");
+    line.classList.add("pgs-premium-progress");
+
+    const activate = (index: number) => {
+      const progress = ((index + 1) / items.length) * 100;
+      line.style.setProperty("--pgs-line-progress", `${progress}%`);
+      const nextSrc = items[index].dataset.pgsPremiumImage ?? PREMIUM_DASHBOARD_STEP_IMAGES[index] ?? image.getAttribute("src") ?? "";
+      if (nextSrc) image.setAttribute("src", nextSrc);
+      items.forEach((item, itemIndex) => {
+        const active = itemIndex === index;
+        item.classList.toggle("pgs-premium-step-active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+    };
+
+    items.forEach((item, index) => {
+      const label = item.querySelector("h4")?.textContent?.replace(/\s+/g, " ").trim() ?? `Premium feature ${index + 1}`;
+      item.dataset.pgsPremiumStep = String(index);
+      item.setAttribute("role", "button");
+      item.setAttribute("tabindex", "0");
+      item.setAttribute("aria-label", label);
+
+      item.addEventListener("click", () => activate(index), { signal });
+      item.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          activate(index);
+        }
+      }, { signal });
+    });
+
+    activate(0);
+  });
+}
+
+function wireLoginSignupToggle(root: HTMLElement, signal: AbortSignal) {
+  const loginForm = root.querySelector<HTMLElement>("#loginForm");
+  const signupForm = root.querySelector<HTMLElement>("#signupForm");
+  if (!loginForm || !signupForm) return;
+
+  const showSignup = () => {
+    loginForm.classList.remove("active");
+    signupForm.classList.add("active");
+  };
+  const showLogin = () => {
+    signupForm.classList.remove("active");
+    loginForm.classList.add("active");
+  };
+
+  root.querySelectorAll<HTMLButtonElement>(".mobile-login-box .btn-outline-purple").forEach((button) => {
+    const label = button.textContent?.replace(/\s+/g, " ").trim().toLowerCase() ?? "";
+    if (label === "sign up") {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        showSignup();
+      }, { signal });
+    } else if (label === "log in") {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        showLogin();
+      }, { signal });
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("signup") === "1" || params.get("mode") === "signup") {
+    showSignup();
+  } else if (!loginForm.classList.contains("active") && !signupForm.classList.contains("active")) {
+    loginForm.classList.add("active");
+  }
+}
+
 function revealLegacyAnimations(root: HTMLElement) {
   root.querySelectorAll<HTMLElement>("[data-anime]").forEach((element) => {
     element.classList.add("appear", "anime-complete");
@@ -626,6 +720,8 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
 
     if (page === "explorecountries") wireExploreCountrySwitcher(root, abort.signal);
     if (page === "cvreadyprogram") wireCvReadyCatalogFilters(root, abort.signal);
+    wirePremiumDashboardExplorer(root, abort.signal);
+    if (page === "login") wireLoginSignupToggle(root, abort.signal);
 
     return () => {
       abort.abort();

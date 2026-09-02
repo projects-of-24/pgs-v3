@@ -65,6 +65,8 @@
 const toggleBtn = document.getElementById("toggleBtn");
 const sidebar = document.getElementById("sidebar");
 const close_Btn = document.getElementById("close_Btn");
+
+if (toggleBtn && sidebar && close_Btn) {
 const arrowIcon = toggleBtn.querySelector("i");
 
 function toggleSidebar() {
@@ -72,15 +74,15 @@ function toggleSidebar() {
 
   if (sidebar.classList.contains("active")) {
     // Change icon
-    arrowIcon.classList.remove("bi-arrow-right-square-fill");
-    arrowIcon.classList.add("bi-arrow-left-square-fill");
+    arrowIcon?.classList.remove("bi-arrow-right-square-fill");
+    arrowIcon?.classList.add("bi-arrow-left-square-fill");
 
     // Hide toggle button
     toggleBtn.classList.add("hidenone");
   } else {
     // Reset icon
-    arrowIcon.classList.remove("bi-arrow-left-square-fill");
-    arrowIcon.classList.add("bi-arrow-right-square-fill");
+    arrowIcon?.classList.remove("bi-arrow-left-square-fill");
+    arrowIcon?.classList.add("bi-arrow-right-square-fill");
 
     // Show toggle button again
     toggleBtn.classList.remove("hidenone");
@@ -89,6 +91,7 @@ function toggleSidebar() {
 
 toggleBtn.addEventListener("click", toggleSidebar);
 close_Btn.addEventListener("click", toggleSidebar);
+}
 
 
 
@@ -2731,12 +2734,15 @@ close_Btn.addEventListener("click", toggleSidebar);
                                 if (isNumberPaginationProgress) {
                                     _this.parent().find('.number-next').text('0' + length);
                                     _this.parent().find('.number-prev').text('01');
-                                    _this.parent().find('.swiper-pagination-progress')[0].style.setProperty('--swiper-progress', (100 / length).toFixed(2) + '%');
+                                    var progressEl = _this.parent().find('.swiper-pagination-progress')[0];
+                                    if (progressEl) progressEl.style.setProperty('--swiper-progress', (100 / length).toFixed(2) + '%');
                                 } else {
                                     _this.parent().find('.number-next').text('02');
                                     _this.parent().find('.number-prev').text('0' + length);
-                                    if (showProgress)
-                                        _this.parent().find('.swiper-pagination-progress')[0].style.setProperty('--swiper-progress', (100 / length).toFixed(2) + '%');
+                                    if (showProgress) {
+                                        var progressElInit = _this.parent().find('.swiper-pagination-progress')[0];
+                                        if (progressElInit) progressElInit.style.setProperty('--swiper-progress', (100 / length).toFixed(2) + '%');
+                                    }
                                 }
                             }
                             if (typeof $.fn.magnificPopup === 'function') {
@@ -2770,7 +2776,8 @@ close_Btn.addEventListener("click", toggleSidebar);
                                     _this.parent().find('.number-prev').each(function () {
                                         $(this).text(active < 10 ? '0' + active : active);
                                     });
-                                    _this.parent().find('.swiper-pagination-progress')[0].style.setProperty('--swiper-progress', ((100 / length) * active).toFixed(2) + '%');
+                                    var progressElChange = _this.parent().find('.swiper-pagination-progress')[0];
+                                    if (progressElChange) progressElChange.style.setProperty('--swiper-progress', ((100 / length) * active).toFixed(2) + '%');
                                 } else {
                                     _this.parent().find('.number-next').each(function () {
                                         $(this).text(next < 10 ? '0' + next : next);
@@ -2778,8 +2785,10 @@ close_Btn.addEventListener("click", toggleSidebar);
                                     _this.parent().find('.number-prev').each(function () {
                                         $(this).text(prev < 10 ? '0' + prev : prev);
                                     });
-                                    if (showProgress)
-                                        _this.parent().find('.swiper-pagination-progress')[0].style.setProperty('--swiper-progress', ((100 / length) * active).toFixed(2) + '%');
+                                    if (showProgress) {
+                                        var progressElSlide = _this.parent().find('.swiper-pagination-progress')[0];
+                                        if (progressElSlide) progressElSlide.style.setProperty('--swiper-progress', ((100 / length) * active).toFixed(2) + '%');
+                                    }
                                 }
                             }
                         }
@@ -2957,12 +2966,13 @@ close_Btn.addEventListener("click", toggleSidebar);
         }
 
         function updatePosition() {
+            if (!ball) return;
             active || (pos.x += (mouse.x - pos.x) * ratio, pos.y += (mouse.y - pos.y) * ratio, TweenLite.to(ball, .4, {
                 x: pos.x,
                 y: pos.y,
             }))
         }
-        if (typeof TweenLite !== "undefined") {
+        if (typeof TweenLite !== "undefined" && ball) {
             TweenLite.set(ball, {
                 xPercent: -50,
                 yPercent: -50,
@@ -2970,10 +2980,10 @@ close_Btn.addEventListener("click", toggleSidebar);
                 borderWidth: "0",
                 opacity: 1
             });
-        }
-        document.addEventListener("mousemove", mouseMove);
-        if (typeof gsap !== "undefined") {
-            gsap.ticker.add(updatePosition);
+            document.addEventListener("mousemove", mouseMove);
+            if (typeof gsap !== "undefined") {
+                gsap.ticker.add(updatePosition);
+            }
         }
 
         if (typeof TweenMax !== 'undefined' && typeof TweenMax !== null) {
@@ -3199,9 +3209,12 @@ close_Btn.addEventListener("click", toggleSidebar);
 
     function handleCustomCursor() {
         if ($('body').hasClass('custom-cursor')) {
-            customCursorInit = true;
             const cursorInnerEl = document.querySelector('.circle-cursor-inner');
             const cursorOuterEl = document.querySelector('.circle-cursor-outer');
+            if (!cursorInnerEl || !cursorOuterEl) {
+                return;
+            }
+            customCursorInit = true;
             let lastY, lastX;
             let magneticFlag = false;
             let anchorHover = false;

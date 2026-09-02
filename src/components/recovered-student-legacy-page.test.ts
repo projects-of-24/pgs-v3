@@ -67,4 +67,37 @@ describe("recovered student legacy access rules", () => {
     expect(recovered).toContain("<span>student-a@pgs.test</span>");
     expect(recovered).not.toContain("admin@pgs.test");
   });
+
+  it("updates the mobile sidebar avatar box with the student photo and name", () => {
+    const source = '<div class="avatar-box w-12"><div class="avatar-img"><img src="/assets/img/default-avatar.png" alt="Avatar"></div><div class="avatar-info"><h5 class="mb-0">Hello <span>👋</span></h5><h4 class="mb-0">Aspirant</h4></div></div>';
+    const state = {
+      kind: "authenticated_standard",
+      user: { id: "student-id", email: "student@example.test" },
+      profile: { id: "student-id", full_name: "Student Photo", study_level: "Medical" },
+      name: "Student Photo",
+      unreadCount: 0,
+      premiumStatus: "none",
+      premiumEntitlement: null
+    } as unknown as AuthenticatedStudentExperience;
+    const recovered = applyStudentIdentity(source, state, "https://storage.example.test/avatar.png?token=signed");
+    expect(recovered).toContain('src="https://storage.example.test/avatar.png?token=signed"');
+    expect(recovered).toContain("<h4 class=\"mb-0\">Student Photo</h4>");
+    expect(recovered).not.toContain(">Aspirant<");
+  });
+
+  it("keeps the default avatar when no custom photo exists", () => {
+    const source = '<div class="avatar-box w-12"><div class="avatar-img"><img src="/assets/img/default-avatar.png" alt="Avatar"></div><div class="avatar-info"><h4 class="mb-0">Aspirant</h4></div></div>';
+    const state = {
+      kind: "authenticated_standard",
+      user: { id: "student-id", email: "student@example.test" },
+      profile: { id: "student-id", full_name: "Student", study_level: "Medical" },
+      name: "Student",
+      unreadCount: 0,
+      premiumStatus: "none",
+      premiumEntitlement: null
+    } as unknown as AuthenticatedStudentExperience;
+    const recovered = applyStudentIdentity(source, state, "/assets/img/default-avatar.png");
+    expect(recovered).toContain('src="/assets/img/default-avatar.png"');
+    expect(recovered).toContain("<h4 class=\"mb-0\">Student</h4>");
+  });
 });

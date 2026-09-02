@@ -14,7 +14,7 @@
     "fixtures:auth-states": "node scripts/create-playwright-auth-states.mjs",
     "parity:regions": "node scripts/capture-parity-regions.mjs",
     "predev": "pnpm assets:verify",
-    "dev": "next dev",
+    "dev": "next dev -p 7000",
     "prebuild": "node scripts/ensure-legacy-assets.mjs",
     "build": "next build",
     "start": "next start",

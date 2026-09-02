@@ -1,12 +1,13 @@
 import { LegacyPage } from "@/components/legacy-page";
 import { ContentPreviewBanner } from "@/components/content-preview-banner";
 import { StaffPreviewBanner } from "@/components/staff-preview-banner";
+import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { applyPublicContent, getPublicContent, type PublicContentSlug } from "@/lib/public-content";
 import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
 import { keepPurpleBoardPublic } from "@/lib/student-legacy-navigation";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { resolveActorContext } from "@/lib/actor-context";
-import { resolveStudentExperience } from "@/lib/student-experience";
+import { resolveStudentExperience, studentExperienceAvatarUrl } from "@/lib/student-experience";
 import { applyFeaturedCatalogCards, applyPublishedCatalogCards, applyPublishedCatalogDetail, applyPublishedEventDetail, applyPublishedEvents, getPublicCatalogCards, getPublicCatalogDetail, getPublicEvent, getPublicEvents } from "@/lib/public-catalog";
 
 type Props<TSlug extends PublicContentSlug> = {
@@ -41,7 +42,15 @@ export async function PublicLegacyPage<TSlug extends PublicContentSlug>({ slug, 
   if(slug==="purpleevents"||slug==="purpleevents-session"){rendered=applyPublishedEvents(rendered,await getPublicEvents());}
   if(slug==="purpleevents-session"&&eventId){const event=await getPublicEvent(eventId);if(event)rendered=applyPublishedEventDetail(rendered,event);}
   if (state&&state.kind!=="anonymous") {
-    rendered = applyAuthenticatedShell(rendered, { name:state.name, unreadCount:state.unreadCount, premium:state.kind==="authenticated_premium" });
+    const avatarUrl = await studentExperienceAvatarUrl(state);
+    rendered = applyAuthenticatedShell(rendered, {
+      name: state.name,
+      unreadCount: state.unreadCount,
+      premium: state.kind === "authenticated_premium",
+      notifications: state.notifications,
+      notificationReadOnly: Boolean(state.preview)
+    });
+    rendered = applyStudentIdentity(rendered, state, avatarUrl);
   } else if (!state && authenticatedActorFallback) {
     const actor=await resolveActorContext();
     if(actor.authenticated){

@@ -16,18 +16,21 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     let supabaseOrigin="";try{supabaseOrigin=process.env.NEXT_PUBLIC_SUPABASE_URL?new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin:"";}catch{supabaseOrigin="";}
+    const isDev = process.env.NODE_ENV !== "production";
+    const devScriptSrc = isDev ? " 'unsafe-eval'" : "";
+    const devConnectSrc = isDev ? " ws://127.0.0.1:* ws://localhost:* http://127.0.0.1:* http://localhost:*" : "";
     const contentSecurityPolicy = [
       "default-src 'self'",
       "base-uri 'self'",
       "object-src 'none'",
       "frame-ancestors 'none'",
       "form-action 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      `script-src 'self' 'unsafe-inline'${devScriptSrc}`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
       "font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com",
       "img-src 'self' data: blob: https:",
       "media-src 'self' blob: https:",
-      `connect-src 'self' https://*.supabase.co wss://*.supabase.co${supabaseOrigin?` ${supabaseOrigin} ${supabaseOrigin.replace(/^http/,"ws")}`:""}`,
+      `connect-src 'self' https://*.supabase.co wss://*.supabase.co${supabaseOrigin?` ${supabaseOrigin} ${supabaseOrigin.replace(/^http/,"ws")}`:""}${devConnectSrc}`,
       "frame-src 'self' https://www.google.com https://maps.google.com",
       "worker-src 'self' blob:",
       ...(process.env.NODE_ENV === "production" ? ["upgrade-insecure-requests"] : [])

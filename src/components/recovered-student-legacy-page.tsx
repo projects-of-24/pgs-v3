@@ -43,12 +43,30 @@ function replaceFirstDivByClass(source: string, className: string, transform: (f
   return source;
 }
 
+const DEFAULT_AVATAR = "/assets/img/default-avatar.png";
+
+function applyStudentAvatarImages(html: string, avatarUrl: string): string {
+  if (avatarUrl === DEFAULT_AVATAR) return html;
+  const avatar = escapeHtml(avatarUrl);
+  return html.replace(
+    /(<div\b[^>]*\bclass=["'][^"']*\bavatar-img\b[^"']*["'][^>]*>\s*<img\b[^>]*\bsrc=)(["'])[^"']*\2/gi,
+    (_match, before: string) => `${before}"${avatar}"`
+  );
+}
+
+function applyAvatarBoxGreeting(html: string, name: string): string {
+  return replaceFirstDivByClass(html, "avatar-box", (box) => box.replace(
+    /(<div\b[^>]*\bclass=["'][^"']*\bavatar-info\b[^"']*["'][^>]*>[\s\S]*?<h4\b[^>]*>)[\s\S]*?(<\/h4>)/i,
+    (_match, before: string, after: string) => `${before}${name}${after}`
+  ));
+}
+
 export function applyStudentIdentity(html: string, state: Exclude<StudentExperience, { kind: "anonymous" }>, avatarUrl: string): string {
   const name = escapeHtml(state.name);
   const email = escapeHtml(state.user.email ?? "");
   const pathway = escapeHtml(state.profile.study_level || "STUDENT");
   const avatar = escapeHtml(avatarUrl);
-  return replaceFirstDivByClass(html, "card-box-avatar", (card) => card
+  let rendered = replaceFirstDivByClass(html, "card-box-avatar", (card) => card
     .replace(/(<div\b[^>]*\bclass=["'][^"']*\bavatar_name\b[^"']*["'][^>]*>\s*<h5\b[^>]*>)[\s\S]*?(<\/h5>)/i,
       (_match, before: string, after: string) => `${before}${name}${after}`)
     .replace(/(<div\b[^>]*\bclass=["'][^"']*\bavatar_name\b[^"']*["'][^>]*>[\s\S]*?<\/h5>\s*<span\b[^>]*>)[\s\S]*?(<\/span>)/i,
@@ -58,6 +76,8 @@ export function applyStudentIdentity(html: string, state: Exclude<StudentExperie
     .replace(/(<div\b[^>]*\bclass=["'][^"']*\bavatar-img\b[^"']*["'][^>]*>\s*<img\b[^>]*\bsrc=)(["'])[^"']*\2/i,
       (_match, before: string) => `${before}"${avatar}"`)
     .replace(/<span>id:\s*<\/span>/i, ""));
+  rendered = applyAvatarBoxGreeting(rendered, name);
+  return applyStudentAvatarImages(rendered, avatarUrl);
 }
 
 export function RecoveredStudentLegacyPage({
