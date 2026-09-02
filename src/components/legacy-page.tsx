@@ -93,6 +93,135 @@ function wireExploreCountrySwitcher(root: HTMLElement, signal: AbortSignal) {
   });
 }
 
+function catalogCardMeta(card: HTMLElement) {
+  const title = card.dataset.title ?? card.querySelector("h3")?.textContent?.trim() ?? "";
+  const tagText = card.dataset.tags ?? [...card.querySelectorAll(".sop-tag")].map((tag) => tag.textContent?.replace(/^#/, "").trim().toLowerCase() ?? "").filter(Boolean).join(" ");
+  const search = card.dataset.search ?? `${title} ${tagText} ${card.textContent ?? ""}`.toLowerCase();
+  return { title, tags: tagText, search };
+}
+
+function wireCvReadyCatalogFilters(root: HTMLElement, signal: AbortSignal) {
+  let currentFilter = "";
+  let currentSort = "order";
+
+  const cards = () => root.querySelectorAll<HTMLElement>(".js-program-card, .pgs-relational-catalog-card");
+
+  const applyFilterAndSort = () => {
+    const query = (root.querySelector<HTMLInputElement>("#programSearch")?.value ?? "").toLowerCase().trim();
+    const filter = currentFilter.toLowerCase();
+    const list = [...cards()];
+    const parent = list[0]?.parentElement ?? null;
+    let visible = list.filter((card) => {
+      const { search, tags } = catalogCardMeta(card);
+      const matchSearch = !query || search.includes(query) || tags.includes(query);
+      const matchTag = !filter || tags.split(/\s+/).includes(filter);
+      return matchSearch && matchTag;
+    });
+    if (currentSort === "title" && visible.length && parent) {
+      visible = [...visible].sort((a, b) => catalogCardMeta(a).title.localeCompare(catalogCardMeta(b).title, undefined, { sensitivity: "base" }));
+      visible.forEach((card) => parent.appendChild(card));
+    }
+    list.forEach((card) => {
+      card.style.display = visible.includes(card) ? "" : "none";
+    });
+  };
+
+  root.querySelectorAll<HTMLElement>(".js-filter-tag, .js-sort-tag, .js-filter-tag-box").forEach((tag) => {
+    if (tag.classList.contains("js-filter-tag-box")) {
+      tag.setAttribute("role", "button");
+      tag.setAttribute("tabindex", "0");
+      return;
+    }
+    tag.setAttribute("role", "button");
+    tag.setAttribute("tabindex", "0");
+  });
+
+  root.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const filterTag = target.closest<HTMLElement>(".js-filter-tag");
+    if (filterTag && root.contains(filterTag)) {
+      event.preventDefault();
+      root.querySelectorAll(".js-filter-tag").forEach((tag) => tag.classList.remove("active"));
+      filterTag.classList.add("active");
+      currentFilter = filterTag.dataset.filter ?? "";
+      applyFilterAndSort();
+      return;
+    }
+
+    const tagBox = target.closest<HTMLElement>(".js-filter-tag-box");
+    if (tagBox && root.contains(tagBox)) {
+      event.preventDefault();
+      currentFilter = tagBox.dataset.filter ?? "";
+      root.querySelectorAll(".js-filter-tag").forEach((tag) => {
+        const filterTag = tag as HTMLElement;
+        filterTag.classList.toggle("active", (filterTag.dataset.filter ?? "") === currentFilter);
+      });
+      if (!currentFilter) root.querySelector('.js-filter-tag[data-filter=""]')?.classList.add("active");
+      applyFilterAndSort();
+      return;
+    }
+
+    const sortTag = target.closest<HTMLElement>(".js-sort-tag");
+    if (sortTag && root.contains(sortTag)) {
+      event.preventDefault();
+      root.querySelectorAll(".js-sort-tag").forEach((tag) => tag.classList.remove("active"));
+      sortTag.classList.add("active");
+      currentSort = sortTag.dataset.sort ?? "order";
+      applyFilterAndSort();
+    }
+  }, { signal });
+
+  root.querySelector("#programSearch")?.addEventListener("input", applyFilterAndSort, { signal });
+}
+
+function revealLegacyAnimations(root: HTMLElement) {
+  root.querySelectorAll<HTMLElement>("[data-anime]").forEach((element) => {
+    element.classList.add("appear", "anime-complete");
+    element.style.removeProperty("opacity");
+    element.style.removeProperty("transform");
+  });
+
+  const jQuery = (window as Window & { jQuery?: (input: HTMLElement | Document) => { find: (selector: string) => { appear: () => { trigger: (name: string) => void } } } }).jQuery;
+  if (jQuery) {
+    try {
+      jQuery(root).find("[data-anime]").appear().trigger("resize");
+    } catch {
+      // main.js may not be ready yet; CSS/class fallback above still reveals content.
+    }
+  }
+}
+
+function resetCountryPageLayout(root: HTMLElement) {
+  root.querySelectorAll<HTMLElement>(".grid-item").forEach((item) => {
+    item.style.removeProperty("position");
+    item.style.removeProperty("left");
+    item.style.removeProperty("top");
+    item.style.removeProperty("opacity");
+    item.style.removeProperty("transform");
+    item.style.removeProperty("transition-property");
+    item.style.removeProperty("transition-duration");
+    item.style.removeProperty("transition-delay");
+    item.style.removeProperty("width");
+  });
+
+  root.querySelectorAll<HTMLElement>(".portfolio-wrapper, .shop-wrapper").forEach((wrapper) => {
+    wrapper.classList.remove("grid-loading");
+    wrapper.style.removeProperty("height");
+  });
+
+  const activeFilter = root.querySelector<HTMLAnchorElement>(
+    ".portfolio-filter .nav.active > a, .portfolio-filter > li.active > a"
+  )?.dataset.filter ?? root.querySelector<HTMLAnchorElement>(".portfolio-filter a[data-filter]")?.dataset.filter;
+
+  if (activeFilter?.startsWith(".")) {
+    root.querySelectorAll<HTMLElement>(".grid-item").forEach((item) => {
+      item.style.display = item.matches(activeFilter) ? "" : "none";
+    });
+  }
+}
+
 function formPayload(form: HTMLFormElement): Record<string, string | string[]> {
   const payload: Record<string, string | string[]> = {};
   for (const [key, value] of new FormData(form)) {
@@ -492,7 +621,11 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
       }
     }, options);
 
+    revealLegacyAnimations(root);
+    if (page.startsWith("countries")) resetCountryPageLayout(root);
+
     if (page === "explorecountries") wireExploreCountrySwitcher(root, abort.signal);
+    if (page === "cvreadyprogram") wireCvReadyCatalogFilters(root, abort.signal);
 
     return () => {
       abort.abort();

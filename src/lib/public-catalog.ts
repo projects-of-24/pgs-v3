@@ -227,15 +227,37 @@ function cardsHtml(kind: "programs" | "courses", cards: PublicCatalogCard[]): st
   return cards.map((card) => {
     const image = card.imageUrl ? `<img src="${escapeHtml(card.imageUrl)}" alt="${escapeHtml(card.imageAlt || card.title)}">` : "";
     const tags = card.tags?.length ? `<div class="sop-tags px-2 py-2 mb-0 mt-3">${card.tags.map((tag) => `<span class="sop-tag">#${escapeHtml(tag)}</span>`).join("")}</div>` : "";
-    return `<article class="col-lg-4 col-md-6 col-12 pgs-relational-catalog-card" data-${singular}-id="${card.id}"><div class="card-line h-100"><a href="/programsfull/program/${card.id}${kind === "courses" ? "?type=course" : ""}" class="text-black text-decoration-none">${image}<h3 class="fnt-family fs-28">${escapeHtml(card.title)}</h3><p>${escapeHtml(card.summary)}</p></a>${tags}<button type="button" class="save-${singular}${card.saved ? " is-saved" : ""}" data-save-id="${card.id}" aria-label="${card.saved ? "Remove from saved" : "Save"}">${card.saved ? "♥" : "♡"}</button></div></article>`;
+    const tagData = (card.tags ?? []).map((tag) => tag.toLowerCase().trim()).filter(Boolean).join(" ");
+    const searchData = `${card.title} ${card.summary} ${(card.tags ?? []).join(" ")}`.toLowerCase();
+    const catalogAttrs = kind === "programs"
+      ? ` class="col-lg-4 col-md-6 col-12 pgs-relational-catalog-card js-program-card" data-title="${escapeHtml(card.title)}" data-tags="${escapeHtml(tagData)}" data-search="${escapeHtml(searchData)}"`
+      : ` class="col-lg-4 col-md-6 col-12 pgs-relational-catalog-card"`;
+    return `<article${catalogAttrs} data-${singular}-id="${card.id}"><div class="card-line h-100"><a href="/programsfull/program/${card.id}${kind === "courses" ? "?type=course" : ""}" class="text-black text-decoration-none">${image}<h3 class="fnt-family fs-28">${escapeHtml(card.title)}</h3><p>${escapeHtml(card.summary)}</p></a>${tags}<button type="button" class="save-${singular}${card.saved ? " is-saved" : ""}" data-save-id="${card.id}" aria-label="${card.saved ? "Remove from saved" : "Save"}">${card.saved ? "♥" : "♡"}</button></div></article>`;
   }).join("");
+}
+
+function injectProgramFilterTags(html: string, cards: PublicCatalogCard[]): string {
+  const tags = [...new Set(cards.flatMap((card) => card.tags ?? []).map((tag) => tag.toLowerCase().trim()).filter(Boolean))];
+  if (!tags.length) return html;
+  const filterSpans = tags.map((tag) => `<span class="js-filter-tag" data-filter="${escapeHtml(tag)}" role="button" tabindex="0">#${escapeHtml(tag)}</span>`).join("");
+  const tagBoxes = tags.map((tag) => `<div class="d-flex gap-1 align-items-start js-filter-tag-box" data-filter="${escapeHtml(tag)}" role="button" tabindex="0"><span class="bg-blue-hash text-black">#</span><span class="bg-black text-white">${escapeHtml(tag)}</span></div>`).join("");
+  let result = html.replace(
+    /(<div class="tag-highlights js-filter-tags">\s*<span class="active js-filter-tag" data-filter="">#all<\/span>)\s*(<\/div>)/i,
+    `$1${filterSpans}$2`
+  );
+  result = result.replace(
+    /<div class="box-tags-card mt-1 w-730px m-auto d-flex flex-wrap gap-1 justify-content-start">\s*<span class="text-muted">No tags yet\.<\/span>\s*<\/div>/i,
+    `<div class="box-tags-card mt-1 w-730px m-auto d-flex flex-wrap gap-1 justify-content-start">${tagBoxes}</div>`
+  );
+  return result;
 }
 
 export function applyPublishedCatalogCards(html: string, kind: "programs" | "courses", cards: PublicCatalogCard[]): string {
   if (!cards.length) return html;
   const rendered = cardsHtml(kind, cards);
   if (kind === "programs") {
-    return html.replace(/<div class="d-flex wrap align-items-start gap-3 mt-3 justify-content-center">\s*<p class="text-muted">No programs yet\. Check back later\.<\/p>\s*<\/div>/i, `<div class="d-flex wrap align-items-start gap-3 mt-3 justify-content-center" data-relational-catalog="programs">${rendered}</div>`);
+    const updated = html.replace(/<div class="d-flex wrap align-items-start gap-3 mt-3 justify-content-center">\s*<p class="text-muted">No programs yet\. Check back later\.<\/p>\s*<\/div>/i, `<div class="d-flex wrap align-items-start gap-3 mt-3 justify-content-center" data-relational-catalog="programs">${rendered}</div>`);
+    return injectProgramFilterTags(updated, cards);
   }
   return html.replace(/<div class="row align-items-start justify-content-md-start mobile-row-0" id="purpleboardCourses">\s*<div class="col-12 text-center py-5">\s*<p class="text-muted mb-0">No courses available yet\. Courses added in admin will appear here\.<\/p>\s*<\/div>\s*<\/div>/i, `<div class="row align-items-start justify-content-md-start mobile-row-0" id="purpleboardCourses" data-relational-catalog="courses">${rendered}</div>`);
 }

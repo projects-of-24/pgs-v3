@@ -633,6 +633,50 @@ div[data-retained-student-footer="true"][data-student-state="authenticated_premi
   }
 }
 
+/* Legacy pages: never leave anime-tagged blocks invisible if main.js runs late */
+main[data-legacy-page] [data-anime] {
+  opacity: 1;
+}
+
+/* CV-Ready Programs: filter/sort hashtag tags are interactive */
+main[data-legacy-page="cvreadyprogram"] .filer-tag .tag-highlights span,
+main[data-legacy-page="cvreadyprogram"] .js-filter-tag-box {
+  cursor: pointer;
+}
+
+/* Country destination pages: keep hero/content in normal document flow on mobile */
+@media (max-width: 767px) {
+  main[data-legacy-page^="countries"] .mobile-hero-coutry.minus-5 {
+    margin-top: 0 !important;
+  }
+
+  main[data-legacy-page^="countries"] .mobile-hero-coutry .hero-country-box .position-static-img {
+    position: relative !important;
+    height: auto !important;
+  }
+
+  main[data-legacy-page^="countries"] .mobile-hero-coutry .hero-country-box {
+    margin-bottom: 12px;
+  }
+
+  main[data-legacy-page^="countries"] .mobile-usa-content {
+    width: 100% !important;
+    padding-top: 1rem !important;
+  }
+
+  main[data-legacy-page^="countries"] .wrapper-content.mt-4 {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Isotope export artifacts must not hide tab panels before JS runs */
+  main[data-legacy-page^="countries"] .grid-item {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Explore Countries hub: full-page mobile was left-shifted (bootstrap row bleed + purple-gray-box margin). */
 @media (max-width: 767px) {
   html:has(main[data-legacy-page]),
@@ -708,5 +752,26 @@ div[data-retained-student-footer="true"][data-student-state="authenticated_premi
   main[data-legacy-page="explorecountries"] > section.mobile-slider-pgs .row {
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+
+  /* Purple Premium path pages: wrap 5-point feature row instead of horizontal scroll */
+  main[data-legacy-page] .group-flex-items.mobile-scrolling-nowrap {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    gap: 20px 16px !important;
+  }
+
+  main[data-legacy-page] .group-flex-items.mobile-scrolling-nowrap .w-20 {
+    width: min(100%, 200px) !important;
+    flex: 0 1 200px;
+  }
+
+  main[data-legacy-page] .group-flex-items.mobile-scrolling-nowrap .w-202px {
+    width: 100% !important;
+  }
+
+  main[data-legacy-page] .group-flex-items.mobile-scrolling-nowrap br {
+    display: inline !important;
   }
 }
