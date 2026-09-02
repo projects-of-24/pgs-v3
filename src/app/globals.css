@@ -593,3 +593,120 @@ div[data-retained-student-footer="true"][data-student-state="authenticated_premi
   div[data-retained-student-footer="true"][data-student-state="authenticated_premium"] > .footer-bg { min-height:0; }
   .premium-comments .comment-item.is-reply { margin-left:18px; }
 }
+
+/* Recovered from legacy explorecountries.php inline <style> (lost in HTML generation). */
+.mobile-section-step-1 .pointer-img,
+.mobile-explore-2 .pointer-img {
+  position: absolute;
+  right: 44px;
+  width: 118px;
+  height: auto;
+  max-width: 118px;
+  top: 56px;
+}
+
+@media (max-width: 767px) {
+  .mobile-section-step-1 .pointer-img,
+  .mobile-explore-2 .pointer-img {
+    top: 119px;
+  }
+}
+
+/* Mobile drawer: keep closed off-screen until hamburger opens it (footer.php openDrawer parity). */
+@media (max-width: 767px) {
+  main[data-legacy-page] {
+    overflow-x: clip;
+  }
+
+  main[data-legacy-page] .drawer:not(.active) {
+    visibility: hidden;
+    pointer-events: none;
+    right: 0 !important;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  main[data-legacy-page] .drawer.active {
+    visibility: visible !important;
+    pointer-events: auto;
+    right: 0 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+/* Explore Countries hub: full-page mobile was left-shifted (bootstrap row bleed + purple-gray-box margin). */
+@media (max-width: 767px) {
+  html:has(main[data-legacy-page]),
+  body:has(main[data-legacy-page]) {
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  main[data-legacy-page="explorecountries"] .wrapper-content {
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+
+  main[data-legacy-page="explorecountries"] .wrapper-content .row {
+    --bs-gutter-x: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100%;
+  }
+
+  main[data-legacy-page="explorecountries"] .mobile-box-explore .w-875px,
+  main[data-legacy-page="explorecountries"] .mobile-box-explore .w-903px {
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+
+  main[data-legacy-page="explorecountries"] .mobile-box-explore .row {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  main[data-legacy-page="explorecountries"] .mobile-box-explore .purple-gray-box {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  main[data-legacy-page="explorecountries"] .w-903px {
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  main[data-legacy-page="explorecountries"] .swiper,
+  main[data-legacy-page="explorecountries"] .swiper-container {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  main[data-legacy-page="explorecountries"] > section.mobile-slider-pgs {
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  main[data-legacy-page="explorecountries"] > section.mobile-slider-pgs .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}

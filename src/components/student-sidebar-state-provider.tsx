@@ -75,7 +75,7 @@ export function StudentSidebarStateProvider({ children }: { children: ReactNode 
       const target = event.target;
       if (!(target instanceof Element)) return;
       const control = target.closest("#toggleBtn, #sidebar #close_Btn");
-      const root = control?.closest<HTMLElement>("[data-legacy-page], .developer-student-shell");
+      const root = control?.closest<HTMLElement>(".developer-student-shell");
       if (!control || !root) return;
       event.preventDefault();
       event.stopImmediatePropagation();

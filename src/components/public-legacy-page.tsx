@@ -20,7 +20,7 @@ type Props<TSlug extends PublicContentSlug> = {
 export async function PublicLegacyPage<TSlug extends PublicContentSlug>({ slug, html, catalogDetail, eventId, authenticatedActorFallback=false }: Props<TSlug>) {
   const content = await getPublicContent(slug);
   let rendered = applyPublicContent(slug, html, content);
-  if (slug === "purpleboard") rendered = keepPurpleBoardPublic(rendered, true);
+  rendered = keepPurpleBoardPublic(rendered, slug === "purpleboard");
   const state = await resolveStudentExperience();
   const studentState=state?.kind??"anonymous";
   if(slug==="cvreadyprogram"||slug==="purpleboard"){

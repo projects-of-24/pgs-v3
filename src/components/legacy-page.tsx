@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { useStudentSidebarState } from "@/components/student-sidebar-state-provider";
 import { signOutAndNavigate } from "@/lib/logout-navigation";
 
 type Props = { html: string; page: string; studentState?: "anonymous" | "authenticated_standard" | "authenticated_premium" };
@@ -11,7 +10,11 @@ function setOpen(element: HTMLElement | null, open: boolean) {
   if (!element) return;
   element.classList.toggle("open", open);
   element.classList.toggle("active", open);
+  element.classList.toggle("show", open);
   if (element.classList.contains("pgs-modal") || element.classList.contains("premium-modal-overlay")) {
+    element.style.display = open ? "flex" : "none";
+  }
+  if (element.classList.contains("pgs-login-popup-overlay")) {
     element.style.display = open ? "flex" : "none";
   }
   if (element.classList.contains("drawer") || element.classList.contains("overlay") || element.classList.contains("premium-modal-overlay")) {
@@ -19,25 +22,75 @@ function setOpen(element: HTMLElement | null, open: boolean) {
   }
 }
 
-function uniqueElement(root:HTMLElement,selector:string):HTMLElement|null{
-  const matches=root.querySelectorAll<HTMLElement>(selector);
-  return matches.length===1?matches[0]:null;
+function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
+  const syncSidebar = (open: boolean) => {
+    const sidebar = root.querySelector<HTMLElement>("#sidebar");
+    const toggle = root.querySelector<HTMLElement>("#toggleBtn");
+    if (!sidebar || !toggle) return;
+    sidebar.classList.toggle("active", open);
+    sidebar.setAttribute("aria-hidden", String(!open));
+    toggle.setAttribute("role", "button");
+    toggle.setAttribute("tabindex", "0");
+    toggle.setAttribute("aria-controls", "sidebar");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.classList.toggle("hidenone", open);
+    const icon = toggle.querySelector("i");
+    icon?.classList.toggle("bi-arrow-right-square-fill", !open);
+    icon?.classList.toggle("bi-arrow-left-square-fill", open);
+  };
+
+  syncSidebar(false);
+
+  root.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const control = target.closest("#toggleBtn, #sidebar #close_Btn");
+    if (!control || !root.contains(control)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const sidebar = root.querySelector<HTMLElement>("#sidebar");
+    const nextOpen = control.id === "toggleBtn"
+      ? !sidebar?.classList.contains("active")
+      : false;
+    syncSidebar(nextOpen);
+  }, { capture: true, signal });
 }
 
-function setSidebarPresentation(root: HTMLElement, open: boolean) {
-  const sidebar = uniqueElement(root,"#sidebar");
-  const toggle = uniqueElement(root,"#toggleBtn");
-  if(!sidebar||!toggle)return;
-  const icon = toggle?.querySelector("i");
-  sidebar.classList.toggle("active", open);
-  toggle.classList.remove("hidenone");
-  toggle.setAttribute("role","button");
-  toggle.setAttribute("tabindex","0");
-  toggle.setAttribute("aria-controls","sidebar");
-  toggle.setAttribute("aria-expanded",String(open));
-  sidebar.setAttribute("aria-hidden",String(!open));
-  icon?.classList.toggle("bi-arrow-right-square-fill", !open);
-  icon?.classList.toggle("bi-arrow-left-square-fill", open);
+function isGuestSidebarGateLink(link: HTMLAnchorElement): boolean {
+  if (!link.closest("#sidebar")) return false;
+  const text = link.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  if (link.querySelector('img[src*="profile-icon"]') && text === "Profile") return true;
+  if (link.querySelector('img[src*="heart-icon"]') && text === "Saved List") return true;
+  return link.hasAttribute("data-login-required");
+}
+
+function wireExploreCountrySwitcher(root: HTMLElement, signal: AbortSignal) {
+  root.querySelectorAll(".vs-box-set").forEach((box) => {
+    const row = box.closest(".d-flex");
+    const headingSpan = row?.querySelector<HTMLElement>(".fs-75.text-white.lh-65 .fnt-family") ?? null;
+    const ctaBtn = row?.querySelector<HTMLAnchorElement>(".btn-green-btn") ?? null;
+    const codes = box.querySelectorAll("h1");
+
+    const selectCode = (h1: Element) => {
+      codes.forEach((other) => other.querySelector("span")?.classList.remove("bg-purple"));
+      h1.querySelector("span")?.classList.add("bg-purple");
+      if (headingSpan) {
+        headingSpan.innerHTML = h1.getAttribute("data-country") ?? h1.querySelector("span")?.textContent ?? h1.textContent ?? "";
+      }
+      const href = h1.getAttribute("data-href");
+      if (ctaBtn && href) ctaBtn.setAttribute("href", href);
+    };
+
+    codes.forEach((h1) => {
+      const heading = h1 as HTMLElement;
+      heading.style.cursor = "pointer";
+      heading.addEventListener("click", () => selectCode(h1), { signal });
+    });
+
+    const preset = box.querySelector("h1 span.bg-purple");
+    const initial = preset?.closest("h1") ?? codes[0];
+    if (initial) selectCode(initial);
+  });
 }
 
 function formPayload(form: HTMLFormElement): Record<string, string | string[]> {
@@ -223,13 +276,7 @@ async function manageLegacyNotification(target: HTMLElement) {
 
 export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
   const router = useRouter();
-  const { open: sidebarOpen } = useStudentSidebarState();
   const rootRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (root) setSidebarPresentation(root, sidebarOpen);
-  }, [page, sidebarOpen]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -238,6 +285,7 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
     const abort = new AbortController();
     const options = { signal: abort.signal };
     root.dataset.interactionsReady = "true";
+    wireRetainedSidebar(root, abort.signal);
 
     root.querySelectorAll<HTMLFormElement>("form").forEach((form) => {
       form.dataset.v3SubmitReady = "true";
@@ -291,16 +339,20 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
         }
       }
 
-      if (button?.querySelector('img[src*="toggle-lines"]')) {
+      if (button?.querySelector('img[src*="toggle-lines"]') && !button.classList.contains("mobile-notification-wrapper")) {
         event.preventDefault();
-        setOpen(document.querySelector("#drawer"), true);
-        setOpen(document.querySelector("#overlay"), true);
+        const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+        const overlay = (root.querySelector("#overlay") ?? document.querySelector("#overlay")) as HTMLElement | null;
+        setOpen(drawer, true);
+        setOpen(overlay, true);
         return;
       }
 
       if (target.closest("#drawer .btn-toggle-mobile") || target.closest("#overlay")) {
-        setOpen(document.querySelector("#drawer"), false);
-        setOpen(document.querySelector("#overlay"), false);
+        const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+        const overlay = (root.querySelector("#overlay") ?? document.querySelector("#overlay")) as HTMLElement | null;
+        setOpen(drawer, false);
+        setOpen(overlay, false);
         return;
       }
 
@@ -396,6 +448,12 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
         return;
       }
 
+      if (studentState === "anonymous" && link && isGuestSidebarGateLink(link)) {
+        event.preventDefault();
+        setOpen(document.querySelector("#pgsLoginPopup"), true);
+        return;
+      }
+
       if (target.closest(".save-program, .save-course, .heart-icon, [data-save-id]")) {
         event.preventDefault();
         if (root.querySelector(".pgs-auth-account")) void saveCatalogItem(target);
@@ -434,11 +492,13 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
       }
     }, options);
 
+    if (page === "explorecountries") wireExploreCountrySwitcher(root, abort.signal);
+
     return () => {
       abort.abort();
       delete root.dataset.interactionsReady;
     };
-  }, [page, router]);
+  }, [page, router, studentState]);
 
   return <main ref={rootRef} data-legacy-page={page} data-student-state={studentState} dangerouslySetInnerHTML={{ __html: html }} />;
 }
