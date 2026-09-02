@@ -1,0 +1,121 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint, types, unit, RLS, secrets
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.16.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Vitest
+        run: pnpm test
+
+      - name: RLS migration contract
+        run: pnpm test:rls
+
+      - name: Secret scan
+        run: pnpm test:security
+
+      - name: Dependency audit (high+)
+        run: pnpm audit --audit-level=high
+
+  build:
+    name: Production build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.16.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        env:
+          PGS_ALLOW_LEGACY_ASSET_FETCH: "1"
+        run: pnpm build
+
+  e2e-smoke:
+    name: Playwright smoke (desktop + mobile)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.16.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Build app for e2e
+        env:
+          PGS_ALLOW_LEGACY_ASSET_FETCH: "1"
+        run: pnpm build
+
+      - name: Run @smoke (desktop + mobile)
+        run: pnpm test:e2e:smoke
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+      - name: Upload test traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: test-results/
+          retention-days: 14

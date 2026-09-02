@@ -1,0 +1,174 @@
+.surface {
+  min-height: 100vh;
+  padding: 32px 16px;
+  display: grid;
+  place-items: center;
+  background: #f7f8fa;
+  color: #17171b;
+  font-family: var(--font-operations, Arial, Helvetica, sans-serif);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.surface *,
+.surface *::before,
+.surface *::after {
+  box-sizing: border-box;
+}
+
+.panel {
+  width: min(100%, 420px);
+  padding: 32px;
+  border: 1px solid #e3e4e8;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand > span {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #19191d;
+  color: #fff;
+  font-weight: 700;
+}
+
+.brand div {
+  display: grid;
+  gap: 2px;
+}
+
+.brand strong {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.brand small {
+  color: #696b74;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.intro {
+  margin: 32px 0 24px;
+}
+
+.intro p {
+  margin: 0 0 8px;
+  color: #5938a7;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+}
+
+.intro span {
+  margin-top: 10px;
+  display: block;
+  color: #696b74;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.form input {
+  min-height: 44px;
+  padding: 12px;
+  border: 1px solid #d8d9df;
+  border-radius: 6px;
+  background: #fff;
+  color: #17171b;
+  font: inherit;
+}
+
+.form input:focus-visible {
+  outline: 2px solid #7357bf;
+  outline-offset: 2px;
+  border-color: #7357bf;
+}
+
+.form button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 6px;
+  background: #19191d;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form button:hover:not(:disabled) {
+  background: #2d2d33;
+}
+
+.form button:focus-visible {
+  outline: 2px solid #7357bf;
+  outline-offset: 2px;
+}
+
+.form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.message {
+  min-height: 16px;
+  margin: -4px 0 0;
+  color: #9a2335;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.help {
+  margin: 24px 0 0;
+  /* FIGMA ACCESSIBILITY ADAPTATION: #777984 on #fff ≈ 4.1:1 (fail AA for 12px).
+     Adjusted to #5f6370 ≈ 4.6:1 — preserves muted gray intent. */
+  color: #5f6370;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@media (max-width: 520px) {
+  .surface {
+    align-items: start;
+    padding: 24px 12px;
+  }
+
+  .panel {
+    padding: 24px 20px;
+  }
+
+  .intro {
+    margin-top: 24px;
+  }
+}

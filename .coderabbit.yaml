@@ -1,0 +1,56 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+
+reviews:
+  profile: assertive
+  high_level_summary: true
+  poem: false
+  review_status: true
+  sequence_diagrams: false
+  request_changes_workflow: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/.next/**"
+    - "!**/pnpm-lock.yaml"
+    - "!**/legacy-assets.json"
+    - "!public/assets/**"
+    - "!playwright-report/**"
+    - "!test-results/**"
+    - "!**/*.png"
+    - "!**/*.jpg"
+    - "!**/*.webp"
+    - "!**/*.woff2"
+  path_instructions:
+    - path: "supabase/migrations/**"
+      instructions: |
+        - Treat RLS, SECURITY DEFINER functions, and GRANT changes as security-critical.
+        - Flag any policy that allows anon read on profiles, staff_profiles, premium_entitlements, student_documents, or audit_events.
+        - Prefer fail-closed patterns consistent with existing pgs-v3 migrations.
+        - Do not suggest weakening document clean-gate or Phase 4D lifecycle rules.
+    - path: "src/app/api/**"
+      instructions: |
+        - Every route must authorize server-side before returning data or mutating state.
+        - Flag service-role usage without explicit permission checks.
+        - Flag client-trusted role or scope checks.
+    - path: "src/lib/**"
+      instructions: |
+        - Preserve one-truth domains: premium_entitlements, mentor_assignments, audit_events, Phase 4D documents.
+        - Prefer existing staff-auth and student-access helpers over new parallel permission systems.
+    - path: "src/components/**"
+      instructions: |
+        - Do not suggest generic SaaS UI replacements for student/public legacy surfaces.
+        - Flag accessibility regressions: missing labels, color-only state, keyboard traps.
+    - path: "tests/e2e/**"
+      instructions: |
+        - New public or student flows should include @smoke where appropriate and consider mobile project coverage.
+  tools:
+    gitleaks:
+      enabled: true
+    semgrep:
+      enabled: true
+
+chat:
+  auto_reply: false

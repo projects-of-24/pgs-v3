@@ -1,0 +1,156 @@
+{
+  "generatedAt": "2026-09-01T19:14:45.980Z",
+  "baseURL": "http://127.0.0.1:3000",
+  "items": [
+    {
+      "route": "Home — guest",
+      "viewport": "desktop",
+      "file": "01-home-guest-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Home — guest",
+      "viewport": "mobile",
+      "file": "01-home-guest-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Home — guest",
+      "viewport": "mobile",
+      "file": "01-home-guest-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Study in USA",
+      "viewport": "desktop",
+      "file": "02-usa-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Study in USA",
+      "viewport": "mobile",
+      "file": "02-usa-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Study in USA",
+      "viewport": "mobile",
+      "file": "02-usa-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Study in USA",
+      "viewport": "mobile",
+      "file": "02-usa-modal-mobile.png",
+      "type": "modal"
+    },
+    {
+      "route": "Scholarship",
+      "viewport": "desktop",
+      "file": "03-scholarship-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Scholarship",
+      "viewport": "mobile",
+      "file": "03-scholarship-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Scholarship",
+      "viewport": "mobile",
+      "file": "03-scholarship-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "USMLE Rotation",
+      "viewport": "desktop",
+      "file": "04-usmlerotation-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "USMLE Rotation",
+      "viewport": "mobile",
+      "file": "04-usmlerotation-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "USMLE Rotation",
+      "viewport": "mobile",
+      "file": "04-usmlerotation-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Purple Events / webinars",
+      "viewport": "desktop",
+      "file": "05-purpleevents-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Purple Events / webinars",
+      "viewport": "mobile",
+      "file": "05-purpleevents-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Purple Events / webinars",
+      "viewport": "mobile",
+      "file": "05-purpleevents-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Purple Premium landing",
+      "viewport": "desktop",
+      "file": "06-purplepremium-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Purple Premium landing",
+      "viewport": "mobile",
+      "file": "06-purplepremium-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Purple Premium landing",
+      "viewport": "mobile",
+      "file": "06-purplepremium-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Login",
+      "viewport": "desktop",
+      "file": "07-login-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Login",
+      "viewport": "mobile",
+      "file": "07-login-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Login",
+      "viewport": "mobile",
+      "file": "07-login-mobile-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Explore countries",
+      "viewport": "desktop",
+      "file": "08-explore-countries-desktop-fold.png",
+      "type": "first-fold"
+    },
+    {
+      "route": "Explore countries",
+      "viewport": "mobile",
+      "file": "08-explore-countries-mobile-full.png",
+      "type": "full-page"
+    },
+    {
+      "route": "Explore countries",
+      "viewport": "mobile",
+      "file": "08-explore-countries-mobile-fold.png",
+      "type": "first-fold"
+    }
+  ]
+}

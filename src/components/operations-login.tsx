@@ -1,0 +1,67 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { operationsRoboto } from "@/lib/operations-font";
+import styles from "./operations-login.module.css";
+
+export function OperationsLogin({ redirectPath, guardianSurface = false }: { redirectPath: string; guardianSurface?: boolean }) {
+  const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setSubmitting(true);
+    setMessage("");
+    const form = new FormData(event.currentTarget);
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        email: form.get("email"),
+        password: form.get("password"),
+        redirect: redirectPath
+      })
+    });
+    const result = await response.json() as { message?: string; redirect?: string };
+    if (!response.ok || !result.redirect) {
+      setMessage(result.message ?? "Unable to sign in.");
+      setSubmitting(false);
+      return;
+    }
+    window.location.assign(result.redirect);
+  }
+
+  return (
+    <main className={`${styles.surface} ${operationsRoboto.variable}`}>
+      <section className={styles.panel} aria-labelledby="operations-login-title">
+        <div className={styles.brand}>
+          <span aria-hidden="true">P</span>
+          <div>
+            <strong>Purple Guide</strong>
+            <small>{guardianSurface ? "Parent / Guardian Portal" : "Operations"}</small>
+          </div>
+        </div>
+        <div className={styles.intro}>
+          <p>{guardianSurface ? "Guardian access" : "Internal staff access"}</p>
+          <h1 id="operations-login-title">{guardianSurface ? "Sign in to Guardian Portal" : "Sign in to Operations"}</h1>
+          <span>{guardianSurface ? "Sign in with your invited guardian identity to continue." : "Use your authorized PGS staff identity to continue."}</span>
+        </div>
+        <form onSubmit={submit} className={styles.form}>
+          <label>
+            Work email
+            <input name="email" type="email" autoComplete="email" required />
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" autoComplete="current-password" required />
+          </label>
+          <p className={styles.message} role="status">{message}</p>
+          <button type="submit" disabled={submitting}>
+            {submitting ? "Signing in…" : "Sign in"}
+          </button>
+        </form>
+        <p className={styles.help}>{guardianSurface ? "Access is invitation-only. You can only view the specific student information PGS has authorized for guardians." : "Access is permission-controlled and recorded in the PGS audit system."}</p>
+      </section>
+    </main>
+  );
+}
