@@ -56,7 +56,8 @@
   letter-spacing: 0.08px;
 }
 
-.country-study101-why-figma__p:last-child {
+.country-study101-why-figma__p:last-child,
+.country-study101-why-figma__p-wrap:last-child .country-study101-why-figma__p {
   margin-bottom: 0;
 }
 

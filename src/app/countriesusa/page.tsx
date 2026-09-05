@@ -1,19 +1,15 @@
+/**
+ * /countriesusa — shared country compose (slug `usa`).
+ */
+import { composeCountryPublicPage } from "@/features/countries/compose-country-public-page";
 import { cmsMetadata } from "@/lib/cms-metadata";
-import { ContentPreviewBanner } from "@/components/content-preview-banner";
-import { LegacyPage } from "@/components/legacy-page";
-import { countriesUsaHtml } from "@/legacy/generated/countriesusa";
-import { applyUsaContent, getPageContent } from "@/lib/content";
-import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
-import { applyAuthenticatedShell } from "@/lib/account-shell";
-import { resolveStudentExperience } from "@/lib/student-experience";
 
-export async function generateMetadata() { return cmsMetadata("countriesusa"); }
+export async function generateMetadata() {
+  return cmsMetadata("countriesusa");
+}
+
 export const dynamic = "force-dynamic";
 
 export default async function CountriesUsaPage() {
-  const [content, state] = await Promise.all([getPageContent("countriesusa"), resolveStudentExperience()]);
-  const studentState=state?.kind??"anonymous";
-  let html = applyPremiumBusinessRule(applyUsaContent(countriesUsaHtml, content));
-  if (state&&state.kind !== "anonymous") html = applyAuthenticatedShell(html, { name: state.name, unreadCount: state.unreadCount, premium: state.kind === "authenticated_premium" });
-  return <><ContentPreviewBanner /><LegacyPage page="countriesusa" html={html} studentState={studentState} /></>;
+  return composeCountryPublicPage("countriesusa");
 }

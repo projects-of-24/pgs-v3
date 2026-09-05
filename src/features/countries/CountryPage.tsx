@@ -12,6 +12,7 @@ import {
   DEFAULT_TRACKS_SIDEBAR_LINKS,
   type PgsBanner,
   resolveCostPgsBanner,
+  resolveJoinPortraitSrcs,
   resolveScholarshipGuide,
   type ScholarshipRow,
   type StatBlock,
@@ -19,6 +20,7 @@ import {
   type TrackSection,
   type VisaStep,
 } from "./content";
+import { CountryScrollReveal } from "./country-scroll-reveal";
 import "./countries.css";
 
 function StatSidebar({ stats }: { stats: StatBlock }) {
@@ -124,7 +126,7 @@ function ReasonsCardGrid({ reasons }: { reasons: Study101Reasons }) {
     <section className="pt-0 pb-0">
       <div className="usa-counrty-usa-purple-gray-box">
         <div className="d-flex align-items-start gap-3 mt-2 position-relative mobile-wrap">
-          <div className="w-65 mobile-w-48">
+          <CountryScrollReveal className="w-65 mobile-w-48" delay={0}>
             <div className="card-box-border h-250px">
               <div className="icon-box-position">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -134,9 +136,12 @@ function ReasonsCardGrid({ reasons }: { reasons: Study101Reasons }) {
                 <h6>{reasons.research}</h6>
               </div>
             </div>
-          </div>
+          </CountryScrollReveal>
 
-          <div className="d-flex flex-column align-items-start gap-3 position-relative mobile-w-48">
+          <CountryScrollReveal
+            className="d-flex flex-column align-items-start gap-3 position-relative mobile-w-48"
+            delay={0.06}
+          >
             <div className="w-100">
               <div className="card-box-border d-flex gap-3 justify-content-start mobile-wrap">
                 <div className="icon-box-position">
@@ -170,9 +175,9 @@ function ReasonsCardGrid({ reasons }: { reasons: Study101Reasons }) {
                 </div>
               </div>
             </div>
-          </div>
+          </CountryScrollReveal>
 
-          <div className="w-65 mobile-w-full">
+          <CountryScrollReveal className="w-65 mobile-w-full" delay={0.12}>
             <div className="card-box-border h-400px">
               <div className="icon-box-position">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -197,10 +202,13 @@ function ReasonsCardGrid({ reasons }: { reasons: Study101Reasons }) {
                 </div>
               </div>
             </div>
-          </div>
+          </CountryScrollReveal>
         </div>
 
-        <div className="w-50 mobile-w-full mobile-d-flex">
+        <CountryScrollReveal
+          className="w-50 mobile-w-full mobile-d-flex"
+          delay={0.16}
+        >
           <div className="w-100 desktop-none">
             <div className="card-box-border d-flex gap-3 justify-content-start">
               <div className="icon-box-position">
@@ -223,7 +231,7 @@ function ReasonsCardGrid({ reasons }: { reasons: Study101Reasons }) {
             {reasons.quote}
             <span className="fnt-family">”</span>
           </p>
-        </div>
+        </CountryScrollReveal>
       </div>
     </section>
   );
@@ -328,6 +336,7 @@ function CostPanel({ tab }: { tab: Extract<CountryTab, { id: "cost" }> }) {
     quote:
       "Studying in the U.S. means more than just classes — you get real-world experience, STEM OPT extensions, scholarships, internships, and a chance to build your future while you study. It's where top education meets real opportunity.",
   };
+  const join = resolveJoinPortraitSrcs(tab.premiumCta);
 
   return (
     <div className="d-flex gap-3 mobile-wrap">
@@ -372,11 +381,24 @@ function CostPanel({ tab }: { tab: Extract<CountryTab, { id: "cost" }> }) {
         <div className="country-cost-premium-block">
           <CountryPgsBanner banner={resolveCostPgsBanner(tab.pgsBanner)} />
 
-          <div className="premium-section country-cost-premium">
+          <CountryScrollReveal className="premium-section country-cost-premium">
             <div className="premium-img country-cost-premium__portrait">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={tab.premiumCta.image ?? "/assets/img/step.png"}
+                className="country-cost-premium__portrait-img country-cost-premium__portrait-img--desktop"
+                src={join.desktop}
+                alt=""
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="country-cost-premium__portrait-img country-cost-premium__portrait-img--ipad"
+                src={join.ipad}
+                alt=""
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="country-cost-premium__portrait-img country-cost-premium__portrait-img--mobile"
+                src={join.mobile}
                 alt=""
               />
             </div>
@@ -389,7 +411,7 @@ function CostPanel({ tab }: { tab: Extract<CountryTab, { id: "cost" }> }) {
               </h4>
               <p>{tab.premiumCta.body}</p>
             </div>
-          </div>
+          </CountryScrollReveal>
         </div>
       </div>
     </div>
@@ -900,7 +922,7 @@ function TrackSectionGrid({
   return (
     <div className="border-section-set country-tracks-section" id={id}>
       <h4>{section.title}</h4>
-      <div className="d-flex gap-5 justify-content-spacebeetbeen country-tracks-columns">
+      <div className="country-tracks-columns">
         <div>
           <h6>Track</h6>
           {section.rows.map((row) => (
@@ -1138,7 +1160,10 @@ export function CountryPage({
             </div>
             <div className="row">
               <div className="col-12 filter-content p-md-0">
-                <div className="grid-item transition-inner-all w-100">
+                <div
+                  key={tabId}
+                  className="grid-item transition-inner-all w-100 country-tab-panel-fade"
+                >
                   <TabPanel tab={active} study101Lead={study101Lead} />
                 </div>
               </div>

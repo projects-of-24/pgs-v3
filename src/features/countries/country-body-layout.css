@@ -2,10 +2,10 @@
  * Shared country body layout (preview shell).
  * Class: `.countriesUSA.country-body-shell`
  * Bands: >1366 desktop · 601–1366 iPad · ≤600 mobile.
- * Live country routes untouched until owner pulls.
  *
- * LOCKED (owner QC 2026-09-05): desktop >1366 + iPad 601–1366 — do not change
- * without re-propose. Mobile ≤600 under active QC.
+ * LOCKED (owner QC 2026-09-05): desktop/iPad width rails — re-propose before width changes.
+ * Vertical section rhythm: owner GO AHEAD 2026-09-05 (Figma 18753:11197 + fluid gap).
+ * Intro segment internals (title / lines / CTA) are frozen — do not touch child gaps.
  */
 
 /* Preview shell banner */
@@ -446,4 +446,79 @@
   .country-body-shell__intro-br {
     display: none;
   }
+}
+
+/*
+ * Vertical section rhythm (Figma countriesUSA 101 · 18753:11197).
+ * Owner GO AHEAD 2026-09-05: fluid between bodies; ~120px before footer.
+ * DO NOT change gaps inside `.mobile-usa-content` (title / lines / CTA).
+ */
+.countriesUSA.country-body-shell {
+  --country-body-section-gap: clamp(24px, 2.5vw, 40px);
+  /*
+   * Body → footer: Hostinger `.footer { margin-top: 150px }` already supplies
+   * the air (≈ Figma ~122). Do not stack another pad here — that doubled the gap.
+   */
+  --country-body-footer-gap: 0px;
+}
+
+/* Hero / chrome → first text body */
+.countriesUSA.country-body-shell .wrapper-content {
+  margin-top: var(--country-body-section-gap) !important;
+}
+
+/*
+ * Intro segment outer pad only — kill Bootstrap py-5 air.
+ * Child margins (h3.mb-2, p.mb-1, p.mb-0, CTA column) stay as-is.
+ */
+.countriesUSA.country-body-shell section.mobile-usa-content {
+  padding-top: 0 !important;
+  padding-bottom: var(--country-body-section-gap) !important;
+}
+
+/* Tabs strip + panels: no Bootstrap py-5; footer gap on section bottom */
+.countriesUSA.country-body-shell section.mobile-box-country {
+  padding-top: 0 !important;
+  padding-bottom: var(--country-body-footer-gap) !important;
+}
+
+/* Tabs nav → first Study 101 text body (~Figma 38px → fluid clamp) */
+.countriesUSA.country-body-shell .mobile-box-country .header-country {
+  margin-bottom: var(--country-body-section-gap) !important;
+}
+
+.countriesUSA.country-body-shell
+  .mobile-box-country
+  .country-usa-tab-style-new.mb-2 {
+  margin-bottom: 0 !important;
+}
+
+/*
+ * Between Study 101 text bodies (Why → overview → reasons → STEM…).
+ * Gap lives on the block; zero Bootstrap mt-* on the heading inside.
+ */
+.countriesUSA.country-body-shell .filter-content .w-80 > [id] + [id] {
+  margin-top: var(--country-body-section-gap) !important;
+}
+
+.countriesUSA.country-body-shell .filter-content .w-80 > .mt-5,
+.countriesUSA.country-body-shell .filter-content .w-80 > .mt-4 {
+  margin-top: var(--country-body-section-gap) !important;
+}
+
+.countriesUSA.country-body-shell
+  .filter-content
+  .w-80
+  > [id]
+  > .countriesUSA-title.mt-5,
+.countriesUSA.country-body-shell
+  .filter-content
+  .w-80
+  > [id]
+  > .countriesUSA-title.mt-3 {
+  margin-top: 0 !important;
+}
+
+.countriesUSA.country-body-shell .filter-content .w-80 > [id].mb-4 {
+  margin-bottom: 0 !important;
 }

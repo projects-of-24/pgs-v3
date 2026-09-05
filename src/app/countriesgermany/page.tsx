@@ -1,6 +1,15 @@
-import { PublicLegacyPage } from "@/components/public-legacy-page";
-import { countriesGermanyHtml } from "@/legacy/generated/countriesgermany";
+/**
+ * /countriesgermany — shared country compose (slug `germany`).
+ */
+import { composeCountryPublicPage } from "@/features/countries/compose-country-public-page";
 import { cmsMetadata } from "@/lib/cms-metadata";
 
-export async function generateMetadata() { return cmsMetadata('countriesgermany'); }
-export default function CountriesGermanyPage() { return <PublicLegacyPage slug="countriesgermany" html={countriesGermanyHtml} />; }
+export async function generateMetadata() {
+  return cmsMetadata("countriesgermany");
+}
+
+export const dynamic = "force-dynamic";
+
+export default async function CountriesGermanyPage() {
+  return composeCountryPublicPage("countriesgermany");
+}

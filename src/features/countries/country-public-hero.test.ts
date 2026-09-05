@@ -31,7 +31,8 @@ describe("country-public-hero", () => {
           slug: "uk",
           name: "UK",
           hero: {
-            flagImage: "/cms/uk-flag-strip.jpg",
+            flagImage: "/cms/uk-flag.png",
+            badgeImage: "/cms/uk-badge.jpg",
             desktopImage: "/cms/uk-hero-desktop.jpg",
             mobileImage: "/cms/uk-hero-mobile.jpg",
           },
@@ -39,7 +40,8 @@ describe("country-public-hero", () => {
       },
       "uk",
     );
-    expect(resolved.flagImage).toBe("/cms/uk-flag-strip.jpg");
+    expect(resolved.flagImage).toBe("/cms/uk-flag.png");
+    expect(resolved.badgeImage).toBe("/cms/uk-badge.jpg");
     expect(resolved.desktopImage).toBe("/cms/uk-hero-desktop.jpg");
     expect(resolved.mobileImage).toBe("/cms/uk-hero-mobile.jpg");
   });
@@ -79,5 +81,18 @@ describe("country-public-hero", () => {
     expect(mapped.mobileImage).toBe("/cms/uk-mobile.jpg");
     expect(mapped.badgeImage).toBe(COUNTRY_HERO_FIGMA_USA_DEFAULTS.badgeImage);
     expect(mapped.destinationName).toBe("Study in the UK");
+  });
+
+  it("passes CMS badge through to Figma module images", () => {
+    const mapped = toCountryHeroFigmaImages(
+      {
+        flagImage: "/cms/uk-flag.png",
+        badgeImage: "/cms/uk-grad.jpg",
+        desktopImage: "/cms/uk-desktop.jpg",
+        mobileImage: "/cms/uk-mobile.jpg",
+      },
+      "Study in the UK",
+    );
+    expect(mapped.badgeImage).toBe("/cms/uk-grad.jpg");
   });
 });

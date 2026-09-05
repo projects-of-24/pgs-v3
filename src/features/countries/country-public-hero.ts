@@ -87,6 +87,7 @@ export function resolveCountryHeroFromRow(
     flagImage: detail.hero.flagImage || defaults.flagImage,
     desktopImage: detail.hero.desktopImage || defaults.desktopImage,
     mobileImage: detail.hero.mobileImage || defaults.mobileImage,
+    badgeImage: detail.hero.badgeImage || defaults.badgeImage,
   };
 }
 

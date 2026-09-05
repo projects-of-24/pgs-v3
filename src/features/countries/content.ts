@@ -185,8 +185,40 @@ export function resolveCostPgsBanner(
 export type PremiumCta = {
   title: string;
   body: string;
+  /**
+   * Legacy single JOIN URL — treated as desktop fallback when
+   * `desktopImage` is empty.
+   */
   image?: string;
+  imageAssetId?: string | null;
+  /** Desktop JOIN portrait (>1366) — tall crop */
+  desktopImage?: string;
+  desktopImageAssetId?: string | null;
+  /** iPad JOIN portrait (601–1366) — square ~389 */
+  ipadImage?: string;
+  ipadImageAssetId?: string | null;
+  /** Mobile JOIN portrait (≤600) — square ~390 */
+  mobileImage?: string;
+  mobileImageAssetId?: string | null;
 };
+
+const JOIN_PORTRAIT_FALLBACK = "/assets/img/step.png";
+
+/** Resolve JOIN portrait srcs per band with cascade fallback. */
+export function resolveJoinPortraitSrcs(cta: PremiumCta): {
+  desktop: string;
+  ipad: string;
+  mobile: string;
+} {
+  const desktop =
+    cta.desktopImage?.trim() ||
+    cta.image?.trim() ||
+    JOIN_PORTRAIT_FALLBACK;
+  const ipad = cta.ipadImage?.trim() || desktop;
+  const mobile =
+    cta.mobileImage?.trim() || cta.ipadImage?.trim() || desktop;
+  return { desktop, ipad, mobile };
+}
 
 export type CostTab = {
   id: 'cost';
@@ -452,13 +484,17 @@ export type CountryPageContent = {
   study101Label: string;
   flagCode: string;
   hero: {
+    /** Left badge — destination flag (Figma separate image) */
     flagImage: string;
     desktopImage: string;
     mobileImage: string;
+    /** Right badge — graduation / photo thumb (Figma separate image) */
+    badgeImage?: string;
     /** CMS media asset ids — used by admin upload fields */
     flagImageAssetId?: string | null;
     desktopImageAssetId?: string | null;
     mobileImageAssetId?: string | null;
+    badgeImageAssetId?: string | null;
   };
   intro: {
     titleLine1: string;
@@ -624,6 +660,7 @@ export const USA_CONTENT: CountryPageContent = {
         title: 'JOIN #PURPLEPREMIUM',
         body: 'Streamlined Support for USA Medical & Non-Medical study Paths.',
         image: '/assets/img/step.png',
+        desktopImage: '/assets/img/step.png',
       },
     },
     {
