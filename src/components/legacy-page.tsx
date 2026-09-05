@@ -1,10 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { ViewportWidthOverlay } from "@/features/countries/viewport-width-overlay";
 import { signOutAndNavigate } from "@/lib/logout-navigation";
 
-type Props = { html: string; page: string; studentState?: "anonymous" | "authenticated_standard" | "authenticated_premium" };
+type Props = {
+  html?: string;
+  page: string;
+  studentState?: "anonymous" | "authenticated_standard" | "authenticated_premium";
+  /** Hybrid pages: React islands + HTML fragments instead of one html string */
+  children?: ReactNode;
+};
 
 function setOpen(element: HTMLElement | null, open: boolean) {
   if (!element) return;
@@ -59,6 +66,8 @@ function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
 function isGuestSidebarGateLink(link: HTMLAnchorElement): boolean {
   if (!link.closest("#sidebar")) return false;
   const text = link.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  const href = link.getAttribute("href") ?? "";
+  if (href.includes("javascript:") && text.toLowerCase().includes("#purpleboard")) return true;
   if (link.querySelector('img[src*="profile-icon"]') && text === "Profile") return true;
   if (link.querySelector('img[src*="heart-icon"]') && text === "Saved List") return true;
   return link.hasAttribute("data-login-required");
@@ -277,17 +286,60 @@ function revealLegacyAnimations(root: HTMLElement) {
     element.style.removeProperty("transform");
   });
 
-  const jQuery = (window as Window & { jQuery?: (input: HTMLElement | Document) => { find: (selector: string) => { appear: () => { trigger: (name: string) => void } } } }).jQuery;
-  if (jQuery) {
-    try {
-      jQuery(root).find("[data-anime]").appear().trigger("resize");
-    } catch {
-      // main.js may not be ready yet; CSS/class fallback above still reveals content.
+  // jQuery + optional jquery.appear (vendors.min.js) — guard for Turbopack load order
+  const jQuery = (window as unknown as { jQuery?: (input: HTMLElement | Document) => { find: (selector: string) => { appear?: () => unknown } } }).jQuery;
+  if (!jQuery) return;
+  try {
+    const anime = jQuery(root).find("[data-anime]");
+    if (typeof anime.appear === "function") {
+      const appeared = anime.appear() as { trigger: (name: string) => void };
+      appeared.trigger("resize");
     }
+  } catch {
+    // vendors/main may not be ready yet; CSS/class fallback above still reveals content.
   }
 }
 
+function destroyCountryIsotope(root: HTMLElement) {
+  const $ = (window as Window & { jQuery?: JQueryStatic }).jQuery;
+  if (!$) return;
+  root.querySelectorAll<HTMLElement>(".portfolio-wrapper, .shop-wrapper").forEach((wrapper) => {
+    const $wrapper = $(wrapper);
+    if ($wrapper.data("isotope")) {
+      $wrapper.isotope("destroy");
+    }
+    wrapper.classList.remove("grid-loading");
+    wrapper.style.removeProperty("height");
+  });
+}
+
+function applyCountryPortfolioFilter(root: HTMLElement, filter: string) {
+  destroyCountryIsotope(root);
+  root.querySelectorAll<HTMLElement>(".grid-item").forEach((item) => {
+    const show = item.matches(filter);
+    item.style.display = show ? "list-item" : "none";
+    if (show) {
+      item.style.removeProperty("position");
+      item.style.removeProperty("left");
+      item.style.removeProperty("top");
+      item.style.removeProperty("opacity");
+      item.style.removeProperty("transform");
+      item.style.removeProperty("transition-property");
+      item.style.removeProperty("transition-duration");
+      item.style.removeProperty("transition-delay");
+      item.style.removeProperty("width");
+    }
+  });
+
+  root.querySelectorAll<HTMLElement>(".portfolio-wrapper, .shop-wrapper").forEach((wrapper) => {
+    wrapper.classList.remove("grid-loading");
+    wrapper.style.removeProperty("height");
+  });
+}
+
 function resetCountryPageLayout(root: HTMLElement) {
+  destroyCountryIsotope(root);
+
   root.querySelectorAll<HTMLElement>(".grid-item").forEach((item) => {
     item.style.removeProperty("position");
     item.style.removeProperty("left");
@@ -300,20 +352,22 @@ function resetCountryPageLayout(root: HTMLElement) {
     item.style.removeProperty("width");
   });
 
-  root.querySelectorAll<HTMLElement>(".portfolio-wrapper, .shop-wrapper").forEach((wrapper) => {
-    wrapper.classList.remove("grid-loading");
-    wrapper.style.removeProperty("height");
-  });
-
   const activeFilter = root.querySelector<HTMLAnchorElement>(
     ".portfolio-filter .nav.active > a, .portfolio-filter > li.active > a"
   )?.dataset.filter ?? root.querySelector<HTMLAnchorElement>(".portfolio-filter a[data-filter]")?.dataset.filter;
 
   if (activeFilter?.startsWith(".")) {
-    root.querySelectorAll<HTMLElement>(".grid-item").forEach((item) => {
-      item.style.display = item.matches(activeFilter) ? "" : "none";
-    });
+    applyCountryPortfolioFilter(root, activeFilter);
   }
+}
+
+function stabilizeCountryPageLayout(root: HTMLElement) {
+  resetCountryPageLayout(root);
+  requestAnimationFrame(() => {
+    resetCountryPageLayout(root);
+    window.setTimeout(() => resetCountryPageLayout(root), 0);
+    window.setTimeout(() => resetCountryPageLayout(root), 500);
+  });
 }
 
 function formPayload(form: HTMLFormElement): Record<string, string | string[]> {
@@ -463,7 +517,10 @@ async function saveCatalogItem(target: HTMLElement) {
   if (!Number.isSafeInteger(id) || id <= 0) return;
   const kind = programId ? "programs" : "courses";
   const saved=target.classList.contains("is-saved")||owner.classList.contains("is-saved");
-  const response = await fetch(`/api/student/saved/${kind}/${id}`, { method: saved?"DELETE":"POST" });
+  const response = await fetch(`/api/student/saved/${kind}/${id}`, {
+    method: saved ? "DELETE" : "POST",
+    credentials: "same-origin"
+  });
   if (response.ok) {
     target.classList.toggle("is-saved",!saved);
     owner.classList.toggle("is-saved",!saved);
@@ -479,7 +536,7 @@ async function manageLegacyNotification(target: HTMLElement) {
   if (open) {
     const destination = open.dataset.notificationDestination;
     if (open.dataset.notificationReadonly !== "true") {
-      const response = await fetch(`/api/student/notifications/${open.dataset.notificationOpen}`, { method: "PATCH" });
+      const response = await fetch(`/api/student/notifications/${open.dataset.notificationOpen}`, { method: "PATCH", credentials: "same-origin" });
       if (!response.ok) return;
       open.closest("article")?.classList.replace("is-unread", "is-read");
     }
@@ -487,17 +544,17 @@ async function manageLegacyNotification(target: HTMLElement) {
     return;
   }
   if (remove) {
-    const response = await fetch(`/api/student/notifications/${remove.dataset.notificationDelete}`, { method: "DELETE" });
+    const response = await fetch(`/api/student/notifications/${remove.dataset.notificationDelete}`, { method: "DELETE", credentials: "same-origin" });
     if (response.ok) remove.closest("article")?.remove();
     return;
   }
   if (clear) {
-    const response = await fetch("/api/student/notifications", { method: "DELETE" });
+    const response = await fetch("/api/student/notifications", { method: "DELETE", credentials: "same-origin" });
     if (response.ok) clear.closest(".site-notification-menu")?.querySelectorAll(".site-notification-items article").forEach((item) => item.remove());
   }
 }
 
-export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
+export function LegacyPage({ html, page, studentState="anonymous", children }: Props) {
   const router = useRouter();
   const rootRef = useRef<HTMLElement>(null);
 
@@ -509,6 +566,16 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
     const options = { signal: abort.signal };
     root.dataset.interactionsReady = "true";
     wireRetainedSidebar(root, abort.signal);
+
+    const popupWindow = window as Window & {
+      showLoginRequiredPopup?: (event: Event) => void;
+    };
+    popupWindow.showLoginRequiredPopup = (event: Event) => {
+      event.preventDefault();
+      const popup = root.querySelector<HTMLElement>("#pgsLoginPopup")
+        ?? document.querySelector<HTMLElement>("#pgsLoginPopup");
+      setOpen(popup, true);
+    };
 
     root.querySelectorAll<HTMLFormElement>("form").forEach((form) => {
       form.dataset.v3SubmitReady = "true";
@@ -562,7 +629,13 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
         }
       }
 
-      if (button?.querySelector('img[src*="toggle-lines"]') && !button.classList.contains("mobile-notification-wrapper")) {
+      if (
+        (button?.classList.contains("pgs-header-menu") ||
+          button?.querySelector('img[src*="toggle-lines"]') ||
+          button?.querySelector('img[src*="menu-tablet"]') ||
+          button?.querySelector('img[src*="menu-mobile"]')) &&
+        !button.classList.contains("mobile-notification-wrapper")
+      ) {
         event.preventDefault();
         const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
         const overlay = (root.querySelector("#overlay") ?? document.querySelector("#overlay")) as HTMLElement | null;
@@ -583,7 +656,18 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
       if (notification) {
         event.preventDefault();
         const menu = notification.parentElement?.querySelector<HTMLElement>(".site-notification-menu") ?? null;
-        setOpen(menu, !menu?.classList.contains("open"));
+        const willOpen = !menu?.classList.contains("open");
+        if (menu) {
+          // Compact mobile uses position:fixed — pin under the bell so content stays on-screen.
+          // Desktop/iPad: clear any leftover inline top so CSS calc(100% + 8px) wins.
+          if (willOpen && window.matchMedia("(max-width: 600px)").matches) {
+            const bellBottom = notification.getBoundingClientRect().bottom;
+            menu.style.top = `${Math.round(bellBottom + 8)}px`;
+          } else {
+            menu.style.removeProperty("top");
+          }
+        }
+        setOpen(menu, willOpen);
         return;
       }
 
@@ -594,6 +678,8 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
           const open = dropdown.style.display !== "block";
           dropdown.style.display = open ? "block" : "none";
           setOpen(dropdown, open);
+          link.setAttribute("aria-expanded", open ? "true" : "false");
+          link.parentElement?.classList.toggle("is-open", open);
           return;
         }
       }
@@ -609,14 +695,14 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
         }
       }
 
-      const filter = link?.dataset.filter;
+      const filterLink = target.closest<HTMLAnchorElement>(".portfolio-filter a[data-filter]");
+      const filter = filterLink?.dataset.filter;
       if (filter?.startsWith(".")) {
         event.preventDefault();
-        root.querySelectorAll<HTMLElement>(".grid-item").forEach((item) => {
-          item.style.display = item.matches(filter) ? "block" : "none";
-        });
-        root.querySelectorAll(".portfolio-filter .nav").forEach((item) => item.classList.remove("active"));
-        link?.closest(".nav")?.classList.add("active");
+        event.stopPropagation();
+        applyCountryPortfolioFilter(root, filter);
+        root.querySelectorAll(".portfolio-filter > li").forEach((item) => item.classList.remove("active"));
+        filterLink.closest("li")?.classList.add("active");
         return;
       }
 
@@ -698,7 +784,11 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
         return;
       }
 
-      if (target.closest(".premium-modal-close, .pgs-modal-close, .close-btn, [data-dismiss='modal']") || target.classList.contains("premium-modal-overlay")) {
+      if (
+        target.closest(".premium-modal-close, .pgs-modal-close, .pgs-login-popup-close, .close-btn, [data-dismiss='modal']")
+        || target.classList.contains("premium-modal-overlay")
+        || target.classList.contains("pgs-login-popup-overlay")
+      ) {
         setOpen(target.closest<HTMLElement>(".premium-modal-overlay, .pgs-login-popup-overlay"), false);
         return;
       }
@@ -716,7 +806,7 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
     }, options);
 
     revealLegacyAnimations(root);
-    if (page.startsWith("countries")) resetCountryPageLayout(root);
+    if (page.startsWith("countries")) stabilizeCountryPageLayout(root);
 
     if (page === "explorecountries") wireExploreCountrySwitcher(root, abort.signal);
     if (page === "cvreadyprogram") wireCvReadyCatalogFilters(root, abort.signal);
@@ -725,9 +815,26 @@ export function LegacyPage({ html, page, studentState="anonymous" }: Props) {
 
     return () => {
       abort.abort();
+      delete popupWindow.showLoginRequiredPopup;
       delete root.dataset.interactionsReady;
     };
-  }, [page, router, studentState]);
+  }, [page, router, studentState, children, html]);
 
-  return <main ref={rootRef} data-legacy-page={page} data-student-state={studentState} dangerouslySetInnerHTML={{ __html: html }} />;
+  if (children) {
+    return (
+      <>
+        <ViewportWidthOverlay />
+        <main ref={rootRef} data-legacy-page={page} data-student-state={studentState}>
+          {children}
+        </main>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <ViewportWidthOverlay />
+      <main ref={rootRef} data-legacy-page={page} data-student-state={studentState} dangerouslySetInnerHTML={{ __html: html ?? "" }} />
+    </>
+  );
 }

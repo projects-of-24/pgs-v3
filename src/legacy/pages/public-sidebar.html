@@ -1,0 +1,217 @@
+<!--
+  Shared student sidebar (#sidebar) — lavender panel + nav.
+  Edit variants here; pages import via public-sidebar.ts.
+
+  Placeholders: {{name}}
+
+  Hostinger source: application/views/sidebar.php
+  Variants mirror logged-out vs logged-in link behaviour.
+  signed-premium uses the same nav as signed (Hostinger sidebar did not diverge).
+-->
+
+<!-- ===== VARIANT: unsigned ===== -->
+<div class="arrow-box sidebar-box" id="sidebar" data-pgs-sidebar-variant="unsigned">
+  <div class="d-flex justify-content-space align-items-start">
+    <h5 class="pt-13 text-black fs-48 fnt-family text-start">
+      Welcome <br>
+      {{name}}
+    </h5>
+    <img src="/assets/img/sidebar-arrow.png" id="close_Btn" class="flot-arrow-sidebar" alt="" data-no-retina="">
+  </div>
+  <ul class="ml-0">
+    <li>
+      <a href="/studentresources">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        #datesDeadlines
+      </a>
+    </li>
+    <li>
+      <a href="/feed_track_progress">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        Track Your Progress
+      </a>
+    </li>
+    <li>
+      <a href="/purpleboard">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        #purpleboard
+      </a>
+    </li>
+    <li>
+      <a href="/upload_your_doc">
+        <span class="fit-icon-sidebar"><img src="/assets/img/upload-icon.png" alt="" data-no-retina=""></span>
+        Upload Your Docs
+      </a>
+    </li>
+    <li>
+      <a href="/finance">
+        <span class="fit-icon-sidebar"><img src="/assets/img/finance-icon.png" alt="" data-no-retina=""></span>
+        #purpleFinance Hub
+      </a>
+    </li>
+    <li>
+      <a href="/scholarship">
+        <span class="fit-icon-sidebar"><img src="/assets/img/scholar-icon.png" alt="" data-no-retina=""></span>
+        #purpleScholarship Hub
+      </a>
+    </li>
+    <li>
+      <a href="/cvreadyprogram">
+        <span class="fit-icon-sidebar"><img src="/assets/img/cvready-icon.png" alt="" data-no-retina=""></span>
+        CV-Ready Programs
+      </a>
+    </li>
+  </ul>
+  <div class="d-flex justify-content-space mt-30">
+    <a href="javascript:void(0)" onclick="showLoginRequiredPopup(event)" class="text-black fs-20">
+      <img src="/assets/img/profile-icon.png" class="d-block mb-10" alt="" data-no-retina="">
+      Profile
+    </a>
+    <a href="javascript:void(0)" onclick="showLoginRequiredPopup(event)" class="text-black fs-20">
+      <img src="/assets/img/heart-icon.png" class="d-block mb-10" alt="" data-no-retina="">
+      Saved List
+    </a>
+    <a href="/login" class="text-black fs-20">
+      <img src="/assets/img/logout.png" class="d-block" alt="" data-no-retina="">
+      Login
+    </a>
+  </div>
+</div>
+
+<!-- ===== VARIANT: signed ===== -->
+<div class="arrow-box sidebar-box" id="sidebar" data-pgs-sidebar-variant="signed">
+  <div class="d-flex justify-content-space align-items-start">
+    <h5 class="pt-13 text-black fs-48 fnt-family text-start">
+      Welcome <br>
+      {{name}}
+    </h5>
+    <img src="/assets/img/sidebar-arrow.png" id="close_Btn" class="flot-arrow-sidebar" alt="" data-no-retina="">
+  </div>
+  <ul class="ml-0">
+    <li>
+      <a href="/studentresources">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        #datesDeadlines
+      </a>
+    </li>
+    <li>
+      <a href="/feed_track_progress">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        Track Your Progress
+      </a>
+    </li>
+    <li>
+      <a href="/purpleboard">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        #purpleboard
+      </a>
+    </li>
+    <li>
+      <a href="/upload_your_doc">
+        <span class="fit-icon-sidebar"><img src="/assets/img/upload-icon.png" alt="" data-no-retina=""></span>
+        Upload Your Docs
+      </a>
+    </li>
+    <li>
+      <a href="/finance">
+        <span class="fit-icon-sidebar"><img src="/assets/img/finance-icon.png" alt="" data-no-retina=""></span>
+        #purpleFinance Hub
+      </a>
+    </li>
+    <li>
+      <a href="/scholarship">
+        <span class="fit-icon-sidebar"><img src="/assets/img/scholar-icon.png" alt="" data-no-retina=""></span>
+        #purpleScholarship Hub
+      </a>
+    </li>
+    <li>
+      <a href="/cvreadyprogram">
+        <span class="fit-icon-sidebar"><img src="/assets/img/cvready-icon.png" alt="" data-no-retina=""></span>
+        CV-Ready Programs
+      </a>
+    </li>
+  </ul>
+  <div class="d-flex justify-content-space mt-30">
+    <a href="/student/profile" class="text-black fs-20">
+      <img src="/assets/img/profile-icon.png" class="d-block mb-10" alt="" data-no-retina="">
+      Profile
+    </a>
+    <a href="/saved" class="text-black fs-20">
+      <img src="/assets/img/heart-icon.png" class="d-block mb-10" alt="" data-no-retina="">
+      Saved List
+    </a>
+    <a href="/logout" class="text-black fs-20">
+      <img src="/assets/img/logout.png" class="d-block" alt="" data-no-retina="">
+      Logout
+    </a>
+  </div>
+</div>
+
+<!-- ===== VARIANT: signed-premium ===== -->
+<div class="arrow-box sidebar-box" id="sidebar" data-pgs-sidebar-variant="signed-premium">
+  <div class="d-flex justify-content-space align-items-start">
+    <h5 class="pt-13 text-black fs-48 fnt-family text-start">
+      Welcome <br>
+      {{name}}
+    </h5>
+    <img src="/assets/img/sidebar-arrow.png" id="close_Btn" class="flot-arrow-sidebar" alt="" data-no-retina="">
+  </div>
+  <ul class="ml-0">
+    <li>
+      <a href="/studentresources">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        #datesDeadlines
+      </a>
+    </li>
+    <li>
+      <a href="/feed_track_progress">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        Track Your Progress
+      </a>
+    </li>
+    <li>
+      <a href="/purpleboard">
+        <span class="fit-icon-sidebar"><img src="/assets/img/loading-icon.png" alt="" data-no-retina=""></span>
+        #purpleboard
+      </a>
+    </li>
+    <li>
+      <a href="/upload_your_doc">
+        <span class="fit-icon-sidebar"><img src="/assets/img/upload-icon.png" alt="" data-no-retina=""></span>
+        Upload Your Docs
+      </a>
+    </li>
+    <li>
+      <a href="/finance">
+        <span class="fit-icon-sidebar"><img src="/assets/img/finance-icon.png" alt="" data-no-retina=""></span>
+        #purpleFinance Hub
+      </a>
+    </li>
+    <li>
+      <a href="/scholarship">
+        <span class="fit-icon-sidebar"><img src="/assets/img/scholar-icon.png" alt="" data-no-retina=""></span>
+        #purpleScholarship Hub
+      </a>
+    </li>
+    <li>
+      <a href="/cvreadyprogram">
+        <span class="fit-icon-sidebar"><img src="/assets/img/cvready-icon.png" alt="" data-no-retina=""></span>
+        CV-Ready Programs
+      </a>
+    </li>
+  </ul>
+  <div class="d-flex justify-content-space mt-30">
+    <a href="/student/profile" class="text-black fs-20">
+      <img src="/assets/img/profile-icon.png" class="d-block mb-10" alt="" data-no-retina="">
+      Profile
+    </a>
+    <a href="/saved" class="text-black fs-20">
+      <img src="/assets/img/heart-icon.png" class="d-block mb-10" alt="" data-no-retina="">
+      Saved List
+    </a>
+    <a href="/logout" class="text-black fs-20">
+      <img src="/assets/img/logout.png" class="d-block" alt="" data-no-retina="">
+      Logout
+    </a>
+  </div>
+</div>

@@ -1,0 +1,249 @@
+<!--
+  Shared public header — Figma V6 responsive (18724:10893).
+  Breakpoints: pgs-breakpoints.ts (desktop >1366 · tablet ≤1366 · mobile ≤767)
+  Styles: src/features/shell/legacy-header-breakpoints.css
+  Preserved: #ppWrapper dropslide, #exploreCountriesWrapper, notifications, drawer.
+-->
+<header class="pgs-figma-header">
+  <div class="mobile-none">
+    <nav class="navbar navbar-expand-lg header-light header-transparent bg-transparent disable-fixed pgs-header-bar" aria-label="Primary">
+      <div class="pgs-header-left">
+        <a class="navbar-brand pgs-header-brand" href="/" aria-label="#purpleGuide.study">
+          <!-- Transparent SVG wordmark (no baked #ebf7ff). Inlined so Roboto from the page applies. -->
+          <svg
+            class="default-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 176.12 27.04"
+            width="173"
+            height="32"
+            role="img"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <text
+              fill="#231f20"
+              font-family="Roboto, Arial, Helvetica, sans-serif"
+              font-size="24"
+              font-weight="400"
+              transform="translate(0 20.53)"
+            >#purpleGuide</text>
+            <text
+              fill="#231f20"
+              font-family="Roboto, Arial, Helvetica, sans-serif"
+              font-size="12"
+              font-weight="400"
+              transform="translate(143.78 11.98)"
+            >.study</text>
+          </svg>
+        </a>
+
+        <ul class="header-tab-top">
+          <li>
+            <a href="/Home/defaultdashboard" class="tab-button text-black">#feed</a>
+          </li>
+
+          <li class="dropdown-wrapper tab-premium" id="ppWrapper">
+            <a href="#" class="tab-button text-black" aria-haspopup="true" aria-expanded="false" aria-controls="ppDropdown">
+              #purplePremium
+            </a>
+            <div class="dropdown-menu" id="ppDropdown" role="menu">
+              <a href="/purplepremiumhome" role="menuitem">OVERVIEW</a>
+              <a href="/Purplenonmedical" role="menuitem">STEM, MBA &amp; Other Paths</a>
+              <a href="/purpleusme" role="menuitem">USMLE</a>
+              <a href="/Purpleplab" role="menuitem">PLAB</a>
+              <a href="/purpleamc" role="menuitem">AMC</a>
+            </div>
+          </li>
+
+          <li class="tab-cv">
+            <a href="/cvreadyprogram" class="tab-button text-black">#cvReadyPrograms</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-auto col-lg-4 text-end flex-grid pgs-header-right">
+        <a href="/Usmlerotation" class="btn btn-trapsparent text-decoration-none pgs-header-link-desktop">#USMLERotation</a>
+
+        <div class="explore-wrapper pgs-header-link-desktop" id="exploreCountriesWrapper">
+          <a href="#" class="btn btn-trapsparent text-decoration-none">#exploreCountries</a>
+          <div class="explore-dropdown-menu" id="exploreCountriesDropdown">
+            <a href="/countriesusa">USA</a>
+            <a href="/countriesuk">UK</a>
+            <a href="/countriesaus">AUSTRALIA</a>
+            <a href="/countriesgermany">GERMANY</a>
+            <a href="/explorecountries">FULL COUNTRY LIST</a>
+          </div>
+        </div>
+
+        <div class="site-notification-dropdown">
+          <a href="#" class="header-notification-wrapper" aria-label="Notifications" title="Notifications">
+            <img class="pgs-header-bell pgs-header-bell-desktop" src="/assets/img/figma-header/bell-desktop.svg" alt="" width="27" height="32" data-no-retina="">
+            <img class="pgs-header-bell pgs-header-bell-tablet" src="/assets/img/figma-header/bell-tablet.svg" alt="" width="32" height="38" data-no-retina="">
+            <img class="pgs-header-bell pgs-header-bell-mobile" src="/assets/img/figma-header/bell-mobile.svg" alt="" width="17" height="20" data-no-retina="">
+            <span class="header-notification-badge is-empty">0</span>
+          </a>
+          <div class="site-notification-menu" id="siteNotificationMenuDesktop">
+            <div class="site-notification-heading">
+              <span>Notifications</span>
+            </div>
+            <div class="site-notification-empty">No notifications yet.</div>
+          </div>
+        </div>
+
+        <a href="/Login" class="btn btn-login">Login</a>
+
+        <button type="button" class="btn-toggle-mobile pgs-header-menu" aria-label="Open menu">
+          <img class="pgs-menu-tablet" src="/assets/img/figma-header/menu-tablet.svg" alt="" width="34" height="34" data-no-retina="">
+          <img class="pgs-menu-mobile" src="/assets/img/figma-header/menu-mobile.svg" alt="" width="20" height="20" data-no-retina="">
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Kept for account-shell / parity selectors; visually hidden by CSS (single responsive bar). -->
+  <div class="mobile-block mobile-header" hidden>
+    <div class="d-flex d-flex-space justify-content-space">
+      <div>
+        <a href="/">
+          <img src="/assets/img/pgs-logo.svg" alt="#purpleGuide.study" data-no-retina="" width="173" height="32">
+        </a>
+      </div>
+      <div class="d-flex d-flex-space justify-content-space">
+        <div class="site-notification-dropdown">
+          <button type="button" class="btn-toggle-mobile mobile-notification-wrapper" aria-label="Notifications" title="Notifications">
+            <i class="bi bi-bell"></i>
+            <span class="header-notification-badge is-empty">0</span>
+          </button>
+          <div class="site-notification-menu mobile-menu" id="siteNotificationMenuMobile">
+            <div class="site-notification-heading">
+              <span>Notifications</span>
+            </div>
+            <div class="site-notification-empty">No notifications yet.</div>
+          </div>
+        </div>
+        <a href="/Login" class="btn btn-login">Login</a>
+        <button type="button" class="btn-toggle-mobile" aria-label="Open menu">
+          <img src="/assets/img/toggle-lines.png" data-no-retina="" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Drawer -->
+<div class="drawer" id="drawer">
+  <div class="d-flex d-flex-space justify-content-space">
+    <div>
+      <a href="/">
+        <img src="/assets/img/white-logo.png" data-no-retina="" style="width: 120px;" alt="#purpleGuide.study">
+      </a>
+    </div>
+    <div class="d-flex d-flex-space justify-content-space">
+      <button type="button" class="btn-toggle-mobile text-end pgs-drawer-close" aria-label="Close menu">
+        <img
+          class="pgs-drawer-close__icon"
+          src="/assets/img/figma-header/drawer-close.svg"
+          width="25"
+          height="22"
+          alt=""
+          data-no-retina=""
+        />
+      </button>
+    </div>
+  </div>
+
+  <!--
+    Figma cas-v6 mobile v1 (993:7556): #univMeet + search ABOVE blue nav links.
+    Same actions as desktop page strip.
+    Owner 2026-09-04: strip tools only >1366; ≤1366 (iPad+mobile) use these drawer tools.
+  -->
+  <div class="pgs-drawer-tools">
+    <a
+      href="/Programsfull"
+      class="pgs-drawer-univmeet"
+      style="text-decoration:none;cursor:pointer;"
+    >
+      <span class="pgs-drawer-univmeet__label">#univMeet</span>
+      <span class="pgs-drawer-univmeet__date" aria-hidden="true">
+        <span class="pgs-drawer-univmeet__day">31</span>
+        <span class="pgs-drawer-univmeet__month">Dec 25</span>
+      </span>
+      <span class="pgs-drawer-univmeet__date" aria-hidden="true">
+        <span class="pgs-drawer-univmeet__day">31</span>
+        <span class="pgs-drawer-univmeet__month">Dec 25</span>
+      </span>
+    </a>
+
+    <div class="search-box pgs-drawer-search">
+      <div class="input-group">
+        <span><i class="bi bi-search"></i></span>
+        <input
+          type="search"
+          class="search-control"
+          placeholder="Search"
+          data-autocomplete-endpoint="/Search/autocomplete"
+          autocomplete="off"
+          aria-label="Search programs, courses, and events"
+        />
+      </div>
+    </div>
+  </div>
+
+  <ul class="header-tab-top d-block">
+    <li>
+      <a href="/Home/defaultdashboard" style="padding: 2px 5px;" class="tab-button text-black">#feed</a>
+    </li>
+
+    <li class="mb-2" id="mobilePpWrapper">
+      <a href="#" class="tab-button text-black" style="padding: 4px; display:inline-flex; align-items:center; gap:4px;">
+        #purplePremium
+        <span id="mobilePpArrow" style="font-size:11px; transition:transform 0.2s;">▼</span>
+      </a>
+      <ul id="mobilePpDropdown" style="
+        display: none;
+        list-style: none;
+        padding: 6px 0;
+        margin: 0;
+        width: 85%;
+        margin-bottom: 10px;
+        background: #FFDE7F;
+        border-radius: 10px;
+        border: 0.5px solid #e0d200;">
+        <li><a href="/purplepremiumhome" class="pp-mobile-link">OVERVIEW</a></li>
+        <li><a href="/Purplenonmedical" class="pp-mobile-link">STEM, MBA &amp; Other Paths</a></li>
+        <li><a href="/purpleusme" class="pp-mobile-link">USMLE</a></li>
+        <li><a href="/Purpleplab" class="pp-mobile-link">PLAB</a></li>
+        <li><a href="/purpleamc" class="pp-mobile-link">AMC</a></li>
+      </ul>
+    </li>
+
+    <li class="mb-2">
+      <a href="/cvreadyprogram" class="tab-button text-black" style="padding: 4px;">#cvReadyPrograms</a>
+    </li>
+    <li class="mb-2">
+      <a href="/Usmlerotation" class="tab-button text-black" style="padding: 4px;">#USMLERotation</a>
+    </li>
+    <li class="mb-2" id="mobileExploreWrapper">
+      <a href="#" class="tab-button text-black" style="padding:4px; display:inline-flex; align-items:center; gap:4px;">
+        #exploreCountries
+        <span id="mobileExploreArrow" style="font-size:11px; transition:transform .2s;">▼</span>
+      </a>
+      <ul id="mobileExploreDropdown" style="
+        display:none;
+        list-style:none;
+        padding:6px 0;
+        margin:0;
+        width:85%;
+        margin-bottom:10px;
+        background:#FFDE7F;
+        border-radius:10px;
+        border:0.5px solid #e0d200;">
+        <li><a href="/countriesusa" class="pp-mobile-link">USA</a></li>
+        <li><a href="/countriesuk" class="pp-mobile-link">UK</a></li>
+        <li><a href="/countriesaus" class="pp-mobile-link">AUSTRALIA</a></li>
+        <li><a href="/countriesgermany" class="pp-mobile-link">GERMANY</a></li>
+        <li><a href="/explorecountries" class="pp-mobile-link">FULL COUNTRY LIST</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

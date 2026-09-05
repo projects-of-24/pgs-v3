@@ -1,0 +1,18 @@
+/**
+ * PGS breakpoint CSS vars — keep in sync with `pgs-breakpoints.ts`.
+ *
+ * Authority for the NUMBERS: `src/features/shell/pgs-breakpoints.ts`
+ * Overlay consumers: `legacy-header-breakpoints.css`, `legacy-hello-aspirant.css`, `countries.css`, shared HTML.
+ *
+ * Note: `@media (max-width: var(--…))` is not reliable everywhere.
+ * Copy the px values from the TS file into @media blocks; use these vars
+ * for padding/max-width/calc inside rules when useful.
+ */
+
+:root {
+  --pgs-bp-header-mobile: 1366px;
+  --pgs-bp-header-desktop-logo-min: 981px;
+  --pgs-bp-mobile-handover: 980px;
+  --pgs-bp-header-compact: 600px;
+  --pgs-bp-hostinger-phone: 600px;
+}

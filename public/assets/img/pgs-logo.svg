@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.12 27.04">
+  <!--
+    Source: owner pgs logo.svg (renamed pgs-logo.svg for URL safety).
+    Prefer inlined copy in public-header.html so page Roboto applies.
+    This file kept for img/src fallbacks; use system stack when served as <img>.
+  -->
+  <text
+    fill="#231f20"
+    font-family="Roboto, Arial, Helvetica, sans-serif"
+    font-size="24"
+    font-weight="400"
+    transform="translate(0 20.53)"
+  >#purpleGuide</text>
+  <text
+    fill="#231f20"
+    font-family="Roboto, Arial, Helvetica, sans-serif"
+    font-size="12"
+    font-weight="400"
+    transform="translate(143.78 11.98)"
+  >.study</text>
+</svg>

@@ -183,8 +183,8 @@ export async function resolveStudentExperience(): Promise<StudentExperienceResol
   const profile = actor.student.profile;
   const supabase = await createSupabaseServerClient();
   const [notifications, unread, validity] = await Promise.all([
-    supabase.from("notifications").select("id,title,body,section,destination_path,read_at,created_at",{count:"exact"}).order("created_at",{ascending:false}).limit(8),
-    supabase.from("notifications").select("id",{count:"exact",head:true}).is("read_at",null),
+    supabase.from("notifications").select("id,title,body,section,destination_path,read_at,created_at",{count:"exact"}).eq("recipient_kind","student").eq("student_id",user.id).is("archived_at",null).order("created_at",{ascending:false}).limit(8),
+    supabase.from("notifications").select("id",{count:"exact",head:true}).eq("recipient_kind","student").eq("student_id",user.id).is("archived_at",null).is("read_at",null),
     entitlementsForStudent(user.id)
   ]);
   return composeAuthenticatedStudentExperience({

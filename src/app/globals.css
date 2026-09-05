@@ -96,8 +96,9 @@ body {
 
 :root {
   --pgs-layer-student-sidebar: 1001;
-  --pgs-layer-student-overlay: 1010;
-  --pgs-layer-student-drawer: 1020;
+  /* Above Figma header (1100) so open hamburger still covers chrome + notification panel */
+  --pgs-layer-student-overlay: 1190;
+  --pgs-layer-student-drawer: 1200;
 }
 
 .pgs-staff-preview-banner,
@@ -228,6 +229,28 @@ body {
 /* Phase 7A owner UX: Save Draft / Preview / Publish stay visible, unclipped, and readable. */
 .ops-dialog form > header,.ops-dialog form > footer,.ops-dialog form > .ops-form-note,.ops-dialog form > [role="status"] { flex:none; }
 .ops-dialog form > .ops-form-grid { flex:1 1 auto; min-height:0; overflow-y:auto; }
+.ops-dialog--visual { width:min(1280px,calc(100vw - 20px)); }
+.ops-dialog form > .ops-visual-cms { flex:1 1 auto; min-height:0; display:grid; grid-template-columns:160px minmax(0,1fr) minmax(280px,38%); gap:0; border-top:1px solid var(--ops-line); }
+.ops-visual-cms__nav { padding:14px 10px; display:flex; flex-direction:column; gap:4px; overflow:auto; border-right:1px solid var(--ops-line); background:#f7f5fa; }
+.ops-visual-cms__nav a { padding:8px 10px; border-radius:8px; color:#3c3548; font-size:12px; font-weight:700; text-decoration:none; }
+.ops-visual-cms__nav a:hover,.ops-visual-cms__nav a:focus-visible { background:#eeeaf5; outline:none; }
+.ops-visual-cms__nav a.is-active { background:#4b2d8a; color:#fff; }
+.ops-visual-cms__fields { min-height:0; overflow:auto; padding:8px 0 18px; }
+.ops-visual-cms__section { padding:12px 18px 4px; border-bottom:1px solid var(--ops-line); }
+.ops-visual-cms__section h3 { margin:0 0 4px; color:var(--ops-ink); font-size:15px; }
+.ops-visual-cms__section .ops-form-grid { padding:12px 0; }
+.ops-visual-cms__note { display:grid; gap:5px; margin-top:12px; color:#4d4756; font-size:12px; font-weight:700; }
+.ops-visual-cms__note input { min-height:42px; padding:9px 10px; border:1px solid #c7c1ce; border-radius:7px; }
+.ops-visual-cms__preview { display:flex; flex-direction:column; min-height:0; border-left:1px solid var(--ops-line); background:#f3f0f7; }
+.ops-visual-cms__preview-head { padding:10px 12px; display:flex; justify-content:space-between; align-items:center; gap:8px; border-bottom:1px solid var(--ops-line); font-size:12px; }
+.ops-visual-cms__preview-head a { color:#3a1d73; font-weight:700; }
+.ops-visual-cms__frame { flex:1; width:100%; min-height:420px; border:0; background:#fff; }
+.ops-visual-cms__preview-empty { margin:0; padding:24px 16px; color:#554e60; font-size:13px; }
+@media (max-width:980px) {
+  .ops-dialog form > .ops-visual-cms { grid-template-columns:1fr; }
+  .ops-visual-cms__nav { flex-direction:row; flex-wrap:wrap; border-right:0; border-bottom:1px solid var(--ops-line); }
+  .ops-visual-cms__preview { border-left:0; border-top:1px solid var(--ops-line); min-height:280px; }
+}
 .ops-editor-actions,.ops-cms-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
 .ops-preview-hint { flex:1 0 100%; color:#413c4d; font-size:13px; font-weight:700; white-space:normal; }
 .ops-cms-actions { margin:14px 0 6px; padding:14px; border:1px solid var(--ops-line); border-radius:10px; background:#faf9fc; }
@@ -272,18 +295,704 @@ body {
 .developer-univ-meet { margin-left:auto; padding:18px 25px; border-radius:12px; background:#ebf7ff; color:#000; text-decoration:none; }
 .developer-student-tools .search-box { width:220px; }
 .developer-student-tools .search-control { width:100%; min-height:38px; padding:7px 12px; border:1px solid rgba(0,0,0,.25); border-radius:8px; }
-.developer-student-shell .mobile-frame-sidebar { position:relative; }
+/*
+ * =============================================================================
+ * PGS MODULAR PUBLIC CHROME — CANONICAL (owner 2026-09-04)
+ * File: src/app/globals.css  ← reference THIS for layout/position/size of chrome
+ *
+ * Bands (ignore Hostinger 767 for this chrome):
+ *   >1366  desktop
+ *   601–1366  iPad
+ *   ≤600  mobile
+ *
+ * Header: sticky top 0 at rest and when stuck (shell + pill top flush).
+ * Strip flows under header. Body pull = strip-tied clamp (Hostinger .minus-5 port).
+ *
+ * Hostinger public/assets/css/* = REFERENCE ONLY — override here, do not edit Hostinger.
+ *
+ * Still elsewhere until migrated:
+ *   - Figma header bar visuals (logo/login/bell/menu assets) → legacy-header-breakpoints.css
+ *   - Hello Aspirant strip removed → legacy-hello-aspirant.css (failsafe hide)
+ * =============================================================================
+ */
+
+/* --- Page canvas --- */
+main[data-legacy-page] {
+  position: relative;
+}
+
+/* --- Sticky header (all bands). Position owned here, not legacy-header. --- */
+[data-legacy-page] header.pgs-figma-header {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  margin-top: 0;
+}
+
+/* Pill top flush with sticky shell (overrides legacy-header bar margin-top 20px). */
+[data-legacy-page] header.pgs-figma-header .pgs-header-bar {
+  margin-top: 0;
+}
+
+/*
+ * Mobile ≤600 — opaque sticky pill: pure white (was #ebf7ff).
+ * Overrides old legacy transparent kills.
+ */
+@media (max-width: 600px) {
+  [data-legacy-page] header.pgs-figma-header {
+    --pgs-header-bg: #ffffff;
+  }
+
+  [data-legacy-page] header.pgs-figma-header .pgs-header-bar,
+  [data-legacy-page] header.pgs-figma-header .pgs-header-bar.navbar,
+  [data-legacy-page] header.pgs-figma-header > .mobile-none {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+  }
+}
+
+/* --- Strip under sticky header (in flow). Overrides Hostinger ≤767 absolute. --- */
 [data-legacy-page] .mobile-frame-sidebar,
 .developer-student-shell .mobile-frame-sidebar {
-  z-index:var(--pgs-layer-student-sidebar) !important;
-  pointer-events:none;
+  position: relative !important;
+  top: auto;
+  left: auto;
+  width: 100%;
+  z-index: var(--pgs-layer-student-sidebar) !important;
+  pointer-events: none;
+  padding-top: clamp(12px, 1.1vw, 20px);
 }
-[data-legacy-page] #toggleBtn,
-.developer-student-shell #toggleBtn {
-  position:relative;
-  z-index:1;
-  pointer-events:auto;
+
+/* --- Closed #toggleBtn (not open .sidebar-box panel) --- */
+[data-legacy-page] #toggleBtn.arrow-box,
+.developer-student-shell #toggleBtn.arrow-box {
+  position: absolute;
+  z-index: 1;
+  pointer-events: auto;
+  box-sizing: border-box;
+  width: 82px !important;
+  height: 157px !important;
+  padding: 15px !important;
+  padding-top: 30px !important;
+  border-radius: 16px !important;
+  font-size: 24px !important;
+  left: clamp(16px, 8vw, 116px);
+  top: 40px;
+  transform-origin: top left;
 }
+
+[data-legacy-page] #toggleBtn.arrow-box i,
+.developer-student-shell #toggleBtn.arrow-box i {
+  font-size: 24px !important;
+}
+
+@media (min-width: 1367px) {
+  [data-legacy-page] #toggleBtn.arrow-box,
+  .developer-student-shell #toggleBtn.arrow-box {
+    left: 140px;
+    transform: scale(0.9);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  [data-legacy-page] #toggleBtn.arrow-box,
+  .developer-student-shell #toggleBtn.arrow-box {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 600px) {
+  [data-legacy-page] #toggleBtn.arrow-box,
+  .developer-student-shell #toggleBtn.arrow-box {
+    width: 32px !important;
+    height: 60px !important;
+    padding: 0 7px !important;
+    border-radius: 10px !important;
+    font-size: 9px !important;
+    transform: scale(1.4);
+    /* Owner QC 2026-09-05: mobile closed pill 20px from strip top (was 40) */
+    top: 20px !important;
+  }
+
+  [data-legacy-page] #toggleBtn.arrow-box i,
+  .developer-student-shell #toggleBtn.arrow-box i {
+    font-size: 9px !important;
+  }
+}
+
+/* Toggle column reserve (absolute pill does not hold row height alone) */
+[data-legacy-page] .mobile-frame-sidebar .row > .col-xl-1.col-lg-1,
+.developer-student-shell .mobile-frame-sidebar .row > .col-xl-1.col-lg-1 {
+  min-height: clamp(88px, 11vw, 157px);
+}
+
+/*
+ * Body start — Hostinger ref: .minus-5 { margin-top: -5% !important }
+ * Port: kill width-% pull; reclaim strip reserve with same clamp as toggle column.
+ * Title sits beside pill under sticky header (does not climb into header).
+ */
+[data-legacy-page] .wrapper-content > section.about-section.minus-5:first-of-type,
+.developer-student-shell .wrapper-content > section.about-section.minus-5:first-of-type {
+  margin-top: calc(-1 * clamp(88px, 11vw, 157px)) !important;
+}
+
+/* Strip tools clickable (strip itself is pointer-events: none) */
+[data-legacy-page] .mobile-frame-sidebar #univMeet,
+[data-legacy-page] .mobile-frame-sidebar a.date-box,
+[data-legacy-page] .mobile-frame-sidebar .search-box,
+[data-legacy-page] .mobile-frame-sidebar .avatar-box,
+.developer-student-shell .mobile-frame-sidebar #univMeet,
+.developer-student-shell .mobile-frame-sidebar a.date-box,
+.developer-student-shell .mobile-frame-sidebar .search-box,
+.developer-student-shell .mobile-frame-sidebar .avatar-box {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/*
+ * Page-strip #univMeet + search
+ * >1366: top-right strip · ≤1366: hidden (live in hamburger drawer)
+ */
+[data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.date-box h5 {
+  font-size: 18px;
+}
+
+@media (min-width: 1367px) {
+  [data-legacy-page] section.mobile-frame-sidebar .row {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-1 {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-5 {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none {
+    position: static !important;
+    top: auto;
+    right: auto;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 12px;
+    margin-left: auto !important;
+    z-index: 5;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none > .d-flex {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  /* Strip #univMeet bar — content height 36px; dates stay min-height 48 */
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.date-box {
+    box-sizing: content-box;
+    height: 36px;
+    min-height: 36px;
+    align-items: center;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none .box-date-info {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 1366px) {
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none {
+    display: none !important;
+  }
+}
+
+/*
+ * Drawer #univMeet + search (≤1366 hamburger) — owner locks
+ * Content height 36px on univMeet bar; dates min-height 48; search block margin 20px top
+ */
+#drawer .pgs-drawer-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 12px 14px;
+  position: relative;
+  z-index: 2;
+}
+
+#drawer .pgs-drawer-univmeet {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ebf7ff;
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-sizing: content-box;
+  height: 36px;
+  min-height: 36px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  overflow: visible;
+  color: #000;
+}
+
+#drawer .pgs-drawer-univmeet__label {
+  flex: 1 1 auto;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+#drawer .pgs-drawer-univmeet__date {
+  flex-shrink: 0;
+  width: 54px;
+  min-height: 48px;
+  background: #d9f1fd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #eb0801;
+  line-height: 1.05;
+  text-align: center;
+  padding: 4px 6px;
+}
+
+#drawer .pgs-drawer-univmeet__day,
+#drawer .pgs-drawer-univmeet__month {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#drawer .pgs-drawer-search.search-box {
+  width: 100%;
+  margin: 20px 0 0;
+  position: relative;
+  z-index: 5;
+}
+
+#drawer .pgs-drawer-search .input-group {
+  width: 100%;
+  margin: 0;
+}
+
+#drawer .pgs-drawer-search .search-control {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  min-height: 32px;
+  border-radius: 999px !important;
+  padding-left: 36px;
+  font-size: 13px;
+}
+
+/* Hello Aspirant: stripped from pages — failsafe hide in legacy-hello-aspirant.css */
+
+/*
+ * Open #sidebar panel — mobile ≤600
+ * Position: same origin as closed #toggleBtn (top 20 · left clamp).
+ * No overall transform scale — real px/clamp so DevTools matches screen.
+ * Markup: shared public-sidebar.html (all legacy pages).
+ */
+@media (max-width: 600px) {
+  [data-legacy-page] #sidebar.active {
+    top: 20px !important;
+    left: clamp(16px, 8vw, 116px) !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    /* Owner DevTools scout — plain px for easy inspector edit */
+    width: 310px !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: calc(100dvh - 56px) !important;
+    padding: 24px !important;
+    box-sizing: border-box;
+    transform: none;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  [data-legacy-page] #sidebar.active > ul {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  [data-legacy-page] #sidebar.active h5 {
+    font-size: clamp(32px, 8vw, 40px) !important;
+    line-height: 1.05 !important;
+  }
+
+  [data-legacy-page] #sidebar.active ul li a {
+    /* Owner DevTools scout mobile 390px */
+    font-size: 22px !important;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 4px !important;
+  }
+
+  [data-legacy-page] #sidebar.active ul li .fit-icon-sidebar {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  [data-legacy-page] #sidebar.active .mt-30 {
+    margin-top: 16px !important;
+  }
+
+  [data-legacy-page] #sidebar.active .mt-30 a,
+  [data-legacy-page] #sidebar.active .mt-30 .text-black.fs-20 {
+    font-size: 18px !important;
+  }
+
+  [data-legacy-page] #sidebar.active #close_Btn.flot-arrow-sidebar {
+    right: 34px;
+  }
+}
+
+/* Open #sidebar — iPad 601–1366: same origin as closed #toggleBtn; width 350px */
+@media (min-width: 601px) and (max-width: 1366px) {
+  [data-legacy-page] #sidebar.active {
+    top: 40px !important;
+    left: clamp(16px, 8vw, 116px) !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    width: 350px !important;
+    max-width: none !important;
+    padding: 30px !important;
+    box-sizing: border-box;
+    transform: none;
+  }
+}
+
+/* Open #sidebar — desktop >1366: same origin as closed #toggleBtn only (width stays 385) */
+@media (min-width: 1367px) {
+  [data-legacy-page] #sidebar.active {
+    top: 40px !important;
+    left: 140px !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+/*
+ * Shared public footer — mobile ≤600 (LOCKED QC — do not share with iPad)
+ * Hostinger ≤767 supplies mentor 35% + feedback 63%. We lock type + terms fit + chrome.
+ */
+@media (max-width: 600px) {
+  [data-legacy-page] .footer-bg > .footer .fs-14 {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .fs-20,
+  [data-legacy-page] .footer-bg > .footer div.fs-20 {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* hello@ / connect@ rows — owner DevTools: gap 6, margin 4, padding 2 */
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 > .d-flex.fs-20 {
+    gap: 6px !important;
+    margin: 4px !important;
+    padding: 2px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .fs-20 img {
+    width: 18px !important;
+    height: auto !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .social-flex {
+    max-width: 55%;
+    width: auto !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 {
+    padding-left: 22px !important;
+  }
+
+  /* General Enquiries yellow badge — owner DevTools: pad 4px, type 16px */
+  [data-legacy-page] .footer-bg > .footer .yellow-bg {
+    padding: 4px !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content {
+    position: absolute !important;
+    top: 64% !important;
+    bottom: auto !important;
+    right: 20px !important;
+    left: auto !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content a {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 6px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .btn-join {
+    font-size: 16px !important;
+    white-space: normal !important;
+    line-height: 1.15 !important;
+    width: auto !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .pgs-join-br {
+    display: inline !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .flot-img img {
+    width: 180px !important;
+    height: 180px !important;
+    margin-top: 12px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght {
+    padding-top: 46px !important;
+    padding-bottom: 30px !important;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .container,
+  [data-legacy-page] .footer-bg > .copyrght .row,
+  [data-legacy-page] .footer-bg > .copyrght [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center > .d-flex {
+    display: contents !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght h4.w-20 {
+    width: auto !important;
+    flex: 0 0 auto;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .fs-24 {
+    font-size: 14px !important;
+    line-height: 100% !important;
+    flex: 0 1 auto;
+    max-width: 36%;
+  }
+}
+
+/* Join break only on ≤600 — one line on iPad/desktop */
+@media (min-width: 601px) {
+  [data-legacy-page] .footer-bg > .footer .pgs-join-br {
+    display: none !important;
+  }
+
+  /*
+   * Pink clip — iPad + desktop only (mobile ≤600 untouched).
+   * Kill Hostinger top:-16% (jumps with footer height). Stable px + owner 180 / mt 12.
+   */
+  [data-legacy-page] .footer-bg > .footer .flot-img {
+    position: absolute !important;
+    top: -116px !important;
+    right: 0 !important;
+    width: 180px !important;
+    text-align: end !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .flot-img img {
+    width: 180px !important;
+    height: 180px !important;
+    margin-top: 12px !important;
+  }
+}
+
+/*
+ * Shared public footer — iPad 601–1366 ONLY
+ * Compact layout (mobile-shaped) + desktop text. Does not touch ≤600.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  [data-legacy-page] .footer-bg > .footer .container.pt-5.pb-8 {
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .row {
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-2 {
+    flex: 0 0 35% !important;
+    max-width: 35% !important;
+    width: 35% !important;
+    order: -1 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-3 {
+    flex: 0 0 63% !important;
+    max-width: 63% !important;
+    width: 63% !important;
+    order: -1 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    order: 0 !important;
+    padding-left: 22px !important;
+    padding-right: clamp(12px, 3vw, 28px) !important;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 > .yellow-bg {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 > .d-flex:not(.social-flex) {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .social-flex {
+    flex: 0 1 auto !important;
+    max-width: none !important;
+    width: auto !important;
+    min-width: 0;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    flex: 0 0 auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: clamp(16px, 4vw, 48px) !important;
+    align-self: center;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght {
+    padding-top: 46px !important;
+    padding-bottom: 30px !important;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .container,
+  [data-legacy-page] .footer-bg > .copyrght .row,
+  [data-legacy-page] .footer-bg > .copyrght [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center > .d-flex {
+    display: contents !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght h4.w-20 {
+    width: auto !important;
+    flex: 0 0 auto;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .fs-24 {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+    flex: 0 1 auto;
+    max-width: 36%;
+  }
+
+  /* Desktop type on iPad */
+  [data-legacy-page] .footer-bg > .footer .col-lg-3 .fs-14 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .fs-20,
+  [data-legacy-page] .footer-bg > .footer div.fs-20 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content a {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 6px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .btn-join {
+    font-size: 16px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/*
+ * Shared public footer — desktop >1366
+ * Feedback column (.col-lg-3): heading + body .fs-14 → 18px (owner DevTools).
+ * Container: pad top + bottom 3% (scoped — do not change global .pt-5 / .pb-8).
+ */
+@media (min-width: 1367px) {
+  [data-legacy-page] .footer-bg > .footer .col-lg-3 .fs-14 {
+    font-size: 18px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .container.pt-5.pb-8 {
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+  }
+}
+
+/* ===== end PGS MODULAR PUBLIC CHROME ===== */
+
 [data-legacy-page] #sidebar.active,
 .developer-student-shell #sidebar.active { pointer-events:auto; }
 [data-legacy-page] #overlay.overlay,
@@ -293,7 +1002,21 @@ body {
 .developer-student-shell .sidebar-box { min-height:0 !important; height:auto !important; max-height:calc(100dvh - 245px) !important; overflow:hidden; display:flex; flex-direction:column; box-sizing:border-box; }
 .developer-student-shell .sidebar-box.active { display:flex !important; }
 .developer-student-shell .sidebar-box > ul { flex:1 1 auto; min-height:0; overflow-y:auto; }
-[data-legacy-page] #sidebar.active { min-height:0 !important; height:auto !important; max-height:calc(100dvh - 245px) !important; overflow:hidden; display:flex; flex-direction:column; box-sizing:border-box; }
+[data-legacy-page] #sidebar.active {
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Desktop/iPad open panel height — do not override ≤600 (mobile owns max-height there) */
+@media (min-width: 601px) {
+  [data-legacy-page] #sidebar.active {
+    max-height: calc(100dvh - 245px) !important;
+  }
+}
 [data-legacy-page] #sidebar.active > ul { flex:1 1 auto; min-height:0; overflow-y:auto; }
 [data-legacy-page] #sidebar .mt-30 { margin-top:16px !important; }
 .developer-sidebar-close,.developer-sidebar-toggle { padding:0; border:0; cursor:pointer; }
@@ -320,7 +1043,7 @@ body {
   .developer-student-tools .search-box,.developer-univ-meet { display:none; }
   .developer-student-shell .mobile-frame-sidebar { position:absolute; top:138px; left:0; width:100%; }
   .developer-student-shell .sidebar-box { top:0 !important; left:8px; width:min(385px,calc(100% - 16px)); min-height:0 !important; height:auto !important; max-height:calc(100dvh - 154px) !important; box-sizing:border-box; }
-  [data-legacy-page] #sidebar.active { top:8px !important; left:8px !important; width:min(385px,calc(100% - 16px)) !important; min-height:0 !important; height:auto !important; max-height:calc(100dvh - 16px) !important; }
+  /* legacy open #sidebar mobile position/scale → globals ≤600 modular chrome */
   .developer-sidebar-toggle { left:8px; top:0; width:62px; min-height:100px; }
   .developer-sidebar-toggle img { margin-left:20px; }
   .developer-sidebar-account-row { gap:28px; }
@@ -644,38 +1367,8 @@ main[data-legacy-page="cvreadyprogram"] .js-filter-tag-box {
   cursor: pointer;
 }
 
-/* Country destination pages: keep hero/content in normal document flow on mobile */
-@media (max-width: 767px) {
-  main[data-legacy-page^="countries"] .mobile-hero-coutry.minus-5 {
-    margin-top: 0 !important;
-  }
-
-  main[data-legacy-page^="countries"] .mobile-hero-coutry .hero-country-box .position-static-img {
-    position: relative !important;
-    height: auto !important;
-  }
-
-  main[data-legacy-page^="countries"] .mobile-hero-coutry .hero-country-box {
-    margin-bottom: 12px;
-  }
-
-  main[data-legacy-page^="countries"] .mobile-usa-content {
-    width: 100% !important;
-    padding-top: 1rem !important;
-  }
-
-  main[data-legacy-page^="countries"] .wrapper-content.mt-4 {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Isotope export artifacts must not hide tab panels before JS runs */
-  main[data-legacy-page^="countries"] .grid-item {
-    position: relative !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+/* Country destination mobile/layout overrides live in:
+   src/features/countries/countries.css (imported by country pages). */
 
 /* Explore Countries hub: full-page mobile was left-shifted (bootstrap row bleed + purple-gray-box margin). */
 @media (max-width: 767px) {

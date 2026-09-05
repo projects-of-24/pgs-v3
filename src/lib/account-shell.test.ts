@@ -33,6 +33,17 @@ describe("authenticated legacy shell", () => {
     expect(finalizedPremium).toContain("Open Your <br> Premium <br> Dashboard");
   });
 
+  it("L3: locks dashboard openPremium unlock CTAs for standard students", () => {
+    const html = '<a href="/Login?redirect=Home%2Fdefaultdashboard%3FopenPremium%3D1" class="text-black">Yet to <br/> Unlock Full <br/> Access</a>';
+    const standard = applyAuthenticatedShell(html, { name: "Student", unreadCount: 0, premium: false });
+    expect(standard).toContain('class="premium-entitlement-locked"');
+    expect(standard).not.toContain("openPremium");
+    expect(standard).not.toContain("href=");
+    const locked = applyPremiumBusinessRule(html);
+    expect(locked).toContain('class="premium-entitlement-locked"');
+    expect(locked).not.toContain("href=");
+  });
+
   it("shows a signed-in staff identity on error pages without linking back into student routes", () => {
     const html = '<a href="/Login" class="btn btn-login">Login</a><a href="#"><img src="/assets/img/profile-icon.png">Profile</a><a href="#"><img src="/assets/img/heart-icon.png">Saved List</a><a href="/Login"><img src="/assets/img/logout.png">Login</a>';
     const rendered = applyAuthenticatedShell(html, {

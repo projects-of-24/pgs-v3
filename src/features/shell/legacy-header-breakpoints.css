@@ -1,0 +1,853 @@
+/**
+ * Shared public header BAR — Figma V6 responsive (18724:10893) + preserved dropslides.
+ *
+ * Modular chrome layout/position (Model B, body tops, #toggleBtn, strip #univMeet,
+ * drawer univMeet/search sizes) lives in:
+ *   src/app/globals.css  → section "PGS MODULAR PUBLIC CHROME — CANONICAL"
+ * Edit that file for those concerns. This file = header bar visuals only (until migrated).
+ *
+ * MUST MATCH `pgs-breakpoints.ts`:
+ *   headerMobileMax = 1366  → tablet chrome
+ *   headerCompactMax = 600  → compact phone chrome
+ *   mobileHandoverMax = 980 → country hero only (not this file)
+ *   hostingerPhoneMax = 767 → country/page Hostinger floor (NOT modular chrome)
+ *
+ * Import order on routes: this file (imports pgs-breakpoints.css + Hello overlay).
+ * Does not restyle country hero.
+ */
+
+@import "./pgs-breakpoints.css";
+@import "./legacy-hello-aspirant.css";
+
+/* ——— Figma header tokens ——— */
+header.pgs-figma-header {
+  --pgs-header-bg: #ebf7ff;
+  --pgs-tab-bg: #c1e4ff;
+  --pgs-active: #ffde7f;
+  --pgs-login: #ffc524;
+  --pgs-border: rgba(0, 0, 0, 0.2);
+  --pgs-login-border: rgba(0, 0, 0, 0.65);
+}
+
+header.pgs-figma-header {
+  /* position: sticky owned by globals.css (PGS MODULAR PUBLIC CHROME) */
+  /* Above page content / sidebar layers so notification panel is not buried.
+   * Drawer/overlay stay higher (see --pgs-layer-student-* in globals.css). */
+  z-index: 1100;
+}
+
+header.pgs-figma-header .pgs-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  max-width: none;
+  height: 71px;
+  margin: 0 10px 20px;
+  padding: 0 12px 0 28px;
+  background: var(--pgs-header-bg) !important;
+  border-radius: 16px;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+header.pgs-figma-header .pgs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  min-width: 0;
+}
+
+header.pgs-figma-header .pgs-header-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  padding: 0 !important;
+}
+
+header.pgs-figma-header .pgs-header-brand img,
+header.pgs-figma-header .pgs-header-brand svg.default-logo {
+  display: block !important;
+  width: 173px !important;
+  height: 32px !important;
+  max-width: none !important;
+  object-fit: contain;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+header.pgs-figma-header .header-tab-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 510px;
+  max-width: min(510px, 42vw);
+  height: 48px;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  background: var(--pgs-tab-bg);
+  border-radius: 16px;
+  gap: 8px;
+}
+
+header.pgs-figma-header .header-tab-top > li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+header.pgs-figma-header .header-tab-top .tab-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #000 !important;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.15;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header.pgs-figma-header .header-tab-top .tab-button:hover,
+header.pgs-figma-header .header-tab-top .tab-button.active-tab,
+header.pgs-figma-header #ppWrapper.is-open > .tab-button {
+  background: var(--pgs-active);
+  border-color: var(--pgs-border);
+}
+
+header.pgs-figma-header .flex-grid,
+header.pgs-figma-header .pgs-header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+header.pgs-figma-header .btn-trapsparent,
+header.pgs-figma-header .btn-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  line-height: 1.15;
+  color: #000 !important;
+  text-decoration: none;
+  white-space: nowrap;
+  text-transform: none;
+}
+
+header.pgs-figma-header .btn-trapsparent {
+  padding: 6px;
+  border: 1px solid var(--pgs-border) !important;
+  border-radius: 8px;
+  background: #fff !important;
+  font-weight: 500;
+}
+
+header.pgs-figma-header .btn-login {
+  padding: 4px 22px;
+  border: 1px solid var(--pgs-login-border) !important;
+  border-radius: 8px;
+  background: var(--pgs-login) !important;
+  font-weight: 400;
+  box-shadow: 3px 3px 0 0 #000;
+  margin-top: 0;
+}
+
+/* Keep bell on the same midline as Login — flex box, not line-height:0 (that collapsed the menu). */
+header.pgs-figma-header .site-notification-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+header.pgs-figma-header .header-notification-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: #000;
+  text-decoration: none;
+  line-height: 0;
+  vertical-align: middle;
+}
+
+header.pgs-figma-header .header-notification-wrapper .pgs-header-bell {
+  display: block;
+  width: 27px;
+  height: 32px;
+  object-fit: contain;
+  object-position: center;
+}
+
+header.pgs-figma-header .header-notification-wrapper .pgs-header-bell-tablet,
+header.pgs-figma-header .header-notification-wrapper .pgs-header-bell-mobile {
+  display: none;
+}
+
+header.pgs-figma-header .header-notification-wrapper i.bi-bell {
+  display: none;
+}
+
+header.pgs-figma-header .pgs-header-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+header.pgs-figma-header .pgs-header-menu img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+header.pgs-figma-header .pgs-header-menu .pgs-menu-mobile {
+  display: none;
+}
+
+header.pgs-figma-header a:focus-visible,
+header.pgs-figma-header button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+/* ——— #purplePremium dropslide (previous clean yellow menu) ——— */
+header.pgs-figma-header .dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+header.pgs-figma-header #ppDropdown.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 6px 0 10px;
+  background: #ffde7f;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  z-index: 200;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+header.pgs-figma-header #ppDropdown.dropdown-menu.open,
+header.pgs-figma-header #ppDropdown.dropdown-menu[style*="display: block"],
+header.pgs-figma-header #ppDropdown.dropdown-menu[style*="display:block"] {
+  display: block;
+}
+
+header.pgs-figma-header #ppDropdown.dropdown-menu a {
+  display: block;
+  padding: 4px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+header.pgs-figma-header #ppDropdown.dropdown-menu a:hover {
+  background: #fff176;
+}
+
+header.pgs-figma-header .explore-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+header.pgs-figma-header .explore-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #d5d5d5;
+  min-width: 150px;
+  z-index: 200;
+  padding: 5px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header.pgs-figma-header .explore-dropdown-menu.open,
+header.pgs-figma-header .explore-dropdown-menu[style*="display: block"],
+header.pgs-figma-header .explore-dropdown-menu[style*="display:block"] {
+  display: block;
+}
+
+header.pgs-figma-header .explore-dropdown-menu a {
+  display: block;
+  padding: 4px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  line-height: 20px;
+}
+
+header.pgs-figma-header .explore-dropdown-menu a:hover {
+  background: #f3f3f3;
+  color: #000;
+}
+
+/* Drawer mobile premium/explore links — shared (was 13px in page-local CSS) */
+#drawer .pp-mobile-link {
+  display: block;
+  padding: 2px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+}
+
+#drawer .pp-mobile-link:hover {
+  background: #fff176;
+  color: #3a3700;
+}
+
+/* Drawer close X — Figma cas-v6 fa:times-rectangle; larger on iPad (owner refine later) */
+#drawer .pgs-drawer-close {
+  width: auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  line-height: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#drawer .pgs-drawer-close__icon {
+  display: block;
+  width: 25px;
+  height: 22px;
+  object-fit: contain;
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  #drawer .pgs-drawer-close {
+    min-width: 52px;
+    min-height: 52px;
+  }
+
+  #drawer .pgs-drawer-close__icon {
+    width: 34px;
+    height: 29px;
+  }
+}
+
+/*
+ * Drawer #univMeet + search sizes — CANONICAL in src/app/globals.css
+ * (PGS MODULAR PUBLIC CHROME). Autocomplete positioning stays here.
+ */
+#drawer .pgs-drawer-search .pgs-autocomplete {
+  /* Stay inside drawer width; overlay blue links below (YouTube pattern) */
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Let results float over the blue nav without clipping */
+#drawer.open,
+#drawer.active,
+#drawer.show {
+  overflow: visible;
+}
+
+#drawer .header-tab-top {
+  position: relative;
+  z-index: 1;
+}
+
+/* Owner: drawer PGS hashtag / nav text 18px on mobile, iPad, and desktop drawer */
+#drawer .header-tab-top .tab-button {
+  font-size: 18px;
+}
+
+#drawer #mobileExploreDropdown a {
+  font-size: 18px;
+}
+
+/* Hide legacy dual-header mobile block — single responsive bar replaces it */
+header.pgs-figma-header > .mobile-block.mobile-header {
+  display: none !important;
+}
+
+header.pgs-figma-header > .mobile-none {
+  display: block !important;
+}
+
+/* ——— Tablet ≤1366 ——— */
+@media (max-width: 1366px) {
+  header.pgs-figma-header .pgs-header-bar {
+    padding: 0 18px 0 25px;
+  }
+
+  header.pgs-figma-header .pgs-header-left {
+    gap: 25px;
+  }
+
+  header.pgs-figma-header .pgs-header-brand img,
+  header.pgs-figma-header .pgs-header-brand svg.default-logo {
+    width: 208px !important;
+    height: 39px !important;
+  }
+
+  header.pgs-figma-header .header-tab-top {
+    width: auto;
+    max-width: none;
+    min-width: 79px;
+    justify-content: center;
+  }
+
+  header.pgs-figma-header .header-tab-top .tab-premium,
+  header.pgs-figma-header .header-tab-top .tab-cv {
+    display: none !important;
+  }
+
+  header.pgs-figma-header .pgs-header-link-desktop {
+    display: none !important;
+  }
+
+  header.pgs-figma-header .flex-grid,
+  header.pgs-figma-header .pgs-header-right {
+    gap: 7px;
+  }
+
+  header.pgs-figma-header .header-notification-wrapper {
+    width: 32px;
+    height: 38px;
+  }
+
+  header.pgs-figma-header .header-notification-wrapper .pgs-header-bell-desktop {
+    display: none;
+  }
+
+  header.pgs-figma-header .header-notification-wrapper .pgs-header-bell-tablet {
+    display: block;
+    width: 32px;
+    height: 38px;
+  }
+
+  header.pgs-figma-header .btn-login {
+    padding: 3px 20px;
+    border-width: 1.68px !important;
+    border-radius: 7px;
+    font-size: 20px;
+    box-shadow: 1.68px 1.68px 0 0 #000;
+  }
+
+  header.pgs-figma-header .pgs-header-menu {
+    display: inline-flex;
+  }
+}
+
+/*
+ * Transparent mobile bar — REMOVED.
+ * Sticky + ≤600 #ebf7ff pill restore live in src/app/globals.css
+ * (PGS MODULAR PUBLIC CHROME). Do not re-add ≤767 transparent forks.
+ */
+
+/* ——— Compact mobile ≤600 (no #feed; smaller chrome) ——— */
+@media (max-width: 600px) {
+  header.pgs-figma-header .pgs-header-bar {
+    height: auto;
+    min-height: 48px;
+    padding: 12px 14px;
+    margin: 12px 8px;
+    /* background owned by globals (≤600 sticky pill: #ffffff) */
+  }
+
+  header.pgs-figma-header .pgs-header-left {
+    gap: 0;
+  }
+
+  /* Owner: mobile wordmark 1.4× previous (129×24 → ~181×34) */
+  header.pgs-figma-header .pgs-header-brand img,
+  header.pgs-figma-header .pgs-header-brand svg.default-logo {
+    width: 175px !important;
+    height: 34px !important;
+  }
+
+  header.pgs-figma-header .header-tab-top {
+    display: none !important;
+  }
+
+  header.pgs-figma-header .flex-grid,
+  header.pgs-figma-header .pgs-header-right {
+    gap: 6px;
+  }
+
+  /* Owner: mobile bell 1.2× (17×20 → ~20×24). Grow wrapper too — global img{max-width:100%} clips to parent. */
+  header.pgs-figma-header .header-notification-wrapper {
+    width: 20px;
+    height: 24px;
+  }
+
+  header.pgs-figma-header .header-notification-wrapper .pgs-header-bell-tablet {
+    display: none;
+  }
+
+  header.pgs-figma-header .header-notification-wrapper .pgs-header-bell-mobile {
+    display: block;
+    width: 20px;
+    height: 24px;
+    max-width: none;
+  }
+
+  header.pgs-figma-header .btn-login {
+    padding: 2px 12px;
+    border-width: 1px !important;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 1px 1px 0 0 #000;
+  }
+
+  header.pgs-figma-header .pgs-header-menu {
+    width: 20px;
+    height: 20px;
+  }
+
+  header.pgs-figma-header .pgs-header-menu .pgs-menu-tablet {
+    display: none;
+  }
+
+  header.pgs-figma-header .pgs-header-menu .pgs-menu-mobile {
+    display: block;
+  }
+}
+
+/* === shared site notification menu (moved from page HTML leftovers) === */
+/* Legacy circle hit-target — only the old mobile-header path (not Figma bar). */
+.mobile-notification-wrapper{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#fff;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.mobile-notification-wrapper:hover{
+    background:#f2f2f2;
+}
+
+.mobile-notification-wrapper i{
+    font-size:22px;
+    color:#111;
+}
+
+/* Badge */
+.header-notification-badge{
+    position:absolute;
+    top:2px;
+    right:2px;
+    min-width:18px;
+    height:18px;
+    border-radius:50px;
+    background:#cc0000;
+    color:#fff;
+    font-size:10px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #fff;
+    padding:0 4px;
+    line-height:1;
+}
+
+.header-notification-badge.is-empty{
+    display:none;
+}
+
+/* Dropdown — YouTube-inspired panel: readable height, scroll, anchored to bell */
+.site-notification-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top: calc(100% + 10px);
+    width: min(420px, calc(100vw - 24px));
+    max-height: min(480px, calc(100vh - 96px));
+    overflow-x: hidden;
+    overflow-y: auto;
+    background:#fff;
+    border-radius:12px;
+    box-shadow: 8px 8px 0 0 #000;
+    border:1px solid #000;
+    z-index:9999;
+    line-height: normal;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+.site-notification-menu.open,
+.site-notification-menu.open.active,
+.site-notification-menu.open.show,
+.site-notification-menu.active.show{
+    display:block;
+}
+
+.site-notification-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f0f0f;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    line-height: 1.3;
+    letter-spacing: 0;
+}
+
+.site-notification-empty{
+    display: block;
+    padding: 28px 20px 32px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: #606060;
+}
+
+/* Notification Item */
+.site-notification-item{
+    position:relative;
+    display:flex;
+    align-items:flex-start;
+    padding:14px 16px;
+    transition:.2s;
+    border-bottom:0px solid #f4f4f4;
+    background:#fff;
+    line-height: normal;
+}
+
+.site-notification-item:hover{
+    background:#f9f9f9;
+}
+
+.site-notification-item.is-unread{
+    background:#e8f0fe;
+}
+
+/* Avatar */
+.site-notification-item::before{
+    content: "\f18a";
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ececec;
+    flex-shrink: 0;
+    margin-right: 3px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/* Link */
+.site-notification-link{
+    flex:1;
+    text-decoration:none;
+    color:#111;
+    padding-right:30px;
+}
+
+.site-notification-link:hover{
+    text-decoration:none;
+    color:#111;
+}
+
+/* Names the dashboard section an update came from, above the title. */
+.site-notification-section{
+    display: inline-block;
+    margin-bottom: 4px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #f1ecff;
+    color: #5b3fd1;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: .3px;
+    text-align: start;
+    text-transform: uppercase;
+}
+
+.site-notification-title{
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    text-align: start;
+    line-height: 1.35;
+}
+
+.site-notification-message{
+    display: block;
+    font-size: 20px;
+    color: #555;
+    line-height: 1.4;
+    text-align: start;
+    margin-top: 4px;
+}
+
+.site-notification-time{
+    display:block;
+    margin-top:6px;
+    font-size:20px;
+    line-height: 1.3;
+    color:#888;
+}
+
+/* Delete Button */
+.site-notification-delete{
+    position: absolute;
+    right: 14px;
+    top: 16px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #666;
+    font-size: 23px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: .2s;
+}
+
+.site-notification-delete:hover{
+    background:#f1f1f1;
+    color:#d93025;
+}
+
+/* Scrollbar */
+.site-notification-menu::-webkit-scrollbar{
+    width:6px;
+}
+
+.site-notification-menu::-webkit-scrollbar-thumb{
+    background:#cfcfcf;
+    border-radius:10px;
+}
+
+/* Figma header: keep panel anchored to bell on all bands (override legacy static). */
+header.pgs-figma-header .site-notification-dropdown {
+  position: relative !important;
+}
+
+header.pgs-figma-header .site-notification-menu {
+  right: 0;
+  left: auto;
+  top: calc(100% + 8px);
+  z-index: 1110;
+  /* Owner lock: hard offset shadow all views (same as mobile) */
+  box-shadow: 8px 8px 0 0 #000;
+  border: 1px solid #000;
+}
+
+/* Desktop + iPad: sit under bell; beat stale inline top left from mobile open. */
+@media (min-width: 601px) {
+  header.pgs-figma-header .site-notification-menu {
+    top: calc(100% + 8px) !important;
+    box-shadow: 8px 8px 0 0 #000;
+    border: 1px solid #000;
+  }
+}
+
+/* Tablet ≤1366 */
+@media (max-width: 1366px) {
+  header.pgs-figma-header .site-notification-menu {
+    width: min(380px, calc(100vw - 24px));
+    max-height: min(440px, calc(100vh - 88px));
+    box-shadow: 8px 8px 0 0 #000;
+  }
+}
+
+/* Compact mobile ≤600 — owner DevTools scout 2026-09-04 (iPhone band) */
+@media (max-width: 600px) {
+  header.pgs-figma-header .site-notification-menu {
+    position: fixed;
+    top: 64px;
+    right: 8px;
+    left: auto;
+    width: 301px;
+    max-width: 301px;
+    margin-right: 115px;
+    min-height: 115px;
+    height: auto;
+    max-height: min(70vh, 420px);
+    border-radius: 12px;
+    box-shadow: 8px 8px 0 0 #000;
+  }
+
+  /* Heading/empty stay 20px (all-view owner rule) — no mobile downsize */
+}
+
+@media (max-width: 767px) {
+  .site-notification-menu.mobile-menu {
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    width: min(calc(100vw - 16px), 360px);
+    margin: 0;
+  }
+}
+
+/*
+ * Page-strip #univMeet + search layout — CANONICAL in src/app/globals.css
+ * (PGS MODULAR PUBLIC CHROME). Do not re-add Hostinger forks here.
+ */

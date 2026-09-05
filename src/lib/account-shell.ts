@@ -61,7 +61,7 @@ function replaceAccountAnchors(html:string,state:AccountShellState):string{
       attributes=setAttribute(attributes,"href","/logout");
       return `<a${attributes}>${innerHtml.replace(/Login(?=\s*$)/i,"Logout")}</a>`;
     }
-    if(/^\/login\?redirect=(?:purplepremiumhome|simplehome)%3fopenpremium%3d1$/i.test(href)&&text==="Yet to Unlock Full Access"){
+    if(/^\/login\?/i.test(href)&&/openpremium%3d1/i.test(href)&&text==="Yet to Unlock Full Access"){
       if(!state.premium)return `<span class="premium-entitlement-locked">${premiumLockedLabel.replace("Yet to ","Yet to <br> ").replace("Full ","Full <br> ")}</span>`;
       attributes=setAttribute(attributes,"href",premiumDestination);
       return `<a${attributes}>${premiumCta}</a>`;

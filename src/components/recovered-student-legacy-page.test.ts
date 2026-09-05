@@ -14,6 +14,14 @@ describe("recovered student legacy access rules", () => {
     expect(recovered).toContain('<a href="/upload_your_doc">Upload Your Docs</a>');
   });
 
+  it("unlocks guest login-gated PurpleBoard sidebar links", () => {
+    const source = '<a href="javascript:void(0)" onclick="showLoginRequiredPopup(event)">#purpleboard</a>';
+    const recovered = keepPurpleBoardPublic(source);
+    expect(recovered).toContain('href="/purpleboard"');
+    expect(recovered).not.toContain("javascript:void(0)");
+    expect(recovered).not.toContain("showLoginRequiredPopup");
+  });
+
   it("marks PurpleBoard as the current retained destination on its own page", () => {
     const recovered = keepPurpleBoardPublic('<a href="#"><span><img src="/board.png"></span>#purpleboard</a>', true);
     expect(recovered).toContain('href="/purpleboard"');

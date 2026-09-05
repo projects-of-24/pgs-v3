@@ -1,0 +1,40 @@
+<!--
+  Shared "Hello Aspirant" strip (.avatar-box) — Figma 18732:10920 + Hostinger strip.
+  Edit once; import via hello-aspirant.ts.
+
+  Placeholders: {{name}} {{avatarUrl}}
+  Default unsigned avatar: /assets/img/hello-aspirant/student-avatar.png
+-->
+
+<!-- ===== VARIANT: unsigned ===== -->
+<div class="avatar-box w-12" data-pgs-hello-variant="unsigned">
+  <div class="avatar-img">
+    <img src="{{avatarUrl}}" alt="" data-no-retina="">
+  </div>
+  <div class="avatar-info">
+    <h5 class="mb-0">Hello <span aria-hidden="true">👋</span></h5>
+    <h4 class="mb-0">Aspirant</h4>
+  </div>
+</div>
+
+<!-- ===== VARIANT: signed ===== -->
+<div class="avatar-box w-12" data-pgs-hello-variant="signed">
+  <div class="avatar-img">
+    <img src="{{avatarUrl}}" alt="" data-no-retina="">
+  </div>
+  <div class="avatar-info">
+    <h5 class="mb-0">Hello <span aria-hidden="true">👋</span></h5>
+    <h4 class="mb-0">{{name}}</h4>
+  </div>
+</div>
+
+<!-- ===== VARIANT: signed-premium ===== -->
+<div class="avatar-box w-12" data-pgs-hello-variant="signed-premium">
+  <div class="avatar-img">
+    <img src="{{avatarUrl}}" alt="" data-no-retina="">
+  </div>
+  <div class="avatar-info">
+    <h5 class="mb-0">Hello <span aria-hidden="true">👋</span></h5>
+    <h4 class="mb-0">{{name}}</h4>
+  </div>
+</div>

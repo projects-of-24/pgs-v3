@@ -1,9 +1,14 @@
 import { LegacyPage } from "@/components/legacy-page";
 import { StaffPreviewBanner } from "@/components/staff-preview-banner";
+import { applySharedHelloAspirant } from "@/legacy/pages/hello-aspirant";
+import { applySharedPublicFooter } from "@/legacy/pages/public-footer";
+import { applySharedPublicHeader } from "@/legacy/pages/public-header";
+import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
 import { keepPurpleBoardPublic } from "@/lib/student-legacy-navigation";
 import type { StudentExperience } from "@/lib/student-experience";
+import "@/features/shell/legacy-header-breakpoints.css";
 
 export { keepPurpleBoardPublic } from "@/lib/student-legacy-navigation";
 
@@ -91,7 +96,20 @@ export function RecoveredStudentLegacyPage({
   state: StudentExperience;
   avatarUrl?: string;
 }) {
+  const studentState = state.kind;
+  const helloName = state.kind !== "anonymous" ? state.name : "Aspirant";
+  const sidebarName = state.kind !== "anonymous" ? state.name : "User";
+
   let rendered = normalizeLegacyAssetPaths(keepPurpleBoardPublic(html));
+  // Shared chrome (structure phase) — edit once under src/legacy/pages/
+  rendered = applySharedPublicHeader(rendered);
+  rendered = applySharedPublicSidebar(rendered, studentState, { name: sidebarName });
+  rendered = applySharedHelloAspirant(rendered, studentState, {
+    name: helloName,
+    avatarUrl
+  });
+  rendered = applySharedPublicFooter(rendered);
+
   if (state.kind !== "anonymous") {
     rendered = applyAuthenticatedShell(rendered, {
       name: state.name,

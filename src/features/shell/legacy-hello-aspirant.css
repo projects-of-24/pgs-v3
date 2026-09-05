@@ -1,0 +1,17 @@
+/**
+ * Shared Hello Aspirant strip (.avatar-box.w-12).
+ *
+ * Owner 2026-09-03: REMOVED from all legacy pages (layout mess around
+ * arrow / #univMeet / search). applySharedHelloAspirant strips the node.
+ * This file is a failsafe hide only — do not restyle the strip or the row.
+ * Do not touch .avatar-box-full.
+ *
+ * Modular chrome (body / toggle / strip / drawer tools) → src/app/globals.css
+ * section "PGS MODULAR PUBLIC CHROME — CANONICAL".
+ */
+
+@import "./pgs-breakpoints.css";
+
+[data-legacy-page] .avatar-box.w-12 {
+  display: none !important;
+}
