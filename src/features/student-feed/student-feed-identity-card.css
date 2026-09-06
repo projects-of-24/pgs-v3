@@ -1,7 +1,11 @@
 /**
  * Section 1 — student feed identity card only.
- * Desktop Figma: all-pages-v6 `18657:10454` (729×215, Yet to Unlock).
- * Mobile Figma: cas-v6-mobile `207:2217` / `207:2128` (180×270 student id).
+ * Desktop Figma: `18657:10454` (729×215, Yet to Unlock).
+ * Mobile Figma: `207:2217` (180×270).
+ *
+ * Layout method (same as locked modular chrome / country-hero):
+ *   center + width from edges via clamp · own padding-top from content start.
+ * Bands: >1366 desktop · ≤600 mobile · iPad deferred.
  * Preview: `/preview/student-feed`. Live `/student/dashboard` untouched.
  */
 
@@ -11,6 +15,17 @@
   --sfi-red: #eb0801;
   --sfi-badge-bg: rgba(255, 197, 36, 0.1);
   box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  /* Own spacing from start of body under chrome — no global section leak */
+  padding-top: clamp(16px, 2.2vw, 40px);
+  padding-bottom: clamp(12px, 1.5vw, 28px);
+  /* Width from edges — chrome-style clamp */
+  padding-inline: clamp(12px, 2vw, 24px);
+  display: flex;
+  justify-content: center;
   color: #000;
   font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -24,11 +39,14 @@
 /* —— Desktop: 18657:10454 —— */
 .student-feed-identity__desktop {
   position: relative;
-  width: 729px;
+  width: 100%;
+  max-width: 729px;
   height: 215px;
-  max-width: 100%;
+  margin-inline: auto;
+  flex: none;
   border-radius: 16px;
   background: var(--sfi-bg);
+  overflow: hidden;
 }
 
 .student-feed-identity__desktop .student-feed-identity__avatar-frame {
@@ -109,7 +127,8 @@
 .student-feed-identity__desktop .student-feed-identity__badge {
   position: absolute;
   top: 50%;
-  left: 496px;
+  right: 63px;
+  left: auto;
   transform: translateY(-50%);
   width: 170px;
   min-height: 126px;
@@ -127,14 +146,17 @@
 /* —— Mobile: 207:2217 / 207:2128 —— */
 .student-feed-identity__mobile {
   display: none;
-  width: 180px;
+  width: 100%;
+  max-width: 180px;
   height: 270px;
+  margin-inline: auto;
   padding: 14px 13px;
   border-radius: 8px;
   background: var(--sfi-bg);
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: none;
 }
 
 .student-feed-identity__mobile-inner {
@@ -248,6 +270,11 @@
 }
 
 @media (max-width: 600px) {
+  .student-feed-identity {
+    padding-top: clamp(12px, 4vw, 24px);
+    padding-inline: clamp(12px, 4vw, 20px);
+  }
+
   .student-feed-identity__desktop {
     display: none;
   }

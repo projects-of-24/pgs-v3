@@ -35,7 +35,7 @@ Source: `src/features/student-feed/student-feed-preview-shell.tsx`
 
 | # | Section | Module `data-pgs-module` | Status | Figma (when known) |
 |---|---|---|---|---|
-| 1 | Identity card | `student-feed-identity-card` | **DONE** (Phase A) | Desktop `18657:10454` · Mobile `207:2217` |
+| 1 | Identity card | `student-feed-identity-card` | **IN QC** — center + edge clamp + from-top | Desktop `18657:10454` · Mobile `207:2217` |
 | 2 | Quick Dashboard | `student-feed-quick-dashboard` | Slot + lock | TBD next |
 | 3 | Top picks | `student-feed-top-picks` | Slot | TBD |
 | 4 | Notes + actions | `student-feed-notes-actions` | Slot | TBD |
