@@ -22,12 +22,24 @@ import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
 } from "@/lib/student-experience";
+import { isStudentFeedPremiumActive } from "@/features/student-feed/student-feed-premium-label";
 
 export const dynamic = "force-dynamic";
 
-export default async function StudentFeedPreviewPage() {
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+export default async function StudentFeedPreviewPage({
+  searchParams
+}: {
+  searchParams: SearchParams;
+}) {
+  const params = await searchParams;
   const state = await resolveStudentExperience();
   const studentState = state?.kind ?? "anonymous";
+  const premiumQuery = Array.isArray(params.premium) ? params.premium[0] : params.premium;
+  // QC override: ?premium=1. Otherwise follow session entitlement.
+  const premiumActive =
+    premiumQuery === "1" || premiumQuery === "true" || isStudentFeedPremiumActive(studentState);
   const helloAvatar =
     state && state.kind !== "anonymous"
       ? await studentExperienceAvatarUrl(state)
@@ -65,7 +77,7 @@ export default async function StudentFeedPreviewPage() {
   return (
     <LegacyPage page="preview-student-feed" studentState={studentState}>
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
-      <StudentFeedPreviewShell />
+      <StudentFeedPreviewShell premiumActive={premiumActive} />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
     </LegacyPage>
   );

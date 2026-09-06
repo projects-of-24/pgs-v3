@@ -35,7 +35,17 @@ Source: `src/features/student-feed/student-feed-preview-shell.tsx`
 
 | # | Section | Module `data-pgs-module` | Status | Figma (when known) |
 |---|---|---|---|---|
-| 1 | Identity card | `student-feed-identity-card` | **IN QC** — center + edge clamp + from-top | Desktop `18657:10454` · Mobile `207:2217` |
+| 1 | Identity card | `student-feed-identity-card` | **IN QC** — center + clamp + entitlement label | Desktop `18657:10454` · Mobile `207:2217` |
+
+### Entitlement label (UI contract → CMS/backend later)
+
+| State | Green premium line |
+|---|---|
+| `anonymous` / `authenticated_standard` | `purplepremium not active yet` |
+| `authenticated_premium` (`premium_entitlement`) | `#purplePremium` |
+
+Helper: `src/features/student-feed/student-feed-premium-label.ts`  
+Preview QC: `/preview/student-feed` (locked) · `/preview/student-feed?premium=1` (active label) |
 | 2 | Quick Dashboard | `student-feed-quick-dashboard` | Slot + lock | TBD next |
 | 3 | Top picks | `student-feed-top-picks` | Slot | TBD |
 | 4 | Notes + actions | `student-feed-notes-actions` | Slot | TBD |

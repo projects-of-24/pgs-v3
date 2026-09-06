@@ -1,13 +1,12 @@
 /**
  * Section 1 — student feed identity card (desktop + mobile Figma only).
  *
- * Desktop: https://www.figma.com/design/7WFrAbx3cvXReZxtTiQ76r/…?node-id=18657-10454
- * Mobile:  https://www.figma.com/design/pKzGmxz05A72dRJFkJT0d2/…?node-id=207-2217
- *
- * Preview: `/preview/student-feed`
- * Live `/student/dashboard`: UNTOUCHED.
+ * Desktop: `18657:10454` · Mobile: `207:2217`
+ * Premium label: entitlement-aware (`student-feed-premium-label.ts`).
+ * Preview: `/preview/student-feed` · Live `/student/dashboard` UNTOUCHED.
  */
 import Image from "next/image";
+import { studentFeedPremiumLabel } from "./student-feed-premium-label";
 import "./student-feed-identity-card.css";
 
 export const STUDENT_FEED_IDENTITY_AVATAR = "/assets/img/figma-feed/identity-avatar.jpg";
@@ -19,7 +18,8 @@ export type StudentFeedIdentityCardProps = {
   studentId?: string;
   pathway?: string;
   avatarUrl?: string;
-  /** Desktop node uses locked badge; mobile node uses #purplepremium per Figma. */
+  /** True only when `premium_entitlement` is active. */
+  premiumActive?: boolean;
 };
 
 export function StudentFeedIdentityCard({
@@ -28,16 +28,19 @@ export function StudentFeedIdentityCard({
   handle = "rajsingh",
   studentId = "2123456",
   pathway = "stem PATHWAY",
-  avatarUrl = STUDENT_FEED_IDENTITY_AVATAR
+  avatarUrl = STUDENT_FEED_IDENTITY_AVATAR,
+  premiumActive = false
 }: StudentFeedIdentityCardProps) {
   const fullName = `${firstName} ${lastName}`;
+  const premiumLabel = studentFeedPremiumLabel(premiumActive);
 
   return (
     <div
-      className="student-feed-identity"
+      className={`student-feed-identity${premiumActive ? " is-premium" : " is-locked"}`}
       data-pgs-module="student-feed-identity-card"
       data-figma-desktop="18657:10454"
       data-figma-mobile="207:2217"
+      data-premium-active={premiumActive ? "true" : "false"}
     >
       {/* Desktop — 18657:10454 */}
       <section
@@ -61,14 +64,20 @@ export function StudentFeedIdentityCard({
           <span>id: {studentId}</span>
         </p>
         <div className="student-feed-identity__titles">
-          <p className="student-feed-identity__premium">#purplePremium</p>
+          <p className="student-feed-identity__premium">{premiumLabel}</p>
           <p className="student-feed-identity__pathway">{pathway}</p>
         </div>
-        <div className="student-feed-identity__badge" aria-label="Yet to Unlock Full Access">
-          Yet to Unlock
-          <br />
-          Full Access
-        </div>
+        {premiumActive ? (
+          <div className="student-feed-identity__badge" aria-label="#purplePremium">
+            #purplePremium
+          </div>
+        ) : (
+          <div className="student-feed-identity__badge" aria-label="Yet to Unlock Full Access">
+            Yet to Unlock
+            <br />
+            Full Access
+          </div>
+        )}
       </section>
 
       {/* Mobile — 207:2217 */}
@@ -99,11 +108,11 @@ export function StudentFeedIdentityCard({
               </div>
             </div>
             <div className="student-feed-identity__titles">
-              <p className="student-feed-identity__premium">#purplePremium</p>
+              <p className="student-feed-identity__premium">{premiumLabel}</p>
               <p className="student-feed-identity__pathway">{pathway}</p>
             </div>
           </div>
-          <p className="student-feed-identity__badge">#purplepremium</p>
+          <p className="student-feed-identity__badge">{premiumLabel}</p>
         </div>
       </section>
     </div>
