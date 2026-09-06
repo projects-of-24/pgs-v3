@@ -47,6 +47,7 @@
   top: -10px;
   width: 130px;
   height: 130px;
+  max-width: none;
   object-fit: cover;
 }
 
@@ -174,6 +175,7 @@
   top: -5px;
   width: 65px;
   height: 65px;
+  max-width: none;
   object-fit: cover;
 }
 

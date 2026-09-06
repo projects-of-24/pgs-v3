@@ -1,0 +1,180 @@
+/**
+ * Student #feed preview shell — Phase A scaffold.
+ * Bands: >1366 desktop · ≤600 mobile. iPad 601–1366 DEFERRED.
+ * Scoped to `.student-feed-preview-shell` — does not edit locked chrome.
+ */
+
+.student-feed-preview-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+}
+
+.student-feed-preview-shell *,
+.student-feed-preview-shell *::before,
+.student-feed-preview-shell *::after {
+  box-sizing: border-box;
+}
+
+.student-feed-preview-shell__banner {
+  margin: 0;
+  padding: 10px 16px;
+  background: #111;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.student-feed-preview-shell__banner code {
+  font-size: 0.95em;
+}
+
+.student-feed-preview-shell__body {
+  width: 100%;
+  max-width: 1225px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 303px);
+  gap: 28px 40px;
+  align-items: start;
+}
+
+.student-feed-preview-shell__main,
+.student-feed-preview-shell__aside {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.student-feed-preview-shell__deferred {
+  margin: 0;
+  padding: 20px 16px 40px;
+  color: #333;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+  border-top: 1px dashed #ccc;
+  background: #fafafa;
+}
+
+/* —— Section slots —— */
+.student-feed-slot {
+  position: relative;
+  width: 100%;
+  padding: 20px 18px;
+  border: 1px dashed #bdbdbd;
+  border-radius: 16px;
+  background: #f7f7f7;
+}
+
+.student-feed-slot.is-locked {
+  background: #f1f1f1;
+}
+
+.student-feed-slot__label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #111;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.student-feed-slot__label strong {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.student-feed-slot__label span {
+  font-size: 13px;
+  line-height: 1.35;
+  color: #555;
+}
+
+.student-feed-slot__lock {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  pointer-events: none;
+}
+
+.student-feed-slot__lock img {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.student-feed-slot__lock p {
+  margin: 0;
+  max-width: 200px;
+  color: #000;
+  font: 400 22px/1 "Bebas Neue", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .student-feed-preview-shell__body {
+    grid-template-columns: 1fr;
+    padding: 16px 12px 40px;
+    gap: 20px;
+  }
+
+  /* Mobile order: identity → top picks → quick → notes → help → stand → comments → events */
+  .student-feed-preview-shell__main,
+  .student-feed-preview-shell__aside {
+    display: contents;
+  }
+
+  .student-feed-preview-shell__body > .student-feed-identity {
+    order: 1;
+  }
+
+  .student-feed-preview-shell__body > #top-picks {
+    order: 2;
+  }
+
+  .student-feed-preview-shell__body > #quick-dashboard-overview {
+    order: 3;
+  }
+
+  .student-feed-preview-shell__body > #notes-actions {
+    order: 4;
+  }
+
+  .student-feed-preview-shell__body > #help-hub {
+    order: 5;
+  }
+
+  .student-feed-preview-shell__body > #where-you-stand {
+    order: 6;
+  }
+
+  .student-feed-preview-shell__body > #comments {
+    order: 7;
+  }
+
+  .student-feed-preview-shell__body > #upcoming-events {
+    order: 8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-preview-shell * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
