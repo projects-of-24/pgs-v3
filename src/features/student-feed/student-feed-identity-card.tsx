@@ -3,10 +3,14 @@
  *
  * Desktop: `18657:10454` · Mobile: `207:2217`
  * Premium label: entitlement-aware (`student-feed-premium-label.ts`).
+ * Inactive copy is two lines at the same size/weight as active — do not shrink type.
  * Preview: `/preview/student-feed` · Live `/student/dashboard` UNTOUCHED.
  */
 import Image from "next/image";
-import { studentFeedPremiumLabel } from "./student-feed-premium-label";
+import {
+  studentFeedPremiumLabel,
+  studentFeedPremiumLabelLines
+} from "./student-feed-premium-label";
 import "./student-feed-identity-card.css";
 
 export const STUDENT_FEED_IDENTITY_AVATAR = "/assets/img/figma-feed/identity-avatar.jpg";
@@ -22,6 +26,20 @@ export type StudentFeedIdentityCardProps = {
   premiumActive?: boolean;
 };
 
+function PremiumLabelText({ premiumActive }: { premiumActive: boolean }) {
+  const lines = studentFeedPremiumLabelLines(premiumActive);
+  return (
+    <>
+      {lines.map((line, index) => (
+        <span key={`${line}-${index}`}>
+          {index > 0 ? <br /> : null}
+          {line}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export function StudentFeedIdentityCard({
   firstName = "Rajeev",
   lastName = "Singh",
@@ -32,7 +50,7 @@ export function StudentFeedIdentityCard({
   premiumActive = false
 }: StudentFeedIdentityCardProps) {
   const fullName = `${firstName} ${lastName}`;
-  const premiumLabel = studentFeedPremiumLabel(premiumActive);
+  const premiumPlain = studentFeedPremiumLabel(premiumActive);
 
   return (
     <div
@@ -64,7 +82,9 @@ export function StudentFeedIdentityCard({
           <span>id: {studentId}</span>
         </p>
         <div className="student-feed-identity__titles">
-          <p className="student-feed-identity__premium">{premiumLabel}</p>
+          <p className="student-feed-identity__premium" aria-label={premiumPlain}>
+            <PremiumLabelText premiumActive={premiumActive} />
+          </p>
           <p className="student-feed-identity__pathway">{pathway}</p>
         </div>
         {premiumActive ? (
@@ -108,11 +128,15 @@ export function StudentFeedIdentityCard({
               </div>
             </div>
             <div className="student-feed-identity__titles">
-              <p className="student-feed-identity__premium">{premiumLabel}</p>
+              <p className="student-feed-identity__premium" aria-label={premiumPlain}>
+                <PremiumLabelText premiumActive={premiumActive} />
+              </p>
               <p className="student-feed-identity__pathway">{pathway}</p>
             </div>
           </div>
-          <p className="student-feed-identity__badge">{premiumLabel}</p>
+          <p className="student-feed-identity__badge" aria-label={premiumPlain}>
+            <PremiumLabelText premiumActive={premiumActive} />
+          </p>
         </div>
       </section>
     </div>

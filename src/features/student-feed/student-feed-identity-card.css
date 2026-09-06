@@ -113,15 +113,6 @@
   color: var(--sfi-green);
   font: 400 48px/1 "Bebas Neue", sans-serif;
   text-transform: uppercase;
-  white-space: nowrap;
-}
-
-/* Inactive entitlement copy is longer — allow wrap, slightly tighter type */
-.student-feed-identity.is-locked .student-feed-identity__desktop .student-feed-identity__premium {
-  max-width: 420px;
-  font-size: 36px;
-  line-height: 1.05;
-  white-space: normal;
 }
 
 .student-feed-identity__desktop .student-feed-identity__pathway {
@@ -255,23 +246,6 @@
   color: var(--sfi-green);
   font: 400 12px/1 "Bebas Neue", sans-serif;
   text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.student-feed-identity.is-locked .student-feed-identity__mobile .student-feed-identity__premium {
-  max-width: 151px;
-  font-size: 11px;
-  line-height: 1.1;
-  white-space: normal;
-}
-
-.student-feed-identity.is-locked .student-feed-identity__mobile .student-feed-identity__badge {
-  max-width: 151px;
-  font-size: 14px;
-  line-height: 1.05;
-  text-align: center;
-  text-transform: none;
-  white-space: normal;
 }
 
 .student-feed-identity__mobile .student-feed-identity__pathway {
@@ -289,8 +263,8 @@
   background: var(--sfi-badge-bg);
   color: #000;
   font: 400 24px/1 "Bebas Neue", sans-serif;
+  text-align: center;
   text-transform: lowercase;
-  white-space: nowrap;
 }
 
 @media (max-width: 600px) {
