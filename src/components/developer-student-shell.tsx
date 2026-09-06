@@ -37,6 +37,8 @@ type Props = {
   contentClassName?: string;
   preview?: StudentPreviewState;
   urgentAlert?: string;
+  feedLayout?: boolean;
+  legacyPage?: string;
 };
 
 export function DeveloperStudentShell({
@@ -50,7 +52,9 @@ export function DeveloperStudentShell({
   children,
   contentClassName = "",
   preview,
-  urgentAlert
+  urgentAlert,
+  feedLayout = false,
+  legacyPage
 }: Props) {
   const { open: sidebarOpen, toggle: toggleSidebarState } = useStudentSidebarState();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -58,6 +62,7 @@ export function DeveloperStudentShell({
   const [logoutError, setLogoutError] = useState("");
   const authenticated = stateKind !== "anonymous";
   const premium = stateKind === "authenticated_premium";
+  const feedChrome = feedLayout || contentClassName.includes("developer-premium-dashboard");
   const premiumHref = premiumShellDestination(stateKind);
 
   async function logout() {
@@ -81,12 +86,16 @@ export function DeveloperStudentShell({
   const savedHref = authenticated ? "/saved" : "/login?redirect=%2Fsaved";
 
   return (
-    <div className={`developer-student-shell${premium ? " developer-premium-shell" : ""}`} data-student-state={stateKind}>
+    <div
+      className={`developer-student-shell${feedChrome ? " is-feed-chrome" : ""}${premium ? " developer-premium-shell" : ""}`}
+      data-student-state={stateKind}
+      {...(legacyPage ? { "data-legacy-page": legacyPage } : {})}
+    >
       {preview ? (
         <StaffPreviewBanner actorName={preview.actorName} mode="student" targetName={preview.targetName} />
       ) : null}
       <header className="developer-student-header">
-        {premium ? (
+        {feedChrome ? (
           <div className="developer-premium-alert" role="status">
             <span>{urgentAlert || "Urgent: MCAT Registration closes in 7 days - Don't miss out!"}</span>
             <Image src="/assets/img/premium-urgent-clock.gif" alt="" width={40} height={40} unoptimized />
@@ -108,7 +117,7 @@ export function DeveloperStudentShell({
                 <details className="developer-header-dropdown"><summary>#exploreCountries</summary><div><Link href="/explorecountries">Explore all</Link><Link href="/countriesusa">USA</Link><Link href="/countriesuk">UK</Link><Link href="/countriescanada">Canada</Link><Link href="/countriesaus">Australia</Link><Link href="/countrieseurope">Europe</Link></div></details>
                 {premium ? null : <StudentNotificationDropdown initialItems={notifications} unreadCount={unreadCount} readOnly={Boolean(preview)} />}
                 {authenticated
-                  ? <Link className="btn btn-login pgs-auth-account" data-student-state={stateKind} href="/student/dashboard">{premium ? "login" : name}</Link>
+                  ? <Link className="btn btn-login pgs-auth-account" data-student-state={stateKind} href="/student/dashboard">{name}</Link>
                   : <Link className="btn btn-login" href="/login">Login</Link>}
               </div>
             </div>
@@ -134,7 +143,7 @@ export function DeveloperStudentShell({
           <div className="avatar-img"><Image src={avatarUrl} alt="" width={36} height={36} unoptimized /></div>
           <div><h5>Hello <span aria-hidden="true">👋</span></h5><h4>{name || "Aspirant"}</h4></div>
         </div>
-        <Link className="developer-univ-meet" href="/programsfull"><span>#univMeet</span>{premium ? <span className="developer-univ-dates"><b>31<small>Mar</small></b><b>31<small>Mar</small></b></span> : null}</Link>
+        <Link className="developer-univ-meet" href="/programsfull"><span>#univMeet</span>{feedChrome ? <span className="developer-univ-dates"><b>31<small>Mar</small></b><b>31<small>Mar</small></b></span> : null}</Link>
         <label className="search-box"><span className="sr-only">Search programs and events</span><input className="search-control" type="search" placeholder="Search programs & events…" /></label>
       </section>
 

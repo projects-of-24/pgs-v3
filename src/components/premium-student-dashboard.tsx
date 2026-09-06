@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { PremiumComments } from "@/components/premium-comments";
 import type {
   PremiumDashboardCatalog,
@@ -125,6 +126,38 @@ function buildCalendar(events: DashboardEvent[]): { cells: CalendarCell[]; month
   };
 }
 
+
+const LOCKED_HELP_COPY = "Unlock the full dashboard experience with #PurplePremium we accept only a limited number of seats each month, connect with our Help Hub to get in.";
+const LOCKED_PREVIEW_STUDENT = "preview-student";
+const LOCKED_COMMENTS = [
+  { id: "preview-comment-1", parent_id: null, author_id: LOCKED_PREVIEW_STUDENT, body: "Hey I am facing difficulty with my SOP can you help me out?", created_at: "2025-05-21T10:00:00.000Z" },
+  { id: "preview-comment-2", parent_id: null, author_id: "pgs-team", body: "We are going with your university application. If you have any doubts do let us now. Also on other notes can you update us on your SOP status. Have you made drafts?", created_at: "2025-05-21T10:05:00.000Z" },
+  { id: "preview-comment-3", parent_id: null, author_id: "pgs-team", body: "Nice to connect. The feedback session helped us understand your concerns and the path you are aiming for.", created_at: "2025-05-21T10:10:00.000Z" }
+];
+
+function FeedLockRegion({
+  children,
+  copy = false,
+  locked,
+  size = 144
+}: {
+  children: ReactNode;
+  copy?: boolean;
+  locked: boolean;
+  size?: 93 | 96 | 144 | 198;
+}) {
+  if (!locked) return children;
+  return (
+    <div className="student-feed-locked-region">
+      <div className="student-feed-locked-content" inert aria-hidden="true">{children}</div>
+      <div className="lock-box-feed" role="img" aria-label={LOCKED_HELP_COPY}>
+        <Image alt="" height={size} src="/assets/img/figma-feed/lock.png" unoptimized width={size} />
+        {copy ? <p>{LOCKED_HELP_COPY}</p> : <span className="sr-only">{LOCKED_HELP_COPY}</span>}
+      </div>
+    </div>
+  );
+}
+
 function Toggle({ checked, label }: { checked: boolean; label: string }) {
   return (
     <label className="toggle-switch" aria-label={label}>
@@ -149,6 +182,9 @@ export function PremiumStudentDashboard({
   catalog,
   dashboard,
   email,
+  figmaNode = "17041:10191",
+  location,
+  locked = false,
   name,
   pathway,
   readOnly,
@@ -158,25 +194,30 @@ export function PremiumStudentDashboard({
   catalog: PremiumDashboardCatalog;
   dashboard: PremiumWorkspaceProfile | null;
   email: string;
+  figmaNode?: string;
+  location?: string | null;
+  locked?: boolean;
   name: string;
   pathway: string | null;
   readOnly: boolean;
-  workspace: PremiumWorkspace;
+  workspace: PremiumWorkspace | null;
 }) {
   const topPicks = buildTopPicks(catalog);
   const calendar = buildCalendar(catalog.events);
-  const pathwayLabel = dashboard?.pathway_label || pathway || "Student";
-  const intakeLabel = dashboard?.intake_label || "Your intake plan";
+  const pathwayLabel = (!locked && dashboard?.pathway_label) || pathway || "Student";
+  const intakeLabel = (!locked && dashboard?.intake_label) || "Your intake plan";
   const isFixture = email.endsWith("@example.test");
+  const designed = locked || isFixture;
   const handle = name.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 18) || "student";
-  const finalized = workspace.universities
+  const universities = locked ? [] : workspace?.universities ?? [];
+  const finalized = universities
     .filter((selection) => selection.stage === "finalized")
     .map((selection) => ({ id: selection.id, name: selection.universities?.name || "University" }));
-  const finalizedCards = finalized.length || !isFixture
+  const finalizedCards = finalized.length || !designed
     ? finalized
     : Array.from({ length: 6 }, (_, index) => ({ id: `preview-university-${index}`, name: "Univ of Washington" }));
-  const shortlisted = workspace.universities.filter((selection) => selection.stage !== "finalized" && selection.stage !== "declined");
-  const checklist = dashboard?.onboarding_checklist?.length || !isFixture
+  const shortlisted = universities.filter((selection) => selection.stage !== "finalized" && selection.stage !== "declined");
+  const checklist = !locked && (dashboard?.onboarding_checklist?.length || !isFixture)
     ? dashboard?.onboarding_checklist ?? []
     : [
         { text: "Profile Setup Complete", checked: true },
@@ -187,12 +228,12 @@ export function PremiumStudentDashboard({
         { text: "LOR Briefed", checked: false },
         { text: "Loan & Finance Discussed", checked: false }
       ];
-  const feedbackItems = dashboard?.feedback_session_items?.length || !isFixture
+  const feedbackItems = !locked && (dashboard?.feedback_session_items?.length || !isFixture)
     ? dashboard?.feedback_session_items ?? []
     : [{ text: "One-on-One Session Booked", checked: false }];
-  const documentTracker = dashboard && Object.keys(dashboard.documents_tracker).length
+  const documentTracker = !locked && dashboard && Object.keys(dashboard.documents_tracker).length
     ? Object.entries(dashboard.documents_tracker)
-    : isFixture
+    : designed
       ? Object.entries({
           "SOP Drafts Uploaded": { count: 10 },
           "LORs Uploaded": { count: 3 },
@@ -204,13 +245,18 @@ export function PremiumStudentDashboard({
           "Pending Documents*": { count: 3, is_red: true }
         })
       : [];
-  const comments = workspace.comments.length || !isFixture
-    ? workspace.comments
-    : [
-        { id: "preview-comment-1", parent_id: null, author_id: workspace.studentId, body: "Hey I am facing difficulty with my SOP can you help me out?", created_at: "2025-05-21T10:00:00.000Z" },
-        { id: "preview-comment-2", parent_id: null, author_id: "pgs-team", body: "We are going with your university application. If you have any doubts do let us know. Also on other notes can you update us on your SOP status. Have you made drafts?", created_at: "2025-05-21T10:05:00.000Z" },
-        { id: "preview-comment-3", parent_id: null, author_id: "pgs-team", body: "Nice to connect. The feedback session helped us understand your concerns and the path you are aiming for.", created_at: "2025-05-21T10:10:00.000Z" }
-      ];
+  const comments = locked
+    ? LOCKED_COMMENTS
+    : workspace?.comments.length || !isFixture
+      ? workspace?.comments ?? []
+      : LOCKED_COMMENTS.map((comment) => (
+        comment.id === "preview-comment-1" && workspace
+          ? { ...comment, author_id: workspace?.studentId ?? LOCKED_PREVIEW_STUDENT }
+          : comment
+      ));
+  const uniApplied = locked ? 2 : dashboard?.universities_applied ?? 0;
+  const offersReceived = locked ? 2 : dashboard?.offers_received ?? 0;
+  const commentStudentId = locked ? LOCKED_PREVIEW_STUDENT : workspace?.studentId ?? "";
   const eventCards: EventCard[] = catalog.events.slice(0, 3).map((event) => ({
     date: eventDateLabel(event),
     href: `/purpleevents/session/${event.id}`,
@@ -220,7 +266,7 @@ export function PremiumStudentDashboard({
     time: eventTimeLabel(event),
     title: event.title
   }));
-  if (!eventCards.length && isFixture) {
+  if (!eventCards.length && designed) {
     eventCards.push(
       { date: "SEP 7", href: "/purpleevents", id: "preview-event-1", mode: "Google Meet", summary: "Meet our Visa Counselor (5+ years experience)", time: "7 PM IST", title: "Visa 101 Webinar" },
       { date: "AUG 29", href: "/purpleevents", id: "preview-event-2", mode: "Google Meet", summary: "Meet our Visa Counselor (5+ years experience)", time: "7 PM IST", title: "Visa 101 Webinar" },
@@ -230,7 +276,7 @@ export function PremiumStudentDashboard({
 
   return (
     <>
-      <section className="premium-dashboard-stage" data-figma-node="17041:10191">
+      <section className="premium-dashboard-stage" data-figma-node={figmaNode}>
         <div className="premium-profile-card">
           <div className="premium-profile-copy">
             <div className="premium-profile-identity">
@@ -239,18 +285,26 @@ export function PremiumStudentDashboard({
             </div>
             <div className="premium-profile-title"><strong>#PURPLEPREMIUM</strong><span>{pathwayLabel} PATHWAY</span></div>
           </div>
-          <div className="premium-profile-badge">#PURPLEPREMIUM</div>
+          <div className="premium-profile-badge avatar-heading-right-box">
+            {locked
+              ? <h4><span className="premium-entitlement-locked">Yet to Unlock<br />Full Access</span></h4>
+              : <h4>#PURPLEPREMIUM</h4>}
+          </div>
         </div>
 
-        <section className="premium-quick-dashboard" id="quick-dashboard-overview">
+        {location ? <p className="student-feed-location">{location}</p> : null}
+
+        <FeedLockRegion locked={locked} size={93}>
+          <section className="premium-quick-dashboard" id="quick-dashboard-overview">
           <h2>Your Quick Dashboard overview</h2>
           <div className="premium-metric-grid">
-            <article><span>Uni<br />Applied</span><div><i /> <strong>{String(dashboard?.universities_applied ?? 0).padStart(2, "0")}</strong></div></article>
-            <article><span>Offers<br />Received</span><div><i /> <strong>{String(dashboard?.offers_received ?? 0).padStart(2, "0")}</strong></div></article>
-            <article><span>Tuition Receipt<br />Uploaded</span><div><i /> <Toggle checked={dashboard?.tuition_receipt_uploaded === true} label="Tuition receipt uploaded" /></div></article>
-            <article><span>Visa<br />Applied</span><div><i /> <Toggle checked={dashboard?.visa_status === "applied"} label="Visa applied" /></div></article>
+            <article><span>Uni<br />Applied</span><div><i /> <strong>{String(uniApplied).padStart(2, "0")}</strong></div></article>
+            <article><span>Offers<br />Received</span><div><i /> <strong>{String(offersReceived).padStart(2, "0")}</strong></div></article>
+            <article><span>Tuition Receipt<br />Uploaded</span><div><i /> <Toggle checked={!locked && dashboard?.tuition_receipt_uploaded === true} label="Tuition receipt uploaded" /></div></article>
+            <article><span>Visa<br />Applied</span><div><i /> <Toggle checked={!locked && dashboard?.visa_status === "applied"} label="Visa applied" /></div></article>
           </div>
         </section>
+        </FeedLockRegion>
 
         <aside className="premium-top-picks" id="top-picks">
           <header><h2>Top picks &nbsp;&gt;</h2><Image src="/assets/img/filter-icon.png" alt="" width={20} height={20} unoptimized /></header>
@@ -268,11 +322,19 @@ export function PremiumStudentDashboard({
             <strong>{pathwayLabel} Aspirant @{intakeLabel}</strong>
             <div className="premium-action-row"><Link href="/feed_track_progress">Track Your Progress</Link><span>See what’s done, what’s in progress, and what’s coming next.</span></div>
             <div className="premium-action-row board"><Link href="/purpleboard">#purpleBoard</Link><span>Get the latest on scholarships, newly opened courses, and important updates, all in one place.</span></div>
+            <div className="premium-action-row docs"><Link href="/upload_your_doc">Upload Your Docs</Link><Link href="/student/profile">Profile</Link><Link href="/saved">Saved List</Link></div>
           </div>
         </section>
+        {locked ? (
+          <aside className="student-feed-help-hub">
+            <p>Is PurplePremium the smartest move for your study plan?</p>
+            <p>The #pgs #helpHub is here to give you straight answers.</p>
+          </aside>
+        ) : null}
       </section>
 
       <div className="premium-dashboard-body">
+        <FeedLockRegion copy locked={locked} size={198}>
         <section className="premium-stand-section" id="where-you-stand">
           <header><h2>Where You Stand</h2><p>This is the heart of your study path. This centralized study dashboard helps you track onboarding, monitor progress, see key milestones, and identify next steps. Designed to keep you on track.</p></header>
           <div className="premium-stand-card">
@@ -290,13 +352,16 @@ export function PremiumStudentDashboard({
           </section>
 
           <section className="premium-task-board">
-            <div id="currently-working-on"><h3>You Are<br />Currently<br />Working On</h3><div>{dashboard?.currently_working_on.length ? dashboard.currently_working_on.map((task, index) => <p key={`${task}-${index}`}>{index === 0 ? <b>URGENT</b> : null}{task}</p>) : <p>No tasks currently being worked on</p>}</div></div>
-            <div id="future-tasks"><h3>Future Task<br /><span>Preview</span></h3><div>{dashboard?.future_tasks.length ? dashboard.future_tasks.map((task, index) => <p key={`${task}-${index}`}>{index === 1 ? <b>IMP</b> : null}{task}</p>) : <p>No future tasks scheduled</p>}</div></div>
+            <div id="currently-working-on"><h3>You Are<br />Currently<br />Working On</h3><div>{!locked && dashboard?.currently_working_on.length ? dashboard.currently_working_on.map((task, index) => <p key={`${task}-${index}`}>{index === 0 ? <b>URGENT</b> : null}{task}</p>) : <p>{locked ? "Document review and university shortlist" : "No tasks currently being worked on"}</p>}</div></div>
+            <div id="future-tasks"><h3>Future Task<br /><span>Preview</span></h3><div>{!locked && dashboard?.future_tasks.length ? dashboard.future_tasks.map((task, index) => <p key={`${task}-${index}`}>{index === 1 ? <b>IMP</b> : null}{task}</p>) : <p>No future tasks scheduled</p>}</div></div>
           </section>
         </section>
+        </FeedLockRegion>
 
         <section className="premium-comment-intro"><p><b>*</b> Got a quick doubt? Drop it in the comments.<br />For detailed queries or feedback, reach out via email,<br />direct call, group meet, or join our feedback sessions.</p><div><span>Status</span><strong>Ready for Your<br />Input</strong></div></section>
-        <PremiumComments comments={comments} studentId={workspace.studentId} name={name} avatarUrl={avatarUrl} readOnly={readOnly} />
+        <FeedLockRegion locked={locked} size={96}>
+        <PremiumComments comments={comments} studentId={commentStudentId} name={name} avatarUrl={avatarUrl} readOnly={locked || readOnly} />
+        </FeedLockRegion>
 
         <section className="premium-events-section">
           <h2>Upcoming Events</h2>

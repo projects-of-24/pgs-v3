@@ -50,7 +50,9 @@ test.describe("Premium frontend recovery runtime matrix", () => {
     await standard.goto("/dashboard");
     await expect(standard).toHaveURL(/\/student\/dashboard$/);
     await expect(standard.locator('[data-legacy-page="student-dashboard"]')).toHaveAttribute("data-student-state", "authenticated_standard");
-    await expect(standard.locator(".developer-premium-dashboard")).toHaveCount(0);
+    await expect(standard.locator(".developer-premium-dashboard")).toHaveCount(1);
+    await expect(standard.locator(".lock-box-feed").first()).toBeVisible();
+    await expect(standard.locator(".avatar-heading-right-box")).toContainText(/Yet to\s+Unlock\s+Full\s+Access/i);
     for (const [route, page] of [["/feed_track_progress", "progress-locked"], ["/upload_your_doc", "documents-locked"]] as const) {
       await standard.goto(route);
       await expect(standard.locator(`[data-legacy-page="${page}"]`)).toHaveAttribute("data-student-state", "authenticated_standard");

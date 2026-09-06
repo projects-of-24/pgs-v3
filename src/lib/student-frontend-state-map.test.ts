@@ -20,15 +20,18 @@ const home = readFileSync("src/app/page.tsx", "utf8");
 
 describe("PRE-OPS05 student frontend state mapping is still the page contract", () => {
   it("keeps all three #feed states on the canonical /student/dashboard route", () => {
-    expect(feed).toContain('page="student-dashboard"');
-    expect(feed).toContain('if (state.kind !== "authenticated_premium")');
+    expect(feed).toContain('legacyPage="student-dashboard"');
+    expect(feed).toContain("DeveloperStudentShell");
+    expect(feed).toContain("PremiumStudentDashboard");
+    expect(feed).toContain("locked={locked}");
+    expect(feed).toContain('state.kind === "authenticated_premium"');
     expect(feed).toContain("await requirePremiumActor()");
     expect(feed).toContain("loadPremiumWorkspace(user.id)");
     expect(feed).toContain('active="feed"');
     expect(feed).toContain("<RetainedStudentFooter");
-    expect(feed).not.toContain('redirect("/dashboard")');
-    expect(feed).not.toContain("if (!state.preview)");
+    expect(feed).not.toContain("RecoveredStudentLegacyPage");
     expect(feed).not.toContain("loadPremiumWorkspaceForSubject");
+    expect(feed).not.toContain('redirect("/dashboard")');
   });
 
   it("keeps /dashboard as a merged compatibility alias", () => {
