@@ -17,8 +17,13 @@ export type HelloAspirantFields = {
   avatarUrl?: string | null;
 };
 
-/** Figma student-avatar export (18732:10898) — unsigned / fallback. */
-export const HELLO_ASPIRANT_DEFAULT_AVATAR = "/assets/img/hello-aspirant/student-avatar.png";
+/**
+ * Anonymous / unsigned placebo avatar (owner 2026-09-07 shrug crop).
+ * Same asset as feed identity anonymous: `identity-avatar-anonymous.jpg`.
+ * Modular pages (feed, countries, USMLE, …) use this for anonymous chrome.
+ */
+export const HELLO_ASPIRANT_DEFAULT_AVATAR =
+  "/assets/img/figma-feed/identity-avatar-anonymous.jpg";
 
 const DEFAULT_AVATAR = HELLO_ASPIRANT_DEFAULT_AVATAR;
 

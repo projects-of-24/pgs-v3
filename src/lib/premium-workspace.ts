@@ -33,6 +33,8 @@ export type PremiumWorkspaceProfile = {
   documents_tracker: Record<string, DashboardTrackerItem>;
   currently_working_on: string[];
   future_tasks: string[];
+  /** Purple #feed Notes (plain text; Junior notes_html ADAPT). Optional until migration applied. */
+  notes_html?: string;
 };
 export type StudentDocument = {
   id: string;
@@ -92,7 +94,7 @@ export async function loadPremiumWorkspaceWithClient(
   }
   const [profile, premiumProfile, assignment, alerts, columns, tasks, comments, reviews, notes, requirements, universities] = await Promise.all([
     client.from("profiles").select("full_name,avatar_path,study_level").eq("id", studentId).maybeSingle(),
-    client.from("premium_workspace_profiles").select("pathway_label,intake_label,universities_applied,offers_received,visa_status,tuition_receipt_uploaded,onboarding_percentage,onboarding_checklist,feedback_session_title,feedback_session_items,documents_tracker,currently_working_on,future_tasks").eq("student_id", studentId).maybeSingle(),
+    client.from("premium_workspace_profiles").select("pathway_label,intake_label,universities_applied,offers_received,visa_status,tuition_receipt_uploaded,onboarding_percentage,onboarding_checklist,feedback_session_title,feedback_session_items,documents_tracker,currently_working_on,future_tasks,notes_html").eq("student_id", studentId).maybeSingle(),
     client.from("mentor_assignments").select("mentor_id,staff_profiles!mentor_assignments_mentor_id_fkey(user_id,display_name)").eq("student_id", studentId).eq("status", "active").maybeSingle(),
     client.from("student_alerts").select("id,alert_text,severity").eq("student_id", studentId).eq("active", true).order("sort_order").limit(3),
     client.from("student_board_columns").select("id,key,title,sort_order").eq("student_id", studentId).order("sort_order"),

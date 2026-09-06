@@ -57,7 +57,8 @@ export function StaffWorkspaceControls({ studentId, canManage, universityOptions
         onboarding_checklist: checklist(data.get("onboarding_checklist")),
         feedback_session_title: data.get("feedback_session_title"), feedback_session_items: checklist(data.get("feedback_session_items")),
         documents_tracker: tracker(data.get("documents_tracker")), currently_working_on: lines(data.get("currently_working_on")),
-        future_tasks: lines(data.get("future_tasks"))
+        future_tasks: lines(data.get("future_tasks")),
+        notes_html: data.get("notes_html")
       });
     }}>
       <fieldset>
@@ -68,6 +69,12 @@ export function StaffWorkspaceControls({ studentId, canManage, universityOptions
         <label>Offers received<input name="offers_received" type="number" min="0" defaultValue={premiumProfile?.offers_received ?? 0} /></label>
         <label>Tuition receipt uploaded<select name="tuition_receipt_uploaded" defaultValue={premiumProfile?.tuition_receipt_uploaded == null ? "" : String(premiumProfile.tuition_receipt_uploaded)}><option value="">Not set</option><option value="true">Yes</option><option value="false">No</option></select></label>
         <label>Visa applied<select name="visa_status" defaultValue={premiumProfile?.visa_status || "not_applied"}><option value="not_applied">Not applied</option><option value="applied">Applied</option></select></label>
+      </fieldset>
+      <fieldset>
+        <legend>Feed Notes (purple box)</legend>
+        <label className="is-wide">Notes for student #feed <small>Plain text only (HTML stripped). Empty = student sees default fixture copy. Max 20,000 characters. Not the same as counselor notes on Track Progress.</small>
+          <textarea name="notes_html" defaultValue={premiumProfile?.notes_html ?? ""} maxLength={20000} rows={6} />
+        </label>
       </fieldset>
       <fieldset>
         <legend>Where You Stand</legend>

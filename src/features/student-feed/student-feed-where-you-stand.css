@@ -1,0 +1,855 @@
+/**
+ * Where You Stand — phased.
+ * 6A: header — Desktop `18375:10897` · Mobile `206:6778`.
+ * 6B: Prep top — Desktop `18375:10903` · Mobile `206:6781`.
+ * 6C: Prep Status — Desktop `18375:10922` · Mobile `206:6817`.
+ * forlocked = real UI underneath + lock layer on top (same pattern as Quick Dashboard).
+ */
+
+.student-feed-wys {
+  --wys-forlocked: rgba(232, 234, 234, 0.7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(16px, 2.5vw, 40px) clamp(12px, 2vw, 24px) clamp(16px, 2vw, 32px);
+  color: #000;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.student-feed-wys *,
+.student-feed-wys *::before,
+.student-feed-wys *::after {
+  box-sizing: border-box;
+}
+
+/* —— 6A header —— */
+.student-feed-wys__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12.8px;
+  width: 100%;
+  max-width: min(617px, 100%);
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.student-feed-wys__title {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font: 400 38.4px / 1 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+}
+
+.student-feed-wys__intro {
+  margin: 0;
+  max-width: min(534.4px, 100%);
+  color: #000;
+  font: 400 16px / 19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+/* —— 6B Prep top panel —— */
+.student-feed-wys__prep {
+  position: relative;
+  width: 100%;
+  max-width: min(738px, 100%);
+  margin-inline: auto;
+  border-radius: 12.8px;
+  background: var(--wys-forlocked);
+  overflow: hidden;
+}
+
+.student-feed-wys__prep-body {
+  padding: 28px 24px 32px;
+}
+
+.student-feed-wys.is-locked .student-feed-wys__prep-body {
+  opacity: 0.55;
+}
+
+.student-feed-wys__prep-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 25.6px;
+  width: 100%;
+}
+
+.student-feed-wys__pct {
+  flex: none;
+  width: 101px;
+  min-width: 0;
+}
+
+.student-feed-wys__pct-value {
+  margin: 0;
+  color: #000;
+  font: 400 51.2px / 22.4px "Bebas Neue", sans-serif;
+  white-space: nowrap;
+}
+
+.student-feed-wys__pct-label {
+  margin: 19.2px 0 0;
+  color: #000;
+  font: 400 16px / 19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.4px;
+  text-transform: capitalize;
+}
+
+.student-feed-wys__prep-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20.8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.student-feed-wys__card {
+  margin: 0;
+  padding: 12.8px 0;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12.8px;
+  background: #fff;
+  min-width: 0;
+}
+
+.student-feed-wys__card.is-checklist {
+  flex: 1 1 240px;
+  max-width: 258px;
+}
+
+.student-feed-wys__card.is-feedback {
+  flex: 1 1 200px;
+  max-width: 250px;
+  align-self: flex-start;
+}
+
+.student-feed-wys__card-title {
+  margin: 0 0 17.6px;
+  padding: 0 12px;
+  color: #000;
+  font: 600 17.6px / 22.4px Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
+
+.student-feed-wys__check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 19.2px;
+  display: flex;
+  flex-direction: column;
+  gap: 9.6px;
+  align-items: flex-start;
+}
+
+.student-feed-wys__card.is-feedback .student-feed-wys__check-list {
+  min-height: 124px;
+  justify-content: flex-start;
+}
+
+.student-feed-wys__check-row {
+  display: flex;
+  align-items: center;
+  gap: 31.2px;
+  margin: 0;
+  color: #000;
+  font: 400 13px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.25px;
+  text-align: start;
+}
+
+.student-feed-wys__card.is-feedback .student-feed-wys__check-row {
+  font-size: 13px;
+}
+
+/* Toggle — Figma 3D Switch sizes */
+.student-feed-wys__toggle {
+  position: relative;
+  flex: none;
+  width: 33.6px;
+  height: 14.4px;
+  border-radius: 50px;
+  background: #efefef;
+  box-shadow: inset 0 4.8px 6.4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.student-feed-wys__toggle.is-on {
+  background: #76ee59;
+}
+
+.student-feed-wys__toggle-knob {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+}
+
+.student-feed-wys__toggle.is-on .student-feed-wys__toggle-knob {
+  left: auto;
+  right: 5%;
+}
+
+/* —— 6C Prep Status —— */
+.student-feed-wys__prep-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 41.6px;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.student-feed-wys__prep-status-label {
+  flex: none;
+  margin: 0;
+  width: 84px;
+  color: #000;
+  font: 400 38.4px / 32.8px "Bebas Neue", sans-serif;
+  text-transform: none;
+  text-align: start;
+}
+
+.student-feed-wys__status-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12.8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.student-feed-wys__card.is-docs,
+.student-feed-wys__card.is-shortlist {
+  flex: 1 1 220px;
+  max-width: 264px;
+  padding-inline: 9.6px;
+}
+
+.student-feed-wys__card.is-shortlist {
+  align-self: flex-start;
+  min-height: 0;
+}
+
+.student-feed-wys__count-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 19.2px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2px;
+  align-items: flex-start;
+}
+
+.student-feed-wys__count-row {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  min-height: 42px;
+  color: #000;
+}
+
+.student-feed-wys__counts {
+  display: flex;
+  flex: none;
+  align-items: center;
+  width: 62.4px;
+  font: 500 36px / 41.6px Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
+
+.student-feed-wys__count {
+  flex: none;
+  width: 21px;
+  color: #000;
+}
+
+.student-feed-wys__count-row.is-pending .student-feed-wys__count {
+  color: #eb0801;
+}
+
+.student-feed-wys__count-label {
+  font: 400 13px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.25px;
+  text-align: start;
+}
+
+/* —— 6D Finalized Uni List —— */
+.student-feed-wys__finalized {
+  position: relative;
+  width: 100%;
+  max-width: min(842px, 100%);
+  margin: 24px auto 0;
+  border-radius: 16px;
+  background: #000;
+  overflow: hidden;
+}
+
+.student-feed-wys__finalized-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 19.2px;
+}
+
+.student-feed-wys.is-locked .student-feed-wys__finalized-body {
+  opacity: 0.55;
+}
+
+.student-feed-wys__finalized-meta {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19.2px;
+  padding-inline: 24px;
+  color: #fff;
+}
+
+.student-feed-wys__finalized-count {
+  margin: 0;
+  font: 400 51.2px / 22.4px "Bebas Neue", sans-serif;
+  white-space: nowrap;
+}
+
+.student-feed-wys__finalized-title {
+  margin: 0;
+  width: 100.8px;
+  font: 400 28.8px / 24.8px "Bebas Neue", sans-serif;
+  text-transform: none;
+}
+
+.student-feed-wys__uni-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 185.84px));
+  gap: 13.6px 15.35px;
+  flex: 1;
+  min-width: 0;
+  justify-content: end;
+}
+
+.student-feed-wys__uni-card {
+  margin: 0;
+  width: 100%;
+  max-width: 185.84px;
+}
+
+.student-feed-wys__uni-label {
+  display: flex;
+  align-items: center;
+  gap: 6.46px;
+  padding: 3.23px 4.85px;
+  background: #009c70;
+}
+
+.student-feed-wys__uni-plus {
+  flex: none;
+  width: 19.39px;
+  height: 19.39px;
+  display: block;
+}
+
+.student-feed-wys__uni-name {
+  color: #000;
+  font: 400 16.16px / 19.39px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.student-feed-wys__uni-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2.59px solid #009c70;
+  overflow: hidden;
+  background: #111;
+}
+
+.student-feed-wys__uni-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.student-feed-wys__uni-tag {
+  position: absolute;
+  right: 10px;
+  bottom: 14px;
+  margin: 0;
+  padding: 8.08px;
+  border-radius: 13.06px;
+  background: #000;
+  color: #fff;
+  font: 500 12.93px / 19.39px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+
+/* —— 6E Working On + Future tasks (Figma `18375:10941`) —— */
+.student-feed-wys__tasks {
+  position: relative;
+  width: 100%;
+  max-width: min(738px, 100%);
+  margin: 24px auto 0;
+  border-radius: 12.8px;
+  background: var(--wys-forlocked);
+  overflow: hidden;
+}
+
+.student-feed-wys__tasks-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10.4px;
+  padding: 20px 24px 24px;
+}
+
+.student-feed-wys.is-locked .student-feed-wys__tasks-body {
+  opacity: 0.55;
+}
+
+.student-feed-wys__task-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40.8px;
+  width: 100%;
+  max-width: 494.4px;
+}
+
+.student-feed-wys__task-block.is-future {
+  gap: 28.8px;
+}
+
+.student-feed-wys__task-heading {
+  flex: none;
+  margin: 0;
+  width: 145px;
+  color: #000;
+  font: 400 38.4px / 32.8px "Bebas Neue", sans-serif;
+  text-transform: none;
+}
+
+.student-feed-wys__task-block.is-future .student-feed-wys__task-heading {
+  width: 158px;
+}
+
+.student-feed-wys__task-heading-accent {
+  color: #0abf8c;
+}
+
+.student-feed-wys__task-panel {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 137.6px;
+  padding: 12.8px 0;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12.8px;
+  background: #fff;
+}
+
+.student-feed-wys__task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 6.4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6.4px;
+  align-items: flex-start;
+}
+
+.student-feed-wys__task-row {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  width: 256px;
+  padding: 1.6px 12.8px;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.student-feed-wys__task-row.has-badge {
+  gap: 6.4px;
+  padding-inline: 6.4px;
+}
+
+.student-feed-wys__task-badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3.2px;
+  border-radius: 3.2px;
+  background: #eb0801;
+  color: #fff;
+  font: 400 9.6px / 12.8px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.student-feed-wys__task-text {
+  color: #000;
+  font: 700 12.8px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  max-width: 234.4px;
+}
+
+.student-feed-wys__task-row.has-badge .student-feed-wys__task-text {
+  max-width: none;
+  white-space: nowrap;
+  line-height: 25.6px;
+}
+
+/*
+ * forlocked — sits ON TOP of underlying Prep / Finalized / Tasks UI (owner).
+ * Same idea as Quick Dashboard lock: frosted layer + centered lock icon.
+ */
+.student-feed-wys__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+/* 6D Finalized — Figma forlocked light-grey fillColor over black panel */
+.student-feed-wys__finalized > .student-feed-wys__forlocked {
+  background: var(--wys-forlocked);
+}
+
+.student-feed-wys__forlocked img {
+  width: 144px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+.student-feed-wys.is-unlocked .student-feed-wys__forlocked {
+  display: none;
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .student-feed-wys__finalized {
+    max-width: min(842px, 100%);
+  }
+
+  .student-feed-wys__uni-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+
+  .student-feed-wys__uni-card {
+    max-width: none;
+  }
+
+  .student-feed-wys__uni-name {
+    font-size: clamp(12px, 1.4vw, 16px);
+    white-space: normal;
+  }
+}
+
+@media (min-width: 1367px) {
+  .student-feed-wys__prep {
+    max-width: 738px;
+  }
+
+  .student-feed-wys__finalized {
+    max-width: 842px;
+  }
+
+  .student-feed-wys__prep-top {
+    flex-wrap: nowrap;
+  }
+
+  .student-feed-wys__uni-grid {
+    grid-template-columns: repeat(3, 185.84px);
+  }
+}
+
+@media (max-width: 600px) {
+  .student-feed-wys {
+    padding-inline: clamp(12px, 4vw, 20px);
+  }
+
+  .student-feed-wys__header {
+    max-width: min(213px, 100%);
+    margin-bottom: 22px;
+  }
+
+  .student-feed-wys__title {
+    font-size: 24px;
+  }
+
+  .student-feed-wys__intro {
+    max-width: min(213px, 100%);
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    text-align: start;
+  }
+
+  .student-feed-wys__prep {
+    max-width: min(366px, 100%);
+  }
+
+  .student-feed-wys__prep-body {
+    padding: 16px 12px 20px;
+  }
+
+  /* Mobile: shared left rail so checklist / feedback / docs / shortlist share one start edge */
+  .student-feed-wys__prep-top,
+  .student-feed-wys__prep-status {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 12px;
+  }
+
+  .student-feed-wys__prep-top {
+    row-gap: 12px;
+  }
+
+  .student-feed-wys__pct {
+    width: auto;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .student-feed-wys__pct-value {
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .student-feed-wys__pct-label {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .student-feed-wys__prep-cards {
+    display: contents;
+  }
+
+  .student-feed-wys__card.is-checklist {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: none;
+    width: 100%;
+    flex: none;
+  }
+
+  /* Align with Documents Tracker (col 2) — not full-bleed under 14% */
+  .student-feed-wys__card.is-feedback {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: none;
+    width: 100%;
+    flex: none;
+  }
+
+  .student-feed-wys__card-title {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 12px;
+  }
+
+  .student-feed-wys__check-row {
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  .student-feed-wys__card.is-feedback .student-feed-wys__check-list {
+    min-height: 0;
+  }
+
+  .student-feed-wys__forlocked img {
+    width: 92px;
+  }
+
+  /* Mobile Figma `206:6817`: Prep Status | Docs+Shortlist stacked */
+  .student-feed-wys__prep-status {
+    align-items: center;
+    row-gap: 12px;
+    margin-top: 20px;
+  }
+
+  .student-feed-wys__prep-status-label {
+    width: auto;
+    font-size: 28px;
+    line-height: 30px;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .student-feed-wys__status-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .student-feed-wys__card.is-docs,
+  .student-feed-wys__card.is-shortlist {
+    max-width: none;
+    width: 100%;
+    flex: none;
+  }
+
+  .student-feed-wys__counts {
+    width: 50px;
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .student-feed-wys__count {
+    width: 17px;
+  }
+
+  .student-feed-wys__count-row {
+    min-height: 32px;
+  }
+
+  .student-feed-wys__count-label {
+    font-size: 13px;
+  }
+
+  /* Mobile Figma `206:6878`: 06 label | 2-col uni grid */
+  .student-feed-wys__finalized {
+    max-width: min(385px, 100%);
+    margin-top: 18px;
+    border-radius: 12px;
+  }
+
+  .student-feed-wys__finalized-body {
+    display: grid;
+    grid-template-columns: minmax(64px, 73px) minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    padding: 12px 10px;
+  }
+
+  .student-feed-wys__finalized-meta {
+    padding-inline: 0;
+    gap: 10px;
+    grid-column: 1;
+  }
+
+  .student-feed-wys__finalized-count {
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .student-feed-wys__finalized-title {
+    width: auto;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .student-feed-wys__uni-grid {
+    grid-column: 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 8px;
+    justify-content: stretch;
+  }
+
+  .student-feed-wys__uni-card {
+    max-width: none;
+  }
+
+  .student-feed-wys__uni-name {
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.2px;
+    white-space: normal;
+  }
+
+  .student-feed-wys__uni-plus {
+    width: 14px;
+    height: 14px;
+  }
+
+  .student-feed-wys__uni-tag {
+    right: 6px;
+    bottom: 8px;
+    padding: 4px 6px;
+    font-size: 10px;
+    line-height: 12px;
+    border-radius: 10px;
+  }
+
+  /* Mobile Figma `206:6951` */
+  .student-feed-wys__tasks {
+    max-width: min(376px, 100%);
+    margin-top: 18px;
+  }
+
+  .student-feed-wys__tasks-body {
+    padding: 16px 12px 20px;
+    gap: 12px;
+  }
+
+  .student-feed-wys__task-block,
+  .student-feed-wys__task-block.is-future {
+    max-width: none;
+    gap: 12px;
+  }
+
+  .student-feed-wys__task-heading {
+    width: 91px;
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  .student-feed-wys__task-block.is-future .student-feed-wys__task-heading {
+    width: 99px;
+  }
+
+  .student-feed-wys__task-panel {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .student-feed-wys__task-row {
+    width: 100%;
+    max-width: 256px;
+  }
+
+  .student-feed-wys__task-row.has-badge .student-feed-wys__task-text {
+    white-space: normal;
+  }
+
+  .student-feed-wys__task-text {
+    max-width: none;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-wys__toggle-knob {
+    transition: none;
+  }
+}

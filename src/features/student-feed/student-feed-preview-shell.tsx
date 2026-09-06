@@ -1,34 +1,56 @@
 /**
- * Preview body shell — Section 1 identity (desktop + mobile synced).
- * Non-premium: Yet to Unlock Full Access only (no green premium title).
+ * Preview body shell — Family A locked feed (standard + anonymous).
+ * Premium = Family B `/preview/student-feed-premium` — do not toggle here.
+ * Order: identity → mid-band → unlock → Help Hub → WYS → Comments → Upcoming.
+ * Anonymous = same locked body; identity placebo only.
  */
+import { StudentFeedComments } from "./student-feed-comments";
+import type { FeedUpcomingEvent } from "./feed-upcoming-event";
+import { StudentFeedHelpHub } from "./student-feed-help-hub";
 import { StudentFeedIdentityCard } from "./student-feed-identity-card";
+import { StudentFeedMidCluster } from "./student-feed-mid-cluster";
+import { StudentFeedTopPicks } from "./student-feed-top-picks";
+import { StudentFeedUnlockPitch } from "./student-feed-unlock-pitch";
+import { StudentFeedUpcomingEvents } from "./student-feed-upcoming-events";
+import { StudentFeedWhereYouStand } from "./student-feed-where-you-stand";
 import "./student-feed-preview-shell.css";
 
 type Props = {
-  premiumActive?: boolean;
+  upcomingEvents?: FeedUpcomingEvent[];
+  /** Anonymous preview — placebo identity; rest = standard locked. */
+  anonymous?: boolean;
 };
 
-export function StudentFeedPreviewShell({ premiumActive = false }: Props) {
+export function StudentFeedPreviewShell({
+  upcomingEvents,
+  anonymous = false
+}: Props) {
   return (
-    <div className="student-feed-preview-shell" data-pgs-module="student-feed-preview">
-      <p className="student-feed-preview-shell__banner" role="status">
-        Side-test — <strong>#feed</strong> Section 1 identity (
-        <code>18657:10454</code> / <code>207:2217</code>). Non-premium badge:{" "}
-        <strong>Yet to Unlock Full Access</strong> (desktop + mobile). Live{" "}
-        <code>/student/dashboard</code> unchanged.{" "}
-        <a href="/preview/student-feed">locked</a>
-        {" · "}
-        <a href="/preview/student-feed?premium=1">premium</a>
-      </p>
-
-      <div className="student-feed-preview-shell__body student-feed-preview-shell__body--identity-only">
-        <StudentFeedIdentityCard premiumActive={premiumActive} />
+    <div
+      className="student-feed-preview-shell"
+      data-pgs-module="student-feed-preview"
+      data-feed-family="locked"
+      data-feed-state={anonymous ? "anonymous" : "authenticated_standard"}
+    >
+      <div className="student-feed-preview-shell__body">
+        <StudentFeedIdentityCard premiumActive={false} anonymous={anonymous} />
+        <div
+          className="student-feed-preview-shell__mid-band"
+          data-pgs-layout="desktop-cluster-left__picks-right"
+        >
+          <div className="student-feed-preview-shell__mid-band-cluster">
+            <StudentFeedMidCluster premiumActive={false} />
+          </div>
+          <div className="student-feed-preview-shell__mid-band-picks">
+            <StudentFeedTopPicks />
+          </div>
+        </div>
+        <StudentFeedUnlockPitch premiumActive={false} />
+        <StudentFeedHelpHub premiumActive={false} />
+        <StudentFeedWhereYouStand premiumActive={false} />
+        <StudentFeedComments premiumActive={false} />
+        <StudentFeedUpcomingEvents events={upcomingEvents} />
       </div>
-
-      <p className="student-feed-preview-shell__deferred" role="note">
-        This pass: identity locked badge sync. Deferred: other sections · iPad · live cutover.
-      </p>
     </div>
   );
 }

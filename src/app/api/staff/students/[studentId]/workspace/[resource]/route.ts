@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { recordDeniedAuditEvent, recordFailedAuditEvent } from "@/lib/audit";
 import { STUDENT_DOCUMENT_BUCKET } from "@/lib/document-access";
 import { jsonError, readJsonObject, validUuid } from "@/lib/http";
+import { sanitizeFeedNotesBody } from "@/lib/sanitize-feed-notes";
 import { cleanWorkspaceText, requirePremiumActor, WorkspaceAccessError } from "@/lib/premium-workspace";
 import { assertStudentAlertText, studentOperationsMutationError } from "@/lib/student-operations";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -89,6 +90,7 @@ export async function PATCH(request: Request, route: Context) {
         documents_tracker: tracker(input.documents_tracker),
         currently_working_on: textList(input.currently_working_on),
         future_tasks: textList(input.future_tasks),
+        notes_html: sanitizeFeedNotesBody(input.notes_html ?? ""),
         updated_by: actor.user.id
       };
       const supabase = await createSupabaseServerClient();

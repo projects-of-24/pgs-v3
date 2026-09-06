@@ -1,0 +1,230 @@
+/**
+ * Section — Unlock pitch / unlock pitch.
+ * Desktop: Figma `18375:11060` (~882×458) — NO left · YES right.
+ * Mobile: derived from desktop — stack NO → YES; width clamps like other feed modules.
+ * Bands: >1366 desktop · ≤600 mobile · iPad deferred.
+ * Help Hub link DEFERRED (popup / Zoho).
+ */
+
+.student-feed-unlock-pitch {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(16px, 2.5vw, 36px) clamp(12px, 2vw, 24px) clamp(24px, 3vw, 48px);
+  font-family: "Bebas Neue", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #000;
+}
+
+.student-feed-unlock-pitch *,
+.student-feed-unlock-pitch *::before,
+.student-feed-unlock-pitch *::after {
+  box-sizing: border-box;
+}
+
+.student-feed-unlock-pitch__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(28px, 4vw, 48px);
+  width: 100%;
+  max-width: min(882px, 100%);
+  margin-inline: auto;
+}
+
+.student-feed-unlock-pitch__no,
+.student-feed-unlock-pitch__yes {
+  width: 100%;
+  max-width: min(560px, 100%);
+  min-width: 0;
+}
+
+.student-feed-unlock-pitch__lock-box {
+  position: relative;
+  width: min(193px, 58vw);
+  aspect-ratio: 1;
+  border-radius: 16px;
+  border: 0.8px solid #9747ff;
+  background: rgba(232, 234, 234, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.student-feed-unlock-pitch__lock-closed {
+  width: min(93px, 48%);
+  height: auto;
+  display: block;
+}
+
+.student-feed-unlock-pitch__label {
+  margin: 0;
+  line-height: 1;
+  font: 400 clamp(48px, 12vw, 76.8px) / 1 "Bebas Neue", sans-serif;
+  text-transform: lowercase;
+}
+
+.student-feed-unlock-pitch__label.is-no {
+  color: #eb0801;
+  margin-top: -0.15em;
+}
+
+.student-feed-unlock-pitch__label.is-yes {
+  color: #0abf8c;
+}
+
+.student-feed-unlock-pitch__no-copy {
+  margin: 0;
+  max-width: min(243px, 100%);
+  color: #000;
+  font: 400 clamp(16px, 4.2vw, 19.2px) / 1.15 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+}
+
+.student-feed-unlock-pitch__yes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.student-feed-unlock-pitch__yes-visual {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px 12px;
+  width: 100%;
+}
+
+.student-feed-unlock-pitch__yes-arrow {
+  width: clamp(48px, 14vw, 80px);
+  height: auto;
+  display: block;
+  /* Fine-tune deferred — owner may nudge in DevTools */
+  transform: rotate(-25deg);
+}
+
+.student-feed-unlock-pitch__lock-open {
+  width: clamp(88px, 28vw, 144px);
+  height: auto;
+  display: block;
+}
+
+.student-feed-unlock-pitch__yes-copy {
+  margin: 0;
+  max-width: min(298px, 100%);
+  color: #000;
+  font: 400 clamp(20px, 5.5vw, 38.4px) / 1.05 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+}
+
+.student-feed-unlock-pitch__mark {
+  background: #ffc524;
+  color: inherit;
+  padding: 0 0.08em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Desktop >1366 — Figma side-by-side */
+@media (min-width: 1367px) {
+  .student-feed-unlock-pitch__inner {
+    display: grid;
+    grid-template-columns: minmax(220px, 254px) minmax(0, 1fr);
+    align-items: end;
+    gap: 32px 48px;
+    max-width: 882px;
+  }
+
+  .student-feed-unlock-pitch__no,
+  .student-feed-unlock-pitch__yes {
+    max-width: none;
+  }
+
+  .student-feed-unlock-pitch__lock-box {
+    width: 193px;
+  }
+
+  .student-feed-unlock-pitch__label {
+    font-size: 76.8px;
+  }
+
+  .student-feed-unlock-pitch__no-copy {
+    font-size: 19.2px;
+    max-width: 243px;
+  }
+
+  .student-feed-unlock-pitch__yes {
+    display: grid;
+    grid-template-columns: minmax(160px, 220px) minmax(0, 298px);
+    align-items: start;
+    gap: 16px 20px;
+  }
+
+  .student-feed-unlock-pitch__yes-visual {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    justify-items: start;
+    gap: 4px 8px;
+  }
+
+  .student-feed-unlock-pitch__label.is-yes {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .student-feed-unlock-pitch__yes-arrow {
+    grid-column: 2;
+    grid-row: 2;
+    width: 72px;
+    margin-top: -8px;
+    transform: rotate(-100deg);
+  }
+
+  .student-feed-unlock-pitch__lock-open {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 144px;
+    align-self: center;
+  }
+
+  .student-feed-unlock-pitch__yes-copy {
+    font-size: 38.4px;
+    max-width: 298px;
+    padding-top: 8px;
+  }
+}
+
+/* Mobile ≤600 — stack derived from desktop */
+@media (max-width: 600px) {
+  .student-feed-unlock-pitch {
+    padding-inline: clamp(12px, 4vw, 20px);
+  }
+
+  .student-feed-unlock-pitch__inner {
+    max-width: min(303px, 100%);
+    gap: 36px;
+  }
+
+  .student-feed-unlock-pitch__no {
+    max-width: min(254px, 100%);
+  }
+
+  .student-feed-unlock-pitch__yes {
+    max-width: min(303px, 100%);
+  }
+
+  .student-feed-unlock-pitch__yes-copy {
+    max-width: min(298px, 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-unlock-pitch__yes-arrow {
+    transform: none;
+  }
+}

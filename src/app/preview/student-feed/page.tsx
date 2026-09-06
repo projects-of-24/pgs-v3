@@ -1,11 +1,13 @@
 /**
- * Side-test — locked chrome + modular student #feed body (Phase A shell).
- * Section 1 identity filled; remaining slots placeholders.
- * Live `/student/dashboard` (Hostinger) unchanged.
- * Bands: desktop >1366 · mobile ≤600 · iPad deferred.
+ * Side-test - Family A locked feed (standard).
+ * Anonymous = /preview/student-feed-anonymous (placebo identity).
+ * Premium = separate /preview/student-feed-premium (Family B).
+ * Live /student/dashboard (Hostinger) unchanged.
+ * Bands: desktop >1366 · mobile <=600 · iPad deferred.
  */
 import { LegacyPage } from "@/components/legacy-page";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
+import { listFeedUpcomingEvents } from "@/features/student-feed/list-feed-upcoming-events";
 import { StudentFeedPreviewShell } from "@/features/student-feed/student-feed-preview-shell";
 import "@/features/shell/legacy-header-breakpoints.css";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
@@ -22,31 +24,19 @@ import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
 } from "@/lib/student-experience";
-import { isStudentFeedPremiumActive } from "@/features/student-feed/student-feed-premium-label";
 
 export const dynamic = "force-dynamic";
 
-type SearchParams = Promise<Record<string, string | string[] | undefined>>;
-
-export default async function StudentFeedPreviewPage({
-  searchParams
-}: {
-  searchParams: SearchParams;
-}) {
-  const params = await searchParams;
+export default async function StudentFeedPreviewPage() {
   const state = await resolveStudentExperience();
   const studentState = state?.kind ?? "anonymous";
-  const premiumQuery = Array.isArray(params.premium) ? params.premium[0] : params.premium;
-  // QC override: ?premium=1. Otherwise follow session entitlement.
-  const premiumActive =
-    premiumQuery === "1" || premiumQuery === "true" || isStudentFeedPremiumActive(studentState);
   const helloAvatar =
     state && state.kind !== "anonymous"
       ? await studentExperienceAvatarUrl(state)
       : HELLO_ASPIRANT_DEFAULT_AVATAR;
 
-  // Locked chrome compose — same pattern as Study 101 / USMLE previews.
-  // Strip HTML is the shared sidebar/#univMeet/search slot (not country body).
+  const upcomingEvents = await listFeedUpcomingEvents();
+
   let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
   topHtml = applySharedPublicSidebar(topHtml, studentState, {
     name: state && state.kind !== "anonymous" ? state.name : "User"
@@ -62,7 +52,7 @@ export default async function StudentFeedPreviewPage({
     const shellFields = {
       name: state.name,
       unreadCount: state.unreadCount,
-      premium: state.kind === "authenticated_premium",
+      premium: false,
       notifications: state.notifications,
       notificationReadOnly: Boolean(state.preview)
     };
@@ -77,7 +67,7 @@ export default async function StudentFeedPreviewPage({
   return (
     <LegacyPage page="preview-student-feed" studentState={studentState}>
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
-      <StudentFeedPreviewShell premiumActive={premiumActive} />
+      <StudentFeedPreviewShell upcomingEvents={upcomingEvents} />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
     </LegacyPage>
   );

@@ -1,0 +1,364 @@
+/**
+ * Section 8 — Upcoming Events (Phase 1 fixture).
+ * Desktop `17961:10810` · Mobile `206:6244`.
+ * Purple chip text #b57cff on black — large chip labels OK (≥3:1 large text).
+ * Body 11.2px black on white — OK. Muted calendar days adapted for AA when needed.
+ */
+
+.student-feed-ue {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 842px;
+  margin: 0 auto;
+  padding: 32px clamp(12px, 3vw, 40px) 48px;
+}
+
+.student-feed-ue *,
+.student-feed-ue *::before,
+.student-feed-ue *::after {
+  box-sizing: border-box;
+}
+
+.student-feed-ue__title {
+  margin: 0 0 32px;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-weight: 400;
+  font-size: 38.4px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.student-feed-ue__layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* cards top-align with calendar; month row count may change height */
+  justify-content: center;
+  gap: 33.6px;
+}
+
+/* —— Calendar —— */
+.student-feed-ue__calendar {
+  flex: none;
+  width: 340.8px;
+  max-width: 100%;
+  padding: 19.2px;
+  background: #f5f5f5;
+  border: 0.8px solid #fff;
+  border-radius: 12.8px;
+  box-shadow: 0 0.8px 1.6px rgba(0, 14, 51, 0.25);
+}
+
+.student-feed-ue__cal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 35.2px;
+  height: auto;
+  margin-bottom: 9.6px;
+  gap: 8px;
+}
+
+.student-feed-ue__nav {
+  flex: none;
+  width: 35.2px;
+  height: 35.2px;
+  border: 0;
+  border-radius: 80px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  box-shadow: 0 0.8px 0.4px rgba(0, 14, 51, 0.05);
+}
+
+.student-feed-ue__nav.is-prev {
+  background: #fff;
+  color: #141414;
+}
+
+.student-feed-ue__nav.is-next {
+  background: #0047ff;
+  color: #fff;
+}
+
+.student-feed-ue__nav:focus-visible {
+  outline: 2px solid #0047ff;
+  outline-offset: 2px;
+}
+
+.student-feed-ue__pills {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 88px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.student-feed-ue__pill {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: none;
+  white-space: nowrap;
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px 9.6px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 15.36px;
+  line-height: 20.48px;
+  color: #141414;
+  box-shadow: 0 0.8px 0.4px rgba(0, 14, 51, 0.05);
+}
+
+.student-feed-ue__dow {
+  display: grid;
+  grid-template-columns: repeat(7, 43.2px);
+  margin-bottom: 4px;
+}
+
+.student-feed-ue__dow span {
+  display: grid;
+  place-items: center;
+  height: 35.2px;
+  width: 43.2px;
+  font-family: Lexend, Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14.4px;
+  color: #1f1f1f;
+}
+
+.student-feed-ue__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 43.2px);
+  grid-template-rows: repeat(6, 35.2px); /* fixed 6-week height */
+  gap: 3.2px 0;
+  min-height: calc(6 * 35.2px + 5 * 3.2px);
+}
+
+.student-feed-ue__day {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 35.2px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: #fff;
+  font-family: Lexend, Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14.4px;
+  color: #1f1f1f;
+}
+
+.student-feed-ue__day.is-muted {
+  background: transparent;
+  /* FIGMA ACCESSIBILITY ADAPTATION: original rgba(0,23,84,0.15) fails AA */
+  color: #6b7280;
+}
+
+.student-feed-ue__day.has-event {
+  background: #0047ff;
+  color: #fff;
+  box-shadow:
+    0 1.2px 0.8px rgba(0, 31, 112, 0.25),
+    0 2.4px 1.6px rgba(0, 71, 255, 0.2);
+}
+
+/* —— Event cards —— */
+.student-feed-ue__cards {
+  flex: 1 1 300px;
+  max-width: 369px;
+  display: flex;
+  flex-direction: column;
+  gap: 9.6px;
+  min-width: 0;
+}
+
+.student-feed-ue__cards-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.student-feed-ue__cards-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 8px;
+}
+
+.student-feed-ue__card {
+  background: #fff;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 12.8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.student-feed-ue__cards-bottom .student-feed-ue__card {
+  flex: 1 1 auto;
+  max-width: 220.8px;
+}
+
+.student-feed-ue__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 4.8px;
+  border-radius: 3.2px;
+  background: #000;
+  color: #b57cff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17.6px;
+  line-height: 22.4px;
+  white-space: nowrap;
+}
+
+.student-feed-ue__chip.is-title {
+  width: 100%;
+  padding: 3.2px 4.8px;
+  text-align: center;
+  flex-direction: column;
+  white-space: normal;
+}
+
+.student-feed-ue__chip-line {
+  display: block;
+}
+
+.student-feed-ue__chip-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.student-feed-ue__cards-top .student-feed-ue__chip:not(.is-title) {
+  font-size: 15.2px;
+  line-height: 20px;
+  padding: 0 3.2px;
+}
+
+.student-feed-ue__blurb {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 11.2px;
+  line-height: normal;
+  letter-spacing: 0.25px;
+  color: #000;
+}
+
+.student-feed-ue__mode {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 11.2px;
+  line-height: normal;
+  letter-spacing: 0.25px;
+  color: #000;
+}
+
+.student-feed-ue__mode strong {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.student-feed-ue__more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.student-feed-ue__more-plus {
+  display: flex;
+  gap: 3.2px;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-size: 38.4px;
+  line-height: 1;
+  color: #000;
+}
+
+.student-feed-ue__more-label {
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17.6px;
+  line-height: 22.4px;
+  color: #000;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .student-feed-ue {
+    max-width: 390px;
+    padding: 24px 12px 40px;
+  }
+
+  .student-feed-ue__title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .student-feed-ue__layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .student-feed-ue__calendar {
+    width: 100%;
+    max-width: 340.8px;
+    margin-inline: auto;
+  }
+
+  .student-feed-ue__cards {
+    max-width: 369px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .student-feed-ue__cards-bottom {
+    padding-right: 0;
+  }
+
+  .student-feed-ue__cards-bottom .student-feed-ue__card {
+    max-width: none;
+  }
+
+  .student-feed-ue__chip {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .student-feed-ue__dow,
+  .student-feed-ue__grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .student-feed-ue__grid {
+    grid-template-rows: repeat(6, 35.2px);
+  }
+
+  .student-feed-ue__dow span,
+  .student-feed-ue__day {
+    width: 100%;
+  }
+}

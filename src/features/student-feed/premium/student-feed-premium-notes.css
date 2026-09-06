@@ -1,0 +1,19 @@
+/**
+ * Premium Notes — spacing under QD; reuse Family A notes CSS (#bbc8ff card).
+ */
+
+.student-feed-premium-notes {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px clamp(12px, 2vw, 24px) 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.student-feed-premium-notes .student-feed-notes {
+  /* Desktop Figma Note 10: 307.2 × 233 */
+  max-width: 307.2px;
+  min-height: 233px;
+}

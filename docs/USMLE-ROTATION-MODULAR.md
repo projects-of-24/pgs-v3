@@ -10,10 +10,10 @@ Living map for the owner. Update only at **phase ends**, not every pixel tweak.
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (side-test)** | `/preview/usmlerotation-body` | Modular React body under locked chrome. Safe to break while building. |
-| **Live (legacy)** | `/usmlerotation` | Still the old HTML from `src/legacy/pages/usmlerotation.html`. **Unchanged** until an explicit live pull. |
+| **Preview (QC mirror)** | `/preview/usmlerotation-body` | Same modular body as live (shows side-test banner). |
+| **Live (cutover DONE)** | `/usmlerotation` | Purified modular React body. Hostinger HTML no longer served on this route. |
 
-Live will not show modular sections until we wire the preview shell (or its modules) into the live page route — that is a separate, owner-approved step.
+Chrome / notification aesthetic polish = later shared pass (with student feed). iPad deferred.
 
 ---
 
@@ -106,9 +106,9 @@ Preview page: `src/app/preview/usmlerotation-body/page.tsx`
 ## Deferred (not done)
 
 - iPad mid-band sign-off  
-- Live route pull of modular body  
 - Steps / snap polish  
-- Doctor size on main pull  
+- Doctor size polish  
+- Shared chrome / notification aesthetic pass (with student feed)  
 - Shared `#Pgs picks` on other pages (`PgsPicksSection` stub stays parked)  
 
 ---
@@ -131,7 +131,8 @@ Skill: [`.cursor/skills/pgs-owner-teach-map/SKILL.md`](../.cursor/skills/pgs-own
 | Body sections 1–13 | through support hub | Modular shell through #StudentSupportHub |
 | #Pgs picks Phase 1 | design shell | Placeholders, fit-width carousel |
 | #Pgs picks Phase 2 | CMS | Surface `pgs_picks`, fetcher, live links, empty state |
+| **Live cutover** | 2026-09-07 | `/usmlerotation` serves modular body (Hostinger HTML off this route) |
 
 ---
 
-*Last updated: 2026-09-06 — after #Pgs picks Phase 2.*
+*Last updated: 2026-09-07 — live `/usmlerotation` cutover.*

@@ -1,0 +1,12 @@
+---
+description: >-
+  PGS: Figma→modular body = own CSS; no Hostinger/anime creep; motion last.
+  Mirrors personal master skill; keep in sync with ~/.cursor/skills/figma-modular-own-css.
+alwaysApply: true
+---
+
+# Figma modular — own CSS, no legacy creep
+
+New Figma→code bodies: own CSS as you go; no Hostinger theme JS (anime, Crafto main.js) creeping into the build. Animation only after visual lock (last phase). Legacy console noise ≠ reason to patch Hostinger into the body.
+
+Full skill (personal master): `~/.cursor/skills/figma-modular-own-css/SKILL.md`

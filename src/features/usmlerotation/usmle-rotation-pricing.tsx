@@ -104,16 +104,19 @@ export function UsmleRotationPricing() {
             {c.block3.n}
           </p>
           <ul className="usmle-price__checks">
-            {c.block3.checks.map((item) => (
-              <li key={item.text + (item.bold ?? "")} className="usmle-price__check">
+            {c.block3.checks.map((item) => {
+              const bold = "bold" in item ? item.bold : undefined;
+              return (
+              <li key={item.text + (bold ?? "")} className="usmle-price__check">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={CHECK} alt="" width={24} height={24} />
                 <span>
                   {item.text}
-                  {item.bold ? <strong>{item.bold}</strong> : null}
+                  {bold ? <strong>{bold}</strong> : null}
                 </span>
               </li>
-            ))}
+              );
+            })}
           </ul>
         </article>
 

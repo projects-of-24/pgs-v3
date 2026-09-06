@@ -46,7 +46,8 @@ const DASHBOARD_NOTIFY_KEYS = [
   "feedback_session_items",
   "documents_tracker",
   "currently_working_on",
-  "future_tasks"
+  "future_tasks",
+  "notes_html"
 ] as const;
 
 export function isMaterialDashboardChange(

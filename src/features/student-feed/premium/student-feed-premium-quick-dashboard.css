@@ -1,0 +1,17 @@
+/**
+ * Premium QD wrapper — spacing under identity; reuse Family A QD CSS.
+ */
+
+.student-feed-premium-qd {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px clamp(12px, 2vw, 24px) 8px;
+}
+
+.student-feed-premium-qd .student-feed-qd__frame {
+  /* Premium Figma: no multi-colour lock rim */
+  box-shadow: none;
+  border: 0;
+}

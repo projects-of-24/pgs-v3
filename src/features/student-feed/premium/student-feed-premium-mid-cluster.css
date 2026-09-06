@@ -1,0 +1,22 @@
+/**
+ * Premium mid-cluster — kill double padding from per-block wrappers
+ * so Family A mid-cluster gaps/grid control position.
+ * Notes: center on mobile (same as Family A mid-cluster__notes); left in desktop grid.
+ */
+
+.student-feed-premium-mid .student-feed-premium-qd {
+  padding: 0;
+}
+
+.student-feed-premium-mid .student-feed-premium-notes {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 1367px) {
+  .student-feed-premium-mid .student-feed-premium-notes {
+    justify-content: flex-start;
+  }
+}

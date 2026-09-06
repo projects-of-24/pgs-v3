@@ -1,6 +1,6 @@
 /**
- * Preview shell — through #Pgs picks (CMS `pgs_picks`).
- * Live `/usmlerotation` unchanged.
+ * Preview shell — USMLE Rotation modular body (through #Pgs picks).
+ * Used by `/preview/usmlerotation-body` and live `/usmlerotation`.
  */
 import { UsmleRotationDocsRequest } from "./usmle-rotation-docs-request";
 import { UsmleRotationExplore } from "./usmle-rotation-explore";
@@ -25,6 +25,8 @@ type Props = {
   picksCourses?: UsmlePicksCourseCard[];
   isLoggedIn?: boolean;
   initialSavedIds?: string[];
+  /** Live route — hide side-test banner / deferred note. */
+  live?: boolean;
 };
 
 export function UsmleRotationPreviewShell({
@@ -32,13 +34,20 @@ export function UsmleRotationPreviewShell({
   picksCourses = [],
   isLoggedIn = false,
   initialSavedIds = [],
+  live = false
 }: Props) {
   return (
-    <div className="usmle-preview-shell" data-pgs-module="usmle-rotation-preview">
-      <p className="usmle-preview-shell__banner" role="status">
-        Side-test — USMLE Rotation through <strong>#Pgs picks</strong> (CMS).
-        Live <code>/usmlerotation</code> unchanged.
-      </p>
+    <div
+      className="usmle-preview-shell"
+      data-pgs-module="usmle-rotation-preview"
+      data-cutover={live ? "LIVE" : "preview"}
+    >
+      {live ? null : (
+        <p className="usmle-preview-shell__banner" role="status">
+          Side-test — USMLE Rotation through <strong>#Pgs picks</strong> (CMS).
+          Mirror of live <code>/usmlerotation</code>.
+        </p>
+      )}
       <UsmleRotationHero />
       <UsmleRotationLiveActivity />
       <UsmleRotationImgPitch />
@@ -57,10 +66,12 @@ export function UsmleRotationPreviewShell({
       <UsmleRotationOutro />
       <UsmleRotationSupportHub />
       <UsmleRotationPicks courses={picksCourses} />
-      <p className="usmle-preview-shell__deferred" role="note">
-        Deferred: iPad · live route pull · Steps/snap polish · doctor size on
-        main pull.
-      </p>
+      {live ? null : (
+        <p className="usmle-preview-shell__deferred" role="note">
+          Deferred: iPad · Steps/snap polish · chrome aesthetic pass · doctor
+          size polish.
+        </p>
+      )}
     </div>
   );
 }

@@ -19,10 +19,9 @@
   max-width: 100%;
   min-width: 0;
   margin-inline: auto;
-  /* Own spacing from start of body under chrome — no global section leak */
-  padding-top: clamp(16px, 2.2vw, 40px);
+  /* Top aligns with closed #toggleBtn (shell pulls; fine-tuned to measured toggle top) */
+  padding-top: 24px;
   padding-bottom: clamp(12px, 1.5vw, 28px);
-  /* Width from edges — chrome-style clamp */
   padding-inline: clamp(12px, 2vw, 24px);
   display: flex;
   justify-content: center;
@@ -251,7 +250,8 @@
 .student-feed-identity__mobile .student-feed-identity__pathway {
   margin: 0;
   color: var(--sfi-red);
-  font: 400 10px/7px "Bebas Neue", sans-serif;
+  /* Owner QC: 2× prior Figma 10/7 — not CSS scale */
+  font: 400 20px/14px "Bebas Neue", sans-serif;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -269,7 +269,8 @@
 
 @media (max-width: 600px) {
   .student-feed-identity {
-    padding-top: clamp(12px, 4vw, 24px);
+    /* Closed #toggleBtn mobile top: 20px; fine-tuned to measured toggle top */
+    padding-top: 16px;
     padding-inline: clamp(12px, 4vw, 20px);
   }
 

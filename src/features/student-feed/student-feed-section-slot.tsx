@@ -3,6 +3,7 @@
  * Locked overlay when `locked`; otherwise empty slot label only.
  */
 import Image from "next/image";
+import "./student-feed-section-slot.css";
 
 const LOCK_SRC = "/assets/img/lock.png";
 

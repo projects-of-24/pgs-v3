@@ -1,0 +1,641 @@
+/**
+ * Section 7 — Comments (v2).
+ * Desktop `18796:11932` · Mobile `1029:7535`.
+ * forlocked fill: rgba(232,234,234,0.7) + gradient rim (Figma Rectangle 4306 / 3816).
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: placeholder #9e9ea8 · timestamps rgba(0,0,0,0.4)
+ * ISSUE: contrast below WCAG AA for normal text
+ * PGS IMPLEMENTATION: placeholder #6b6b75 · timestamps #595959 (nearest compliant)
+ */
+
+.student-feed-comments {
+  --sfc-forlocked: rgba(232, 234, 234, 0.7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 842px;
+  margin: 0 auto;
+  padding: 24px clamp(12px, 3vw, 40px) 40px;
+}
+
+.student-feed-comments *,
+.student-feed-comments *::before,
+.student-feed-comments *::after {
+  box-sizing: border-box;
+}
+
+.student-feed-comments .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Intro + status —— */
+.student-feed-comments__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px 24px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.student-feed-comments__intro {
+  flex: 1 1 280px;
+  max-width: 490px;
+  margin: 0;
+  display: flex;
+  gap: 6.4px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 17.6px;
+  line-height: 22.4px;
+  color: #000;
+}
+
+.student-feed-comments__intro-star {
+  flex: none;
+}
+
+.student-feed-comments__status {
+  flex: none;
+  width: 169.6px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.student-feed-comments__status-label {
+  margin: 0;
+  width: 112.8px;
+  min-height: 24px;
+  padding: 2px 8.8px;
+  background: #000;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: 0.5px;
+}
+
+.student-feed-comments__status-value {
+  margin: 0;
+  min-height: 57.6px;
+  padding: 8px;
+  background: #ffc524;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 19.2px;
+  line-height: 19.2px;
+  letter-spacing: 0.5px;
+}
+
+/* —— Card + forlocked —— */
+.student-feed-comments__card-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 760.8px;
+  overflow: visible; /* emoji picker must not clip */
+}
+
+.student-feed-comments__card {
+  position: relative;
+  z-index: 0;
+  background: #fff;
+  border: 0.64px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5.12px;
+  padding: 19.2px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: visible;
+}
+
+.student-feed-comments.is-unlocked .student-feed-comments__card {
+  z-index: 1; /* stack above following feed blocks while picker open */
+}
+
+.student-feed-comments__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.student-feed-comments__title {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: normal;
+  color: #000;
+}
+
+.student-feed-comments__sort {
+  position: relative;
+  flex: none;
+  z-index: 4;
+}
+
+.student-feed-comments__sort-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.student-feed-comments__sort-btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.student-feed-comments__sort-btn img {
+  width: 19.2px;
+  height: 19.2px;
+  display: block;
+}
+
+.student-feed-comments__sort-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 8;
+  min-width: 200px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: 10px;
+  border: 1px solid #111;
+  background: #fff;
+  box-shadow: 8px 8px 0 0 #000; /* same hard offset as notification menu / emoji */
+}
+
+.student-feed-comments__sort-menu button {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #111;
+  font: 500 13px/1.3 Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.student-feed-comments__sort-menu button:hover,
+.student-feed-comments__sort-menu button.is-active {
+  background: #f1f1f1;
+}
+
+.student-feed-comments__sort-menu button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 1px;
+}
+
+/* Composer */
+.student-feed-comments__composer {
+  display: flex;
+  flex-direction: column;
+  gap: 9.6px;
+  padding: 12.8px;
+  background: #fff;
+  border: 0.64px solid #0089ff;
+  border-radius: 5.12px;
+  box-shadow: 0 2.56px 5.12px rgba(10, 58, 100, 0.15);
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.student-feed-comments__author {
+  display: flex;
+  align-items: center;
+  gap: 5.12px;
+}
+
+.student-feed-comments__avatar {
+  width: 25.6px;
+  height: 25.6px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.student-feed-comments__author-name {
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: normal;
+  color: #000;
+}
+
+.student-feed-comments__field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  position: relative;
+  border: 1.14px solid rgba(180, 187, 198, 0.5);
+  border-radius: 5.31px;
+  background: #fff;
+  min-height: 134px; /* 3-line editor (60) + toolbar + padding/gap */
+  padding: 12px;
+  overflow: visible; /* grow live in height — do not clip under toolbar */
+  box-sizing: border-box;
+}
+
+.student-feed-comments__textarea {
+  display: block;
+  width: 100%;
+  min-height: 60px; /* 3 lines @ 16px / 1.25 */
+  background: transparent;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #000;
+  letter-spacing: -0.17px;
+  box-sizing: border-box;
+}
+
+/* Unlocked: height grows live as you type; width stays 100% of field */
+.student-feed-comments__editor {
+  outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  font-size: 16px;
+  line-height: 1.25; /* 3-line floor = 60px */
+  min-height: 60px; /* 3 lines @ 16px / 1.25 */
+  max-height: 168px; /* grow then scroll inside — feed below stops jumping */
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  /* Hidden scrollbar when capped (same pattern as Top picks / Load More list) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.student-feed-comments__editor::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.student-feed-comments__editor:empty::before {
+  content: attr(data-placeholder);
+  color: #6b6b75;
+  pointer-events: none;
+}
+
+.student-feed-comments__textarea::placeholder {
+  color: #6b6b75;
+  opacity: 1;
+}
+
+.student-feed-comments__textarea:disabled,
+.student-feed-comments__textarea[readonly] {
+  color: #444;
+  cursor: not-allowed;
+}
+
+/* Toolbar in normal flow under the editor — no overlay clip (desktop + mobile) */
+.student-feed-comments__toolbar {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 6px;
+  background: #f8f8f8;
+  border-radius: 3.8px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  z-index: 4;
+}
+
+.student-feed-comments__tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-feed-comments__tool {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #5e5e5e;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.student-feed-comments__tool:disabled {
+  cursor: default;
+}
+
+.student-feed-comments__tool.is-b {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.student-feed-comments__tool.is-i {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.student-feed-comments__tool.is-s {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-decoration: line-through;
+  font-size: 18px;
+}
+
+.student-feed-comments__smile {
+  width: 22.8px;
+  height: 22.8px;
+  display: block;
+}
+
+.student-feed-comments__smile-btn {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.student-feed-comments__smile-btn:disabled {
+  cursor: default;
+}
+
+.student-feed-comments__emoji-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  z-index: 6;
+}
+
+/*
+ * Open DOWN from the smile icon (panel top = icon bottom + 8px).
+ * overflow:visible on card/composer — so the panel is not clipped.
+ */
+.student-feed-comments__emoji-picker {
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: calc(100% + 8px);
+  bottom: auto;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(8, 2rem);
+  gap: 4px;
+  width: max-content;
+  max-width: min(100vw - 48px, 22rem); /* owner DevTools lock */
+  padding: 10px;
+  border: 1px solid #111;
+  border-radius: 8px;
+  background: #fff;
+  /* Same hard offset as site notification menu */
+  box-shadow: 8px 8px 0 0 #000;
+  overflow: visible;
+}
+
+.student-feed-comments__emoji-option {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  line-height: 1;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.student-feed-comments__emoji-option:hover,
+.student-feed-comments__emoji-option:focus-visible {
+  background: #f1f2f3;
+  outline: none;
+}
+
+.student-feed-comments__count {
+  margin-left: auto;
+  margin-right: 8px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  color: #6b6b75;
+  white-space: nowrap;
+}
+
+.student-feed-comments__submit {
+  margin: 0;
+  padding: 4.5px 10.6px;
+  border: 0;
+  border-radius: 3px;
+  background: #bdbdbd;
+  color: #fff;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12.1px;
+  letter-spacing: -0.12px;
+  cursor: pointer;
+}
+
+.student-feed-comments__submit:disabled {
+  cursor: default;
+}
+
+/* Thread list */
+.student-feed-comments__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Unlocked: fixed window + hidden scrollbar so full thread is reachable */
+.student-feed-comments__list.is-scrollable {
+  max-height: 280px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.student-feed-comments__list.is-scrollable::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.student-feed-comments__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 0.64px solid rgba(0, 0, 0, 0.12);
+}
+
+.student-feed-comments__item:first-child {
+  border-top: 0.64px solid rgba(0, 0, 0, 0.12);
+}
+
+.student-feed-comments__item--empty {
+  border-top: 0.64px solid rgba(0, 0, 0, 0.12);
+}
+
+.student-feed-comments__empty {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #6b6b75;
+}
+
+.student-feed-comments__body {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 17.92px;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.student-feed-comments__time {
+  margin: 0;
+  font-family: "Source Sans Pro", "Source Sans 3", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: normal;
+  color: #595959;
+}
+
+/* (Load More removed — Sort + scrollable list) */
+
+/*
+ * forlocked — real UI underneath + light-grey wash + centered lock (owner).
+ * Same fill as WYS/QD: rgba(232,234,234,0.7). Do NOT use Figma selection
+ * purple/teal stroke as a product rim.
+ */
+.student-feed-comments__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  pointer-events: none;
+  background: var(--sfc-forlocked);
+}
+
+.student-feed-comments__forlocked img {
+  width: 96px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+.student-feed-comments.is-unlocked .student-feed-comments__forlocked {
+  display: none;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .student-feed-comments {
+    max-width: 390px;
+    padding: 16px 12px 32px;
+  }
+
+  .student-feed-comments__head {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .student-feed-comments__intro {
+    flex: 1 1 0;
+    max-width: none;
+    order: 2;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .student-feed-comments__status {
+    order: 1;
+    width: min(169.6px, 46%);
+  }
+
+  .student-feed-comments__status-label {
+    width: 100%;
+    max-width: 112.8px;
+    font-size: 14px;
+  }
+
+  .student-feed-comments__status-value {
+    font-size: 16px;
+    line-height: 18px;
+    min-height: 52px;
+  }
+
+  .student-feed-comments__card-wrap {
+    max-width: 344.4px;
+    margin-inline: auto;
+  }
+
+  .student-feed-comments__card {
+    padding: 19.2px;
+    border-radius: 5.12px;
+  }
+
+  .student-feed-comments__forlocked {
+    border-radius: 8px;
+  }
+
+  .student-feed-comments__forlocked img {
+    width: 92px;
+  }
+
+  .student-feed-comments__body {
+    font-size: 15px;
+    line-height: 18px;
+  }
+}
