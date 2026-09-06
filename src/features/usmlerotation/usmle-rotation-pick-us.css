@@ -1,0 +1,268 @@
+/**
+ * Grey student + Why Pick Us — page-scoped.
+ * Desktop >1366 (Figma 18760:12434) · mobile ≤600 (18766:11912).
+ * iPad mid-band deferred.
+ */
+
+.usmle-pick {
+  --usmle-pick-grey: #f1f1f1;
+  --usmle-pick-head: #a6ffaf;
+  --usmle-pick-body: #e1f9d9;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-pick *,
+.usmle-pick *::before,
+.usmle-pick *::after {
+  box-sizing: border-box;
+}
+
+.usmle-pick__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 58px;
+  width: 100%;
+  max-width: min(702px, 94%);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+/* ——— Grey student hero ——— */
+.usmle-pick__hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  padding: 10px 9px 16px;
+  border: 0.8px solid #000;
+  border-radius: 13px;
+  background: var(--usmle-pick-grey);
+}
+
+.usmle-pick__photo-wrap {
+  width: 100%;
+  max-width: 671px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #d9d9d9;
+}
+
+.usmle-pick__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.usmle-pick__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin: 0;
+  padding-inline: 12px;
+  max-width: 520px;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 77px);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.usmle-pick__title-line {
+  display: block;
+}
+
+.usmle-pick__heart {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 33px;
+  height: 37px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* ——— Why Pick Us grid ——— */
+.usmle-pick__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 19px;
+  width: 100%;
+  max-width: 643px;
+}
+
+.usmle-pick__why {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px;
+  min-height: 160px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.8vw, 26px);
+  line-height: 1.25;
+  text-align: left;
+}
+
+.usmle-pick__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 160px;
+}
+
+.usmle-pick__card-title {
+  margin: 0;
+  padding: 8px;
+  background: var(--usmle-pick-head);
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 1.8vw, 26px);
+  line-height: 32px;
+  text-align: center;
+}
+
+.usmle-pick__card-body {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 16px;
+  background: var(--usmle-pick-body);
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+}
+
+@media (min-width: 1367px) {
+  .usmle-pick {
+    padding: 56px 0 72px;
+  }
+
+  .usmle-pick__hero {
+    min-height: 392px;
+    gap: 41px;
+  }
+}
+
+/* iPad deferred — soft stack toward mobile */
+@media (max-width: 1366px) and (min-width: 601px) {
+  .usmle-pick__inner {
+    gap: 40px;
+    max-width: min(640px, 94%);
+  }
+
+  .usmle-pick__title {
+    font-size: 48px;
+  }
+
+  .usmle-pick__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+  }
+
+  .usmle-pick__why {
+    grid-column: 1 / -1;
+    min-height: 0;
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile ≤600 — Figma 18766:11912 */
+@media (max-width: 600px) {
+  .usmle-pick {
+    padding: 28px 0 40px;
+  }
+
+  .usmle-pick__inner {
+    gap: 47px;
+    max-width: 100%;
+    padding-inline: 20px;
+  }
+
+  .usmle-pick__hero {
+    width: 100%;
+    max-width: 309px;
+    margin-inline: auto;
+    gap: 20px;
+    padding: 13px 11px 16px;
+    border: none;
+    border-radius: 16px;
+  }
+
+  .usmle-pick__photo-wrap {
+    height: 280px;
+    max-height: 357px;
+    border-radius: 8px;
+  }
+
+  .usmle-pick__title {
+    padding-inline: 4px;
+    max-width: 100%;
+    font-size: 30px;
+    line-height: 1;
+    gap: 6px;
+  }
+
+  .usmle-pick__heart {
+    right: 12px;
+    bottom: 18px;
+    width: 33px;
+    height: 37px;
+  }
+
+  .usmle-pick__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 312px;
+    margin-inline: auto;
+  }
+
+  .usmle-pick__why {
+    flex: 0 0 150px;
+    width: 150px;
+    min-height: 175px;
+    padding: 8px;
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  .usmle-pick__card {
+    flex: 0 0 150px;
+    width: 150px;
+    min-height: 0;
+  }
+
+  .usmle-pick__card-title {
+    padding: 16px 8px;
+    font-size: 16px;
+    line-height: 32px;
+  }
+
+  .usmle-pick__card-body {
+    min-height: 150px;
+    padding: 4px 16px;
+    font-size: 14px;
+  }
+}

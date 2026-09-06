@@ -1,0 +1,514 @@
+/**
+ * Pricing — page-scoped.
+ * Desktop >1366 (Figma 18760:12618 + blocks) · mobile ≤600 type-card snap-scroll.
+ * iPad mid-band deferred.
+ */
+
+.usmle-price {
+  --usmle-price-green: #009c70;
+  --usmle-price-purple: #b57cff;
+  --usmle-price-gold: #ffc524;
+  --usmle-price-muted: rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+}
+
+.usmle-price *,
+.usmle-price *::before,
+.usmle-price *::after {
+  box-sizing: border-box;
+}
+
+.usmle-price__fee-shell {
+  width: 100%;
+  max-width: min(1402px, 94%);
+  margin: 0 auto 48px;
+  padding: 48px 24px 56px;
+  border-radius: 16px;
+  background: #f1f1f1;
+}
+
+.usmle-price__intro {
+  width: 100%;
+  max-width: 738px;
+  margin: 0 auto 0;
+  padding: 32px 28px 24px;
+  border: 0.8px solid var(--usmle-price-muted);
+  border-radius: 13px;
+  background: #fff;
+  text-align: center;
+}
+
+.usmle-price__title {
+  margin: 0 0 12px;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 51.2px);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.usmle-price__body {
+  margin: 0 auto;
+  max-width: 640px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.usmle-price__fee-card {
+  width: 100%;
+  max-width: 760px;
+  margin: -12px auto 0;
+  padding: 48px 37px 40px;
+  border: 2.4px solid transparent;
+  border-radius: 16px;
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(90deg, #9747ff, #00c2a8) border-box;
+  color: #fff;
+}
+
+.usmle-price__fee-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 16px;
+  margin-bottom: 16px;
+}
+
+.usmle-price__fee-amount {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 38.4px);
+  line-height: 1.1;
+}
+
+.usmle-price__fee-inr {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.usmle-price__fee-badge {
+  display: inline-flex;
+  margin: 0 0 24px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  background: var(--usmle-price-purple);
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.5vw, 19.2px);
+  line-height: 1.2;
+}
+
+.usmle-price__fee-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.usmle-price__fee-note {
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: var(--usmle-price-gold);
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.usmle-price__fee-note:last-child {
+  font-weight: 700;
+}
+
+.usmle-price__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+  max-width: min(900px, 94%);
+  margin-inline: auto;
+}
+
+.usmle-price__block {
+  display: flex;
+  align-items: flex-start;
+  gap: 19px;
+  min-width: 0;
+}
+
+.usmle-price__step {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 3px 6px;
+  border: 0.8px solid #000;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(32px, 3.2vw, 45.6px);
+  line-height: 1.1;
+  text-align: right;
+}
+
+.usmle-price__block-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.usmle-price__fee-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.usmle-price__fee-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  column-gap: 12px;
+  row-gap: 0;
+}
+
+.usmle-price__fee-label {
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.usmle-price__fee-value {
+  min-width: 0;
+  color: var(--usmle-price-green);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 25.6px);
+  line-height: 1.15;
+  /* Stay in the value column with $1800 / $800+; wrap to 2 lines if needed */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.usmle-price__strike {
+  text-decoration: line-through;
+}
+
+.usmle-price__block-copy {
+  margin: 0 0 12px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.usmle-price__block-foot {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.usmle-price__block-line {
+  margin: 0 0 6px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.usmle-price__checks {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.usmle-price__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.usmle-price__check img {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+}
+
+.usmle-price__block--types {
+  align-items: flex-start;
+}
+
+.usmle-price__types-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.usmle-price__table-desktop {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.usmle-price__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 0.8px solid #000;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.usmle-price__table th,
+.usmle-price__table td {
+  padding: 10px 12px;
+  border-right: 0.8px solid #000;
+  border-bottom: 0.8px solid #000;
+  text-align: center;
+  vertical-align: middle;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--usmle-price-muted);
+}
+
+.usmle-price__table thead th {
+  color: #000;
+  font-weight: 500;
+  font-size: clamp(16px, 1.8vw, 25.6px);
+}
+
+.usmle-price__table tbody th {
+  color: #000;
+  font-weight: 700;
+}
+
+.usmle-price__table tr > *:last-child {
+  border-right: 0;
+}
+
+.usmle-price__table tr:last-child > * {
+  border-bottom: 0;
+}
+
+/* Mobile type cards hidden on desktop */
+.usmle-price__types-track {
+  display: none;
+}
+
+.usmle-price__approx {
+  margin: 16px 0 0;
+  max-width: 220px;
+  margin-left: auto;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+/* ——— Mobile ≤600 ——— */
+@media (max-width: 600px) {
+  .usmle-price {
+    --usmle-price-card-w: 300px;
+    --usmle-price-side: max(16px, calc((100% - var(--usmle-price-card-w)) / 2));
+    padding: 28px 0 40px;
+    overflow-x: clip;
+  }
+
+  /* Grey shell — keep as it was (owner: looked good) */
+  .usmle-price__fee-shell {
+    max-width: min(100% - 32px, 100%);
+    width: calc(100% - 32px);
+    margin: 0 auto 28px;
+    padding: 28px 14px 36px;
+    border-radius: 12px;
+  }
+
+  .usmle-price__intro {
+    padding: 20px 14px;
+  }
+
+  .usmle-price__fee-card {
+    margin-top: 12px;
+    padding: 28px 16px;
+  }
+
+  .usmle-price__fee-note {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .usmle-price__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  /* Blocks 1–3: centered 300px column, equal L/R (same rail as type cards) */
+  .usmle-price__block {
+    width: var(--usmle-price-card-w);
+    max-width: var(--usmle-price-card-w);
+    margin-inline: auto;
+    gap: 12px;
+  }
+
+  .usmle-price__step {
+    flex: 0 0 auto;
+    width: auto;
+    font-size: 32px;
+  }
+
+  .usmle-price__table-desktop {
+    display: none;
+  }
+
+  .usmle-price__block--types {
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  /* Step 4 box must stay compact — never full-bleed */
+  .usmle-price__block--types > .usmle-price__step {
+    width: auto;
+    max-width: none;
+    margin-inline: var(--usmle-price-side);
+    margin-bottom: 8px;
+  }
+
+  .usmle-price__types-wrap {
+    width: 100%;
+  }
+
+  .usmle-price__types-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    width: 100%;
+    padding: 10px var(--usmle-price-side);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--usmle-price-side);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .usmle-price__types-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .usmle-price__type-card-wrap {
+    flex: 0 0 var(--usmle-price-card-w);
+    width: var(--usmle-price-card-w);
+    min-width: var(--usmle-price-card-w);
+    max-width: var(--usmle-price-card-w);
+    scroll-snap-align: start;
+  }
+
+  .usmle-price__type-card {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0.8px solid #000;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .usmle-price__type-card th,
+  .usmle-price__type-card td {
+    width: 50%;
+    padding: 12px 10px;
+    border-right: 0.8px solid #cfcfcf;
+    border-bottom: 0.8px solid #cfcfcf;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--usmle-price-muted);
+  }
+
+  .usmle-price__type-card th {
+    color: #000;
+    font-weight: 700;
+  }
+
+  .usmle-price__type-card tr > *:last-child {
+    border-right: 0;
+  }
+
+  .usmle-price__type-card tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  .usmle-price__type-name {
+    color: #c00 !important;
+    font-weight: 700 !important;
+  }
+
+  .usmle-price__approx {
+    width: var(--usmle-price-card-w);
+    max-width: var(--usmle-price-card-w);
+    margin: 14px auto 0;
+    text-align: right;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-price__fee-shell {
+    padding: 36px 20px;
+  }
+
+  .usmle-price__fee-card {
+    padding: 36px 24px;
+  }
+
+  .usmle-price__table thead th {
+    font-size: 18px;
+  }
+}

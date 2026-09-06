@@ -1,0 +1,303 @@
+/**
+ * A word from Our learners — page-scoped.
+ * Desktop >1366 (Figma 18760:12855) · mobile ≤600 (18760:11795 snap).
+ * iPad mid-band deferred.
+ */
+
+.usmle-words {
+  --usmle-words-badge: #906afe;
+  --usmle-words-card: #0a0d1c;
+  --usmle-words-meta: rgba(255, 255, 255, 0.75);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-words *,
+.usmle-words *::before,
+.usmle-words *::after {
+  box-sizing: border-box;
+}
+
+.usmle-words__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 19px;
+  width: 100%;
+  max-width: min(632px, 92%);
+  margin: 0 auto 26px;
+  text-align: center;
+}
+
+.usmle-words__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.usmle-words__lead {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 25.6px);
+  line-height: 1.25;
+}
+
+.usmle-words__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  background: var(--usmle-words-badge);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2.8vw, 36px);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.usmle-words__intro {
+  margin: 0;
+  max-width: 632px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.usmle-words__intro strong {
+  font-weight: 700;
+}
+
+.usmle-words__track {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: min(980px, 96%);
+  margin: 0 auto;
+  padding: 8px;
+  list-style: none;
+  min-width: 0;
+}
+
+.usmle-words__card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 316px;
+}
+
+.usmle-words__photo-wrap {
+  position: relative;
+  width: 100%;
+  /* Figma 18760:12864 — 315.728 × 316.528 */
+  aspect-ratio: 315.728 / 316.528;
+  overflow: hidden;
+  border: 0.8px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 0;
+  border-radius: 6.4px 6.4px 0 0;
+  background: #d9d9d9;
+}
+
+.usmle-words__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.usmle-words__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 100%;
+  /* Figma 18760:12866 — 315.728 × 266.403 (same shell AR for all cards) */
+  aspect-ratio: 315.728 / 266.403;
+  min-height: 0;
+  padding: 24px 19px 20px;
+  border: 0.8px solid rgba(255, 255, 255, 0.65);
+  border-top: 0;
+  border-radius: 0 0 6.4px 6.4px;
+  background: var(--usmle-words-card);
+}
+
+.usmle-words__quote {
+  position: absolute;
+  top: -13px;
+  left: 19px;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+}
+
+.usmle-words__quote-text {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12.8px;
+  line-height: 1.7;
+}
+
+.usmle-words__quote-text--mobile {
+  display: none;
+}
+
+.usmle-words__author {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.usmle-words__name {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14.4px;
+  line-height: 1.5;
+}
+
+.usmle-words__meta {
+  margin: 0;
+  color: var(--usmle-words-meta);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* ——— Mobile ≤600: snap-scroll (Figma peek of next card) ——— */
+@media (max-width: 600px) {
+  .usmle-words {
+    padding: 32px 0 40px;
+  }
+
+  .usmle-words__head {
+    gap: 12px;
+    max-width: min(253px, 88%);
+    margin-bottom: 22px;
+  }
+
+  .usmle-words__title-row {
+    gap: 5px;
+  }
+
+  .usmle-words__lead {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .usmle-words__badge {
+    padding: 0 3px;
+    font-size: 20px;
+    line-height: 0.88;
+    letter-spacing: 0.04em;
+  }
+
+  .usmle-words__intro {
+    max-width: 193px;
+    font-size: 14px;
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .usmle-words__track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    max-width: none;
+    margin-inline: 0;
+    padding: 4px max(16px, calc((100% - 231px) / 2));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: max(16px, calc((100% - 231px) / 2));
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .usmle-words__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .usmle-words__card {
+    flex: 0 0 231px;
+    width: 231px;
+    min-width: 231px;
+    max-width: 231px;
+    scroll-snap-align: center;
+  }
+
+  .usmle-words__photo-wrap {
+    /* Figma 18760:11805 — 231 × 179 */
+    aspect-ratio: 231 / 179;
+    height: auto;
+    border-width: 0.32px;
+    border-radius: 0;
+  }
+
+  .usmle-words__body {
+    /* Figma 18760:11807 — 231 × 251 */
+    aspect-ratio: 231 / 251;
+    min-height: 0;
+    height: auto;
+    padding: 15px 8px 16px;
+    border-width: 0.32px;
+    border-radius: 0 0 2.56px 2.56px;
+  }
+
+  .usmle-words__quote {
+    top: -5px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .usmle-words__quote-text--desktop {
+    display: none;
+  }
+
+  .usmle-words__quote-text--mobile {
+    display: block;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .usmle-words__name {
+    font-size: 12px;
+  }
+
+  .usmle-words__meta {
+    font-size: 12px;
+  }
+
+  .usmle-words__author {
+    gap: 3px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-words__track {
+    max-width: min(900px, 94%);
+    justify-content: center;
+  }
+
+  .usmle-words__card {
+    max-width: 280px;
+  }
+}

@@ -1,0 +1,34 @@
+.usmle-preview-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+}
+
+.usmle-preview-shell__banner {
+  margin: 0;
+  padding: 10px 16px;
+  background: #111;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.usmle-preview-shell__banner code {
+  font-size: 0.95em;
+}
+
+.usmle-preview-shell__deferred {
+  margin: 0;
+  padding: 20px 16px 40px;
+  color: #333;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: center;
+  border-top: 1px dashed #ccc;
+  background: #fafafa;
+}

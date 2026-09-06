@@ -1,0 +1,721 @@
+/**
+ * explore Rotations — page-scoped.
+ * Desktop >1366 Figma 18760:12484 · mobile ≤600 Figma 18760:11469.
+ * iPad mid-band deferred.
+ */
+
+.usmle-explore {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 40px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-explore *,
+.usmle-explore *::before,
+.usmle-explore *::after {
+  box-sizing: border-box;
+}
+
+.usmle-explore__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 28px;
+  width: 100%;
+  max-width: min(996px, 94%);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.usmle-explore__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.usmle-explore__title {
+  margin: 0;
+  width: 100%;
+  padding: 10px 16px;
+  background: #000;
+  color: #ffcc00;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3.2vw, 38px);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.usmle-explore__list-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 200px;
+  min-height: 56px;
+  padding: 10px 28px;
+  border-radius: 8px;
+  background: #0d6efd;
+  color: #fff;
+  text-decoration: none;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.usmle-explore__list-btn:hover,
+.usmle-explore__list-btn:focus-visible {
+  color: #fff;
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.usmle-explore__list-btn-lead {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.usmle-explore__list-btn-sub {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.usmle-explore__empty {
+  margin: 0;
+  padding: 48px 16px;
+  text-align: center;
+  color: #333;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.usmle-explore__cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.usmle-explore__item {
+  margin: 0;
+  min-width: 0;
+}
+
+.usmle-explore__card--desktop {
+  display: block;
+}
+
+.usmle-explore__card--mobile {
+  display: none;
+}
+
+/* ——— Shared card ——— */
+.usmle-card {
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.usmle-card__badge {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 11.2px;
+  font-weight: 600;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.usmle-card__badge img {
+  display: block;
+  width: 10px;
+  height: 13px;
+  object-fit: contain;
+}
+
+.usmle-card__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.usmle-card__tags li {
+  margin: 0;
+  padding: 8px;
+  border-radius: 16px;
+  background: #000;
+  color: #fff;
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+
+.usmle-card__heart {
+  color: #eb0801 !important;
+}
+
+.usmle-card__heart:not(.is-liked) {
+  color: #eb0801 !important;
+  opacity: 0.95;
+}
+
+.usmle-card__learn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.usmle-card__learn:hover,
+.usmle-card__learn:focus-visible {
+  color: #fff;
+  outline: 2px solid #ffc524;
+  outline-offset: 2px;
+}
+
+/* ——— Desktop (Figma 18760:12484) ——— */
+.usmle-card--desktop {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 18px;
+  padding: 10px;
+  border: 1.6px solid #b57cff;
+  background: #fff;
+  min-height: 300px;
+}
+
+.usmle-card--desktop .usmle-card__media,
+.usmle-card--desktop .usmle-card__info,
+.usmle-card--desktop .usmle-card__cta {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 281px;
+  overflow: hidden;
+}
+
+.usmle-card--desktop .usmle-card__media {
+  background: #d9d9d9;
+}
+
+.usmle-card--desktop .usmle-card__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.usmle-card--desktop .usmle-card__badge {
+  top: 19px;
+  left: 12px;
+}
+
+.usmle-card--desktop .usmle-card__image-tag-wrap {
+  position: absolute;
+  z-index: 2;
+  right: 12px;
+  bottom: 24px;
+  padding: 10px 19px;
+  background: #fff;
+  border: 0.8px solid #000;
+}
+
+.usmle-card--desktop .usmle-card__image-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 16px;
+  background: #009c70;
+  color: #fff;
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 19px;
+  white-space: nowrap;
+}
+
+.usmle-card--desktop .usmle-card__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 24px;
+  background: #f1f1f1;
+}
+
+.usmle-card--desktop .usmle-card__title {
+  display: inline;
+  margin: 0;
+  max-width: 100%;
+  padding: 0 3px;
+  background: #ffc524;
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  text-transform: uppercase;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.usmle-card--desktop .usmle-card__loc {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+  padding: 0 3px;
+  background: #ffc524;
+}
+
+.usmle-card--desktop .usmle-card__loc-label {
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.usmle-card--desktop .usmle-card__loc-value {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.4px;
+}
+
+.usmle-card--desktop .usmle-card__spec {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.usmle-card--desktop .usmle-card__spec-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.4px;
+}
+
+.usmle-card--desktop .usmle-card__spec-value {
+  display: inline-block;
+  padding: 8px;
+  background: #ffc524;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0.4px;
+}
+
+.usmle-card--desktop .usmle-card__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  padding-left: 18px;
+}
+
+.usmle-card--desktop .usmle-card__cta-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  background: #ffc524;
+}
+
+.usmle-card--desktop .usmle-card__heart {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 26px;
+  height: 26px;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.usmle-card--desktop .usmle-card__learn {
+  position: relative;
+  z-index: 1;
+  padding: 13px 16px;
+  border-radius: 3px;
+  font-size: 19px;
+  line-height: 19px;
+  letter-spacing: 0.4px;
+}
+
+/* ——— Mobile card component (Figma 18760:11469) — always, for CMS + page ——— */
+.usmle-card--mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 3px;
+  border: 0.5px solid #b57cff;
+  background: #fff;
+  width: 100%;
+}
+
+.usmle-card--mobile .usmle-card__media,
+.usmle-card--mobile .usmle-card__info,
+.usmle-card--mobile .usmle-card__actions {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.usmle-card--mobile .usmle-card__media {
+  background: #d9d9d9;
+}
+
+.usmle-card--mobile .usmle-card__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.usmle-card--mobile .usmle-card__badge {
+  top: 4px;
+  left: 5px;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 9.5px;
+  line-height: 1;
+}
+
+.usmle-card--mobile .usmle-card__badge img {
+  width: 6px;
+  height: 8px;
+}
+
+.usmle-card--mobile .usmle-card__logo {
+  position: absolute;
+  z-index: 2;
+  right: 6px;
+  bottom: 10px;
+  width: 58%;
+  max-width: 110px;
+  padding: 2px 8px;
+  background: #fff;
+  border: 0.5px solid #000;
+}
+
+.usmle-card--mobile .usmle-card__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.usmle-card--mobile .usmle-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 3px;
+  background: #f1f1f1;
+}
+
+.usmle-card--mobile .usmle-card__title {
+  display: inline;
+  margin: 0;
+  padding: 3px;
+  background: #ffc524;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-transform: uppercase;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.usmle-card--mobile .usmle-card__duration {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3px;
+  background: #ffc524;
+}
+
+.usmle-card--mobile .usmle-card__duration-label {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.usmle-card--mobile .usmle-card__duration-value {
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.usmle-card--mobile .usmle-card__perks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.usmle-card--mobile .usmle-card__perks-label {
+  display: inline-block;
+  padding: 3px;
+  background: #000;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.usmle-card--mobile .usmle-card__perks-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: 100%;
+  padding: 3px;
+  background: #ffc524;
+}
+
+.usmle-card--mobile .usmle-card__perks-title {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.usmle-card--mobile .usmle-card__perks-sub {
+  font-size: 10.5px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.usmle-card--mobile .usmle-card__tags {
+  gap: 4px;
+}
+
+.usmle-card--mobile .usmle-card__tags li {
+  padding: 3px;
+  border-radius: 4px;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.usmle-card--mobile .usmle-card__actions {
+  background: #f1f1f1;
+}
+
+.usmle-card--mobile .usmle-card__dates-rail {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 163px;
+  padding: 3px;
+  background: #ffc524;
+  transform: translateY(-50%);
+  font-size: 10px;
+  line-height: 6px;
+  letter-spacing: 0.05px;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  white-space: nowrap;
+}
+
+.usmle-card--mobile .usmle-card__heart {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  z-index: 3;
+  width: 15px;
+  height: 15px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.usmle-card--mobile .usmle-card__promo {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  max-width: 70px;
+}
+
+.usmle-card--mobile .usmle-card__promo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 8px 6px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  background: #c3ffa9;
+  text-align: center;
+}
+
+.usmle-card--mobile .usmle-card__promo-title {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.usmle-card--mobile .usmle-card__promo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  padding: 3px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.usmle-card--mobile .usmle-card__promo-date {
+  margin: 2px 0 0;
+  font-size: 9px;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: center;
+}
+
+.usmle-card--mobile .usmle-card__qr-col {
+  position: absolute;
+  right: 10px;
+  top: 28px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  width: 38%;
+  max-width: 66px;
+}
+
+.usmle-card--mobile .usmle-card__qr {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #fff;
+}
+
+.usmle-card--mobile .usmle-card__learn {
+  width: 100%;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.usmle-card--mobile .usmle-card__download {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: #0abf8c;
+  cursor: pointer;
+}
+
+.usmle-card--mobile .usmle-card__download img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.pgs-admin-visual__usmle-mobile-frame {
+  width: 176px;
+  max-width: 100%;
+}
+
+/* ——— Explore page band: show desktop vs mobile wrappers ——— */
+@media (max-width: 600px) {
+  .usmle-explore {
+    padding: 28px 0 40px;
+  }
+
+  .usmle-explore__inner {
+    max-width: min(370px, 94%);
+    gap: 20px;
+  }
+
+  .usmle-explore__title {
+    font-size: 24px;
+    padding: 8px 12px;
+  }
+
+  .usmle-explore__list-btn {
+    min-width: 176px;
+    min-height: 48px;
+    padding: 8px 20px;
+  }
+
+  .usmle-explore__list-btn-sub {
+    font-size: 16px;
+  }
+
+  .usmle-explore__card--desktop {
+    display: none;
+  }
+
+  .usmle-explore__card--mobile {
+    display: block;
+  }
+
+  .usmle-explore__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
+  }
+}
