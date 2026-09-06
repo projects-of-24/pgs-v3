@@ -1,0 +1,263 @@
+/**
+ * Section 1 — student feed identity card only.
+ * Desktop Figma: all-pages-v6 `18657:10454` (729×215, Yet to Unlock).
+ * Mobile Figma: cas-v6-mobile `207:2217` / `207:2128` (180×270 student id).
+ * Preview: `/preview/student-feed`. Live `/student/dashboard` untouched.
+ */
+
+.student-feed-identity {
+  --sfi-bg: #f1f1f1;
+  --sfi-green: #009c70;
+  --sfi-red: #eb0801;
+  --sfi-badge-bg: rgba(255, 197, 36, 0.1);
+  box-sizing: border-box;
+  color: #000;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.student-feed-identity *,
+.student-feed-identity *::before,
+.student-feed-identity *::after {
+  box-sizing: border-box;
+}
+
+/* —— Desktop: 18657:10454 —— */
+.student-feed-identity__desktop {
+  position: relative;
+  width: 729px;
+  height: 215px;
+  max-width: 100%;
+  border-radius: 16px;
+  background: var(--sfi-bg);
+}
+
+.student-feed-identity__desktop .student-feed-identity__avatar-frame {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  width: 68px;
+  height: 83px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.student-feed-identity__desktop .student-feed-identity__avatar {
+  position: absolute;
+  left: -31px;
+  top: -10px;
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.student-feed-identity__desktop .student-feed-identity__name {
+  position: absolute;
+  top: 32px;
+  left: 110px;
+  margin: 0;
+  padding: 4px 24px;
+  background: #000;
+  color: #fff;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.student-feed-identity__desktop .student-feed-identity__meta {
+  position: absolute;
+  top: 70px;
+  left: 110px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+.student-feed-identity__desktop .student-feed-identity__meta span {
+  display: block;
+}
+
+.student-feed-identity__desktop .student-feed-identity__titles {
+  position: absolute;
+  top: 121px;
+  left: 29px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.student-feed-identity__desktop .student-feed-identity__premium {
+  margin: 0;
+  color: var(--sfi-green);
+  font: 400 48px/1 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.student-feed-identity__desktop .student-feed-identity__pathway {
+  margin: 0;
+  color: var(--sfi-red);
+  font: 400 24px/28px "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.student-feed-identity__desktop .student-feed-identity__badge {
+  position: absolute;
+  top: 50%;
+  left: 496px;
+  transform: translateY(-50%);
+  width: 170px;
+  min-height: 126px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: var(--sfi-badge-bg);
+  color: #000;
+  font: 400 32px/1 "Bebas Neue", sans-serif;
+  text-align: left;
+}
+
+/* —— Mobile: 207:2217 / 207:2128 —— */
+.student-feed-identity__mobile {
+  display: none;
+  width: 180px;
+  height: 270px;
+  padding: 14px 13px;
+  border-radius: 8px;
+  background: var(--sfi-bg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.student-feed-identity__mobile-inner {
+  width: 151px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.student-feed-identity__mobile-top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.student-feed-identity__mobile-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.student-feed-identity__mobile .student-feed-identity__avatar-frame {
+  position: relative;
+  width: 34px;
+  height: 41.5px;
+  overflow: hidden;
+  border-radius: 4px;
+  flex: none;
+}
+
+.student-feed-identity__mobile .student-feed-identity__avatar {
+  position: absolute;
+  left: -15.5px;
+  top: -5px;
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+}
+
+.student-feed-identity__mobile-copy {
+  width: 108px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.student-feed-identity__mobile .student-feed-identity__name {
+  margin: 0;
+  padding: 2px 12px;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  line-height: 12px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+.student-feed-identity__mobile .student-feed-identity__meta {
+  margin: 0;
+  font-size: 12px;
+  line-height: normal;
+  font-weight: 500;
+  letter-spacing: 0.05px;
+}
+
+.student-feed-identity__mobile .student-feed-identity__meta span {
+  display: block;
+}
+
+.student-feed-identity__mobile .student-feed-identity__titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  align-self: flex-start;
+}
+
+.student-feed-identity__mobile .student-feed-identity__premium {
+  margin: 0;
+  color: var(--sfi-green);
+  font: 400 12px/1 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.student-feed-identity__mobile .student-feed-identity__pathway {
+  margin: 0;
+  color: var(--sfi-red);
+  font: 400 10px/7px "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.student-feed-identity__mobile .student-feed-identity__badge {
+  margin: 0;
+  padding: 7.5px;
+  border-radius: 8px;
+  background: var(--sfi-badge-bg);
+  color: #000;
+  font: 400 24px/1 "Bebas Neue", sans-serif;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .student-feed-identity__desktop {
+    display: none;
+  }
+
+  .student-feed-identity__mobile {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-identity * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
