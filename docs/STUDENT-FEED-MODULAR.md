@@ -39,13 +39,13 @@ Source: `src/features/student-feed/student-feed-preview-shell.tsx`
 
 ### Entitlement label (UI contract → CMS/backend later)
 
-| State | Green premium line |
-|---|---|
-| `anonymous` / `authenticated_standard` | `purplepremium not active yet` |
-| `authenticated_premium` (`premium_entitlement`) | `#purplePremium` |
+| State | Green `#purplePremium` title | Badge |
+|---|---|---|
+| `anonymous` / `authenticated_standard` | **Removed** (not shown) | `Yet to Unlock Full Access` (desktop + mobile) |
+| `authenticated_premium` | `#purplePremium` | `#purplePremium` |
 
-Helper: `src/features/student-feed/student-feed-premium-label.ts`  
-Preview QC: `/preview/student-feed` (locked) · `/preview/student-feed?premium=1` (active label) |
+Desktop and mobile stay in sync. Helper: `src/features/student-feed/student-feed-premium-label.ts`  
+Preview QC: `/preview/student-feed` (locked) · `/preview/student-feed?premium=1` |
 | 2 | Quick Dashboard | `student-feed-quick-dashboard` | Slot + lock | TBD next |
 | 3 | Top picks | `student-feed-top-picks` | Slot | TBD |
 | 4 | Notes + actions | `student-feed-notes-actions` | Slot | TBD |

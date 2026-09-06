@@ -264,7 +264,7 @@
   color: #000;
   font: 400 24px/1 "Bebas Neue", sans-serif;
   text-align: center;
-  text-transform: lowercase;
+  text-transform: none;
 }
 
 @media (max-width: 600px) {
