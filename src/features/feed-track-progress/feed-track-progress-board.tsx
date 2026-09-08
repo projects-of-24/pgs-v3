@@ -5,7 +5,7 @@
  * Visual only — does NOT import preview Loopboard / StudentKanbanBoard / live tasks.
  */
 import Image from "next/image";
-import { LOOPBOARD_ACCENT_HEX, type LoopboardAccent } from "@/features/loopboard/loopboard-accents";
+import { FTP_BOARD_ACCENT_HEX, type FtpBoardAccent } from "./ftp-board-accents";
 import { FEED_TRACK_PROGRESS_BOARD } from "./content";
 import { FeedTrackProgressPathway } from "./feed-track-progress-pathway";
 import "./feed-track-progress-board.css";
@@ -15,8 +15,8 @@ const LOCK_SRC = "/assets/img/figma-progress/meters-lock.svg";
 
 type BoardCard = (typeof FEED_TRACK_PROGRESS_BOARD.columns)[number]["cards"][number];
 
-function accentColor(accent: LoopboardAccent): string {
-  return LOOPBOARD_ACCENT_HEX[accent];
+function accentColor(accent: FtpBoardAccent): string {
+  return FTP_BOARD_ACCENT_HEX[accent];
 }
 
 function BoardCardView({ card }: { card: BoardCard }) {
