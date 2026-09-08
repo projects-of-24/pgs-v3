@@ -1,0 +1,238 @@
+/**
+ * Block 8 — Useful Tips carousel (W0 fixtures + CSS click slide).
+ * Countries pack half used here: CSS click only (no Motion scroll).
+ */
+
+.ftp-tips {
+  --ftp-tips-card: #f4f3f1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 24px 12px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #000;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-tips *,
+.ftp-tips *::before,
+.ftp-tips *::after {
+  box-sizing: border-box;
+}
+
+.ftp-tips__title {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.ftp-tips__carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.ftp-tips__arrow {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 15.36px;
+  height: 15.36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.ftp-tips__arrow:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+}
+
+.ftp-tips__arrow img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ftp-tips__arrow--prev {
+  transform: rotate(180deg);
+}
+
+.ftp-tips__stage {
+  flex: 0 1 auto;
+  width: min(308px, calc(100% - 48px));
+  overflow: hidden;
+}
+
+.ftp-tips__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8.32px;
+  width: 100%;
+  min-height: 169.6px;
+  margin: 0;
+  padding: 32px 24px;
+  border-radius: 20.48px;
+  background: var(--ftp-tips-card);
+}
+
+@keyframes ftp-tips-in-next {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ftp-tips-in-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ftp-tips__card--in-next {
+  animation: ftp-tips-in-next 0.25s ease-out;
+}
+
+.ftp-tips__card--in-prev {
+  animation: ftp-tips-in-prev 0.25s ease-out;
+}
+
+.ftp-tips__label {
+  margin: 0;
+  padding: 4px 6px;
+  border-radius: 3.2px;
+  background: #000;
+  color: #fff;
+  font: 500 12px / 1.2 Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ftp-tips__body {
+  margin: 0;
+  max-width: 212px;
+  color: #000;
+  font: 400 14px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.ftp-tips__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6.4px;
+  height: 6.4px;
+}
+
+.ftp-tips__dot {
+  width: 6.4px;
+  height: 6.4px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #d9d9d9;
+  cursor: pointer;
+}
+
+.ftp-tips__dot:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.ftp-tips__dot.is-active {
+  background: #000;
+}
+
+@media (min-width: 1367px) {
+  .ftp-tips {
+    width: 1024.8px;
+    max-width: calc(100% - 48px);
+    margin-inline: auto;
+    padding: 40px 0 48px;
+    gap: 25.6px;
+  }
+
+  .ftp-tips__title {
+    font-size: 38.4px;
+  }
+
+  .ftp-tips__carousel {
+    gap: 136.8px;
+  }
+
+  .ftp-tips__arrow {
+    width: 19.2px;
+    height: 19.2px;
+  }
+
+  .ftp-tips__stage {
+    width: 712.8px;
+  }
+
+  .ftp-tips__card {
+    min-height: 212px;
+    gap: 10.4px;
+    padding: 40px 80.8px;
+    border-radius: 25.6px;
+  }
+
+  .ftp-tips__label {
+    padding: 0 7.2px;
+    min-height: 22px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 14.08px;
+    line-height: 17.92px;
+  }
+
+  .ftp-tips__body {
+    max-width: 550.4px;
+    font-size: 19.2px;
+  }
+
+  .ftp-tips__dots {
+    gap: 8px;
+    height: 8px;
+  }
+
+  .ftp-tips__dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ftp-tips * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

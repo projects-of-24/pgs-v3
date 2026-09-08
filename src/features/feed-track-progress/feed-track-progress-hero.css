@@ -1,0 +1,237 @@
+/**
+ * Block 1 — title + Important Alerts + intro.
+ * Default = mobile stack (≤600 + deferred iPad). Desktop >1366 = Figma side cluster.
+ */
+
+.ftp-hero {
+  --ftp-forlocked: rgba(232, 234, 234, 0.7);
+  --ftp-yellow: #ffc524;
+  --ftp-rule: rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 28px 20px 32px;
+  color: #000;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-hero *,
+.ftp-hero *::before,
+.ftp-hero *::after {
+  box-sizing: border-box;
+}
+
+.ftp-hero__cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+.ftp-hero__title {
+  margin: 0;
+  width: 100px;
+  color: #000;
+  font: 400 32px / 1 "Bebas Neue", sans-serif;
+  text-transform: lowercase;
+  text-align: left;
+}
+
+.ftp-hero__alerts-wrap {
+  position: relative;
+  width: 245.76px;
+  max-width: 100%;
+}
+
+.ftp-hero__alerts {
+  width: 100%;
+  min-height: 177.92px;
+  padding: 19.2px;
+  background: var(--ftp-yellow);
+}
+
+.ftp-hero__alerts-head {
+  display: flex;
+  align-items: center;
+  gap: 2.56px;
+  margin-bottom: 6.4px;
+}
+
+.ftp-hero__sticker {
+  display: block;
+  width: 30.72px;
+  height: 30.72px;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.ftp-hero__sticker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ftp-hero__alerts-title {
+  margin: 0;
+  color: #000;
+  font: 600 14px / 17.92px Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ftp-hero__alerts-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ftp-hero__alerts-item {
+  display: flex;
+  align-items: center;
+  gap: 7.68px;
+  margin: 0;
+  padding: 5.12px 0;
+  border-bottom: 0.64px solid var(--ftp-rule);
+}
+
+.ftp-hero__alerts-item:first-child {
+  border-top: 0.64px solid var(--ftp-rule);
+}
+
+.ftp-hero__alerts-num {
+  flex-shrink: 0;
+  color: #000;
+  font: 500 15.36px / 20.48px Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-hero__alerts-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: #000;
+  font: 500 14px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.32px;
+}
+
+.ftp-hero__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: var(--ftp-forlocked);
+  pointer-events: none;
+}
+
+.ftp-hero__forlocked img {
+  display: block;
+  width: 54px;
+  height: 54px;
+}
+
+.ftp-hero__intro {
+  margin: 32px auto 0;
+  width: 226px;
+  max-width: 100%;
+  color: #000;
+  font: 400 14px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.4px;
+}
+
+@media (min-width: 1367px) {
+  .ftp-hero {
+    padding: 40px 24px 48px;
+  }
+
+  .ftp-hero__cluster {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 222px;
+    gap: 0;
+  }
+
+  .ftp-hero__cluster {
+    width: 100%;
+  }
+
+  .ftp-hero__title {
+    flex-shrink: 0;
+    width: 172px;
+    font-size: 51.2px;
+    line-height: 1;
+  }
+
+  .ftp-hero__alerts-wrap {
+    position: absolute;
+    left: calc(50% + 129px);
+    top: 50%;
+    transform: translateY(-50%);
+    flex-shrink: 0;
+    width: 307.2px;
+  }
+
+  .ftp-hero__alerts {
+    min-height: 222.4px;
+    padding: 24px;
+  }
+
+  .ftp-hero__alerts-head {
+    gap: 3.2px;
+    margin-bottom: 8px;
+  }
+
+  .ftp-hero__sticker {
+    width: 38.4px;
+    height: 38.4px;
+  }
+
+  .ftp-hero__alerts-title {
+    font-size: 17.6px;
+    line-height: 22.4px;
+  }
+
+  .ftp-hero__alerts-item {
+    gap: 9.6px;
+    padding: 6.4px 0;
+    border-bottom-width: 0.8px;
+  }
+
+  .ftp-hero__alerts-item:first-child {
+    border-top-width: 0.8px;
+  }
+
+  .ftp-hero__alerts-num {
+    font-size: 19.2px;
+    line-height: 25.6px;
+  }
+
+  .ftp-hero__alerts-text {
+    font-size: 14px;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+  }
+
+  /* Desktop locked `17041:14026` — frost + lock on alerts (`17041:16262`). */
+  .ftp-hero__forlocked img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .ftp-hero__intro {
+    margin-top: 54px;
+    width: 746.4px;
+    font-size: 16px;
+    line-height: 19.2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ftp-hero * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

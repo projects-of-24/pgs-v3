@@ -1,0 +1,251 @@
+/**
+ * Block 3 — #reviewQueue.
+ * Same band pattern as #draftMeter: mobile stack · desktop row in grey card.
+ */
+
+.ftp-review {
+  --ftp-card: #f1f1f1;
+  --ftp-ink: #1f1f1f;
+  --ftp-switch-on: #76ee59;
+  --ftp-switch-off: #efefef;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 20px 16px;
+  color: var(--ftp-ink);
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-review *,
+.ftp-review *::before,
+.ftp-review *::after {
+  box-sizing: border-box;
+}
+
+.ftp-review__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.ftp-review__card {
+  width: 161.8px;
+  max-width: 100%;
+  padding: 12px 4px;
+  border-radius: 12px;
+  background: var(--ftp-card);
+}
+
+.ftp-review__title {
+  margin: 0 0 16px;
+  color: var(--ftp-ink);
+  font: 700 16px / 15.36px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.32px;
+  text-align: center;
+}
+
+.ftp-review__list {
+  margin: 0;
+  padding: 0 6.4px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ftp-review__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+}
+
+/* Mobile Figma: switch → label → bar (bar under copy). */
+.ftp-review__switch {
+  order: 1;
+}
+
+.ftp-review__label {
+  order: 2;
+}
+
+.ftp-review__bar {
+  order: 3;
+}
+
+.ftp-review__switch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 24px;
+  border-radius: 50px;
+  flex-shrink: 0;
+}
+
+.ftp-review__switch.is-on {
+  background: var(--ftp-switch-on);
+  justify-items: start;
+  padding-inline: 4px;
+}
+
+.ftp-review__switch.is-off {
+  background: var(--ftp-switch-off);
+  box-shadow: inset 0 4.8px 6.4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ftp-review__switch-tick {
+  display: block;
+  width: 19.2px;
+  height: 19.2px;
+}
+
+.ftp-review__switch-knob {
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%);
+}
+
+.ftp-review__bar {
+  display: block;
+  width: 19.2px;
+  height: 2.56px;
+  border-radius: 12.8px;
+  background: var(--ftp-ink);
+}
+
+.ftp-review__label {
+  color: var(--ftp-ink);
+  font: 500 14px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
+
+.ftp-review__count {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6.4px;
+  margin: 0;
+  color: #000;
+}
+
+.ftp-review__plus,
+.ftp-review__n {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.ftp-review__plus {
+  font-size: 61.44px;
+}
+
+.ftp-review__n {
+  font-size: 81.92px;
+}
+
+.ftp-review__done {
+  font: 600 14px / 17.92px Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (min-width: 1367px) {
+  .ftp-review {
+    padding: 12px 0 12.8px;
+  }
+
+  .ftp-review__row {
+    width: 100%;
+    gap: 133.6px;
+    padding: 15.2px 44px;
+    border-radius: 16px;
+    background: var(--ftp-card);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ftp-review__card {
+    width: auto;
+    flex: 1 1 auto;
+    padding: 0;
+    background: transparent;
+  }
+
+  .ftp-review__title {
+    margin: 0 0 8px 8px;
+    font: 400 16px / 19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.4px;
+    text-align: left;
+  }
+
+  .ftp-review__list {
+    padding: 8px;
+    gap: 12.8px;
+  }
+
+  .ftp-review__item {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25.6px;
+  }
+
+  /* Desktop Figma: switch → bar → label. */
+  .ftp-review__switch {
+    order: 1;
+  }
+
+  .ftp-review__bar {
+    order: 2;
+    width: 3.2px;
+    height: 24px;
+    border-radius: 16px;
+  }
+
+  .ftp-review__label {
+    order: 3;
+  }
+
+  .ftp-review__label {
+    font-size: 19.2px;
+    line-height: 25.6px;
+    text-align: left;
+  }
+
+  .ftp-review__count {
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  .ftp-review__plus {
+    font-size: 76.8px;
+  }
+
+  .ftp-review__n {
+    font-size: 102.4px;
+  }
+
+  .ftp-review__done {
+    font-size: 17.6px;
+    line-height: 22.4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ftp-review * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
