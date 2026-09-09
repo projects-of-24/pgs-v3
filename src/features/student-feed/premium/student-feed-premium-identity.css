@@ -1,0 +1,21 @@
+/**
+ * Family B Pass 1 — Premium identity badge hug (Figma `#PURPLEPREMIUM`).
+ * Family A Yet-to-Unlock badge keeps fixed 170×126 two-line box.
+ */
+
+.student-feed-identity.is-premium .student-feed-identity__desktop .student-feed-identity__badge {
+  width: max-content;
+  max-width: min(240px, 40%);
+  min-height: 0;
+  padding: 16px 18px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1;
+}
+
+.student-feed-identity.is-premium .student-feed-identity__mobile .student-feed-identity__badge {
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
+  margin-inline: auto;
+}

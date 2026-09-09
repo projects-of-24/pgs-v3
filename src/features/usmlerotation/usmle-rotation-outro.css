@@ -1,0 +1,135 @@
+/**
+ * Outro CTA — page-scoped.
+ * Desktop >1366 (Figma 18760:12971) · mobile ≤600 (18760:11855).
+ * iPad mid-band deferred.
+ *
+ * Note: mobile Figma node width (~86px) is an auto-layout crop artifact;
+ * copy/type/colors match Figma; width uses readable centered measure.
+ */
+
+.usmle-outro {
+  --usmle-outro-purple: #6a5ed9;
+  --usmle-outro-title: #27272a;
+  --usmle-outro-muted: #52525b;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 24px 72px;
+  background: #fff;
+  text-align: center;
+}
+
+.usmle-outro *,
+.usmle-outro *::before,
+.usmle-outro *::after {
+  box-sizing: border-box;
+}
+
+.usmle-outro__eyebrow {
+  margin: 0;
+  color: var(--usmle-outro-purple);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 11.2px;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.usmle-outro__title {
+  margin: 0;
+  max-width: 470px;
+  color: var(--usmle-outro-title);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.3;
+}
+
+.usmle-outro__body {
+  margin: 0;
+  max-width: 510px;
+  color: var(--usmle-outro-muted);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.usmle-outro__body strong {
+  font-weight: 700;
+  color: var(--usmle-outro-muted);
+}
+
+.usmle-outro__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 223px;
+  min-height: 60px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--usmle-outro-purple);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.usmle-outro__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .usmle-outro {
+    gap: 12px;
+    padding: 32px 20px 56px;
+  }
+
+  .usmle-outro__eyebrow {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .usmle-outro__title {
+    max-width: 280px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .usmle-outro__body {
+    max-width: 280px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .usmle-outro__cta {
+    min-width: 0;
+    width: auto;
+    min-height: 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-outro {
+    padding: 40px 24px 64px;
+  }
+
+  .usmle-outro__title {
+    font-size: 28px;
+  }
+}

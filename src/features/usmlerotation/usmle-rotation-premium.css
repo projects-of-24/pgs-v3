@@ -1,0 +1,431 @@
+/**
+ * Elevate / #PurplePremium — page-scoped.
+ * Desktop >1366 (Figma 18760:12771) · mobile ≤600 (18760:11600+).
+ * iPad mid-band deferred.
+ */
+
+.usmle-premium {
+  --usmle-prem-purple: #b57cff;
+  --usmle-prem-gold: #ffc524;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-premium *,
+.usmle-premium *::before,
+.usmle-premium *::after {
+  box-sizing: border-box;
+}
+
+.usmle-premium__inner {
+  width: 100%;
+  max-width: min(1402px, 94%);
+  margin-inline: auto;
+  padding: 56px 48px 48px;
+  border-radius: 16px;
+  background: #000;
+  color: #fff;
+  min-width: 0;
+}
+
+.usmle-premium__head {
+  margin-bottom: 28px;
+}
+
+.usmle-premium__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.usmle-premium__eyebrow {
+  margin: 0;
+  color: var(--usmle-prem-purple);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 2.8vw, 38.4px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.usmle-premium__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px 14px;
+}
+
+.usmle-premium__title {
+  margin: 0;
+  color: var(--usmle-prem-purple);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(42px, 5.5vw, 76.8px);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.usmle-premium__optional {
+  margin: 10px 0 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.3;
+  max-width: 7.5rem;
+}
+
+.usmle-premium__grid {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.7fr) minmax(280px, 1.2fr) minmax(280px, 1fr);
+  grid-template-areas:
+    "slogan intro callout"
+    "slogan checks journey"
+    ". online journey";
+  gap: 24px 28px;
+  align-items: start;
+  min-width: 0;
+}
+
+.usmle-premium__slogan {
+  margin: 0;
+  color: var(--usmle-prem-gold);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 2.6vw, 38.4px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.usmle-premium__slogan--desktop {
+  grid-area: slogan;
+  max-width: 230px;
+}
+
+.usmle-premium__slogan--mobile {
+  display: none;
+}
+
+.usmle-premium__intro-block {
+  grid-area: intro;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.usmle-premium__liberty-wrap {
+  flex: 0 0 110px;
+  width: 110px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #bbc8ff;
+}
+
+.usmle-premium__liberty {
+  display: block;
+  width: 190%;
+  max-width: none;
+  height: 118%;
+  margin-left: -54%;
+  margin-top: -9%;
+  object-fit: cover;
+}
+
+.usmle-premium__intro-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.usmle-premium__intro-heading {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+}
+
+.usmle-premium__intro-body {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+}
+
+.usmle-premium__callout {
+  grid-area: callout;
+  position: relative;
+  width: 100%;
+  max-width: 351px;
+  min-height: 99px;
+  justify-self: end;
+}
+
+.usmle-premium__callout-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.usmle-premium__callout-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.usmle-premium__callout-text {
+  margin: 0;
+  max-width: 260px;
+  color: var(--usmle-prem-gold);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12.8px;
+  line-height: 16px;
+  letter-spacing: 0.08px;
+}
+
+.usmle-premium__callout-cursor {
+  width: 19px;
+  height: 19px;
+}
+
+.usmle-premium__checks {
+  grid-area: checks;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 460px;
+}
+
+.usmle-premium__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+}
+
+.usmle-premium__check-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+}
+
+.usmle-premium__online {
+  grid-area: online;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 320px;
+}
+
+.usmle-premium__heart {
+  flex-shrink: 0;
+  width: 33px;
+  height: 37px;
+  margin-top: 4px;
+}
+
+.usmle-premium__online-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.usmle-premium__online-lead {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 1.8vw, 25.6px);
+  line-height: 1.05;
+}
+
+.usmle-premium__online-support {
+  margin: 0;
+  color: #fff;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2vw, 28.8px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.usmle-premium__journey {
+  grid-area: journey;
+  margin: 0;
+  width: 100%;
+  max-width: 408px;
+  justify-self: end;
+}
+
+.usmle-premium__journey-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* ——— Mobile ≤600 ——— */
+@media (max-width: 600px) {
+  .usmle-premium {
+    padding: 24px 0 40px;
+  }
+
+  .usmle-premium__inner {
+    max-width: min(390px, 100%);
+    padding: 36px 20px 32px;
+    border-radius: 12px;
+  }
+
+  .usmle-premium__head {
+    margin-bottom: 20px;
+  }
+
+  .usmle-premium__titles {
+    max-width: none;
+    align-items: flex-start;
+  }
+
+  .usmle-premium__title-row {
+    align-items: flex-end;
+  }
+
+  .usmle-premium__eyebrow {
+    font-size: 22px;
+  }
+
+  .usmle-premium__title {
+    font-size: 36px;
+  }
+
+  .usmle-premium__optional {
+    margin: 0 0 4px;
+    font-size: 12px;
+    max-width: 6.5rem;
+  }
+
+  .usmle-premium__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .usmle-premium__slogan--desktop {
+    display: none;
+  }
+
+  .usmle-premium__slogan--mobile {
+    display: block;
+    order: 2;
+    max-width: 220px;
+    font-size: 28px;
+  }
+
+  .usmle-premium__intro-block {
+    order: 1;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .usmle-premium__liberty-wrap {
+    flex-basis: 88px;
+    width: 88px;
+    height: 80px;
+  }
+
+  .usmle-premium__intro-heading {
+    font-size: 14px;
+  }
+
+  .usmle-premium__intro-body {
+    font-size: 13px;
+  }
+
+  .usmle-premium__callout {
+    order: 4;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .usmle-premium__checks {
+    order: 3;
+    max-width: none;
+  }
+
+  .usmle-premium__online {
+    order: 5;
+    max-width: none;
+  }
+
+  .usmle-premium__online-lead {
+    font-size: 18px;
+  }
+
+  .usmle-premium__online-support {
+    font-size: 22px;
+  }
+
+  .usmle-premium__journey {
+    order: 6;
+    max-width: none;
+    justify-self: stretch;
+  }
+}
+
+/* iPad: keep readable stack/grid hybrid without inventing new art */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-premium__inner {
+    padding: 40px 28px;
+  }
+
+  .usmle-premium__grid {
+    grid-template-columns: 1fr 1.2fr;
+    grid-template-areas:
+      "intro callout"
+      "slogan checks"
+      "online journey";
+    gap: 20px;
+  }
+
+  .usmle-premium__slogan--desktop {
+    max-width: none;
+  }
+
+  .usmle-premium__callout,
+  .usmle-premium__journey {
+    justify-self: stretch;
+    max-width: none;
+  }
+}

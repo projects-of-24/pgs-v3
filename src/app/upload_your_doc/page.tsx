@@ -1,40 +1,177 @@
+/**
+ * Live Upload Your Docs — `/upload_your_doc`.
+ * Doorman: `resolveStudentExperience()` (sign-in + premium entitlement).
+ *
+ * Hostinger-free cutover:
+ * - anonymous + authenticated_standard → Family A (UploadYourDocsPreviewShell)
+ * - authenticated_premium → Family B (UploadYourDocsPremiumShell + W1–W3)
+ * No shared page + toggle · no ?premium= · do not mix CMS shapes later.
+ */
 import type { Metadata } from "next";
-import Image from "next/image";
-import { DeveloperStudentShell } from "@/components/developer-student-shell";
-import { DocumentWorkspace } from "@/components/document-workspace";
+import { LegacyPage } from "@/components/legacy-page";
 import { NoStudentContextPage } from "@/components/no-student-context-page";
-import { RecoveredStudentLegacyPage } from "@/components/recovered-student-legacy-page";
-import { documentsLockedHtml } from "@/legacy/generated/documents-locked";
-import { displayName, getOwnAvatarUrl } from "@/lib/student-data";
+import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
+import { mapRequiredRequirementsToRowsWithViewHrefs } from "@/features/upload-your-docs/attach-view-hrefs";
+import { UploadYourDocsPremiumShell } from "@/features/upload-your-docs/upload-your-docs-premium-shell";
+import { UploadYourDocsPreviewShell } from "@/features/upload-your-docs/upload-your-docs-preview-shell";
+import "@/features/shell/legacy-header-breakpoints.css";
+import { applyAuthenticatedShell } from "@/lib/account-shell";
+import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
 import { loadPremiumWorkspace, requirePremiumActor } from "@/lib/premium-workspace";
-import { resolveStudentExperience } from "@/lib/student-experience";
+import {
+  resolveStudentExperience,
+  studentExperienceAvatarUrl,
+  studentSubjectId,
+  type AuthenticatedStudentExperience
+} from "@/lib/student-experience";
+import {
+  applySharedHelloAspirant,
+  HELLO_ASPIRANT_DEFAULT_AVATAR
+} from "@/legacy/pages/hello-aspirant";
+import { countriesUkStripHtml } from "@/legacy/pages/countriesuk";
+import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
+import { getPublicHeaderHtml } from "@/legacy/pages/public-header";
+import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 
-export const metadata:Metadata={title:"Upload Your Documents"};
-export const dynamic="force-dynamic";
+export const metadata: Metadata = { title: "Upload Your Documents" };
+export const dynamic = "force-dynamic";
 
-export default async function DocumentsPage(){
-  const state=await resolveStudentExperience();
-  if(!state)return <NoStudentContextPage/>;
-  if(state.kind==="anonymous")return <RecoveredStudentLegacyPage html={documentsLockedHtml} page="documents-locked" state={state}/>;
-  const {user,profile}=state;const avatarUrl=await getOwnAvatarUrl(profile.avatar_path);
-  if(state.kind!=="authenticated_premium")return <RecoveredStudentLegacyPage html={documentsLockedHtml} page="documents-locked" state={state} avatarUrl={avatarUrl}/>;
-  await requirePremiumActor();const workspace=await loadPremiumWorkspace(user.id);
-  return <DeveloperStudentShell name={displayName(profile,user)} email={user.email??""} avatarUrl={avatarUrl} stateKind={state.kind} unreadCount={state.unreadCount} notifications={state.notifications} active="documents" preview={state.preview} contentClassName="developer-documents-page">
-    <section className="pt-5 about-section half-section overlap-height position-relative overflow-hidden mobile-doc-section">
-      <div className="container overlap-gap-section p-0">
-        <div className="row justify-content-md-center align-items-center">
-          <div className="col-lg-7 d-flex gap-10 align-items-center">
-            <div className="w-300px"><h1 className="text-start text-black fnt-family fw-400 fs-50 lh-full pt-0">upload<br/>your<br/>docs</h1></div>
-            <div className="yellow-box-style-3 w-300px" id="important-alerts">
-              <div className="header-yellow-box-style-3"><Image src="/assets/img/bell.gif" alt="" width={35} height={35} unoptimized/> Important Alerts</div>
-              <ol>{workspace.alerts.length?workspace.alerts.map((alert)=><li key={alert.id}>{alert.alert_text}</li>):<li>No alerts right now.</li>}</ol>
-            </div>
-          </div>
-        </div>
-        <div className="row justify-content-md-center mt-3"><div className="col-lg-6"><p className="mb-0 text-black fs-19 lh-25"><span className="fs-22 d-block mb-1 fw-500">Make sure your file is under 50MB.</span>We accept PDF, JPG, PNG, and MS Word formats. Hit upload when you&apos;re ready.</p></div></div>
-        <section id="documents"><DocumentWorkspace requirements={workspace.requirements} readOnly={Boolean(state.preview)} /></section>
-        <div className="developer-team-goal"><Image src="/assets/img/team-goal.png" alt="" width={980} height={420} unoptimized/></div>
-      </div>
-    </section>
-  </DeveloperStudentShell>;
+async function AnonymousFamilyA() {
+  const studentState = "anonymous" as const;
+
+  let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
+  topHtml = applySharedPublicSidebar(topHtml, studentState, { name: "User" });
+  topHtml = applySharedHelloAspirant(topHtml, studentState, {
+    name: "Aspirant",
+    avatarUrl: HELLO_ASPIRANT_DEFAULT_AVATAR
+  });
+
+  let footerHtml = getPublicFooterHtml();
+  topHtml = applyPremiumBusinessRule(topHtml);
+  footerHtml = applyPremiumBusinessRule(footerHtml);
+
+  return (
+    <LegacyPage page="documents" studentState={studentState}>
+      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
+      <UploadYourDocsPreviewShell />
+      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+    </LegacyPage>
+  );
+}
+
+async function StandardFamilyA({
+  state
+}: {
+  state: AuthenticatedStudentExperience;
+}) {
+  const studentState = "authenticated_standard" as const;
+  const helloAvatar = await studentExperienceAvatarUrl(state);
+
+  let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
+  topHtml = applySharedPublicSidebar(topHtml, studentState, {
+    name: state.name
+  });
+  topHtml = applySharedHelloAspirant(topHtml, studentState, {
+    name: state.name,
+    avatarUrl: helloAvatar
+  });
+
+  const shellFields = {
+    name: state.name,
+    unreadCount: state.unreadCount,
+    premium: false,
+    notifications: state.notifications,
+    notificationReadOnly: Boolean(state.preview)
+  };
+  topHtml = applyAuthenticatedShell(topHtml, shellFields);
+  topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
+
+  let footerHtml = getPublicFooterHtml();
+  footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
+
+  topHtml = applyPremiumBusinessRule(topHtml);
+  footerHtml = applyPremiumBusinessRule(footerHtml);
+
+  return (
+    <LegacyPage page="documents" studentState={studentState}>
+      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
+      <UploadYourDocsPreviewShell />
+      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+    </LegacyPage>
+  );
+}
+
+async function PremiumFamilyB({
+  state
+}: {
+  state: AuthenticatedStudentExperience;
+}) {
+  await requirePremiumActor();
+
+  const studentState = "authenticated_premium" as const;
+  const helloAvatar = await studentExperienceAvatarUrl(state);
+  const studentId = studentSubjectId(state);
+
+  let alertItems: string[] = [];
+  let liveRows: Awaited<ReturnType<typeof mapRequiredRequirementsToRowsWithViewHrefs>> = [];
+  try {
+    const workspace = await loadPremiumWorkspace(studentId);
+    alertItems = workspace.alerts.map((alert) => alert.alert_text);
+    liveRows = await mapRequiredRequirementsToRowsWithViewHrefs(workspace.requirements);
+  } catch {
+    alertItems = [];
+    liveRows = [];
+  }
+
+  let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
+  topHtml = applySharedPublicSidebar(topHtml, studentState, {
+    name: state.name
+  });
+  topHtml = applySharedHelloAspirant(topHtml, studentState, {
+    name: state.name,
+    avatarUrl: helloAvatar
+  });
+
+  const shellFields = {
+    name: state.name,
+    unreadCount: state.unreadCount,
+    premium: true,
+    notifications: state.notifications,
+    notificationReadOnly: Boolean(state.preview)
+  };
+  topHtml = applyAuthenticatedShell(topHtml, shellFields);
+  topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
+
+  let footerHtml = getPublicFooterHtml();
+  footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
+
+  topHtml = applyPremiumBusinessRule(topHtml);
+  footerHtml = applyPremiumBusinessRule(footerHtml);
+
+  return (
+    <LegacyPage page="documents" studentState={studentState}>
+      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
+      <UploadYourDocsPremiumShell
+        alertItems={alertItems}
+        liveRows={liveRows}
+        readOnly={Boolean(state.preview)}
+      />
+      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+    </LegacyPage>
+  );
+}
+
+export default async function DocumentsPage() {
+  const state = await resolveStudentExperience();
+  if (!state) return <NoStudentContextPage />;
+
+  if (state.kind === "anonymous") {
+    return <AnonymousFamilyA />;
+  }
+
+  if (state.kind === "authenticated_standard") {
+    return <StandardFamilyA state={state} />;
+  }
+
+  return <PremiumFamilyB state={state} />;
 }

@@ -1,0 +1,339 @@
+/**
+ * What is + IMG Benefits — page-scoped.
+ * Desktop >1366: overlapping card + float CTA.
+ * Mobile ≤600: green strip above → collage → card (stack). Image = UI placeholder.
+ * iPad mid-band: deferred (clean pass later).
+ */
+
+.usmle-what {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 24px 0 64px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-what *,
+.usmle-what *::before,
+.usmle-what *::after {
+  box-sizing: border-box;
+}
+
+.usmle-what__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: min(672px, 92%);
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.usmle-what__title {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.35;
+}
+
+.usmle-what__body {
+  margin: 0;
+  color: #3c4043;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.usmle-what__visual {
+  width: 100%;
+  max-width: min(980px, 94%);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.usmle-what__collage-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 847px;
+  margin-inline: auto;
+  min-height: 420px;
+}
+
+.usmle-what__photo {
+  display: block;
+  width: min(694px, 100%);
+  margin-inline: auto;
+}
+
+.usmle-what__collage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.usmle-what__card {
+  position: absolute;
+  z-index: 2;
+  top: 8%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: min(360px, 48%);
+  padding: 23px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.usmle-what__card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.usmle-what__card-cert {
+  width: 32px;
+  height: 31px;
+  flex-shrink: 0;
+}
+
+.usmle-what__card-title {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.usmle-what__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.usmle-what__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.usmle-what__benefit-check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.usmle-what__cta {
+  margin: 0;
+  background: #0abf8c;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.usmle-what__cta-line {
+  display: block;
+}
+
+.usmle-what__cta-em {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Desktop / default: float CTA on collage; mobile strip hidden */
+.usmle-what__cta--mobile {
+  display: none;
+}
+
+.usmle-what__cta--desktop {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 212px;
+  min-height: 200px;
+  padding: 20px 24px 16px;
+}
+
+@media (min-width: 1367px) {
+  .usmle-what {
+    padding: 32px 0 80px;
+  }
+
+  .usmle-what__collage-wrap {
+    min-height: 455px;
+  }
+}
+
+/* iPad deferred — keep desktop-ish overlap for now */
+@media (max-width: 1366px) and (min-width: 601px) {
+  .usmle-what__card {
+    width: min(320px, 46%);
+    padding: 18px 16px;
+    gap: 16px;
+  }
+
+  .usmle-what__card-title {
+    font-size: 20px;
+  }
+
+  .usmle-what__cta--desktop {
+    width: 180px;
+    font-size: 20px;
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .usmle-what {
+    padding: 16px 0 40px;
+  }
+
+  .usmle-what__intro {
+    max-width: 100%;
+    padding-inline: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .usmle-what__title {
+    font-size: 20px;
+  }
+
+  /* Green strip above (Figma 18760:11447) — outside 11409 */
+  .usmle-what__cta--mobile {
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 317px;
+    margin: 0 auto 24px;
+    padding: 16px 8px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .usmle-what__cta--desktop {
+    display: none;
+  }
+
+  .usmle-what__visual {
+    max-width: 100%;
+    padding-inline: 0;
+  }
+
+  /*
+   * Exact Figma mobile 18760:11409 — 330 wide
+   * Photo 234×360 (right) · card 219 @ top 62 (left overlap)
+   * Grid keeps both in one cell so height follows the taller card.
+   */
+  .usmle-what__collage-wrap {
+    position: relative;
+    display: grid;
+    grid-template-columns: 330px;
+    justify-content: center;
+    width: 330px;
+    max-width: calc(100% - 20px);
+    height: auto;
+    min-height: 0;
+    margin-inline: auto;
+  }
+
+  .usmle-what__photo {
+    grid-area: 1 / 1;
+    position: relative;
+    top: auto;
+    left: auto;
+    justify-self: end;
+    align-self: start;
+    width: 234px;
+    height: 360px;
+    margin: 0;
+    transform: none;
+    overflow: hidden;
+    background: #3ba1fd;
+  }
+
+  .usmle-what__collage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% center; /* placeholder until CMS art */
+  }
+
+  .usmle-what__card {
+    grid-area: 1 / 1;
+    position: relative;
+    top: auto;
+    left: auto;
+    justify-self: start;
+    align-self: start;
+    z-index: 2;
+    width: 219px;
+    max-width: none;
+    margin-top: 62px;
+    /* Figma: card center at 50%-55.5 → left inset ≈ (330-219)/2 - 55.5 ≈ 0 */
+    margin-left: 0;
+    transform: none;
+    padding: 32px 16px;
+    gap: 16px;
+    border-radius: 12px;
+  }
+
+  .usmle-what__card-head {
+    gap: 9.6px;
+  }
+
+  .usmle-what__card-cert {
+    width: 23px;
+    height: 22px;
+  }
+
+  .usmle-what__card-title {
+    font-size: 16px;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+  }
+
+  .usmle-what__benefits {
+    width: 187px;
+    gap: 16px;
+  }
+
+  .usmle-what__benefit {
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  .usmle-what__benefit-check {
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+  }
+}

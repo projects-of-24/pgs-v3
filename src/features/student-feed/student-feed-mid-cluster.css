@@ -1,0 +1,126 @@
+/**
+ * Mid-cluster arrangement — owner screenshots + Figma (equal authority).
+ *
+ * Desktop (>1366):
+ *   [ Quick Dashboard          ]
+ *   [ Notes | aspirant+actions ]
+ *
+ * Mobile (≤600):
+ *   [ aspirant ]
+ *   [ actions ]
+ *   [ Quick Dashboard ]
+ *   [ Notes ]
+ *
+ * Side wrapper uses `display: contents` on mobile so aspirant/actions
+ * participate in flex order; desktop restores a real side column.
+ */
+
+.student-feed-mid-cluster {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(8px, 1.5vw, 20px) clamp(12px, 2vw, 24px) clamp(16px, 2vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.student-feed-mid-cluster *,
+.student-feed-mid-cluster *::before,
+.student-feed-mid-cluster *::after {
+  box-sizing: border-box;
+}
+
+/* Mobile: side dissolves — children join cluster flex + order */
+.student-feed-mid-cluster__side {
+  display: contents;
+}
+
+.student-feed-mid-cluster__aspirant {
+  order: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.student-feed-mid-cluster__actions {
+  order: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.student-feed-mid-cluster__dashboard {
+  order: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.student-feed-mid-cluster__notes {
+  order: 4;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1367px) {
+  .student-feed-mid-cluster {
+    max-width: 900px;
+    display: grid;
+    gap: 28px 32px;
+    grid-template-columns: 307px minmax(300px, 1fr);
+    grid-template-areas:
+      "dashboard dashboard"
+      "notes side";
+    align-items: start;
+    justify-items: stretch;
+  }
+
+  .student-feed-mid-cluster__dashboard {
+    grid-area: dashboard;
+    order: unset;
+    justify-content: center;
+  }
+
+  .student-feed-mid-cluster__notes {
+    grid-area: notes;
+    order: unset;
+    justify-content: flex-start;
+  }
+
+  .student-feed-mid-cluster__side {
+    grid-area: side;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .student-feed-mid-cluster__aspirant,
+  .student-feed-mid-cluster__actions {
+    order: unset;
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  /* Desktop actions: button left, hint right (owner screenshot) */
+  .student-feed-mid-cluster__actions .student-feed-actions {
+    max-width: none;
+    width: 100%;
+  }
+
+  .student-feed-mid-cluster__actions .student-feed-actions__row {
+    grid-template-columns: 242px minmax(180px, 260px);
+  }
+}
+
+@media (max-width: 600px) {
+  .student-feed-mid-cluster {
+    gap: 22px;
+    padding-inline: clamp(12px, 4vw, 20px);
+  }
+}

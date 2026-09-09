@@ -37,6 +37,7 @@ export type PremiumWorkspaceProfile = {
 export type StudentDocument = {
   id: string;
   requirement_id: string;
+  storage_path: string;
   original_filename: string;
   mime_type: string;
   byte_size: number;
@@ -100,7 +101,7 @@ export async function loadPremiumWorkspaceWithClient(
     commentsQuery.order("created_at"),
     reviewsQuery.order("sort_order"),
     notesQuery.order("created_at", { ascending: false }),
-    client.from("student_document_requirements").select("id,document_type,requirement_kind,status,instructions,sort_order,student_documents(id,requirement_id,original_filename,mime_type,byte_size,version,qc_status,scan_status,uploaded_at,superseded_at,archived_at,purged_at)").eq("student_id", studentId).order("sort_order"),
+    client.from("student_document_requirements").select("id,document_type,requirement_kind,status,instructions,sort_order,student_documents(id,requirement_id,storage_path,original_filename,mime_type,byte_size,version,qc_status,scan_status,uploaded_at,superseded_at,archived_at,purged_at)").eq("student_id", studentId).order("sort_order"),
     client.from("student_university_selections").select("id,stage,sort_order,universities(id,name,slug)").eq("student_id", studentId).order("sort_order")
   ]);
   const mentorRelation = assignment.data?.staff_profiles as unknown as { user_id: string; display_name: string } | Array<{ user_id: string; display_name: string }> | null;

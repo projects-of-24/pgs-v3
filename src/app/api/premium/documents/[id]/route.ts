@@ -17,6 +17,25 @@ import { logServerError } from "@/lib/server-security";
 
 type Context = { params: Promise<{ id: string }> };
 
+function mimeFromFilename(filename: string): string | null {
+  const lower = filename.toLowerCase();
+  if (lower.endsWith(".pdf")) return "application/pdf";
+  if (/\.jpe?g$/.test(lower)) return "image/jpeg";
+  if (lower.endsWith(".png")) return "image/png";
+  if (lower.endsWith(".gif")) return "image/gif";
+  if (lower.endsWith(".webp")) return "image/webp";
+  if (lower.endsWith(".doc")) return "application/msword";
+  if (lower.endsWith(".docx")) {
+    return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  }
+  return null;
+}
+
+function sanitizeContentDispositionFilename(filename: string): string {
+  const cleaned = filename.replace(/["\r\n\\]/g, "_").trim();
+  return cleaned.length > 0 ? cleaned.slice(0, 180) : "document";
+}
+
 export async function GET(request: Request, { params }: Context) {
   const { id } = await params;
   try {
@@ -40,14 +59,69 @@ export async function GET(request: Request, { params }: Context) {
       return jsonError("Document not found.", 404);
     }
 
-    const signingClient = authorization.mode === "share"
-      ? createSupabaseAdminClient()
-      : await createSupabaseServerClient();
+    const signingClient = createSupabaseAdminClient();
+    // View modes:
+    // - default JSON → signed URL + metadata
+    // - ?stream=1 → same-origin bytes with inline MIME
+    // - ?redirect=1 → 302 to signed URL (fallback when list has no pre-signed href)
+    // - ?download=1 → attachment disposition on signed URL
+    const requestUrl = new URL(request.url);
+    const wantDownload = requestUrl.searchParams.get("download") === "1";
+    const wantRedirect = requestUrl.searchParams.get("redirect") === "1";
+    const wantStream = requestUrl.searchParams.get("stream") === "1";
+
+    const inlineMime =
+      (typeof data.mime_type === "string" && data.mime_type.trim()) ||
+      mimeFromFilename(data.original_filename) ||
+      "application/octet-stream";
+    const safeFilename = sanitizeContentDispositionFilename(data.original_filename);
+
+    // Stream uses admin Storage download only after authorizeDocumentByteAccess.
+    if (wantStream) {
+      const { data: file, error: downloadError } = await signingClient.storage
+        .from(STUDENT_DOCUMENT_BUCKET)
+        .download(data.storage_path);
+      if (downloadError || !file) {
+        await recordFailedAuditEvent(request, {
+          eventType: "document.access.failed",
+          sourceSubsystem: "documents",
+          targetType: "student_document",
+          targetId: id,
+          metadata: { reason_code: "storage_download_failed", route: "/api/premium/documents/[id]" }
+        });
+        return jsonError("Unable to open the document.", 400);
+      }
+
+      await recordPrivilegedReadAuditEvent(request, {
+        eventType: authorization.mode === "share" ? "document.share_accessed" : "document.accessed",
+        sourceSubsystem: "documents",
+        targetType: "student_document",
+        targetId: id,
+        metadata: {
+          route: "/api/premium/documents/[id]",
+          delivery: "stream",
+          ...(authorization.shareId ? { share_id: authorization.shareId } : {})
+        }
+      });
+
+      const bytes = await file.arrayBuffer();
+      return new NextResponse(bytes, {
+        headers: {
+          "Content-Type": inlineMime,
+          "Content-Disposition": `inline; filename="${safeFilename}"`,
+          "Cache-Control": "private, no-store",
+          "X-Content-Type-Options": "nosniff"
+        }
+      });
+    }
+
     const { data: signed, error } = await signingClient.storage
       .from(STUDENT_DOCUMENT_BUCKET)
-      .createSignedUrl(data.storage_path, STUDENT_DOCUMENT_SIGNED_URL_SECONDS, {
-        download: data.original_filename
-      });
+      .createSignedUrl(
+        data.storage_path,
+        STUDENT_DOCUMENT_SIGNED_URL_SECONDS,
+        wantDownload ? { download: data.original_filename } : undefined
+      );
     if (error || !signed?.signedUrl) {
       await recordFailedAuditEvent(request, {
         eventType: "document.access.failed",
@@ -59,19 +133,45 @@ export async function GET(request: Request, { params }: Context) {
       return jsonError("Unable to open the document.", 400);
     }
 
-    await recordPrivilegedReadAuditEvent(request, {
-      eventType: authorization.mode === "share" ? "document.share_accessed" : "document.accessed",
-      sourceSubsystem: "documents",
-      targetType: "student_document",
+    const auditInput = {
+      eventType: (authorization.mode === "share" ? "document.share_accessed" : "document.accessed") as
+        | "document.share_accessed"
+        | "document.accessed",
+      sourceSubsystem: "documents" as const,
+      targetType: "student_document" as const,
       targetId: id,
       metadata: {
         route: "/api/premium/documents/[id]",
-        ...(authorization.shareId ? { share_id: authorization.shareId } : {})
+        ...(authorization.shareId ? { share_id: authorization.shareId } : {}),
+        ...(wantRedirect ? { delivery: "redirect" } : {}),
+        ...(wantDownload ? { delivery: "download" } : {})
       }
-    });
+    };
+
+    const noStore = { "Cache-Control": "private, no-store" };
+    if (wantRedirect) {
+      // Do not await audit — blank-tab wait was dominated by fail-closed audit I/O.
+      void recordPrivilegedReadAuditEvent(request, auditInput).catch((error) => {
+        logServerError("audit_event_write_failed", error, {
+          event_type: auditInput.eventType,
+          outcome: "succeeded",
+          source_subsystem: "documents",
+          delivery: "redirect"
+        });
+      });
+      return NextResponse.redirect(signed.signedUrl, { headers: noStore });
+    }
+
+    await recordPrivilegedReadAuditEvent(request, auditInput);
     return NextResponse.json(
-      { ok: true, url: signed.signedUrl, expires_in: STUDENT_DOCUMENT_SIGNED_URL_SECONDS },
-      { headers: { "Cache-Control": "private, no-store" } }
+      {
+        ok: true,
+        url: signed.signedUrl,
+        expires_in: STUDENT_DOCUMENT_SIGNED_URL_SECONDS,
+        original_filename: data.original_filename,
+        mime_type: inlineMime
+      },
+      { headers: noStore }
     );
   } catch (error) {
     if (error instanceof DocumentByteAuthorizationError) {

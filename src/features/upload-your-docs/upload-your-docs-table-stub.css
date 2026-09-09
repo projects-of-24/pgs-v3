@@ -1,0 +1,514 @@
+/**
+ * Resource List — owned CSS.
+ * Desktop: real <thead> Bebas ~36 · body ~24px — heads share table columns with cells
+ *   (fixes uploaded on / qc status / action drift vs separate grid).
+ * Mobile ≤600: Resource LIST | UPLOAD two-col (Figma `217:2622`); thead hidden;
+ *   name|uploaded-on · badge|view; mid hairlines; re-upload desktop-only.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: InDraft white-on-coral
+ * ISSUE: white-on-coral can fail AA
+ * PGS: InDraft keeps black text on coral badge
+ */
+
+.uyd-table-stub {
+  --uyd-forlocked: rgba(232, 234, 234, 0.72);
+  --uyd-cell-pad-x: 10px;
+  width: 100%;
+  max-width: 996px;
+  margin: 32px auto 48px;
+  padding: 0 24px;
+}
+
+.uyd-table-stub__heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.uyd-table-stub__wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* frost clip — Family A locked */
+}
+
+.uyd-table-stub[data-docs-family="premium"] .uyd-table-stub__wrap {
+  overflow: visible; /* dual actions must not clip on mobile */
+}
+
+.uyd-table-stub__uploaded {
+  display: inline;
+}
+
+.uyd-table-stub__uploaded-label {
+  display: none; /* desktop shows date only; mobile shows label */
+}
+
+.uyd-table-stub__uploaded-date {
+  white-space: nowrap;
+}
+
+.uyd-table-stub__colheads-mobile {
+  display: none;
+}
+
+.uyd-table-stub__table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #fff;
+  color: #000;
+  /* Own stack — beat Hostinger `vendors.min.css` table font rules */
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
+}
+
+.uyd-preview-shell .uyd-table-stub__table,
+.uyd-preview-shell .uyd-table-stub__table tbody td,
+.uyd-preview-shell .uyd-table-stub__name {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.uyd-table-stub__table thead th {
+  padding: 8px var(--uyd-cell-pad-x);
+  border-bottom: 1px solid #000;
+  color: #000;
+  font-family: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.uyd-preview-shell .uyd-table-stub__table thead th {
+  font-family: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.uyd-table-stub__table thead th:nth-child(2),
+.uyd-table-stub__table thead th:nth-child(3) {
+  text-align: center;
+}
+
+.uyd-table-stub__table thead th:nth-child(4) {
+  text-align: right;
+}
+
+.uyd-table-stub__table tbody th,
+.uyd-table-stub__table tbody td {
+  padding: 8px var(--uyd-cell-pad-x);
+  border-bottom: 1px solid #000;
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+.uyd-table-stub__table th:nth-child(1),
+.uyd-table-stub__table td:nth-child(1) {
+  width: 32.56%;
+}
+
+.uyd-table-stub__table th:nth-child(2),
+.uyd-table-stub__table td:nth-child(2),
+.uyd-table-stub__table th:nth-child(3),
+.uyd-table-stub__table td:nth-child(3) {
+  width: 23.26%;
+}
+
+.uyd-table-stub__table tbody td:nth-child(2),
+.uyd-table-stub__table tbody td:nth-child(3) {
+  text-align: center;
+}
+
+.uyd-table-stub__table th:nth-child(4),
+.uyd-table-stub__table td:nth-child(4) {
+  width: 20.93%;
+}
+
+.uyd-table-stub__table tbody td:nth-child(4) {
+  text-align: right;
+}
+
+.uyd-table-stub__blank {
+  display: inline-block;
+  width: 120px;
+  max-width: 100%;
+  border-bottom: 2px dashed #c01515;
+  vertical-align: middle;
+}
+
+.uyd-table-stub__blank--required {
+  border-bottom-color: #c01515;
+}
+
+.uyd-table-stub__name {
+  font-weight: 500;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.uyd-table-stub__name--default {
+  color: #000;
+}
+
+.uyd-table-stub__name--approved {
+  color: #0b6b3a;
+}
+
+.uyd-table-stub__name--indraft {
+  color: #c01515;
+}
+
+.uyd-table-stub__mark {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+}
+
+.uyd-table-stub__mark--not-required {
+  color: #000;
+}
+
+.uyd-table-stub__mark--pending {
+  color: #c01515;
+  text-transform: uppercase;
+}
+
+.uyd-table-stub__badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.uyd-table-stub__badge--approved {
+  background: #ffc524;
+  color: #000;
+}
+
+.uyd-table-stub__badge--indraft {
+  background: #e89a92;
+  color: #000;
+}
+
+.uyd-table-stub__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  min-height: 32px;
+  padding: 0 14px;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 3px;
+  pointer-events: none;
+  user-select: none;
+  font-family: inherit;
+}
+
+/* W2/W3 live controls — button, link, or file label */
+button.uyd-table-stub__btn,
+a.uyd-table-stub__btn,
+label.uyd-table-stub__btn {
+  pointer-events: auto;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+button.uyd-table-stub__btn:disabled,
+label.uyd-table-stub__btn[aria-disabled="true"] {
+  opacity: 0.65;
+  cursor: wait;
+  pointer-events: none;
+}
+
+button.uyd-table-stub__btn:focus-visible,
+a.uyd-table-stub__btn:focus-visible,
+label.uyd-table-stub__btn:focus-within {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.uyd-table-stub__status {
+  margin: 0 0 12px;
+  padding: 0 4px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #000;
+}
+
+.uyd-table-stub__status--error {
+  color: #a51d2d;
+  font-weight: 600;
+}
+
+.uyd-table-stub__btn--view {
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+}
+
+.uyd-table-stub__btn--upload {
+  border: 1px solid #b8a4d9;
+  background: #cbb8e8;
+  color: #000;
+}
+
+.uyd-table-stub__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.uyd-table-stub__btn--reupload {
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+}
+
+.uyd-table-stub__scan-wait {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5c5c5c;
+}
+
+.uyd-table-stub__qc-raw {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  text-transform: capitalize;
+}
+
+.uyd-table-stub__empty {
+  padding: 16px 10px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+
+.uyd-table-stub__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: var(--uyd-forlocked);
+  pointer-events: none;
+}
+
+.uyd-table-stub__forlocked img {
+  display: block;
+  width: min(198px, 28%);
+  height: auto;
+  max-height: 36%;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  /*
+   * Mobile Figma `217:2622`:
+   * two columns — Resource LIST | UPLOAD
+   * hairline between name-line and badge/action line (full width)
+   * uploaded action = view only (re-upload = desktop)
+   */
+  .uyd-table-stub {
+    max-width: 390px;
+    margin: 24px auto 40px;
+    padding: 0 10px;
+  }
+
+  .uyd-table-stub__colheads-mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0;
+    padding: 0 0 8px;
+    border-bottom: 1px solid #000;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .uyd-table-stub__colheads-mobile span:nth-child(2) {
+    text-align: left;
+    padding-left: 8px;
+  }
+
+  .uyd-table-stub__table {
+    font-size: 14px;
+    table-layout: auto;
+  }
+
+  .uyd-preview-shell .uyd-table-stub__table,
+  .uyd-preview-shell .uyd-table-stub__table tbody td,
+  .uyd-preview-shell .uyd-table-stub__name {
+    font-size: 14px;
+  }
+
+  .uyd-table-stub__table thead {
+    display: none;
+  }
+
+  .uyd-table-stub__table tbody {
+    display: block;
+  }
+
+  .uyd-table-stub__table tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: 0;
+    align-items: stretch;
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .uyd-table-stub__table td {
+    border: 0;
+    padding: 5px 0;
+    text-align: left;
+    width: auto !important;
+    font-size: inherit;
+    min-width: 0;
+    line-height: 1.3;
+  }
+
+  /* Name line + uploaded line — mid hairline under both */
+  .uyd-table-stub__table td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    font-weight: 700;
+    border-bottom: 1px solid #000;
+    padding-right: 4px;
+  }
+
+  .uyd-table-stub__table td:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    border-bottom: 1px solid #000;
+    padding-left: 8px;
+  }
+
+  /* Badge + action — bottom hairline (doc separator) */
+  .uyd-table-stub__table td:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+    border-bottom: 1px solid #000;
+    padding-right: 4px;
+  }
+
+  .uyd-table-stub__table td:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+    border-bottom: 1px solid #000;
+    padding-left: 8px;
+  }
+
+  /* Figma: UPLOADED ON 12px bold + date 14px medium, one line */
+  .uyd-table-stub__uploaded {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .uyd-table-stub__uploaded-label {
+    display: inline;
+    flex: 0 0 auto;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .uyd-table-stub__uploaded-date {
+    flex: 0 1 auto;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .uyd-table-stub__blank {
+    width: 72px;
+  }
+
+  .uyd-table-stub__badge {
+    font-size: 13px;
+    padding: 2px 8px;
+  }
+
+  .uyd-table-stub__btn {
+    min-width: 71px;
+    min-height: 21px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .uyd-table-stub__scan-wait {
+    font-size: 13px;
+  }
+
+  .uyd-table-stub__qc-raw {
+    font-size: 14px;
+  }
+
+  .uyd-table-stub__empty {
+    font-size: 14px;
+  }
+
+  /* Figma mobile uploaded action = view only */
+  .uyd-table-stub__btn--reupload {
+    display: none;
+  }
+
+  .uyd-table-stub__actions {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .uyd-table-stub__forlocked img {
+    width: min(120px, 36%);
+    max-height: 22%;
+  }
+}
+

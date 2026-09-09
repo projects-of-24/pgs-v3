@@ -11,6 +11,7 @@ import { loadProgressAlerts } from "@/features/feed-track-progress/load-progress
 import "@/features/shell/legacy-header-breakpoints.css";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
+import { withPreviewLoginReturn } from "@/lib/preview-login-return";
 import {
   applySharedHelloAspirant,
   HELLO_ASPIRANT_DEFAULT_AVATAR
@@ -62,20 +63,15 @@ export default async function FeedTrackProgressPremiumPreviewPage() {
     topHtml = applyAuthenticatedShell(topHtml, shellFields);
     topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
     footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
-  } else {
-    const shellFields = {
-      name: "Aspirant",
-      unreadCount: 0,
-      premium: true,
-      notifications: [],
-      notificationReadOnly: true
-    };
-    topHtml = applyAuthenticatedShell(topHtml, shellFields);
-    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
   }
+  // Anonymous: keep real Login → /login (do not fake authenticated shell).
 
   topHtml = applyPremiumBusinessRule(topHtml);
   footerHtml = applyPremiumBusinessRule(footerHtml);
+
+  const previewPath = "/preview/feed-track-progress-premium";
+  topHtml = withPreviewLoginReturn(topHtml, previewPath);
+  footerHtml = withPreviewLoginReturn(footerHtml, previewPath);
 
   return (
     <LegacyPage page="preview-feed-track-progress-premium" studentState="authenticated_premium">

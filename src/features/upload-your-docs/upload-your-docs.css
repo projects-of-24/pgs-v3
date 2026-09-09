@@ -1,0 +1,52 @@
+/**
+ * Upload Your Docs — owned body CSS (B1: action column / Hostinger action model).
+ * Layout polish (title, alerts, mobile list) lands in later blocks.
+ * Do not pull Hostinger theme JS (anime / Crafto) into this body.
+ */
+
+.pgs-upload-docs .pgs-upload-docs__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.pgs-upload-docs .pgs-upload-docs__actions .btn-black-outline,
+.pgs-upload-docs .pgs-upload-docs__actions .btn-black-upload {
+  width: auto !important;
+  min-width: 90px;
+  min-height: 27px;
+  padding: 0 12px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  font-size: 16px !important;
+  height: auto !important;
+  cursor: pointer;
+  margin: 0;
+}
+
+.pgs-upload-docs .pgs-upload-docs__actions .btn-black-upload {
+  min-width: 100px;
+}
+
+.pgs-upload-docs .pgs-upload-docs__actions[data-mode="upload"] .btn-black-upload {
+  border-radius: 3px;
+}
+
+.pgs-upload-docs .pgs-upload-docs__actions[data-mode="view"] .btn-black-outline {
+  border-radius: 3px;
+}
+
+.pgs-upload-docs .premium-document-status:empty {
+  display: none;
+}
+
+.pgs-upload-docs .pgs-upload-docs__scan-wait {
+  color: #5d5668;
+  font-size: 13px;
+  font-weight: 600;
+}

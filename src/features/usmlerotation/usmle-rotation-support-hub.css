@@ -1,0 +1,233 @@
+/**
+ * #StudentSupportHub — page-scoped.
+ * Desktop >1366 (Figma 18760:12913) · mobile ≤600 (18760:11862).
+ * iPad mid-band deferred.
+ */
+
+.usmle-hub {
+  --usmle-hub-purple: #b57cff;
+  --usmle-hub-yellow: #ffc524;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 32px 24px 48px;
+  background: #fff;
+}
+
+.usmle-hub *,
+.usmle-hub *::before,
+.usmle-hub *::after {
+  box-sizing: border-box;
+}
+
+.usmle-hub__inner {
+  width: 100%;
+  max-width: min(854px, 94%);
+  margin: 0 auto;
+}
+
+.usmle-hub__blurb--mobile {
+  display: none;
+}
+
+.usmle-hub__main {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+  min-width: 0;
+}
+
+.usmle-hub__brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.usmle-hub__brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 19px 26px;
+  border-radius: 12.8px;
+  background: #000;
+  color: var(--usmle-hub-purple);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 3.6vw, 51.2px);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.usmle-hub__hub-label {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.usmle-hub__channels {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.usmle-hub__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.usmle-hub__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 85px;
+  padding: 3px;
+  background: var(--usmle-hub-yellow);
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 19.2px;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.usmle-hub__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.8vw, 25.6px);
+  line-height: 1.25;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.usmle-hub__link:hover {
+  text-decoration: underline;
+}
+
+.usmle-hub__link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.usmle-hub__icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+}
+
+.usmle-hub__blurb--desktop {
+  flex: 0 0 182px;
+  width: 182px;
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+/* ——— Mobile ≤600: blurb → #PGS + channels row (Figma 18760:11862) ——— */
+@media (max-width: 600px) {
+  .usmle-hub {
+    padding: 24px 16px 40px;
+  }
+
+  .usmle-hub__inner {
+    max-width: 374px;
+  }
+
+  .usmle-hub__blurb--mobile {
+    display: block;
+    margin: 0 0 16px;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+  }
+
+  .usmle-hub__blurb--desktop {
+    display: none;
+  }
+
+  .usmle-hub__main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "brand channels"
+      "hub channels";
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 6px;
+  }
+
+  .usmle-hub__brand-col {
+    display: contents;
+  }
+
+  .usmle-hub__brand {
+    grid-area: brand;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 28px;
+  }
+
+  .usmle-hub__hub-label {
+    grid-area: hub;
+    font-size: 14px;
+  }
+
+  .usmle-hub__channels {
+    grid-area: channels;
+    flex: none;
+    gap: 10px;
+  }
+
+  .usmle-hub__badge {
+    min-width: 72px;
+    font-size: 16px;
+  }
+
+  .usmle-hub__link {
+    font-size: 15px;
+  }
+
+  .usmle-hub__icon {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-hub__main {
+    gap: 20px;
+  }
+
+  .usmle-hub__blurb--desktop {
+    flex-basis: 160px;
+    width: 160px;
+    font-size: 14px;
+  }
+}

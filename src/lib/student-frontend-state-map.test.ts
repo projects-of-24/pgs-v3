@@ -19,15 +19,16 @@ const documents = readFileSync("src/app/upload_your_doc/page.tsx", "utf8");
 const home = readFileSync("src/app/page.tsx", "utf8");
 
 describe("PRE-OPS05 student frontend state mapping is still the page contract", () => {
-  it("keeps all three #feed states on the canonical /student/dashboard route", () => {
-    expect(feed).toContain('page="student-dashboard"');
-    expect(feed).toContain('if (state.kind !== "authenticated_premium")');
+  it("keeps #feed doorman: Family A for anon/standard, Family B for Premium", () => {
+    expect(feed).toContain("StudentFeedPreviewShell");
+    expect(feed).toContain("StudentFeedPremiumShell");
+    expect(feed).toContain('if (state.kind === "anonymous")');
+    expect(feed).toContain('if (state.kind === "authenticated_standard")');
     expect(feed).toContain("await requirePremiumActor()");
-    expect(feed).toContain("loadPremiumWorkspace(user.id)");
-    expect(feed).toContain('active="feed"');
-    expect(feed).toContain("<RetainedStudentFooter");
-    expect(feed).not.toContain('redirect("/dashboard")');
-    expect(feed).not.toContain("if (!state.preview)");
+    expect(feed).toContain("listFeedUpcomingEvents");
+    expect(feed).not.toContain("studentDashboardHtml");
+    expect(feed).not.toContain("DeveloperStudentShell");
+    expect(feed).not.toContain("PremiumStudentDashboard");
     expect(feed).not.toContain("loadPremiumWorkspaceForSubject");
   });
 
@@ -36,20 +37,27 @@ describe("PRE-OPS05 student frontend state mapping is still the page contract", 
     expect(dashboardAlias).not.toContain("loadPremiumWorkspace");
   });
 
-  it("keeps Track Your Progress locked for anonymous/Standard and PremiumProgressBoard for Premium", () => {
-    expect(progress).toContain('page="progress-locked"');
-    expect(progress).toContain("if(state.kind!==\"authenticated_premium\")return <RecoveredStudentLegacyPage html={progressLockedHtml}");
-    expect(progress).toContain("<PremiumProgressBoard workspace={workspace}/>");
+  it("keeps Track Your Progress doorman: Family A for anon/standard, Family B for Premium", () => {
+    expect(progress).toContain("FeedTrackProgressPreviewShell");
+    expect(progress).toContain("FeedTrackProgressPremiumShell");
+    expect(progress).toContain('if (state.kind === "anonymous")');
+    expect(progress).toContain('if (state.kind === "authenticated_standard")');
     expect(progress).toContain("await requirePremiumActor()");
-    expect(progress).toContain("loadPremiumWorkspace(user.id)");
+    expect(progress).not.toContain("progressLockedHtml");
+    expect(progress).not.toContain("PremiumProgressBoard");
     expect(progress).not.toContain("loadPremiumWorkspaceForSubject");
   });
 
-  it("keeps Upload Your Docs locked for anonymous/Standard and DocumentWorkspace for Premium", () => {
-    expect(documents).toContain('page="documents-locked"');
-    expect(documents).toContain("if(state.kind!==\"authenticated_premium\")return <RecoveredStudentLegacyPage html={documentsLockedHtml}");
-    expect(documents).toContain("<DocumentWorkspace requirements={workspace.requirements} readOnly={Boolean(state.preview)} />");
-    expect(documents).toContain("loadPremiumWorkspace(user.id)");
+  it("keeps Upload Your Docs doorman: Family A for anon/standard, Family B for Premium", () => {
+    expect(documents).toContain("UploadYourDocsPreviewShell");
+    expect(documents).toContain("UploadYourDocsPremiumShell");
+    expect(documents).toContain('if (state.kind === "anonymous")');
+    expect(documents).toContain('if (state.kind === "authenticated_standard")');
+    expect(documents).toContain("await requirePremiumActor()");
+    expect(documents).toContain("loadPremiumWorkspace(studentId)");
+    expect(documents).toContain("mapRequiredRequirementsToRowsWithViewHrefs");
+    expect(documents).not.toContain("documentsLockedHtml");
+    expect(documents).not.toContain("DocumentWorkspace");
     expect(documents).not.toContain("loadPremiumWorkspaceForSubject");
   });
 

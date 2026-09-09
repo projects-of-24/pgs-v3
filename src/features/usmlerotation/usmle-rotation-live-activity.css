@@ -1,0 +1,186 @@
+/**
+ * Live Activity — social-proof strip only (who got in / matched).
+ * Figma desktop 18760:12380 · mobile 18760:11390.
+ * Bands >1366 · 601–1366 · ≤600. Always a horizontal strip.
+ */
+
+.usmle-live {
+  --usmle-live-bg: #d1fff2;
+  --usmle-live-fg: #00825d;
+  --usmle-live-border: #009c70;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  background: var(--usmle-live-bg);
+  border-top: 1px solid var(--usmle-live-border);
+  border-bottom: 1px solid var(--usmle-live-border);
+  color: var(--usmle-live-fg);
+}
+
+.usmle-live *,
+.usmle-live *::before,
+.usmle-live *::after {
+  box-sizing: border-box;
+}
+
+.usmle-live__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  padding: 32px clamp(16px, 4vw, 48px);
+}
+
+.usmle-live__heading {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.usmle-live__heading img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Figma: “Live” / “Activity” stacked */
+.usmle-live__heading-text {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.usmle-live__list {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Strip stays clean; still swipe/scroll when items overflow */
+  scrollbar-width: none;
+}
+
+.usmle-live__list::-webkit-scrollbar {
+  display: none;
+}
+
+.usmle-live__item {
+  flex: 1 1 0;
+  width: auto;
+  max-width: 330px;
+  min-width: min(220px, 70vw);
+}
+
+.usmle-live__item-top {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.usmle-live__item-top img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.usmle-live__name {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+
+.usmle-live__achievement {
+  margin: 0;
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.usmle-live__meta {
+  margin: 0;
+  padding-left: 28px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+@media (min-width: 1367px) {
+  .usmle-live__inner {
+    /* Figma desktop rail ~282px inset on 1728 artboard */
+    padding: 32px clamp(48px, 16vw, 282px);
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 601px) {
+  .usmle-live__inner {
+    gap: 16px;
+    padding: 24px clamp(16px, 3vw, 40px);
+  }
+
+  .usmle-live__item {
+    flex: 0 0 auto;
+    width: 280px;
+    max-width: 280px;
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .usmle-live__inner {
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .usmle-live__heading-text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .usmle-live__list {
+    gap: 16px;
+  }
+
+  .usmle-live__item {
+    flex: 0 0 auto;
+    width: 260px;
+    max-width: 70vw;
+    min-width: 220px;
+  }
+}

@@ -3,7 +3,6 @@ import { defaultPublicContent } from "@/lib/public-content";
 
 export const cmsContentDefaults: Record<string, Record<string, string>> = {
   home: defaultPageContent.home,
-  countriesusa: defaultPageContent.countriesusa,
   ...defaultPublicContent
 };
 
