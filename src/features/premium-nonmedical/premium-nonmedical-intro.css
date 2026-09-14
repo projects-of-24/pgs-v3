@@ -1,0 +1,206 @@
+/**
+ * #premiumNonMedical intro — owned CSS (N5).
+ * Tab and panel geometry from this Figma (`17055:10742`, `17055:10743`).
+ * iPad 601–1366 keeps the desktop panel. Phone ≤600 uses the phone frame.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: section lead 11.2px · body 14.4px · phone ticking/body/button 14px
+ * ISSUE: below the readable floor
+ * PGS IMPLEMENTATION: those sit at 16px. Headline stays 38.4 desktop / 20 phone.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: white label on #009c70 · “for non medical” #eb0801 on #f1f1f1
+ * ISSUE: button text 3.5:1 · family label 4.1:1
+ * PGS IMPLEMENTATION: button #008761 · family label #dd0801. Brand word stays #009c70 (large text).
+ */
+
+.premium-nonmedical-intro {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-top: 122px;
+  padding: 0 0 24px;
+  background: #fff;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-intro *,
+.premium-nonmedical-intro *::before,
+.premium-nonmedical-intro *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-intro__brand,
+.premium-nonmedical-intro__headline,
+.premium-nonmedical-intro__ticking,
+.premium-nonmedical-intro__move,
+.premium-nonmedical-intro__news {
+  margin: 0;
+}
+
+.premium-nonmedical-intro__panel {
+  position: relative;
+  width: min(900.8px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 34.4px 32.8px 28px;
+  border-radius: 12.8px;
+  background: #f1f1f1;
+}
+
+.premium-nonmedical-intro__panel::before {
+  content: "";
+  position: absolute;
+  top: -48px;
+  left: 16.8px;
+  z-index: -1;
+  width: 688px;
+  max-width: calc(100% - 34px);
+  height: 120.8px;
+  border-radius: 16px;
+  background: #d9d9d9;
+}
+
+.premium-nonmedical-intro__brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 6.4px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.premium-nonmedical-intro__brand-name {
+  color: #009c70;
+  font-size: 38.4px;
+  letter-spacing: 1.6px;
+}
+
+.premium-nonmedical-intro__brand-family {
+  color: #dd0801;
+  font-size: 19.2px;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-intro__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(508.8px, 100%);
+  margin: 50.8px auto 0;
+  text-align: center;
+}
+
+.premium-nonmedical-intro__headline {
+  width: min(485.6px, 100%);
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.premium-nonmedical-intro__ticking {
+  margin-top: 17.6px;
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-intro__move {
+  margin-top: 12.8px;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-intro__news {
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-intro__cta {
+  display: block;
+  margin: 10px auto 0;
+  padding: 8px;
+  border: 0;
+  border-radius: 6.4px;
+  background: #008761;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+}
+
+.premium-nonmedical-intro__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-intro {
+    margin-top: 82px;
+    padding-bottom: 16px;
+  }
+
+  .premium-nonmedical-intro__panel {
+    width: calc(100% - 22px);
+    padding: 32px 20px 24px;
+    border-radius: 6px;
+  }
+
+  .premium-nonmedical-intro__panel::before {
+    display: none;
+  }
+
+  .premium-nonmedical-intro__brand {
+    justify-content: center;
+  }
+
+  .premium-nonmedical-intro__brand-name {
+    font-size: 30px;
+  }
+
+  .premium-nonmedical-intro__brand-family {
+    font-size: 20px;
+  }
+
+  .premium-nonmedical-intro__copy {
+    margin-top: 16px;
+  }
+
+  .premium-nonmedical-intro__headline {
+    font-size: 20px;
+  }
+
+  .premium-nonmedical-intro__ticking {
+    margin-top: 12px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+  }
+
+  .premium-nonmedical-intro__move {
+    margin-top: 12px;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-intro__news {
+    margin-top: 8px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+  }
+
+  .premium-nonmedical-intro__cta {
+    width: min(254px, 100%);
+    margin-top: 12px;
+    border-radius: 8px;
+  }
+}
