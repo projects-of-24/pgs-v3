@@ -5,6 +5,7 @@
  * Dense poster = Figma PNG export (not rebuilt HTML) so fern/logo/QR match.
  * Fixtures only — no DB.
  */
+import type { ReactNode } from "react";
 import { EVENT_SESSION_FIXTURE } from "./content";
 import "./purple-events-share.css";
 
@@ -12,7 +13,7 @@ const SCRIBBLE = "/assets/img/purple-events/share/scribble-arrow.svg";
 
 function ShareBody({ text, boldBits }: { text: string; boldBits: string[] }) {
   if (!boldBits.length) return <>{text}</>;
-  const parts: Array<string | JSX.Element> = [];
+  const parts: Array<string | ReactNode> = [];
   let rest = text;
   boldBits.forEach((bit, i) => {
     const idx = rest.indexOf(bit);

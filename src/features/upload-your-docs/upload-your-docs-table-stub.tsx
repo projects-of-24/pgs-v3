@@ -114,7 +114,6 @@ function FileActionLabel({
   label,
   className,
   disabled,
-  inputRef,
   onPick
 }: {
   label: string;

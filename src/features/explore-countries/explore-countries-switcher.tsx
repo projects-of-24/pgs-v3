@@ -70,7 +70,7 @@ function ChipList({
 
 export function ExploreCountriesSwitcher() {
   const s = EXPLORE_COUNTRIES_SWITCHER;
-  const [activeId, setActiveId] = useState(s.defaultId);
+  const [activeId, setActiveId] = useState<string>(s.defaultId);
   const active =
     EXPLORE_COUNTRIES_PRIMARY_DESK.find((c) => c.id === activeId) ??
     EXPLORE_COUNTRIES_PRIMARY_DESK[2];

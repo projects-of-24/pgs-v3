@@ -18,8 +18,8 @@ import "./purple-events-faq.css";
 
 export function PurpleEventsFaq() {
   const baseId = useId();
-  const [tabId, setTabId] = useState(EVENT_FAQ.defaultTabId);
-  const [openIndex, setOpenIndex] = useState(EVENT_FAQ.defaultOpenIndex);
+  const [tabId, setTabId] = useState<string>(EVENT_FAQ.defaultTabId);
+  const [openIndex, setOpenIndex] = useState<number>(EVENT_FAQ.defaultOpenIndex);
 
   const activeTab =
     EVENT_FAQ.tabs.find((t) => t.id === tabId) ?? EVENT_FAQ.tabs[0];

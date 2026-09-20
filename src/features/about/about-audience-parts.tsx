@@ -1,11 +1,9 @@
-import type { ABOUT_AUDIENCE } from "./content";
-
-type AudiencePart = (typeof ABOUT_AUDIENCE)["rows"][number]["who"][number];
+import type { AboutAudiencePart } from "./content";
 
 export function AboutAudienceParts({
   parts
 }: {
-  parts: readonly AudiencePart[];
+  parts: readonly AboutAudiencePart[];
 }) {
   return (
     <>

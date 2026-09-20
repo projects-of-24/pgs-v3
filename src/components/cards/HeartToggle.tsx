@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type HeartToggleProps = {
   initialSaved?: boolean;
@@ -20,13 +20,15 @@ export function HeartToggle({
   disabled = false,
 }: HeartToggleProps) {
   const [internalSaved, setInternalSaved] = useState(initialSaved);
+  const [initialBaseline, setInitialBaseline] = useState(initialSaved);
   const [busy, setBusy] = useState(false);
   const controlled = savedProp !== undefined;
+  // Sync uncontrolled heart when parent loads saved ids (no setState-in-effect).
+  if (!controlled && initialSaved !== initialBaseline) {
+    setInitialBaseline(initialSaved);
+    setInternalSaved(initialSaved);
+  }
   const saved = controlled ? savedProp : internalSaved;
-
-  useEffect(() => {
-    if (!controlled) setInternalSaved(initialSaved);
-  }, [initialSaved, controlled]);
 
   return (
     <button

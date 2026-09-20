@@ -12,7 +12,7 @@ import "./finance-faq.css";
 
 export function FinanceFaq() {
   const baseId = useId();
-  const [openIndex, setOpenIndex] = useState(FINANCE_FAQ.defaultOpenIndex);
+  const [openIndex, setOpenIndex] = useState<number>(FINANCE_FAQ.defaultOpenIndex);
 
   return (
     <section

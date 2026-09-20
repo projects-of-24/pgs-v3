@@ -20,17 +20,17 @@ export type PurpleEventFaceCard = {
   end: PurpleEventDateParts;
   /** Desk copy */
   whoHeading: string;
-  whoLines: string[];
+  whoLines: readonly string[];
   topicsHeading: string;
-  topics: string[];
+  topics: readonly string[];
   /** Mob copy */
   speakerName: string;
-  speakerBioLines: string[];
+  speakerBioLines: readonly string[];
   fillingBadge: string;
   fillingIcon: string;
   modeLabel: string;
-  tags: string[];
-  designedForLines: string[];
+  tags: readonly string[];
+  designedForLines: readonly string[];
   designedNote: string;
   shareIcon: string;
   shareLabel: string;

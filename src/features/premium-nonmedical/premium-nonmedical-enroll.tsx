@@ -64,14 +64,14 @@ export function PremiumNonmedicalEnroll() {
                     />
                     <span className="premium-nonmedical-enroll__item-copy">
                       <span className="premium-nonmedical-enroll__item-label">{item.label}</span>
-                      {item.details ? (
+                      {"details" in item && item.details ? (
                         <span className="premium-nonmedical-enroll__details">
-                          {item.details.map((line) => (
+                          {item.details.map((line: string) => (
                             <span key={line}>{line}</span>
                           ))}
                         </span>
                       ) : null}
-                      {item.note ? (
+                      {"note" in item && item.note ? (
                         <span className="premium-nonmedical-enroll__item-note">{item.note}</span>
                       ) : null}
                     </span>
@@ -92,14 +92,14 @@ export function PremiumNonmedicalEnroll() {
                 />
                 <span className="premium-nonmedical-enroll__item-copy">
                   <span className="premium-nonmedical-enroll__item-label">{item.label}</span>
-                  {item.details ? (
+                  {"details" in item && item.details ? (
                     <span className="premium-nonmedical-enroll__details">
-                      {item.details.map((line) => (
+                      {item.details.map((line: string) => (
                         <span key={line}>{line}</span>
                       ))}
                     </span>
                   ) : null}
-                  {item.note ? (
+                  {"note" in item && item.note ? (
                     <span className="premium-nonmedical-enroll__item-note">{item.note}</span>
                   ) : null}
                 </span>

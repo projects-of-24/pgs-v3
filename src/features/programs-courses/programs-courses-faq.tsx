@@ -18,8 +18,8 @@ import "./programs-courses-faq.css";
 
 export function ProgramsCoursesFaq() {
   const baseId = useId();
-  const [tabId, setTabId] = useState(COURSES_FAQ.defaultTabId);
-  const [openIndex, setOpenIndex] = useState(COURSES_FAQ.defaultOpenIndex);
+  const [tabId, setTabId] = useState<string>(COURSES_FAQ.defaultTabId);
+  const [openIndex, setOpenIndex] = useState<number>(COURSES_FAQ.defaultOpenIndex);
 
   const activeTab =
     COURSES_FAQ.tabs.find((t) => t.id === tabId) ?? COURSES_FAQ.tabs[0];

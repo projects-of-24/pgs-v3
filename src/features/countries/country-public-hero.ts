@@ -137,13 +137,13 @@ export async function getPublishedCountryHeroFigma(
 
   // Prefer modular pack when CMS still returns legacy Hostinger placeholder paths.
   const legacyDefaults = defaultCountryHeroImages(countrySlugFromPublicRoute(route));
-  const useModular = (cms: string, legacy: string, modular: string) =>
+  const pickModularImage = (cms: string, legacy: string, modular: string) =>
     !cms || cms === legacy ? modular : cms;
 
   return {
-    desktopImage: useModular(hero.desktopImage, legacyDefaults.desktopImage, defaults.desktopImage),
-    mobileImage: useModular(hero.mobileImage, legacyDefaults.mobileImage, defaults.mobileImage),
-    flagImage: useModular(hero.flagImage, legacyDefaults.flagImage, defaults.flagImage),
+    desktopImage: pickModularImage(hero.desktopImage, legacyDefaults.desktopImage, defaults.desktopImage),
+    mobileImage: pickModularImage(hero.mobileImage, legacyDefaults.mobileImage, defaults.mobileImage),
+    flagImage: pickModularImage(hero.flagImage, legacyDefaults.flagImage, defaults.flagImage),
     badgeImage: hero.badgeImage || defaults.badgeImage,
     destinationName: destinationName ?? defaults.destinationName,
   };

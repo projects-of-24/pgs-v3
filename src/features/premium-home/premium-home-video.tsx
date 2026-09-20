@@ -21,7 +21,7 @@ export function PremiumHomeVideo() {
   const c = PREMIUM_HOME_VIDEO;
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [videoSrc, setVideoSrc] = useState(c.videoDeskSrc);
+  const [videoSrc, setVideoSrc] = useState<string>(c.videoDeskSrc);
 
   useEffect(() => {
     const sync = () => setVideoSrc(pickVideoSrc());

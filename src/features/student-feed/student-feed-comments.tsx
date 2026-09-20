@@ -530,6 +530,7 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                             type="button"
                             className="student-feed-comments__emoji-option"
                             role="option"
+                            aria-selected="false"
                             aria-label={`Insert ${emoji}`}
                             onClick={() => insertEmoji(emoji)}
                           >

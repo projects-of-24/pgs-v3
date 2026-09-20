@@ -5,7 +5,9 @@
 import { ABOUT_ECOSYSTEM } from "./content";
 import "./about-ecosystem.css";
 
-type EcoItem = (typeof ABOUT_ECOSYSTEM.left)[number];
+type EcoItem =
+  | (typeof ABOUT_ECOSYSTEM.left)[number]
+  | (typeof ABOUT_ECOSYSTEM.right)[number];
 
 function EcoRow({ item }: { item: EcoItem }) {
   return (

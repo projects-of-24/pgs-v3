@@ -8,6 +8,8 @@ import { useRef } from "react";
 import { PGS_PICKS, PGS_PICKS_FIXTURE, type PgsPicksCard } from "./content";
 import "./pgs-picks.css";
 
+export type { PgsPicksCard };
+
 type Props = {
   courses?: PgsPicksCard[];
 };

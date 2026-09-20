@@ -80,6 +80,7 @@ describe("document pre-upload selection", () => {
           student_documents: [{
             id: "doc-1",
             requirement_id: "uploaded-req",
+            storage_path: "students/test/passport.pdf",
             original_filename: "passport.pdf",
             mime_type: "application/pdf",
             byte_size: 1200,

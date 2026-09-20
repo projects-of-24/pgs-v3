@@ -76,7 +76,7 @@ function ctaLabelFor(c: ExploreCountryOption, suffix: string): string {
 
 export function ExploreCountriesSwitcherSecondary() {
   const s = EXPLORE_COUNTRIES_SWITCHER_SECONDARY;
-  const [activeId, setActiveId] = useState(s.defaultId);
+  const [activeId, setActiveId] = useState<string>(s.defaultId);
   const active =
     EXPLORE_COUNTRIES_SECONDARY.find((c) => c.id === activeId) ??
     EXPLORE_COUNTRIES_SECONDARY[2];

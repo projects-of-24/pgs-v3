@@ -74,7 +74,7 @@ export const ABOUT_WHY = {
   ] satisfies AboutWhyStat[]
 } as const;
 
-type AboutAudiencePart = {
+export type AboutAudiencePart = {
   text: string;
   emphasis?: "bold" | "boldItalic";
 };

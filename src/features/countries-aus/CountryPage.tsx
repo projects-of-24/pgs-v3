@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import {
   type CountryPageContent,
   type CountryTab,
@@ -953,7 +953,7 @@ function TracksPanel({ tab }: { tab: Extract<CountryTab, { id: "tracks" }> }) {
           <h5 className="mb-2 mt-3 fs-25 fw-500 countriesUSA-title">
             {tab.headsUpTitle ?? headsUpLink?.label ?? "A Heads Up"}
           </h5>
-          {tab.headsUp.map((p, i) => (
+          {tab.headsUp.map((p) => (
             <p className="fs-15 lh-20 mb-3 countriesUSA-contain" key={p.slice(0, 40)}>
               {p}
             </p>
@@ -1017,19 +1017,21 @@ export function CountryPage({
 }) {
   const [tabId, setTabId] = useState<CountryTab["id"]>("study101");
 
-  useEffect(() => {
-    if (!activeTabId || activeTabId === "page") return;
-    if (content.tabs.some((t) => t.id === activeTabId)) {
-      setTabId(activeTabId);
-    }
-  }, [activeTabId, content.tabs]);
+  // CMS preview can drive the tab bar via activeTabId — prefer that over local state.
+  const syncedTabId =
+    activeTabId &&
+    activeTabId !== "page" &&
+    content.tabs.some((t) => t.id === activeTabId)
+      ? activeTabId
+      : null;
+  const currentTabId = syncedTabId ?? tabId;
 
   function selectTab(id: CountryTab["id"]) {
     setTabId(id);
     onTabChange?.(id);
   }
 
-  const active = content.tabs.find((t) => t.id === tabId) ?? content.tabs[0];
+  const active = content.tabs.find((t) => t.id === currentTabId) ?? content.tabs[0];
   const rootClass = ["countriesUSA", "country-file-aus", className].filter(Boolean).join(" ");
 
   return (
@@ -1108,7 +1110,7 @@ export function CountryPage({
                 <ul className="portfolio-filter fw-500 nav nav-tabs border-0 country-usa-tab-full-width">
                   {content.tabs.map((tab) => (
                     <li
-                      className={`nav${tab.id === tabId ? " active" : ""}`}
+                      className={`nav${tab.id === currentTabId ? " active" : ""}`}
                       key={tab.id}
                     >
                       <a
