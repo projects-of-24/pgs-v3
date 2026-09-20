@@ -1,0 +1,1408 @@
+/**
+ * Black-card header — U10.
+ * Desktop card is 990px, centered. It is only as tall as the header.
+ * Phone text sits in the 85% rail so it does not touch the screen edge.
+ * iPad reuses this desktop card.
+ */
+
+.premium-plab-know {
+  box-sizing: border-box;
+  width: min(990px, calc(100% - 48px));
+  margin: 38px auto 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-plab-know *,
+.premium-plab-know *::before,
+.premium-plab-know *::after {
+  box-sizing: border-box;
+}
+
+.premium-plab-know__card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 33px 36px 99px;
+  background: #000;
+  border-radius: 16px;
+}
+
+.premium-plab-know__story {
+  display: none;
+}
+
+.premium-plab-know__offer-break {
+  display: none;
+}
+
+/* Wide card only. Rates sit in the open middle, not under the brand. Phone rules stay below. */
+@media (min-width: 1367px) {
+  .premium-plab-know__card {
+    position: relative;
+  }
+
+  .premium-plab-know__stats {
+    position: absolute;
+    left: 534px;
+    top: 137px;
+  }
+
+  .premium-plab-know__card {
+    min-height: 1833px;
+  }
+
+  .premium-plab-know__story {
+    display: block;
+  }
+
+  .premium-plab-know__essay {
+    position: absolute;
+    left: 98px;
+    top: 298px;
+    width: 364px;
+  }
+
+  .premium-plab-know__essay-lead {
+    margin: 0 0 14px;
+    color: #fff;
+    font-size: 19.2px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-plab-know__essay-body {
+    margin: 0 0 0 18px;
+    max-width: 346px;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-plab-know__years {
+    position: absolute;
+    left: 531px;
+    top: 276px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 351px;
+    min-height: 112px;
+    padding: 28px 49px 18px;
+  }
+
+  .premium-plab-know__years-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .premium-plab-know__years-copy {
+    position: relative;
+    margin: 0;
+    width: 253px;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.08px;
+    text-align: center;
+  }
+
+  .premium-plab-know__years-cursor {
+    position: relative;
+    display: block;
+    width: 19.2px;
+    height: 19.2px;
+  }
+
+  .premium-plab-know__window {
+    position: absolute;
+    left: 531px;
+    top: 413px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    width: 351px;
+  }
+
+  .premium-plab-know__window-lead {
+    flex: 1 1 auto;
+    margin: 0;
+    color: #0abf8c;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .premium-plab-know__window-side {
+    flex: 0 0 auto;
+  }
+
+  .premium-plab-know__window-example {
+    margin: 0 0 4px;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__window-list {
+    margin: 0;
+    padding: 0 0 0 18px;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.08px;
+    list-style: disc;
+  }
+
+  .premium-plab-know__window-list li {
+    white-space: nowrap;
+  }
+
+  .premium-plab-know__steps {
+    position: absolute;
+    left: 72px;
+    top: 618px;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    width: 436px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .premium-plab-know__step {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .premium-plab-know__step:nth-child(1) {
+    flex: 0 0 132px;
+  }
+
+  .premium-plab-know__step:nth-child(2) {
+    flex: 0 0 127px;
+  }
+
+  .premium-plab-know__step:nth-child(3) {
+    flex: 0 0 155px;
+  }
+
+  .premium-plab-know__step-name {
+    margin: 0;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: #ffc524;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .premium-plab-know__step-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__step-lines li {
+    overflow-wrap: anywhere;
+  }
+
+  .premium-plab-know__residency {
+    position: absolute;
+    left: 534px;
+    top: 567px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 323px;
+    margin: 0;
+  }
+
+  .premium-plab-know__residency-label {
+    margin: 0;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__residency-body {
+    margin: 0;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__match {
+    position: absolute;
+    left: 542px;
+    top: 670px;
+    width: 323px;
+    margin: 0;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__offer {
+    position: absolute;
+    left: 34px;
+    top: 785px;
+    width: 923px;
+    min-height: 1020px;
+    padding: 56px 0 36px;
+    background: #f1f1f1;
+    border: 1px solid #000;
+    border-radius: 16px;
+  }
+
+  .premium-plab-know__offer-title {
+    width: 599px;
+    margin: 0 auto;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: 46px;
+    font-weight: 400;
+    line-height: 44px;
+    text-align: center;
+  }
+
+  .premium-plab-know__offer-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin: 36px 0 0 246px;
+  }
+
+  .premium-plab-know__network {
+    flex: 0 0 263px;
+    width: 263px;
+    color: #000;
+  }
+
+  .premium-plab-know__network-lead {
+    margin: 0 0 4px;
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 1.27;
+  }
+
+  .premium-plab-know__network-body {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-plab-know__checklist {
+    flex: 0 0 370px;
+    width: 370px;
+    padding: 28px 23px 24px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-plab-know__checklist-title {
+    width: 324px;
+    margin: 0 auto 8px;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .premium-plab-know__checklist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 324px;
+    margin: 0 auto;
+    padding: 12px 0 0;
+    list-style: none;
+  }
+
+  .premium-plab-know__checklist-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-plab-know__checklist-mark {
+    flex: 0 0 27px;
+    width: 27px;
+    height: 27px;
+    background: #0a8f68;
+    border-radius: 3px;
+  }
+
+  .premium-plab-know__forms {
+    position: absolute;
+    left: 59px;
+    top: 374px;
+    width: 452px;
+    padding: 28px 18px 24px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-plab-know__forms-title {
+    width: 400px;
+    margin: 0;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .premium-plab-know__forms-list {
+    width: 280px;
+    margin: 16px 0 0 136px;
+    padding: 0 0 0 20px;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    list-style: disc;
+    text-transform: capitalize;
+  }
+
+  .premium-plab-know__forms-list li {
+    display: list-item;
+    list-style: disc;
+  }
+
+  .premium-plab-know__prep {
+    position: absolute;
+    left: 92px;
+    top: 595px;
+    width: 417px;
+    padding: 16px 21px 18px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-plab-know__prep-title {
+    margin: 0 0 10px;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .premium-plab-know__prep-body {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+  }
+
+  .premium-plab-know__join {
+    position: absolute;
+    left: 50%;
+    top: 942px;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 12px 23px;
+    border: 0;
+    border-radius: 20px;
+    background: #009c70;
+    color: #fff;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .premium-plab-know__join:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 3px;
+  }
+
+  .premium-plab-know__offers {
+    position: absolute;
+    left: 523px;
+    top: 655px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 274px;
+    margin: 0;
+    color: #000;
+  }
+
+  .premium-plab-know__offers-title {
+    margin: 0;
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-plab-know__offers-note {
+    margin: -8px 0 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-plab-know__conference {
+    position: absolute;
+    left: 60px;
+    top: 741px;
+    width: 446px;
+    min-height: 169px;
+    padding: 36px 16px 20px;
+    background: #bbc8ff;
+    border: 1px solid #5c5c5c;
+    border-radius: 12.8px;
+  }
+
+  .premium-plab-know__conference-icon {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .premium-plab-know__conference-copy {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .premium-plab-know__sessions {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 370px;
+    margin: 16px 0 0 516px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-plab-know__sessions-icon {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .premium-plab-know__sessions-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .premium-plab-know__sessions-title {
+    margin: 0 0 4px;
+    color: #595959;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-plab-know__cal {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px 4px;
+  }
+
+  .premium-plab-know__cal-day,
+  .premium-plab-know__cal-date {
+    color: #4a5660;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .premium-plab-know__cal-date.is-booked {
+    color: #fff;
+    background: #c2410c;
+    border-radius: 50%;
+  }
+
+  .premium-plab-know__offer-photo {
+    position: absolute;
+    left: 822px;
+    top: 741px;
+    width: 110px;
+    height: 100px;
+    overflow: hidden;
+    background: #bbc8ff;
+    border: 1px solid #b57cff;
+    border-radius: 12.8px;
+  }
+
+  .premium-plab-know__offer-photo img {
+    position: absolute;
+    left: -60px;
+    top: -10px;
+    width: 209px;
+    height: 118px;
+    max-width: none;
+    object-fit: cover;
+  }
+}
+
+.premium-plab-know__title {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 70px 0 0;
+  color: #ffc524;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+}
+
+.premium-plab-know__kicker {
+  font-size: 38.4px;
+  line-height: 1;
+}
+
+.premium-plab-know__word {
+  font-size: 102.4px;
+  line-height: 0.8;
+}
+
+.premium-plab-know__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  min-width: 0;
+}
+
+.premium-plab-know__brand {
+  margin: 0;
+  color: #b57cff;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.premium-plab-know__stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 272px;
+}
+
+.premium-plab-know__stats-label {
+  margin: 0;
+  color: #009c70;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-plab-know__stats-note,
+.premium-plab-know__rate-name {
+  margin: 0;
+  color: #fff;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+
+.premium-plab-know__rates {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-plab-know__rate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.premium-plab-know__rate-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.premium-plab-know__rate-value {
+  color: #0abf8c;
+  font-size: 22.4px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.premium-plab-know__ring {
+  display: block;
+  width: 29.6px;
+  height: 29.6px;
+  flex: 0 0 29.6px;
+}
+
+@media (max-width: 600px) {
+  .premium-plab-know {
+    width: 100%;
+    margin-top: 27px;
+  }
+
+  .premium-plab-know__card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(16px, 5.64vw, 26px);
+    padding: clamp(44px, 14.36vw, 64px) 14% clamp(24px, 8.21vw, 40px) 7.5%;
+    border-radius: 0;
+  }
+
+  .premium-plab-know__title {
+    margin-top: 0;
+    gap: 20px;
+  }
+
+  .premium-plab-know__kicker {
+    font-size: 32px;
+  }
+
+  .premium-plab-know__word {
+    font-size: 81.92px;
+  }
+
+  /* Phone header only. Brand sits above the title. Rates stay stacked until the essay row. */
+  .premium-plab-know__card {
+    gap: 0;
+  }
+
+  .premium-plab-know__aside {
+    display: contents;
+  }
+
+  .premium-plab-know__brand {
+    order: 1;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .premium-plab-know__title {
+    order: 2;
+    margin-top: 24px;
+    margin-bottom: 47px;
+  }
+
+  .premium-plab-know__stats {
+    order: 3;
+    width: 115px;
+    margin-top: 0;
+    align-self: start;
+  }
+
+  .premium-plab-know__rates {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  /* Figma pair: rates left, essay right. Essay sits at the top of the row. */
+  .premium-plab-know__card {
+    display: grid;
+    grid-template-columns: 9px 115px 27px minmax(0, 172px);
+    align-items: start;
+  }
+
+  .premium-plab-know__brand,
+  .premium-plab-know__title {
+    grid-column: 1 / -1;
+  }
+
+  .premium-plab-know__stats {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .premium-plab-know__story {
+    display: contents;
+  }
+
+  .premium-plab-know__essay {
+    position: relative;
+    grid-column: 4;
+    grid-row: 3;
+    width: min(172px, calc(100% - 28px));
+    max-width: min(172px, calc(100% - 28px));
+    margin-top: -213px;
+    margin-left: 28px;
+  }
+
+  .premium-plab-know__essay-lead {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: 0;
+    width: 137px;
+    margin: 0 0 9px;
+    color: #fff;
+    font-size: 19.2px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-plab-know__essay-body {
+    margin: 0;
+    max-width: none;
+    color: #fff;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-plab-know__years {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    width: 100%;
+    max-width: 100%;
+    min-height: clamp(76px, 24.1vw, 108px);
+    margin: clamp(24px, 7.69vw, 36px) 0 0;
+    padding: clamp(14px, 4.87vw, 22px) clamp(10px, 3.59vw, 16px);
+    justify-self: stretch;
+  }
+
+  .premium-plab-know__years-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .premium-plab-know__years-copy {
+    position: relative;
+    width: min(100%, clamp(200px, 64.87vw, 290px));
+    margin: 0;
+    color: #ffc524;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.08px;
+    text-align: center;
+  }
+
+  .premium-plab-know__years-cursor {
+    position: relative;
+    display: block;
+    width: 19.2px;
+    height: 19.2px;
+    margin: 4px auto 0;
+  }
+
+  .premium-plab-know__window {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-column: 1 / -1;
+    grid-row: 5;
+    gap: clamp(12px, 4.1vw, 18px);
+    width: 100%;
+    margin: clamp(28px, 9.23vw, 42px) 0 0;
+  }
+
+  .premium-plab-know__window-lead,
+  .premium-plab-know__window-example,
+  .premium-plab-know__window-list {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .premium-plab-know__window-lead {
+    color: #0abf8c;
+    line-height: 1.35;
+  }
+
+  .premium-plab-know__window-example {
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__window-list {
+    padding: 0 0 0 clamp(14px, 4.62vw, 22px);
+    color: #fff;
+    line-height: 1.35;
+    letter-spacing: 0.08px;
+    list-style: disc;
+  }
+
+  .premium-plab-know__window-list li {
+    white-space: nowrap;
+    list-style: disc;
+  }
+
+  .premium-plab-know__steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: clamp(10px, 3.08vw, 14px);
+    grid-column: 1 / -1;
+    grid-row: 6;
+    width: 100%;
+    max-width: 100%;
+    margin: clamp(28px, 8.97vw, 40px) 0 0;
+    padding: 0;
+    list-style: none;
+    justify-self: stretch;
+  }
+
+  .premium-plab-know__step {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(2px, 0.77vw, 4px);
+    flex: 1 1 calc(50% - clamp(4px, 1.54vw, 8px));
+    max-width: calc(50% - clamp(4px, 1.54vw, 8px));
+    min-width: 0;
+  }
+
+  .premium-plab-know__step:nth-child(3) {
+    flex: 0 1 auto;
+    max-width: 100%;
+  }
+
+  .premium-plab-know__step-name {
+    margin: 0;
+    padding: clamp(2px, 0.5vw, 4px) clamp(10px, 3.08vw, 14px);
+    border-radius: clamp(6px, 2.05vw, 10px);
+    background: #ffc524;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .premium-plab-know__step-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #ffc524;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__step-lines li {
+    list-style: none;
+  }
+
+  .premium-plab-know__residency {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(3px, 1.03vw, 6px);
+    grid-column: 1 / -1;
+    grid-row: 7;
+    width: 100%;
+    margin: clamp(16px, 5.64vw, 26px) 0 0;
+  }
+
+  .premium-plab-know__residency-label {
+    margin: 0;
+    color: #ffc524;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__residency-body {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__match {
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 8;
+    width: 100%;
+    margin: clamp(6px, 2.05vw, 10px) 0 0;
+    color: #ffc524;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-plab-know__offer {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(16px, 5.64vw, 26px);
+    grid-column: 1 / -1;
+    grid-row: 9;
+    width: calc(127.389% - 2 * clamp(8px, 2.56vw, 12px));
+    margin: clamp(48px, 15.38vw, 70px) 0 0 calc(clamp(8px, 2.56vw, 12px) - 9.554%);
+    padding: clamp(42px, 13.59vw, 62px) clamp(16px, 4.62vw, 22px) clamp(28px, 7.18vw, 36px) clamp(24px, 7.69vw, 36px);
+    overflow: visible;
+    background: #f1f1f1;
+    border: 1px solid #000;
+    border-radius: clamp(12px, 4.1vw, 16px);
+    color: #000;
+  }
+
+  .premium-plab-know__offer-break {
+    display: block;
+  }
+
+  .premium-plab-know__offer-title {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: 0;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .premium-plab-know__offer-photo {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 9;
+    justify-self: end;
+    align-self: start;
+    z-index: 2;
+    display: block;
+    width: clamp(72px, 22.48vw, 100px);
+    height: clamp(66px, 20.51vw, 92px);
+    margin: clamp(24px, 7.69vw, 36px) calc(clamp(22px, 6.92vw, 32px) - 17.834%) 0 0;
+    overflow: hidden;
+    background: #bbc8ff;
+    border: 1px solid #b57cff;
+    border-radius: clamp(8px, 2.63vw, 12px);
+  }
+
+  .premium-plab-know__offer-photo img {
+    position: absolute;
+    left: -54%;
+    top: -8.8%;
+    width: 190.5%;
+    height: 117.5%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .premium-plab-know__offer-row {
+    display: contents;
+  }
+
+  .premium-plab-know__checklist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(10px, 3.08vw, 14px);
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: clamp(22px, 7.44vw, 34px) 0 0;
+    padding: clamp(10px, 3.08vw, 14px);
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: clamp(10px, 3.28vw, 14px);
+  }
+
+  .premium-plab-know__checklist-title {
+    width: min(100%, clamp(180px, 55.38vw, 240px));
+    margin: 0;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .premium-plab-know__checklist-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 3.08vw, 14px);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .premium-plab-know__checklist-list li {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 2.46vw, 12px);
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.32px;
+  }
+
+  .premium-plab-know__checklist-mark {
+    flex: 0 0 clamp(18px, 5.58vw, 24px);
+    width: clamp(18px, 5.58vw, 24px);
+    height: clamp(18px, 5.58vw, 24px);
+    background: #0a8f68;
+    border-radius: clamp(2px, 0.82vw, 4px);
+  }
+
+  .premium-plab-know__forms {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 3.08vw, 14px);
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: clamp(8px, 2.82vw, 14px) 0 0;
+    padding: clamp(10px, 3.08vw, 14px);
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: clamp(10px, 3.28vw, 14px);
+  }
+
+  .premium-plab-know__forms-title {
+    width: 100%;
+    margin: 0;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .premium-plab-know__forms-list {
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 clamp(16px, 5.38vw, 22px);
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+    list-style: disc;
+    text-transform: capitalize;
+  }
+
+  .premium-plab-know__forms-list li {
+    display: list-item;
+    list-style: disc;
+  }
+
+  .premium-plab-know__prep {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(10px, 3.08vw, 14px);
+    grid-column: 1;
+    grid-row: 4;
+    align-self: center;
+    width: auto;
+    margin: clamp(18px, 6.15vw, 28px) 0 0;
+    padding: clamp(10px, 3.08vw, 14px);
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: clamp(10px, 3.28vw, 14px);
+  }
+
+  .premium-plab-know__prep-title {
+    margin: 0;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .premium-plab-know__prep-body {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+  }
+
+  .premium-plab-know__network {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(2px, 0.82vw, 4px);
+    grid-column: 2;
+    grid-row: 4;
+    align-self: center;
+    width: auto;
+    margin: clamp(18px, 6.15vw, 28px) 0 0;
+    color: #000;
+  }
+
+  .premium-plab-know__network-lead {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .premium-plab-know__network-body {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-plab-know__sessions {
+    position: static;
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(6px, 1.64vw, 10px);
+    grid-column: 1 / -1;
+    grid-row: 5;
+    justify-self: start;
+    width: max-content;
+    max-width: 100%;
+    margin: clamp(12px, 4.36vw, 20px) 0 0;
+    padding: clamp(8px, 2vw, 12px);
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: clamp(8px, 2.63vw, 12px);
+  }
+
+  .premium-plab-know__sessions-icon {
+    flex: 0 0 clamp(28px, 8.2vw, 36px);
+    width: clamp(28px, 8.2vw, 36px);
+    height: clamp(28px, 8.2vw, 36px);
+  }
+
+  .premium-plab-know__sessions-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .premium-plab-know__sessions-title {
+    margin: 0 0 4px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.16px;
+  }
+
+  .premium-plab-know__cal {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2px 4px;
+  }
+
+  .premium-plab-know__cal-day,
+  .premium-plab-know__cal-date {
+    color: #4a5660;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .premium-plab-know__cal-date.is-booked {
+    color: #fff;
+    background: #c2410c;
+    border-radius: 50%;
+  }
+
+  .premium-plab-know__conference {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1;
+    grid-row: 6;
+    align-self: center;
+    width: 100%;
+    margin: clamp(18px, 6.15vw, 28px) 0 0;
+    padding: clamp(36px, 11.08vw, 48px) clamp(8px, 2.26vw, 12px) clamp(16px, 5.13vw, 24px);
+    background: #bbc8ff;
+    border: 1px solid #5c5c5c;
+    border-radius: clamp(10px, 3.28vw, 14px);
+  }
+
+  .premium-plab-know__conference-icon {
+    position: absolute;
+    left: clamp(10px, 3.53vw, 16px);
+    top: clamp(6px, 2.3vw, 12px);
+    width: clamp(24px, 6.89vw, 32px);
+    height: clamp(24px, 6.89vw, 32px);
+  }
+
+  .premium-plab-know__conference-copy {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .premium-plab-know__conference-copy br {
+    display: none;
+  }
+
+  .premium-plab-know__offers {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    grid-column: 2;
+    grid-row: 6;
+    align-self: center;
+    width: 100%;
+    margin: clamp(18px, 6.15vw, 28px) 0 0;
+    color: #000;
+  }
+
+  .premium-plab-know__offers-title {
+    margin: 0;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .premium-plab-know__offers-note + .premium-plab-know__offers-title,
+  .premium-plab-know__offers-title + .premium-plab-know__offers-title {
+    margin-top: 8px;
+  }
+
+  .premium-plab-know__offers-note {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-plab-know__join {
+    position: static;
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 7;
+    justify-self: center;
+    width: min(100%, clamp(220px, 69vw, 300px));
+    margin: clamp(18px, 6.15vw, 28px) 0 0;
+    transform: translateX(calc((clamp(16px, 4.62vw, 22px) - clamp(24px, 7.69vw, 36px)) / 2));
+    padding: clamp(14px, 4.1vw, 18px) clamp(28px, 9.62vw, 42px);
+    border: 0;
+    border-radius: clamp(10px, 3.08vw, 14px);
+    background: #009c70;
+    color: #fff;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.08px;
+    text-align: center;
+    white-space: normal;
+    cursor: pointer;
+  }
+
+  .premium-plab-know__join:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 3px;
+  }
+
+  /* Phone type for this pass. Desktop sizes stay in the 1367 block. */
+  .premium-plab-know__rate-value {
+    font-size: 20px;
+  }
+
+  .premium-plab-know__stats-label,
+  .premium-plab-know__network-lead,
+  .premium-plab-know__offers-title {
+    font-size: 18px;
+  }
+
+  .premium-plab-know__stats-note,
+  .premium-plab-know__rate-name,
+  .premium-plab-know__essay-body,
+  .premium-plab-know__years-copy,
+  .premium-plab-know__window-lead,
+  .premium-plab-know__window-example,
+  .premium-plab-know__window-list,
+  .premium-plab-know__step-name,
+  .premium-plab-know__step-lines,
+  .premium-plab-know__residency-label,
+  .premium-plab-know__residency-body,
+  .premium-plab-know__match {
+    font-size: 15px;
+  }
+}

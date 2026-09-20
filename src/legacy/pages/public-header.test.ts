@@ -1,12 +1,26 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { applySharedPublicHeader } from "./public-header";
 
+/** Minimal country-page shell — legacy full HTML fixtures were removed in the modular cutover. */
+const countryPageFixture = `
+<header class="old-header"><nav>old</nav></header>
+<section class="countriesUSA"><h1>Australia</h1></section>
+<!-- Drawer -->
+<div id="drawer"><div class="old-drawer">old drawer</div></div>
+`;
+
+/** Minimal non-country shell without countriesUSA landmark. */
+const aboutPageFixture = `
+<header class="old-header"><nav>old</nav></header>
+<!-- AboutUs -->
+<section class="about-body"><h1>About</h1></section>
+<!-- Drawer -->
+<div id="drawer"><div class="old-drawer">old drawer</div></div>
+`;
+
 describe("applySharedPublicHeader", () => {
   it("swaps header + drawer on country pages (countriesUSA landmark)", () => {
-    const html = readFileSync(join(process.cwd(), "src/legacy/pages/countriesaus.html"), "utf8");
-    const out = applySharedPublicHeader(html);
+    const out = applySharedPublicHeader(countryPageFixture);
     expect(out).toContain('class="pgs-figma-header"');
     expect(out).toContain('class="pgs-header-bell');
     expect(out).toContain('id="drawer"');
@@ -16,9 +30,8 @@ describe("applySharedPublicHeader", () => {
   });
 
   it("swaps header + drawer on non-country pages without countriesUSA", () => {
-    const html = readFileSync(join(process.cwd(), "src/legacy/pages/about.html"), "utf8");
-    expect(html).not.toContain("countriesUSA");
-    const out = applySharedPublicHeader(html);
+    expect(aboutPageFixture).not.toContain("countriesUSA");
+    const out = applySharedPublicHeader(aboutPageFixture);
     expect(out).toContain('class="pgs-figma-header"');
     expect(out).toContain('id="drawer"');
     expect(out).toContain("pgs-header-bell");
@@ -26,8 +39,7 @@ describe("applySharedPublicHeader", () => {
   });
 
   it("includes drawer #univMeet + search above blue nav (mobile Figma v1)", () => {
-    const html = readFileSync(join(process.cwd(), "src/legacy/pages/countriesaus.html"), "utf8");
-    const out = applySharedPublicHeader(html);
+    const out = applySharedPublicHeader(countryPageFixture);
     const toolsAt = out.indexOf("pgs-drawer-tools");
     const navAt = out.indexOf('class="header-tab-top d-block"');
     expect(toolsAt).toBeGreaterThan(-1);

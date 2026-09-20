@@ -2,10 +2,12 @@
 
 /**
  * TEMPORARY scout badge — REMOVE when breakpoint / chrome UI QC is done.
- * Owner: 2026-09-04 — all public (via LegacyPage). Dev-only; never ships meaningful prod UI.
+ * Owner: 2026-09-04 — via LegacyPage. Dev-only; live routes off (2026-09-10);
+ * `/preview` labs only. Never ships meaningful prod UI.
  * Modular chrome bands: >1366 desktop · 601–1366 iPad · ≤600 mobile (not Hostinger 767).
  * Drag anywhere on the badge to reposition (dev QC helper).
  */
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const MARKS = [600, 1366] as const;
@@ -19,6 +21,8 @@ function bandLabel(width: number): string {
 type Pos = { left: number; top: number };
 
 export function ViewportWidthOverlay() {
+  const pathname = usePathname();
+  const isPreviewLab = pathname.startsWith("/preview");
   const [width, setWidth] = useState<number | null>(null);
   const [pos, setPos] = useState<Pos | null>(null);
   const dragRef = useRef<{
@@ -30,13 +34,13 @@ export function ViewportWidthOverlay() {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== "development") return;
+    if (process.env.NODE_ENV !== "development" || !isPreviewLab) return;
 
     const update = () => setWidth(window.innerWidth);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
-  }, []);
+  }, [isPreviewLab]);
 
   const onPointerDown = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     if (event.button !== 0) return;
@@ -81,7 +85,7 @@ export function ViewportWidthOverlay() {
     }
   }, []);
 
-  if (process.env.NODE_ENV !== "development" || width === null) {
+  if (process.env.NODE_ENV !== "development" || !isPreviewLab || width === null) {
     return null;
   }
 

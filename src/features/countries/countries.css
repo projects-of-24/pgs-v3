@@ -3,31 +3,31 @@
  * Bands: >1366 desktop · 601–1366 iPad · ≤600 phone (sync pgs-breakpoints.ts).
  * Do not use Hostinger 767 here.
  */
-.countriesUSA .country-stat-sidebar {
+.country-file-usa .country-stat-sidebar {
   display: flex;
   align-items: flex-end;
   gap: 14px;
   margin-top: 25px;
 }
 
-.countriesUSA .country-stat-values {
+.country-file-usa .country-stat-values {
   background-color: #f8f9fa;
   padding: 12px 16px;
   border-radius: 8px;
   flex-shrink: 0;
 }
 
-.countriesUSA .country-stat-values > div + div {
+.country-file-usa .country-stat-values > div + div {
   margin-top: 10px;
 }
 
-.countriesUSA .country-stat-number {
+.country-file-usa .country-stat-number {
   white-space: nowrap;
   font-size: clamp(22px, 2.2vw, 32px) !important;
   letter-spacing: -0.02em;
 }
 
-.countriesUSA .country-stat-caption {
+.country-file-usa .country-stat-caption {
   flex: 1;
   min-width: 72px;
   font-size: 14px !important;
@@ -39,12 +39,12 @@
 }
 
 /* Shared sidebar card sizing — Visa 101 reference */
-.countriesUSA .country-study-sidebar,
-.countriesUSA .country-budgeting-card,
-.countriesUSA .country-visa-sidebar,
-.countriesUSA .country-short-sidebar,
-.countriesUSA .country-scholarship-sidebar,
-.countriesUSA .country-tracks-sidebar {
+.country-file-usa .country-study-sidebar,
+.country-file-usa .country-budgeting-card,
+.country-file-usa .country-visa-sidebar,
+.country-file-usa .country-short-sidebar,
+.country-file-usa .country-scholarship-sidebar,
+.country-file-usa .country-tracks-sidebar {
   display: flex;
   flex-direction: column;
   min-height: 520px;
@@ -54,41 +54,41 @@
   box-sizing: border-box;
 }
 
-.countriesUSA .country-study-sidebar__header,
-.countriesUSA .country-budgeting-card__header,
-.countriesUSA .country-visa-sidebar__header,
-.countriesUSA .country-short-sidebar__header,
-.countriesUSA .country-scholarship-sidebar__header,
-.countriesUSA .country-tracks-sidebar__header {
+.country-file-usa .country-study-sidebar__header,
+.country-file-usa .country-budgeting-card__header,
+.country-file-usa .country-visa-sidebar__header,
+.country-file-usa .country-short-sidebar__header,
+.country-file-usa .country-scholarship-sidebar__header,
+.country-file-usa .country-tracks-sidebar__header {
   flex-shrink: 0;
 }
 
-.countriesUSA .country-study-sidebar__spacer,
-.countriesUSA .country-budgeting-card__spacer,
-.countriesUSA .country-visa-sidebar__spacer,
-.countriesUSA .country-short-sidebar__spacer,
-.countriesUSA .country-scholarship-sidebar__spacer,
-.countriesUSA .country-tracks-sidebar__spacer {
+.country-file-usa .country-study-sidebar__spacer,
+.country-file-usa .country-budgeting-card__spacer,
+.country-file-usa .country-visa-sidebar__spacer,
+.country-file-usa .country-short-sidebar__spacer,
+.country-file-usa .country-scholarship-sidebar__spacer,
+.country-file-usa .country-tracks-sidebar__spacer {
   flex: 1 1 auto;
   min-height: 120px;
 }
 
-.countriesUSA .country-study-sidebar__footer,
-.countriesUSA .country-budgeting-card__footer,
-.countriesUSA .country-visa-sidebar__footer,
-.countriesUSA .country-short-sidebar__footer,
-.countriesUSA .country-scholarship-sidebar__footer,
-.countriesUSA .country-tracks-sidebar__footer {
+.country-file-usa .country-study-sidebar__footer,
+.country-file-usa .country-budgeting-card__footer,
+.country-file-usa .country-visa-sidebar__footer,
+.country-file-usa .country-short-sidebar__footer,
+.country-file-usa .country-scholarship-sidebar__footer,
+.country-file-usa .country-tracks-sidebar__footer {
   flex-shrink: 0;
   margin-top: auto;
 }
 
-.countriesUSA .country-study-sidebar__source,
-.countriesUSA .country-budgeting-card__source,
-.countriesUSA .country-visa-sidebar__source,
-.countriesUSA .country-short-sidebar__source,
-.countriesUSA .country-scholarship-sidebar__source,
-.countriesUSA .country-tracks-sidebar__source {
+.country-file-usa .country-study-sidebar__source,
+.country-file-usa .country-budgeting-card__source,
+.country-file-usa .country-visa-sidebar__source,
+.country-file-usa .country-short-sidebar__source,
+.country-file-usa .country-scholarship-sidebar__source,
+.country-file-usa .country-tracks-sidebar__source {
   position: absolute;
   right: 1rem;
   bottom: 0.85rem;
@@ -97,12 +97,12 @@
   font-weight: 400;
 }
 
-.countriesUSA .country-study-sidebar__header a,
-.countriesUSA .country-budgeting-card__header a,
-.countriesUSA .country-visa-sidebar__header a,
-.countriesUSA .country-short-sidebar__header a,
-.countriesUSA .country-scholarship-sidebar__header a,
-.countriesUSA .country-tracks-sidebar__header a {
+.country-file-usa .country-study-sidebar__header a,
+.country-file-usa .country-budgeting-card__header a,
+.country-file-usa .country-visa-sidebar__header a,
+.country-file-usa .country-short-sidebar__header a,
+.country-file-usa .country-scholarship-sidebar__header a,
+.country-file-usa .country-tracks-sidebar__header a {
   display: block;
   color: #000 !important;
   line-height: 1.35;
@@ -110,58 +110,58 @@
 }
 
 /* Shared sidebar stat layout — Visa 101 reference */
-.countriesUSA .country-study-sidebar .country-stat-sidebar,
-.countriesUSA .country-budgeting-card .country-stat-sidebar,
-.countriesUSA .country-visa-sidebar .country-stat-sidebar,
-.countriesUSA .country-short-sidebar .country-stat-sidebar,
-.countriesUSA .country-scholarship-sidebar .country-stat-sidebar,
-.countriesUSA .country-tracks-sidebar .country-stat-sidebar {
+.country-file-usa .country-study-sidebar .country-stat-sidebar,
+.country-file-usa .country-budgeting-card .country-stat-sidebar,
+.country-file-usa .country-visa-sidebar .country-stat-sidebar,
+.country-file-usa .country-short-sidebar .country-stat-sidebar,
+.country-file-usa .country-scholarship-sidebar .country-stat-sidebar,
+.country-file-usa .country-tracks-sidebar .country-stat-sidebar {
   align-items: center;
   margin-top: 0;
   gap: 10px;
 }
 
-.countriesUSA .country-study-sidebar .country-stat-values,
-.countriesUSA .country-budgeting-card .country-stat-values,
-.countriesUSA .country-visa-sidebar .country-stat-values,
-.countriesUSA .country-short-sidebar .country-stat-values,
-.countriesUSA .country-scholarship-sidebar .country-stat-values,
-.countriesUSA .country-tracks-sidebar .country-stat-values {
+.country-file-usa .country-study-sidebar .country-stat-values,
+.country-file-usa .country-budgeting-card .country-stat-values,
+.country-file-usa .country-visa-sidebar .country-stat-values,
+.country-file-usa .country-short-sidebar .country-stat-values,
+.country-file-usa .country-scholarship-sidebar .country-stat-values,
+.country-file-usa .country-tracks-sidebar .country-stat-values {
   background-color: #f8f9fa;
   padding: 8px 12px;
   border-radius: 8px;
   flex-shrink: 0;
 }
 
-.countriesUSA .country-study-sidebar .country-stat-number,
-.countriesUSA .country-budgeting-card .country-stat-number,
-.countriesUSA .country-visa-sidebar .country-stat-number,
-.countriesUSA .country-short-sidebar .country-stat-number,
-.countriesUSA .country-scholarship-sidebar .country-stat-number,
-.countriesUSA .country-tracks-sidebar .country-stat-number {
+.country-file-usa .country-study-sidebar .country-stat-number,
+.country-file-usa .country-budgeting-card .country-stat-number,
+.country-file-usa .country-visa-sidebar .country-stat-number,
+.country-file-usa .country-short-sidebar .country-stat-number,
+.country-file-usa .country-scholarship-sidebar .country-stat-number,
+.country-file-usa .country-tracks-sidebar .country-stat-number {
   font-size: 22px !important;
   line-height: 1 !important;
   color: #000 !important;
 }
 
-.countriesUSA .country-study-sidebar .country-stat-values small,
-.countriesUSA .country-budgeting-card .country-stat-values small,
-.countriesUSA .country-visa-sidebar .country-stat-values small,
-.countriesUSA .country-short-sidebar .country-stat-values small,
-.countriesUSA .country-scholarship-sidebar .country-stat-values small,
-.countriesUSA .country-tracks-sidebar .country-stat-values small {
+.country-file-usa .country-study-sidebar .country-stat-values small,
+.country-file-usa .country-budgeting-card .country-stat-values small,
+.country-file-usa .country-visa-sidebar .country-stat-values small,
+.country-file-usa .country-short-sidebar .country-stat-values small,
+.country-file-usa .country-scholarship-sidebar .country-stat-values small,
+.country-file-usa .country-tracks-sidebar .country-stat-values small {
   display: block;
   font-size: 12px;
   margin-top: 2px;
   color: #000 !important;
 }
 
-.countriesUSA .country-study-sidebar .country-stat-caption,
-.countriesUSA .country-budgeting-card .country-stat-caption,
-.countriesUSA .country-visa-sidebar .country-stat-caption,
-.countriesUSA .country-short-sidebar .country-stat-caption,
-.countriesUSA .country-scholarship-sidebar .country-stat-caption,
-.countriesUSA .country-tracks-sidebar .country-stat-caption {
+.country-file-usa .country-study-sidebar .country-stat-caption,
+.country-file-usa .country-budgeting-card .country-stat-caption,
+.country-file-usa .country-visa-sidebar .country-stat-caption,
+.country-file-usa .country-short-sidebar .country-stat-caption,
+.country-file-usa .country-scholarship-sidebar .country-stat-caption,
+.country-file-usa .country-tracks-sidebar .country-stat-caption {
   font-family: "Bebas Neue", sans-serif;
   font-size: 20px !important;
   font-weight: 400 !important;
@@ -173,25 +173,25 @@
   color: #000 !important;
 }
 
-.countriesUSA .country-short-sidebar__footer {
+.country-file-usa .country-short-sidebar__footer {
   margin-bottom: 1.75rem;
 }
 
-.countriesUSA .country-short-sidebar .country-stat-caption {
+.country-file-usa .country-short-sidebar .country-stat-caption {
   max-width: 132px;
   margin-bottom: 0.35rem !important;
 }
 
-.countriesUSA .country-short-sidebar__source {
+.country-file-usa .country-short-sidebar__source {
   bottom: 1.35rem;
 }
 
-.countriesUSA .country-cost-main {
+.country-file-usa .country-cost-main {
   overflow: visible;
 }
 
 /* Purple envelope #PGS banner */
-.countriesUSA .country-pgs-banner-wrap {
+.country-file-usa .country-pgs-banner-wrap {
   position: relative;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -200,27 +200,27 @@
   transform: translateX(-0.75rem);
 }
 
-.countriesUSA .country-cost-premium-block {
+.country-file-usa .country-cost-premium-block {
   margin-top: 2rem;
   overflow: visible;
   padding-right: 2.5rem;
 }
 
-.countriesUSA .country-cost-premium-block .country-pgs-banner-wrap {
+.country-file-usa .country-cost-premium-block .country-pgs-banner-wrap {
   margin-top: 0;
   margin-bottom: 1.75rem;
 }
 
-.countriesUSA .country-pgs-card-wrap,
-.countriesUSA .pgs-track1-card-wrap {
+.country-file-usa .country-pgs-card-wrap,
+.country-file-usa .pgs-track1-card-wrap {
   position: relative;
   isolation: isolate;
   width: calc(100% - 1.5rem);
   max-width: calc(100% - 1.5rem);
 }
 
-.countriesUSA .country-pgs-card-wrap .bg-pgs-content,
-.countriesUSA .pgs-track1-card-wrap .bg-pgs-content {
+.country-file-usa .country-pgs-card-wrap .bg-pgs-content,
+.country-file-usa .pgs-track1-card-wrap .bg-pgs-content {
   position: relative;
   z-index: 2;
   margin-bottom: 0 !important;
@@ -235,23 +235,23 @@
   box-sizing: border-box;
 }
 
-.countriesUSA .country-pgs-card-wrap .bg-pgs-content h5,
-.countriesUSA .pgs-track1-card-wrap .bg-pgs-content h5 {
+.country-file-usa .country-pgs-card-wrap .bg-pgs-content h5,
+.country-file-usa .pgs-track1-card-wrap .bg-pgs-content h5 {
   font-size: 15px !important;
   line-height: 1.35 !important;
   margin-bottom: 0.5rem !important;
   max-width: 100%;
 }
 
-.countriesUSA .country-pgs-card-wrap .bg-pgs-content p,
-.countriesUSA .pgs-track1-card-wrap .bg-pgs-content p {
+.country-file-usa .country-pgs-card-wrap .bg-pgs-content p,
+.country-file-usa .pgs-track1-card-wrap .bg-pgs-content p {
   font-size: 13px !important;
   line-height: 1.45 !important;
   max-width: 100%;
 }
 
-.countriesUSA .country-pgs-card-wrap .pgs-badge,
-.countriesUSA .pgs-track1-card-wrap .pgs-badge {
+.country-file-usa .country-pgs-card-wrap .pgs-badge,
+.country-file-usa .pgs-track1-card-wrap .pgs-badge {
   position: absolute !important;
   left: auto !important;
   top: 50% !important;
@@ -277,11 +277,11 @@
 }
 
 /* Envelope + JOIN #purplepremium block */
-.countriesUSA .country-cost-premium-block .country-cost-premium {
+.country-file-usa .country-cost-premium-block .country-cost-premium {
   margin-top: 0 !important;
 }
 
-.countriesUSA .country-cost-premium__portrait {
+.country-file-usa .country-cost-premium__portrait {
   background: #f4e5e4;
   border: 1px solid #00000033;
   border-radius: 29px;
@@ -289,7 +289,7 @@
   max-width: 389px;
 }
 
-.countriesUSA .country-cost-premium__portrait img {
+.country-file-usa .country-cost-premium__portrait img {
   display: block;
   width: 100%;
   height: 100%;
@@ -300,7 +300,7 @@
   box-shadow: none;
 }
 
-.countriesUSA .country-cost-premium__heading {
+.country-file-usa .country-cost-premium__heading {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -308,7 +308,7 @@
   margin-bottom: 1rem;
 }
 
-.countriesUSA .country-cost-premium__join {
+.country-file-usa .country-cost-premium__join {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -317,7 +317,7 @@
   line-height: 1.1;
 }
 
-.countriesUSA .country-cost-premium__brand {
+.country-file-usa .country-cost-premium__brand {
   display: block;
   font-size: 2.3rem;
   font-weight: 400;
@@ -327,7 +327,7 @@
   letter-spacing: 0.02em;
 }
 
-.countriesUSA .country-cost-premium__copy p {
+.country-file-usa .country-cost-premium__copy p {
   font-size: 20px !important;
   font-weight: 500;
   color: #374151;
@@ -335,52 +335,52 @@
   margin-bottom: 0;
 }
 
-.countriesUSA .info-card-countries-usa {
+.country-file-usa .info-card-countries-usa {
   position: relative;
 }
 
 @media (max-width: 600px) {
-  .countriesUSA .country-study-sidebar,
-  .countriesUSA .country-budgeting-card,
-  .countriesUSA .country-visa-sidebar,
-  .countriesUSA .country-short-sidebar,
-  .countriesUSA .country-scholarship-sidebar,
-  .countriesUSA .country-tracks-sidebar {
+  .country-file-usa .country-study-sidebar,
+  .country-file-usa .country-budgeting-card,
+  .country-file-usa .country-visa-sidebar,
+  .country-file-usa .country-short-sidebar,
+  .country-file-usa .country-scholarship-sidebar,
+  .country-file-usa .country-tracks-sidebar {
     min-height: 420px;
     height: 420px;
   }
 
-  .countriesUSA .country-study-sidebar__spacer,
-  .countriesUSA .country-budgeting-card__spacer,
-  .countriesUSA .country-visa-sidebar__spacer,
-  .countriesUSA .country-short-sidebar__spacer,
-  .countriesUSA .country-scholarship-sidebar__spacer,
-  .countriesUSA .country-tracks-sidebar__spacer {
+  .country-file-usa .country-study-sidebar__spacer,
+  .country-file-usa .country-budgeting-card__spacer,
+  .country-file-usa .country-visa-sidebar__spacer,
+  .country-file-usa .country-short-sidebar__spacer,
+  .country-file-usa .country-scholarship-sidebar__spacer,
+  .country-file-usa .country-tracks-sidebar__spacer {
     min-height: 80px;
   }
 
-  .countriesUSA .country-study-sidebar .country-stat-sidebar,
-  .countriesUSA .country-budgeting-card .country-stat-sidebar,
-  .countriesUSA .country-visa-sidebar .country-stat-sidebar,
-  .countriesUSA .country-short-sidebar .country-stat-sidebar,
-  .countriesUSA .country-scholarship-sidebar .country-stat-sidebar,
-  .countriesUSA .country-tracks-sidebar .country-stat-sidebar {
+  .country-file-usa .country-study-sidebar .country-stat-sidebar,
+  .country-file-usa .country-budgeting-card .country-stat-sidebar,
+  .country-file-usa .country-visa-sidebar .country-stat-sidebar,
+  .country-file-usa .country-short-sidebar .country-stat-sidebar,
+  .country-file-usa .country-scholarship-sidebar .country-stat-sidebar,
+  .country-file-usa .country-tracks-sidebar .country-stat-sidebar {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .countriesUSA .country-study-sidebar .country-stat-caption,
-  .countriesUSA .country-budgeting-card .country-stat-caption,
-  .countriesUSA .country-visa-sidebar .country-stat-caption,
-  .countriesUSA .country-short-sidebar .country-stat-caption,
-  .countriesUSA .country-scholarship-sidebar .country-stat-caption,
-  .countriesUSA .country-tracks-sidebar .country-stat-caption {
+  .country-file-usa .country-study-sidebar .country-stat-caption,
+  .country-file-usa .country-budgeting-card .country-stat-caption,
+  .country-file-usa .country-visa-sidebar .country-stat-caption,
+  .country-file-usa .country-short-sidebar .country-stat-caption,
+  .country-file-usa .country-scholarship-sidebar .country-stat-caption,
+  .country-file-usa .country-tracks-sidebar .country-stat-caption {
     font-size: 16px !important;
     max-width: none;
   }
 
-  .countriesUSA .country-pgs-card-wrap .pgs-badge,
-  .countriesUSA .pgs-track1-card-wrap .pgs-badge {
+  .country-file-usa .country-pgs-card-wrap .pgs-badge,
+  .country-file-usa .pgs-track1-card-wrap .pgs-badge {
     left: auto !important;
     right: 0.15rem !important;
     top: 50% !important;
@@ -394,30 +394,30 @@
     z-index: 0 !important;
   }
 
-  .countriesUSA .country-pgs-card-wrap .bg-pgs-content,
-  .countriesUSA .pgs-track1-card-wrap .bg-pgs-content {
+  .country-file-usa .country-pgs-card-wrap .bg-pgs-content,
+  .country-file-usa .pgs-track1-card-wrap .bg-pgs-content {
     padding: 1rem 5.5rem 1rem 1rem !important;
   }
 
-  .countriesUSA .country-cost-premium__portrait img {
+  .country-file-usa .country-cost-premium__portrait img {
     min-height: 320px;
   }
 
-  .countriesUSA .country-cost-premium__join,
-  .countriesUSA .country-cost-premium__brand {
+  .country-file-usa .country-cost-premium__join,
+  .country-file-usa .country-cost-premium__brand {
     font-size: 1.75rem;
   }
 }
 
 /* Visa 101 main content */
-.countriesUSA .country-visa-main .visa-types {
+.country-file-usa .country-visa-main .visa-types {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   margin: 25px 0;
 }
 
-.countriesUSA .country-visa-main .visa-card {
+.country-file-usa .country-visa-main .visa-card {
   flex: 1;
   min-width: 220px;
   margin: 0;
@@ -426,11 +426,11 @@
   box-shadow: none;
 }
 
-.countriesUSA .country-visa-main .visa-card--narrow {
+.country-file-usa .country-visa-main .visa-card--narrow {
   max-width: 45%;
 }
 
-.countriesUSA .country-visa-main .visa-card h3 {
+.country-file-usa .country-visa-main .visa-card h3 {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 0;
@@ -441,7 +441,7 @@
   line-height: 40px;
 }
 
-.countriesUSA .country-visa-main .visa-card p {
+.country-file-usa .country-visa-main .visa-card p {
   background: #ffc107;
   margin: 0;
   padding: 12px;
@@ -451,13 +451,13 @@
   line-height: 1.2;
 }
 
-.countriesUSA .country-visa-notes-wrap {
+.country-file-usa .country-visa-notes-wrap {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-.countriesUSA .country-visa-notes-card {
+.country-file-usa .country-visa-notes-card {
   background-color: #dce6ff !important;
   padding: 15px !important;
   border-radius: 8px;
@@ -467,19 +467,19 @@
   color: #000 !important;
 }
 
-.countriesUSA .country-visa-notes-card h3 {
+.country-file-usa .country-visa-notes-card h3 {
   margin-top: 0;
   font-weight: 700;
   color: #000 !important;
 }
 
-.countriesUSA .country-visa-notes-list {
+.country-file-usa .country-visa-notes-list {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-.countriesUSA .country-visa-notes-list li {
+.country-file-usa .country-visa-notes-list li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -489,7 +489,7 @@
   color: #000 !important;
 }
 
-.countriesUSA .country-visa-notes-list__num {
+.country-file-usa .country-visa-notes-list__num {
   font-size: 40px;
   font-weight: 700;
   line-height: 1;
@@ -497,13 +497,13 @@
   color: #000 !important;
 }
 
-.countriesUSA .country-visa-plan-review__list {
+.country-file-usa .country-visa-plan-review__list {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-.countriesUSA .helper-box-new .btn-custom {
+.country-file-usa .helper-box-new .btn-custom {
   display: inline-block;
   text-decoration: none;
   white-space: normal;
@@ -512,31 +512,31 @@
 }
 
 /* Match page Roboto — Hostinger sets Arial on dos-donts / helper CTA */
-.countriesUSA .helper-box-new,
-.countriesUSA .helper-box-new h5,
-.countriesUSA .helper-box-new p,
-.countriesUSA .dos-donts,
-.countriesUSA .mobile-points-usa {
+.country-file-usa .helper-box-new,
+.country-file-usa .helper-box-new h5,
+.country-file-usa .helper-box-new p,
+.country-file-usa .dos-donts,
+.country-file-usa .mobile-points-usa {
   font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 @media (max-width: 600px) {
-  .countriesUSA .country-visa-main .visa-card--narrow {
+  .country-file-usa .country-visa-main .visa-card--narrow {
     max-width: 100%;
   }
 
-  .countriesUSA .country-visa-main .visa-card p {
+  .country-file-usa .country-visa-main .visa-card p {
     width: 100%;
     box-sizing: border-box;
   }
 
-  .countriesUSA .country-visa-notes-card {
+  .country-file-usa .country-visa-notes-card {
     width: 100%;
   }
 }
 
 /* Short-Term-Profile Courses */
-.countriesUSA .country-short-cta {
+.country-file-usa .country-short-cta {
   display: inline-block;
   background-color: #ffd54f;
   color: #000 !important;
@@ -548,23 +548,23 @@
   cursor: pointer;
 }
 
-.countriesUSA .country-short-cta:hover {
+.country-file-usa .country-short-cta:hover {
   color: #000 !important;
   opacity: 0.9;
 }
 
-.countriesUSA .country-short-mentor-section {
+.country-file-usa .country-short-mentor-section {
   padding: 40px 0;
 }
 
-.countriesUSA .country-short-mentor-box {
+.country-file-usa .country-short-mentor-box {
   background: #f1f1f1;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #00000033;
 }
 
-.countriesUSA .country-short-mentor-title {
+.country-file-usa .country-short-mentor-title {
   display: flex;
   justify-content: center;
   color: #000 !important;
@@ -573,7 +573,7 @@
   text-align: center;
 }
 
-.countriesUSA .country-short-mentor-copy {
+.country-file-usa .country-short-mentor-copy {
   display: flex;
   justify-content: center;
   color: #000;
@@ -584,7 +584,7 @@
   margin: 0 auto;
 }
 
-.countriesUSA .country-short-courses {
+.country-file-usa .country-short-courses {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -593,13 +593,13 @@
   margin-top: 1.25rem;
 }
 
-.countriesUSA .country-short-courses .county-box-short {
+.country-file-usa .country-short-courses .county-box-short {
   width: 100%;
   max-width: 319px;
   flex: none;
 }
 
-.countriesUSA .country-short-courses .img-box-fit img {
+.country-file-usa .country-short-courses .img-box-fit img {
   width: 100%;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -607,15 +607,15 @@
   object-fit: cover;
 }
 
-.countriesUSA .country-short-course-body {
+.country-file-usa .country-short-course-body {
   padding: 15px 0 0;
 }
 
-.countriesUSA .country-short-course-cat {
+.country-file-usa .country-short-course-cat {
   margin-bottom: 12px;
 }
 
-.countriesUSA .country-short-course-cat span {
+.country-file-usa .country-short-course-cat span {
   display: inline-block;
   background: #000;
   padding: 3px 10px;
@@ -624,23 +624,23 @@
   color: #fff;
 }
 
-.countriesUSA .country-short-course-metric {
+.country-file-usa .country-short-course-metric {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.countriesUSA .country-short-course-metric i {
+.country-file-usa .country-short-course-metric i {
   font-size: 23px;
   color: forestgreen;
 }
 
-.countriesUSA .country-short-course-heart {
+.country-file-usa .country-short-course-heart {
   display: flex;
   justify-content: flex-end;
 }
 
-.countriesUSA .country-short-course-heart button {
+.country-file-usa .country-short-course-heart button {
   background: none;
   border: none;
   cursor: pointer;
@@ -651,21 +651,21 @@
 }
 
 @media (max-width: 600px) {
-  .countriesUSA .country-short-courses .county-box-short {
+  .country-file-usa .country-short-courses .county-box-short {
     width: 70%;
     max-width: none;
   }
 }
 
 /* Scholarships */
-.countriesUSA .country-scholarship-main .MajorScholarships {
+.country-file-usa .country-scholarship-main .MajorScholarships {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   margin: 16px auto;
 }
 
-.countriesUSA .country-scholarship-main .MajorScholarships .column h3 {
+.country-file-usa .country-scholarship-main .MajorScholarships .column h3 {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -676,7 +676,7 @@
   line-height: 40px;
 }
 
-.countriesUSA .country-scholarship-main .MajorScholarships .column p {
+.country-file-usa .country-scholarship-main .MajorScholarships .column p {
   margin: 10px 5px;
   font-size: 14px;
   color: #333;
@@ -684,7 +684,7 @@
   line-height: 20px;
 }
 
-.countriesUSA .country-scholarship-main .ScholarshipApplyGuide {
+.country-file-usa .country-scholarship-main .ScholarshipApplyGuide {
   background: #fff;
   border-radius: 12px;
   line-height: 1.5;
@@ -693,18 +693,18 @@
   font-weight: 400;
 }
 
-.countriesUSA .country-scholarship-main .ScholarshipApplyGuide p {
+.country-file-usa .country-scholarship-main .ScholarshipApplyGuide p {
   margin-bottom: 15px;
   font-size: 14px !important;
   color: #000;
 }
 
-.countriesUSA .country-scholarship-main .ScholarshipApplyGuide ul {
+.country-file-usa .country-scholarship-main .ScholarshipApplyGuide ul {
   margin: 10px 0 20px 20px;
   padding: 0;
 }
 
-.countriesUSA .country-scholarship-main .ScholarshipApplyGuide ul li {
+.country-file-usa .country-scholarship-main .ScholarshipApplyGuide ul li {
   font-size: 14px;
   list-style: disc;
   line-height: 18px;
@@ -712,31 +712,31 @@
   color: #000;
 }
 
-.countriesUSA .country-scholarship-main .ScholarshipApplyGuide strong {
+.country-file-usa .country-scholarship-main .ScholarshipApplyGuide strong {
   font-weight: 600;
   color: #000;
 }
 
 @media (max-width: 600px) {
-  .countriesUSA .country-scholarship-main .MajorScholarships {
+  .country-file-usa .country-scholarship-main .MajorScholarships {
     white-space: nowrap;
     overflow-x: auto;
   }
 }
 
 /* Popular Study Tracks */
-.countriesUSA .country-tracks-sidebar {
+.country-file-usa .country-tracks-sidebar {
   background: #fff;
   border-radius: 12px;
 }
 
-.countriesUSA .country-tracks-main .border-section-set {
+.country-file-usa .country-tracks-main .border-section-set {
   margin-top: 1.5rem;
   white-space: nowrap;
   overflow-x: auto;
 }
 
-.countriesUSA .country-tracks-main .border-section-set h4 {
+.country-file-usa .country-tracks-main .border-section-set h4 {
   margin-bottom: 12px;
   font-size: 26px;
   font-weight: 500;
@@ -744,11 +744,11 @@
   white-space: normal;
 }
 
-.countriesUSA .country-tracks-main .country-tracks-columns {
+.country-file-usa .country-tracks-main .country-tracks-columns {
   min-width: max-content;
 }
 
-.countriesUSA .country-tracks-main .border-section-set h6 {
+.country-file-usa .country-tracks-main .border-section-set h6 {
   margin-bottom: 8px;
   border: 1px solid #00000033;
   width: 100%;
@@ -759,26 +759,26 @@
   color: #000;
 }
 
-.countriesUSA .country-tracks-main .border-section-set p {
+.country-file-usa .country-tracks-main .border-section-set p {
   padding-left: 10px;
   margin-bottom: 8px;
   font-size: 14px;
   color: #000;
 }
 
-.countriesUSA .country-tracks-main .text-underline {
+.country-file-usa .country-tracks-main .text-underline {
   text-decoration: underline;
 }
 
 /*
  * Country HERO ONLY — Hostinger-class path (other country routes / CountryPage).
- * `/countriesuk` uses modular `.country-hero-figma` instead — do not restyle that here.
+ * `/countriesuk` uses modular `.country-hero-figma-usa` instead — do not restyle that here.
  * Beat Hostinger: `.mobile-hero-coutry .overlap-gap-section { width: 50% !important }`
  * and `.mobile-hero-coutry .hero-country-box { height: auto !important }`.
  * Figma: desktop 1366×303 · iPad 716×194 · mobile 210×357
  * Bands: >1366 / 601–1366 / ≤600
  */
-.countriesUSA .mobile-hero-coutry {
+.country-file-usa .mobile-hero-coutry {
   position: relative;
   width: 100%;
   margin-top: 10px;
@@ -787,8 +787,8 @@
 }
 
 /* Kill Hostinger 50%-width trap on the hero stack */
-.countriesUSA .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
-.countriesUSA .mobile-hero-coutry .country-hero-stack {
+.country-file-usa .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
+.country-file-usa .mobile-hero-coutry .country-hero-stack {
   position: relative !important;
   display: block !important;
   width: 100% !important;
@@ -801,7 +801,7 @@
 }
 
 /* Flags: static for now — do not absolute-position until hero QC passes */
-.countriesUSA .mobile-hero-coutry .country-hero-flag-slot {
+.country-file-usa .mobile-hero-coutry .country-hero-flag-slot {
   position: static !important;
   display: block !important;
   width: 126px !important;
@@ -819,8 +819,8 @@
   pointer-events: none;
 }
 
-.countriesUSA .mobile-hero-coutry .country-hero-flag-slot img,
-.countriesUSA .mobile-hero-coutry .country-hero-flag-slot .flag {
+.country-file-usa .mobile-hero-coutry .country-hero-flag-slot img,
+.country-file-usa .mobile-hero-coutry .country-hero-flag-slot .flag {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
@@ -831,7 +831,7 @@
 }
 
 /* Desktop hero banner — Figma 1366×303 */
-.countriesUSA .mobile-hero-coutry .hero-country-box {
+.country-file-usa .mobile-hero-coutry .hero-country-box {
   position: relative !important;
   display: block !important;
   width: 100% !important;
@@ -844,7 +844,7 @@
   box-sizing: border-box !important;
 }
 
-.countriesUSA .mobile-hero-coutry .hero-country-box img {
+.country-file-usa .mobile-hero-coutry .hero-country-box img {
   width: 100% !important;
   height: 100% !important;
   max-width: 100% !important;
@@ -855,18 +855,18 @@
   border-radius: 16px;
 }
 
-.countriesUSA .mobile-hero-coutry .hero-country-box img.desktop-none {
+.country-file-usa .mobile-hero-coutry .hero-country-box img.desktop-none {
   display: none !important;
 }
 
 /* iPad — Figma 716×194 */
 @media (max-width: 1366px) and (min-width: 601px) {
-  .countriesUSA .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
-  .countriesUSA .mobile-hero-coutry .country-hero-stack {
+  .country-file-usa .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
+  .country-file-usa .mobile-hero-coutry .country-hero-stack {
     max-width: 716px !important;
   }
 
-  .countriesUSA .mobile-hero-coutry .country-hero-flag-slot {
+  .country-file-usa .mobile-hero-coutry .country-hero-flag-slot {
     width: 88px !important;
     height: 38px !important;
     max-width: 88px !important;
@@ -875,26 +875,26 @@
     border-radius: 8px;
   }
 
-  .countriesUSA .mobile-hero-coutry .hero-country-box {
+  .country-file-usa .mobile-hero-coutry .hero-country-box {
     max-width: 716px !important;
     height: 194px !important;
     max-height: 194px !important;
     border-radius: 14px;
   }
 
-  .countriesUSA .mobile-hero-coutry .hero-country-box img {
+  .country-file-usa .mobile-hero-coutry .hero-country-box img {
     border-radius: 14px;
   }
 }
 
 /* Mobile — Figma 210×357 portrait */
 @media (max-width: 600px) {
-  .countriesUSA .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
-  .countriesUSA .mobile-hero-coutry .country-hero-stack {
+  .country-file-usa .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
+  .country-file-usa .mobile-hero-coutry .country-hero-stack {
     max-width: 210px !important;
   }
 
-  .countriesUSA .mobile-hero-coutry .country-hero-flag-slot {
+  .country-file-usa .mobile-hero-coutry .country-hero-flag-slot {
     width: 76px !important;
     height: 33px !important;
     max-width: 76px !important;
@@ -903,7 +903,7 @@
     border-radius: 8px;
   }
 
-  .countriesUSA .mobile-hero-coutry .hero-country-box {
+  .country-file-usa .mobile-hero-coutry .hero-country-box {
     max-width: 210px !important;
     width: 210px !important;
     height: 357px !important;
@@ -911,16 +911,16 @@
     border-radius: 14px;
   }
 
-  .countriesUSA .mobile-hero-coutry .hero-country-box img {
+  .country-file-usa .mobile-hero-coutry .hero-country-box img {
     border-radius: 14px;
     object-position: center top;
   }
 
-  .countriesUSA .mobile-hero-coutry .hero-country-box img.mobile-none {
+  .country-file-usa .mobile-hero-coutry .hero-country-box img.mobile-none {
     display: none !important;
   }
 
-  .countriesUSA .mobile-hero-coutry .hero-country-box img.desktop-none {
+  .country-file-usa .mobile-hero-coutry .hero-country-box img.desktop-none {
     display: block !important;
   }
 }

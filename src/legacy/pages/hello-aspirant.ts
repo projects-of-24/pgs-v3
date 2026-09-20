@@ -66,22 +66,6 @@ export function buildHelloAspirantHtml(
     .replaceAll("{{avatarUrl}}", avatarUrl);
 }
 
-function replaceFirstAvatarBox(source: string, nextBox: string): string {
-  const opening = /<div\b[^>]*\bclass=["'][^"']*\bavatar-box\b[^"']*["'][^>]*>/i.exec(source);
-  if (!opening || opening.index === undefined) return source;
-  const tags = /<\/?div\b[^>]*>/gi;
-  tags.lastIndex = opening.index;
-  let depth = 0;
-  let match: RegExpExecArray | null;
-  while ((match = tags.exec(source))) {
-    depth += /^<div\b/i.test(match[0]) ? 1 : -1;
-    if (depth === 0) {
-      return source.slice(0, opening.index) + nextBox + source.slice(tags.lastIndex);
-    }
-  }
-  return source;
-}
-
 /** Remove page `.avatar-box.w-12` Hello strip (owner: off the page). */
 function removeHelloAspirantStrip(source: string): string {
   const opening =
@@ -110,6 +94,8 @@ export function applySharedHelloAspirant(
   _state: StudentExperienceKind,
   _fields: HelloAspirantFields = {}
 ): string {
+  void _state;
+  void _fields;
   if (!/\bavatar-box\b/i.test(pageHtml)) return pageHtml;
   return removeHelloAspirantStrip(pageHtml);
 }

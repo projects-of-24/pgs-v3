@@ -1,0 +1,300 @@
+/**
+ * Block 6 — Loopboard 4-col visual stand-in + forlocked.
+ * Mobile: horizontal scroll. Desktop: centered 4 columns.
+ */
+
+.ftp-board {
+  --ftp-col: #f1f1f1;
+  --ftp-forlocked: rgba(232, 234, 234, 0.7);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 0 32px;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-board *,
+.ftp-board *::before,
+.ftp-board *::after {
+  box-sizing: border-box;
+}
+
+.ftp-board__arrow {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 12px;
+}
+
+.ftp-board__arrow img {
+  display: block;
+  width: 76px;
+  height: auto;
+}
+
+.ftp-board__stage {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 0 0;
+  border-radius: 12.8px;
+  background: #000;
+  overflow: hidden;
+}
+
+.ftp-board__scroller {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 12px 8px;
+}
+
+.ftp-board__columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 8.8px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.ftp-board__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7.2px;
+  width: 262.4px;
+  padding: 9.6px 3.2px;
+  border-radius: 12.8px;
+  background: var(--ftp-col);
+}
+
+.ftp-board__column-title {
+  margin: 0;
+  width: 100%;
+  padding: 0 9.6px;
+  color: #000;
+  font: 600 17.6px / 17.92px Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.ftp-board__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7.2px;
+  width: 100%;
+}
+
+.ftp-board__ticket {
+  position: relative;
+  width: 256px;
+  padding: 19.2px;
+  border-radius: 8px;
+  box-shadow:
+    0 3.2px 3.2px rgba(0, 0, 0, 0.12),
+    0 12.8px 12.8px rgba(0, 0, 0, 0.08);
+}
+
+.ftp-board__ticket.is-light-text {
+  color: #fff;
+}
+
+.ftp-board__ticket-title {
+  margin: 0 0 6.4px;
+  font: 700 14px / 1.3 Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-board__ticket-body {
+  margin: 0;
+  font: 400 12px / 1.35 Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ftp-board__bullets {
+  margin: 0;
+  padding: 0 0 0 14.4px;
+  list-style: disc;
+  font: 400 12px / 1.35 Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ftp-board__bullets li {
+  margin: 0;
+}
+
+.ftp-board__badge {
+  position: absolute;
+  top: 9.6px;
+  right: 9.6px;
+  padding: 8px;
+  border-radius: 12.8px;
+  background: #000;
+  color: #fff;
+  font: 500 12.8px / 19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.15px;
+}
+
+.ftp-board__note {
+  width: 254.4px;
+  margin: 0;
+  padding: 9.6px 8px;
+  border-radius: 7.2px;
+  background: #93e396;
+  color: #172b4d;
+  font: 400 11.2px / normal Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-board__task {
+  width: 256px;
+  padding: 8px;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2.4px 0 #b2b8c4;
+}
+
+.ftp-board__task-title {
+  margin: 0 0 8px;
+  color: #172b4d;
+  font: 600 14.4px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-board__task-body {
+  margin: 0;
+  color: #000;
+  font: 400 12px / 1.35 Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.2px;
+}
+
+.ftp-board__media {
+  width: 256px;
+  padding: 6.4px 3.2px;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2.4px 0 #b2b8c4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ftp-board__media-img {
+  width: 248px;
+  height: 96px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.ftp-board__media-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ftp-board__media-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.ftp-board__media-title {
+  margin: 0;
+  flex: 1 1 auto;
+  color: #172b4d;
+  font: 600 14.4px / normal Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-board__media-emoji {
+  flex-shrink: 0;
+  width: 17.6px;
+  height: 17.6px;
+}
+
+.ftp-board__progress {
+  width: 62px;
+  height: 4.8px;
+  margin: 0 4px 4px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #e8eaea;
+}
+
+.ftp-board__progress-fill {
+  display: block;
+  width: 28%;
+  height: 100%;
+  border-radius: 3px;
+  background: #93e396;
+}
+
+.ftp-board__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border-radius: 12.8px;
+  background: var(--ftp-forlocked);
+  pointer-events: auto;
+}
+
+.ftp-board__forlocked img {
+  display: block;
+  width: min(150px, 38vw);
+  height: auto;
+}
+
+@media (min-width: 1367px) {
+  .ftp-board {
+    padding: 16px 24px 48px;
+  }
+
+  .ftp-board__arrow {
+    margin-bottom: 8px;
+  }
+
+  .ftp-board__arrow img {
+    width: 137px;
+  }
+
+  .ftp-board__stage {
+    width: 1154px;
+    max-width: calc(100% - 48px);
+    margin-inline: auto;
+    padding: 40px 0 0;
+    border-radius: 12.8px;
+  }
+
+  .ftp-board__scroller {
+    overflow: visible;
+    padding: 0 39px;
+  }
+
+  .ftp-board__columns {
+    width: 100%;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .ftp-board__column:first-child {
+    border-radius: 16px;
+  }
+
+  .ftp-board__forlocked img {
+    width: 208px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ftp-board * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

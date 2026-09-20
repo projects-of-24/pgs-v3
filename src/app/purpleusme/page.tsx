@@ -1,6 +1,9 @@
-import { PublicLegacyPage } from "@/components/public-legacy-page";
-import { purpleUsmeHtml } from "@/legacy/generated/purpleusme";
-import { cmsMetadata } from "@/lib/cms-metadata";
+/**
+ * Typo URL. The page is `/purpleusmle`.
+ * Proxy also 308s this path. This redirect is the fallback if the request reaches the page.
+ */
+import { permanentRedirect } from "next/navigation";
 
-export async function generateMetadata() { return cmsMetadata('purpleusme'); }
-export default function PurpleUsmePage() { return <PublicLegacyPage slug="purpleusme" html={purpleUsmeHtml} />; }
+export default function PurpleUsmeTypoRedirect() {
+  permanentRedirect("/purpleusmle");
+}

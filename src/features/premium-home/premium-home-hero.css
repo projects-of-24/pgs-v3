@@ -1,0 +1,188 @@
+/**
+ * purplePREMIUM HOME hero headline — owned CSS (H1).
+ * Desktop centered column `17052:8154`. Phone opening `366:4076` (151).
+ * Panel / video is H2. Do not edit `premium-panel-lock.css`.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: desktop CTA ~11.2px · hint ~12px · mobile lead ~14px · subtitle/hint ~12px
+ * ISSUE: below the readable floor for normal text and controls
+ * PGS IMPLEMENTATION: those sit at `--pgs-type-floor` (16px). Black button look stays.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.premium-home-hero {
+  --home-muted: var(--pgs-premium-muted);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 24px;
+  background: #fff;
+  overflow-x: clip;
+  overflow-y: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-home-hero *,
+.premium-home-hero *::before,
+.premium-home-hero *::after {
+  box-sizing: border-box;
+}
+
+.premium-home-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.premium-home-hero__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 560.8px;
+  text-align: center;
+}
+
+.premium-home-hero__title {
+  margin: 0 0 8px;
+  color: #000;
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 41.6px;
+}
+
+.premium-home-hero__lead {
+  margin: 0;
+  color: var(--home-muted);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-home-hero__subtitle {
+  margin: 5.2px 0 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-home-hero__cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  max-width: 398px;
+  margin-top: 28.8px;
+}
+
+.premium-home-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.premium-home-hero__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.premium-home-hero__cta-hint {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (min-width: 1367px) {
+  .premium-home-hero {
+    padding: 0 0 40px;
+  }
+}
+
+/* Phone ≤600. Figma opening 151 centered. No 85% rail until owner says too edgy. */
+@media (max-width: 600px) {
+  .premium-home-hero {
+    padding: var(--pgs-premium-mob-hero-pad-top) 0 28px;
+  }
+
+  .premium-home-hero__inner {
+    padding-inline: 0;
+  }
+
+  .premium-home-hero__headline {
+    align-self: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+    width: var(--pgs-premium-mob-opening-w);
+    max-width: var(--pgs-premium-mob-opening-w);
+    margin-inline: auto;
+  }
+
+  .premium-home-hero__title {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 0.9;
+    text-align: left;
+  }
+
+  .premium-home-hero__lead,
+  .premium-home-hero__subtitle {
+    margin: 0;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+    letter-spacing: 0.2px;
+    color: #000;
+    text-align: left;
+  }
+
+  .premium-home-hero__cta-block {
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .premium-home-hero__cta {
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 8px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .premium-home-hero__cta-hint {
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+}

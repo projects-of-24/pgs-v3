@@ -1,0 +1,366 @@
+/**
+ * Shared enroll card. Desktop is the default. Phone overrides at ≤600.
+ * iPad reuses the desktop body. Do not lock the panel to Figma height.
+ * Hostinger section padding is killed here so the card does not float.
+ */
+
+.premium-enroll {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 398px 0 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-enroll *,
+.premium-enroll *::before,
+.premium-enroll *::after {
+  box-sizing: border-box;
+}
+
+.premium-enroll__panel {
+  position: relative;
+  width: min(899px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin-inline: auto;
+  padding: 48px clamp(24px, 4vw, 70px) 56px;
+  border-radius: 13px;
+  background: #f1f1f1;
+}
+
+.premium-enroll__intro {
+  width: min(738px, 100%);
+  margin-inline: auto;
+  padding: 46px 32px 72px;
+  border: 1px solid rgba(0, 0, 0, 0.65);
+  border-radius: 13px;
+  background: #fff;
+}
+
+.premium-enroll__title {
+  margin: 0;
+  max-width: 14em;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 51px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.premium-enroll__lead {
+  margin: 12px 0 0;
+  max-width: 36em;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+}
+
+.premium-enroll__price {
+  position: relative;
+  z-index: 1;
+  width: min(760px, calc(100% + 22px));
+  margin: -48px auto 0;
+  padding: 48px 24px 40px clamp(24px, 8vw, 92px);
+  border: 2px solid #9747ff;
+  border-radius: 16px;
+  background: #000;
+  color: #fff;
+}
+
+.premium-enroll__offer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.premium-enroll__offer-label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.premium-enroll__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: #ffc524;
+  color: #000;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 2;
+}
+
+.premium-enroll__was {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.15;
+  text-decoration: line-through;
+}
+
+.premium-enroll__amount {
+  margin: 16px 0 0;
+  font-size: 51px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.premium-enroll__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(230px, 100%);
+  margin-top: 20px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #b57cff;
+  color: #000;
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08px;
+  cursor: pointer;
+}
+
+.premium-enroll__cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.premium-enroll__included {
+  width: min(732px, 100%);
+  margin: 28px auto 0;
+  color: #000;
+}
+
+.premium-enroll__included-title {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.premium-enroll__included-lead {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.premium-enroll__columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.premium-enroll__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-enroll__list--phone {
+  display: none;
+}
+
+.premium-enroll__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.premium-enroll__check {
+  flex: 0 0 29px;
+  width: 29px;
+  height: 29px;
+}
+
+.premium-enroll__item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-top: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.premium-enroll__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 0;
+}
+
+.premium-enroll__access {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(574px, calc(100% + 16px));
+  margin: 20px calc(-1 * clamp(24px, 4vw, 70px)) -95px auto;
+  padding: 12px 7px;
+  border-radius: 8px;
+  background: #d9d9d9;
+  color: #000;
+}
+
+.premium-enroll__access-icon {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.premium-enroll__access-copy {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.premium-enroll__access-copy--desk {
+  display: none;
+}
+
+.premium-enroll__access-copy--phone {
+  display: block;
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 600px) {
+  .premium-enroll {
+    margin-top: 110px;
+  }
+
+  .premium-enroll__panel {
+    width: min(360px, calc(100% - 30px));
+    padding: 20px 16px 48px;
+  }
+
+  .premium-enroll__intro {
+    width: min(328px, 100%);
+    padding: 24px 16px 28px;
+  }
+
+  .premium-enroll__title {
+    max-width: 12em;
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .premium-enroll__price {
+    width: min(370px, calc(100% + 10px));
+    margin-top: -12px;
+    margin-inline: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 28px 16px 24px;
+    text-align: center;
+  }
+
+  .premium-enroll__offer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+
+  .premium-enroll__offer-label {
+    flex: 1 0 100%;
+    order: 2;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .premium-enroll__badge,
+  .premium-enroll__was {
+    order: 1;
+  }
+
+  .premium-enroll__badge {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .premium-enroll__was {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.48;
+  }
+
+  .premium-enroll__amount {
+    font-size: 46px;
+    line-height: 1;
+  }
+
+  .premium-enroll__cta {
+    width: min(208px, 100%);
+    margin-inline: auto;
+    font-size: 17px;
+  }
+
+  .premium-enroll__included-title {
+    font-size: 24px;
+    line-height: 46px;
+  }
+
+  .premium-enroll__included-lead,
+  .premium-enroll__item-copy,
+  .premium-enroll__details {
+    font-size: 15px;
+    line-height: 1.35;
+  }
+
+  .premium-enroll__columns {
+    display: none;
+  }
+
+  .premium-enroll__list--phone {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  .premium-enroll__access {
+    align-items: center;
+    width: min(314px, calc(100% + 16px));
+    margin: 20px -16px -135px auto;
+    padding: 12px 7px;
+    gap: 10px;
+    border-radius: 8px;
+  }
+
+  .premium-enroll__access-copy--desk {
+    display: none;
+  }
+
+  .premium-enroll__access-copy--phone {
+    display: block;
+    flex: 0 0 250px;
+    width: 250px;
+    max-width: calc(100% - 50px);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+  }
+}

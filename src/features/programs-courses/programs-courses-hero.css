@@ -1,0 +1,788 @@
+/**
+ * Courses C1 Program hero — owned CSS.
+ * Desk `17072:10543` · Mob group `551:9021` (+ title `551:9038` · grey plate `551:9016`).
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ *
+ * Mobile: photo hangs above grey plate; shell pull aligns segment to closed #toggleBtn
+ * (same pattern as Lite / premium-panel-lock `--pgs-premium-shell-pull`).
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: meta #666 · small body/times
+ * ISSUE: contrast / readable floor
+ * PGS IMPLEMENTATION: #555 · ≥15px where practical; CTA min-height 44
+ */
+
+.pc-hero {
+  --pc-panel: #f1f1f1;
+  --pc-purple: #b57cff;
+  --pc-purple-border: #9747ff;
+  --pc-green: #009c70;
+  --pc-red: #eb0801;
+  --pc-muted: #555;
+  --pc-ink: #22272e;
+  --pc-date: #b57cff;
+  /* Figma mob page 390 · grey 551:9016 · photo 551:9053 · hang was 57 */
+  --pc-mob-inset: 12px;
+  --pc-mob-hero-w: 270px;
+  --pc-mob-hero-h: 363px;
+  /* Owner: grey starts +50px lower (57 → 107); photo still hangs above */
+  --pc-mob-hang: 107px;
+  /* Photo top = closed #toggleBtn */
+  --pc-mob-toggle-align: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  position: relative;
+  /* Symmetric inset — Figma share stays inside grey, not Lite past-grey slot */
+  padding: var(--pc-mob-toggle-align) var(--pc-mob-inset) 40px;
+  background: #fff;
+  overflow-x: visible;
+  overflow-y: visible;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-hero *,
+.pc-hero *::before,
+.pc-hero *::after {
+  box-sizing: border-box;
+}
+
+/* Mobile grey plate = Figma 551:9016 · 367×673 · r8 · inset 12 */
+.pc-hero__panel {
+  width: 100%;
+  max-width: 367px;
+  margin: var(--pc-mob-hang) auto 0;
+  background: var(--pc-panel);
+  border-radius: 8px;
+  padding: 0 12px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+.pc-hero__media-col {
+  width: var(--pc-mob-hero-w);
+  max-width: 100%;
+  position: relative;
+  margin-top: calc(-1 * var(--pc-mob-hang));
+  z-index: 2;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.pc-hero__media {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.pc-hero__img-clip {
+  position: relative;
+  width: 100%;
+  height: var(--pc-mob-hero-h);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ddd;
+}
+
+/* Figma mob crop: image 614×409 at −172/−15 inside 270×363 */
+.pc-hero__img {
+  display: block;
+  position: absolute;
+  left: -172px;
+  top: -15px;
+  width: 614px;
+  height: 409px;
+  max-width: none;
+  object-fit: cover;
+}
+
+/*
+ * Mobile badges = Figma 551:9055
+ * [Filling Fast] [Share] · #inCampus under Filling
+ * Share hangs ~13px past photo, still inside grey (not Lite past-grey)
+ */
+.pc-hero__media-badges {
+  position: absolute;
+  top: 17px;
+  right: -34px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  column-gap: 6px;
+  row-gap: 4px;
+  align-items: start;
+  justify-items: start;
+  z-index: 4;
+}
+
+.pc-hero__badge-stack {
+  display: contents;
+}
+
+.pc-hero__filling {
+  grid-column: 1;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.pc-hero__filling-icon {
+  display: block;
+  width: 6px;
+  height: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.pc-hero__mode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+  border-radius: 2px;
+  background: var(--pc-purple);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.pc-hero__mode--desk {
+  display: none;
+}
+
+.pc-hero__mode--on-media {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pc-hero__share {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.pc-hero__share:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.pc-hero__share img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.pc-hero__share--on-media {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+}
+
+.pc-hero__share--desk {
+  display: none;
+}
+
+/* Partner hang on photo — stay ON the pic so title does not collide */
+.pc-hero__partner {
+  position: absolute;
+  right: -16px;
+  top: auto;
+  bottom: 12px;
+  z-index: 5;
+  width: auto;
+  min-width: 126px;
+  max-width: 148px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pc-hero__logo-plate {
+  position: relative;
+  background: #fff;
+  border: 0.6px solid #000;
+  padding: 3px 9px;
+  display: flex;
+  justify-content: center;
+}
+
+.pc-hero__logo-plate::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  background: var(--pc-purple);
+  border: 1.2px solid var(--pc-purple-border);
+}
+
+.pc-hero__logo {
+  display: block;
+  width: 100%;
+  max-width: 107px;
+  height: auto;
+  object-fit: contain;
+}
+
+.pc-hero__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.pc-hero__meta-item {
+  margin: 0;
+  padding: 0 6px;
+  flex: 0 0 auto;
+}
+
+.pc-hero__meta-item dt {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--pc-muted);
+  white-space: nowrap;
+}
+
+.pc-hero__meta-item dd {
+  margin: 2px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--pc-red);
+  white-space: nowrap;
+}
+
+.pc-hero__top-row {
+  display: none;
+}
+
+.pc-hero__content {
+  width: 100%;
+  max-width: 337px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  /* Clear partner hang past photo bottom before title */
+  padding-top: 28px;
+  min-width: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.pc-hero__headline {
+  position: relative;
+  background: #fff;
+  border: 0.6px solid #000;
+  padding: 8px 10px;
+  margin: 0;
+  z-index: 5;
+}
+
+.pc-hero__headline::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  background: var(--pc-purple);
+  border: 1.2px solid var(--pc-purple-border);
+}
+
+.pc-hero__title {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.pc-hero__title-line {
+  display: block;
+}
+
+.pc-hero__partnership {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--pc-ink);
+}
+
+/*
+ * Mob mid = Figma 551:9023 + tags under dates (not under full mid)
+ * dates | who
+ * tags  |
+ */
+.pc-hero__mid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 8px;
+  width: 100%;
+  align-items: start;
+}
+
+.pc-hero__dates {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.pc-hero__date-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 76px;
+  flex: 0 0 76px;
+}
+
+/* Desk-like inset, bumped for small-box readability */
+.pc-hero__date-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 72px;
+  height: 78px;
+  padding: 12px 12px;
+  border-radius: 10px;
+  background: #000;
+  color: var(--pc-date);
+  text-align: center;
+}
+
+.pc-hero__date-day {
+  display: block;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.pc-hero__date-month {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pc-hero__date-time {
+  margin: 0;
+  width: 100%;
+  max-width: 72px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  color: #000;
+  white-space: normal;
+}
+
+.pc-hero__who {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-width: 0;
+  max-width: none;
+}
+
+.pc-hero__who-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+}
+
+.pc-hero__who-note {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #000;
+}
+
+.pc-hero__tags {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pc-hero__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.pc-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  margin: 2px 0 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--pc-green);
+  color: #000;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pc-hero__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.pc-hero__location {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #000;
+  text-align: center;
+}
+
+/* —— Desktop >1366 — Figma program 17072:10543 · 1231×562 —— */
+@media (min-width: 1367px) {
+  .pc-hero {
+    display: flex;
+    justify-content: center;
+    padding: 24px 24px 48px;
+    overflow: visible;
+  }
+
+  .pc-hero__panel {
+    display: block;
+    position: relative;
+    width: 1231px;
+    max-width: 1231px;
+    height: 562px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 24px;
+    overflow: visible;
+  }
+
+  .pc-hero__media-col {
+    position: absolute;
+    left: 303px;
+    top: 24px;
+    width: 337px;
+    height: 512px;
+    margin: 0;
+    flex: none;
+    max-width: none;
+  }
+
+  .pc-hero__media {
+    width: 337px;
+    height: 512px;
+  }
+
+  .pc-hero__img-clip {
+    width: 337px;
+    height: 512px;
+    border-radius: 13px;
+    position: relative;
+  }
+
+  /* Figma placed image 772×516 at −226/−4 inside 337×512 clip */
+  .pc-hero__img {
+    position: absolute;
+    left: -226px;
+    top: -4px;
+    width: 772px;
+    height: 516px;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .pc-hero__media-badges {
+    top: 34px;
+    left: -82px;
+    right: auto;
+  }
+
+  .pc-hero__mode--on-media,
+  .pc-hero__share--on-media {
+    display: none;
+  }
+
+  .pc-hero__filling {
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .pc-hero__filling-icon {
+    width: 13px;
+    height: 16px;
+  }
+
+  .pc-hero__partner {
+    left: -144px;
+    right: auto;
+    top: 91px;
+    bottom: auto;
+    width: 174px;
+    gap: 15px;
+  }
+
+  .pc-hero__logo-plate {
+    border-width: 0.8px;
+    padding: 4px 13px;
+  }
+
+  .pc-hero__logo-plate::before {
+    left: -3px;
+    top: -5px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .pc-hero__logo {
+    max-width: 149px;
+  }
+
+  .pc-hero__meta {
+    flex-direction: column;
+    gap: 13px;
+    background: transparent;
+    padding: 0;
+  }
+
+  .pc-hero__meta-item {
+    padding: 0 8px;
+  }
+
+  .pc-hero__meta-item dt {
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .pc-hero__meta-item dd {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .pc-hero__top-row {
+    display: flex;
+    position: absolute;
+    top: 24px;
+    right: 26px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    width: auto;
+    z-index: 2;
+  }
+
+  .pc-hero__mode--desk {
+    display: inline-flex;
+    font-size: 16px;
+    padding: 4px 8px;
+  }
+
+  .pc-hero__share--desk {
+    display: inline-flex;
+  }
+
+  .pc-hero__share--desk img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .pc-hero__content {
+    position: absolute;
+    left: 618px;
+    top: 68px;
+    width: 572px;
+    max-width: none;
+    padding: 0;
+    gap: 16px;
+    align-items: flex-start;
+    z-index: 5;
+  }
+
+  .pc-hero__headline {
+    border-width: 0.8px;
+    padding: 4px 13px;
+    align-self: flex-start;
+    z-index: 5;
+  }
+
+  .pc-hero__headline::before {
+    left: -3px;
+    top: -5px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .pc-hero__title {
+    font-size: 36px;
+    line-height: 1.05;
+    text-align: left;
+  }
+
+  .pc-hero__partnership {
+    max-width: 506px;
+    margin-left: 42px;
+    font-size: 15px;
+    line-height: 1.35;
+    color: var(--pc-ink);
+  }
+
+  /* Desk: dates | who on row 1; tags full-width below */
+  .pc-hero__mid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+    width: calc(100% - 42px);
+    margin-left: 42px;
+  }
+
+  .pc-hero__dates {
+    grid-column: unset;
+    grid-row: unset;
+    flex: 0 0 auto;
+    gap: 4px;
+  }
+
+  .pc-hero__date-col {
+    width: auto;
+    flex: 0 0 auto;
+    gap: 4px;
+  }
+
+  .pc-hero__date-box {
+    width: 97px;
+    height: 102px;
+    padding: 10px 13px;
+  }
+
+  .pc-hero__date-day {
+    font-size: 48px;
+    letter-spacing: -3px;
+  }
+
+  .pc-hero__date-month {
+    font-size: 22px;
+  }
+
+  .pc-hero__date-time {
+    font-size: 14px;
+    width: 97px;
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .pc-hero__who {
+    grid-column: unset;
+    grid-row: unset;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 302px;
+  }
+
+  .pc-hero__who-title {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .pc-hero__who-note {
+    margin-top: 6px;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .pc-hero__tags {
+    grid-column: unset;
+    grid-row: unset;
+    flex: 0 0 100%;
+    gap: 13px;
+    margin: 0;
+  }
+
+  .pc-hero__tag {
+    padding: 8px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+
+  .pc-hero__cta {
+    width: 530px;
+    max-width: 100%;
+    min-height: 49px;
+    margin-left: 42px;
+    padding: 13px 10px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  .pc-hero__location {
+    font-size: 16px;
+    text-align: left;
+    align-self: center;
+    margin-left: 42px;
+  }
+}

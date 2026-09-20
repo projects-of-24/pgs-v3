@@ -12,6 +12,7 @@ export type SharedDocumentRow = {
   student_id: string;
   storage_path: string;
   original_filename: string;
+  mime_type: string;
   scan_status: string;
   superseded_at: string | null;
   deletion_requested_at: string | null;
@@ -57,7 +58,7 @@ export async function authorizeDocumentByteAccess(documentId: string): Promise<D
   const { data: document } = await admin
     .from("student_documents")
     .select(
-      "id,student_id,storage_path,original_filename,scan_status,superseded_at,deletion_requested_at,archived_at,purged_at,storage_purged_at"
+      "id,student_id,storage_path,original_filename,mime_type,scan_status,superseded_at,deletion_requested_at,archived_at,purged_at,storage_purged_at"
     )
     .eq("id", documentId)
     .maybeSingle();

@@ -1,0 +1,231 @@
+/**
+ * #premiumNonMedical student photo and quote — owned CSS (N7).
+ * Desktop: photo hangs under the fast-track card. Quote sits left of its lower half.
+ * Phone: photo sits on the right under the mosaic. Quote sits under the photo.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: quote 12px · role 12.8px
+ * ISSUE: below the readable floor
+ * PGS IMPLEMENTATION: those sit at 16px. Name and #UK stay at Figma size.
+ * Phone role was 8.96px and the quote was 12px. Both sit at 16px.
+ */
+
+.premium-nonmedical-student {
+  position: relative;
+  grid-column: 3;
+  grid-row: 2;
+  height: 0;
+  margin-top: -73px;
+  z-index: 1;
+}
+
+.premium-nonmedical-student__stack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 323px;
+  height: 482px;
+  margin: 0;
+}
+
+.premium-nonmedical-student__sheet {
+  position: absolute;
+  left: 0;
+  width: 322px;
+  height: 294px;
+  border-radius: 38.4px 38.4px 19.2px 19.2px;
+}
+
+.premium-nonmedical-student__sheet--coral {
+  top: 0;
+  background: #ff7557;
+}
+
+.premium-nonmedical-student__sheet--green {
+  top: 50px;
+  background: #c3ffa9;
+}
+
+.premium-nonmedical-student__sheet--gold {
+  top: 98px;
+  background: #ffde7f;
+}
+
+.premium-nonmedical-student__card {
+  position: absolute;
+  top: 144px;
+  left: 1px;
+  width: 322px;
+  height: 338px;
+  overflow: hidden;
+  border-radius: 25.6px;
+  background: #111;
+}
+
+.premium-nonmedical-student__card img {
+  display: block;
+  width: 110%;
+  height: 113%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.premium-nonmedical-student__name,
+.premium-nonmedical-student__role,
+.premium-nonmedical-student__place {
+  position: absolute;
+  margin: 0;
+  color: #fff;
+}
+
+.premium-nonmedical-student__name {
+  left: 22px;
+  bottom: 36px;
+  width: 146px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-student__role {
+  left: 22px;
+  bottom: 16px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.12px;
+}
+
+.premium-nonmedical-student__place {
+  right: 16px;
+  bottom: 14px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.premium-nonmedical-student__quote {
+  position: absolute;
+  top: 314px;
+  right: calc(100% + 25px);
+  width: 310px;
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-student__quote p {
+  margin: 0;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.premium-nonmedical-student__mark {
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  line-height: 0.6;
+}
+
+.premium-nonmedical-student__mark--end {
+  display: block;
+  margin-top: 4px;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-needs {
+    padding-bottom: 186px;
+  }
+
+  .premium-nonmedical-student {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    height: auto;
+    margin: 20px 0 0;
+  }
+
+  .premium-nonmedical-student__stack {
+    position: relative;
+    top: auto;
+    left: auto;
+    align-self: flex-end;
+    width: 226px;
+    height: 338px;
+    margin-right: 20px;
+  }
+
+  .premium-nonmedical-student__sheet {
+    width: 226px;
+    height: 206px;
+    border-radius: 26.88px 26.88px 13.44px 13.44px;
+  }
+
+  .premium-nonmedical-student__sheet--green {
+    top: 35px;
+  }
+
+  .premium-nonmedical-student__sheet--gold {
+    top: 68px;
+  }
+
+  .premium-nonmedical-student__card {
+    top: 101px;
+    left: 0;
+    width: 226px;
+    height: 237px;
+    border-radius: 17.92px;
+  }
+
+  .premium-nonmedical-student__name {
+    left: 12px;
+    bottom: 48px;
+    width: 108px;
+    font-size: 22.4px;
+    line-height: 0.95;
+  }
+
+  .premium-nonmedical-student__role {
+    left: 12px;
+    right: 56px;
+    bottom: 10px;
+    max-width: none;
+    line-height: 1.15;
+  }
+
+  .premium-nonmedical-student__place {
+    right: 10px;
+    bottom: 10px;
+    font-size: 26.88px;
+  }
+
+  .premium-nonmedical-student__quote {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: calc(100% - 44px);
+    margin: 16px auto 0;
+  }
+
+  .premium-nonmedical-student__mark {
+    line-height: 1;
+  }
+
+  .premium-nonmedical-student__mark--end {
+    display: none;
+  }
+}

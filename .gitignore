@@ -19,3 +19,7 @@ supabase/.temp/
 /tmp/
 *.log
 *.tsbuildinfo
+
+# Local-only reference + QC screenshot dumps (not product)
+.ref/
+public/previews/

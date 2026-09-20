@@ -54,11 +54,44 @@ export const contentEntities: Record<string, AdminEntity> = {
   facts: { key:"facts",label:"Study Abroad Facts",table:"study_abroad_facts",idKey:"id",permissionDomain:"content",description:"Ordered student-resource facts.",fields:[area("fact","Fact",4000),published,order] },
   stats: { key:"stats",label:"PGS Stats",table:"pgs_stats",idKey:"id",permissionDomain:"content",description:"Categorized statistics and labels.",fields:[text("category","Category",true),text("label","Label",true),text("value","Value",true),published,order] },
   people: { key:"people",label:"Founder / Advisory",table:"content_people",idKey:"id",permissionDomain:"content",description:"Founder and advisory profiles.",fields:[{key:"person_type",label:"Type",type:"select",required:true,options:["founder","advisory"]},text("name","Name",true),text("title","Title"),area("biography","Biography"),media("image_asset_id","Image"),published,order] },
+  finance_partner_logos: {
+    key: "finance_partner_logos",
+    label: "Finance partner logos",
+    table: "finance_partner_logos",
+    idKey: "id",
+    permissionDomain: "content",
+    description:
+      "PurpleFinance marquee brands. Swap the logo image only (no click URL in W1). Suggested upload: 280×80 px PNG/WebP (or 140×40 @2x), transparent background, under ~100 KB.",
+    fields: [
+      text("name", "Brand name", true, 80),
+      media("image_asset_id", "Logo image"),
+      published,
+      order
+    ]
+  },
   notices: { key:"notices",label:"Notices / Marquee",table:"site_notices",idKey:"id",permissionDomain:"content",description:"Marquee, banner, and maintenance messages.",fields:[{key:"notice_type",label:"Type",type:"select",options:["marquee","banner","maintenance"]},area("text","Message",1000),{key:"link_url",label:"Link URL",type:"url",max:1000},{key:"active",label:"Active",type:"boolean"},{key:"starts_at",label:"Starts at",type:"datetime"},{key:"ends_at",label:"Ends at",type:"datetime"},order] },
   legal: { key:"legal",label:"Legal Content",table:"legal_documents",idKey:"id",permissionDomain:"content",description:"Privacy, terms, and refund content.",fields:[{key:"document_type",label:"Document",type:"select",required:true,options:["privacy","terms","refund"]},text("title","Title",true),area("body","Body",100000),{key:"status",label:"Status",type:"select",options:["draft","published","unpublished"]},number("version","Version")] },
   social: { key:"social",label:"Social Links",table:"site_social_links",idKey:"id",permissionDomain:"content",description:"Published footer and contact social destinations.",fields:[text("platform","Platform",true),{key:"url",label:"URL",type:"url",required:true,max:1000},published,order] },
   meeting_slots: { key:"meeting_slots",label:"University Meeting Slots",table:"university_meeting_slots",idKey:"id",permissionDomain:"content",description:"Sidebar meeting slots and optional course relationship.",fields:[text("label","Label",true),{key:"starts_at",label:"Starts at",type:"datetime"},number("course_id","Course ID"),{key:"booking_url",label:"Booking URL",type:"url",max:1000},published,order] },
-  premium_settings: { key:"premium_settings",label:"Premium Video / Meetup",table:"premium_content_settings",idKey:"key",permissionDomain:"content",description:"Premium overview video only. Meetup is not a public content source; published events remain meetup cards.",fields:[{key:"key",label:"Type",type:"select",required:true,options:["video","meetup"]},text("title","Title"),area("body","Body",4000),media("media_asset_id","Media"),{key:"link_url",label:"URL",type:"url",max:1000},published] }
+  premium_settings: {
+    key: "premium_settings",
+    label: "Premium Video / Meetup",
+    table: "premium_content_settings",
+    idKey: "key",
+    permissionDomain: "content",
+    description:
+      "Purple Premium Home H2: upload two MP4s (desktop + mobile) via Media, then attach here on the video row. Display images stay Figma fixtures until the image pass. Meetup is not a public content source. MP4 max 10 MB.",
+    fields: [
+      { key: "key", label: "Type", type: "select", required: true, options: ["video", "meetup"] },
+      text("title", "Title"),
+      area("body", "Body", 4000),
+      media("desktop_video_asset_id", "Desktop video (MP4)"),
+      media("mobile_video_asset_id", "Mobile video (MP4)"),
+      media("media_asset_id", "Legacy media (optional)"),
+      { key: "link_url", label: "URL", type: "url", max: 1000 },
+      published
+    ]
+  }
 };
 
 export function getAdminEntity(domain: "catalog" | "content", key: string): AdminEntity | null {

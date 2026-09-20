@@ -1,0 +1,118 @@
+/**
+ * Shared outro. Desktop is the default. iPad reuses it.
+ * Phone overrides live in the ≤600 block. The 86px Figma width is a crop, not the column.
+ * Hostinger section padding is killed here so the block does not float.
+ */
+
+.outro-cta {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(672px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 87px auto 0;
+  padding: 4px 0 0;
+  color: #27272a;
+  font-family: Roboto, system-ui, sans-serif;
+  text-align: center;
+}
+
+.outro-cta *,
+.outro-cta *::before,
+.outro-cta *::after {
+  box-sizing: border-box;
+}
+
+.outro-cta__eyebrow {
+  margin: 0;
+  color: #6a5ed9;
+  font-size: 11.2px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.outro-cta__title {
+  margin: 0;
+  max-width: 469px;
+  color: #27272a;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.outro-cta__body {
+  margin: 0;
+  max-width: 510px;
+  color: #71717a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.outro-cta__body strong {
+  color: #71717a;
+  font-weight: 700;
+}
+
+.outro-cta__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 223px;
+  max-width: 100%;
+  min-height: 60px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: #6a5ed9;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.outro-cta__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .outro-cta {
+    display: flex;
+    width: min(360px, calc(100% - 48px));
+    margin-top: 87px;
+  }
+
+  .outro-cta__eyebrow {
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .outro-cta__title {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .outro-cta__body {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .outro-cta__cta {
+    width: auto;
+    min-height: 48px;
+    margin-top: 0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+}

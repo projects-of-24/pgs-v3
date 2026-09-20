@@ -1,0 +1,323 @@
+/**
+ * Scholarship batch tips — S7 + SM owned CSS (Hostinger-free).
+ * DevTools: select `.scholarship-batch` → edit `--sch-batch-*` vars.
+ * Desktop >1366 · Mobile ≤600 · iPad deferred.
+ * SM: card enter fade/slide; respects prefers-reduced-motion.
+ */
+
+.scholarship-batch {
+  --sch-batch-title: 24px;
+  --sch-batch-badge: 14.08px;
+  --sch-batch-slide: 19.2px;
+  --sch-batch-arrow: 19.2px;
+  --sch-batch-card-bg: #f4f3f1;
+  --sch-batch-dot: 8px;
+  --sch-batch-motion: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.scholarship-batch *,
+.scholarship-batch *::before,
+.scholarship-batch *::after {
+  box-sizing: border-box;
+}
+
+.scholarship-batch__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 1025px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+/* Desktop Figma has no visible section title — keep for a11y, show on mobile */
+.scholarship-batch__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--sch-batch-title);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  color: #000;
+}
+
+.scholarship-batch__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+.scholarship-batch__nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.scholarship-batch__nav:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.scholarship-batch__nav:hover .scholarship-batch__arrow {
+  transform: translateX(0);
+  opacity: 0.7;
+}
+
+.scholarship-batch__nav:active .scholarship-batch__arrow {
+  transform: scale(0.92);
+}
+
+.scholarship-batch__arrow {
+  display: block;
+  width: var(--sch-batch-arrow);
+  height: var(--sch-batch-arrow);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.scholarship-batch__arrow--prev {
+  transform: rotate(180deg);
+}
+
+.scholarship-batch__nav:hover .scholarship-batch__arrow--prev {
+  transform: rotate(180deg) translateX(0);
+  opacity: 0.7;
+}
+
+.scholarship-batch__viewport {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 713px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.scholarship-batch__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10.4px;
+  width: 100%;
+  min-height: 212px;
+  padding: 40px 48px;
+  background: var(--sch-batch-card-bg);
+  border-radius: 25.6px;
+}
+
+.scholarship-batch__card--next {
+  animation: sch-batch-in-next var(--sch-batch-motion) both;
+}
+
+.scholarship-batch__card--prev {
+  animation: sch-batch-in-prev var(--sch-batch-motion) both;
+}
+
+.scholarship-batch__card--dot {
+  animation: sch-batch-in-fade var(--sch-batch-motion) both;
+}
+
+@keyframes sch-batch-in-next {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sch-batch-in-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sch-batch-in-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.scholarship-batch__badge {
+  margin: 0;
+  padding: 2px 7.2px;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-size: var(--sch-batch-badge);
+  font-weight: 500;
+  line-height: 1.28;
+  white-space: nowrap;
+}
+
+.scholarship-batch__slide {
+  margin: 0;
+  max-width: 550px;
+  font-size: var(--sch-batch-slide);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: lowercase;
+  color: #000;
+}
+
+.scholarship-batch__dots {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.scholarship-batch__dot {
+  display: block;
+  box-sizing: content-box;
+  width: var(--sch-batch-dot);
+  height: var(--sch-batch-dot);
+  margin: 0;
+  padding: 10px;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  background-image: radial-gradient(circle closest-side, #d9d9d9 100%, transparent 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: background-image 0.2s ease;
+}
+
+.scholarship-batch__dot.is-active {
+  background-image: radial-gradient(circle closest-side, #000 100%, transparent 100%);
+}
+
+.scholarship-batch__dot:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+@media (min-width: 1367px) {
+  .scholarship-batch {
+    padding: 56px 0 64px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scholarship-batch {
+    --sch-batch-title: 24px;
+    --sch-batch-badge: 12px;
+    --sch-batch-slide: 14px;
+    --sch-batch-arrow: 15.36px;
+    --sch-batch-dot: 6.4px;
+
+    padding: 28px 0 40px;
+  }
+
+  .scholarship-batch__inner {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 11px;
+    gap: 16px;
+  }
+
+  .scholarship-batch__title {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .scholarship-batch__row {
+    gap: 8px;
+  }
+
+  .scholarship-batch__nav {
+    padding: 4px;
+  }
+
+  .scholarship-batch__viewport {
+    max-width: 308px;
+  }
+
+  .scholarship-batch__card {
+    min-height: 170px;
+    padding: 32px 24px;
+    gap: 8px;
+    border-radius: 20.48px;
+  }
+
+  .scholarship-batch__badge {
+    padding: 2px 6px;
+    border-radius: 3.2px;
+  }
+
+  .scholarship-batch__slide {
+    max-width: 212px;
+    text-transform: uppercase;
+  }
+
+  .scholarship-batch__dots {
+    gap: 6.4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scholarship-batch {
+    --sch-batch-motion: 0.01ms;
+  }
+
+  .scholarship-batch__card--next,
+  .scholarship-batch__card--prev,
+  .scholarship-batch__card--dot {
+    animation: none;
+  }
+
+  .scholarship-batch__arrow,
+  .scholarship-batch__dot {
+    transition: none;
+  }
+}

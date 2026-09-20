@@ -1,0 +1,125 @@
+/**
+ * Block 9 — Resource Drop (labels + decorative yellow arrows).
+ * Desktop Figma `17041:14220` · Mobile `210:3647`
+ */
+
+.ftp-drop {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 24px 12px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: #000;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-drop *,
+.ftp-drop *::before,
+.ftp-drop *::after {
+  box-sizing: border-box;
+}
+
+.ftp-drop__title {
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ftp-drop__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: min(198px, 100%);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ftp-drop__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.12px;
+  width: 100%;
+  margin: 0;
+  padding: 4.1px 0;
+  border-bottom: 0.512px solid #000;
+}
+
+.ftp-drop__row:first-child {
+  border-top: 0.512px solid #000;
+}
+
+.ftp-drop__label {
+  flex: 0 0 auto;
+  width: 162.3px;
+  color: #000;
+  font: 400 14px / 20.48px Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-drop__badge {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 30.34px;
+  height: 30.34px;
+}
+
+.ftp-drop__badge img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 1367px) {
+  .ftp-drop {
+    width: 373px;
+    max-width: calc(100% - 48px);
+    margin-inline: 0 auto 0;
+    /* Match Figma left edge under tips (~403.8 on 1728 artboard) via shell padding */
+    align-self: flex-start;
+    margin-left: max(0px, calc((100% - 1024.8px) / 2));
+    padding: 40px 0 64px;
+    gap: 22.4px;
+  }
+
+  .ftp-drop__title {
+    width: 100%;
+    font-size: 76.8px;
+    text-align: left;
+  }
+
+  .ftp-drop__list {
+    width: 100%;
+  }
+
+  .ftp-drop__row {
+    gap: 8px;
+    padding: 6.4px 0;
+    border-bottom-width: 0.8px;
+  }
+
+  .ftp-drop__row:first-child {
+    border-top-width: 0.8px;
+  }
+
+  .ftp-drop__label {
+    width: 253.6px;
+    font-size: 25.6px;
+    line-height: 32px;
+  }
+
+  .ftp-drop__badge {
+    width: 47.4px;
+    height: 47.4px;
+  }
+}

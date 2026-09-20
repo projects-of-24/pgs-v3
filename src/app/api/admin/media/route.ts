@@ -15,7 +15,9 @@ const mediaReferences = [
   ["universities","image_asset_id"],["programs","image_asset_id"],["programs","brochure_asset_id"],
   ["courses","image_asset_id"],["courses","brochure_asset_id"],["events","image_asset_id"],
   ["event_facilitators","image_asset_id"],["articles","image_asset_id"],["highlights","image_asset_id"],
-  ["testimonials","image_asset_id"],["content_people","image_asset_id"],["premium_content_settings","media_asset_id"]
+  ["testimonials","image_asset_id"],["content_people","image_asset_id"],["premium_content_settings","media_asset_id"],
+  ["premium_content_settings","desktop_video_asset_id"],["premium_content_settings","mobile_video_asset_id"],
+  ["finance_partner_logos","image_asset_id"]
 ] as const;
 
 export async function DELETE(request:Request){

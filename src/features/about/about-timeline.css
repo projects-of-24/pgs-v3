@@ -1,0 +1,379 @@
+/**
+ * About Us — Evolution Timeline (A7).
+ * Desk `17084:12025` · mob `517:5786` (same Gantt · horizontal scroll ≤600).
+ * Bands >1366 · ≤600; iPad deferred.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: phase meta rgba(0,0,0,0.65)
+ * ISSUE: ~3.5:1 on white — fails WCAG AA normal text
+ * PGS IMPLEMENTATION: #595959 (~7:1) nearest readable grey
+ */
+
+.about-timeline {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 24px clamp(16px, 4vw, 48px) 64px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.about-timeline *,
+.about-timeline *::before,
+.about-timeline *::after {
+  box-sizing: border-box;
+}
+
+.about-timeline__inner {
+  width: 100%;
+  max-width: 989px;
+  margin-inline: auto;
+}
+
+.about-timeline__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: min(915px, 100%);
+  margin: 0 auto;
+  padding: 18px 16px 14px;
+  background: #f1f1f1;
+  border-radius: 16px 16px 0 0;
+  text-align: center;
+}
+
+.about-timeline__heading {
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(28px, 3.2vw, 38.4px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.about-timeline__subtitle {
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.about-timeline__scroll {
+  width: 100%;
+  min-width: 0;
+}
+
+.about-timeline__board {
+  width: 100%;
+}
+
+.about-timeline__card {
+  margin-top: 0;
+  padding: 20px 24px 28px;
+  background: #fff;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+}
+
+.about-timeline__years {
+  display: grid;
+  grid-template-columns: minmax(96px, 118px) repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 0.8px solid rgba(0, 0, 0, 0.15);
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.about-timeline__year-label {
+  text-align: left;
+}
+
+.about-timeline__year {
+  text-align: center;
+}
+
+.about-timeline__year--present {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  height: 38px;
+  padding: 0 8px;
+  background: #b57cff;
+  color: #000;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.about-timeline__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-timeline__row {
+  display: grid;
+  grid-template-columns: minmax(96px, 118px) repeat(6, minmax(0, 1fr));
+  gap: 8px 8px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 0.8px solid rgba(0, 0, 0, 0.12);
+}
+
+.about-timeline__row:last-child {
+  border-bottom: 0;
+  padding-bottom: 8px;
+}
+
+.about-timeline__meta {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.about-timeline__phase {
+  margin: 0;
+  color: #595959;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+
+.about-timeline__title {
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+}
+
+.about-timeline__title-line {
+  display: block;
+}
+
+.about-timeline__title--pgs {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.about-timeline__title--aka {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.about-timeline__title--aka strong {
+  font-weight: 700;
+}
+
+.about-timeline__tagline {
+  display: block;
+  margin-top: 2px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.about-timeline__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 5px 6.4px;
+  min-width: 0;
+}
+
+.about-timeline__row[data-year="2006"] .about-timeline__chips {
+  grid-column: 2 / 4;
+}
+
+.about-timeline__row[data-year="2011"] .about-timeline__chips {
+  grid-column: 3 / 5;
+}
+
+.about-timeline__row[data-year="2017"] .about-timeline__chips {
+  grid-column: 4 / 7;
+}
+
+.about-timeline__row[data-year="2020"] .about-timeline__chips {
+  grid-column: 5 / 7;
+}
+
+.about-timeline__row[data-year="present"] .about-timeline__chips {
+  grid-column: 6 / 8;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.about-timeline__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 4.8px;
+  border-radius: 8px;
+  background: #ffc524;
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+}
+
+.about-timeline__chip--block {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.about-timeline__chip--bold {
+  font-weight: 700;
+}
+
+.about-timeline__chip--black {
+  font-weight: 900;
+}
+
+.about-timeline__chip em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.about-timeline__chip strong {
+  font-weight: 700;
+}
+
+.about-timeline__live {
+  margin: 8px 0 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1.6px solid #9747ff;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 11.52px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.about-timeline__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8px;
+  width: min(326px, 100%);
+  margin: 16px 0 0 auto;
+  color: #000;
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+  text-align: left;
+}
+
+.about-timeline__foot-line {
+  margin: 0;
+}
+
+/* —— Mobile ≤600: same Gantt board, horizontal scroll (Figma `517:5786`) —— */
+@media (max-width: 600px) {
+  .about-timeline {
+    padding: 16px 0 48px;
+  }
+
+  .about-timeline__inner {
+    width: 85%;
+    max-width: 348px;
+    margin-inline: auto;
+  }
+
+  .about-timeline__header {
+    width: 100%;
+    padding: 0 0 16px;
+    background: transparent;
+    border-radius: 0;
+    gap: 8px;
+  }
+
+  .about-timeline__heading {
+    font-size: 24px;
+    max-width: 11em;
+  }
+
+  .about-timeline__subtitle {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  /* Full-bleed scroll so the Gantt can pan past the 85% rail */
+  .about-timeline__scroll {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    padding-inline: max(16px, calc((100vw - 348px) / 2));
+    scrollbar-gutter: stable;
+  }
+
+  .about-timeline__scroll:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+  }
+
+  .about-timeline__board {
+    width: 989px;
+    min-width: 989px;
+    max-width: none;
+    padding-bottom: 8px;
+  }
+
+  .about-timeline__card {
+    width: 100%;
+    min-width: 989px;
+    padding: 16px 20px 24px;
+    border-radius: 16px;
+  }
+
+  .about-timeline__years,
+  .about-timeline__row {
+    grid-template-columns: 110px repeat(6, minmax(0, 1fr));
+  }
+
+  .about-timeline__chip {
+    white-space: nowrap;
+  }
+
+  .about-timeline__chip--block {
+    white-space: normal;
+  }
+
+  .about-timeline__foot {
+    width: 326px;
+    margin: 16px 0 0 auto;
+    font-size: 12.8px;
+  }
+}

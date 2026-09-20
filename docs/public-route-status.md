@@ -24,7 +24,7 @@ This inventory reconciles all 84 callable public methods identified in `legacy-r
 | `Purpleevents/index`, `Purpleevents/session` | 2 | `/purpleevents`, `/purpleevents/session/:id` |
 | `Purplenonmedical/index`, `Purpleplab/index` | 2 | `/purplenonmedical`, `/purpleplab` |
 | `Purplepremiumhome/index` | 1 | `/purplepremiumhome`; request/application surface removed by owner rule |
-| `Purpleusme/index` | 1 | `/purpleusme` |
+| `Purpleusme/index` | 1 | `/purpleusmle` (typo `/purpleusme` redirects) |
 | `Reset_password/reset_passwords` | 1 | `/reset_password` UI |
 | `Scholarship/index`, `Simplehome/index` | 2 | `/scholarship`, `/simplehome` |
 | `Singup/index` | 1 | Exact legacy `/singup` spelling retained |

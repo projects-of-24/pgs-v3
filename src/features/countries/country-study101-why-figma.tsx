@@ -5,7 +5,7 @@
  * Figma: all-pages-v6 · desktop body frame `18753:11567`
  *   heading `18753:11570` · body `18753:11571`
  */
-import "./country-study101-why-figma.css";
+import "./country-study101-why-figma-usa.css";
 
 export type CountryStudy101WhyContent = {
   title: string;
@@ -32,22 +32,22 @@ export function CountryStudy101WhyFigma({ content }: CountryStudy101WhyFigmaProp
 
   return (
     <div
-      className="country-study101-why-figma"
-      data-pgs-module="country-study101-why-figma"
+      className="country-study101-why-figma-usa"
+      data-pgs-module="country-study101-why-figma-usa"
       data-band="desktop"
       role="region"
       aria-labelledby="country-study101-why-title"
     >
-      <div className="country-study101-why-figma__inner">
+      <div className="country-study101-why-figma-usa__inner">
         <h2
           id="country-study101-why-title"
-          className="country-study101-why-figma__title"
+          className="country-study101-why-figma-usa__title"
         >
           {data.title}
         </h2>
-        <div className="country-study101-why-figma__body">
+        <div className="country-study101-why-figma-usa__body">
           {paragraphs.map((p) => (
-            <p className="country-study101-why-figma__p" key={p.slice(0, 48)}>
+            <p className="country-study101-why-figma-usa__p" key={p.slice(0, 48)}>
               {p}
             </p>
           ))}

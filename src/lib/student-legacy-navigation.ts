@@ -4,6 +4,10 @@ function setAttribute(attributes: string, name: string, value: string): string {
   return `${attributes} ${name}="${value}"`;
 }
 
+function removeAttribute(attributes: string, name: string): string {
+  return attributes.replace(new RegExp(`\\s${name}\\s*=\\s*(["'])(.*?)\\1`, "i"), "");
+}
+
 function addClass(attributes: string, className: string): string {
   const classMatch = attributes.match(/\sclass\s*=\s*(["'])(.*?)\1/i);
   const classes = (classMatch?.[2] ?? "").split(/\s+/).filter(Boolean);
@@ -16,6 +20,8 @@ export function keepPurpleBoardPublic(html: string, current = false): string {
     const text = inner.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
     if (text !== "#purpleboard") return anchor;
     let nextAttributes = setAttribute(attributes, "href", "/purpleboard");
+    // Guest shells gate PurpleBoard with login-popup onclick — strip so the public href works.
+    nextAttributes = removeAttribute(nextAttributes, "onclick");
     if (current) {
       nextAttributes = setAttribute(nextAttributes, "aria-current", "page");
       nextAttributes = addClass(nextAttributes, "active-tab");

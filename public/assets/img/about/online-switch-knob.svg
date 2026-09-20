@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48.52" height="46.9333" viewBox="0 0 48.52 46.9333" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Switch" filter="url(#filter0_d_0_1099)">
+<ellipse id="Ellipse 1" cx="22.66" cy="22.6667" rx="19.46" ry="18.6667" fill="url(#paint0_linear_0_1099)"/>
+</g>
+<defs>
+<filter id="filter0_d_0_1099" x="1.19209e-07" y="-1.78814e-07" width="48.52" height="46.9333" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="1.6" dy="0.8"/>
+<feGaussianBlur stdDeviation="2.4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1099"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1099" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_1099" x1="22.66" y1="4" x2="22.66" y2="41.3333" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#E8EAEA"/>
+</linearGradient>
+</defs>
+</svg>

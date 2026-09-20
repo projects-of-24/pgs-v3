@@ -1,0 +1,277 @@
+/**
+ * Shared #Pgs picks. Desktop is the default. iPad reuses it.
+ * Phone restates layout inside max-width 600. Do not edit those rules for desktop.
+ * Left inset is the title’s place on the 1728 frame (x 277), not a fixed margin on every width.
+ * Cards run off the right edge. Arrows move them. No scrollbar lane.
+ */
+
+.pgs-picks {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 294px 0 0;
+  padding: 0 0 0 max(24px, calc(50vw - 587px));
+  overflow: hidden;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.pgs-picks *,
+.pgs-picks *::before,
+.pgs-picks *::after {
+  box-sizing: border-box;
+}
+
+.pgs-picks__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: min(720px, calc(100% - 24px));
+}
+
+.pgs-picks__empty p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.pgs-picks__row {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  min-width: 0;
+}
+
+.pgs-picks__title {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pgs-picks__rail {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
+.pgs-picks__nav {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pgs-picks__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pgs-picks__arrow img {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.pgs-picks__arrow:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.pgs-picks__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.pgs-picks__track {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.pgs-picks__track::-webkit-scrollbar {
+  display: none;
+}
+
+.pgs-picks__card {
+  flex: 0 0 528px;
+  width: 528px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.pgs-picks__link {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 246px;
+  padding: 6px;
+  border-radius: 16px;
+  background: #f1f1f1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pgs-picks__link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.pgs-picks__photo {
+  flex: 0 0 180px;
+  width: 180px;
+  height: 233px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  background: #d9d9d9;
+}
+
+.pgs-picks__copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px 4px;
+}
+
+.pgs-picks__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #0abf8c;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.1px;
+}
+
+.pgs-picks__blurb {
+  max-width: 292px;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.4px;
+}
+
+.pgs-picks__blurb--phone {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pgs-picks__track {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .pgs-picks {
+    display: block;
+    width: min(355px, calc(100% - 36px));
+    margin: 77px auto 0;
+    padding: 0;
+  }
+
+  .pgs-picks__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .pgs-picks__title {
+    font-size: 24px;
+    white-space: normal;
+  }
+
+  .pgs-picks__rail {
+    align-items: center;
+    gap: 14px;
+  }
+
+  .pgs-picks__nav {
+    gap: 5px;
+  }
+
+  .pgs-picks__arrow,
+  .pgs-picks__arrow img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pgs-picks__viewport {
+    flex: 0 1 auto;
+    width: min(323px, calc(100% - 38px));
+    max-width: min(323px, calc(100% - 38px));
+  }
+
+  .pgs-picks__card {
+    flex-basis: 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .pgs-picks__link {
+    min-height: 145px;
+    gap: 12px;
+    padding: 5px;
+    border-radius: 12px;
+  }
+
+  .pgs-picks__photo {
+    flex-basis: 135px;
+    width: 135px;
+    height: 128px;
+    border-radius: 6px;
+  }
+
+  .pgs-picks__copy {
+    gap: 9px;
+    padding: 13px 3px;
+  }
+
+  .pgs-picks__cta {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 15px;
+    line-height: 1.15;
+    letter-spacing: 0.08px;
+    white-space: normal;
+  }
+
+  .pgs-picks__blurb--desk {
+    display: none;
+  }
+
+  .pgs-picks__blurb--phone {
+    display: block;
+    max-width: none;
+    font-size: 15px;
+    line-height: 1.25;
+  }
+}

@@ -1,0 +1,275 @@
+/**
+ * Scholarship plan — S4 owned CSS (Hostinger-free).
+ * DevTools: select `.scholarship-plan` → edit `--sch-plan-*` vars.
+ * Desktop centered ~780px · Mobile ≤600: Figma exact widths (not 85% rail) · iPad deferred.
+ * Mobile: strip 290 · copy 252 · checklist 309 (390 frame: `328:3151` / `328:3157` / `328:3166`).
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.scholarship-plan {
+  --sch-plan-strip-title: 38.4px;
+  --sch-plan-apply: 38.4px;
+  --sch-plan-body: 19.2px;
+  --sch-plan-body-lh: 25.6px;
+  --sch-plan-lead: 22.4px;
+  --sch-plan-lead-lh: 28.8px;
+  --sch-plan-item: 16px;
+  --sch-plan-item-lh: 19.2px;
+  --sch-plan-check: 29px;
+  /* Desktop Figma `17041:18791`: 33.27×36.8 @ left 138 top 64 on 562×105 strip */
+  --sch-plan-heart-w: 33.27px;
+  --sch-plan-heart-h: 36.8px;
+  --sch-plan-heart-left: 138px;
+  --sch-plan-heart-top: 64px;
+  --sch-yellow: #ffc524;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.scholarship-plan *,
+.scholarship-plan *::before,
+.scholarship-plan *::after {
+  box-sizing: border-box;
+}
+
+.scholarship-plan__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.scholarship-plan__strip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 562px;
+}
+
+.scholarship-plan__strip-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58.8px; /* Figma `17041:18787` */
+  padding: 6.4px 12px;
+  background: #000;
+}
+
+.scholarship-plan__strip-title {
+  margin: 0;
+  width: 100%;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--sch-plan-strip-title);
+  font-weight: 400;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--sch-yellow);
+}
+
+.scholarship-plan__strip-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px; /* Figma `17041:18789` */
+  padding: 0 12px;
+  background: var(--sch-yellow);
+}
+
+/* Figma absolute top-left on strip (no centering transform) */
+.scholarship-plan__heart {
+  position: absolute;
+  left: var(--sch-plan-heart-left);
+  top: var(--sch-plan-heart-top);
+  width: var(--sch-plan-heart-w);
+  height: var(--sch-plan-heart-h);
+  border-radius: 6.4px;
+  object-fit: fill;
+  image-rendering: pixelated;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scholarship-plan__apply {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--sch-plan-apply);
+  font-weight: 400;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #000;
+}
+
+.scholarship-plan__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 780px;
+}
+
+.scholarship-plan__p {
+  margin: 0;
+  font-size: var(--sch-plan-body);
+  font-weight: 400;
+  line-height: var(--sch-plan-body-lh);
+}
+
+.scholarship-plan__checklist-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  width: 100%;
+  max-width: 706px;
+}
+
+.scholarship-plan__checklist-lead {
+  margin: 0;
+  font-size: var(--sch-plan-lead);
+  font-weight: 500;
+  line-height: var(--sch-plan-lead-lh);
+}
+
+.scholarship-plan__checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.scholarship-plan__check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.scholarship-plan__check {
+  flex: 0 0 var(--sch-plan-check);
+  width: var(--sch-plan-check);
+  height: var(--sch-plan-check);
+  margin-top: 1px;
+}
+
+.scholarship-plan__check-text {
+  min-width: 0;
+  font-size: var(--sch-plan-item);
+  font-weight: 400;
+  line-height: var(--sch-plan-item-lh);
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 1367px) {
+  .scholarship-plan {
+    padding: 56px 0 64px;
+  }
+
+  .scholarship-plan__inner {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scholarship-plan {
+    --sch-plan-strip-title: 24px;
+    --sch-plan-apply: 19.2px;
+    --sch-plan-body: 16px;
+    --sch-plan-body-lh: 1.35;
+    --sch-plan-lead: 16px;
+    --sch-plan-lead-lh: 1.35;
+    --sch-plan-item: 16px;
+    --sch-plan-item-lh: 1.35;
+    --sch-plan-check: 28.8px; /* Figma `328:3170` */
+    /* Heart on strip: Figma `328:3156` left 67.6 top 67 on 290 */
+    --sch-plan-heart-w: 16.64px;
+    --sch-plan-heart-h: 18.4px;
+    --sch-plan-heart-left: 67.6px;
+    --sch-plan-heart-top: 67px;
+
+    padding: 28px 0 36px;
+  }
+
+  /* Full viewport width; each child centers at its Figma width */
+  .scholarship-plan__inner {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 28px;
+    align-items: center;
+  }
+
+  /* `328:3151` — 290 @ x=50 on 390 */
+  .scholarship-plan__strip {
+    width: 290px;
+    max-width: 290px;
+  }
+
+  .scholarship-plan__strip-top {
+    padding: 8px 12px;
+    min-height: 62px;
+  }
+
+  .scholarship-plan__strip-title {
+    max-width: 183px;
+    margin-inline: auto;
+  }
+
+  .scholarship-plan__strip-bottom {
+    padding: 8px 4.4px;
+    min-height: 29px;
+  }
+
+  .scholarship-plan__heart {
+    border-radius: 3.2px;
+  }
+
+  .scholarship-plan__apply {
+    max-width: none;
+  }
+
+  /* `328:3157` — 252 centered → left 69 on 390 (matches Figma inset in strip group) */
+  .scholarship-plan__copy {
+    width: 252px;
+    max-width: 252px;
+    gap: 12px;
+  }
+
+  /* `328:3166` — 309 @ x=41 on 390 */
+  .scholarship-plan__checklist-block {
+    width: 309px;
+    max-width: 309px;
+    gap: 16px;
+  }
+
+  .scholarship-plan__check-item {
+    gap: 9.6px; /* Figma text x=38.4 − check 28.8 */
+    align-items: flex-start;
+  }
+
+  .scholarship-plan__check-text {
+    letter-spacing: 0.2px;
+  }
+}

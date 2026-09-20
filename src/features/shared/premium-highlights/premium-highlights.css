@@ -1,0 +1,217 @@
+/**
+ * Shared highlights. Desktop copy stays put. Only the photo row scrolls.
+ * The row starts 157px in from the black card's left (Figma x 526 vs card x 369).
+ * Phone copy is centered, then a sideways photo strip. iPad reuses the desktop row.
+ */
+
+.premium-highlights {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 237px 0 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  overflow-x: visible;
+}
+
+.premium-highlights *,
+.premium-highlights *::before,
+.premium-highlights *::after {
+  box-sizing: border-box;
+}
+
+.premium-highlights__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 21px;
+  width: auto;
+  max-width: calc(100% - max(24px, calc(50% - 338px)));
+  margin-left: max(24px, calc(50% - 338px));
+}
+
+.premium-highlights__copy {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.premium-highlights__title {
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.premium-highlights__lead,
+.premium-highlights__place {
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.premium-highlights__place {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.premium-highlights__pin {
+  flex: 0 0 11px;
+  display: block;
+  width: 11px;
+  height: 16px;
+}
+
+.premium-highlights__note {
+  width: 173px;
+  margin: 13px 0 0;
+  padding: 8px;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.premium-highlights__photos {
+  display: flex;
+  gap: 21px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-highlights__photos--desk {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-right: 24px;
+  overflow-x: auto;
+}
+
+.premium-highlights__photos--phone,
+.premium-highlights__scroller {
+  display: none;
+}
+
+.premium-highlights__photo {
+  position: relative;
+  flex: 0 0 258px;
+  width: 258px;
+  height: 494px;
+  margin: 0;
+  overflow: hidden;
+  background: #ffd3d3;
+  border-radius: 21px;
+}
+
+.premium-highlights__photo img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+/* Figma crop boxes, not object-fit guesses. */
+.premium-highlights__photo--1 img {
+  left: -69.73%;
+  top: -7.65%;
+  width: 169.73%;
+  height: 118.29%;
+}
+
+.premium-highlights__photo--2 img {
+  left: -99.26%;
+  top: -6.49%;
+  width: 266.01%;
+  height: 185.47%;
+}
+
+.premium-highlights__photo--3 img {
+  left: -27.3%;
+  top: -8.3%;
+  width: 194.54%;
+  height: 135.67%;
+}
+
+.premium-highlights__photos--desk:focus-visible,
+.premium-highlights__scroller:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .premium-highlights {
+    margin-top: 103px;
+    overflow: visible;
+  }
+
+  .premium-highlights__row {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    padding-right: 0;
+  }
+
+  .premium-highlights__copy {
+    align-items: center;
+    width: min(176px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .premium-highlights__title {
+    align-self: flex-start;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .premium-highlights__lead,
+  .premium-highlights__place,
+  .premium-highlights__note {
+    align-self: flex-start;
+    font-size: 16px;
+  }
+
+  .premium-highlights__note {
+    width: 100%;
+  }
+
+  .premium-highlights__photos--desk {
+    display: none;
+  }
+
+  .premium-highlights__scroller {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+    padding-left: clamp(24px, 8.7vw, 40px);
+    overflow-x: auto;
+  }
+
+  .premium-highlights__photos--phone {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    padding-right: 16px;
+  }
+
+  .premium-highlights__photos--phone .premium-highlights__photo {
+    flex-basis: clamp(200px, 59vw, 248px);
+    width: clamp(200px, 59vw, 248px);
+    height: auto;
+    aspect-ratio: 231 / 430;
+  }
+
+  .premium-highlights__photos--phone .premium-highlights__photo--1 img {
+    left: -97.32%;
+    top: -10.98%;
+    width: 236.88%;
+    height: 169.67%;
+  }
+}

@@ -1,0 +1,40 @@
+/**
+ * A4 media band — owned CSS.
+ * Desktop `18375:11666` (~1267×564) · Mobile `217:4597` (~351×159).
+ * Same asset both bands; width scales, aspect preserved.
+ */
+
+.uyd-media {
+  width: 100%;
+  max-width: 1267px;
+  margin: 8px auto 56px;
+  padding: 0 24px;
+}
+
+.uyd-media__frame {
+  width: 100%;
+  max-width: 1267px;
+  margin: 0 auto;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.uyd-media__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+@media (max-width: 600px) {
+  .uyd-media {
+    max-width: 390px;
+    margin: 4px auto 40px;
+    padding: 0 20px;
+  }
+
+  .uyd-media__frame {
+    max-width: 351px;
+  }
+}

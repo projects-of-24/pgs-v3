@@ -31,7 +31,8 @@ export type AuditMetadata = Partial<Record<
   | "recipient_user_id"
   | "expires_at"
   | "result"
-  | "preview_mode",
+  | "preview_mode"
+  | "delivery",
   SafeMetadataValue
 >>;
 
@@ -76,7 +77,7 @@ const allowedMetadataKeys = new Set([
   "permission_required","reason_code","route","role","previous_role","new_role",
   "previous_status","new_status","assignment_id","mentor_id","previous_mentor_id",
   "assigned_staff_id","student_id","priority","due_at","entitlement_id","qc_decision",
-  "share_id","recipient_user_id","expires_at","result","preview_mode"
+  "share_id","recipient_user_id","expires_at","result","preview_mode","delivery"
 ]);
 
 type TrustedAuditInput<T extends string> = {

@@ -1,0 +1,344 @@
+/**
+ * E11 Testimonials — student feed back carousel.
+ * Desk `17071:14485` (E11a) · mob `551:8249` (E11b polish).
+ * Photo plate fixed; quote texts stacked → height = tallest; only active text shows.
+ * Bands: ≤600 mobile · >1367 desktop · 601–1366 deferred.
+ */
+
+.pe-tm {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 40px 16px 48px;
+  background: #fff;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+.pe-tm *,
+.pe-tm *::before,
+.pe-tm *::after {
+  box-sizing: border-box;
+}
+
+.pe-tm__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.pe-tm__nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.pe-tm__nav--desk {
+  display: none;
+}
+
+.pe-tm__nav--mob {
+  justify-content: center;
+  gap: 7px;
+}
+
+.pe-tm__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.pe-tm__arrow:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.pe-tm__arrow img {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.pe-tm__arrow--mob img {
+  width: 28.8px;
+  height: 28.8px;
+}
+
+.pe-tm__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.pe-tm__quote {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0 4px;
+  margin: 0;
+  width: 100%;
+  max-width: 233px;
+}
+
+.pe-tm__qmark {
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+  font-size: 28.8px;
+  line-height: 16.8px;
+  color: #000;
+  user-select: none;
+}
+
+.pe-tm__qmark--close {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/* All quote bodies stacked → box height = tallest */
+.pe-tm__texts {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 219px;
+}
+
+.pe-tm__text {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.15px;
+  color: #000;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pe-tm__text.is-active {
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.pe-tm__photo {
+  position: relative;
+  width: 201px;
+  height: 211px;
+  overflow: hidden;
+  border-radius: 23px;
+  background: #f2e9e0;
+  flex-shrink: 0;
+}
+
+.pe-tm__imgs {
+  position: absolute;
+  inset: 0;
+}
+
+.pe-tm__img {
+  position: absolute;
+  inset: -14px -9px auto;
+  width: 218px;
+  height: 239px;
+  max-width: none;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.pe-tm__img.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.pe-tm__program {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+  z-index: 2;
+  color: #fff;
+  text-align: right;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.pe-tm__program-label {
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 18px;
+  line-height: 14.4px;
+  text-transform: lowercase;
+}
+
+.pe-tm__path {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.pe-tm__path--desk {
+  display: none;
+}
+
+.pe-tm__meta {
+  position: absolute;
+  left: 18px;
+  bottom: 14px;
+  z-index: 2;
+  width: 119px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+.pe-tm__name {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: lowercase;
+  color: #fff;
+}
+
+.pe-tm__premium {
+  margin: 4px 0 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.36px;
+  color: #fff;
+}
+
+/* —— Desktop >1367 — E11a lock —— */
+@media (min-width: 1367px) {
+  .pe-tm {
+    display: flex;
+    justify-content: center;
+    padding: 80px 24px 96px;
+  }
+
+  .pe-tm__inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 61px;
+    width: auto;
+    max-width: none;
+  }
+
+  .pe-tm__nav--desk {
+    display: flex;
+    flex: 0 0 48px;
+    width: 48px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .pe-tm__nav--mob {
+    display: none;
+  }
+
+  .pe-tm__stage {
+    flex-direction: row;
+    align-items: center;
+    gap: 27px;
+    width: auto;
+  }
+
+  .pe-tm__quote {
+    flex: 0 0 auto;
+    width: 377px;
+    max-width: 377px;
+    gap: 0 6px;
+  }
+
+  .pe-tm__qmark {
+    font-size: 48px;
+    line-height: 28px;
+  }
+
+  .pe-tm__qmark--close {
+    right: 0;
+    bottom: 8px;
+  }
+
+  .pe-tm__texts {
+    max-width: 365px;
+  }
+
+  .pe-tm__text {
+    font-size: 15px;
+    letter-spacing: 0.25px;
+  }
+
+  .pe-tm__photo {
+    width: 403px;
+    height: 423px;
+    border-radius: 32px;
+  }
+
+  .pe-tm__img {
+    inset: -44px 0 auto;
+    width: 100%;
+    height: 478px;
+    left: 0;
+  }
+
+  .pe-tm__program {
+    display: none;
+  }
+
+  .pe-tm__path--desk {
+    display: block;
+    position: absolute;
+    right: 24px;
+    bottom: 18px;
+    z-index: 2;
+    font-size: 48px;
+    line-height: 28px;
+  }
+
+  .pe-tm__meta {
+    left: 17px;
+    bottom: 24px;
+    width: 202px;
+  }
+
+  .pe-tm__name {
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .pe-tm__premium {
+    margin: 8px 0 0;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+  }
+}

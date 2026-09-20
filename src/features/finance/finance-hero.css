@@ -1,0 +1,251 @@
+/**
+ * Finance hero — owned CSS.
+ * Desktop Figma: card ~289×426, title + bullets to the right.
+ * Mobile ≤600: card then title/bullets stacked.
+ * iPad 601–1366 deferred.
+ */
+
+.finance-hero {
+  --finance-green: #009c70;
+  --finance-card-bg: #f1f1f1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  /* Top flush with closed toggle (shell negative margin); no extra band */
+  padding: 0 0 16px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.finance-hero *,
+.finance-hero *::before,
+.finance-hero *::after {
+  box-sizing: border-box;
+}
+
+.finance-hero__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  /* Same rail as countries / feed — desktop fluid, mobile bumps below */
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.finance-hero__card {
+  flex: 0 0 289px;
+  width: 289px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Center the copy/CTA block in the card — text itself stays left-aligned */
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 20px;
+  background: var(--finance-card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.finance-hero__card-media {
+  width: 100%;
+  height: 237px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  background: #ddd;
+}
+
+.finance-hero__card-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.finance-hero__card-lead {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 11em;
+  color: #000;
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: left;
+}
+
+.finance-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px auto 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--finance-green);
+  color: #fff;
+  font-family: inherit;
+  font-size: 19.2px;
+  font-weight: 500;
+  line-height: 1.33;
+  cursor: pointer;
+  text-align: center;
+}
+
+.finance-hero__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.finance-hero__copy {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 8px;
+}
+
+.finance-hero__title {
+  margin: 0;
+  color: #000;
+  font-family: inherit;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.finance-hero__title-line {
+  display: block;
+}
+
+.finance-hero__bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9.6px;
+  max-width: 36rem;
+}
+
+.finance-hero__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 9.6px;
+  min-width: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.5px;
+}
+
+.finance-hero__check {
+  flex: 0 0 29px;
+  width: 29px;
+  height: 29px;
+  margin-top: 0;
+}
+
+.finance-hero__bullet span {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+@media (min-width: 1367px) {
+  .finance-hero {
+    padding: 32px 0 12px;
+  }
+
+  .finance-hero__inner {
+    max-width: 980px;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .finance-hero {
+    padding: 16px 0 28px;
+  }
+
+  .finance-hero__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    /* Figma mobile ~25px on 390 — not edge-flush (FTP/UYD 20px rail + clamp) */
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 6.4vw, 28px);
+  }
+
+  .finance-hero__card {
+    flex: 0 0 auto;
+    width: min(198px, 100%);
+    margin-inline: auto;
+    gap: 10px;
+    padding-bottom: 16px;
+    /* Center the copy/CTA block in the card — text itself stays left-aligned */
+    align-items: center;
+  }
+
+  .finance-hero__card-media {
+    height: 163px;
+  }
+
+  .finance-hero__card-lead {
+    padding: 0;
+    max-width: 11em;
+    margin-inline: auto;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: left;
+  }
+
+  .finance-hero__cta {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .finance-hero__copy {
+    gap: 16px;
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .finance-hero__title {
+    font-size: 24px;
+    line-height: 1.2;
+    max-width: 15em;
+    margin-inline: auto;
+  }
+
+  .finance-hero__bullets {
+    gap: 10px;
+    max-width: none;
+    text-align: left;
+  }
+
+  .finance-hero__bullet {
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .finance-hero__check {
+    flex-basis: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}

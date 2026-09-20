@@ -1,5 +1,5 @@
 /**
- * /countriesuk — modular hero + owned body (CountryPage shell) + shared chrome.
+ * /countriesuk — own Photoshop file at src/features/countries-uk.
  *
  * Shared header/footer HTML · strip HTML (univMeet — Pass 2) · modular hero
  * Body: CountryUkBodyShell (country-body-layout + Study 101 Why Figma)
@@ -8,11 +8,11 @@
 import { ContentPreviewBanner } from "@/components/content-preview-banner";
 import { LegacyPage } from "@/components/legacy-page";
 import { StaffPreviewBanner } from "@/components/staff-preview-banner";
-import { buildCountryHeroFigmaHtml } from "@/features/countries/country-hero-figma";
+import { buildCountryHeroFigmaHtml } from "@/features/countries-uk/country-hero-figma";
 import { getPublishedCountryHeroFigma } from "@/features/countries/country-public-hero";
-import { CountryUkBodyShell } from "@/features/countries/country-uk-body-shell";
-import { getCountryContent } from "@/features/countries/content";
-import "@/features/countries/countries.css";
+import { CountryUkBodyShell } from "@/features/countries-uk/country-uk-body-shell";
+import { getCountryContent } from "@/features/countries-uk/content";
+import "@/features/countries-uk/countries.css";
 import "@/features/shell/legacy-header-breakpoints.css";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { cmsMetadata } from "@/lib/cms-metadata";

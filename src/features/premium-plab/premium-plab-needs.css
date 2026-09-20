@@ -1,0 +1,297 @@
+/**
+ * #premiumUSMLE needs mosaic — owned CSS (U6).
+ * Desktop mosaic uses auto rows so cards cannot paint over each other.
+ * Phone ≤600: 85% rail, 2×2. iPad 601–1366: padded 2×2. Type floor 16px.
+ */
+
+.premium-plab-needs {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 0 40px;
+  background: #fff;
+  overflow-x: clip;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-plab-needs *,
+.premium-plab-needs *::before,
+.premium-plab-needs *::after {
+  box-sizing: border-box;
+}
+
+.premium-plab-needs__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+}
+
+.premium-plab-needs__lead {
+  margin: 0;
+  max-width: 571px;
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 22.4px;
+  text-align: center;
+}
+
+.premium-plab-needs__lead-end {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.premium-plab-needs__board {
+  display: grid;
+  grid-template-columns: 149px 230px 174px;
+  grid-template-rows: auto auto;
+  gap: 12px;
+  width: 569px;
+  max-width: 100%;
+  align-items: start;
+}
+
+.premium-plab-needs__card {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 13px;
+  background: #fff;
+}
+
+.premium-plab-needs__card img {
+  display: block;
+}
+
+.premium-plab-needs__card--profile {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  min-height: 226px;
+}
+
+.premium-plab-needs__card--observe {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+.premium-plab-needs__card--clinical {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  min-height: 245px;
+}
+
+.premium-plab-needs__card--time {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  min-height: 0;
+  padding: 16px 14px 16px 16px;
+}
+
+.premium-plab-needs__card--profile > img,
+.premium-plab-needs__card--observe > img {
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.premium-plab-needs__pill,
+.premium-plab-needs__card--time p {
+  margin: 0;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.premium-plab-needs__pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100% - 20px);
+  margin: 56px auto 0;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #d9f1fd;
+}
+
+.premium-plab-needs__pill span {
+  display: block;
+}
+
+.premium-plab-needs__aside {
+  font-weight: 400;
+}
+
+.premium-plab-needs__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;
+}
+
+.premium-plab-needs__stack .premium-plab-needs__pill {
+  margin-top: 0;
+}
+
+.premium-plab-needs__stack > img {
+  width: 19px;
+  height: 19px;
+  margin-bottom: 6px;
+}
+
+.premium-plab-needs__plus {
+  margin: 2px 0;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.premium-plab-needs__marks {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.premium-plab-needs__marks img {
+  width: 21px;
+  height: 21px;
+}
+
+.premium-plab-needs__heart {
+  width: 33px;
+  height: 37px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.premium-plab-needs__card--time p {
+  max-width: 120px;
+  margin-top: 12px;
+  margin-left: auto;
+  font-weight: 400;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .premium-plab-needs__inner {
+    width: 85%;
+    max-width: 85%;
+    padding-inline: 0;
+  }
+
+  .premium-plab-needs__lead {
+    display: none;
+  }
+
+  .premium-plab-needs__card--clinical {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 8px 12px;
+  }
+
+  .premium-plab-needs__marks {
+    position: static;
+    margin: 0 0 6px 4px;
+  }
+
+  .premium-plab-needs__stack {
+    padding-top: 0;
+  }
+
+  .premium-plab-needs__stack > img {
+    align-self: flex-start;
+    margin: 0 0 8px 8px;
+  }
+
+  .premium-plab-needs__stack .premium-plab-needs__pill {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .premium-plab-needs__board {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 16px;
+    width: 100%;
+    max-width: none;
+    align-items: start;
+  }
+
+  .premium-plab-needs__card--profile,
+  .premium-plab-needs__card--observe,
+  .premium-plab-needs__card--clinical,
+  .premium-plab-needs__card--time {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: start;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+  }
+
+  .premium-plab-needs__card--profile {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .premium-plab-needs__card--observe {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .premium-plab-needs__card--clinical {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .premium-plab-needs__card--time {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .premium-plab-needs__pill {
+    width: auto;
+    max-width: calc(100% - 16px);
+  }
+
+  .premium-plab-needs__card--time p {
+    max-width: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-plab-needs__inner {
+    width: 100%;
+    max-width: 720px;
+    padding-inline: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-plab-needs__heart {
+    animation: none;
+  }
+}

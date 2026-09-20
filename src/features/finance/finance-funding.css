@@ -1,0 +1,243 @@
+/**
+ * Finance funding story — owned CSS.
+ * Figma desktop `17041:17738` · mobile `217:5315`.
+ * FIGMA ACCESSIBILITY ADAPTATION: stat sub-labels were 9.6px — bumped to 12px (≥ WCAG readable floor).
+ */
+
+.finance-funding {
+  --finance-green: #009c70;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 0 48px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.finance-funding *,
+.finance-funding *::before,
+.finance-funding *::after {
+  box-sizing: border-box;
+}
+
+.finance-funding__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.finance-funding__story {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 0;
+}
+
+.finance-funding__title {
+  margin: 0;
+  max-width: 20em;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.finance-funding__title-line {
+  display: block;
+}
+
+.finance-funding__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.finance-funding__p {
+  margin: 0;
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: #000;
+}
+
+.finance-funding__lead {
+  margin: 18px 0 0;
+  font-size: 19.2px;
+  font-weight: 500;
+  line-height: 25.6px;
+  color: #000;
+}
+
+.finance-funding__checks {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.finance-funding__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.5px;
+  color: #000;
+}
+
+.finance-funding__check-icon {
+  flex: 0 0 29px;
+  width: 29px;
+  height: 29px;
+  margin-top: 0;
+}
+
+.finance-funding__stats {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 19px;
+  padding: 19px 40px;
+  border: 0.8px solid #000;
+  border-radius: 6.4px;
+  background: #fff;
+}
+
+.finance-funding__stats-heading {
+  margin: 0;
+  max-width: 18em;
+  text-align: center;
+  font-size: 22.4px;
+  font-weight: 500;
+  line-height: 28.8px;
+  color: #000;
+}
+
+.finance-funding__stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px 51px;
+  width: 100%;
+  min-width: 0;
+}
+
+.finance-funding__stat {
+  flex: 0 1 130px;
+  min-width: 0;
+  text-align: center;
+}
+
+.finance-funding__stat-value {
+  margin: 0 0 6px;
+  font-size: 45.6px;
+  font-weight: 500;
+  line-height: 51.2px;
+  letter-spacing: -0.2px;
+  color: var(--finance-green);
+}
+
+.finance-funding__stat-label {
+  margin: 0;
+  font-size: 12.8px;
+  font-weight: 600;
+  line-height: 19.2px;
+  letter-spacing: 0.12px;
+  color: #000;
+}
+
+.finance-funding__stat-sub {
+  margin: 0;
+  /* Figma 9.6px — a11y floor 12px */
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+  color: #000;
+}
+
+@media (min-width: 1367px) {
+  .finance-funding__inner {
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 600px) {
+  .finance-funding {
+    padding: 4px 0 36px;
+  }
+
+  .finance-funding__inner {
+    gap: 28px;
+    /* Same mobile rail as hero/logos — Figma ~21–25px on 390; 95% keeps block centered */
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 6.4vw, 28px);
+  }
+
+  .finance-funding__title {
+    font-size: 28px;
+    max-width: none;
+  }
+
+  .finance-funding__p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .finance-funding__lead {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .finance-funding__check {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .finance-funding__stats {
+    padding: 16px 18px;
+    gap: 16px;
+  }
+
+  .finance-funding__stats-heading {
+    font-size: 18px;
+    line-height: 24px;
+    max-width: none;
+  }
+
+  .finance-funding__stats-row {
+    gap: 24px 32px;
+  }
+
+  .finance-funding__stat {
+    flex: 1 1 120px;
+  }
+
+  .finance-funding__stat-value {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}

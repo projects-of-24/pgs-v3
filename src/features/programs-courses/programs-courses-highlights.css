@@ -1,0 +1,184 @@
+/**
+ * Courses C4 — explore Program Highlights.
+ * Desk `17072:10698` · Mob `551:9095`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-hl {
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-hl *,
+.pc-hl *::before,
+.pc-hl *::after {
+  box-sizing: border-box;
+}
+
+/* —— Mobile ≤600 — Figma 551:9095 · 364 frame · 2×2 · x=13 centered —— */
+@media (max-width: 600px) {
+  .pc-hl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 364px;
+    margin: 0 auto 40px;
+    padding: 0 13px;
+  }
+
+  .pc-hl__title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #000;
+  }
+
+  .pc-hl__grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 12px;
+    width: 320px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-hl__item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 154px;
+    flex: 0 0 154px;
+  }
+
+  .pc-hl__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .pc-hl__icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    opacity: 0.8;
+  }
+
+  .pc-hl__num {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.25px;
+    color: #303030;
+  }
+
+  .pc-hl__body {
+    margin: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+    color: #3c4043;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:10698 · 4-up row —— */
+@media (min-width: 1367px) {
+  .pc-hl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 1203px;
+    max-width: calc(100% - 48px);
+    margin: 0 auto 48px;
+    padding: 0 24px;
+  }
+
+  .pc-hl__title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 53px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #000;
+  }
+
+  .pc-hl__grid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-hl__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 211px;
+    flex: 0 0 211px;
+  }
+
+  .pc-hl__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .pc-hl__icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    opacity: 1;
+  }
+
+  .pc-hl__num {
+    font-size: 57px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.25px;
+    color: #303030;
+  }
+
+  .pc-hl__body {
+    margin: 0;
+    width: 211px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    color: #3c4043;
+  }
+}

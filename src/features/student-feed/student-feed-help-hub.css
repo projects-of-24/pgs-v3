@@ -1,0 +1,135 @@
+/**
+ * Section 5 — #helpHub CTA.
+ * Desktop: frame `18375:10686` (478×509, 2px black stroke + pad) · content `18375:11127` (~303).
+ * Mobile ≤600: same layout; all sizes = 70% of desktop values (no transform: scale).
+ * Book CTA destination DEFERRED (popup / Zoho).
+ */
+
+.student-feed-help-hub {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(8px, 1.5vw, 20px) clamp(12px, 2vw, 24px) clamp(24px, 3vw, 48px);
+  color: #000;
+}
+
+.student-feed-help-hub *,
+.student-feed-help-hub *::before,
+.student-feed-help-hub *::after {
+  box-sizing: border-box;
+}
+
+/* Figma stroke frame around CTA (desktop baseline) */
+.student-feed-help-hub__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: min(478px, 100%);
+  min-height: 509px;
+  margin-inline: auto;
+  padding: 73px 88px;
+  border: 2px solid #000;
+  background: #fff;
+}
+
+.student-feed-help-hub__card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+  max-width: 303px;
+  min-width: 0;
+}
+
+.student-feed-help-hub__lead,
+.student-feed-help-hub__body {
+  margin: 0;
+  color: #000;
+  font: 400 38.4px / 1.05 "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  max-width: 298px;
+}
+
+.student-feed-help-hub__mark {
+  background: #ffc524;
+  color: inherit;
+  padding: 0.05em 0.06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.student-feed-help-hub__book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 15px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: #6a5ed9;
+  color: #fff;
+  font: 500 16px / 28px Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+}
+
+.student-feed-help-hub__book:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+@media (min-width: 1367px) {
+  .student-feed-help-hub__frame {
+    max-width: 478px;
+    min-height: 509px;
+    padding: 73px 88px;
+  }
+}
+
+/*
+ * Mobile ≤600 — 70% of desktop values (owner: change values, not transform scale).
+ * 478→334.6 · 509→356.3 · pad 73/88→51.1/61.6 · type 38.4→26.88 · card 303→212.1
+ * button 16/28→11.2/19.6 · pad 15/16→10.5/11.2 · radius 12→8.4 · gap 16→11.2
+ * stroke stays 2px (UI boundary readability)
+ */
+@media (max-width: 600px) {
+  .student-feed-help-hub {
+    padding-inline: clamp(12px, 4vw, 20px);
+  }
+
+  .student-feed-help-hub__frame {
+    max-width: min(334.6px, 100%);
+    min-height: 356.3px;
+    padding: 51.1px 61.6px;
+    border-width: 2px;
+  }
+
+  .student-feed-help-hub__card {
+    max-width: 212.1px;
+    gap: 11.2px;
+  }
+
+  .student-feed-help-hub__lead,
+  .student-feed-help-hub__body {
+    font-size: 26.88px;
+    max-width: 208.6px;
+  }
+
+  .student-feed-help-hub__book {
+    padding: 10.5px 11.2px;
+    border-radius: 8.4px;
+    /* 70% of 16px = 11.2 — raised to 12px readable floor (a11y) */
+    font: 500 12px / 18px Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-help-hub__book {
+    transition: none;
+  }
+}

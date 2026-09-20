@@ -1,4 +1,5 @@
 import { countryToDetail, type CountryDraft } from "@/features/admin-cms/country-preview-map";
+import { getSupabasePublicConfig } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   getCountryContent,
@@ -96,6 +97,9 @@ export async function getPublishedCountryHero(route: string): Promise<CountryHer
   const defaults = defaultCountryHeroImages(slug);
   if (!slug) return defaults;
 
+  // Public destinations must render fixture/Figma defaults when Auth/CMS env is absent (e.g. CI smoke).
+  if (!getSupabasePublicConfig()) return defaults;
+
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase
     .from("countries")
@@ -137,13 +141,13 @@ export async function getPublishedCountryHeroFigma(
 
   // Prefer modular pack when CMS still returns legacy Hostinger placeholder paths.
   const legacyDefaults = defaultCountryHeroImages(countrySlugFromPublicRoute(route));
-  const useModular = (cms: string, legacy: string, modular: string) =>
+  const pickModularImage = (cms: string, legacy: string, modular: string) =>
     !cms || cms === legacy ? modular : cms;
 
   return {
-    desktopImage: useModular(hero.desktopImage, legacyDefaults.desktopImage, defaults.desktopImage),
-    mobileImage: useModular(hero.mobileImage, legacyDefaults.mobileImage, defaults.mobileImage),
-    flagImage: useModular(hero.flagImage, legacyDefaults.flagImage, defaults.flagImage),
+    desktopImage: pickModularImage(hero.desktopImage, legacyDefaults.desktopImage, defaults.desktopImage),
+    mobileImage: pickModularImage(hero.mobileImage, legacyDefaults.mobileImage, defaults.mobileImage),
+    flagImage: pickModularImage(hero.flagImage, legacyDefaults.flagImage, defaults.flagImage),
     badgeImage: hero.badgeImage || defaults.badgeImage,
     destinationName: destinationName ?? defaults.destinationName,
   };

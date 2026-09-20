@@ -46,7 +46,10 @@ function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
     icon?.classList.toggle("bi-arrow-left-square-fill", open);
   };
 
-  syncSidebar(false);
+  // Do not force-close on rewire. A later effect re-run (including after the
+  // cursor leaves) was wiping `.active` and looked like a Hostinger mouse-out close.
+  const sidebarNow = root.querySelector<HTMLElement>("#sidebar");
+  syncSidebar(sidebarNow?.classList.contains("active") ?? false);
 
   root.addEventListener("click", (event) => {
     const target = event.target;
@@ -300,8 +303,13 @@ function revealLegacyAnimations(root: HTMLElement) {
   }
 }
 
+type LegacyJQuery = ((el: HTMLElement) => {
+  data: (key: string) => unknown;
+  isotope: (method: string) => void;
+});
+
 function destroyCountryIsotope(root: HTMLElement) {
-  const $ = (window as Window & { jQuery?: JQueryStatic }).jQuery;
+  const $ = (window as Window & { jQuery?: LegacyJQuery }).jQuery;
   if (!$) return;
   root.querySelectorAll<HTMLElement>(".portfolio-wrapper, .shop-wrapper").forEach((wrapper) => {
     const $wrapper = $(wrapper);
@@ -697,7 +705,7 @@ export function LegacyPage({ html, page, studentState="anonymous", children }: P
 
       const filterLink = target.closest<HTMLAnchorElement>(".portfolio-filter a[data-filter]");
       const filter = filterLink?.dataset.filter;
-      if (filter?.startsWith(".")) {
+      if (filterLink && filter?.startsWith(".")) {
         event.preventDefault();
         event.stopPropagation();
         applyCountryPortfolioFilter(root, filter);

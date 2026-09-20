@@ -1,0 +1,51 @@
+/**
+ * Purple Events detail template shell (T5).
+ * NEVER add a black side-test banner (owner lock 2026-09-09).
+ * Chrome is LOCKED. Bands >1366 / ≤600; iPad deferred.
+ *
+ * Pull-up + desktop univMeet gap from shared `premium-panel-lock.css`.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.purple-events-preview-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: var(--pgs-premium-shell-pull);
+  position: relative;
+  z-index: 0;
+}
+
+.purple-events-preview-shell *,
+.purple-events-preview-shell *::before,
+.purple-events-preview-shell *::after {
+  box-sizing: border-box;
+}
+
+.purple-events-preview-shell__body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.purple-events-preview-shell__univ-gap {
+  display: none;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+}
+
+@media (min-width: 1367px) {
+  .purple-events-preview-shell__univ-gap {
+    display: block;
+    height: var(--pgs-premium-desk-univ-gap);
+  }
+}

@@ -1,0 +1,152 @@
+/**
+ * Courses C5 — green chip + check list.
+ * Desk `17072:10893` · Mob `551:9103`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-checks {
+  --pc-checks-green: #c3ffa9;
+  --pc-checks-blue: #0044ff;
+  --pc-checks-border: #9747ff;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.pc-checks *,
+.pc-checks *::before,
+.pc-checks *::after {
+  box-sizing: border-box;
+}
+
+.pc-checks__band {
+  display: none;
+  width: 100%;
+}
+
+/* —— Mobile ≤600 — Figma 551:9103 · 256 stack · x=67 centered —— */
+@media (max-width: 600px) {
+  .pc-checks__band--mob {
+    display: flex;
+    justify-content: center;
+    padding: 0 12px 40px;
+  }
+
+  .pc-checks__band--mob .pc-checks__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 256px;
+    max-width: 100%;
+  }
+
+  .pc-checks__band--mob .pc-checks__chip {
+    margin: 0;
+    width: 100%;
+    padding: 8px;
+    background: var(--pc-checks-green);
+    border: 1.5px solid var(--pc-checks-border);
+    color: var(--pc-checks-blue);
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .pc-checks__band--mob .pc-checks__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 187px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-checks__band--mob .pc-checks__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pc-checks__band--mob .pc-checks__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+
+  .pc-checks__band--mob .pc-checks__label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    color: #000;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:10893 · chip | list —— */
+@media (min-width: 1367px) {
+  .pc-checks__band--desk {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  .pc-checks__band--desk .pc-checks__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 49px;
+    width: 726px;
+    max-width: 100%;
+  }
+
+  .pc-checks__band--desk .pc-checks__chip {
+    margin: 0;
+    width: 345px;
+    flex: 0 0 345px;
+    padding: 4px 8px;
+    background: var(--pc-checks-green);
+    color: var(--pc-checks-blue);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 0.98;
+  }
+
+  .pc-checks__band--desk .pc-checks__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .pc-checks__band--desk .pc-checks__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .pc-checks__band--desk .pc-checks__icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+  }
+
+  .pc-checks__band--desk .pc-checks__label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #303030;
+  }
+}

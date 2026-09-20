@@ -1,0 +1,203 @@
+/**
+ * #premiumNonMedical support hub — owned CSS (N17).
+ * Desktop `17056:21438`. Phone `371:5378`.
+ * Gap under outro ≈ 52px. iPad 601–1366 keeps desktop.
+ * Do not import shared support-hub CSS.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: phone blurb / hub label ~15
+ * ISSUE: below type floor
+ * PGS IMPLEMENTATION: those sit at 16.
+ */
+
+.premium-nonmedical-support-hub {
+  box-sizing: border-box;
+  width: min(880px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 52px auto 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-support-hub *,
+.premium-nonmedical-support-hub *::before,
+.premium-nonmedical-support-hub *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-support-hub__row {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.premium-nonmedical-support-hub__brand-col {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.premium-nonmedical-support-hub__brand {
+  margin: 0;
+  padding: 19px 26px;
+  border-radius: 13px;
+  background: #000;
+  color: #b57cff;
+  font-size: 51.2px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.premium-nonmedical-support-hub__label {
+  margin: 0;
+  padding-left: 7px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-support-hub__channels {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 13px;
+  min-width: 0;
+}
+
+.premium-nonmedical-support-hub__line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.premium-nonmedical-support-hub__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 85px;
+  margin: 0;
+  padding: 3px;
+  background: #ffc524;
+  color: #000;
+  font-size: 19.2px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.premium-nonmedical-support-hub__link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  color: #000;
+  font-size: 25.6px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.premium-nonmedical-support-hub__link:hover {
+  text-decoration: underline;
+}
+
+.premium-nonmedical-support-hub__link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.premium-nonmedical-support-hub__link img {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+}
+
+.premium-nonmedical-support-hub__blurb {
+  flex: 0 0 182px;
+  width: 182px;
+  margin: 0;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-support-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: min(374px, calc(100% - 16px));
+    margin: 52px auto 0;
+  }
+
+  .premium-nonmedical-support-hub__row {
+    display: contents;
+  }
+
+  .premium-nonmedical-support-hub__blurb {
+    order: -1;
+    flex: none;
+    width: min(330px, 100%);
+    font-size: 16px;
+    line-height: 1.28;
+    text-align: left;
+  }
+
+  .premium-nonmedical-support-hub__brand-col {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: min(351px, 100%);
+    padding: 19px 16px;
+    border-radius: 13px;
+    background: #000;
+  }
+
+  .premium-nonmedical-support-hub__brand {
+    padding: 0;
+    background: transparent;
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .premium-nonmedical-support-hub__label {
+    padding-left: 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.28;
+  }
+
+  .premium-nonmedical-support-hub__channels {
+    flex: none;
+    gap: 13px;
+    width: min(351px, 100%);
+    padding: 0 12px;
+  }
+
+  .premium-nonmedical-support-hub__badge {
+    min-width: 85px;
+    font-size: 16px;
+  }
+
+  .premium-nonmedical-support-hub__link {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .premium-nonmedical-support-hub__link img {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+}

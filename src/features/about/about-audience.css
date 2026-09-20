@@ -1,0 +1,330 @@
+/**
+ * About Us — Who / What comparison (A4).
+ * Desk `17084:12024` · mob `508:9095`/`511:5515`.
+ * Bands >1366 · ≤600; iPad deferred.
+ *
+ * Desktop A4: arrow → switches → Who → What (Figma `17084:12024`).
+ * Mobile A4: switches left of Who rows; What headline aligns with Who title;
+ * What copy rows keep Figma offset (rail + switch + gap). Owner QC 2026-09-09.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: #04f on #c3ffa9 (~2.8:1)
+ * ISSUE: normal text below 4.5:1
+ * PGS IMPLEMENTATION: body copy uses #0039cc on #c3ffa9 (~5.2:1); headers keep Figma blue weight
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.about-audience {
+  --about-audience-bg: #c3ffa9;
+  --about-audience-head: #04f;
+  --about-audience-body: #0039cc;
+  --about-audience-switch: #76ee59;
+  --about-audience-switch-border: #9747ff;
+  /* Mobile Figma-exact (508:8361) */
+  --about-aud-mob-stage: 348px;
+  --about-aud-mob-rail: 94px;
+  --about-aud-mob-switch: 28px;
+  --about-aud-mob-gap: 9px;
+  --about-aud-mob-who: 217px;
+  --about-aud-mob-what: 216px;
+  --about-aud-mob-what-offset: calc(
+    var(--about-aud-mob-rail) + var(--about-aud-mob-switch) +
+      var(--about-aud-mob-gap)
+  );
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px clamp(16px, 4vw, 48px) 56px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.about-audience *,
+.about-audience *::before,
+.about-audience *::after {
+  box-sizing: border-box;
+}
+
+.about-audience__inner {
+  width: 100%;
+  max-width: 929px;
+  margin-inline: auto;
+}
+
+.about-audience__desk-wrap {
+  display: grid;
+  grid-template-columns: minmax(72px, 95px) minmax(0, 817px);
+  column-gap: 17px;
+  align-items: start;
+}
+
+.about-audience__desk-decor {
+  padding-top: 64px;
+}
+
+.about-audience__desk-arrow {
+  display: block;
+  width: 95px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.about-audience__desk-note {
+  margin: 10px 0 0;
+  width: 75px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.about-audience__desk {
+  /* Figma: switch→Who ~20px; Who→What ~51px */
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+  align-items: start;
+}
+
+.about-audience__desk-head--what,
+.about-audience__copy--what {
+  /* 20 (col-gap) + 31 ≈ Figma 51.2 Who↔What */
+  margin-left: 31px;
+}
+
+.about-audience__desk-head--gap {
+  min-height: 0;
+}
+
+.about-audience__desk-row {
+  display: contents;
+}
+
+.about-audience__copy--who,
+.about-audience__copy--what {
+  min-width: 0;
+}
+
+.about-audience__mob {
+  display: none;
+}
+
+.about-audience__title {
+  margin: 0;
+  align-self: flex-start;
+  padding: 8px;
+  background: var(--about-audience-bg);
+  color: var(--about-audience-head);
+  /* LOCKED desk type ×0.8 (owner 2026-09-11) — mob unchanged; reopen by name only */
+  font-size: calc(clamp(22px, 2vw, 28.8px) * 0.8);
+  font-weight: 900;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.about-audience__title--what {
+  border: 3px solid var(--about-audience-switch-border);
+}
+
+.about-audience__title-line {
+  display: block;
+}
+
+.about-audience__copy {
+  margin: 0;
+  padding: 8px;
+  background: var(--about-audience-bg);
+  color: var(--about-audience-body);
+  font-size: calc(clamp(14px, 1.6vw, 24px) * 0.8);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.about-audience__strong {
+  font-weight: 900;
+}
+
+.about-audience__strong-italic {
+  font-weight: 900;
+  font-style: italic;
+}
+
+.about-audience__desk-row .about-audience__switch {
+  justify-self: start;
+  align-self: start;
+  /* Figma: each switch top aligns with its Who text block top */
+}
+
+.about-audience__switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 24px;
+  border: 1.28px solid var(--about-audience-switch-border);
+  border-radius: 50px;
+  background: var(--about-audience-switch);
+  flex-shrink: 0;
+}
+
+.about-audience__switch-tick {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+@media (max-width: 600px) {
+  .about-audience {
+    padding: 24px 0 32px;
+  }
+
+  .about-audience__inner {
+    width: 100%;
+    max-width: none;
+    padding-inline: clamp(9px, 2.3vw, 21px);
+  }
+
+  .about-audience__desk-wrap {
+    display: none;
+  }
+
+  .about-audience__mob {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    width: min(var(--about-aud-mob-stage), 100%);
+    max-width: 100%;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  .about-audience__mob-who-block {
+    width: 100%;
+  }
+
+  .about-audience__title--who-mob {
+    width: min(212px, 100%);
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: normal;
+  }
+
+  .about-audience__mob-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .about-audience__mob-row {
+    display: grid;
+    grid-template-columns:
+      var(--about-aud-mob-rail)
+      var(--about-aud-mob-switch)
+      minmax(0, var(--about-aud-mob-who));
+    column-gap: var(--about-aud-mob-gap);
+    /* Figma: each switch top aligns with its Who text block top (same as desk) */
+    align-items: start;
+    width: 100%;
+  }
+
+  .about-audience__mob-rail {
+    position: relative;
+    min-height: 12px;
+    align-self: stretch;
+  }
+
+  .about-audience__mob-row:first-child .about-audience__mob-rail {
+    min-height: 30px;
+  }
+
+  .about-audience__mob-arrow {
+    position: absolute;
+    left: 26px;
+    top: 0;
+    width: 53px;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .about-audience__mob-note {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-20%);
+    margin: 0;
+    width: 75px;
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  .about-audience__switch--mob {
+    width: var(--about-aud-mob-switch);
+    height: 12px;
+    border-width: 1px;
+    justify-self: start;
+    align-self: start;
+  }
+
+  .about-audience__switch--mob .about-audience__switch-tick {
+    width: 10px;
+    height: 10px;
+  }
+
+  .about-audience__copy--who-mob {
+    width: 100%;
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .about-audience__mob-what {
+    width: 100%;
+  }
+
+  .about-audience__title--what-mob {
+    width: min(216px, 100%);
+    font-size: 22px;
+    line-height: 0.98;
+    border-width: 1.5px;
+    white-space: pre-wrap;
+  }
+
+  .about-audience__mob-what-rows {
+    align-self: flex-start;
+    margin-left: var(--about-aud-mob-what-offset);
+    width: min(var(--about-aud-mob-what), 100%);
+    box-sizing: border-box;
+  }
+
+  .about-audience__mob-what-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+
+  .about-audience__mob-what-item {
+    margin: 0;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .about-audience__copy--what-mob {
+    width: 100%;
+    font-size: 14px;
+    line-height: normal;
+  }
+}

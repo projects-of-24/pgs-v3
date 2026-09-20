@@ -1,0 +1,274 @@
+/**
+ * Scholarship FAQ — S6 owned CSS (Hostinger-free).
+ * DevTools: select `.scholarship-faq` → edit `--sch-faq-*` vars.
+ * Desktop >1366 · Mobile ≤600 Figma side-by-side tabs+panel · iPad deferred.
+ */
+
+.scholarship-faq {
+  --sch-faq-heading: 25.6px;
+  --sch-faq-heading-lh: 32px;
+  --sch-faq-tab: 17.6px;
+  --sch-faq-tab-lh: 22.4px;
+  --sch-faq-q: 17.6px;
+  --sch-faq-q-lh: 22.4px;
+  --sch-faq-a: 14px;
+  --sch-faq-a-lh: 19.2px;
+  /* Figma inactive #666 → #555 for ≥4.5:1 on white */
+  --sch-faq-muted: #555;
+  --sch-faq-rule: #e6e6e6;
+  --sch-faq-tab-border: rgba(0, 0, 0, 0.2);
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.scholarship-faq *,
+.scholarship-faq *::before,
+.scholarship-faq *::after {
+  box-sizing: border-box;
+}
+
+.scholarship-faq__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+  max-width: 1016px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.scholarship-faq__heading {
+  margin: 0;
+  font-size: var(--sch-faq-heading);
+  font-weight: 500;
+  line-height: var(--sch-faq-heading-lh);
+  color: #000;
+}
+
+.scholarship-faq__layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  min-width: 0;
+}
+
+.scholarship-faq__tablist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 0 0 264px;
+  width: 264px;
+  max-width: 264px;
+  padding-bottom: 16px;
+}
+
+.scholarship-faq__tab {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 12.8px;
+  border: 0.8px solid var(--sch-faq-tab-border);
+  border-radius: 9.6px;
+  background: #fff;
+  color: var(--sch-faq-muted);
+  font-family: inherit;
+  font-size: var(--sch-faq-tab);
+  font-weight: 600;
+  line-height: var(--sch-faq-tab-lh);
+  text-align: left;
+  cursor: pointer;
+}
+
+.scholarship-faq__tab.is-active {
+  color: #000;
+}
+
+.scholarship-faq__tab:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.scholarship-faq__panel {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 688px;
+}
+
+.scholarship-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.scholarship-faq__item {
+  background: #fff;
+}
+
+.scholarship-faq__item-heading {
+  margin: 0;
+}
+
+.scholarship-faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 0.8px solid var(--sch-faq-rule);
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.scholarship-faq__item.is-open .scholarship-faq__trigger {
+  border-bottom-color: transparent;
+  padding-bottom: 4.8px;
+}
+
+.scholarship-faq__trigger:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.scholarship-faq__question {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--sch-faq-q);
+  font-weight: 600;
+  line-height: var(--sch-faq-q-lh);
+}
+
+.scholarship-faq__icon {
+  flex: 0 0 14.4px;
+  width: 14.4px;
+  height: 14.4px;
+  display: block;
+}
+
+.scholarship-faq__answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  border-bottom: 0.8px solid var(--sch-faq-rule);
+}
+
+.scholarship-faq__answer-wrap.is-open {
+  grid-template-rows: 1fr;
+}
+
+.scholarship-faq__answer-wrap:not(.is-open) {
+  border-bottom: 0;
+}
+
+.scholarship-faq__answer {
+  margin: 0;
+  padding: 0 0 19.2px;
+  overflow: hidden;
+  font-size: var(--sch-faq-a);
+  font-weight: 500;
+  line-height: var(--sch-faq-a-lh);
+  letter-spacing: 0.12px;
+  color: var(--sch-faq-muted);
+}
+
+@media (min-width: 1367px) {
+  .scholarship-faq {
+    padding: 56px 0 64px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scholarship-faq {
+    --sch-faq-heading: 16px;
+    --sch-faq-heading-lh: 1.2;
+    --sch-faq-tab: 14px;
+    --sch-faq-tab-lh: 1.2;
+    --sch-faq-q: 14px;
+    --sch-faq-q-lh: 1.2;
+    --sch-faq-a: 14px;
+    --sch-faq-a-lh: 1.35;
+
+    padding: 28px 0 36px;
+  }
+
+  .scholarship-faq__inner {
+    /* Figma block ~308 @ x=41 on 390 → ~79%; owner 85% rail for reading */
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 16px;
+  }
+
+  .scholarship-faq__heading {
+    max-width: 220px;
+  }
+
+  /* Figma `331:3329`: tabs 140 + panel 156 side-by-side */
+  .scholarship-faq__layout {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .scholarship-faq__tablist {
+    flex: 0 0 140px;
+    width: 140px;
+    max-width: 140px;
+    gap: 8px;
+    padding-bottom: 0;
+  }
+
+  .scholarship-faq__tab {
+    min-height: 28.8px;
+    padding: 6.4px;
+    border-width: 0.4px;
+    border-radius: 4.8px;
+  }
+
+  .scholarship-faq__panel {
+    flex: 1 1 156px;
+    max-width: none;
+  }
+
+  .scholarship-faq__trigger {
+    padding: 8px 0;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .scholarship-faq__icon {
+    flex-basis: 16px;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+  }
+
+  .scholarship-faq__answer {
+    padding-bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scholarship-faq__answer-wrap {
+    transition: none;
+  }
+}

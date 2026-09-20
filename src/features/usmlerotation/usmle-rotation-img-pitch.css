@@ -1,0 +1,200 @@
+/**
+ * IMG pitch — page-scoped. Bands >1366 · 601–1366 · ≤600.
+ * Desktop: 5-col row. Mobile: wrap 3+2 (Figma 18760:11398).
+ */
+
+.usmle-pitch {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 40px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-pitch *,
+.usmle-pitch *::before,
+.usmle-pitch *::after {
+  box-sizing: border-box;
+}
+
+.usmle-pitch__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: min(1203px, 92%);
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.usmle-pitch__heading {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 40px);
+  line-height: 1.325;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.usmle-pitch__heading--split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.usmle-pitch__heading--combined {
+  display: none;
+}
+
+.usmle-pitch__list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.usmle-pitch__item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  max-width: 211px;
+}
+
+.usmle-pitch__num-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.usmle-pitch__icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.usmle-pitch__num {
+  color: #303030;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(32px, 3.5vw, 57px);
+  line-height: 1;
+  letter-spacing: -0.25px;
+}
+
+.usmle-pitch__text {
+  margin: 0;
+  width: 100%;
+  max-width: 211px;
+  color: #3c4043;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (min-width: 1367px) {
+  .usmle-pitch {
+    padding: 56px 0 48px;
+  }
+}
+
+@media (max-width: 1366px) and (min-width: 601px) {
+  .usmle-pitch {
+    padding: 40px 0 36px;
+  }
+
+  .usmle-pitch__inner {
+    gap: 28px;
+    max-width: min(960px, 94%);
+  }
+
+  .usmle-pitch__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 16px;
+  }
+
+  .usmle-pitch__item {
+    flex: 0 1 180px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .usmle-pitch {
+    padding: 28px 0 24px;
+  }
+
+  .usmle-pitch__inner {
+    gap: 12px;
+    max-width: 100%;
+    padding-inline: 16px;
+  }
+
+  .usmle-pitch__heading {
+    font-size: 24px;
+    line-height: normal;
+    text-align: left;
+  }
+
+  .usmle-pitch__heading--split {
+    display: none;
+  }
+
+  .usmle-pitch__heading--combined {
+    display: block;
+  }
+
+  .usmle-pitch__list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    max-width: 348px;
+    margin-inline: auto;
+  }
+
+  .usmle-pitch__item {
+    flex: 0 0 calc((100% - 24px) / 3);
+    width: 108px;
+    max-width: 108px;
+    gap: 8px;
+  }
+
+  .usmle-pitch__num-row {
+    gap: 8px;
+  }
+
+  .usmle-pitch__icon {
+    width: 40px;
+    height: 40px;
+    opacity: 0.8;
+  }
+
+  .usmle-pitch__num {
+    font-size: 26px;
+  }
+
+  .usmle-pitch__text {
+    max-width: none;
+    font-size: 14px;
+  }
+}

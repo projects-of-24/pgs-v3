@@ -1,0 +1,492 @@
+/**
+ * Courses C9 — Certificate + Why It Matters.
+ * Desk `17072:11503` · Mob `551:10515`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-certificate {
+  --pc-cert-navy: #3d5685;
+  --pc-cert-field: rgba(61, 116, 133, 0.15);
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-certificate *,
+.pc-certificate *::before,
+.pc-certificate *::after {
+  box-sizing: border-box;
+}
+
+/* —— Mobile ≤600 — Figma 551:10515 · stacked plate · card 286.72 —— */
+@media (max-width: 600px) {
+  .pc-certificate {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 40px;
+  }
+
+  .pc-certificate__plate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 310px;
+    max-width: 100%;
+    padding: 32px 16px;
+    padding-bottom: 48px;
+    background: #f1f1f1;
+    border-radius: 12.8px;
+    overflow: visible;
+  }
+
+  .pc-certificate__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .pc-certificate__headline {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-certificate__why {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9.6px;
+    width: 100%;
+  }
+
+  .pc-certificate__why-title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-certificate__checks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9.6px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-certificate__check {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9.6px;
+    width: 100%;
+  }
+
+  .pc-certificate__check-icon {
+    display: block;
+    width: 28.8px;
+    height: 28.8px;
+    flex: 0 0 28.8px;
+  }
+
+  .pc-certificate__check-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    color: #000;
+  }
+
+  .pc-certificate__mock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16.384px;
+    flex: 0 0 auto;
+    width: 286.72px;
+    max-width: 100%;
+    padding: 8.192px 12.288px;
+    background: #d9f1fd;
+    border: 0.512px solid var(--pc-cert-navy);
+    overflow: visible;
+  }
+
+  .pc-certificate__ticket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 262.144px;
+    max-width: 100%;
+    padding: 18.432px 8px;
+    background: var(--pc-cert-navy);
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 18.432px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.9216px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .pc-certificate__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16.384px;
+    width: 262.144px;
+    max-width: 100%;
+    padding-bottom: 16.384px;
+  }
+
+  .pc-certificate__main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12.288px;
+    width: 100%;
+  }
+
+  .pc-certificate__program {
+    margin: 0;
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 16.384px;
+    font-weight: 700;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-certificate__fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8.192px;
+    width: 100%;
+  }
+
+  .pc-certificate__row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24.576px;
+    width: 100%;
+  }
+
+  .pc-certificate__field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4.096px;
+  }
+
+  .pc-certificate__field--awarding {
+    width: 207.36px;
+    max-width: 100%;
+    padding-block: 1.536px;
+  }
+
+  .pc-certificate__field-label {
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 8.96px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.448px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .pc-certificate__field-value {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8.192px 12.288px;
+    background: var(--pc-cert-field);
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 8.96px;
+    font-weight: 400;
+    line-height: 12.288px;
+    letter-spacing: 0.256px;
+    text-align: center;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .pc-certificate__field-value--medium {
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .pc-certificate__footer {
+    width: 262.144px;
+    max-width: 100%;
+    height: 57.856px;
+    background: #c2deeb;
+  }
+
+  /* Seal · Figma `551:10558` · 65.19×78.19 @ left 197.12 top 172.54 */
+  .pc-certificate__seal {
+    position: absolute;
+    left: 197.12px;
+    top: 172.54px;
+    display: block;
+    width: 65.19px;
+    height: 78.19px;
+    pointer-events: none;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:11503 · plate pad 38.4 · gap 51.2 —— */
+@media (min-width: 1367px) {
+  .pc-certificate {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  .pc-certificate__plate {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 51.2px;
+    width: 1021.6px;
+    max-width: 100%;
+    padding: 38.4px;
+    padding-bottom: 56px;
+    background: #f1f1f1;
+    border-radius: 12.8px;
+    overflow: visible;
+  }
+
+  .pc-certificate__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12.8px;
+    padding-top: 37.6px;
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .pc-certificate__headline {
+    margin: 0;
+    width: 376.8px;
+    max-width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+  }
+
+  .pc-certificate__why {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9.6px;
+    width: 100%;
+  }
+
+  .pc-certificate__why-title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 28.8px;
+    font-weight: 400;
+    line-height: 45.6px;
+    color: #000;
+  }
+
+  .pc-certificate__checks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9.6px;
+    width: 445.6px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-certificate__check {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9.6px;
+    width: 100%;
+  }
+
+  .pc-certificate__check-icon {
+    display: block;
+    width: 28.8px;
+    height: 28.8px;
+    flex: 0 0 28.8px;
+  }
+
+  .pc-certificate__check-label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #000;
+  }
+
+  /* —— C9b mock card · `17072:11523` —— */
+  .pc-certificate__mock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25.6px;
+    flex: 0 0 448px;
+    width: 448px;
+    padding: 12.8px 19.2px;
+    background: #d9f1fd;
+    border: 0.8px solid var(--pc-cert-navy);
+    overflow: visible;
+  }
+
+  .pc-certificate__ticket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 409.6px;
+    max-width: 100%;
+    padding: 28.8px 16px;
+    background: var(--pc-cert-navy);
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 28.8px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.44px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .pc-certificate__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25.6px;
+    width: 409.6px;
+    max-width: 100%;
+    padding-bottom: 25.6px;
+  }
+
+  .pc-certificate__main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19.2px;
+    width: 100%;
+  }
+
+  .pc-certificate__program {
+    margin: 0;
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 25.6px;
+    font-weight: 700;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-certificate__fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12.8px;
+    width: 100%;
+  }
+
+  .pc-certificate__row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 38.4px;
+    width: 100%;
+  }
+
+  .pc-certificate__field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6.4px;
+  }
+
+  .pc-certificate__field--awarding {
+    width: 324px;
+    max-width: 100%;
+    padding-block: 2.4px;
+  }
+
+  .pc-certificate__field-label {
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.7px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .pc-certificate__field-value {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12.8px 19.2px;
+    background: var(--pc-cert-field);
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .pc-certificate__field-value--medium {
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .pc-certificate__footer {
+    width: 409.6px;
+    max-width: 100%;
+    height: 90.4px;
+    background: #c2deeb;
+  }
+
+  /* Seal · Figma `17072:11546` · transparent SVG · 101.85×122.17 @ 308 / 269.6 */
+  .pc-certificate__seal {
+    position: absolute;
+    left: 308px;
+    top: 269.6px;
+    display: block;
+    width: 101.85px;
+    height: 122.17px;
+    pointer-events: none;
+  }
+}

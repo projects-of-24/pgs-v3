@@ -18,14 +18,18 @@ describe("Premium frontend recovery contract", () => {
       "grid-box-style-2 dashboard-events-board", "Upcoming Events"
     ]) expect(premiumDashboard).toContain(section);
     expect(premiumDashboard).not.toContain("counsellor <br /> page for");
-    expect(dashboard).toContain("PremiumStudentDashboard");
+    // Modular feed cutover: `/student/dashboard` doorman → Family A/B shells (not PremiumStudentDashboard).
+    expect(dashboard).toContain("StudentFeedPremiumShell");
+    expect(dashboard).toContain("StudentFeedPreviewShell");
+    expect(dashboard).toContain("resolveStudentExperience");
+    expect(dashboard).not.toContain("PremiumStudentDashboard");
     expect(dashboard).not.toContain("premium-mentor-card");
     expect(dashboard).not.toContain("StudentKanbanBoard");
     expect(dashboard).not.toContain("premiumCalendarEvents");
     expect(dashboard).not.toContain("Documents<br />Ready");
     expect(dashboard).not.toContain("canonical-prep-grid");
     expect(dashboard).not.toContain("dashboard-lower-callout");
-    expect(dashboard).toContain("RetainedStudentFooter");
+    expect(dashboard).toContain("getPublicFooterHtml");
     expect(dashboardAlias).toContain('redirect("/student/dashboard")');
   });
 

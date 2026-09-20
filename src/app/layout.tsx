@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Script from "next/script";
 import type { ReactNode } from "react";
 import { StudentSidebarStateProvider } from "@/components/student-sidebar-state-provider";
@@ -9,7 +10,11 @@ export const metadata: Metadata = {
   description: "PurpleGuide parity-proof migration"
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  /** Preview labs: chrome HTML only — no Hostinger main.js / anime driver. */
+  const isPreviewLab = pathname.startsWith("/preview");
+
   return (
     <html lang="en" className="no-js">
       <head>
@@ -19,11 +24,17 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/responsive.css" />
       </head>
-      <body data-mobile-nav-style="classic" className="custom-cursor">
+      <body data-mobile-nav-style="classic" className="custom-cursor" data-pgs-preview={isPreviewLab ? "1" : undefined}>
         <StudentSidebarStateProvider>{children}</StudentSidebarStateProvider>
         <Script src="/assets/js/jquery.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/vendors.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/main.js" strategy="afterInteractive" />
+        {!isPreviewLab ? (
+          <>
+            <Script src="/assets/js/vendors.min.js" strategy="afterInteractive" />
+            {/* Stub only when main.js loads — preview labs skip both */}
+            <Script src="/assets/js/pgs-anime-stub.js" strategy="beforeInteractive" />
+            <Script src="/assets/js/main.js" strategy="afterInteractive" />
+          </>
+        ) : null}
         <Script src="/assets/js/pgs-autocomplete.js" strategy="lazyOnload" />
       </body>
     </html>

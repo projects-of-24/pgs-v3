@@ -455,10 +455,13 @@ export type CountryPageContent = {
     flagImage: string;
     desktopImage: string;
     mobileImage: string;
+    /** Optional right-side badge (modular Figma hero). */
+    badgeImage?: string;
     /** CMS media asset ids — used by admin upload fields */
     flagImageAssetId?: string | null;
     desktopImageAssetId?: string | null;
     mobileImageAssetId?: string | null;
+    badgeImageAssetId?: string | null;
   };
   intro: {
     titleLine1: string;

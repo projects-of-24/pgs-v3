@@ -1,0 +1,285 @@
+/**
+ * #premiumNonMedical dashboard — owned CSS (N10).
+ * Desktop frame `17055:10896`. Phone `379:4573` + points/arrows.
+ * Same desk/phone rhythm as medical dashboard.
+ * iPad 601–1366 keeps desktop.
+ */
+
+.premium-nonmedical-dashboard {
+  box-sizing: border-box;
+  width: min(1038px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 193px auto 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-dashboard *,
+.premium-nonmedical-dashboard *::before,
+.premium-nonmedical-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-dashboard__title {
+  margin: 0 auto 48px;
+  max-width: 682px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.premium-nonmedical-dashboard__photo {
+  position: relative;
+  height: 448px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 19.2px;
+}
+
+.premium-nonmedical-dashboard__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.premium-nonmedical-dashboard__meter {
+  position: relative;
+  width: min(928px, 100%);
+  height: 2px;
+  margin: 68px auto 0;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.premium-nonmedical-dashboard__meter-fill {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: #000;
+}
+
+.premium-nonmedical-dashboard__points {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6.4px;
+  margin: 55.2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-nonmedical-dashboard__points li {
+  width: 202.4px;
+}
+
+.premium-nonmedical-dashboard__points li:not(:first-child) {
+  width: 199.2px;
+}
+
+.premium-nonmedical-dashboard__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12.8px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+}
+
+.premium-nonmedical-dashboard__point[aria-pressed="true"] {
+  font-size: 19.2px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.premium-nonmedical-dashboard__point:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.premium-nonmedical-dashboard__icon {
+  position: relative;
+  flex: 0 0 35.2px;
+  width: 35.2px;
+  height: 35.2px;
+}
+
+.premium-nonmedical-dashboard__mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.premium-nonmedical-dashboard__point[aria-pressed="true"] .premium-nonmedical-dashboard__icon {
+  flex-basis: 38.4px;
+  width: 38.4px;
+  height: 38.4px;
+}
+
+.premium-nonmedical-dashboard__asterisk {
+  position: absolute;
+  top: 29%;
+  left: 31%;
+  width: 38%;
+  height: 42%;
+  pointer-events: none;
+}
+
+.premium-nonmedical-dashboard__phone {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-dashboard {
+    display: block;
+    width: min(379px, calc(100% - 11px));
+    margin-top: 69px;
+  }
+
+  .premium-nonmedical-dashboard__title {
+    max-width: none;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  .premium-nonmedical-dashboard__photo,
+  .premium-nonmedical-dashboard__meter,
+  .premium-nonmedical-dashboard__points {
+    display: none;
+  }
+
+  .premium-nonmedical-dashboard__phone {
+    display: block;
+  }
+
+  .premium-nonmedical-dashboard__slide {
+    position: relative;
+    width: 100%;
+    height: 476px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 17px;
+  }
+
+  .premium-nonmedical-dashboard__slide img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .premium-nonmedical-dashboard__phone-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .premium-nonmedical-dashboard__phone-line {
+    display: block;
+    width: 275px;
+    height: 2px;
+    margin: 40px auto 0;
+    background: rgba(0, 0, 0, 0.16);
+  }
+
+  .premium-nonmedical-dashboard__phone-line-fill {
+    display: block;
+    height: 100%;
+    background: #000;
+  }
+
+  .premium-nonmedical-dashboard__phone-point {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 202px;
+    max-width: 100%;
+    min-height: calc(19px * 1.33 * 3);
+    flex-shrink: 0;
+    margin: 20px auto 0;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.33;
+  }
+
+  .premium-nonmedical-dashboard__phone-point .premium-nonmedical-dashboard__icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .premium-nonmedical-dashboard__phone-point .premium-nonmedical-dashboard__asterisk {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .premium-nonmedical-dashboard__phone-copy {
+    flex: 1 1 auto;
+    text-align: left;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .premium-nonmedical-dashboard__arrows {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 70px;
+    margin: 24px auto 0;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-dashboard__arrow {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    appearance: none;
+    overflow: visible;
+    cursor: pointer;
+  }
+
+  .premium-nonmedical-dashboard__arrow:first-child {
+    margin-right: -26px;
+  }
+
+  .premium-nonmedical-dashboard__arrow img {
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+
+  .premium-nonmedical-dashboard__arrow--next img {
+    transform: scaleX(-1);
+  }
+
+  .premium-nonmedical-dashboard__arrow[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .premium-nonmedical-dashboard__arrow:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 3px;
+  }
+}

@@ -1,0 +1,225 @@
+/**
+ * Book Your USCE in 3 Easy Steps — page-scoped.
+ * Desktop >1366 (Figma 18760:12557) · mobile ≤600 (18760:11574 + owner B snap-scroll).
+ * iPad mid-band deferred.
+ */
+
+.usmle-steps {
+  --usmle-steps-green: #009c70;
+  --usmle-steps-step: #e60000;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-steps *,
+.usmle-steps *::before,
+.usmle-steps *::after {
+  box-sizing: border-box;
+}
+
+.usmle-steps__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 19px;
+  width: 100%;
+  max-width: min(537px, 94%);
+  margin-inline: auto;
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+.usmle-steps__title {
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3.2vw, 38.4px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.usmle-steps__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--usmle-steps-green);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.usmle-steps__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.usmle-steps__track {
+  display: flex;
+  gap: 19px;
+  width: 100%;
+  max-width: min(1100px, 94%);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.usmle-steps__card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+  min-height: 450px;
+  padding: 19px 26px;
+  border: 0.8px solid #000;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.usmle-steps__label {
+  margin: 0;
+  color: var(--usmle-steps-step);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 2.8vw, 38.4px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.usmle-steps__card-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin: 0;
+  padding-block: 10px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.9vw, 25.6px);
+  line-height: 1.25;
+}
+
+.usmle-steps__card-title-line {
+  display: block;
+}
+
+.usmle-steps__bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.usmle-steps__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.usmle-steps__check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+}
+
+/* ——— Mobile ≤600: horizontal snap-scroll (owner B) ——— */
+@media (max-width: 600px) {
+  .usmle-steps {
+    padding: 32px 0 40px;
+  }
+
+  .usmle-steps__head {
+    gap: 16px;
+    max-width: min(280px, 88%);
+    margin-bottom: 16px;
+  }
+
+  .usmle-steps__title {
+    max-width: 180px;
+    font-size: 24px;
+  }
+
+  .usmle-steps__track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    max-width: none;
+    margin-inline: 0;
+    padding: 10px max(16px, calc((100% - 274px) / 2));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: max(16px, calc((100% - 274px) / 2));
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .usmle-steps__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .usmle-steps__card {
+    flex: 0 0 274px;
+    flex-shrink: 0;
+    width: 274px;
+    min-width: 274px;
+    max-width: 274px;
+    min-height: 413px;
+    padding: 32px 16px;
+    gap: 8px;
+    scroll-snap-align: center;
+  }
+
+  .usmle-steps__label {
+    font-size: 28px;
+  }
+
+  .usmle-steps__card-title {
+    min-height: 82px;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+}
+
+/* iPad mid-band: keep readable 3-col when possible; no snap invent */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-steps__track {
+    max-width: min(960px, 94%);
+    gap: 12px;
+  }
+
+  .usmle-steps__card {
+    min-height: 0;
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .usmle-steps__bullet {
+    gap: 12px;
+  }
+}

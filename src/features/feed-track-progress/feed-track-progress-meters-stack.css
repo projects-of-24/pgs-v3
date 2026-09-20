@@ -1,0 +1,89 @@
+/**
+ * Shared meters column for draft / review / notes.
+ * Locked Family A: frost overlay. Premium unlocked: same rail, no frost.
+ * Desktop Figma column ~781.6 (`17041:13194` / lock `17041:14475`).
+ * Mobile Premium inset ~35px (`210:2435` on artboard 390).
+ */
+
+.ftp-meters-stack {
+  --ftp-forlocked: rgba(232, 234, 234, 0.7);
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.ftp-meters-stack *,
+.ftp-meters-stack *::before,
+.ftp-meters-stack *::after {
+  box-sizing: border-box;
+}
+
+.ftp-meters-stack__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.ftp-meters-stack__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: var(--ftp-forlocked);
+  pointer-events: none;
+}
+
+.ftp-meters-stack__forlocked img {
+  display: block;
+  width: min(150px, 40vw);
+  height: auto;
+}
+
+/* Premium mobile — Figma side inset (~35 on 390), avoid double child gutters */
+@media (max-width: 600px) {
+  .ftp-meters-stack--unlocked {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 35px;
+    margin-inline: 0;
+  }
+
+  .ftp-meters-stack--unlocked .ftp-meter,
+  .ftp-meters-stack--unlocked .ftp-review,
+  .ftp-meters-stack--unlocked .ftp-notes {
+    padding-inline: 0;
+  }
+
+  .ftp-meters-stack--unlocked .ftp-notes__main {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1367px) {
+  .ftp-meters-stack {
+    width: 780px;
+    max-width: calc(100% - 48px);
+    margin-inline: auto;
+    border-radius: 16px;
+  }
+
+  .ftp-meters-stack--unlocked {
+    padding-inline: 0;
+  }
+
+  .ftp-meters-stack__forlocked img {
+    width: 215px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ftp-meters-stack * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

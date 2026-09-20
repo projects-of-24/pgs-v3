@@ -5,7 +5,7 @@ alwaysApply: true
 
 # PGS V3 operating protocol
 
-Permanent companion rules: `pgs-v3-product-recovery.mdc`, `pgs-v3-frontend-figma.mdc`, `pgs-v3-domain-contracts.mdc`, `pgs-v3-reference-bank.mdc`, `pgs-v3-accessibility.mdc`.
+Permanent companion rules: `pgs-v3-product-recovery.mdc`, `pgs-v3-frontend-figma.mdc`, `pgs-v3-domain-contracts.mdc`, `pgs-v3-reference-bank.mdc`, `pgs-v3-accessibility.mdc`, `pgs-backend-phase-wire.mdc` (backend gates · no assumptions · day-1 security).
 
 Applies to Operations, Student Operations, CMS, Student/Public frontend, Guardian Portal, CRM, Analytics, and future modules.
 

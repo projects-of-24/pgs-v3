@@ -1,0 +1,164 @@
+/**
+ * Purple Events — E6 Meet your facilitators.
+ * Desk 17071:12326 · Mob 528:7692
+ * Bands: ≤600 mobile · >1367 desktop · 601–1366 deferred.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: bio 14px
+ * ISSUE: below readable floor
+ * PGS IMPLEMENTATION: bio 16px
+ */
+
+.pe-fac {
+  --pe-fac-ink: #303030;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  color: var(--pe-fac-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pe-fac *,
+.pe-fac *::before,
+.pe-fac *::after {
+  box-sizing: border-box;
+}
+
+.pe-fac__title {
+  margin: 0;
+  text-align: center;
+  color: var(--pe-fac-ink);
+  line-height: 1.15;
+}
+
+.pe-fac__title-lead {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.pe-fac__title-em {
+  font-size: 22px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.pe-fac__grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 356px;
+}
+
+.pe-fac__card {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.pe-fac__photo-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ddd;
+  overflow: hidden;
+}
+
+.pe-fac__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(1);
+}
+
+.pe-fac__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.pe-fac__name {
+  margin: 0;
+  width: 100%;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--pe-fac-ink);
+  white-space: pre-line;
+}
+
+.pe-fac__role {
+  margin: 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--pe-fac-ink);
+}
+
+.pe-fac__bio {
+  margin: 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #000;
+}
+
+/* Desktop — Figma 17071:12326 */
+@media (min-width: 1367px) {
+  .pe-fac {
+    gap: 26px;
+    padding: 40px 24px 56px;
+  }
+
+  .pe-fac__title-lead {
+    font-size: 32px;
+  }
+
+  .pe-fac__title-em {
+    font-size: 40px;
+  }
+
+  .pe-fac__grid {
+    max-width: 650px;
+    gap: 26px;
+  }
+
+  .pe-fac__card {
+    width: 312px;
+    gap: 19px;
+  }
+
+  .pe-fac__meta {
+    gap: 8px;
+  }
+
+  .pe-fac__name {
+    font-size: 40px;
+    white-space: normal;
+  }
+
+  .pe-fac__bio {
+    margin-top: 11px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,153 @@
+/**
+ * Shared FAQ. Desktop is the default. iPad reuses it.
+ * No scrollbar on desktop or phone. Phone overrides live in the ≤600 block.
+ * Do not lock the block to the Figma 460 or 629 height.
+ */
+
+.premium-faq {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 154px 0 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-faq *,
+.premium-faq *::before,
+.premium-faq *::after {
+  box-sizing: border-box;
+}
+
+.premium-faq__inner {
+  width: min(1039px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin-inline: auto;
+  padding-left: 28px;
+}
+
+.premium-faq__title {
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.premium-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: min(896px, 100%);
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-faq__item {
+  border: 1px solid #8a8a8a;
+  border-radius: 16px;
+}
+
+.premium-faq__heading {
+  margin: 0;
+}
+
+.premium-faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 63px;
+  margin: 0;
+  padding: 13px 6px;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.premium-faq__trigger:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.premium-faq__question {
+  color: #000;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-faq__answer {
+  padding: 0 12px 16px 6px;
+}
+
+.premium-faq__answer p {
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.premium-faq__answer p + p {
+  margin-top: 4px;
+}
+
+.premium-faq__mark {
+  flex: 0 0 auto;
+  color: #000;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.64px;
+}
+
+@media (max-width: 600px) {
+  .premium-faq {
+    display: block;
+    margin-top: 108px;
+  }
+
+  .premium-faq__inner {
+    width: min(367px, calc(100% - 24px));
+    padding-left: 0;
+  }
+
+  .premium-faq__title {
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .premium-faq__list {
+    gap: 6px;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .premium-faq__trigger {
+    min-height: 68px;
+    padding: 16px;
+  }
+
+  .premium-faq__question {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .premium-faq__mark {
+    font-size: 27px;
+  }
+
+  .premium-faq__answer {
+    padding: 0 16px 16px;
+  }
+}

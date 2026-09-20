@@ -1,0 +1,124 @@
+/**
+ * About Us — Outro CTA (A12).
+ * Desk `17120:10437` · mob `517:6093`.
+ * Bands >1366 · ≤600; iPad deferred.
+ * Mob Figma ~86px width = auto-layout crop; use 85% rail.
+ */
+
+.about-outro {
+  --about-outro-purple: #6a5ed9;
+  --about-outro-title: #27272a;
+  --about-outro-muted: #71717a;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px clamp(16px, 4vw, 48px) 64px;
+  background: #fff;
+  text-align: center;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.about-outro *,
+.about-outro *::before,
+.about-outro *::after {
+  box-sizing: border-box;
+}
+
+.about-outro__eyebrow {
+  margin: 0;
+  color: var(--about-outro-purple);
+  font-weight: 700;
+  font-size: 11.2px;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.about-outro__title {
+  margin: 0;
+  max-width: 470px;
+  color: var(--about-outro-title);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.3;
+}
+
+.about-outro__body {
+  margin: 0;
+  max-width: 510px;
+  color: var(--about-outro-muted);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.about-outro__body strong {
+  font-weight: 700;
+  color: var(--about-outro-muted);
+}
+
+.about-outro__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 223px;
+  min-height: 60px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--about-outro-purple);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.about-outro__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+/* —— Mobile ≤600: 85% rail —— */
+@media (max-width: 600px) {
+  .about-outro {
+    gap: 12px;
+    width: 85%;
+    max-width: 348px;
+    margin-inline: auto;
+    padding: 32px 0 48px;
+  }
+
+  .about-outro__eyebrow {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .about-outro__title {
+    max-width: 100%;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .about-outro__body {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .about-outro__cta {
+    min-width: 0;
+    width: auto;
+    min-height: 0;
+    padding: 10px 16px;
+    border-radius: 8px;
+  }
+}

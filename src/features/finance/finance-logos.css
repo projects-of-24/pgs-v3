@@ -1,0 +1,190 @@
+/**
+ * Finance partner logos — owned CSS + marquee motion.
+ * Desktop: viewport aligns to hero rail so loop starts under the top card left edge.
+ * Bands >1366 · ≤600; iPad deferred. Respects prefers-reduced-motion.
+ */
+
+.finance-logos {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 36px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.finance-logos *,
+.finance-logos *::before,
+.finance-logos *::after {
+  box-sizing: border-box;
+}
+
+.finance-logos__viewport {
+  width: 100%;
+  max-width: 980px;
+  margin-inline: auto;
+  /* Same horizontal rail as .finance-hero__inner — left edge = top card start */
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+.finance-logos__track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  gap: 0;
+  animation: finance-logos-marquee 36s linear infinite;
+  will-change: transform;
+}
+
+.finance-logos:hover .finance-logos__track {
+  animation-play-state: paused;
+}
+
+.finance-logos__set {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 64px;
+  flex: 0 0 auto;
+  padding-inline: 0 32px;
+}
+
+.finance-logos__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 48px;
+}
+
+.finance-logos__img {
+  display: block;
+  max-width: 120px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.finance-logos__item:hover .finance-logos__img {
+  transform: scale(1.06);
+}
+
+@keyframes finance-logos-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 1367px) {
+  .finance-logos {
+    padding: 0 0 44px;
+  }
+
+  .finance-logos__viewport {
+    max-width: 980px;
+  }
+
+  .finance-logos__set {
+    gap: 80px;
+    padding-inline: 0 40px;
+  }
+
+  .finance-logos__img {
+    max-width: 140px;
+    max-height: 48px;
+  }
+
+  .finance-logos__track {
+    animation-duration: 40s;
+  }
+}
+
+@media (max-width: 600px) {
+  .finance-logos {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    padding: 4px 0 28px;
+  }
+
+  .finance-logos__viewport {
+    max-width: 100%;
+    padding-inline: 0;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+  }
+
+  .finance-logos__set {
+    gap: 36px;
+    padding-inline: 18px;
+  }
+
+  .finance-logos__item {
+    height: 40px;
+  }
+
+  .finance-logos__img {
+    max-width: 100px;
+    max-height: 32px;
+  }
+
+  .finance-logos__track {
+    animation-duration: 28s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finance-logos__track {
+    animation: none;
+    width: 100%;
+    max-width: 980px;
+    margin-inline: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform: none;
+  }
+
+  .finance-logos__set[aria-hidden="true"] {
+    display: none;
+  }
+
+  .finance-logos__set {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding-inline: clamp(16px, 2vw, 24px);
+  }
+
+  .finance-logos__img {
+    transition: none;
+  }
+
+  .finance-logos__item:hover .finance-logos__img {
+    transform: none;
+  }
+}

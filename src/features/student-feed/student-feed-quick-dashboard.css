@@ -1,0 +1,208 @@
+/**
+ * Quick Dashboard — Figma desktop 18375:10811 · mobile 206:5892.
+ * Desktop 1×4 · mobile 2×2. Lock overlay when not Premium.
+ */
+
+.student-feed-qd {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1f1f1f;
+}
+
+.student-feed-qd *,
+.student-feed-qd *::before,
+.student-feed-qd *::after {
+  box-sizing: border-box;
+}
+
+.student-feed-qd__frame {
+  position: relative;
+  width: 100%;
+  max-width: 617px;
+  margin-inline: auto;
+  padding: 12.8px 0;
+  border-radius: 12.8px;
+  /* Owner/Figma: soft multi-colour rim on locked cluster */
+  box-shadow:
+    0 0 0 1.5px rgba(151, 71, 255, 0.35),
+    0 0 0 3px rgba(115, 225, 195, 0.25);
+  background: #fff;
+}
+
+.student-feed-qd__title {
+  margin: 0 0 14px;
+  padding: 0 12px;
+  color: #000;
+  font: 600 17.6px/22.4px Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.student-feed-qd.is-locked .student-feed-qd__title {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.student-feed-qd__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 144px));
+  gap: 13.6px;
+  justify-content: center;
+  padding: 0 12px 8px;
+}
+
+.student-feed-qd__tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 144px;
+  margin: 0;
+  padding: 20px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+  background: rgba(31, 31, 31, 0.1);
+}
+
+.student-feed-qd__label {
+  margin: 0;
+  color: #1f1f1f;
+  font: 400 16px/19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.4px;
+}
+
+.student-feed-qd__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.student-feed-qd__bar {
+  width: 3.2px;
+  height: 24px;
+  flex: none;
+  border-radius: 16px;
+  background: #1f1f1f;
+}
+
+.student-feed-qd__value {
+  font: 700 32px/1 Manrope, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1f1f1f;
+}
+
+.student-feed-qd__toggle {
+  position: relative;
+  display: inline-block;
+  width: 33.6px;
+  height: 14.4px;
+  flex: none;
+  border-radius: 50px;
+  background: #c8c8c8;
+  box-shadow: inset 0 4.8px 6.4px 3px rgba(0, 0, 0, 0.1);
+}
+
+.student-feed-qd__toggle.is-on {
+  background: #76ee59;
+}
+
+.student-feed-qd__toggle-knob {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transform: translateY(-50%);
+}
+
+.student-feed-qd__toggle.is-on .student-feed-qd__toggle-knob {
+  left: auto;
+  right: 2px;
+}
+
+.student-feed-qd__lock {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border-radius: 12.8px;
+  background: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.student-feed-qd__lock img {
+  width: 93px;
+  height: 93px;
+  display: block;
+}
+
+.student-feed-qd.is-locked .student-feed-qd__grid {
+  opacity: 0.55;
+}
+
+@media (max-width: 600px) {
+  .student-feed-qd__frame {
+    max-width: 249px;
+  }
+
+  .student-feed-qd__title {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+
+  .student-feed-qd__grid {
+    grid-template-columns: repeat(2, minmax(0, 115.2px));
+    gap: 10.88px;
+    padding: 0 8px 10px;
+  }
+
+  .student-feed-qd__tile {
+    max-width: 115.2px;
+    padding: 16px 12px 12px;
+  }
+
+  .student-feed-qd__label {
+    font-size: 13px;
+    line-height: 15.5px;
+  }
+
+  .student-feed-qd__value {
+    font-size: 26px;
+  }
+
+  .student-feed-qd__bar {
+    height: 19.2px;
+    width: 2.56px;
+  }
+
+  .student-feed-qd__toggle {
+    width: 26.88px;
+    height: 11.52px;
+  }
+
+  .student-feed-qd__toggle-knob {
+    width: 9.5px;
+    height: 9.5px;
+  }
+
+  .student-feed-qd__lock img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-qd * {
+    transition: none !important;
+  }
+}

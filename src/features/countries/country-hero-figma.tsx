@@ -2,12 +2,12 @@
  * Modular country hero + badge strip — Figma V6 USA nodes only.
  *
  * Live: `/countriesuk` via `buildCountryHeroFigmaHtml()` (one HTML document).
- * Preview: `/preview/country-hero-figma` uses `<CountryHeroFigma />`.
+ * Preview: `/preview/country-hero-figma-usa` uses `<CountryHeroFigma />`.
  * Nodes: desktop 18753:11539+11562 · iPad 18753:11835+11837 · mobile 18753:12020+12022
  * Badges = two separate images (flag + graduation thumb), not one composite.
  * iPad reuses desktop hero; CSS covers 716×194.
  */
-import "./country-hero-figma.css";
+import "./country-hero-figma-usa.css";
 
 export type CountryHeroFigmaImages = {
   /** Landscape banner — desktop + iPad */
@@ -50,15 +50,15 @@ export function buildCountryHeroFigmaHtml(images?: Partial<CountryHeroFigmaImage
   const desktopImage = escapeAttr(src.desktopImage);
   const mobileImage = escapeAttr(src.mobileImage);
 
-  return `<div class="country-hero-figma" data-pgs-module="country-hero-figma" role="region" aria-label="${alt} hero">
-  <div class="country-hero-figma__stack">
-    <div class="country-hero-figma__badges" aria-hidden="true">
-      <img class="country-hero-figma__flag" src="${flagImage}" alt="" width="46" height="24" decoding="async">
-      <img class="country-hero-figma__badge" src="${badgeImage}" alt="" width="62" height="42" decoding="async">
+  return `<div class="country-hero-figma-usa" data-pgs-module="country-hero-figma-usa" role="region" aria-label="${alt} hero">
+  <div class="country-hero-figma-usa__stack">
+    <div class="country-hero-figma-usa__badges" aria-hidden="true">
+      <img class="country-hero-figma-usa__flag" src="${flagImage}" alt="" width="46" height="24" decoding="async">
+      <img class="country-hero-figma-usa__badge" src="${badgeImage}" alt="" width="62" height="42" decoding="async">
     </div>
-    <div class="country-hero-figma__banner">
-      <img class="country-hero-figma__hero country-hero-figma__hero--desktop" src="${desktopImage}" alt="${alt}" width="1366" height="303" decoding="async">
-      <img class="country-hero-figma__hero country-hero-figma__hero--mobile" src="${mobileImage}" alt="${alt}" width="210" height="357" decoding="async">
+    <div class="country-hero-figma-usa__banner">
+      <img class="country-hero-figma-usa__hero country-hero-figma-usa__hero--desktop" src="${desktopImage}" alt="${alt}" width="1366" height="303" decoding="async">
+      <img class="country-hero-figma-usa__hero country-hero-figma-usa__hero--mobile" src="${mobileImage}" alt="${alt}" width="210" height="357" decoding="async">
     </div>
   </div>
 </div>`;
@@ -70,16 +70,16 @@ export function CountryHeroFigma({ images }: CountryHeroFigmaProps) {
 
   return (
     <div
-      className="country-hero-figma"
-      data-pgs-module="country-hero-figma"
+      className="country-hero-figma-usa"
+      data-pgs-module="country-hero-figma-usa"
       role="region"
       aria-label={`${alt} hero`}
     >
-      <div className="country-hero-figma__stack">
-        <div className="country-hero-figma__badges" aria-hidden="true">
+      <div className="country-hero-figma-usa__stack">
+        <div className="country-hero-figma-usa__badges" aria-hidden="true">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="country-hero-figma__flag"
+            className="country-hero-figma-usa__flag"
             src={src.flagImage}
             alt=""
             width={46}
@@ -88,7 +88,7 @@ export function CountryHeroFigma({ images }: CountryHeroFigmaProps) {
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="country-hero-figma__badge"
+            className="country-hero-figma-usa__badge"
             src={src.badgeImage}
             alt=""
             width={62}
@@ -97,10 +97,10 @@ export function CountryHeroFigma({ images }: CountryHeroFigmaProps) {
           />
         </div>
 
-        <div className="country-hero-figma__banner">
+        <div className="country-hero-figma-usa__banner">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="country-hero-figma__hero country-hero-figma__hero--desktop"
+            className="country-hero-figma-usa__hero country-hero-figma-usa__hero--desktop"
             src={src.desktopImage}
             alt={alt}
             width={1366}
@@ -109,7 +109,7 @@ export function CountryHeroFigma({ images }: CountryHeroFigmaProps) {
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            className="country-hero-figma__hero country-hero-figma__hero--mobile"
+            className="country-hero-figma-usa__hero country-hero-figma-usa__hero--mobile"
             src={src.mobileImage}
             alt={alt}
             width={210}

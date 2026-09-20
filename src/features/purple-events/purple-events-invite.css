@@ -1,0 +1,649 @@
+/**
+ * Purple Events invite / hero — E1 owned CSS.
+ *
+ * Mobile frames (cas-v6):
+ *   524:8535 page 390
+ *   551:9014 grey plate #f1f1f1 · 367×673 · r8 · inset 12
+ *   551:9013 content · hero 270×380 hangs above plate
+ * Desktop: invite 17071:12186
+ *
+ * Bands: ≤600 mobile · >1367 desktop · 601–1366 deferred.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: host/note/times ~11–14px
+ * ISSUE: below readable floor
+ * PGS IMPLEMENTATION: body/meta ≥16px where practical; keep Figma layout
+ */
+
+.pe-invite {
+  --pe-panel: #f1f1f1;
+  --pe-purple: #b57cff;
+  --pe-purple-border: #9747ff;
+  --pe-green: #009c70;
+  --pe-cream: #fff8eb;
+  --pe-muted: #4a4a4a;
+  --pe-ink: #22272e;
+  --pe-mob-inset: 12px;
+  --pe-mob-hero-w: 250px;
+  --pe-mob-hero-h: 380px;
+  /* Figma hang 57 + owner +120px grey top down (was +150; −30 higher) */
+  --pe-mob-hang: 177px;
+  --pe-mob-share-slot: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  position: relative;
+  /* Extra right pad so share sits on white outside grey plate */
+  padding: 0 var(--pe-mob-share-slot) 40px var(--pe-mob-inset);
+  background: #fff;
+  overflow-x: visible;
+  overflow-y: visible;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pe-invite *,
+.pe-invite *::before,
+.pe-invite *::after {
+  box-sizing: border-box;
+}
+
+/* Mobile plate = Figma 551:9014 · owner −10px each side → 347 */
+.pe-invite__panel {
+  width: 100%;
+  max-width: 347px;
+  margin: var(--pe-mob-hang) auto 0;
+  background: var(--pe-panel);
+  border-radius: 8px;
+  padding: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.pe-invite__media-col {
+  width: var(--pe-mob-hero-w);
+  max-width: 100%;
+  position: relative;
+  margin-top: calc(-1 * var(--pe-mob-hang));
+  z-index: 2;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.pe-invite__media {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: visible;
+}
+
+.pe-invite__img {
+  display: block;
+  width: 100%;
+  height: var(--pe-mob-hero-h);
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 10px;
+}
+
+/*
+ * Mobile badges = Figma 528:6699
+ * [Filling Fast] [Share] · #inCampus under Filling
+ * Share hangs past grey plate onto white (owner)
+ */
+.pe-invite__media-badges {
+  position: absolute;
+  top: 17px;
+  /* plate overhang past hero ≈48px + share 21px + gap → clear grey */
+  right: -80px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  column-gap: 6px;
+  row-gap: 4px;
+  align-items: start;
+  justify-items: start;
+  z-index: 3;
+}
+
+.pe-invite__badge-stack {
+  display: contents;
+}
+
+.pe-invite__filling {
+  grid-column: 1;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #000;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.pe-invite__filling-icon {
+  width: 6px;
+  height: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.pe-invite__mode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pe-purple);
+  color: #fff;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.pe-invite__mode--on-media {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pe-invite__share--on-media {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+}
+
+.pe-invite__share--desk {
+  display: none;
+}
+
+.pe-invite__mode--desk {
+  display: none;
+}
+
+.pe-invite__mode--desk {
+  display: none;
+}
+
+.pe-invite__speaker {
+  position: absolute;
+  right: -12px;
+  bottom: -8px;
+  z-index: 3;
+  width: 153px;
+  max-width: 55%;
+  background: var(--pe-cream);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 6px 9px;
+}
+
+.pe-invite__speaker-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--pe-ink);
+  line-height: 1.25;
+}
+
+.pe-invite__speaker-bio {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--pe-muted);
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.pe-invite__content {
+  width: 100%;
+  max-width: 324px;
+  padding: 28px 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
+
+/* Desk-only chrome — hide empty row on mobile */
+.pe-invite__top-row {
+  display: none;
+}
+
+.pe-invite__share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.pe-invite__share img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.pe-invite__headline {
+  position: relative;
+  align-self: center;
+  background: #fff;
+  border: 0.5px solid #000;
+  padding: 6px 10px;
+  max-width: 225px;
+  width: 100%;
+}
+
+.pe-invite__headline::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  background: var(--pe-purple);
+  border: 1px solid var(--pe-purple-border);
+}
+
+.pe-invite__title {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.05;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.pe-invite__host {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.pe-invite__host-label {
+  color: var(--pe-muted);
+}
+
+.pe-invite__host-value {
+  color: var(--pe-ink);
+}
+
+/* Figma mobile: dates | who side-by-side */
+.pe-invite__mid {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.pe-invite__dates {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+}
+
+.pe-invite__date-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pe-invite__date-box {
+  width: 58px;
+  height: 61px;
+  min-height: 61px;
+  background: #000;
+  border-radius: 8px;
+  color: var(--pe-purple);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
+  text-align: center;
+}
+
+.pe-invite__date-day {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.pe-invite__date-month {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+  padding: 0 2px;
+}
+
+.pe-invite__date-time {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+  line-height: 1.15;
+  max-width: 58px;
+}
+
+.pe-invite__who {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pe-invite__who-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #000;
+}
+
+.pe-invite__who-note {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #000;
+}
+
+.pe-invite__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pe-invite__tag {
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.pe-invite__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--pe-green);
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.pe-invite__cta:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 3px;
+}
+
+.pe-invite__share:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.pe-invite__location {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+  color: #000;
+}
+
+/* Desktop — Figma invite 17071:12186 */
+@media (min-width: 1367px) {
+  .pe-invite {
+    padding: 0 24px 56px;
+  }
+
+  .pe-invite__panel {
+    width: 100%;
+    max-width: 1231px;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+    padding: 19px 40px 24px;
+    min-height: 562px;
+    border-radius: 20px;
+  }
+
+  .pe-invite__media-col {
+    flex: 0 0 337px;
+    max-width: 337px;
+    width: 337px;
+    margin-top: 0;
+  }
+
+  .pe-invite__img {
+    height: 512px;
+    border-radius: 13px;
+  }
+
+  .pe-invite__media {
+    border-radius: 13px;
+  }
+
+  .pe-invite__media-badges {
+    top: 51px;
+    right: auto;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-template-columns: none;
+  }
+
+  .pe-invite__badge-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .pe-invite__filling {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .pe-invite__share--on-media {
+    display: none;
+  }
+
+  .pe-invite__share--desk {
+    display: inline-flex;
+    position: static;
+  }
+
+  .pe-invite__mode--on-media {
+    display: none;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .pe-invite__mode--desk {
+    display: inline-flex;
+  }
+
+  .pe-invite__filling {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .pe-invite__filling-icon {
+    width: 13px;
+    height: 16px;
+  }
+
+  .pe-invite__speaker {
+    left: -40px;
+    right: auto;
+    bottom: auto;
+    top: 100px;
+    width: 168px;
+    max-width: none;
+    border-radius: 13px;
+    padding: 8px 14px;
+  }
+
+  .pe-invite__speaker-name {
+    font-size: 16px;
+  }
+
+  .pe-invite__speaker-bio {
+    font-size: 14px;
+  }
+
+  .pe-invite__content {
+    flex: 1 1 530px;
+    max-width: 560px;
+    align-items: flex-start;
+    padding: 8px 0 0;
+    gap: 18px;
+  }
+
+  .pe-invite__top-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    min-height: 28px;
+  }
+
+  .pe-invite__share {
+    width: 26px;
+    height: 26px;
+  }
+
+  .pe-invite__share img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .pe-invite__headline {
+    align-self: flex-start;
+    max-width: none;
+    width: auto;
+    border-width: 1px;
+    padding: 8px 13px;
+  }
+
+  .pe-invite__headline::before {
+    left: -4px;
+    top: -5px;
+    width: 10px;
+    height: 10px;
+    border-width: 1.5px;
+  }
+
+  .pe-invite__title {
+    font-size: 51px;
+    line-height: 48px;
+    text-align: left;
+  }
+
+  .pe-invite__host {
+    text-align: left;
+  }
+
+  .pe-invite__mid {
+    gap: 20px;
+  }
+
+  .pe-invite__date-box {
+    width: 97px;
+    height: 102px;
+    min-height: 102px;
+    padding: 10px 13px;
+  }
+
+  .pe-invite__date-day {
+    font-size: 53px;
+    letter-spacing: -3px;
+  }
+
+  .pe-invite__date-month {
+    font-size: 18px;
+  }
+
+  .pe-invite__date-time {
+    font-size: 16px;
+    max-width: none;
+  }
+
+  .pe-invite__who-title {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .pe-invite__who-note {
+    font-size: 16px;
+  }
+
+  .pe-invite__tag {
+    border-radius: 16px;
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+
+  .pe-invite__cta {
+    max-width: 530px;
+    min-height: 49px;
+    border-radius: 6px;
+    font-size: 18px;
+  }
+
+  .pe-invite__location {
+    text-align: left;
+    font-size: 18px;
+  }
+}

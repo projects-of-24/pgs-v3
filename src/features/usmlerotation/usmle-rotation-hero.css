@@ -1,0 +1,520 @@
+/**
+ * USMLE Rotation hero — page-scoped. Owns padding/width.
+ * Desktop base → iPad → mobile. Bands: >1366 · 601–1366 · ≤600.
+ * Width lesson from Hostinger `.w-70` / `.hero-usml-box` (reference only — do not edit Hostinger CSS).
+ * Root is div (not section) so global section rules cannot own spacing.
+ */
+
+.usmle-hero {
+  --usmle-yellow: #ffc524;
+  --usmle-purple: #b57cff;
+  --usmle-green: #009c70;
+  --usmle-green-ticker: #0abf8c;
+  --usmle-story-bg: #ebf7ff;
+  --usmle-panel: #f1f1f1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  /* Vertical section breath — Hostinger .hero-usml-box ~79/90 on desktop */
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-hero *,
+.usmle-hero *::before,
+.usmle-hero *::after {
+  box-sizing: border-box;
+}
+
+/* ——— Desktop base (cascade); exact Hostinger sizes lock in ≥1367 below ——— */
+.usmle-hero__card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 16px;
+  width: 903px;
+  max-width: min(903px, 92%);
+  min-width: 0;
+  margin-inline: auto;
+  padding: 27px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+}
+
+.usmle-hero__lead {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  flex: 1 1 0;
+  min-width: 0;
+  justify-content: center;
+}
+
+.usmle-hero__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-inline: 8px;
+  min-width: 0;
+}
+
+.usmle-hero__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+  min-width: 0;
+}
+
+.usmle-hero__title {
+  margin: 0;
+  color: var(--usmle-yellow);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 2.6vw, 38.4px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.usmle-hero__with {
+  margin: 0;
+  color: var(--usmle-purple);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 1.5vw, 22.4px);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.usmle-hero__subtitle {
+  margin: 0;
+  max-width: 28rem;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(15px, 1.35vw, 20px);
+  line-height: 1.35;
+}
+
+.usmle-hero__stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  padding: 16px clamp(16px, 4vw, 64px);
+  border: 0.8px solid #fff;
+  border-radius: 6.4px;
+}
+
+.usmle-hero__stats-heading {
+  margin: 0;
+  width: 100%;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 1.5vw, 22.4px);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.usmle-hero__stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 24px;
+  width: 100%;
+}
+
+.usmle-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  text-align: center;
+}
+
+.usmle-hero__stat-value {
+  margin: 0;
+  color: var(--usmle-green);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(32px, 3vw, 45.6px);
+  line-height: 1.1;
+  letter-spacing: -0.2px;
+}
+
+.usmle-hero__stat-label {
+  margin: 0;
+  max-width: 9rem;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 12.8px;
+  line-height: 1.35;
+  letter-spacing: 0.12px;
+}
+
+.usmle-hero__cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.usmle-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--usmle-green);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.usmle-hero__cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.usmle-hero__guarantees {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.usmle-hero__guarantee {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+}
+
+.usmle-hero__guarantee img {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.usmle-hero__stories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  /* Hostinger: .border-radius-20px.p-4 ≈ 15px pad, 20px radius */
+  padding: 15px;
+  border: 0.8px solid #9747ff;
+  border-radius: 20px;
+  background: var(--usmle-panel);
+  color: #000;
+}
+
+.usmle-hero__stories-heading {
+  margin: 0;
+  padding-inline: 8px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.5vw, 22.4px);
+  line-height: 1.2;
+  letter-spacing: 0.12px;
+}
+
+.usmle-hero__story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.usmle-hero__story {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 16px;
+  border: 0.8px solid rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  background: var(--usmle-story-bg);
+}
+
+.usmle-hero__story-name {
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(15px, 1.3vw, 19.2px);
+  line-height: 1.25;
+  color: #000;
+}
+
+.usmle-hero__story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 12.8px;
+  line-height: 1.35;
+  letter-spacing: 0.12px;
+  color: #000;
+}
+
+.usmle-hero__story-arrow {
+  flex-shrink: 0;
+}
+
+.usmle-hero__ticker {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  margin-top: auto;
+  padding: 8px 10px;
+  border-radius: 6.4px;
+  background: var(--usmle-green-ticker);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.usmle-hero__ticker-icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+}
+
+.usmle-hero__ticker-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.usmle-hero__ticker-text--combined {
+  display: none;
+}
+
+/*
+ * Desktop >1366 — EXACT Hostinger sizes @1440 zoom=1
+ * (imported from live `.hero-usml-box .w-70` / `.bg-black.p-3`)
+ * card 903×597 · pad 27 · gap 16 · radius 10
+ * lead 454 · stories 379 · stories radius 20 · stories pad 15
+ */
+@media (min-width: 1367px) {
+  .usmle-hero {
+    padding-top: 71px;
+    padding-bottom: 90px;
+    padding-inline: 0;
+  }
+
+  .usmle-hero__card {
+    width: 903px;
+    max-width: 903px;
+    min-height: 597px;
+    padding: 27px;
+    gap: 16px;
+    border-radius: 10px;
+  }
+
+  .usmle-hero__lead {
+    flex: 0 0 454px;
+    width: 454px;
+    max-width: 454px;
+  }
+
+  .usmle-hero__stories {
+    flex: 0 0 379px;
+    width: 379px;
+    max-width: 379px;
+    padding: 15px;
+    border-radius: 20px;
+  }
+}
+
+/*
+ * iPad 601–1366 — stacked (not Hostinger’s crushed 50% 2-col).
+ * Outer rail ~90% like Hostinger `.hero-usml-box` mobile/tablet lesson.
+ */
+@media (max-width: 1366px) and (min-width: 601px) {
+  .usmle-hero {
+    padding: 40px 0 56px;
+  }
+
+  .usmle-hero__card {
+    flex-direction: column;
+    width: 90%;
+    max-width: 90%;
+    gap: 16px;
+    padding: 20px clamp(14px, 2.5vw, 24px);
+  }
+
+  .usmle-hero__stats {
+    padding-inline: clamp(12px, 3vw, 32px);
+  }
+
+  .usmle-hero__stories {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .usmle-hero__guarantees {
+    gap: 8px 10px;
+  }
+}
+
+/* ——— Mobile ≤600 — Hostinger outer ~87% / card ~80–87% ——— */
+@media (max-width: 600px) {
+  .usmle-hero {
+    padding: 24px 0 40px;
+  }
+
+  .usmle-hero__card {
+    flex-direction: column;
+    gap: 16px;
+    width: 87%;
+    max-width: 87%;
+    padding: 0;
+    background: transparent;
+    color: #000;
+    border-radius: 0;
+  }
+
+  .usmle-hero__lead {
+    gap: 16px;
+  }
+
+  .usmle-hero__title-block {
+    padding-inline: 0;
+    text-align: center;
+    align-items: center;
+  }
+
+  .usmle-hero__title-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .usmle-hero__title {
+    color: #000;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .usmle-hero__with {
+    color: var(--usmle-purple);
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .usmle-hero__stories {
+    overflow: hidden;
+  }
+
+  .usmle-hero__subtitle {
+    max-width: 100%;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .usmle-hero__stats {
+    border-color: #fff;
+    background: #000;
+    /* Figma mobile 18760:11363 — dark stats card on light page */
+  }
+
+  .usmle-hero__stats-heading {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .usmle-hero__stat-value {
+    font-size: 32px;
+  }
+
+  .usmle-hero__stats-row {
+    flex-wrap: nowrap;
+    gap: 12px 28px;
+  }
+
+  .usmle-hero__stat {
+    flex-shrink: 0;
+  }
+
+  .usmle-hero__stat-label {
+    color: #fff;
+    font-size: 14px;
+    max-width: none;
+    white-space: nowrap;
+  }
+
+  .usmle-hero__cta-block {
+    align-items: stretch;
+  }
+
+  .usmle-hero__cta {
+    width: 100%;
+  }
+
+  .usmle-hero__cta:focus-visible {
+    outline-color: var(--usmle-green);
+  }
+
+  .usmle-hero__guarantees {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .usmle-hero__guarantee {
+    color: #000;
+  }
+
+  .usmle-hero__stories {
+    flex: 1 1 auto;
+    width: 100%;
+    border-color: #9747ff;
+  }
+
+  .usmle-hero__ticker-text--split {
+    display: none;
+  }
+
+  .usmle-hero__ticker-text--combined {
+    display: block;
+  }
+}

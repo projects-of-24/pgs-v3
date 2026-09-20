@@ -56,4 +56,54 @@ describe("document pre-upload selection", () => {
     expect(fetch).not.toHaveBeenCalled();
     await act(async () => root.unmount());
   });
+
+  it("shows Upload for empty rows and View + Re-upload after a clean upload", async () => {
+    const root = createRoot(container);
+    await act(async () => {
+      root.render(<DocumentWorkspace requirements={[
+        {
+          id: "empty-req",
+          document_type: "LoR",
+          requirement_kind: "required",
+          status: "missing",
+          instructions: "",
+          sort_order: 0,
+          student_documents: []
+        },
+        {
+          id: "uploaded-req",
+          document_type: "Passport Front",
+          requirement_kind: "required",
+          status: "uploaded",
+          instructions: "",
+          sort_order: 1,
+          student_documents: [{
+            id: "doc-1",
+            requirement_id: "uploaded-req",
+            storage_path: "students/test/passport.pdf",
+            original_filename: "passport.pdf",
+            mime_type: "application/pdf",
+            byte_size: 1200,
+            version: 1,
+            qc_status: "approved",
+            scan_status: "clean",
+            uploaded_at: "2025-04-24T00:00:00.000Z"
+          }]
+        }
+      ]} />);
+    });
+
+    const emptyRow = container.querySelector('tr[data-doc-state="empty"]');
+    const uploadedRow = container.querySelector('tr[data-doc-state="uploaded"]');
+    expect(emptyRow?.textContent).toContain("Upload");
+    expect(emptyRow?.textContent).not.toContain("Re-upload");
+    expect(emptyRow?.querySelector('[data-mode="upload"]')).not.toBeNull();
+
+    expect(uploadedRow?.textContent).toContain("View");
+    expect(uploadedRow?.textContent).toContain("Re-upload");
+    expect(uploadedRow?.querySelector('[data-mode="view"]')).not.toBeNull();
+    expect(uploadedRow?.textContent).not.toMatch(/(?<![Re-])Upload(?! selected)/);
+
+    await act(async () => root.unmount());
+  });
 });

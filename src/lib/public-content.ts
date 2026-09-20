@@ -56,6 +56,7 @@ export type PublicContentMap = {
   countriesnz: DestinationContent;
   countriesothers: DestinationContent;
   countriesuk: DestinationContent;
+  countriesusa: DestinationContent;
   cvreadyprogram: CatalogContent;
   explorecountries: ExploreCountriesContent;
   finance: FinanceContent;
@@ -120,6 +121,7 @@ export const defaultPublicContent: PublicContentMap = {
   countriesnz: destination("New Zealand", "Studying in New Zealand"),
   countriesothers: destination("Abroad", "Studying Abroad"),
   countriesuk: destination("the UK", "Studying in the UK"),
+  countriesusa: destination("the USA", "Studying in the USA"),
   cvreadyprogram: { ...seo("CV-Ready Programs", "Explore PurpleGuide programs and courses that strengthen your profile."), heroHeading: "Courses That Actually Count", filterHeading: "Filter out above or select a pre selected group below.", saveLoginPrompt: "Log in to save this program" },
   explorecountries: { ...seo("Explore Countries", "Compare PurpleGuide study destinations."), heroHeading: "Get Into Your Dream University Abroad with a Structured Workflow", primaryCta: "Explore Countries" },
   finance: { ...seo("Study Abroad Finance", "Education loan and study-abroad funding guidance."), heroHeading: "Secure Your Abroad Education Loan starting at 8.33%*", introHeading: "Your study plan’s ready. Is your funding too ?", fundingCta: "Talk to our funding team today!", faqHeading: "FAQ’s" },

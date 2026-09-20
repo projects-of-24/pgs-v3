@@ -3,7 +3,7 @@ import { applyPublicContent, defaultPublicContent } from "@/lib/public-content";
 
 describe("public typed CMS content", () => {
   it("registers every implemented public CMS page with SEO and Open Graph slots", () => {
-    expect(Object.keys(defaultPublicContent)).toHaveLength(34);
+    expect(Object.keys(defaultPublicContent)).toHaveLength(35);
     for (const content of Object.values(defaultPublicContent)) {
       expect(content.seoTitle.length).toBeGreaterThan(2);
       expect(content.seoDescription.length).toBeGreaterThan(10);

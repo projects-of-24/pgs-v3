@@ -1,0 +1,96 @@
+/**
+ * Face card lab — chrome context. Open + closed pair.
+ */
+
+.pe-face-lab {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pe-face-lab *,
+.pe-face-lab *::before,
+.pe-face-lab *::after {
+  box-sizing: border-box;
+}
+
+.pe-face-lab__univ-gap {
+  height: clamp(12px, 2vw, 28px);
+}
+
+.pe-face-lab__section {
+  padding: 24px 16px 64px;
+  max-width: 100%;
+}
+
+.pe-face-lab__header {
+  margin: 0 0 28px;
+  max-width: 40rem;
+}
+
+.pe-face-lab__heading {
+  margin: 0 0 8px;
+  font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.pe-face-lab__note {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #22272e;
+}
+
+.pe-face-lab__row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.pe-face-lab__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pe-face-lab__state {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+}
+
+@media (min-width: 1367px) {
+  .pe-face-lab__section {
+    padding: 40px 48px 96px;
+  }
+
+  .pe-face-lab__heading {
+    font-size: 48px;
+  }
+
+  .pe-face-lab__row {
+    gap: 48px;
+    overflow: visible;
+    justify-content: center;
+  }
+}

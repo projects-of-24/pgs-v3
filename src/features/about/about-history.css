@@ -1,0 +1,188 @@
+/**
+ * About Us — Since 2006 history note (A6).
+ * Desk `17057:13800` · mob `517:5785`.
+ * Bands >1366 · ≤600; iPad deferred.
+ * Timeline table deferred to A7.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.about-history {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px clamp(16px, 4vw, 48px) 56px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.about-history *,
+.about-history *::before,
+.about-history *::after {
+  box-sizing: border-box;
+}
+
+.about-history__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(24px, 6vw, 85px);
+  width: 100%;
+  max-width: 896px;
+  margin-inline: auto;
+}
+
+.about-history__note {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: min(384px, 100%);
+  height: 224px;
+  background: #b57cff;
+  border: 6.4px solid #000;
+  box-shadow: 12.8px 9.6px 0 #000;
+}
+
+.about-history__note-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  height: 37px;
+  padding: 0 13px;
+  background: #000;
+  flex-shrink: 0;
+}
+
+.about-history__note-dots {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.about-history__note-dots img {
+  display: block;
+  width: 11px;
+  height: 11px;
+}
+
+.about-history__note-label {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.about-history__note-doc {
+  display: block;
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+}
+
+.about-history__note-body {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px;
+}
+
+.about-history__note-year {
+  margin: 0;
+  color: #000;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 0.89;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.about-history__copy {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 427px;
+}
+
+.about-history__lead,
+.about-history__story {
+  margin: 0;
+  color: #303030;
+  /* LOCKED desk type ×0.8 (owner 2026-09-11) — mob unchanged; reopen by name only */
+  font-size: calc(clamp(16px, 1.8vw, 26px) * 0.8);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+@media (max-width: 600px) {
+  .about-history {
+    padding: 28px 0 36px;
+  }
+
+  .about-history__inner {
+    width: var(--pgs-premium-mob-rail, 85%);
+    max-width: var(--pgs-premium-mob-rail, 85%);
+    margin-inline: auto;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .about-history__note {
+    width: 184px;
+    height: 108px;
+    border-width: 3px;
+    box-shadow: 6px 5px 0 #000;
+  }
+
+  .about-history__note-bar {
+    height: 18px;
+    padding: 0 6px;
+    gap: 4px;
+  }
+
+  .about-history__note-dots {
+    gap: 3px;
+  }
+
+  .about-history__note-dots img {
+    width: 5px;
+    height: 5px;
+  }
+
+  .about-history__note-label {
+    font-size: 9px;
+  }
+
+  .about-history__note-doc {
+    width: 9px;
+    height: 9px;
+  }
+
+  .about-history__note-body {
+    padding: 12px;
+  }
+
+  .about-history__note-year {
+    font-size: 12px;
+  }
+
+  .about-history__copy {
+    max-width: none;
+    flex: 1 1 0;
+  }
+
+  .about-history__lead,
+  .about-history__story {
+    font-size: 14px;
+    line-height: normal;
+  }
+}

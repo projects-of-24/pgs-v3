@@ -1,0 +1,30 @@
+---
+description: >-
+  Backend phase wire — no assumptions, targeted gates, FE↔BE↔DB map, day-1
+  security, living Kanban MD. Always apply on PGS backend/API/DB work.
+alwaysApply: true
+---
+
+# PGS backend phase wire (Cursor brain)
+
+Owner lock: **any backend job we do like this, only no assumptions, targeted building is what make me happy and pamper you.**
+
+Full skill: `.cursor/skills/pgs-backend-phase-wire/SKILL.md`
+
+## Every backend gate
+
+1. **Map first** — FE → route → actor/scope → tables (parent→child). No coding from vibes.
+2. **Propose** → wait for `GO AHEAD` / `GO AHEAD Wn` → implement **one gate only**.
+3. **Day-1 security** in the same gate (cross-student bind, force server fields, no IDOR oracle) + list **known gaps**.
+4. **Update living Kanban MD** after implement (e.g. `docs/LOOPBOARD-KANBAN.md`).
+5. **Live click QC** for the owner → stop → wait for next gate.
+
+## Hard stops
+
+- No assumptions — ask if student vs staff, table, permission, or upload path is unclear.
+- No phase jump (do not start W2 while finishing W1).
+- Targeted diff only — no drive-by refactors.
+- Say preview vs live. Prefer lab until owner pulls live.
+- One domain truth — no second Kanban/docs tables.
+
+Companions: `pgs-propose-before-code` · `pgs-owner-teach-map` · `pgs-never-invent` · `pgs-master-workflow`.

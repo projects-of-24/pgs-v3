@@ -1,0 +1,311 @@
+/**
+ * #Pgs picks — CMS `pgs_picks`.
+ * Desktop >1366: as many full cards as fit; arrows advance one card.
+ * Mobile ≤600: one card. No clipped peek behind title.
+ * iPad mid-band deferred.
+ */
+
+.usmle-picks {
+  --usmle-picks-green: #0abf8c;
+  --usmle-picks-card: #f1f1f1;
+  --usmle-picks-card-w: 528px;
+  --usmle-picks-gap: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 32px 0 48px;
+  background: #fff;
+  overflow-x: visible;
+}
+
+.usmle-picks *,
+.usmle-picks *::before,
+.usmle-picks *::after {
+  box-sizing: border-box;
+}
+
+.usmle-picks__inner {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-inline: max(16px, 3vw);
+}
+
+.usmle-picks__empty-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: min(720px, 100%);
+}
+
+.usmle-picks__empty {
+  margin: 0;
+  color: #333;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.usmle-picks__rail {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  width: 100%;
+}
+
+.usmle-picks__side {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.usmle-picks__title {
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.usmle-picks__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.usmle-picks__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1.5px solid #c4c4c4;
+  border-radius: 999px;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.usmle-picks__arrow:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+/* Desktop: JS sets flex-basis to N full cards (no partial peek) */
+.usmle-picks__viewport {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.usmle-picks__track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--usmle-picks-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.usmle-picks__track::-webkit-scrollbar {
+  display: none;
+}
+
+.usmle-picks__card {
+  flex: 0 0 var(--usmle-picks-card-w);
+  width: var(--usmle-picks-card-w);
+  min-width: var(--usmle-picks-card-w);
+  max-width: var(--usmle-picks-card-w);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.usmle-picks__card-link {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  height: 246px;
+  padding: 6px;
+  border-radius: 16px;
+  background: var(--usmle-picks-card);
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.usmle-picks__card-link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.usmle-picks__photo-wrap {
+  flex-shrink: 0;
+  width: 180px;
+  height: 233px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #d9d9d9;
+}
+
+.usmle-picks__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.usmle-picks__copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 17px 4px;
+}
+
+.usmle-picks__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--usmle-picks-green);
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  text-align: center;
+}
+
+.usmle-picks__blurb {
+  margin: 0;
+  max-width: 292px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+}
+
+.usmle-picks__blurb--mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .usmle-picks {
+    --usmle-picks-card-w: min(320px, 88vw);
+    --usmle-picks-gap: 12px;
+    padding: 24px 0 40px;
+  }
+
+  .usmle-picks__rail {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .usmle-picks__side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .usmle-picks__title {
+    font-size: 24px;
+  }
+
+  .usmle-picks__nav {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .usmle-picks__arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .usmle-picks__viewport {
+    flex: 0 0 auto;
+    width: var(--usmle-picks-card-w);
+    max-width: var(--usmle-picks-card-w);
+    margin-inline: auto;
+  }
+
+  .usmle-picks__card-link {
+    height: auto;
+    min-height: 140px;
+    gap: 10px;
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .usmle-picks__photo-wrap {
+    width: 100px;
+    height: 128px;
+  }
+
+  .usmle-picks__copy {
+    padding: 8px 4px;
+    gap: 8px;
+  }
+
+  .usmle-picks__cta {
+    font-size: 12px;
+    line-height: 1.2;
+    padding: 4px 8px;
+  }
+
+  .usmle-picks__blurb--desktop {
+    display: none;
+  }
+
+  .usmle-picks__blurb--mobile {
+    display: block;
+    max-width: none;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-picks {
+    --usmle-picks-card-w: 440px;
+  }
+
+  .usmle-picks__card-link {
+    height: 220px;
+  }
+
+  .usmle-picks__photo-wrap {
+    width: 150px;
+    height: 200px;
+  }
+}

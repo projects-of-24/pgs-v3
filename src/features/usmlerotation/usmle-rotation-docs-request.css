@@ -1,0 +1,295 @@
+/**
+ * Docs / expense request — page-scoped.
+ * Desktop >1366 (Figma 18760:12899 DOCUMENTATION…) ·
+ * mobile ≤600 (Figma 18760:11839 expense breakdown).
+ * iPad mid-band deferred.
+ */
+
+.usmle-docs {
+  --usmle-docs-green: #009c70;
+  --usmle-docs-panel: #f1f1f1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 40px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.usmle-docs *,
+.usmle-docs *::before,
+.usmle-docs *::after {
+  box-sizing: border-box;
+}
+
+.usmle-docs__layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  max-width: min(913px, 94%);
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.usmle-docs__panel {
+  position: relative;
+  flex: 0 1 505px;
+  width: 100%;
+  max-width: 505px;
+  min-height: 735px;
+  padding: 50px 72px 220px 72px;
+  border-radius: 12.8px;
+  background: var(--usmle-docs-panel);
+  overflow: hidden;
+}
+
+.usmle-docs__title {
+  margin: 0 0 48px;
+  color: #000;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.usmle-docs__title--desktop {
+  display: block;
+  max-width: 232px;
+  font-size: 38.4px;
+  text-transform: uppercase;
+}
+
+.usmle-docs__title--mobile {
+  display: none;
+}
+
+.usmle-docs__title-line {
+  display: block;
+}
+
+.usmle-docs__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 236px;
+  max-width: 100%;
+  margin: 0 0 16px;
+  padding: 16px 19px;
+  border: 0;
+  border-radius: 12.8px;
+  background: var(--usmle-docs-green);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.15;
+  letter-spacing: 0.08px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.usmle-docs__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.usmle-docs__inbox {
+  margin: 0 0 20px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.usmle-docs__inbox--mobile,
+.usmle-docs__body--mobile {
+  display: none;
+}
+
+.usmle-docs__body {
+  margin: 0;
+  max-width: 365px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.usmle-docs__doctor-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 235px;
+  height: 386px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.usmle-docs__doctor {
+  display: block;
+  width: 657px;
+  max-width: none;
+  height: 394px;
+  margin-left: -210px;
+  margin-top: -4px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.usmle-docs__portrait-wrap {
+  flex: 0 0 337px;
+  width: 337px;
+  max-width: 37%;
+  margin: 108px 0 0;
+  overflow: hidden;
+  border-radius: 12.8px;
+  background: #d9d9d9;
+}
+
+.usmle-docs__portrait {
+  display: block;
+  width: 100%;
+  height: 502px;
+  object-fit: cover;
+  /* Figma IMG_8194 crop: left -67 / top -204 on ~420×910 source */
+  object-position: 35% 28%;
+}
+
+/* ——— Mobile ≤600: stacked expense layout (Figma 18760:11839) ——— */
+@media (max-width: 600px) {
+  .usmle-docs {
+    /* Reserve space so doctor peek + portrait clear the outro */
+    padding: 24px 16px 48px;
+    overflow: visible;
+  }
+
+  .usmle-docs__layout {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 260px;
+    /* Panel 470 + doctor peek past panel (~159) + gap + portrait 251 ≈ Figma stack */
+    padding-bottom: 0;
+  }
+
+  .usmle-docs__panel {
+    flex: none;
+    width: 260px;
+    max-width: 260px;
+    min-height: 470px;
+    padding: 29px 28px 200px 38px;
+    border-radius: 0;
+    /* Clip horizontal bleed; allow doctor to peek below via layout padding */
+    overflow: visible;
+  }
+
+  .usmle-docs__title {
+    margin: 0 0 30px;
+  }
+
+  .usmle-docs__title--desktop {
+    display: none;
+  }
+
+  .usmle-docs__title--mobile {
+    display: block;
+    max-width: 160px;
+    font-size: 20px;
+    line-height: 1;
+    text-transform: none;
+    white-space: normal;
+  }
+
+  .usmle-docs__cta {
+    width: 118px;
+    margin-bottom: 18px;
+    padding: 8px 10px;
+    border-radius: 3.2px;
+  }
+
+  .usmle-docs__inbox--desktop,
+  .usmle-docs__body--desktop {
+    display: none;
+  }
+
+  .usmle-docs__inbox--mobile,
+  .usmle-docs__body--mobile {
+    display: block;
+  }
+
+  .usmle-docs__inbox {
+    margin: 0 0 12px;
+    max-width: 198px;
+  }
+
+  .usmle-docs__body {
+    max-width: 182px;
+    letter-spacing: 0.2px;
+    line-height: 1.35;
+  }
+
+  /*
+   * Figma: doctor sits on panel bottom-right and peeks ~159px below panel.
+   * Portrait starts ~51px after doctor ends (not stacked on top of it).
+   */
+  .usmle-docs__doctor-wrap {
+    right: -8px;
+    bottom: -159px;
+    z-index: 2;
+    width: 133px;
+    height: 219px;
+  }
+
+  .usmle-docs__doctor {
+    width: 388px;
+    height: 233px;
+    margin-left: -138px;
+    margin-top: -11px;
+  }
+
+  .usmle-docs__portrait-wrap {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    width: 168px;
+    max-width: 168px;
+    /* panel overhang clearance: doctor peek 159 + gap 51 ≈ 210 */
+    margin: 210px auto 0;
+    border-radius: 6.4px;
+  }
+
+  .usmle-docs__portrait {
+    height: 251px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .usmle-docs__layout {
+    gap: 24px;
+    max-width: min(860px, 94%);
+  }
+
+  .usmle-docs__panel {
+    flex: 1 1 420px;
+    max-width: 520px;
+    min-height: 640px;
+    padding: 40px 48px 200px 48px;
+  }
+
+  .usmle-docs__portrait-wrap {
+    flex: 0 0 280px;
+    width: 280px;
+    max-width: 34%;
+    margin-top: 80px;
+  }
+
+  .usmle-docs__portrait {
+    height: 420px;
+  }
+}

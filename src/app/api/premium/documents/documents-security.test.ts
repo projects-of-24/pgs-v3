@@ -40,6 +40,10 @@ function documentReadClient(
 ) {
   const filters = new Map<string, unknown>();
   const createSignedUrl = vi.fn().mockResolvedValue({ data: { signedUrl: "https://storage.test/signed" }, error: null });
+  const download = vi.fn().mockResolvedValue({
+    data: new Blob(["%PDF-1.4 mock"], { type: "application/pdf" }),
+    error: null
+  });
   const query = {
     eq: vi.fn((column: string, value: unknown) => { filters.set(column, value); return query; }),
     maybeSingle: vi.fn(async () => ({
@@ -49,6 +53,7 @@ function documentReadClient(
           student_id: owner,
           storage_path: `${owner}/requirement/file.pdf`,
           original_filename: "file.pdf",
+          mime_type: "application/pdf",
           scan_status: scanStatus,
           superseded_at: lifecycle.superseded_at ?? null,
           archived_at: lifecycle.archived_at ?? null,
@@ -62,9 +67,10 @@ function documentReadClient(
   return {
     client: {
       from: vi.fn(() => ({ select: vi.fn(() => query) })),
-      storage: { from: vi.fn(() => ({ createSignedUrl })) }
+      storage: { from: vi.fn(() => ({ createSignedUrl, download })) }
     },
     createSignedUrl,
+    download,
     filters
   };
 }
@@ -83,6 +89,7 @@ function authorizeDocument(
       student_id: owner,
       storage_path: `${owner}/requirement/file.pdf`,
       original_filename: "file.pdf",
+      mime_type: "application/pdf",
       scan_status: scanStatus,
       superseded_at: lifecycle.superseded_at ?? null,
       deletion_requested_at: null,
@@ -132,13 +139,72 @@ describe("Phase 4-0 clean document access gate", () => {
   it("allows a signed URL only for an authorized clean document", async () => {
     authorizeDocument("clean");
     const { client, createSignedUrl } = documentReadClient("clean");
-    createServerClient.mockResolvedValue(client);
+    createAdminClient.mockReturnValue(client);
 
     const response = await downloadDocument(new Request("http://localhost"), { params: Promise.resolve({ id: documentId }) });
 
     expect(response.status).toBe(200);
     expect(createSignedUrl).toHaveBeenCalledOnce();
+    expect(createSignedUrl).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(Number),
+      undefined
+    );
     expect(response.headers.get("cache-control")).toBe("private, no-store");
+  });
+
+  it("forces download disposition only when ?download=1", async () => {
+    authorizeDocument("clean");
+    const { client, createSignedUrl } = documentReadClient("clean");
+    createAdminClient.mockReturnValue(client);
+
+    const response = await downloadDocument(
+      new Request("http://localhost/?download=1"),
+      { params: Promise.resolve({ id: documentId }) }
+    );
+
+    expect(response.status).toBe(200);
+    expect(createSignedUrl).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(Number),
+      { download: "file.pdf" }
+    );
+  });
+
+  it("redirects to the signed URL when ?redirect=1", async () => {
+    authorizeDocument("clean");
+    const { client, createSignedUrl } = documentReadClient("clean");
+    createAdminClient.mockReturnValue(client);
+
+    const response = await downloadDocument(
+      new Request("http://localhost/?redirect=1"),
+      { params: Promise.resolve({ id: documentId }) }
+    );
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toBe("https://storage.test/signed");
+    expect(createSignedUrl).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.any(Number),
+      undefined
+    );
+  });
+
+  it("streams inline bytes when ?stream=1", async () => {
+    authorizeDocument("clean");
+    const { client, createSignedUrl, download } = documentReadClient("clean");
+    createAdminClient.mockReturnValue(client);
+
+    const response = await downloadDocument(
+      new Request("http://localhost/?stream=1"),
+      { params: Promise.resolve({ id: documentId }) }
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toBe("application/pdf");
+    expect(response.headers.get("content-disposition")).toContain("inline");
+    expect(download).toHaveBeenCalledOnce();
+    expect(createSignedUrl).not.toHaveBeenCalled();
   });
 
   it("denies a guessed cross-student document before any Storage operation", async () => {
@@ -179,7 +245,7 @@ describe("Phase 4-0 clean document access gate", () => {
     });
     authorizeDocument("clean", studentA, {}, "manager");
     const { client, createSignedUrl } = documentReadClient("clean");
-    createServerClient.mockResolvedValue(client);
+    createAdminClient.mockReturnValue(client);
 
     const response = await downloadDocument(
       new Request(`http://localhost?student_id=${studentA}`),

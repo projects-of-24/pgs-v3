@@ -1,0 +1,37 @@
+/**
+ * iPad type floor (601–1366). Owner 2026-09-12.
+ * Desk formulas can compute under 16px on this band. Raise to 16px.
+ * Does not change ≤600 mobile or >1366 desk lock (×0.8).
+ * Timeline / Gantt excluded. Larger headings stay as-is.
+ */
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .about-why__label-line,
+  .about-audience__desk-note,
+  .about-online__footnote-p,
+  .about-live__achievement,
+  .about-live__meta,
+  .about-advisory__role,
+  .about-news__quote,
+  .about-eco__item-body,
+  .about-outro__eyebrow,
+  .about-outro__cta,
+  .about-founder__connect-label,
+  .about-founder__email,
+  .about-founder__bio {
+    font-size: 16px;
+  }
+
+  .about-audience__copy {
+    font-size: max(16px, calc(clamp(14px, 1.6vw, 24px) * 0.8));
+  }
+
+  .about-history__lead,
+  .about-history__story {
+    font-size: max(16px, calc(clamp(16px, 1.8vw, 26px) * 0.8));
+  }
+
+  .about-faq {
+    --about-faq-a: 16px;
+  }
+}

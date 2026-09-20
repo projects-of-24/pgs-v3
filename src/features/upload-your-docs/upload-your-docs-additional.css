@@ -1,0 +1,163 @@
+/**
+ * Additional documents — owned CSS.
+ * Family A A3: Desktop `18375:11660` · Mobile `217:4591` + frost.
+ * Family B B3: Desktop `17041:15742` · Mobile `217:3920` — unlocked, no frost.
+ */
+
+.uyd-additional {
+  --uyd-forlocked: rgba(232, 234, 234, 0.72);
+  width: 100%;
+  max-width: 996px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+
+.uyd-additional__heading {
+  margin: 0 0 14px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.uyd-additional__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.uyd-additional__wrap {
+  position: relative;
+  width: min(100%, 498px);
+}
+
+.uyd-additional__field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 10px 12px 10px 16px;
+  border: 1px solid #cfcfcf;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.uyd-additional__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-size: 15px;
+  line-height: 1.3;
+  outline: none;
+}
+
+.uyd-additional__input::placeholder {
+  color: #5c5c5c;
+  opacity: 1;
+}
+
+.uyd-additional__input:disabled {
+  color: #5c5c5c;
+  cursor: not-allowed;
+  -webkit-text-fill-color: #5c5c5c;
+}
+
+.uyd-additional__btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 89px;
+  min-height: 26px;
+  padding: 0 14px;
+  border: 1px solid #b8a4d9;
+  border-radius: 3px;
+  background: #cbb8e8;
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: inherit;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* B3 Premium — real control chrome (Phase 4D wires later) */
+.uyd-additional[data-docs-family="premium"] .uyd-additional__btn {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.uyd-additional[data-docs-family="premium"] .uyd-additional__btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.uyd-additional__forlocked {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--uyd-forlocked);
+  pointer-events: none;
+}
+
+.uyd-additional__forlocked img {
+  display: block;
+  /* Short field — size from segment height so lock fits inside */
+  height: 70%;
+  width: auto;
+  max-width: 32%;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .uyd-additional {
+    max-width: 390px;
+    margin-bottom: 32px;
+    padding: 0 10px;
+  }
+
+  .uyd-additional__heading {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 0 6px;
+  }
+
+  .uyd-additional__wrap {
+    width: min(100%, 294px);
+    margin-inline: auto;
+  }
+
+  .uyd-additional__field {
+    min-height: 70px;
+    padding: 12px 10px 12px 14px;
+  }
+
+  .uyd-additional__input {
+    font-size: 14px;
+  }
+
+  .uyd-additional__btn {
+    min-width: 71px;
+    min-height: 21px;
+    font-size: 13px;
+  }
+
+  .uyd-additional__forlocked img {
+    height: 64%;
+    max-width: 36%;
+  }
+}

@@ -10,7 +10,7 @@ const legacyControllers: Record<string, string> = {
   dashboard: "/dashboard", feed_track_progress: "/feed_track_progress", upload_your_doc: "/upload_your_doc",
   forgot_password: "/forgot_password", home: "/", login: "/login", programsfull: "/programsfull", purpleamc: "/purpleamc",
   purpleboard: "/purpleboard", purpleevents: "/purpleevents", purplenonmedical: "/purplenonmedical", purpleplab: "/purpleplab",
-  purplepremiumhome: "/purplepremiumhome", purpleusme: "/purpleusme", reset_password: "/reset_password", saved: "/saved",
+  purplepremiumhome: "/purplepremiumhome", purpleusme: "/purpleusmle", purpleusmle: "/purpleusmle", reset_password: "/reset_password", saved: "/saved",
   scholarship: "/scholarship", simplehome: "/simplehome", singup: "/singup", studentresources: "/studentresources",
   unitieup: "/unitieup", usmlerotation: "/usmlerotation", notifications: "/notifications"
 };
@@ -112,7 +112,12 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  let response = NextResponse.next({ request });
+  // Pass pathname to root layout so preview labs can skip Hostinger main.js.
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", request.nextUrl.pathname);
+  let response = NextResponse.next({
+    request: { headers: requestHeaders }
+  });
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   let authenticated = false;
@@ -121,7 +126,9 @@ export async function proxy(request: NextRequest) {
       getAll: () => request.cookies.getAll(),
       setAll: (values, headers) => {
         values.forEach(({ name, value }) => request.cookies.set(name, value));
-        response = NextResponse.next({ request });
+        response = NextResponse.next({
+          request: { headers: requestHeaders }
+        });
         values.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
         Object.entries(headers).forEach(([name, value]) => response.headers.set(name, value));
       }

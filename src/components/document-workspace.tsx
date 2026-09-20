@@ -1,11 +1,13 @@
 "use client";
 
-import { createClient } from "@supabase/supabase-js";
 import { useMemo, useState } from "react";
 import type { DocumentRequirement, StudentDocument } from "@/lib/premium-workspace";
-
-const MAX_BYTES = 52_428_800;
-const ACCEPT = ".pdf,.jpg,.jpeg,.png,.doc,.docx";
+import {
+  createStudentDocumentStorageClient,
+  UPLOAD_DOCS_ACCEPT,
+  uploadStudentDocument,
+  validateUploadFile
+} from "@/features/upload-your-docs/upload-document";
 
 function latestActive(requirement: DocumentRequirement): StudentDocument | undefined {
   return [...(requirement.student_documents ?? [])]
@@ -13,25 +15,12 @@ function latestActive(requirement: DocumentRequirement): StudentDocument | undef
     .sort((a, b) => b.version - a.version)[0];
 }
 
-async function sha256Hex(file: File): Promise<string> {
-  const buffer = await file.arrayBuffer();
-  const digest = await crypto.subtle.digest("SHA-256", buffer);
-  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
-}
-
 type LocalSelection = { requirementId: string; file: File; previewUrl: string | null };
 
 export function DocumentWorkspace({ requirements, readOnly = false }: { requirements: DocumentRequirement[]; readOnly?: boolean }) {
   const [message, setMessage] = useState("");
   const [selection, setSelection] = useState<LocalSelection | null>(null);
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-    ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    ?? "";
-  const storageClient = useMemo(
-    () => (supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey, { auth: { persistSession: false, autoRefreshToken: false } }) : null),
-    [supabaseUrl, supabaseKey]
-  );
+  const storageClient = useMemo(() => createStudentDocumentStorageClient(), []);
 
   function clearSelection() {
     setSelection((current) => {
@@ -42,8 +31,9 @@ export function DocumentWorkspace({ requirements, readOnly = false }: { requirem
 
   function selectLocal(requirementId: string, file: File | undefined) {
     if (!file) return;
-    if (file.size < 1 || file.size > MAX_BYTES) {
-      setMessage("Use a PDF, JPG, PNG, DOC, or DOCX file up to 50 MB.");
+    const invalid = validateUploadFile(file);
+    if (invalid) {
+      setMessage(invalid);
       return;
     }
     clearSelection();
@@ -55,67 +45,19 @@ export function DocumentWorkspace({ requirements, readOnly = false }: { requirem
   async function uploadSelected() {
     if (!selection || !storageClient) return setMessage("Unable to upload right now.");
     const { requirementId, file } = selection;
-    setMessage("Authorizing upload…");
-    let sessionId: string | null = null;
-    try {
-      const authResponse = await fetch("/api/premium/documents/upload-session", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          requirement_id: requirementId,
-          filename: file.name,
-          mime_type: file.type,
-          byte_size: file.size
-        })
-      });
-      const authResult = await authResponse.json();
-      if (!authResponse.ok) return setMessage(authResult.message ?? "Unable to authorize upload.");
-      sessionId = authResult.session_id as string;
-
-      setMessage("Uploading directly to secure storage…");
-      const { error: uploadError } = await storageClient.storage
-        .from(authResult.bucket)
-        .uploadToSignedUrl(authResult.path, authResult.token, file, {
-          contentType: file.type,
-          upsert: false
-        });
-      if (uploadError) {
-        await fetch("/api/premium/documents/finalize", {
-          method: "DELETE",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ session_id: sessionId })
-        });
-        return setMessage(uploadError.message || "Unable to upload the document.");
-      }
-
-      setMessage("Finalizing…");
-      const hash = await sha256Hex(file);
-      const finalizeResponse = await fetch("/api/premium/documents/finalize", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ session_id: sessionId, sha256: hash })
-      });
-      const finalizeResult = await finalizeResponse.json();
-      if (!finalizeResponse.ok) return setMessage(finalizeResult.message ?? "Unable to finalize the document.");
-      clearSelection();
-      window.location.reload();
-    } catch (error) {
-      if (sessionId) {
-        await fetch("/api/premium/documents/finalize", {
-          method: "DELETE",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ session_id: sessionId })
-        }).catch(() => undefined);
-      }
-      setMessage(error instanceof Error ? error.message : "Unable to upload the document.");
-    }
+    const result = await uploadStudentDocument({
+      requirementId,
+      file,
+      storageClient,
+      onStatus: setMessage
+    });
+    if (!result.ok) return setMessage(result.message);
+    clearSelection();
+    window.location.reload();
   }
 
-  async function open(documentId: string) {
-    const response = await fetch(`/api/premium/documents/${documentId}`);
-    const result = await response.json();
-    if (!response.ok) return setMessage(result.message);
-    window.location.assign(result.url);
+  function open(documentId: string) {
+    window.open(`/api/premium/documents/${documentId}?redirect=1`, "_blank", "noopener,noreferrer");
   }
 
   async function requestDeletion(documentId: string) {
@@ -126,7 +68,8 @@ export function DocumentWorkspace({ requirements, readOnly = false }: { requirem
     window.location.reload();
   }
 
-  const groups = ["required", "additional"];
+  const groups = ["required", "additional"] as const;
+
   return <>
     <p role="status" className="premium-document-status">{message}</p>
     {selection && !readOnly && <section className="premium-document-group" aria-label="Selected file preview">
@@ -148,22 +91,37 @@ export function DocumentWorkspace({ requirements, readOnly = false }: { requirem
           <tbody>
             {requirements.filter((item) => group === "required" ? item.requirement_kind === "required" : item.requirement_kind !== "required").map((requirement) => {
               const document = latestActive(requirement);
-              return <tr key={requirement.id}>
+              const canView = Boolean(document && document.scan_status === "clean");
+              return <tr key={requirement.id} data-doc-state={document ? "uploaded" : "empty"}>
                 <td>{requirement.document_type}</td>
                 <td>{document ? new Date(document.uploaded_at).toLocaleDateString("en-GB") : <span className="blank-dots" />}</td>
-                <td>{document ? <span className={document.qc_status === "approved" ? "status-approved" : document.qc_status === "in_draft" ? "status-InDraft" : "status-pending"}>{document.qc_status.replace("_", " ")}</span> : "Missing"}</td>
+                <td>{document ? <span className={document.qc_status === "approved" ? "status-approved" : document.qc_status === "in_draft" ? "status-InDraft" : "status-pending"}>{document.qc_status.replace("_", " ")}</span> : <span className="blank-dots" />}</td>
                 <td>
-                  <div className="premium-document-actions">
-                    {document && document.scan_status === "clean" && <button type="button" className="btn btn-black-outline" onClick={() => void open(document.id)}>View</button>}
-                    {!readOnly ? (
-                      <>
-                        <label className="btn btn-black-upload">{document ? "Re-upload" : "Upload"}
-                          <input hidden type="file" accept={ACCEPT} onChange={(event) => selectLocal(requirement.id, event.target.files?.[0])} />
-                        </label>
-                        {document && <button type="button" className="premium-delete-document" onClick={() => void requestDeletion(document.id)}>Request deletion</button>}
-                      </>
-                    ) : null}
-                  </div>
+                  {document ? (
+                    <div className="pgs-upload-docs__actions premium-document-actions" data-mode="view">
+                      {canView ? (
+                        <button type="button" className="btn btn-black-outline" onClick={() => void open(document.id)}>View</button>
+                      ) : (
+                        <span className="pgs-upload-docs__scan-wait">Scan pending</span>
+                      )}
+                      {!readOnly ? (
+                        <>
+                          <label className="btn btn-black-upload">Re-upload
+                            <input hidden type="file" accept={UPLOAD_DOCS_ACCEPT} onChange={(event) => selectLocal(requirement.id, event.target.files?.[0])} />
+                          </label>
+                          <button type="button" className="premium-delete-document" onClick={() => void requestDeletion(document.id)}>Request deletion</button>
+                        </>
+                      ) : null}
+                    </div>
+                  ) : !readOnly ? (
+                    <div className="pgs-upload-docs__actions premium-document-actions" data-mode="upload">
+                      <label className="btn btn-black-upload">Upload
+                        <input hidden type="file" accept={UPLOAD_DOCS_ACCEPT} onChange={(event) => selectLocal(requirement.id, event.target.files?.[0])} />
+                      </label>
+                    </div>
+                  ) : (
+                    <span className="blank-dots" />
+                  )}
                 </td>
               </tr>;
             })}

@@ -1,0 +1,324 @@
+/**
+ * #premiumNonMedical path — owned CSS (N4).
+ * Same row as medical path. Headline is this page's Figma.
+ * Desktop: copy left, card right. Phone ≤600 stacks. iPad keeps the desktop row.
+ *
+ * Sizes and gaps are this page's Figma, not the medical page.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: body 14px · question 12.8px · stack lead 14px · list 11.2px · note 11.2px
+ * ISSUE: below the readable floor
+ * PGS IMPLEMENTATION: those sit at 16px. Recruiter stays 17.6px. Card title stays 51.2px.
+ */
+
+.premium-nonmedical-path {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 12px 0 48px;
+  background: #fff;
+  overflow-x: clip;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-path *,
+.premium-nonmedical-path *::before,
+.premium-nonmedical-path *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-path__inner {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+}
+
+.premium-nonmedical-path__cue {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 0 8px;
+  color: #000;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+  text-align: right;
+}
+
+.premium-nonmedical-path__cue-lines span {
+  display: block;
+}
+
+.premium-nonmedical-path__arrow {
+  display: none;
+  width: 88px;
+  height: auto;
+}
+
+.premium-nonmedical-path__stage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  width: 100%;
+  min-width: 0;
+}
+
+.premium-nonmedical-path__copy {
+  flex: 1 1 420px;
+  min-width: 0;
+  max-width: 440px;
+}
+
+.premium-nonmedical-path__headline,
+.premium-nonmedical-path__body,
+.premium-nonmedical-path__recruiter,
+.premium-nonmedical-path__question,
+.premium-nonmedical-path__stack-lead,
+.premium-nonmedical-path__points,
+.premium-nonmedical-path__card-title,
+.premium-nonmedical-path__crossed,
+.premium-nonmedical-path__chosen,
+.premium-nonmedical-path__hands,
+.premium-nonmedical-path__note {
+  margin: 0;
+}
+
+.premium-nonmedical-path__headline {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-path__card-title span {
+  display: block;
+}
+
+.premium-nonmedical-path__body,
+.premium-nonmedical-path__question,
+.premium-nonmedical-path__stack-lead {
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.premium-nonmedical-path__body {
+  margin-top: 12.8px;
+}
+
+.premium-nonmedical-path__recruiter {
+  margin-top: 40px;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-path__question {
+  margin-top: 0;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-path__stack {
+  display: flex;
+  flex-direction: column;
+  margin-top: 28px;
+  margin-left: 48px;
+  padding-left: 12px;
+  border-left: 2px solid #111;
+}
+
+.premium-nonmedical-path__stack-lead {
+  font-weight: 300;
+}
+
+.premium-nonmedical-path__points {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-nonmedical-path__points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--pgs-type-floor, 16px);
+  line-height: 1.3;
+}
+
+.premium-nonmedical-path__swatch {
+  flex: 0 0 auto;
+  width: 14.4px;
+  height: 14.4px;
+  border-radius: 3.2px;
+}
+
+.premium-nonmedical-path__card {
+  flex: 0 0 256.8px;
+  width: 256.8px;
+  min-height: 447.2px;
+  padding: 63.2px 16px 28px;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  background: #d9d9d9;
+}
+
+.premium-nonmedical-path__card-title {
+  color: #000;
+  font-size: 51.2px;
+  font-weight: 600;
+  line-height: 44px;
+}
+
+.premium-nonmedical-path__crossed,
+.premium-nonmedical-path__chosen,
+.premium-nonmedical-path__hands {
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 20.8px;
+  font-weight: 300;
+  line-height: 36px;
+}
+
+.premium-nonmedical-path__crossed {
+  margin-top: 19px;
+  text-decoration: line-through;
+  text-decoration-color: #e23b2f;
+  text-decoration-thickness: 3px;
+}
+
+.premium-nonmedical-path__chosen {
+  margin-top: 4.8px;
+}
+
+.premium-nonmedical-path__hands {
+  margin-top: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 19.2px;
+  line-height: 36px;
+}
+
+.premium-nonmedical-path__note {
+  width: 86%;
+  margin: 20px auto 0;
+  padding: 14px 12px 16px;
+  background: #a789ff;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.25;
+  transform: rotate(-8deg);
+}
+
+.premium-nonmedical-path__mark {
+  display: block;
+  margin-top: 8px;
+  font-size: var(--pgs-type-floor, 16px);
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-path {
+    padding: 8px 0 32px;
+  }
+
+  .premium-nonmedical-path__inner {
+    width: 100%;
+    max-width: 100%;
+    /* Figma copy sits at 63px on a 390 frame. */
+    padding-inline: 16%;
+  }
+
+  .premium-nonmedical-path__cue {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-path__arrow {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .premium-nonmedical-path__headline {
+    line-height: normal;
+  }
+
+  .premium-nonmedical-path__body {
+    margin-top: 26px;
+  }
+
+  .premium-nonmedical-path__recruiter {
+    margin-top: 26px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+  }
+
+  .premium-nonmedical-path__question {
+    margin-top: 8px;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-path__stack {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+
+  .premium-nonmedical-path__stage {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 44px;
+  }
+
+  .premium-nonmedical-path__copy {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .premium-nonmedical-path__card {
+    flex: none;
+    align-self: center;
+    width: 205px;
+    max-width: 100%;
+    min-height: 358px;
+    padding: 40px 12px 20px;
+  }
+
+  .premium-nonmedical-path__card-title {
+    font-size: 41px;
+    line-height: 35.2px;
+  }
+
+  .premium-nonmedical-path__crossed,
+  .premium-nonmedical-path__chosen,
+  .premium-nonmedical-path__hands {
+    font-size: 16.6px;
+    line-height: 1.4;
+  }
+
+  .premium-nonmedical-path__note {
+    width: 72%;
+    margin-left: auto;
+    padding: 10px 10px 12px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-path__inner {
+    padding-inline: 24px;
+  }
+
+  .premium-nonmedical-path__stage {
+    flex-wrap: nowrap;
+  }
+
+  .premium-nonmedical-path__card {
+    flex-shrink: 0;
+  }
+}
