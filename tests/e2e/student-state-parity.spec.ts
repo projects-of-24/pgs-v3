@@ -19,7 +19,7 @@ async function toggleSidebar(page:import("@playwright/test").Page){
 }
 
 async function navigateToUsmle(page:import("@playwright/test").Page,projectName:string){
-  if(projectName==="mobile"){await page.locator('button.btn-toggle-mobile:has(img[src*="toggle-lines"])').click();await page.locator('#drawer a[href="/Usmlerotation"]').click();}
+  if(projectName==="mobile"){await page.locator("header button.pgs-header-menu").click();await page.locator('#drawer a[href="/Usmlerotation"]').click();}
   else await page.locator('header .mobile-none a[href="/Usmlerotation"]').click();
   await expect(page).toHaveURL(/\/usmlerotation$/i);
 }
@@ -77,7 +77,7 @@ test.describe("isolated logout presentation",()=>{
     await page.goto("/student/dashboard");
     if(await page.locator("#toggleBtn").getAttribute("aria-expanded")!=="true")await page.locator("#toggleBtn").click();
     await page.locator("#sidebar").getByRole("link",{name:"Logout",exact:true}).click();
-    await expect(page).toHaveURL(/\/$/);await expect(page.locator('[data-legacy-page="home"]')).toHaveAttribute("data-student-state","anonymous");await expect(page.locator('header a.btn-login[href="/Login"]',{hasText:"Login"})).toHaveCount(2);await expect(page.locator("header #ppWrapper")).toHaveCount(1);await expect(page.locator("header #exploreCountriesWrapper")).toHaveCount(1);await toggleSidebar(page);
+    await expect(page).toHaveURL(/\/$/);await expect(page.locator('[data-legacy-page="home"]')).toHaveAttribute("data-student-state","anonymous");await expect(page.locator('header a.btn-login[href="/login"]',{hasText:"Login"})).toHaveCount(2);await expect(page.locator("header #ppWrapper")).toHaveCount(1);await expect(page.locator("header #exploreCountriesWrapper")).toHaveCount(1);await toggleSidebar(page);
   });
 });
 

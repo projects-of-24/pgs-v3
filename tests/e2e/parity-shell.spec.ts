@@ -9,7 +9,7 @@ async function expectAnonymousHeader(page:import("@playwright/test").Page){
   await expect(page.locator("header a",{hasText:"#purplePremium"})).toHaveCount(1);
   await expect(page.locator("header a",{hasText:"#exploreCountries"})).toHaveCount(1);
   await expect(page.locator("header .pgs-auth-account")).toHaveCount(0);
-  await expect(page.locator('header a.btn-login[href="/Login"]',{hasText:"Login"})).toHaveCount(2);
+  await expect(page.locator('header a.btn-login[href="/login"]',{hasText:"Login"})).toHaveCount(2);
 }
 
 async function toggleRetainedSidebar(page:import("@playwright/test").Page){
@@ -69,13 +69,13 @@ test("notification panel, fixed sidebar and drawer retain their legacy states", 
   await expect(page.locator("[data-legacy-page]")).toHaveAttribute("data-interactions-ready", "true");
   await toggleRetainedSidebar(page);
   if (testInfo.project.name === "mobile") {
-    await page.locator('button.btn-toggle-mobile:has(img[src*="toggle-lines"])').click();
+    await page.locator("header button.pgs-header-menu").click();
     await expect(page.locator("#drawer")).toHaveClass(/active/);
     await expect(page.locator("#overlay")).toHaveClass(/active/);
-    await page.locator("#drawer .btn-toggle-mobile").click();
+    await page.locator("#drawer .pgs-drawer-close").click();
     await expect(page.locator("#drawer")).not.toHaveClass(/active/);
-    await page.locator(".mobile-notification-wrapper").click();
-    await expect(page.locator("#siteNotificationMenuMobile")).toHaveClass(/open/);
+    await page.locator(".header-notification-wrapper").click();
+    await expect(page.locator("#siteNotificationMenuDesktop")).toHaveClass(/open/);
   } else {
     await page.locator(".header-notification-wrapper").click();
     await expect(page.locator("#siteNotificationMenuDesktop")).toHaveClass(/open/);
@@ -94,7 +94,8 @@ test("Premium application surfaces are absent while the destination contact acti
 test("USA destination keeps its complex tabbed content", { tag: "@smoke" }, async ({ page }) => {
   await goto(page, "/countriesusa");
   await expect(page.locator(".countriesUSA")).toBeVisible();
-  await expect(page.getByText("Comprehensive Guide to Studying in the USA", { exact: true })).toBeVisible();
+  await expect(page.getByText("Comprehensive Guide to", { exact: true })).toBeVisible();
+  await expect(page.getByText("Studying in the USA", { exact: true })).toBeVisible();
   const studyCost = page.locator('[data-filter=".tab_study_cost"]');
   await studyCost.click();
   await expect(page.locator(".grid-item.tab_study_cost").first()).toBeVisible();

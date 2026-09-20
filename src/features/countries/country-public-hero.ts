@@ -1,4 +1,5 @@
 import { countryToDetail, type CountryDraft } from "@/features/admin-cms/country-preview-map";
+import { getSupabasePublicConfig } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   getCountryContent,
@@ -95,6 +96,9 @@ export async function getPublishedCountryHero(route: string): Promise<CountryHer
   const slug = countrySlugFromPublicRoute(route);
   const defaults = defaultCountryHeroImages(slug);
   if (!slug) return defaults;
+
+  // Public destinations must render fixture/Figma defaults when Auth/CMS env is absent (e.g. CI smoke).
+  if (!getSupabasePublicConfig()) return defaults;
 
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase

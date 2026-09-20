@@ -22,7 +22,7 @@ test.describe("anonymous home source",()=>{
     await expect(page.locator(anonymousSource)).toHaveCount(1);
     await expect(page.locator(identityCard)).toHaveCount(0);
     await expect(page.getByText(/welcome to #PGS/i)).toHaveCount(0);
-    await expect(page.locator('header a.btn-login[href="/Login"]',{hasText:"Login"})).toHaveCount(2);
+    await expect(page.locator('header a.btn-login[href="/login"]',{hasText:"Login"})).toHaveCount(2);
   });
 
   test("/simplehome and /purplepremiumhome remain standalone routes",async({page})=>{
