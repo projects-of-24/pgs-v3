@@ -1,10 +1,11 @@
 /**
- * Preview QC — #premiumNonMedical desktop hero only.
- * Locked chrome. Live `/purplenonmedical` stays Hostinger until a named cutover.
+ * Preview QC — #premiumNonMedical modular body lab.
+ * Same body as live `/purplenonmedical`. Live cutover done; Hostinger HTML not served.
  */
 import { LegacyPage } from "@/components/legacy-page";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { PremiumNonmedicalPreviewShell } from "@/features/premium-nonmedical/premium-nonmedical-preview-shell";
+import { getUsmleRotationPicksCourses } from "@/features/usmlerotation/get-usmle-rotation-picks-courses";
 import {
   applyUnivMeetToHeaderHtml,
   buildPublicStripHtml
@@ -29,9 +30,10 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function PurpleNonmedicalPreviewPage() {
-  const [state, univMeet] = await Promise.all([
+  const [state, univMeet, picksCourses] = await Promise.all([
     resolveStudentExperience(),
-    getPublishedUnivMeet()
+    getPublishedUnivMeet(),
+    getUsmleRotationPicksCourses()
   ]);
   const studentState = state?.kind ?? "anonymous";
   const helloAvatar =
@@ -76,7 +78,17 @@ export default async function PurpleNonmedicalPreviewPage() {
   return (
     <LegacyPage page="preview-purplenonmedical" studentState={studentState}>
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
-      <PremiumNonmedicalPreviewShell />
+      <PremiumNonmedicalPreviewShell
+        picks={picksCourses.map((row) => ({
+          id: row.card.id,
+          href: row.card.href,
+          cta: row.card.cta,
+          blurb: row.card.blurbDesktop,
+          blurbMobile: row.card.blurbMobile,
+          imageSrc: row.card.imageSrc,
+          imageAlt: row.card.imageAlt
+        }))}
+      />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
     </LegacyPage>
   );

@@ -1,0 +1,75 @@
+/**
+ * Kick line — U9.
+ * Centered pair under the student quote. Desktop column 693px.
+ * Phone uses the Figma 64px inset, not the 85% rail.
+ * iPad reuses this desktop pair.
+ */
+
+.premium-plab-kick {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  /* Student quote already has 36px under it. 200 + 36 = 236px below the quote. */
+  padding: 200px 16px 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  text-align: center;
+}
+
+.premium-plab-kick *,
+.premium-plab-kick *::before,
+.premium-plab-kick *::after {
+  box-sizing: border-box;
+}
+
+.premium-plab-kick__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20.8px;
+  width: min(693px, 100%);
+  margin-inline: auto;
+}
+
+.premium-plab-kick__label {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 22.4px;
+  letter-spacing: 0;
+}
+
+.premium-plab-kick__body {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 600px) {
+  .premium-plab-kick {
+    /* Student row already has 28px under it. 78 + 28 = 106px below that row. */
+    padding: 78px 64px 0;
+  }
+
+  .premium-plab-kick__inner {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .premium-plab-kick__label {
+    font-size: 24px;
+    line-height: 22.4px;
+  }
+
+  .premium-plab-kick__body {
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+}

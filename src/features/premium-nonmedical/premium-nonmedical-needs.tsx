@@ -5,6 +5,7 @@
  * Quote and photo are the next block.
  */
 import { PREMIUM_NONMEDICAL_CALENDAR, PREMIUM_NONMEDICAL_NEEDS } from "./content";
+import { PremiumNonmedicalStudent } from "./premium-nonmedical-student";
 import "./premium-nonmedical-needs.css";
 
 function Pill({ lines }: { lines: string[] }) {
@@ -95,6 +96,7 @@ export function PremiumNonmedicalNeeds() {
           <p>{c.noteBody}</p>
         </div>
         </div>
+        <PremiumNonmedicalStudent />
       </div>
     </div>
   );

@@ -1,0 +1,372 @@
+/**
+ * explore Countries country switcher — owned CSS (E2).
+ * Desktop `17056:19694` (card 520.8×524.8 + chips). Phone card `466:7966` (290×532) + chips under.
+ * Selected chip fill `#8d66ff`. CTA green `#0abf8c`.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: mobile CTA label ~14px
+ * ISSUE: below readable floor for controls
+ * PGS IMPLEMENTATION: CTA at `--pgs-type-floor` (16px). Green look stays.
+ */
+
+.explore-countries-switcher {
+  --explore-chip-selected: #8d66ff;
+  --explore-cta-green: #0abf8c;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 32px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.explore-countries-switcher *,
+.explore-countries-switcher *::before,
+.explore-countries-switcher *::after {
+  box-sizing: border-box;
+}
+
+.explore-countries-switcher__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.explore-countries-switcher__row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 80px;
+  width: 100%;
+  max-width: 725px;
+}
+
+.explore-countries-switcher__card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 520.8px;
+  max-width: 100%;
+  height: 524.8px;
+  border-radius: 16px;
+  background: #000;
+  color: #fff;
+  overflow: visible;
+}
+
+.explore-countries-switcher__media {
+  position: absolute;
+  top: 10.4px;
+  left: 8.8px;
+  width: 503.2px;
+  max-width: calc(100% - 17.6px);
+  height: 274.4px;
+  border-radius: 6.4px;
+  overflow: hidden;
+}
+
+.explore-countries-switcher__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.explore-countries-switcher__body {
+  position: absolute;
+  left: 20.8px;
+  right: 20.8px;
+  top: 308.8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.explore-countries-switcher__titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+  color: #fff;
+}
+
+.explore-countries-switcher__study-in {
+  margin: 0;
+  font-size: 51.2px;
+  line-height: 64.8px;
+  text-transform: lowercase;
+}
+
+.explore-countries-switcher__country-wrap {
+  margin: 0;
+}
+
+.explore-countries-switcher__country {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 76.8px;
+  line-height: 64.8px;
+  text-transform: lowercase;
+}
+
+.explore-countries-switcher__country-line {
+  display: block;
+}
+
+.explore-countries-switcher__country-space {
+  display: none;
+}
+
+.explore-countries-switcher__cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6.4px;
+  background: var(--explore-cta-green);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.explore-countries-switcher__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.explore-countries-switcher__swipe {
+  position: absolute;
+  right: 67.2px;
+  bottom: 75.2px;
+  width: 92.8px;
+  height: 92.8px;
+  pointer-events: none;
+  object-fit: cover;
+}
+
+.explore-countries-switcher__chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explore-countries-switcher__chips--desk {
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 5.6px;
+  width: 124.2px;
+}
+
+.explore-countries-switcher__chips--mob {
+  display: none;
+}
+
+.explore-countries-switcher__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 17.6px 9.6px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 86.4px;
+  font-weight: 400;
+  line-height: 64.8px;
+  text-transform: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.explore-countries-switcher__chip.is-selected {
+  background: var(--explore-chip-selected);
+}
+
+.explore-countries-switcher__chip:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+@media (min-width: 1367px) {
+  .explore-countries-switcher {
+    padding: 0 0 48px;
+  }
+}
+
+/* Phone ≤600 — Figma card 290×532, chips row under. No 85% rail until owner says too edgy.
+ * Body frame `466:8018` = 236×109 at top 339. CTA at y=77 inside that frame.
+ * Country is one Figma text (space-joined), not stacked desk lines — stacking shoved CTA into swipe. */
+@media (max-width: 600px) {
+  .explore-countries-switcher {
+    padding: 0 0 28px;
+  }
+
+  .explore-countries-switcher__inner {
+    padding-inline: 0;
+    width: 100%;
+    /* Figma: card bottom y=532 · chips top y=548 → 16px gap */
+    gap: 16px;
+  }
+
+  .explore-countries-switcher__row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 323px;
+    margin-inline: auto;
+  }
+
+  .explore-countries-switcher__card {
+    width: 290px;
+    height: 532px;
+    overflow: hidden;
+  }
+
+  .explore-countries-switcher__media {
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 247px;
+    max-width: 247px;
+    height: 310px;
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  .explore-countries-switcher__body {
+    left: 50%;
+    right: auto;
+    top: 339px;
+    transform: translateX(-50%);
+    width: 236px;
+    height: auto;
+    min-height: 109px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* Figma: titles frame ends y=61 · CTA y=77 → 16px */
+    gap: 16px;
+    z-index: 3;
+  }
+
+  .explore-countries-switcher__titles {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .explore-countries-switcher__study-in {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  /* Figma mobile = one text node (“united kingdom”), not desk stacked lines */
+  .explore-countries-switcher__country {
+    display: block;
+    width: 100%;
+    font-size: 44px;
+    line-height: 0.9;
+  }
+
+  .explore-countries-switcher__country-line {
+    display: inline;
+  }
+
+  .explore-countries-switcher__country-space {
+    display: inline;
+  }
+
+  .explore-countries-switcher__cta {
+    position: static;
+    margin-top: 0;
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 4;
+  }
+
+  .explore-countries-switcher__swipe {
+    left: 91px;
+    right: auto;
+    top: 454px;
+    bottom: auto;
+    width: 74.24px;
+    height: 74.24px;
+    z-index: 2;
+  }
+
+  .explore-countries-switcher__chips--desk {
+    display: none;
+  }
+
+  .explore-countries-switcher__chips--mob {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    width: 323px;
+    max-width: 100%;
+    height: 51.6px;
+    margin-inline: auto;
+  }
+
+  .explore-countries-switcher__chips--mob .explore-countries-switcher__chip {
+    padding: 8.8px 4.8px;
+    font-size: 34px;
+    line-height: 1;
+    min-height: 51.6px;
+  }
+}
+
+/* —— E2b secondary (Mauritius) — desk chips wider for europe/others; mob wrap —— */
+.explore-countries-switcher--secondary .explore-countries-switcher__chips--desk {
+  width: 220.2px;
+}
+
+.explore-countries-switcher--secondary
+  .explore-countries-switcher__chips--desk
+  .explore-countries-switcher__chip {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .explore-countries-switcher--secondary .explore-countries-switcher__chips--mob {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 6px;
+    width: 259px;
+    height: auto;
+    min-height: 0;
+  }
+
+  .explore-countries-switcher--secondary
+    .explore-countries-switcher__chips--mob
+    .explore-countries-switcher__chip {
+    font-size: 48px;
+    line-height: 32.4px;
+    min-height: 0;
+    padding: 8.8px 4.8px;
+  }
+}

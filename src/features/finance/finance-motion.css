@@ -1,0 +1,73 @@
+/**
+ * Finance body motion — owned CSS.
+ * Entrance rises for hero / funding / talk / faq; FAQ panel height ease.
+ * Logo marquee lives in finance-logos.css. Respects prefers-reduced-motion.
+ */
+
+@keyframes finance-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.finance-hero {
+  animation: finance-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.finance-logos {
+  animation: finance-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+.finance-funding {
+  animation: finance-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.finance-talk {
+  animation: finance-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
+}
+
+.finance-faq {
+  animation: finance-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.finance-faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.finance-faq__panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.finance-faq__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.finance-faq__icon {
+  transition: color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finance-hero,
+  .finance-logos,
+  .finance-funding,
+  .finance-talk,
+  .finance-faq {
+    animation: none;
+  }
+
+  .finance-faq__panel {
+    transition: none;
+  }
+
+  .finance-faq__icon {
+    transition: none;
+  }
+}

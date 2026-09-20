@@ -1,0 +1,187 @@
+/**
+ * explore Countries hero headline — owned CSS (E1).
+ * Desktop centered column `17056:19552` (560.8). Phone opening `466:7910` (151).
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: desktop CTA ~11.2px · hint ~12px · mobile lead ~14px · subtitle/hint ~12px
+ * ISSUE: below the readable floor for normal text and controls
+ * PGS IMPLEMENTATION: those sit at `--pgs-type-floor` (16px). Black button look stays.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.explore-countries-hero {
+  --explore-muted: var(--pgs-premium-muted);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 24px;
+  background: #fff;
+  overflow-x: clip;
+  overflow-y: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.explore-countries-hero *,
+.explore-countries-hero *::before,
+.explore-countries-hero *::after {
+  box-sizing: border-box;
+}
+
+.explore-countries-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.explore-countries-hero__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 560.8px;
+  text-align: center;
+}
+
+.explore-countries-hero__title {
+  margin: 0 0 8px;
+  color: #000;
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 41.6px;
+}
+
+.explore-countries-hero__lead {
+  margin: 0;
+  color: var(--explore-muted);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.explore-countries-hero__subtitle {
+  margin: 5.2px 0 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.explore-countries-hero__cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  max-width: 318.4px;
+  margin-top: 28.8px;
+}
+
+.explore-countries-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.explore-countries-hero__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.explore-countries-hero__cta-hint {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (min-width: 1367px) {
+  .explore-countries-hero {
+    padding: 0 0 40px;
+  }
+}
+
+/* Phone ≤600. Figma opening 151 centered. No 85% rail until owner says too edgy. */
+@media (max-width: 600px) {
+  .explore-countries-hero {
+    padding: var(--pgs-premium-mob-hero-pad-top) 0 28px;
+  }
+
+  .explore-countries-hero__inner {
+    padding-inline: 0;
+  }
+
+  .explore-countries-hero__headline {
+    align-self: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+    width: var(--pgs-premium-mob-opening-w);
+    max-width: var(--pgs-premium-mob-opening-w);
+    margin-inline: auto;
+  }
+
+  .explore-countries-hero__title {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 0.9;
+    text-align: left;
+  }
+
+  .explore-countries-hero__lead,
+  .explore-countries-hero__subtitle {
+    margin: 0;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+    letter-spacing: 0.2px;
+    color: #000;
+    text-align: left;
+  }
+
+  .explore-countries-hero__cta-block {
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .explore-countries-hero__cta {
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 8px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .explore-countries-hero__cta-hint {
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+}

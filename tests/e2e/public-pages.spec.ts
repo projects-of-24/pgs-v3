@@ -6,7 +6,7 @@ const publicRoutes = [
   "/about", "/contact", "/countriesaus", "/countriescanada", "/countrieseurope", "/countriesfrance",
   "/countriesgermany", "/countriesmauritius", "/countriesnz", "/countriesothers", "/countriesuk",
   "/cvreadyprogram", "/explorecountries", "/finance", "/scholarship", "/purpleamc", "/purpleplab",
-  "/purpleusme", "/purplenonmedical", "/unitieup", "/usmlerotation", "/purpleboard", "/purpleevents",
+  "/purpleusmle", "/purplenonmedical", "/unitieup", "/usmlerotation", "/purpleboard", "/purpleevents",
   "/purpleevents/session/10", "/programsfull/program/preview", "/studentresources", "/purplepremiumhome",
   "/simplehome", "/login", "/forgot_password", "/reset_password", "/change_password", "/singup", "/error_404"
 ] as const;

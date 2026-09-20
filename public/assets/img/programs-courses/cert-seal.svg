@@ -1,0 +1,8 @@
+<svg width="101.854" height="122.171" viewBox="0 0 101.854 122.171" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Figma 17072:11546 — ribbon under medal, transparent bg -->
+  <g transform="translate(0 54.874)">
+    <path d="M78.1728 0H50.9272H23.6918L0 52.5816L23.6816 43.6154L32.6478 67.2971L50.9272 26.7146L69.2067 67.2971L78.1728 43.6154L101.854 52.5816L78.1728 0Z" fill="#2298FF"/>
+  </g>
+  <circle cx="50.805" cy="36.95" r="36.95" fill="#FFA629"/>
+  <circle cx="50.979" cy="37.128" r="28.956" fill="#FFE27C"/>
+</svg>

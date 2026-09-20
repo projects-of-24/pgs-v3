@@ -12,7 +12,11 @@ description: >-
 
 **Backend / API / DB wire gates:** [`pgs-backend-phase-wire/SKILL.md`](../pgs-backend-phase-wire/SKILL.md) — map first · one gate · day-1 security · living Kanban MD.
 
+**Events / courses templates:** [`docs/PURPLE-EVENTS-ARCHITECTURE.md`](../../docs/PURPLE-EVENTS-ARCHITECTURE.md) — block-by-block; fixtures now; Supabase rebuild later. E8 Upcoming: skill `pgs-upcoming-sessions`.
+
 **Layout / edges / responsive:** always run [`pgs-scout-what-why-how`](../pgs-scout-what-why-how/SKILL.md) before CSS — scout live + preview, WHAT · WHY · HOW, then this propose block.
+
+**Chrome lock:** do not reopen React chrome remount (`PublicHeader` / drop `dangerouslySetInnerHTML`) during body gates. That pass is parked until after Events + Countries (see master workflow). Body work uses the existing shared chrome mount pattern.
 
 ## Rule (verbatim)
 
@@ -23,6 +27,7 @@ description: >-
 1. **Do not make your own assumptions.** If something is unclear (breakpoint, Hostinger parity, which surface, invent vs keep), ask. Do not invent a constraint the owner did not state.
 2. **Owner is implementing now.** Do **not** treat Hostinger / legacy freeze as a default blocker unless the owner says so for that task. Hostinger CSS is **reference only** for public chrome — port into `src/app/globals.css` (see `pgs-modular-public-chrome` / `docs/MODULAR-PUBLIC-FRONTEND.md`).
 3. **Explain the plan → wait for owner approval (`GO AHEAD` / yes) → then change code.** Never silently edit, “quick fix,” or ship CSS/JS/HTML before approval.
+4. **Content pass, then code.** On a position or layout correction: assess the named content relationship first (under which card, which edge, which band). No CSS in that pass. Code only after the owner confirms the assessment. One relationship per edit. See `pgs-master-workflow`.
 4. If you already started editing without approval: **revert immediately**, then propose.
 
 ## Required proposal format (every code change)

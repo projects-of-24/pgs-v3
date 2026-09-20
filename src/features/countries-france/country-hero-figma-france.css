@@ -1,0 +1,220 @@
+/**
+ * Country hero + two badges — Figma V6 sizes, chrome-style responsive.
+ * Method (ref locked globals modular chrome — DO NOT EDIT that section):
+ *   desktop base → iPad overrides → mobile overrides (“from the top”).
+ * Bands: >1366 desktop · 601–1366 iPad · ≤600 mobile.
+ * Root is a div (not section) so global `section` padding cannot own top spacing.
+ * Scoped to `.country-hero-figma-france` only — does not use Hostinger hero classes.
+ */
+
+.country-hero-figma-france {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  /* Own vertical spacing from the top — no global section padding */
+  padding-top: 0;
+  padding-bottom: 0;
+  /* iPad/mobile default inset — desktop overrides start/end below */
+  padding-inline: clamp(12px, 2vw, 24px);
+  background: #fff;
+  overflow-x: clip;
+}
+
+/*
+ * Desktop >1366 — start/end only (still fluid width between them).
+ * Left → #feed start. Right → #exploreCountries end (not Login).
+ * Tokens mirror locked header bar / logo / header-right (bell + Login sit outside).
+ */
+@media (min-width: 1367px) {
+  .country-hero-figma-france {
+    /* Left: bar margin + pad + logo + header-left gap (= #feed start) */
+    padding-left: calc(10px + 28px + 173px + 45px);
+    /* Right: bar margin + pad + gap + bell + gap + Login (= end under #exploreCountries) */
+    padding-right: calc(10px + 12px + 18px + 27px + 18px + 88px + 24px);
+  }
+}
+
+/* ——— Desktop base (>1366 and cascade default) ——— */
+.country-hero-figma-france__stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.country-hero-figma-france__badges {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  gap: 4.8px;
+  padding: 6.4px;
+  margin: 0;
+  /* Figma desktop: ~180px inset from hero right */
+  margin-right: clamp(0px, 13%, 180px);
+  margin-bottom: 19px;
+  box-sizing: border-box;
+  border-radius: 12.8px;
+  pointer-events: none;
+  max-width: 100%;
+}
+
+.country-hero-figma-france__flag {
+  display: block;
+  width: 46.4px;
+  height: 24.433px;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.country-hero-figma-france__badge {
+  display: block;
+  width: 62.4px;
+  height: 41.6px;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+  border-radius: 6.4px;
+  overflow: hidden;
+}
+
+.country-hero-figma-france__banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 303px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12.8px;
+  background: #000;
+  box-sizing: border-box;
+}
+
+.country-hero-figma-france__hero {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.country-hero-figma-france__hero--mobile {
+  display: none;
+}
+
+/*
+ * iPad 601–1366 — portrait mobile image; sizes = 110% of prior iPad tokens
+ * (calculated expand, not transform: scale). Badges→banner gap stays 16px.
+ * Pull stack up so badge top aligns with #toggleBtn top (strip toggle pill).
+ */
+@media (max-width: 1366px) and (min-width: 601px) {
+  .country-hero-figma-france {
+    /* Visual Δ badges→toggle ≈62px; html zoom 0.9 → CSS ≈ −69px */
+    margin-top: -69px;
+  }
+
+  .country-hero-figma-france__stack {
+    width: 100%;
+    max-width: min(323.4px, 100%); /* 294 × 1.1 */
+  }
+
+  .country-hero-figma-france__badges {
+    gap: 3.696px; /* 3.36 × 1.1 */
+    padding: 4.928px; /* 4.48 × 1.1 */
+    margin-right: clamp(0px, 1.5vw, 8.8px);
+    margin-bottom: 16px; /* gap unchanged */
+    border-radius: 9.856px; /* 8.96 × 1.1 */
+  }
+
+  .country-hero-figma-france__flag {
+    width: 35.728px; /* 32.48 × 1.1 */
+    height: 18.813px; /* 17.103 × 1.1 */
+  }
+
+  .country-hero-figma-france__badge {
+    width: 48.048px; /* 43.68 × 1.1 */
+    height: 32.032px; /* 29.12 × 1.1 */
+    border-radius: 4.928px; /* 4.48 × 1.1 */
+  }
+
+  .country-hero-figma-france__banner {
+    width: 100%;
+    max-width: min(323.4px, 100%); /* 294 × 1.1 */
+    height: auto;
+    aspect-ratio: 210 / 357;
+    border-radius: 12.32px; /* 11.2 × 1.1 */
+  }
+
+  .country-hero-figma-france__hero--desktop {
+    display: none;
+  }
+
+  .country-hero-figma-france__hero--mobile {
+    display: block;
+    object-position: center top;
+  }
+}
+
+/*
+ * Mobile ≤600 — Figma ceiling 210×357; same fluid-inside-band pattern.
+ * Pull stack up so badge top aligns with #toggleBtn top (same idea as iPad).
+ * Gap badges→banner unchanged. No Hostinger / locked chrome edits.
+ */
+@media (max-width: 600px) {
+  .country-hero-figma-france {
+    /* Align badge top with #toggleBtn at top: 20px (mobile chrome) */
+    margin-top: -72px;
+  }
+
+  .country-hero-figma-france__stack {
+    width: 100%;
+    max-width: min(210px, 100%);
+  }
+
+  .country-hero-figma-france__badges {
+    gap: 2.88px;
+    padding: 3.84px;
+    margin-right: 0;
+    margin-bottom: 9px;
+    border-radius: 7.68px;
+  }
+
+  .country-hero-figma-france__flag {
+    width: 27.84px;
+    height: 14.66px;
+  }
+
+  .country-hero-figma-france__badge {
+    width: 37.44px;
+    height: 24.96px;
+    border-radius: 3.84px;
+  }
+
+  .country-hero-figma-france__banner {
+    width: 100%;
+    max-width: min(210px, 100%);
+    height: auto;
+    aspect-ratio: 210 / 357;
+    border-radius: 8px;
+  }
+
+  .country-hero-figma-france__hero--desktop {
+    display: none;
+  }
+
+  .country-hero-figma-france__hero--mobile {
+    display: block;
+    object-position: center top;
+  }
+}

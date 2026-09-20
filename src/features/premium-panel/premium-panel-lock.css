@@ -1,0 +1,50 @@
+/**
+ * Premium panel lock — shared size/position tokens (fluid clamp).
+ * Owner lock 2026-09-09: Scholarship S1 QC → reuse on #purplepremium section pages.
+ *
+ * Scouted hard px (authority) → fluid clamp (owner pick):
+ * Desktop panel 877 / min-h 490 / media 629×343
+ * Mobile opening 151 / panel 290×450 / media h 357
+ * Desktop page start ≈ 20px under #univMeet (74 CSS px under html zoom 0.9)
+ * Mobile hero pad-top 38
+ *
+ * Bands: >1366 desktop · ≤600 mobile · 601–1366 deferred.
+ * Import this file from any page that reuses the mauve “Step into #purplepremium” panel.
+ */
+
+:root {
+  /* Shared chrome pull-up (closed #toggleBtn) */
+  --pgs-premium-shell-pull: calc(-1 * clamp(88px, 11vw, 157px));
+
+  /* Desktop page position — spacer under shell top ≈ univMeet top */
+  --pgs-premium-desk-univ-gap: clamp(56px, 4.8vw, 74px);
+
+  /* Desktop panel */
+  --pgs-premium-desk-panel-max: clamp(640px, 55vw, 877px);
+  --pgs-premium-desk-panel-min-h: clamp(380px, 32vw, 490px);
+  --pgs-premium-desk-media-w: clamp(420px, 40vw, 629px);
+  --pgs-premium-desk-media-h: clamp(240px, 22vw, 343px);
+  --pgs-premium-desk-brand-size: clamp(56px, 6vw, 96px);
+  --pgs-premium-desk-tag-size: clamp(18px, 1.8vw, 28px);
+  --pgs-premium-desk-trust-size: clamp(16px, 1.4vw, 22px);
+
+  /* Mobile opening + panel (≤600) — owner DevTools lock 2026-09-09 */
+  --pgs-premium-mob-rail: 85%;
+  --pgs-premium-mob-opening-w: clamp(140px, 38.7vw, 151px);
+  --pgs-premium-mob-hero-pad-top: clamp(20px, 9.7vw, 38px);
+  --pgs-premium-mob-panel-w: clamp(260px, 74.4vw, 290px);
+  --pgs-premium-mob-panel-h: clamp(400px, 115.4vw, 450px);
+  --pgs-premium-mob-media-h: clamp(300px, 91.5vw, 357px);
+  --pgs-premium-mob-brand-size: clamp(26px, 7.7vw, 30px);
+  --pgs-premium-mob-title-size: clamp(28px, 10.7vw, 38px);
+  /* Readable floor 14px on body/explainer/subtitle */
+  --pgs-premium-mob-lead-size: clamp(14px, 3.7vw, 30px);
+  --pgs-premium-mob-subtitle-size: clamp(14px, 3.8vw, 22px);
+  --pgs-premium-mob-meta-size: 14px;
+
+  /* Shared panel chrome */
+  --pgs-premium-panel-bg: #d1bbb9;
+  --pgs-premium-panel-radius: 16px;
+  --pgs-premium-media-radius: 8px;
+  --pgs-premium-muted: rgba(0, 0, 0, 0.65);
+}

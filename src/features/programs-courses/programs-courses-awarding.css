@@ -1,0 +1,666 @@
+/**
+ * Courses C7 — awarding body.
+ * Desk frame `17072:11083` · Mob group `551:10567`.
+ * C7a–e mob complete · group `551:10567`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-award {
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-award *,
+.pc-award *::before,
+.pc-award *::after {
+  box-sizing: border-box;
+}
+
+/* —— Mobile ≤600 — C7a–e full awarding group —— */
+@media (max-width: 600px) {
+  .pc-award {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 40px;
+  }
+
+  /* Group 551:10567 · w 331 · min-h = full group 1203 */
+  .pc-award__frame {
+    position: relative;
+    width: 331px;
+    max-width: 100%;
+    min-height: 1203px;
+  }
+
+  /*
+   * Intro 551:10336:
+   * w=296 · gap 8 · mb 20 (to logo y=2800)
+   */
+  .pc-award__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 296px;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    text-align: center;
+  }
+
+  .pc-award__title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #303030;
+  }
+
+  .pc-award__body {
+    margin: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    color: #000;
+  }
+
+  /*
+   * Media C7b — stacked (not desk row)
+   * Logo 551:10339 · 150.68 × 59.54 · x=0 in group
+   * Gap to photo: 2876 − 2800 − 59.54 ≈ 16.5
+   * Photo 551:10304 · 288 × 425 · left 7 (x=51 − group 44) · radius 7.68
+   */
+  .pc-award__media {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16.5px;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .pc-award__logo-chip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 150.68px;
+    padding: 3.456px 11.059px;
+    background: #fff;
+    border: 0.691px solid #000;
+  }
+
+  .pc-award__logo-img {
+    display: block;
+    width: 128.563px;
+    height: 52.631px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .pc-award__logo-corner {
+    position: absolute;
+    left: -2.76px;
+    top: -4.15px;
+    width: 8.294px;
+    height: 8.294px;
+    background: #b57cff;
+    border: 1.467px solid #9747ff;
+  }
+
+  .pc-award__photo {
+    position: relative;
+    flex: 0 0 auto;
+    width: 288px;
+    height: 425px;
+    margin-left: 7px;
+    overflow: hidden;
+    border-radius: 7.68px;
+    background: #ffe1e1;
+  }
+
+  .pc-award__photo-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .pc-award__photo-img--desk {
+    display: none;
+  }
+
+  .pc-award__photo-img--mob {
+    display: block;
+  }
+
+  /*
+   * Rankings C7d · 551:10365
+   * Absolute on group: left 121 (165−44) · top 441 (3120−2679)
+   * 210×296 · #d9d9d9 · radius 12 · pad 16/32 · gap 16
+   * Title Bebas 24 one line · body Roboto 14
+   */
+  .pc-award__rankings {
+    position: absolute;
+    left: 121px;
+    top: 441px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 210px;
+    height: 296px;
+    padding: 32px 16px;
+    background: #d9d9d9;
+    border-radius: 12px;
+  }
+
+  .pc-award__rankings-inner {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 178px;
+    max-width: 100%;
+  }
+
+  .pc-award__rankings-title {
+    margin: 0;
+    display: block;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .pc-award__rankings-title-line {
+    display: inline;
+    white-space: pre;
+  }
+
+  .pc-award__rankings-title-line + .pc-award__rankings-title-line::before {
+    content: " ";
+  }
+
+  .pc-award__rankings-body {
+    margin: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+  }
+
+  /*
+   * Facts C7c · 551:10351 inside row 551:10379
+   * Absolute on group: left 2 (46−44) · top 771 (3450−2679)
+   * w 138 · h 432 · gap 16 · title Bebas 24 · body 14 · title→body gap 8
+   */
+  .pc-award__facts {
+    position: absolute;
+    left: 2px;
+    top: 771px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 138px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-award__fact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pc-award__fact-title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .pc-award__fact-body {
+    margin: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+  }
+
+  /* Title-only block — no gap override needed (no body) */
+  .pc-award__fact:nth-child(2) {
+    gap: 0;
+  }
+
+  /*
+   * Accreditation C7e · 551:10370 in row 551:10379
+   * Absolute on group: left 172 (46−44+170) · top 771
+   * w 129 · gap 12 · logos gap 10.24 · Figma max-h 25.6 → owner +60% = 40.96
+   * Bebas 24
+   */
+  .pc-award__accredit {
+    position: absolute;
+    left: 172px;
+    top: 771px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    width: 129px;
+    padding: 0;
+  }
+
+  .pc-award__accredit-title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .pc-award__accredit-title-line {
+    display: block;
+    white-space: pre;
+  }
+
+  .pc-award__accredit-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10.24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .pc-award__accredit-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 40.96px;
+  }
+
+  .pc-award__accredit-img {
+    display: block;
+    max-height: 40.96px;
+    width: auto;
+    height: 40.96px;
+    object-fit: contain;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:11083 —— */
+@media (min-width: 1367px) {
+  .pc-award {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  /* Parent frame width 814 (Figma 17072:11083) — min-h = full frame 994 */
+  .pc-award__frame {
+    position: relative;
+    width: 814px;
+    max-width: 100%;
+    min-height: 994px;
+  }
+
+  /*
+   * Intro 17072:11065:
+   * w=724.8 · gap 19.2 · margin-bottom 49.2 (media y=130.4 − intro h≈81.2)
+   */
+  .pc-award__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 19.2px;
+    width: 724.8px;
+    max-width: 100%;
+    margin: 0 auto 49.2px;
+    text-align: center;
+  }
+
+  .pc-award__title {
+    margin: 0;
+    width: 100%;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 22.4px;
+    text-transform: uppercase;
+    color: #303030;
+  }
+
+  .pc-award__body {
+    margin: 0;
+    width: 100%;
+    max-width: 724.8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    color: #000;
+  }
+
+  /*
+   * Media row 17072:11044:
+   * flex · gap 25.6 · items-start · w≈813.6 (307.2 + 25.6 + 480.8)
+   * min-height covers C7c facts (top 190.4 + h 657 = 847.4)
+   */
+  .pc-award__media {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 25.6px;
+    width: 813.6px;
+    max-width: 100%;
+    min-height: 847.4px;
+  }
+
+  /* Bounding Headline 17072:11046 — w 307.2 · pad 12.8 / 4 · border 0.8 */
+  .pc-award__logo-chip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 307.2px;
+    width: 307.2px;
+    padding: 4px 12.8px;
+    background: #fff;
+    border: 0.8px solid #000;
+  }
+
+  .pc-award__logo-img {
+    display: block;
+    width: 274.4px;
+    height: 112.332px;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  /* Purple corner 17072:11049 — 9.6 · left -3.2 · top -4.8 */
+  .pc-award__logo-corner {
+    position: absolute;
+    left: -3.2px;
+    top: -4.8px;
+    width: 9.6px;
+    height: 9.6px;
+    background: #b57cff;
+    border: 1.698px solid #9747ff;
+  }
+
+  /*
+   * Photo plate 17072:11050 — 480.8 × 503.2 · radius 12.8 · #ffe1e1
+   * Asset is Figma-cropped plate screenshot (visible crop already applied)
+   */
+  .pc-award__photo {
+    position: relative;
+    flex: 0 0 480.8px;
+    width: 480.8px;
+    height: 503.2px;
+    overflow: hidden;
+    border-radius: 12.8px;
+    background: #ffe1e1;
+  }
+
+  .pc-award__photo-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .pc-award__photo-img--desk {
+    display: block;
+  }
+
+  .pc-award__photo-img--mob {
+    display: none;
+  }
+
+  /*
+   * Facts 17072:11052 — absolute on frame (was relative to media row)
+   * Media starts y=130.4 · facts in media at top 190.4 → frame top 320.8
+   * left 16.4 · w 226.4 · gap 25.6
+   * Title Bebas 38.4 lh 1 · body Roboto 16 lh 22.4
+   * Title/body gaps: first item 9.6 · later 12.8
+   */
+  .pc-award__facts {
+    position: absolute;
+    left: 16.4px;
+    top: 320.8px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25.6px;
+    width: 226.4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-award__fact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .pc-award__fact-title {
+    margin: 0;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .pc-award__fact-body {
+    margin: 0;
+    width: 212.8px;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    color: #000;
+  }
+
+  /* First fact title→body gap 9.6 (17072:11054) */
+  .pc-award__fact:first-child {
+    gap: 9.6px;
+  }
+
+  .pc-award__fact:first-child .pc-award__fact-title {
+    width: 225.6px;
+    max-width: 100%;
+  }
+
+  /* Title-only block — Figma w 221.6 */
+  .pc-award__fact:nth-child(2) .pc-award__fact-title {
+    width: 221.6px;
+    max-width: 100%;
+  }
+
+  /* Expert-Led / Global Reach — title w 154.4 · gap 12.8 */
+  .pc-award__fact:nth-child(3),
+  .pc-award__fact:nth-child(4) {
+    gap: 12.8px;
+    width: 212.8px;
+  }
+
+  .pc-award__fact:nth-child(3) .pc-award__fact-title,
+  .pc-award__fact:nth-child(4) .pc-award__fact-title {
+    width: 154.4px;
+    max-width: 100%;
+  }
+
+  /*
+   * Rankings card 17072:11068 — absolute on frame
+   * left 270 · top 479 · 274×483 · bg #d9d9d9 · radius 16
+   * Inner 212.8 · pad-left 39.2 · gap 19.2 · vertically centered
+   */
+  .pc-award__rankings {
+    position: absolute;
+    left: 270px;
+    top: 479px;
+    z-index: 2;
+    width: 274px;
+    height: 483px;
+    background: #d9d9d9;
+    border-radius: 16px;
+  }
+
+  .pc-award__rankings-inner {
+    position: absolute;
+    left: 39.2px;
+    top: 50%;
+    transform: translateY(calc(-50% + 0.7px));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19.2px;
+    width: 212.8px;
+  }
+
+  .pc-award__rankings-title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .pc-award__rankings-title-line {
+    display: block;
+    white-space: pre;
+  }
+
+  .pc-award__rankings-body {
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    color: #000;
+  }
+
+  /*
+   * Accreditation 17072:11074 — absolute on frame
+   * Figma left 583.3 · top 671.2 · w 231 · pad-x 12 · gap 12
+   * Rankings ends 544 (270+274) — stay right of grey
+   * Owner desk: 2-col · 0.8× bigger (38.4→69.12); width uses rest of frame
+   */
+  .pc-award__accredit {
+    position: absolute;
+    left: 556px;
+    top: 671.2px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    width: 258px;
+    padding: 0 12px;
+  }
+
+  .pc-award__accredit-title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .pc-award__accredit-title-line {
+    display: block;
+    white-space: pre;
+  }
+
+  .pc-award__accredit-logos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    column-gap: 12px;
+    row-gap: 12.8px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .pc-award__accredit-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 69.12px;
+  }
+
+  .pc-award__accredit-img {
+    display: block;
+    max-height: 69.12px;
+    max-width: 100%;
+    width: auto;
+    height: 69.12px;
+    object-fit: contain;
+  }
+}

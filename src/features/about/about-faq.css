@@ -1,0 +1,277 @@
+/**
+ * About Us FAQ (A13).
+ * Desk `17057:14559` · mob `517:6340`.
+ * Bands >1366 · ≤600; iPad deferred.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: inactive/answer #666 · mob answer 12px
+ * ISSUE: borderline AA · below readable floor
+ * PGS IMPLEMENTATION: #555 · answer ≥14px
+ */
+
+.about-faq {
+  --about-faq-heading: 25.6px;
+  --about-faq-heading-lh: 32px;
+  --about-faq-tab: 20px;
+  --about-faq-tab-lh: 22.4px;
+  --about-faq-q: 20px;
+  --about-faq-q-lh: 22.4px;
+  --about-faq-a: 14px;
+  --about-faq-a-lh: 19.2px;
+  --about-faq-muted: #555;
+  --about-faq-open: #ee2c3c;
+  --about-faq-rule: #e6e6e6;
+  --about-faq-tab-border: rgba(0, 0, 0, 0.2);
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 64px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.about-faq *,
+.about-faq *::before,
+.about-faq *::after {
+  box-sizing: border-box;
+}
+
+.about-faq__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 39.2px;
+  width: 100%;
+  max-width: 1016px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.about-faq__heading {
+  margin: 0;
+  font-size: var(--about-faq-heading);
+  font-weight: 500;
+  line-height: var(--about-faq-heading-lh);
+  color: #000;
+}
+
+.about-faq__layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  min-width: 0;
+}
+
+.about-faq__tablist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 0 0 264px;
+  width: 264px;
+  max-width: 264px;
+  padding-bottom: 16px;
+}
+
+.about-faq__tab {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 12.8px;
+  border: 0.8px solid var(--about-faq-tab-border);
+  border-radius: 9.6px;
+  background: #fff;
+  color: var(--about-faq-muted);
+  font-family: inherit;
+  font-size: var(--about-faq-tab);
+  font-weight: 600;
+  line-height: var(--about-faq-tab-lh);
+  text-align: left;
+  cursor: pointer;
+}
+
+.about-faq__tab.is-active {
+  color: #000;
+}
+
+.about-faq__tab:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.about-faq__panel {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 688px;
+}
+
+.about-faq__accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.about-faq__item {
+  background: #fff;
+}
+
+.about-faq__item-heading {
+  margin: 0;
+}
+
+.about-faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 0.8px solid var(--about-faq-rule);
+  background: transparent;
+  color: #000;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.about-faq__item.is-open .about-faq__trigger {
+  border-bottom-color: transparent;
+  padding-bottom: 4.8px;
+  color: var(--about-faq-open);
+}
+
+.about-faq__trigger:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.about-faq__question {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--about-faq-q);
+  font-weight: 600;
+  line-height: var(--about-faq-q-lh);
+}
+
+.about-faq__icon {
+  flex: 0 0 14.4px;
+  width: 14.4px;
+  height: 14.4px;
+  display: block;
+}
+
+.about-faq__answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  border-bottom: 0.8px solid var(--about-faq-rule);
+}
+
+.about-faq__answer-wrap.is-open {
+  grid-template-rows: 1fr;
+}
+
+.about-faq__answer-wrap:not(.is-open) {
+  border-bottom: 0;
+}
+
+.about-faq__answer {
+  margin: 0;
+  padding: 0 0 19.2px;
+  overflow: hidden;
+  font-size: var(--about-faq-a);
+  font-weight: 500;
+  line-height: var(--about-faq-a-lh);
+  letter-spacing: 0.12px;
+  color: var(--about-faq-muted);
+}
+
+@media (max-width: 600px) {
+  .about-faq {
+    --about-faq-heading: 18px;
+    --about-faq-heading-lh: 1.2;
+    --about-faq-tab: 14px;
+    --about-faq-tab-lh: 1.2;
+    --about-faq-q: 14px;
+    --about-faq-q-lh: 1.2;
+    --about-faq-a: 14px;
+    --about-faq-a-lh: 1.35;
+
+    padding: 28px 0 40px;
+  }
+
+  .about-faq__inner {
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 12px;
+  }
+
+  .about-faq__heading {
+    max-width: 220px;
+  }
+
+  .about-faq__layout {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .about-faq__tablist {
+    flex: 0 0 140px;
+    width: 140px;
+    max-width: 140px;
+    gap: 8px;
+    padding-bottom: 0;
+  }
+
+  .about-faq__tab {
+    min-height: 28.8px;
+    padding: 6.4px;
+    border-width: 0.4px;
+    border-radius: 4.8px;
+  }
+
+  .about-faq__panel {
+    flex: 1 1 156px;
+    max-width: none;
+  }
+
+  .about-faq__trigger {
+    padding: 8px 0;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .about-faq__icon {
+    flex-basis: 16px;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+  }
+
+  .about-faq__answer {
+    padding-bottom: 12px;
+  }
+
+  /* Mob Figma keeps open Q black; open accent stays on icon only */
+  .about-faq__item.is-open .about-faq__trigger {
+    color: #000;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-faq__answer-wrap {
+    transition: none;
+  }
+}

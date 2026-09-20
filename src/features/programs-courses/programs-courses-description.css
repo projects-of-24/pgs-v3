@@ -1,0 +1,143 @@
+/**
+ * Courses C2 — Who's It For? + Topics green chips.
+ * Desk `17072:10641` · Mob `551:9071`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-desc {
+  --pc-desc-green: #c3ffa9;
+  --pc-desc-blue: #0044ff;
+  --pc-desc-title-border: #9747ff;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.pc-desc *,
+.pc-desc *::before,
+.pc-desc *::after {
+  box-sizing: border-box;
+}
+
+.pc-desc__band {
+  display: none;
+  width: 100%;
+}
+
+/* —— Mobile ≤600 — Figma 551:9071 · 216 wide · centered on 390 (x=87) —— */
+@media (max-width: 600px) {
+  .pc-desc__band--mob {
+    display: flex;
+    justify-content: center;
+    padding: 24px 12px 40px;
+  }
+
+  .pc-desc__band--mob .pc-desc__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 216px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .pc-desc__band--mob .pc-desc__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pc-desc__band--mob .pc-desc__bodies {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pc-desc__band--mob .pc-desc__chip {
+    margin: 0;
+    background: var(--pc-desc-green);
+    color: var(--pc-desc-blue);
+    width: 100%;
+  }
+
+  .pc-desc__band--mob .pc-desc__chip--title {
+    padding: 8px;
+    border: 1.5px solid var(--pc-desc-title-border);
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .pc-desc__band--mob .pc-desc__chip--body {
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 0.98;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:10641 · two columns —— */
+@media (min-width: 1367px) {
+  .pc-desc__band--desk {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  .pc-desc__band--desk .pc-desc__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 51px;
+    width: 741px;
+    max-width: 100%;
+  }
+
+  .pc-desc__band--desk .pc-desc__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 345px;
+    flex: 0 0 345px;
+  }
+
+  .pc-desc__band--desk .pc-desc__bodies {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .pc-desc__band--desk .pc-desc__chip {
+    margin: 0;
+    background: var(--pc-desc-green);
+    color: var(--pc-desc-blue);
+    width: 100%;
+  }
+
+  .pc-desc__band--desk .pc-desc__chip--title {
+    width: auto;
+    max-width: 100%;
+    padding: 8px;
+    font-size: 29px;
+    font-weight: 900;
+    line-height: 0.98;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .pc-desc__band--desk .pc-desc__chip--body {
+    padding: 0 8px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 0.98;
+  }
+}

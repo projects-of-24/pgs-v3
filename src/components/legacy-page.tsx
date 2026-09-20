@@ -46,7 +46,10 @@ function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
     icon?.classList.toggle("bi-arrow-left-square-fill", open);
   };
 
-  syncSidebar(false);
+  // Do not force-close on rewire. A later effect re-run (including after the
+  // cursor leaves) was wiping `.active` and looked like a Hostinger mouse-out close.
+  const sidebarNow = root.querySelector<HTMLElement>("#sidebar");
+  syncSidebar(sidebarNow?.classList.contains("active") ?? false);
 
   root.addEventListener("click", (event) => {
     const target = event.target;

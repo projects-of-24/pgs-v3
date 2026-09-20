@@ -1,0 +1,516 @@
+/**
+ * About Us hero — owned CSS (A1).
+ * Sizes/position from shared `premium-panel-lock.css` (fluid clamp).
+ * Desktop >1366: mauve panel + brand/#PGS below media + curved arrow + side note.
+ * Mobile ≤600: 85% rail; 151 opening; panel 290×450; arrow under #PGS.
+ * iPad 601–1366: own saved card (copied once from the QC'd phone card). Not a live ×1.4.
+ * Shell / body / premium-panel-lock.css: no change.
+ *
+ * Owner QC (same as Scholarship): image ends above copy — no absolute overlay.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: mobile trust ~12px
+ * ISSUE: below readable floor for normal text
+ * PGS IMPLEMENTATION: trust uses --pgs-premium-mob-meta-size (14px)
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.about-hero {
+  --about-panel-bg: var(--pgs-premium-panel-bg);
+  --about-muted: var(--pgs-premium-muted);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 32px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.about-hero *,
+.about-hero *::before,
+.about-hero *::after {
+  box-sizing: border-box;
+}
+
+.about-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+/* Desktop intro lives in A2; mobile opening is hero headline. */
+.about-hero__opening {
+  display: none;
+  margin: 0;
+}
+
+.about-hero__stage {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.about-hero__panel-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  max-width: var(--pgs-premium-desk-panel-max);
+  flex: 1 1 auto;
+}
+
+.about-hero__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  min-height: var(--pgs-premium-desk-panel-min-h);
+  padding: 13px 11px 20px;
+  background: var(--about-panel-bg);
+  border-radius: var(--pgs-premium-panel-radius);
+  overflow: visible;
+}
+
+.about-hero__media {
+  flex: 0 0 auto;
+  width: min(var(--pgs-premium-desk-media-w), 100%);
+  height: var(--pgs-premium-desk-media-h);
+  overflow: hidden;
+  border-radius: var(--pgs-premium-media-radius);
+  background: #d9d9d9;
+}
+
+.about-hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Image ends above copy — same Scholarship owner QC (no overlay on photo). */
+.about-hero__panel-copy {
+  position: static;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 14px;
+  max-width: 100%;
+  padding-inline: 6px;
+  pointer-events: none;
+}
+
+.about-hero__panel-brand {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--pgs-premium-desk-brand-size);
+  font-weight: 400;
+  line-height: 0.84;
+  color: #000;
+  text-transform: none;
+}
+
+.about-hero__panel-brand-line {
+  display: block;
+}
+
+.about-hero__panel-tag {
+  margin: 0 0 0.35em;
+  color: #000;
+  /* LOCKED desk type ×0.8 (owner 2026-09-11) — mob unchanged; reopen by name only */
+  font-size: calc(clamp(22px, 2.2vw, 36px) * 0.8);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.about-hero__arrow {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.about-hero__arrow--desk {
+  display: block;
+  right: clamp(8px, 1.5vw, 20px);
+  bottom: clamp(8px, 1.2vw, 16px);
+  width: clamp(110px, 12vw, 153px);
+  height: auto;
+  transform: rotate(-150deg);
+}
+
+.about-hero__arrow--mob {
+  display: none;
+}
+
+.about-hero__trust {
+  margin: 0;
+  width: 100%;
+  color: var(--about-muted);
+  font-size: var(--pgs-premium-desk-trust-size);
+  font-weight: 400;
+  line-height: 1.27;
+  text-align: center;
+}
+
+.about-hero__pgs-note {
+  margin: 0 0 48px;
+  flex: 0 0 auto;
+  width: min(185px, 18%);
+  color: #000;
+  font-size: calc(clamp(16px, 1.3vw, 20px) * 0.8);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (min-width: 1367px) {
+  .about-hero {
+    padding: 0 0 40px;
+  }
+
+  /* Card is page-centered. Note sits beside it (out of flow) so it cannot shift the card left. */
+  .about-hero__inner {
+    max-width: none;
+    width: 100%;
+  }
+
+  .about-hero__stage {
+    max-width: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .about-hero__panel-wrap {
+    flex: 0 1 auto;
+    width: min(100%, var(--pgs-premium-desk-panel-max));
+    margin-inline: auto;
+  }
+
+  .about-hero__pgs-note {
+    position: absolute;
+    left: calc(100% + 28px);
+    bottom: 48px;
+    width: 185px;
+    margin: 0;
+  }
+}
+
+/* Phone ≤600 only. iPad does not use this block — its card is saved separately. */
+@media (max-width: 600px) {
+  .about-hero {
+    padding: var(--pgs-premium-mob-hero-pad-top) 0 28px;
+  }
+
+  .about-hero__inner {
+    width: var(--pgs-premium-mob-rail);
+    max-width: var(--pgs-premium-mob-rail);
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .about-hero__opening {
+    display: block;
+    align-self: center;
+    width: var(--pgs-premium-mob-opening-w);
+    max-width: var(--pgs-premium-mob-opening-w);
+    margin-inline: auto;
+    color: #000;
+    font-size: var(--pgs-premium-mob-lead-size);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+    text-align: left;
+  }
+
+  .about-hero__stage {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    max-width: none;
+  }
+
+  .about-hero__panel-wrap {
+    align-self: stretch;
+    max-width: none;
+    gap: 8px;
+    width: 100%;
+    padding-bottom: 48px;
+  }
+
+  .about-hero__panel {
+    width: 100%;
+    max-width: var(--pgs-premium-mob-panel-w);
+    margin-inline: auto;
+    height: auto;
+    min-height: var(--pgs-premium-mob-panel-h);
+    padding: 13px 11px 16px;
+    gap: 10px;
+    overflow: visible;
+  }
+
+  .about-hero__media {
+    width: 100%;
+    height: var(--pgs-premium-mob-media-h);
+    flex: 0 0 auto;
+  }
+
+  .about-hero__panel-copy {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    max-width: none;
+    padding-inline: 4px;
+  }
+
+  .about-hero__panel-brand {
+    font-size: var(--pgs-premium-mob-brand-size);
+    line-height: 1;
+    gap: 6px;
+  }
+
+  .about-hero__panel-tag {
+    position: static;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .about-hero__arrow--desk {
+    display: none;
+  }
+
+  .about-hero__arrow--mob {
+    display: block;
+    right: 2px;
+    bottom: 52px;
+    width: 61px;
+    height: auto;
+    transform: rotate(-60deg);
+    z-index: 3;
+  }
+
+  .about-hero__trust {
+    font-size: var(--pgs-premium-mob-meta-size);
+    line-height: 1.35;
+    max-width: 234px;
+    margin-inline: auto;
+  }
+
+  .about-hero__pgs-note {
+    width: min(149px, 50%);
+    margin: 8px 0 0 auto;
+    padding-right: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: left;
+  }
+}
+
+/* Phone ≤600 — Figma `508:8376` + note `508:8759`.
+   #PGS sits on the title row. Arrow hangs off the card toward the note.
+   Note sits outside, below the trust, beside the arrow — not over the title. */
+@media (max-width: 600px) {
+  .about-hero__panel-copy {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 6px;
+    padding-bottom: 0;
+  }
+
+  .about-hero__panel-tag {
+    margin: 0 0 2px 0;
+    font-size: 20px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .about-hero__arrow--mob {
+    right: -6px;
+    bottom: -36px;
+    width: 61px;
+  }
+
+  .about-hero__panel-wrap {
+    padding-bottom: 88px;
+  }
+
+  .about-hero__pgs-note {
+    position: absolute;
+    top: calc(100% + 56px);
+    right: -4px;
+    bottom: auto;
+    left: auto;
+    width: 149px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    z-index: 2;
+  }
+}
+
+/*
+ * iPad 601–1366: saved copy of the QC'd phone card.
+ * Numbers below are the sizes already on screen. They do not read phone tokens
+ * and they are not a live ×1.4. Edit this block to change iPad. Do not edit
+ * the phone block or premium-panel-lock.css for iPad.
+ * Rail 85%. Shell / body / phone / desktop: no change.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .about-hero {
+    --about-ipad-card-w: 406px;
+    --about-ipad-card-h: 630px;
+    --about-ipad-media-h: 499.8px;
+    --about-ipad-opening-w: 211.4px;
+    padding: 53.2px 0 39.2px;
+  }
+
+  .about-hero__inner {
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 33.6px;
+    align-items: stretch;
+  }
+
+  .about-hero__opening {
+    display: block;
+    align-self: center;
+    width: var(--about-ipad-opening-w);
+    max-width: var(--about-ipad-opening-w);
+    margin-inline: auto;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+    text-align: left;
+  }
+
+  .about-hero__stage {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22.4px;
+    max-width: none;
+  }
+
+  .about-hero__panel-wrap {
+    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    gap: 11.2px;
+    padding-bottom: 123.2px;
+  }
+
+  .about-hero__panel {
+    width: 100%;
+    max-width: var(--about-ipad-card-w);
+    min-height: var(--about-ipad-card-h);
+    height: auto;
+    margin-inline: auto;
+    padding: 18.2px 15.4px 22.4px;
+    gap: 14px;
+    overflow: visible;
+  }
+
+  .about-hero__media {
+    width: 100%;
+    height: var(--about-ipad-media-h);
+    flex: 0 0 auto;
+  }
+
+  .about-hero__panel-copy {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11.2px;
+    max-width: none;
+    padding-inline: 5.6px;
+    padding-bottom: 0;
+  }
+
+  .about-hero__panel-brand {
+    font-size: 42px;
+    line-height: 1;
+    gap: 8.4px;
+  }
+
+  .about-hero__panel-tag {
+    position: static;
+    margin: 0;
+    font-size: 19.6px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .about-hero__arrow--desk {
+    display: none;
+  }
+
+  .about-hero__arrow--mob {
+    display: block;
+    right: -8.4px;
+    bottom: -50.4px;
+    width: 85.4px;
+    height: auto;
+    transform: rotate(-60deg);
+    z-index: 3;
+  }
+
+  .about-hero__trust {
+    font-size: 19.6px;
+    line-height: 1.35;
+    max-width: 327.6px;
+    margin-inline: auto;
+  }
+
+  /* Saved note stack: under the card, beside the arrow. Not the phone sizes. */
+  .about-hero__pgs-note {
+    position: absolute;
+    top: calc(100% + 78.4px);
+    right: -5.6px;
+    bottom: auto;
+    left: auto;
+    width: 149px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    z-index: 2;
+  }
+}

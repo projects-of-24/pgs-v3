@@ -9,7 +9,7 @@ import { CountryPage } from "./CountryPage";
 import { CountryStudy101WhyFigma } from "./country-study101-why-figma";
 import type { CountryPageContent } from "./content";
 import "./country-body-layout.css";
-import "./country-study101-why-figma.css";
+import "./country-study101-why-figma-usa.css";
 
 type Props = {
   content: CountryPageContent;
@@ -22,7 +22,7 @@ export function CountryBodyShell({ content }: Props) {
     <CountryPage
       content={content}
       hideHero
-      className="country-body-shell"
+      className="country-body-shell-usa"
       study101Lead={
         study101 && study101.id === "study101" ? (
           <CountryStudy101WhyFigma

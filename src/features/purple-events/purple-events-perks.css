@@ -1,0 +1,119 @@
+/**
+ * Purple Events — E5 Session perks.
+ * Desk 17072:10998 · Mob 528:7682
+ * Bands: ≤600 mobile · >1367 desktop · 601–1366 deferred.
+ */
+
+.pe-perks {
+  --pe-perks-green: #c3ffa9;
+  --pe-perks-blue: #0044ff;
+  --pe-perks-border: #9747ff;
+  --pe-perks-ink: #303030;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pe-perks *,
+.pe-perks *::before,
+.pe-perks *::after {
+  box-sizing: border-box;
+}
+
+.pe-perks__heading {
+  margin: 0;
+  width: 100%;
+  max-width: 259px;
+  background: var(--pe-perks-green);
+  border: 1.5px solid var(--pe-perks-border);
+  padding: 8px;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: var(--pe-perks-blue);
+  white-space: pre-line;
+}
+
+.pe-perks__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  max-width: 187px;
+}
+
+.pe-perks__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.pe-perks__check {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.pe-perks__label {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #000;
+}
+
+/* Desktop — Figma 17072:10998 */
+@media (min-width: 1367px) {
+  .pe-perks {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 49px;
+    padding: 40px 24px 56px;
+  }
+
+  .pe-perks__heading {
+    max-width: 345px;
+    width: 345px;
+    border: 0;
+    padding: 4px 8px;
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: none;
+    line-height: 0.98;
+  }
+
+  .pe-perks__list {
+    max-width: 282px;
+    width: 282px;
+  }
+
+  .pe-perks__item {
+    gap: 16px;
+  }
+
+  .pe-perks__check {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pe-perks__label {
+    color: var(--pe-perks-ink);
+    line-height: 1.35;
+  }
+}

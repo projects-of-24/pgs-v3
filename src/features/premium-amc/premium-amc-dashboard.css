@@ -1,0 +1,298 @@
+/**
+ * Dashboard unlock. Desktop `17084:12099`. Phone frame `433:5203`.
+ * Desktop is the default. Phone overrides at ≤600. iPad reuses desktop.
+ */
+
+.premium-amc-dashboard {
+  box-sizing: border-box;
+  width: min(1038px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 300px auto 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-amc-dashboard *,
+.premium-amc-dashboard *::before,
+.premium-amc-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.premium-amc-dashboard__title {
+  margin: 0 auto 48px;
+  max-width: 682px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.premium-amc-dashboard__photo {
+  position: relative;
+  height: 448px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 19px;
+}
+
+.premium-amc-dashboard__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.premium-amc-dashboard__meter {
+  position: relative;
+  width: min(928px, 100%);
+  height: 2px;
+  margin: 68px auto 0;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.premium-amc-dashboard__meter-fill {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: #000;
+}
+
+.premium-amc-dashboard__points {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  margin: 55px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-amc-dashboard__points li {
+  width: 199px;
+}
+
+.premium-amc-dashboard__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+}
+
+.premium-amc-dashboard__point[aria-pressed="true"] {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.premium-amc-dashboard__point:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.premium-amc-dashboard__icon {
+  position: relative;
+  flex: 0 0 35px;
+  width: 35px;
+  height: 35px;
+}
+
+.premium-amc-dashboard__mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.premium-amc-dashboard__point[aria-pressed="true"] .premium-amc-dashboard__icon {
+  flex-basis: 38px;
+  width: 38px;
+  height: 38px;
+}
+
+.premium-amc-dashboard__asterisk {
+  position: absolute;
+  top: 29%;
+  left: 31%;
+  width: 38%;
+  height: 42%;
+  pointer-events: none;
+}
+
+.premium-amc-dashboard__phone {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .premium-amc-dashboard {
+    width: min(379px, calc(100% - 11px));
+    margin-top: 152px;
+  }
+
+  .premium-amc-dashboard__title {
+    max-width: none;
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  .premium-amc-dashboard__photo,
+  .premium-amc-dashboard__meter,
+  .premium-amc-dashboard__points {
+    display: none;
+  }
+
+  .premium-amc-dashboard__phone {
+    display: block;
+  }
+
+  .premium-amc-dashboard__slide {
+    position: relative;
+    width: 80%;
+    height: calc(476px * 0.8);
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: calc(17px * 0.8);
+  }
+
+  .premium-amc-dashboard__slide img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .premium-amc-dashboard__phone-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .premium-amc-dashboard__phone-line {
+    display: block;
+    width: 275px;
+    height: 2px;
+    margin: 40px auto 0;
+    background: rgba(0, 0, 0, 0.16);
+  }
+
+  .premium-amc-dashboard__phone-line-fill {
+    display: block;
+    height: 100%;
+    background: #000;
+  }
+
+  .premium-amc-dashboard__phone-point {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 221px;
+    max-width: 100%;
+    height: calc(19px * 1.33 * 3);
+    flex-shrink: 0;
+    margin: 20px auto 0;
+    left: 14px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.33;
+  }
+
+  .premium-amc-dashboard__phone-point .premium-amc-dashboard__icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .premium-amc-dashboard__phone-point .premium-amc-dashboard__asterisk {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .premium-amc-dashboard__phone-copy {
+    flex: 0 0 169px;
+    width: 169px;
+    text-align: left;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .premium-amc-dashboard__arrows {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: 70px;
+    margin: 24px auto 0;
+    overflow: visible;
+  }
+
+  .premium-amc-dashboard__arrow {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    appearance: none;
+    overflow: visible;
+    cursor: pointer;
+    opacity: 1;
+    filter: none;
+    transition: none;
+    animation: none;
+  }
+
+  .premium-amc-dashboard__arrow:hover,
+  .premium-amc-dashboard__arrow:active,
+  .premium-amc-dashboard__arrow:hover img,
+  .premium-amc-dashboard__arrow:active img {
+    opacity: 1;
+    filter: none;
+    background: transparent;
+    transition: none;
+    animation: none;
+  }
+
+  .premium-amc-dashboard__arrow:first-child {
+    margin-right: -26px;
+  }
+
+  .premium-amc-dashboard__arrow img {
+    display: block;
+    width: 48px;
+    height: 48px;
+  }
+
+  .premium-amc-dashboard__arrow--next img {
+    transform: scaleX(-1);
+  }
+
+  .premium-amc-dashboard__arrow:disabled,
+  .premium-amc-dashboard__arrow:disabled:hover {
+    opacity: 0.4;
+    filter: none;
+    transition: none;
+    animation: none;
+    cursor: not-allowed;
+  }
+
+  .premium-amc-dashboard__arrow:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 3px;
+  }
+}

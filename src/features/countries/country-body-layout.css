@@ -1,6 +1,6 @@
 /**
  * Shared country body layout (preview shell).
- * Class: `.countriesUSA.country-body-shell`
+ * Class: `.country-file-usa.country-body-shell-usa`
  * Bands: >1366 desktop · 601–1366 iPad · ≤600 mobile.
  * Live country routes untouched until owner pulls.
  *
@@ -9,7 +9,7 @@
  */
 
 /* Preview shell banner */
-.country-body-shell__banner {
+.country-body-shell-usa__banner {
   margin: 0;
   padding: 10px 16px;
   background: #fff8e1;
@@ -27,7 +27,7 @@
  * Mobile: nested 95% → intro 60% → tabs section 90% → tab box 93% (live lesson).
  * Building new — do not edit Hostinger style.css. Live country routes untouched.
  */
-.countriesUSA.country-body-shell {
+.country-file-usa.country-body-shell-usa {
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -38,7 +38,7 @@
 }
 
 /* Desktop base + iPad: 75% centered page band (Hostinger .wrapper-content lesson) */
-.countriesUSA.country-body-shell .wrapper-content {
+.country-file-usa.country-body-shell-usa .wrapper-content {
   width: 75% !important;
   max-width: 100%;
   margin-inline: auto !important;
@@ -47,7 +47,7 @@
 }
 
 /* Inner rail: 964 ceiling, fluid when band is narrower */
-.countriesUSA.country-body-shell .w-964px {
+.country-file-usa.country-body-shell-usa .w-964px {
   width: min(964px, 100%) !important;
   max-width: 964px;
   margin-inline: auto !important;
@@ -61,7 +61,7 @@
  * Root cause: Bootstrap `.row` uses margin-inline -15px (gutter), so children
  * paint ~30px wider than `.w-964px` / `.mobile-box-country`.
  */
-.countriesUSA.country-body-shell .w-964px .row {
+.country-file-usa.country-body-shell-usa .w-964px .row {
   --bs-gutter-x: 0;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -70,7 +70,7 @@
   box-sizing: border-box;
 }
 
-.countriesUSA.country-body-shell
+.country-file-usa.country-body-shell-usa
   .filter-content
   > .grid-item
   > .d-flex.gap-3 {
@@ -80,29 +80,29 @@
   box-sizing: border-box;
 }
 
-.countriesUSA.country-body-shell .filter-content,
-.countriesUSA.country-body-shell .filter-content .grid-item {
+.country-file-usa.country-body-shell-usa .filter-content,
+.country-file-usa.country-body-shell-usa .filter-content .grid-item {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 
-.countriesUSA.country-body-shell .w-35,
-.countriesUSA.country-body-shell .w-80,
-.countriesUSA.country-body-shell .w-70 {
+.country-file-usa.country-body-shell-usa .w-35,
+.country-file-usa.country-body-shell-usa .w-80,
+.country-file-usa.country-body-shell-usa .w-70 {
   min-width: 0;
   box-sizing: border-box;
 }
 
-.countriesUSA.country-body-shell .mobile-box-country,
-.countriesUSA.country-body-shell .country-usa-tab-style-new {
+.country-file-usa.country-body-shell-usa .mobile-box-country,
+.country-file-usa.country-body-shell-usa .country-usa-tab-style-new {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 
 /* Desktop/iPad: tabs fill rail (not Bootstrap-widened 93%-of-overhang). Mobile keeps 93% below. */
-.countriesUSA.country-body-shell .country-usa-tab-style-new {
+.country-file-usa.country-body-shell-usa .country-usa-tab-style-new {
   width: 100% !important;
   margin-inline: 0 !important;
 }
@@ -114,7 +114,7 @@
  * iPad / mobile: do not change (owner-locked).
  */
 @media (min-width: 1367px) {
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .filter-content
     > .grid-item
     > .d-flex.gap-3 {
@@ -122,22 +122,22 @@
     align-items: flex-start;
   }
 
-  .countriesUSA.country-body-shell .w-35 {
+  .country-file-usa.country-body-shell-usa .w-35 {
     width: 321px !important;
     flex: 0 0 321px;
     max-width: 321px;
     min-width: 0;
   }
 
-  .countriesUSA.country-body-shell .w-80,
-  .countriesUSA.country-body-shell .w-70 {
+  .country-file-usa.country-body-shell-usa .w-80,
+  .country-file-usa.country-body-shell-usa .w-70 {
     width: auto !important;
     flex: 1 1 0;
     min-width: 0;
     max-width: 100%;
   }
 
-  .countriesUSA.country-body-shell .info-card-countries-usa {
+  .country-file-usa.country-body-shell-usa .info-card-countries-usa {
     width: 100% !important;
     max-width: 100%;
     box-sizing: border-box;
@@ -149,34 +149,34 @@
  * CANCEL Hostinger ≤767 phone rules (601–767 must stay iPad).
  */
 @media (max-width: 1366px) and (min-width: 601px) {
-  .countriesUSA.country-body-shell .wrapper-content {
+  .country-file-usa.country-body-shell-usa .wrapper-content {
     width: 75% !important;
   }
 
   /* Undo Hostinger phone stacking */
-  .countriesUSA.country-body-shell .mobile-w-full {
+  .country-file-usa.country-body-shell-usa .mobile-w-full {
     width: auto !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-none {
+  .country-file-usa.country-body-shell-usa .mobile-none {
     display: revert !important;
   }
 
-  .countriesUSA.country-body-shell .desktop-none {
+  .country-file-usa.country-body-shell-usa .desktop-none {
     display: none !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-usa-content {
+  .country-file-usa.country-body-shell-usa .mobile-usa-content {
     width: 100% !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-box-country {
+  .country-file-usa.country-body-shell-usa .mobile-box-country {
     width: 100% !important;
     overflow: visible !important;
   }
 
   /* Sidebar + main: 2-col, shrink so text wraps */
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .filter-content
     > .grid-item
     > .d-flex.gap-3 {
@@ -187,28 +187,28 @@
     gap: 12px !important;
   }
 
-  .countriesUSA.country-body-shell .w-35 {
+  .country-file-usa.country-body-shell-usa .w-35 {
     width: min(32%, 200px) !important;
     flex: 0 1 auto;
     min-width: 0;
   }
 
-  .countriesUSA.country-body-shell .w-80,
-  .countriesUSA.country-body-shell .w-70 {
+  .country-file-usa.country-body-shell-usa .w-80,
+  .country-file-usa.country-body-shell-usa .w-70 {
     width: auto !important;
     flex: 1 1 0;
     min-width: 0;
     max-width: 100%;
   }
 
-  .countriesUSA.country-body-shell .info-card-countries-usa {
+  .country-file-usa.country-body-shell-usa .info-card-countries-usa {
     height: auto !important;
     min-height: 0 !important;
     max-width: 100%;
   }
 
   /* Sidebar stats caption — stack under numbers so UNIVERSITIES isn’t crushed */
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .info-card-countries-usa
     .country-stat-sidebar {
     flex-direction: column;
@@ -219,14 +219,14 @@
     min-width: 0;
   }
 
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .info-card-countries-usa
     .country-stat-values {
     flex-shrink: 0;
     min-width: 0;
   }
 
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .info-card-countries-usa
     .country-stat-caption {
     max-width: none !important;
@@ -243,16 +243,16 @@
 
   /* Narrow iPad 601–767 (Hostinger phone MQ zone) — a bit more side room */
   @media (max-width: 767px) {
-    .countriesUSA.country-body-shell .w-35 {
+    .country-file-usa.country-body-shell-usa .w-35 {
       width: min(42%, 168px) !important;
       flex: 0 0 auto;
     }
 
-    .countriesUSA.country-body-shell .info-card-countries-usa {
+    .country-file-usa.country-body-shell-usa .info-card-countries-usa {
       padding: 0.65rem 0.65rem 1.75rem;
     }
 
-    .countriesUSA.country-body-shell
+    .country-file-usa.country-body-shell-usa
       .info-card-countries-usa
       .country-stat-caption {
       font-size: 15px !important;
@@ -260,7 +260,7 @@
   }
 
   /* Reasons: wrap cards, don’t spill */
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .usa-counrty-usa-purple-gray-box
     > .d-flex.mobile-wrap {
     flex-wrap: wrap !important;
@@ -268,13 +268,13 @@
     min-width: 0;
   }
 
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .usa-counrty-usa-purple-gray-box
     .w-65,
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .usa-counrty-usa-purple-gray-box
     .w-50,
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .usa-counrty-usa-purple-gray-box
     .mobile-w-48 {
     width: auto !important;
@@ -283,20 +283,20 @@
     max-width: 100%;
   }
 
-  .countriesUSA.country-body-shell .table-responsive.w-60,
-  .countriesUSA.country-body-shell .w-60.table-border-overflow {
+  .country-file-usa.country-body-shell-usa .table-responsive.w-60,
+  .country-file-usa.country-body-shell-usa .w-60.table-border-overflow {
     width: 100% !important;
     max-width: 100%;
   }
 
-  .countriesUSA.country-body-shell .countriesUSA-contain,
-  .countriesUSA.country-body-shell .countriesUSA-title {
+  .country-file-usa.country-body-shell-usa .countriesUSA-contain,
+  .country-file-usa.country-body-shell-usa .countriesUSA-title {
     max-width: 100%;
     overflow-wrap: anywhere;
   }
 
-  .countriesUSA.country-body-shell .h-250px,
-  .countriesUSA.country-body-shell .h-400px {
+  .country-file-usa.country-body-shell-usa .h-250px,
+  .country-file-usa.country-body-shell-usa .h-400px {
     height: auto !important;
   }
 }
@@ -307,17 +307,17 @@
  * Sidebar/main fill the tabs section column (stacked).
  */
 @media (max-width: 600px) {
-  .countriesUSA.country-body-shell .wrapper-content {
+  .country-file-usa.country-body-shell-usa .wrapper-content {
     width: 95% !important;
   }
 
-  .countriesUSA.country-body-shell .w-964px {
+  .country-file-usa.country-body-shell-usa .w-964px {
     width: 100% !important;
     max-width: 100%;
   }
 
   /* Intro narrower than tabs (live ~55–60% of viewport) */
-  .countriesUSA.country-body-shell .mobile-usa-content {
+  .country-file-usa.country-body-shell-usa .mobile-usa-content {
     width: 60% !important;
     max-width: 100%;
     margin-inline: auto !important;
@@ -325,7 +325,7 @@
   }
 
   /* Tabs + Study 101 column — nested gutters like live */
-  .countriesUSA.country-body-shell .mobile-box-country {
+  .country-file-usa.country-body-shell-usa .mobile-box-country {
     width: 90% !important;
     max-width: 100%;
     margin-inline: auto !important;
@@ -334,33 +334,33 @@
     box-sizing: border-box;
   }
 
-  .countriesUSA.country-body-shell .country-usa-tab-style-new {
+  .country-file-usa.country-body-shell-usa .country-usa-tab-style-new {
     width: 93% !important;
     max-width: 100%;
     margin-inline: auto !important;
     box-sizing: border-box;
   }
 
-  .countriesUSA.country-body-shell .country-usa-tab-full-width {
+  .country-file-usa.country-body-shell-usa .country-usa-tab-full-width {
     padding-left: 10px !important;
     padding-right: 10px !important;
     justify-content: flex-start !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-wrap {
+  .country-file-usa.country-body-shell-usa .mobile-wrap {
     flex-wrap: wrap !important;
     gap: 7px !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-w-full {
+  .country-file-usa.country-body-shell-usa .mobile-w-full {
     width: 100% !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-w-48 {
+  .country-file-usa.country-body-shell-usa .mobile-w-48 {
     width: 48% !important;
   }
 
-  .countriesUSA.country-body-shell .mobile-none {
+  .country-file-usa.country-body-shell-usa .mobile-none {
     display: none !important;
   }
 
@@ -369,17 +369,17 @@
    * Forcing flex on ALL desktop-none crushed `.mobile-points-usa` (Do’s/Don’ts)
    * into 3 tiny columns → letter-per-line wrap. Only flex when the markup is a row.
    */
-  .countriesUSA.country-body-shell .desktop-none {
+  .country-file-usa.country-body-shell-usa .desktop-none {
     display: block !important;
   }
 
-  .countriesUSA.country-body-shell .desktop-none.d-flex,
-  .countriesUSA.country-body-shell .desktop-none.align-items-center {
+  .country-file-usa.country-body-shell-usa .desktop-none.d-flex,
+  .country-file-usa.country-body-shell-usa .desktop-none.align-items-center {
     display: flex !important;
     align-items: center;
   }
 
-  .countriesUSA.country-body-shell .desktop-none.mobile-points-usa {
+  .country-file-usa.country-body-shell-usa .desktop-none.mobile-points-usa {
     display: block !important;
     width: 100%;
     max-width: 100%;
@@ -387,13 +387,13 @@
     box-sizing: border-box;
   }
 
-  .countriesUSA.country-body-shell .mobile-points-usa h6 {
+  .country-file-usa.country-body-shell-usa .mobile-points-usa h6 {
     display: inline-block;
     width: auto;
     max-width: 100%;
   }
 
-  .countriesUSA.country-body-shell .mobile-points-usa p {
+  .country-file-usa.country-body-shell-usa .mobile-points-usa p {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -402,25 +402,25 @@
     word-break: normal;
   }
 
-  .countriesUSA.country-body-shell .w-35,
-  .countriesUSA.country-body-shell .w-80,
-  .countriesUSA.country-body-shell .w-70 {
+  .country-file-usa.country-body-shell-usa .w-35,
+  .country-file-usa.country-body-shell-usa .w-80,
+  .country-file-usa.country-body-shell-usa .w-70 {
     width: 100% !important;
   }
 
-  .countriesUSA.country-body-shell .info-card-countries-usa {
+  .country-file-usa.country-body-shell-usa .info-card-countries-usa {
     height: auto !important;
     min-height: 0 !important;
     overflow: hidden;
     width: 100% !important;
   }
 
-  .countriesUSA.country-body-shell .info-card-countries-usa [class$="__spacer"] {
+  .country-file-usa.country-body-shell-usa .info-card-countries-usa [class$="__spacer"] {
     min-height: 24px;
     flex: 0 1 auto;
   }
 
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .info-card-countries-usa
     .country-stat-sidebar {
     flex-direction: row;
@@ -429,7 +429,7 @@
     gap: 10px;
   }
 
-  .countriesUSA.country-body-shell
+  .country-file-usa.country-body-shell-usa
     .info-card-countries-usa
     .country-stat-caption {
     max-width: 110px;
@@ -437,13 +437,13 @@
     line-height: 1.15 !important;
   }
 
-  .countriesUSA.country-body-shell .h-250px,
-  .countriesUSA.country-body-shell .h-400px {
+  .country-file-usa.country-body-shell-usa .h-250px,
+  .country-file-usa.country-body-shell-usa .h-400px {
     height: auto !important;
   }
 
   /* Figma: one flowing title — hide forced desktop <br> */
-  .country-body-shell__intro-br {
+  .country-body-shell-usa__intro-br {
     display: none;
   }
 }

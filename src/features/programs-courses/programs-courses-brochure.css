@@ -1,0 +1,174 @@
+/**
+ * Courses C6 — brochure download plate.
+ * Desk `17072:11029` · Mob `551:10282`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-brochure {
+  --pc-brochure-bg: #f1f1f1;
+  --pc-brochure-mudd: #201c1d;
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-brochure *,
+.pc-brochure *::before,
+.pc-brochure *::after {
+  box-sizing: border-box;
+}
+
+.pc-brochure__title,
+.pc-brochure__subtitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+}
+
+.pc-brochure__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pc-brochure__cta:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.pc-brochure__cta:focus-visible {
+  outline: 2px solid #0044ff;
+  outline-offset: 3px;
+}
+
+.pc-brochure__badge {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+.pc-brochure__badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid var(--pc-brochure-mudd);
+  margin-right: -1px;
+}
+
+.pc-brochure__badge-icon img {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.pc-brochure__badge-label {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--pc-brochure-mudd);
+  color: var(--pc-brochure-mudd);
+  font-family: Inter, Roboto, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.32px;
+  white-space: nowrap;
+}
+
+.pc-brochure__titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+}
+
+/* —— Mobile ≤600 — Figma 551:10282 · stacked · pad 32 —— */
+@media (max-width: 600px) {
+  .pc-brochure {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 40px;
+  }
+
+  .pc-brochure__plate {
+    width: 100%;
+    max-width: 358px;
+    padding: 32px;
+    background: var(--pc-brochure-bg);
+    border-radius: 16px;
+  }
+
+  .pc-brochure__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .pc-brochure__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:11029 · plate ~1115 + pad —— */
+@media (min-width: 1367px) {
+  .pc-brochure {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  .pc-brochure__plate {
+    width: 100%;
+    max-width: 1213px;
+    padding: 46px 49px;
+    background: var(--pc-brochure-bg);
+    border-radius: 16px;
+  }
+
+  .pc-brochure__row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1115px;
+  }
+
+  .pc-brochure__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 27px;
+    width: 612px;
+    max-width: 100%;
+  }
+}

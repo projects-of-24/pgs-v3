@@ -1,0 +1,130 @@
+/**
+ * explore Countries body motion — EM gate.
+ * Page-local only. No Hostinger theme JS. Respects prefers-reduced-motion.
+ * Shared tail blocks (E5–E7) scoped under .explore-countries-preview-shell.
+ */
+
+@keyframes explore-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes explore-chip-swap {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes explore-bento-arrow-nudge {
+  0%,
+  100% {
+    transform: rotate(90deg) scaleY(-1) translateY(0);
+  }
+  50% {
+    transform: rotate(90deg) scaleY(-1) translateY(5px);
+  }
+}
+
+.explore-countries-preview-shell .explore-countries-hero {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.explore-countries-preview-shell .explore-countries-switcher[data-block-gate="e2"] {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.explore-countries-preview-shell .explore-countries-bento[data-block-gate="e3"] {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.explore-countries-preview-shell .explore-countries-switcher-secondary {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
+}
+
+.explore-countries-preview-shell
+  [data-pgs-module="explore-countries-bento-secondary"] {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.explore-countries-preview-shell .explore-countries-univ {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+.explore-countries-preview-shell .premium-expense {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+
+.explore-countries-preview-shell .support-hub {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.explore-countries-preview-shell .pgs-picks {
+  animation: explore-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+.explore-countries-preview-shell .explore-countries-switcher__chip {
+  transition:
+    background-color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.22s ease;
+}
+
+.explore-countries-preview-shell .explore-countries-switcher__country-wrap {
+  animation: explore-chip-swap 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.explore-countries-preview-shell .explore-countries-switcher__cta {
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.explore-countries-preview-shell .explore-countries-switcher__cta:active {
+  transform: scale(0.98);
+}
+
+.explore-countries-preview-shell
+  .explore-countries-bento[data-block-gate="e3"]
+  .explore-countries-bento__explore-arrow {
+  animation: explore-bento-arrow-nudge 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-countries-preview-shell .explore-countries-hero,
+  .explore-countries-preview-shell .explore-countries-switcher[data-block-gate="e2"],
+  .explore-countries-preview-shell .explore-countries-bento[data-block-gate="e3"],
+  .explore-countries-preview-shell .explore-countries-switcher-secondary,
+  .explore-countries-preview-shell
+    [data-pgs-module="explore-countries-bento-secondary"],
+  .explore-countries-preview-shell .explore-countries-univ,
+  .explore-countries-preview-shell .premium-expense,
+  .explore-countries-preview-shell .support-hub,
+  .explore-countries-preview-shell .pgs-picks {
+    animation: none;
+  }
+
+  .explore-countries-preview-shell .explore-countries-switcher__country-wrap {
+    animation: none;
+  }
+
+  .explore-countries-preview-shell
+    .explore-countries-bento[data-block-gate="e3"]
+    .explore-countries-bento__explore-arrow {
+    animation: none;
+  }
+
+  .explore-countries-preview-shell .explore-countries-switcher__chip,
+  .explore-countries-preview-shell .explore-countries-switcher__cta {
+    transition: none;
+  }
+}

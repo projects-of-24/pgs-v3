@@ -163,6 +163,26 @@ Reuse this shape for any backend feature: **empty contract/slot → write bytes 
 
 ---
 
+## Parked — backend pass (do not build on a frontend gate)
+
+Owner 2026-09-12. Recall when the backend pass opens. Not a frontend job.
+
+**Add Country → live page.** Catalog **Add Country** already inserts `countries` (`name`, `slug`, `published`). It does not create a public URL. A new slug has no page until a coded route exists.
+
+Do not add a second button. Do not copy the UK file. Gates, one at a time, only after `GO AHEAD Cn`:
+
+| Gate | What |
+|---|---|
+| C1 | Keep Add Country. Slug letters-only and unique. Row stays unpublished. No public page yet. |
+| C2 | One shared route reads the row. Publish renders `composeCountryPublicPage`. Unpublished or unknown slug = 404. The ten existing country files stay until the owner says to move them. |
+| C3 | Hero and intro edit in the CMS slot that already owns page copy. Empty stays empty. Layout is not copied from the UK. |
+| C4 | Explore Countries and header links. Separate. Not part of C1–C3. |
+
+Unanswered — ask before C1, do not assume:
+
+- URL shape: `/countriesireland` (current) or `/countries/ireland`
+- First body: blank hero + intro, or a copy of one existing country’s sections
+
 ## Failure modes
 
 - Coding the whole pipeline because “we’ll need it anyway”

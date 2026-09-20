@@ -1,0 +1,28 @@
+/**
+ * E12 Outro CTA — wraps shared OutroCta for Events spacing.
+ * Desk `17120:10445` · mob `551:8155`.
+ */
+
+.pe-outro {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.pe-outro .outro-cta {
+  margin-top: 48px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 1367px) {
+  .pe-outro .outro-cta {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pe-outro .outro-cta {
+    margin-top: 40px;
+  }
+}

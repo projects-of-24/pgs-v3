@@ -1,0 +1,501 @@
+/**
+ * explore Countries bento — owned CSS (E3 desk + mob).
+ * Desktop `17056:19564` stage 876.8×443.2.
+ * Mobile `470:4751` 303.24×579 — no grey panel; 2-col flex.
+ *
+ * Overflow / stack (desk):
+ * - Stage overflow visible — lilac hangs below grey panel.
+ * - Lilac overflow clip — grad photo may hang past lilac right and is clipped.
+ * - Explore label + arrow are stage-absolute siblings over lilac.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * Tip chips + desk title/body stay 14px (Figma). Checklist desk 16px.
+ * Mob title 16px; tip/body/checks 14px per Figma.
+ */
+
+.explore-countries-bento {
+  --bento-panel: #f1f1f1;
+  --bento-chip-bg: #d9f1fd;
+  --bento-check: #0abf8c;
+  --bento-lilac: #e2a5f3;
+  --bento-muted: rgba(0, 0, 0, 0.65);
+  --bento-border: rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 48px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.explore-countries-bento *,
+.explore-countries-bento *::before,
+.explore-countries-bento *::after {
+  box-sizing: border-box;
+}
+
+.explore-countries-bento__stage {
+  position: relative;
+  width: 876.8px;
+  max-width: 100%;
+  height: 443.2px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* Desk: wrappers dissolve so children absolute to stage */
+.explore-countries-bento__col,
+.explore-countries-bento__explore-cluster {
+  display: contents;
+}
+
+.explore-countries-bento__panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 876.8px;
+  max-width: 100%;
+  height: 280px;
+  border-radius: 6.4px;
+  background: var(--bento-panel);
+  overflow: visible;
+}
+
+.explore-countries-bento__card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.8px solid var(--bento-border);
+  border-radius: 12.8px;
+  background: #fff;
+  overflow: visible;
+}
+
+.explore-countries-bento__card--shortlist {
+  left: 35.2px;
+  top: 18.4px;
+  width: 148.8px;
+  height: 225.6px;
+}
+
+.explore-countries-bento__card--apps {
+  left: 203.2px;
+  top: 19.2px;
+  width: 230.4px;
+  height: 112.8px;
+}
+
+.explore-countries-bento__card-icon {
+  position: absolute;
+  top: 17.6px;
+  left: 8.8px;
+  width: 30.4px;
+  height: 30.4px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.explore-countries-bento__card--apps .explore-countries-bento__card-icon {
+  top: 14.4px;
+  left: 9.6px;
+  width: 32px;
+  height: 32px;
+}
+
+.explore-countries-bento__chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.2px 6.4px;
+  border-radius: 8px;
+  background: var(--bento-chip-bg);
+  color: #000;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.explore-countries-bento__chip-line {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.08px;
+  white-space: pre-line;
+}
+
+.explore-countries-bento__chip-plus {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.explore-countries-bento__chip-plus--mob {
+  display: none;
+}
+
+.explore-countries-bento__copy {
+  position: absolute;
+  left: 461.6px;
+  top: 21.6px;
+  width: 253.6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5.6px;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.explore-countries-bento__title {
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.08px;
+}
+
+.explore-countries-bento__body {
+  margin: 0;
+  color: var(--bento-muted);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+}
+
+.explore-countries-bento__checks {
+  position: absolute;
+  left: 192px;
+  top: 132px;
+  width: 357.8px;
+  margin: 0;
+  padding: 16.8px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6.4px;
+  align-items: flex-start;
+  border-radius: 6.4px;
+  z-index: 1;
+}
+
+.explore-countries-bento__checks--mob {
+  display: none;
+}
+
+.explore-countries-bento__check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.explore-countries-bento__check-mark {
+  flex: 0 0 auto;
+  width: 27.2px;
+  height: 27.2px;
+  border-radius: 3.2px;
+  background: var(--bento-check);
+}
+
+.explore-countries-bento__check-text {
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.explore-countries-bento__explore {
+  position: absolute;
+  left: 694.4px;
+  top: 103.2px;
+  width: 163.2px;
+  height: 340px;
+  border-radius: 12.8px;
+  background: var(--bento-lilac);
+  overflow: clip;
+  z-index: 1;
+}
+
+.explore-countries-bento__explore-photo {
+  position: absolute;
+  left: 34.4px;
+  top: 129.6px;
+  width: 135.277px;
+  height: 211.2px;
+}
+
+.explore-countries-bento__explore-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.explore-countries-bento__explore-label {
+  position: absolute;
+  left: 741.6px;
+  top: 145.6px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 28.8px;
+  font-weight: 400;
+  line-height: 28px;
+  text-transform: lowercase;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.explore-countries-bento__explore-line {
+  display: block;
+  white-space: pre;
+}
+
+.explore-countries-bento__explore-arrow {
+  position: absolute;
+  left: 700px;
+  top: 229.6px;
+  width: 57.6px;
+  height: 57.6px;
+  transform: rotate(90deg) scaleY(-1);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.explore-countries-bento__explore-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Phone ≤600 — Figma `470:4751` —— */
+@media (max-width: 600px) {
+  .explore-countries-bento {
+    padding: 0 0 32px;
+    display: block;
+  }
+
+  .explore-countries-bento__stage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    width: 303.24px;
+    max-width: 100%;
+    height: 579px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .explore-countries-bento__panel {
+    display: none;
+  }
+
+  .explore-countries-bento__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .explore-countries-bento__col--cards {
+    gap: 12px;
+    width: 133.24px;
+    flex: 0 0 auto;
+  }
+
+  .explore-countries-bento__col--right {
+    width: 150px;
+    flex: 0 0 auto;
+    gap: 16px;
+  }
+
+  .explore-countries-bento__card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 133.24px;
+    height: 210px;
+    border-width: 0.64px;
+    border-radius: 10.24px;
+  }
+
+  .explore-countries-bento__card--shortlist,
+  .explore-countries-bento__card--apps {
+    left: auto;
+    top: auto;
+    width: 133.24px;
+    height: 210px;
+  }
+
+  .explore-countries-bento__card-icon {
+    top: 14.08px;
+    left: 7.04px;
+    width: 24.32px;
+    height: 24.32px;
+  }
+
+  .explore-countries-bento__card--apps .explore-countries-bento__card-icon {
+    top: 14.08px;
+    left: 7.04px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .explore-countries-bento__chip {
+    padding: 2.56px 5.12px;
+    border-radius: 6.4px;
+  }
+
+  .explore-countries-bento__chip-line {
+    letter-spacing: 0.064px;
+    line-height: normal;
+  }
+
+  .explore-countries-bento__chip-plus--desk {
+    display: none;
+  }
+
+  .explore-countries-bento__chip-plus--mob {
+    display: block;
+    font-size: 12px;
+    line-height: 17.92px;
+  }
+
+  .explore-countries-bento__copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 147px;
+    gap: 6px;
+    z-index: auto;
+  }
+
+  .explore-countries-bento__title {
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+
+  .explore-countries-bento__body {
+    color: #000;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+  }
+
+  .explore-countries-bento__checks--desk {
+    display: none;
+  }
+
+  .explore-countries-bento__checks--mob {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: flex;
+    width: 150px;
+    padding: 0;
+    gap: 12px;
+    z-index: auto;
+  }
+
+  .explore-countries-bento__check {
+    gap: 9.6px;
+    align-items: center;
+  }
+
+  .explore-countries-bento__check-mark {
+    width: 21.76px;
+    height: 21.76px;
+  }
+
+  .explore-countries-bento__check-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 14px;
+    letter-spacing: 0.32px;
+    line-height: normal;
+  }
+
+  /* Figma Group 1000001807 — left 147, top 344 within 303×579 stage */
+  .explore-countries-bento__explore-cluster {
+    display: block;
+    position: absolute;
+    left: 147px;
+    top: 344px;
+    width: 112px;
+    height: 235px;
+  }
+
+  .explore-countries-bento__explore {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 112px;
+    height: 235px;
+    border-radius: 8px;
+  }
+
+  .explore-countries-bento__explore-photo {
+    left: 31px;
+    top: 103px;
+    width: 84.548px;
+    height: 132px;
+  }
+
+  .explore-countries-bento__explore-label {
+    left: 9px;
+    top: 29px;
+    font-size: 24px;
+    line-height: 0.9;
+  }
+
+  .explore-countries-bento__explore-arrow {
+    left: 5px;
+    top: 99px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 1367px) {
+  .explore-countries-bento {
+    padding: 0 0 64px;
+  }
+}
+
+/* —— E3b second bento — Group 317 / mob `471:4781` (no lilac) —— */
+.explore-countries-bento--e3b .explore-countries-bento__stage {
+  height: 280px;
+  overflow: hidden;
+}
+
+.explore-countries-bento--e3b .explore-countries-bento__panel {
+  height: 280px;
+}
+
+@media (max-width: 600px) {
+  .explore-countries-bento--e3b .explore-countries-bento__stage {
+    height: 432px;
+    overflow: visible;
+  }
+}

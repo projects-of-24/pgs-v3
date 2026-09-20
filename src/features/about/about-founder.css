@@ -1,0 +1,179 @@
+/**
+ * About Us — Meet The Founder (A8).
+ * Desk `17057:14045` · mob `517:5787`.
+ * Bands >1366 · ≤600; iPad deferred.
+ */
+
+.about-founder {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 56px clamp(16px, 4vw, 48px) 64px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #303030;
+}
+
+.about-founder *,
+.about-founder *::before,
+.about-founder *::after {
+  box-sizing: border-box;
+}
+
+.about-founder__inner {
+  display: grid;
+  grid-template-columns: minmax(200px, 343px) minmax(240px, 312px) minmax(240px, 312px);
+  gap: 29px;
+  align-items: start;
+  width: 100%;
+  max-width: 1025px;
+  margin-inline: auto;
+}
+
+.about-founder__heading {
+  margin: 0;
+  color: #303030;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.about-founder__heading em {
+  font-style: italic;
+  font-weight: 800;
+}
+
+.about-founder__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.about-founder__photo {
+  display: block;
+  width: 100%;
+  max-width: 312px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.about-founder__name {
+  margin: 0;
+  color: #303030;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.about-founder__role {
+  margin: 0;
+  color: #303030;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.about-founder__connect {
+  margin-top: 11px;
+}
+
+.about-founder__connect-label {
+  margin: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.25px;
+}
+
+.about-founder__email {
+  display: inline-block;
+  margin-top: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.25px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.about-founder__email:hover,
+.about-founder__email:focus-visible {
+  color: #000;
+}
+
+.about-founder__email:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.about-founder__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  color: #303030;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.25px;
+}
+
+.about-founder__bio p {
+  margin: 0;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .about-founder {
+    padding: 40px 0 48px;
+  }
+
+  .about-founder__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 85%;
+    max-width: 348px;
+    margin-inline: auto;
+  }
+
+  .about-founder__heading {
+    width: 100%;
+    max-width: 343px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .about-founder__profile {
+    width: 100%;
+    max-width: 312px;
+    gap: 12px;
+  }
+
+  .about-founder__photo {
+    max-width: 100%;
+  }
+
+  .about-founder__name {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .about-founder__connect {
+    margin-top: 8px;
+  }
+
+  .about-founder__bio {
+    width: 100%;
+    max-width: 312px;
+  }
+}

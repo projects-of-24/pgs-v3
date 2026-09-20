@@ -1,0 +1,150 @@
+/**
+ * #premiumUSMLE track intro — owned CSS (U5).
+ * Desktop column from Figma. Phone uses the Figma inset (31px on a 390 frame), not 85%.
+ * iPad reuses the desktop column. Section 2 body was 11.2px; phone intro was 14px.
+ */
+
+.premium-plab-track {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 36px 0 28px;
+  background: #fff;
+  overflow-x: clip;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-plab-track *,
+.premium-plab-track *::before,
+.premium-plab-track *::after {
+  box-sizing: border-box;
+}
+
+.premium-plab-track__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 692px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+}
+
+.premium-plab-track__section,
+.premium-plab-track__brand,
+.premium-plab-track__title,
+.premium-plab-track__intro {
+  margin: 0;
+}
+
+.premium-plab-track__section {
+  display: flex;
+  align-items: flex-start;
+  gap: 23px;
+  width: 100%;
+}
+
+.premium-plab-track__section-label {
+  flex: 0 0 auto;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-plab-track__section-lead {
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.2px;
+}
+
+.premium-plab-track__brand,
+.premium-plab-track__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.premium-plab-track__brand-name {
+  color: #009c70;
+  font-size: 38.4px;
+  letter-spacing: 1.6px;
+}
+
+.premium-plab-track__brand-family {
+  color: #eb0801;
+  font-size: 19.2px;
+}
+
+.premium-plab-track__title {
+  font-size: 38.4px;
+  line-height: 22.4px;
+}
+
+.premium-plab-track__title-prefix {
+  color: #303030;
+}
+
+.premium-plab-track__intro {
+  max-width: 642px;
+  font-size: 17.6px;
+  font-weight: 500;
+  line-height: 22.4px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .premium-plab-track {
+    padding: 28px 0 20px;
+  }
+
+  .premium-plab-track__inner {
+    width: 100%;
+    max-width: none;
+    align-items: center;
+    gap: 28px;
+    padding-inline: 31px;
+  }
+
+  .premium-plab-track__section {
+    display: none;
+  }
+
+  .premium-plab-track__brand {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .premium-plab-track__brand-name {
+    font-size: 30px;
+  }
+
+  .premium-plab-track__brand-family {
+    font-size: 20px;
+  }
+
+  .premium-plab-track__title {
+    flex-wrap: wrap;
+    max-width: 253px;
+    font-size: 38.4px;
+  }
+
+  .premium-plab-track__title-prefix {
+    font-size: 20px;
+  }
+
+  .premium-plab-track__intro {
+    max-width: 253px;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+}

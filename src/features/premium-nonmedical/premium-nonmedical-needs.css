@@ -40,6 +40,7 @@
     "short calendar fast"
     "note alerts .";
   gap: 16px 15px;
+  position: relative;
   align-items: start;
   width: fit-content;
   max-width: 100%;

@@ -1,0 +1,176 @@
+/**
+ * #premiumUSMLE comes-in — owned CSS (U3).
+ * Desktop row from Figma. Phone ≤600: 85% rail, stacked.
+ * iPad 601–1366: same desktop row. Type floor 16px.
+ * Lead was 14px in Figma. Mobile chip was 14px. Both sit on the floor.
+ */
+
+.premium-amc-comes {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 28px 0 40px;
+  background: #fff;
+  overflow-x: clip;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-amc-comes *,
+.premium-amc-comes *::before,
+.premium-amc-comes *::after {
+  box-sizing: border-box;
+}
+
+.premium-amc-comes__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+}
+
+.premium-amc-comes__title,
+.premium-amc-comes__lead,
+.premium-amc-comes__chip {
+  margin: 0;
+}
+
+.premium-amc-comes__title {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 22.4px;
+  text-align: center;
+}
+
+.premium-amc-comes__lead {
+  margin-top: -17px;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.premium-amc-comes__stage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24.8px;
+  width: 100%;
+}
+
+.premium-amc-comes__poster {
+  position: relative;
+  flex: 0 0 auto;
+  width: 252px;
+  height: 345px;
+  border-radius: 12.8px;
+  overflow: hidden;
+}
+
+.premium-amc-comes__poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.premium-amc-comes__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.premium-amc-comes__play:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 3px;
+}
+
+.premium-amc-comes__chip-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  max-width: 430px;
+  margin-top: 8px;
+}
+
+.premium-amc-comes__chip {
+  min-width: 0;
+  padding: 8px;
+  border-radius: 6.4px;
+  background: #bbc8ff;
+  color: #000;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: left;
+}
+
+.premium-amc-comes__arrow {
+  flex: 0 0 auto;
+  width: 26.4px;
+  height: 26.4px;
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  .premium-amc-comes {
+    padding: 24px 0 32px;
+  }
+
+  .premium-amc-comes__inner {
+    width: 85%;
+    max-width: 85%;
+    gap: 16px;
+    padding-inline: 0;
+  }
+
+  .premium-amc-comes__lead {
+    margin-top: 0;
+  }
+
+  .premium-amc-comes__title {
+    line-height: normal;
+  }
+
+  .premium-amc-comes__stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .premium-amc-comes__chip-row {
+    align-self: stretch;
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .premium-amc-comes__chip {
+    flex: 1 1 auto;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-amc-comes__chip-row {
+    flex: 1 1 auto;
+  }
+}

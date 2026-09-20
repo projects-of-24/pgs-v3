@@ -1,0 +1,198 @@
+/**
+ * Shared support hub. Desktop is the default. iPad reuses it.
+ * Phone restates layout inside max-width 600. Do not edit those rules for desktop.
+ * Hostinger section padding is killed here so the row does not float.
+ * Section is a few pixels wider than Figma 854 so the locked email stays one line.
+ */
+
+.support-hub {
+  box-sizing: border-box;
+  width: min(880px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 52px auto 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.support-hub *,
+.support-hub *::before,
+.support-hub *::after {
+  box-sizing: border-box;
+}
+
+.support-hub__row {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+}
+
+.support-hub__brand-col {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.support-hub__brand {
+  margin: 0;
+  padding: 19px 26px;
+  border-radius: 13px;
+  background: #000;
+  color: #b57cff;
+  font-size: 51.2px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.support-hub__label {
+  margin: 0;
+  padding-left: 7px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+.support-hub__channels {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 13px;
+  min-width: 0;
+}
+
+.support-hub__line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.support-hub__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 85px;
+  margin: 0;
+  padding: 3px;
+  background: #ffc524;
+  color: #000;
+  font-size: 19.2px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.support-hub__link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  color: #000;
+  font-size: 25.6px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.support-hub__link:hover {
+  text-decoration: underline;
+}
+
+.support-hub__link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.support-hub__link img {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+}
+
+.support-hub__blurb {
+  flex: 0 0 182px;
+  width: 182px;
+  margin: 0;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 600px) {
+  .support-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: min(374px, calc(100% - 16px));
+    margin: 52px auto 0;
+  }
+
+  .support-hub__row {
+    display: contents;
+  }
+
+  .support-hub__blurb {
+    order: -1;
+    flex: none;
+    width: min(330px, 100%);
+    font-size: 15px;
+    line-height: 1.28;
+    text-align: left;
+  }
+
+  .support-hub__brand-col {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: min(351px, 100%);
+    padding: 19px 16px;
+    border-radius: 13px;
+    background: #000;
+  }
+
+  .support-hub__brand {
+    padding: 0;
+    background: transparent;
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .support-hub__label {
+    padding-left: 0;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.28;
+  }
+
+  .support-hub__channels {
+    flex: none;
+    gap: 13px;
+    width: min(351px, 100%);
+    padding: 0 12px;
+  }
+
+  .support-hub__badge {
+    min-width: 85px;
+    font-size: 16px;
+  }
+
+  .support-hub__link {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .support-hub__link img {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+}

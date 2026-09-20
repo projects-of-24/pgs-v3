@@ -1,0 +1,540 @@
+/**
+ * Scholarship steps path — S5 owned CSS (Hostinger-free).
+ * DevTools: select `.scholarship-steps` → edit `--sch-steps-*` vars.
+ * Desktop >1366 · Mobile ≤600 Figma-exact card track · iPad deferred.
+ */
+
+.scholarship-steps {
+  --sch-steps-heading: 38.4px;
+  --sch-steps-label: 28.8px;
+  --sch-steps-title: 19.2px;
+  --sch-steps-title-lh: 24px;
+  --sch-steps-bullet: 14.4px;
+  --sch-steps-bullet-lh: 19.2px;
+  --sch-steps-tick: 16.8px;
+  --sch-steps-quote: 14px;
+  --sch-steps-quote-lh: 1.35;
+  --sch-steps-name: 14px;
+  --sch-steps-role: 14px;
+  --sch-steps-role-lh: 1.35;
+  --sch-steps-find: 22.4px;
+  --sch-steps-find-lh: 28.8px;
+  --sch-steps-cta: 20px;
+  --sch-steps-red: rgba(255, 0, 0, 0.9);
+  --sch-steps-panel: #0a0d1c;
+  --sch-steps-muted: rgba(255, 255, 255, 0.65);
+  /* Desktop placed testimonial `17041:18836` — 252.58 (not master ~395) */
+  --sch-steps-story-w: 252.58px;
+  --sch-steps-photo-h: 253.22px;
+  --sch-steps-panel-min-h: 213.12px;
+  --sch-steps-quote-pad: 19px 16px 20px;
+  --sch-steps-quote-mark: 20.48px;
+  --sch-steps-quote-mark-left: 16px;
+  --sch-steps-quote-mark-top: -10px;
+  --sch-steps-pager-arrow: 32px;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.scholarship-steps *,
+.scholarship-steps *::before,
+.scholarship-steps *::after {
+  box-sizing: border-box;
+}
+
+.scholarship-steps__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 56px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+/* —— Process cards —— */
+.scholarship-steps__process {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  width: 100%;
+}
+
+.scholarship-steps__heading {
+  margin: 0;
+  max-width: 259px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--sch-steps-heading);
+  font-weight: 400;
+  line-height: 1.05;
+  color: #000;
+}
+
+.scholarship-steps__cards-scroll {
+  width: 100%;
+}
+
+.scholarship-steps__cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14.4px;
+  width: 100%;
+}
+
+.scholarship-steps__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 276px;
+  padding: 14.4px 19.2px;
+  border: 0.6px solid #000;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.scholarship-steps__label {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--sch-steps-label);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--sch-steps-red);
+}
+
+.scholarship-steps__title {
+  margin: 0;
+  padding-block: 7.2px;
+  font-size: var(--sch-steps-title);
+  font-weight: 500;
+  line-height: var(--sch-steps-title-lh);
+  color: #000;
+}
+
+.scholarship-steps__bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.scholarship-steps__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  min-width: 0;
+}
+
+.scholarship-steps__tick {
+  flex: 0 0 var(--sch-steps-tick);
+  width: var(--sch-steps-tick);
+  height: var(--sch-steps-tick);
+  margin-top: 1px;
+}
+
+.scholarship-steps__bullet-text {
+  min-width: 0;
+  font-size: var(--sch-steps-bullet);
+  font-weight: 400;
+  line-height: var(--sch-steps-bullet-lh);
+  color: #000;
+}
+
+/* —— Testimonial — Figma placed desk `17041:18836` ~253 · mob `331:3250` 231 —— */
+.scholarship-steps__story {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  width: 100%;
+  max-width: var(--sch-steps-story-w);
+}
+
+.scholarship-steps__testimonial {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--sch-steps-story-w);
+}
+
+.scholarship-steps__photo-wrap {
+  width: 100%;
+  height: var(--sch-steps-photo-h);
+  overflow: hidden;
+  border: 1px solid var(--sch-steps-muted);
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+  background: #d9d9d9;
+}
+
+.scholarship-steps__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.scholarship-steps__quote-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  width: 100%;
+  min-height: var(--sch-steps-panel-min-h);
+  padding: var(--sch-steps-quote-pad);
+  background: var(--sch-steps-panel);
+  border: 1px solid var(--sch-steps-muted);
+  border-top: 0;
+  border-radius: 0 0 5px 5px;
+  color: #fff;
+}
+
+.scholarship-steps__quote-mark {
+  position: absolute;
+  left: var(--sch-steps-quote-mark-left);
+  top: var(--sch-steps-quote-mark-top);
+  width: var(--sch-steps-quote-mark);
+  height: var(--sch-steps-quote-mark);
+  pointer-events: none;
+}
+
+.scholarship-steps__quote {
+  margin: 0;
+}
+
+.scholarship-steps__quote p {
+  margin: 0;
+  font-size: var(--sch-steps-quote);
+  font-weight: 400;
+  line-height: var(--sch-steps-quote-lh);
+  color: #fff;
+}
+
+.scholarship-steps__name {
+  margin: 0;
+  font-size: var(--sch-steps-name);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.scholarship-steps__role {
+  margin: 0;
+  font-size: var(--sch-steps-role);
+  font-weight: 400;
+  line-height: var(--sch-steps-role-lh);
+  color: var(--sch-steps-muted);
+}
+
+.scholarship-steps__pager {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 65px;
+  margin-inline: auto;
+}
+
+.scholarship-steps__pager-arrows {
+  display: flex;
+  align-items: center;
+}
+
+.scholarship-steps__pager-arrow {
+  display: block;
+  width: var(--sch-steps-pager-arrow);
+  height: var(--sch-steps-pager-arrow);
+}
+
+.scholarship-steps__page-label {
+  margin: 0;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #000;
+}
+
+/* —— Find CTA + Premium disclaimer (desk `17041:18780` · mob `331:3272`) —— */
+.scholarship-steps__find {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18.4px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.scholarship-steps__find-support {
+  margin: 0;
+  font-size: var(--sch-steps-find);
+  font-weight: 500;
+  line-height: var(--sch-steps-find-lh);
+  color: #000;
+}
+
+.scholarship-steps__find-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px 40px;
+  width: 100%;
+}
+
+.scholarship-steps__find-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 16px;
+  border: 1.6px solid #9747ff;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--sch-steps-cta);
+  font-weight: 500;
+  line-height: 35.2px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.scholarship-steps__find-cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.scholarship-steps__find-note {
+  position: relative;
+  flex: 1 1 280px;
+  max-width: 336px;
+  min-width: 0;
+  padding-top: 28px;
+}
+
+.scholarship-steps__find-arrow {
+  position: absolute;
+  left: -8px;
+  top: -36px;
+  width: 99px;
+  height: 99px;
+  pointer-events: none;
+  transform: rotate(-20deg);
+}
+
+.scholarship-steps__find-disclaimer {
+  margin: 0;
+  /* Figma 12.8px → 14px readable floor */
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19.2px;
+  letter-spacing: 0.12px;
+  color: #000;
+}
+
+@media (min-width: 1367px) {
+  .scholarship-steps {
+    padding: 56px 0 64px;
+  }
+
+  .scholarship-steps__inner {
+    gap: 64px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scholarship-steps {
+    /* Mob Figma · a11y floor on tiny bullets */
+    --sch-steps-heading: 20px;
+    --sch-steps-label: 20px;
+    --sch-steps-title: 14px;
+    --sch-steps-title-lh: 1.25;
+    --sch-steps-bullet: 14px;
+    --sch-steps-bullet-lh: 1.3;
+    --sch-steps-tick: 20px;
+    --sch-steps-quote: 14px;
+    --sch-steps-quote-lh: 1.35;
+    --sch-steps-name: 14px;
+    --sch-steps-role: 14px;
+    --sch-steps-role-lh: 1.3;
+    --sch-steps-find: 14px;
+    --sch-steps-find-lh: 1.35;
+    --sch-steps-cta: 14px;
+
+    padding: 28px 0 36px;
+  }
+
+  .scholarship-steps__inner {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .scholarship-steps__process {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .scholarship-steps__heading {
+    max-width: 201px;
+    margin-inline: 42px;
+  }
+
+  /* Figma `328:3201` / `331:3164`: 3×150 cards = 474 track, scroll on 390 */
+  .scholarship-steps__cards-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-inline: 42px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* legacy Edge */
+  }
+
+  .scholarship-steps__cards-scroll::-webkit-scrollbar {
+    display: none; /* Chrome / Safari */
+  }
+
+  .scholarship-steps__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+    width: 474px;
+    max-width: none;
+  }
+
+  .scholarship-steps__card {
+    flex: 0 0 150px;
+    width: 150px;
+    min-height: 313px;
+    padding: 7.2px 9.6px;
+    gap: 18px;
+    border-width: 0.3px;
+    border-radius: 6px;
+  }
+
+  .scholarship-steps__title {
+    padding-block: 3.6px;
+  }
+
+  .scholarship-steps__bullet {
+    gap: 7.5px;
+    align-items: center;
+  }
+
+  .scholarship-steps__story {
+    --sch-steps-story-w: 231px;
+    --sch-steps-photo-h: 179px;
+    --sch-steps-panel-min-h: 251px;
+    --sch-steps-quote-pad: 15px 8px 20px;
+    --sch-steps-quote-mark: 20px;
+    --sch-steps-quote-mark-left: 4px;
+    --sch-steps-quote-mark-top: -5px;
+    --sch-steps-pager-arrow: 19.2px;
+
+    width: 231px;
+    max-width: 231px;
+    gap: 16px;
+  }
+
+  .scholarship-steps__testimonial {
+    max-width: 231px;
+  }
+
+  .scholarship-steps__photo-wrap {
+    border-width: 0.32px;
+    border-radius: 0;
+  }
+
+  .scholarship-steps__quote-panel {
+    gap: 0;
+    border-width: 0.32px;
+    border-radius: 0 0 2.56px 2.56px;
+  }
+
+  .scholarship-steps__quote {
+    margin-bottom: 21px;
+  }
+
+  .scholarship-steps__name {
+    line-height: 1.2;
+  }
+
+  .scholarship-steps__pager {
+    max-width: 44px;
+  }
+
+  .scholarship-steps__page-label {
+    font-size: 10px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+  }
+
+  .scholarship-steps__find {
+    width: 232px;
+    max-width: 232px;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .scholarship-steps__find-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+  }
+
+  .scholarship-steps__find-cta {
+    width: 100%;
+    padding: 12px 15px;
+    line-height: 1.2;
+    border-width: 1.2px;
+  }
+
+  .scholarship-steps__find-note {
+    max-width: 193px;
+    margin-inline: auto;
+    padding-top: 36px;
+  }
+
+  .scholarship-steps__find-arrow {
+    left: -4px;
+    top: -28px;
+    width: 79px;
+    height: 79px;
+  }
+
+  .scholarship-steps__find-disclaimer {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+}

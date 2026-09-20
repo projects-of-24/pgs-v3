@@ -1,0 +1,331 @@
+/**
+ * #premiumNonMedical aim — owned CSS (N11).
+ * Desktop panel `17055:10910` — 990.4 × 751.2, purple stroke #9747ff.
+ * Phone panel `379:4719` — stacked ~380 × 800, radius 8.
+ * Gap under dashboard ≈ 116px desk / ~56px phone.
+ * iPad 601–1366 keeps desktop.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: desk Roboto 28.8 / 22.4 / 19.2 / CTA 14.08 · phone Roboto 14 / CTA 14
+ * ISSUE: outside this page’s Roboto band
+ * PGS IMPLEMENTATION: headline 22 · body + closer 20 · CTA 20. Bebas stays Figma.
+ */
+
+.premium-nonmedical-aim {
+  box-sizing: border-box;
+  width: min(990.4px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 116px auto 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-aim *,
+.premium-nonmedical-aim *::before,
+.premium-nonmedical-aim *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-aim__panel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 990.4 / 751.2;
+  background: #fff;
+  border: 0.8px solid #9747ff;
+  border-radius: 16px;
+}
+
+.premium-nonmedical-aim__copy {
+  position: absolute;
+  top: 17.36%;
+  left: 5.09%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.98%, 22.4px);
+  width: 52.91%;
+  max-width: 524px;
+  margin: 0;
+}
+
+.premium-nonmedical-aim__headline {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.27;
+}
+
+.premium-nonmedical-aim__body {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.premium-nonmedical-aim__closer {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.premium-nonmedical-aim__seats {
+  position: absolute;
+  top: 17.89%;
+  right: 4.62%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 32.88%;
+  max-width: 325.6px;
+  height: 23.64%;
+  min-height: 140px;
+  padding: 25.6px 26.4px;
+  background: #f1f1f1;
+  border-radius: 16px;
+}
+
+.premium-nonmedical-aim__seats-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 5.6px;
+  width: auto;
+}
+
+.premium-nonmedical-aim__clock {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.premium-nonmedical-aim__seats-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: min(184.8px, calc(100% - 37.6px));
+  min-height: 131.2px;
+  margin: 0;
+  padding: 8px;
+  background: #000;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(28px, 3.88vw, 38.4px);
+  font-weight: 400;
+  line-height: 1;
+  text-align: left;
+}
+
+.premium-nonmedical-aim__cta {
+  position: absolute;
+  top: 59.64%;
+  left: 5.09%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19.2px;
+  width: 42.25%;
+  max-width: 418.4px;
+  margin: 0;
+}
+
+.premium-nonmedical-aim__cta-lead {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(28px, 3.88vw, 38.4px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.premium-nonmedical-aim__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px;
+  background: #000;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  cursor: default;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.premium-nonmedical-aim__visual {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.premium-nonmedical-aim__green {
+  position: absolute;
+  top: 51.54%;
+  left: 58.08%;
+  width: 41.19%;
+  height: 47.6%;
+  background: #00eb90;
+  border-radius: 16px;
+}
+
+.premium-nonmedical-aim__photo {
+  position: absolute;
+  top: 52.93%;
+  left: 54.28%;
+  width: 36.98%;
+  height: 46.22%;
+  overflow: hidden;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.premium-nonmedical-aim__photo img {
+  position: absolute;
+  left: -32.55%;
+  top: -54.84%;
+  width: 159.89%;
+  height: 230.41%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center top;
+  pointer-events: none;
+}
+
+.premium-nonmedical-aim__arches {
+  position: absolute;
+  top: 51.54%;
+  left: 50%;
+  width: 5.82%;
+  height: 8.52%;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-aim {
+    width: min(380px, calc(100% - 10px));
+    margin-top: 56px;
+  }
+
+  .premium-nonmedical-aim__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    aspect-ratio: auto;
+    min-height: 0;
+    padding: 40px 0 40px;
+    border-width: 1px;
+    border-radius: 8px;
+  }
+
+  .premium-nonmedical-aim__copy {
+    position: static;
+    width: min(278px, calc(100% - 32px));
+    max-width: none;
+    gap: 16px;
+  }
+
+  .premium-nonmedical-aim__headline,
+  .premium-nonmedical-aim__body,
+  .premium-nonmedical-aim__closer {
+    line-height: normal;
+  }
+
+  .premium-nonmedical-aim__body,
+  .premium-nonmedical-aim__closer {
+    font-size: 16px;
+  }
+
+  .premium-nonmedical-aim__seats {
+    position: static;
+    align-items: center;
+    justify-content: center;
+    width: 244.2px;
+    max-width: min(244.2px, calc(100% - 32px));
+    height: 133.2px;
+    min-height: 133.2px;
+    padding: 15.6px 32.7px 19.2px;
+    overflow: visible;
+    border-radius: 12px;
+  }
+
+  .premium-nonmedical-aim__seats-row {
+    flex: 0 0 auto;
+    gap: 4.2px;
+    width: 178.8px;
+  }
+
+  .premium-nonmedical-aim__clock {
+    width: 24px;
+    height: 24px;
+  }
+
+  .premium-nonmedical-aim__seats-label {
+    width: 150.6px;
+    min-height: 98.4px;
+    height: 98.4px;
+    padding: 6px;
+    border-radius: 6px;
+    font-size: 28.8px;
+  }
+
+  .premium-nonmedical-aim__cta {
+    position: static;
+    align-items: center;
+    gap: 12px;
+    width: min(290px, calc(100% - 32px));
+    max-width: none;
+  }
+
+  .premium-nonmedical-aim__cta-lead {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .premium-nonmedical-aim__visual {
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    width: min(342.36px, calc(100% - 16px));
+    height: 214.56px;
+  }
+
+  .premium-nonmedical-aim__green {
+    top: 0;
+    left: 28.5%;
+    width: 71.5%;
+    height: 100%;
+    border-radius: 9.6px;
+  }
+
+  .premium-nonmedical-aim__photo {
+    top: 2.91%;
+    left: 21.9%;
+    width: 64.19%;
+    height: 97.09%;
+  }
+
+  .premium-nonmedical-aim__arches {
+    top: 4.66%;
+    left: 0;
+    width: 16.15%;
+    height: 28.64%;
+  }
+}

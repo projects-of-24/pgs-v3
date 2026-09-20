@@ -1,0 +1,321 @@
+/**
+ * purplePREMIUM HOME dashboard unlock — owned CSS (H5).
+ * Desktop `17052:8230` · phone `366:4322`.
+ * Figma inset first on phone.
+ */
+
+.premium-home-dashboard {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 64px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-home-dashboard *,
+.premium-home-dashboard *::before,
+.premium-home-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.premium-home-dashboard__title {
+  margin: 0 auto 24px;
+  max-width: min(998px, calc(100% - 48px));
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(28px, 2.8vw, 38.4px);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.premium-home-dashboard__title-mob {
+  display: none;
+}
+
+.premium-home-dashboard__title-line {
+  display: block;
+}
+
+.premium-home-dashboard__stage {
+  position: relative;
+  width: min(998px, calc(100% - 48px));
+  margin: 0 auto;
+  min-height: 820px;
+  overflow: visible;
+}
+
+.premium-home-dashboard__shot-desk {
+  position: absolute;
+  left: 50%;
+  /* Figma `17052:8233` grey window — still hangs out above (overflow visible). */
+  top: 102.4px;
+  width: 664.8px;
+  height: 601.6px;
+  transform: translateX(-50%);
+  overflow: visible;
+  background: #f1f1f1;
+}
+
+.premium-home-dashboard__img-desk {
+  position: absolute;
+  /* Figma `17052:8234`/`8235` — left 17.6, top -37.6, 629.6×504. */
+  left: 17.6px;
+  top: -37.6px;
+  width: 629.589px;
+  height: 504px;
+  max-width: none;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  object-fit: fill;
+}
+
+/* Phone pic block — hidden on desk. */
+.premium-home-dashboard__shot-mob {
+  display: none;
+}
+
+.premium-home-dashboard__advantage {
+  position: absolute;
+  left: 0;
+  top: 150px;
+  z-index: 2;
+  width: 100%;
+  min-height: 76px;
+  padding: 12px 48px 12px 50px;
+  overflow: visible;
+  border: 0.8px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6.4px;
+  background: #0a0d1c;
+}
+
+.premium-home-dashboard__stripe {
+  position: absolute;
+  left: 0.8px;
+  top: 0.8px;
+  width: 12.8px;
+  height: calc(100% - 1.6px);
+  object-fit: fill;
+}
+
+.premium-home-dashboard__check {
+  position: absolute;
+  left: 22.4px;
+  top: 14.4px;
+  width: 19.2px;
+  height: 19.2px;
+}
+
+.premium-home-dashboard__advantage-title {
+  margin: 0 40px 4px 0;
+  color: #66c4ff;
+  font-size: max(16px, var(--pgs-type-floor, 16px));
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.premium-home-dashboard__advantage-body {
+  margin: 0;
+  max-width: 950px;
+  color: #fff;
+  font-size: max(16px, 14.4px);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.premium-home-dashboard__heart {
+  position: absolute;
+  right: 18px;
+  top: -22px;
+  width: 33px;
+  height: 37px;
+  border-radius: 6.4px;
+  object-fit: cover;
+}
+
+.premium-home-dashboard__unlock {
+  position: absolute;
+  right: max(0px, calc(50% - 298px));
+  bottom: 40px;
+  z-index: 3;
+  width: min(297px, 42%);
+}
+
+.premium-home-dashboard__unlock-desk {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 12px 4.8px;
+  background: #c3ffa9;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(28px, 2.8vw, 38.4px);
+  font-weight: 400;
+  line-height: 1;
+  text-align: left;
+  box-shadow: 15px 12px 0 #000;
+}
+
+.premium-home-dashboard__unlock-line {
+  display: block;
+}
+
+.premium-home-dashboard__unlock-mob {
+  display: none;
+}
+
+/* Phone ≤600 — Figma `366:4322` stack. Overflow/z-index before crop. */
+@media (max-width: 600px) {
+  .premium-home-dashboard {
+    padding: 32px 0 16px;
+  }
+
+  .premium-home-dashboard__title {
+    max-width: min(247px, calc(100% - 48px));
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  .premium-home-dashboard__title-desk {
+    display: none;
+  }
+
+  .premium-home-dashboard__title-mob {
+    display: block;
+  }
+
+  .premium-home-dashboard__stage {
+    width: 333px;
+    max-width: calc(100% - 48px);
+    /* Figma shell 363 + pad so absolute advantage hang stays inside THIS module.
+     * border-box: min-height must include the pad or the box never grows. */
+    height: auto;
+    min-height: calc(363px + 143px);
+    padding-bottom: 143px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  /* Hide desk shot entirely on phone. */
+  .premium-home-dashboard__shot-desk {
+    display: none;
+  }
+
+  /* Phone-only pic block — Figma `366:4325` framed export (not desk still). */
+  .premium-home-dashboard__shot-mob {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 331px;
+    max-width: 100%;
+    height: 324px;
+    margin: 0;
+    overflow: hidden;
+    background: #f1f1f1;
+  }
+
+  .premium-home-dashboard__img-mob {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Overlay row `366:4327` — top 80 relative to shot; unlock above advantage.
+   * Black bar stays full height (no crop). H6 is pushed below it via section pad. */
+  .premium-home-dashboard__advantage {
+    left: 4px;
+    top: 80px;
+    bottom: auto;
+    width: 136px;
+    min-height: 283px;
+    height: auto;
+    padding: 12px 8px 12px 24px;
+    border-radius: 3.2px;
+    border-width: 0.4px;
+    z-index: 2;
+    overflow: visible;
+  }
+
+  .premium-home-dashboard__stripe {
+    width: 1.74px;
+    left: 0.1px;
+    top: 3px;
+    height: calc(100% - 6px);
+  }
+
+  .premium-home-dashboard__check {
+    left: 11.2px;
+    top: 7.2px;
+    width: 9.6px;
+    height: 9.6px;
+  }
+
+  .premium-home-dashboard__advantage-title {
+    margin: 0 0 8px;
+    width: 112px;
+    font-size: max(16px, var(--pgs-type-floor, 16px));
+    line-height: 1.2;
+  }
+
+  .premium-home-dashboard__advantage-body {
+    width: 103px;
+    max-width: 103px;
+    font-size: max(16px, var(--pgs-type-floor, 16px));
+    line-height: 1.25;
+  }
+
+  .premium-home-dashboard__heart {
+    right: auto;
+    left: 106px;
+    top: -6px;
+    width: 16.64px;
+    height: 18.4px;
+    border-radius: 3.2px;
+  }
+
+  .premium-home-dashboard__unlock {
+    left: 160px;
+    right: auto;
+    top: 131.3px;
+    bottom: auto;
+    width: 173px;
+    z-index: 3;
+  }
+
+  .premium-home-dashboard__unlock-desk {
+    display: none;
+  }
+
+  .premium-home-dashboard__unlock-mob {
+    display: flex;
+    flex-direction: column;
+    gap: 6.4px;
+    margin: 0;
+    padding: 6px;
+    background: #c3ffa9;
+    color: #000;
+    box-shadow: none;
+  }
+
+  .premium-home-dashboard__unlock-body {
+    margin: 0;
+    width: 161px;
+    font-size: max(16px, var(--pgs-type-floor, 16px));
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-home-dashboard__unlock-closer {
+    margin: 0;
+    width: 149px;
+    font-size: max(16px, var(--pgs-type-floor, 16px));
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}

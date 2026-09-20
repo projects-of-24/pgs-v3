@@ -1,0 +1,228 @@
+/**
+ * Purple Events — E7 Sticky + trac.
+ * Desk 17071:12377 · Mob sticky 528:7767 · trac 528:7817
+ * Bands: ≤600 mobile · >1367 desktop · 601–1366 deferred.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: mob trac/seat ~14px
+ * ISSUE: below readable floor
+ * PGS IMPLEMENTATION: body ≥16px
+ */
+
+.pe-st {
+  --pe-st-purple: #b57cff;
+  --pe-st-ink: #303030;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.pe-st *,
+.pe-st *::before,
+.pe-st *::after {
+  box-sizing: border-box;
+}
+
+.pe-st__row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.pe-st__sticky {
+  width: 100%;
+  max-width: 258px;
+  min-height: 151px;
+  background: var(--pe-st-purple);
+  border: 4px solid #000;
+  box-shadow: 9px 6px 0 #000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.pe-st__chrome {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #000;
+  height: 25px;
+  padding: 0 9px;
+  flex-shrink: 0;
+}
+
+.pe-st__dots {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.pe-st__dots img {
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+
+.pe-st__chrome-title {
+  flex: 1 1 auto;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  text-transform: uppercase;
+  padding-right: 17px;
+}
+
+.pe-st__doc {
+  display: block;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.pe-st__sticky-body {
+  margin: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 0.95;
+  color: #000;
+  white-space: pre-line;
+  text-transform: lowercase;
+}
+
+.pe-st__trac {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  max-width: 252px;
+}
+
+.pe-st__trac-headline,
+.pe-st__trac-body {
+  margin: 0;
+  width: 120px;
+  flex: 1 1 120px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--pe-st-ink);
+  text-align: left;
+}
+
+.pe-st__more {
+  margin: 0;
+  width: 100%;
+  max-width: 280px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #000;
+  text-align: left;
+}
+
+.pe-st__more-bold {
+  font-weight: 700;
+}
+
+/* Desktop — Figma 17071:12377 */
+@media (min-width: 1367px) {
+  .pe-st {
+    gap: 40px;
+    padding: 40px 24px 56px;
+    max-width: 980px;
+  }
+
+  .pe-st__row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 85px;
+    max-width: 896px;
+  }
+
+  .pe-st__sticky {
+    max-width: 384px;
+    width: 384px;
+    min-height: 224px;
+    border-width: 6px;
+    box-shadow: 13px 10px 0 #000;
+  }
+
+  .pe-st__chrome {
+    height: 37px;
+    padding: 0 13px;
+  }
+
+  .pe-st__dots {
+    gap: 6px;
+  }
+
+  .pe-st__dots img {
+    width: 11px;
+    height: 11px;
+  }
+
+  .pe-st__chrome-title {
+    font-size: 19px;
+    padding-right: 26px;
+  }
+
+  .pe-st__doc {
+    width: 19px;
+    height: 19px;
+  }
+
+  .pe-st__sticky-body {
+    padding: 26px;
+    font-size: 26px;
+    line-height: 0.89;
+  }
+
+  .pe-st__trac {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 427px;
+    width: 427px;
+  }
+
+  .pe-st__trac-headline,
+  .pe-st__trac-body {
+    width: 100%;
+    flex: none;
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .pe-st__trac-headline {
+    font-weight: 700;
+  }
+
+  .pe-st__more {
+    max-width: 377px;
+    font-size: 16px;
+    align-self: center;
+  }
+}

@@ -1,0 +1,161 @@
+/**
+ * Courses C3 — Program Description card.
+ * Desk `17072:10678` · Mob `551:10175`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-prog-desc {
+  --pc-prog-desc-bg: #f1f1f1;
+  --pc-prog-desc-border: #39a1ff;
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-prog-desc *,
+.pc-prog-desc *::before,
+.pc-prog-desc *::after {
+  box-sizing: border-box;
+}
+
+/* —— Mobile ≤600 — Figma 551:10175 · 326 card · x=32 centered on 390 —— */
+@media (max-width: 600px) {
+  .pc-prog-desc {
+    display: flex;
+    justify-content: center;
+    padding: 24px 32px 40px;
+  }
+
+  .pc-prog-desc__card {
+    width: 326px;
+    max-width: 100%;
+    padding: 24px 16px;
+    background: var(--pc-prog-desc-bg);
+    border: 2px solid var(--pc-prog-desc-border);
+    border-radius: 16px;
+  }
+
+  .pc-prog-desc__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .pc-prog-desc__heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pc-prog-desc__icon {
+    display: block;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+  }
+
+  .pc-prog-desc__title {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 0.35em;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #000;
+  }
+
+  .pc-prog-desc__title-line {
+    display: inline;
+  }
+
+  .pc-prog-desc__body {
+    margin: 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:10678 · 1204×311 —— */
+@media (min-width: 1367px) {
+  .pc-prog-desc {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  .pc-prog-desc__card {
+    width: 1204px;
+    max-width: 100%;
+    min-height: 311px;
+    padding: 107px 55px;
+    background: var(--pc-prog-desc-bg);
+    border: 2px solid var(--pc-prog-desc-border);
+    border-radius: 16px;
+  }
+
+  .pc-prog-desc__row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+    width: 100%;
+    max-width: 1092px;
+  }
+
+  .pc-prog-desc__heading {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 0 0 auto;
+  }
+
+  .pc-prog-desc__icon {
+    display: block;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+  }
+
+  .pc-prog-desc__title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Bebas Neue", Bebas, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .pc-prog-desc__title-line {
+    display: block;
+  }
+
+  .pc-prog-desc__body {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 845px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+  }
+}

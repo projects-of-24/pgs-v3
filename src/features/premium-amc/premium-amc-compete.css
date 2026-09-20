@@ -1,0 +1,283 @@
+/**
+ * #premiumUSMLE competition quote — owned CSS (U7).
+ * Two body layouts only. Desktop (>1366) and phone (≤600).
+ * iPad reuses the desktop row and wraps the photo if the row cannot fit.
+ * Desktop ticket `17055:14216` + quote `17055:14219` + photo `17055:14224`.
+ * Phone: quote sits inside the turned ticket (`433:4540` + `433:4546`).
+ * Bite stays at the bottom. `#PGS` stays upright in the bite.
+ * Type floor 16px. Testimonial is not this gate.
+ */
+
+.premium-amc-compete {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 28px 0 36px;
+  background: #fff;
+  overflow-x: clip;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-amc-compete *,
+.premium-amc-compete *::before,
+.premium-amc-compete *::after {
+  box-sizing: border-box;
+}
+
+.premium-amc-compete__stage {
+  display: grid;
+  grid-template-columns: 505px 311px;
+  column-gap: 52px;
+  align-items: start;
+  width: min(868px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.premium-amc-compete__copy {
+  position: relative;
+  width: 505px;
+  min-height: 219px;
+  margin-top: 53px;
+}
+
+.premium-amc-compete__shape {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 505px;
+  height: 219px;
+  pointer-events: none;
+}
+
+.premium-amc-compete__dial {
+  position: relative;
+  width: 505px;
+  height: 219px;
+}
+
+.premium-amc-compete__ticket,
+.premium-amc-compete__ticket-phone {
+  display: block;
+}
+
+.premium-amc-compete__ticket {
+  position: relative;
+  z-index: 1;
+  width: 505px;
+  height: 219px;
+}
+
+.premium-amc-compete__ticket-phone {
+  display: none;
+}
+
+.premium-amc-compete__mark {
+  position: absolute;
+  top: 26px;
+  left: 381px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 139px;
+  height: 156px;
+  margin: 0;
+  padding-right: 18px;
+  border-radius: 16px;
+  background: #d9e0ff;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.premium-amc-compete__words {
+  position: relative;
+  z-index: 1;
+  width: 430px;
+  padding: 16px 0 12px 16px;
+}
+
+.premium-amc-compete__title,
+.premium-amc-compete__body {
+  margin: 0;
+}
+
+.premium-amc-compete__title {
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-amc-compete__body {
+  max-width: 340px;
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.12px;
+}
+
+/* Card `17055:14224`. Clip the asset so its white corner matte stays inside the radius. */
+.premium-amc-compete__photo-frame {
+  width: 311px;
+  height: 389px;
+  overflow: hidden;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  background: #f4e5e4;
+}
+
+.premium-amc-compete__photo {
+  display: block;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  max-width: none;
+  margin: -6px;
+  object-fit: cover;
+}
+
+@media (max-width: 980px) {
+  .premium-amc-compete__stage {
+    grid-template-columns: 505px;
+    justify-content: center;
+    row-gap: 24px;
+  }
+
+  .premium-amc-compete__copy {
+    margin-top: 0;
+  }
+
+  .premium-amc-compete__photo-frame {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-amc-compete {
+    padding: 20px 0 28px;
+  }
+
+  .premium-amc-compete__stage {
+    display: block;
+    width: 100%;
+    padding-inline: 0;
+  }
+
+  /* Capsule `466:4895`. Visual ticket left is the timeline card (Figma 177 on 390), not the screen edge. */
+  .premium-amc-compete__copy {
+    display: block;
+    width: 175.2px;
+    min-height: 0;
+    margin: 0 0 12px calc(50% + 9px);
+    padding: 16px 12px 96px;
+    overflow: visible;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .premium-amc-compete__copy::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 12px;
+    z-index: 0;
+    border-radius: 10.24px 10.24px 0 0;
+    background: #bbc8ff;
+  }
+
+  .premium-amc-compete__words {
+    position: relative;
+    z-index: 3;
+    width: auto;
+    padding: 0;
+  }
+
+  .premium-amc-compete__shape {
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 416px;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .premium-amc-compete__shape::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    z-index: 1;
+    width: 124.8px;
+    height: 111.36px;
+    border-radius: 12.8px;
+    background: #d9e0ff;
+    transform: none;
+  }
+
+  .premium-amc-compete__dial {
+    position: absolute;
+    bottom: 12.16px;
+    left: 0;
+    z-index: 2;
+    width: 175.199px;
+    height: 403.84px;
+    overflow: visible;
+    transform: none;
+  }
+
+  .premium-amc-compete__ticket {
+    display: none;
+  }
+
+  .premium-amc-compete__ticket-phone {
+    display: block;
+    width: 403.84px;
+    max-width: none;
+    height: 175.199px;
+    transform: translate(-114.32px, 114.32px) rotate(90deg);
+    transform-origin: center center;
+  }
+
+  .premium-amc-compete__mark {
+    top: auto;
+    right: auto;
+    bottom: 36px;
+    left: 50%;
+    z-index: 3;
+    justify-content: center;
+    width: 48px;
+    height: 18px;
+    padding: 0;
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    transform: translateX(-50%);
+    font-size: 30.72px;
+    line-height: 17.92px;
+  }
+
+  .premium-amc-compete__break {
+    display: none;
+  }
+
+  .premium-amc-compete__title {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.25;
+  }
+
+  .premium-amc-compete__body {
+    max-width: none;
+    margin-top: 8px;
+    line-height: 1.28;
+  }
+
+  .premium-amc-compete__photo-frame {
+    display: none;
+  }
+}

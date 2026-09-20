@@ -32,7 +32,7 @@ const slugRoutes: Record<string, string> = {
   purplenonmedical: "/purplenonmedical",
   purpleplab: "/purpleplab",
   purplepremiumhome: "/purplepremiumhome",
-  purpleusme: "/purpleusme",
+  purpleusme: "/purpleusmle",
   scholarship: "/scholarship",
   simplehome: "/simplehome",
   signup: "/singup",

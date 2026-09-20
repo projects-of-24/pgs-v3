@@ -1,0 +1,450 @@
+/**
+ * #premiumUSMLE hero — owned CSS (U1).
+ * Desktop/phone sizes from `premium-panel-lock.css`. Do not edit that file.
+ * iPad 601–1366: saved copy of the phone card. Not a live ×1.4.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: desktop CTA ~11.2px · hint ~12px · mobile subtitle ~12px
+ * ISSUE: below the readable floor for normal text and controls
+ * PGS IMPLEMENTATION: those sit at 14px. Black button and mauve card stay.
+ *
+ * FIGMA LAYOUT ADAPTATION
+ * ORIGINAL: desktop brand sits on top of the photo
+ * ISSUE: same overlay the owner already rejected on the mauve card family
+ * PGS IMPLEMENTATION: photo ends, then the brand. Matches Scholarship / About QC.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.premium-usmle-hero {
+  --usmle-panel-bg: var(--pgs-premium-panel-bg);
+  --usmle-muted: var(--pgs-premium-muted);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 32px;
+  background: #fff;
+  overflow-x: clip;
+  overflow-y: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-usmle-hero *,
+.premium-usmle-hero *::before,
+.premium-usmle-hero *::after {
+  box-sizing: border-box;
+}
+
+.premium-usmle-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+}
+
+.premium-usmle-hero__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  max-width: 561px;
+  text-align: center;
+}
+
+.premium-usmle-hero__title {
+  margin: 0 0 8px;
+  color: #000;
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 41.6px;
+}
+
+.premium-usmle-hero__lead {
+  margin: 0;
+  color: var(--usmle-muted);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-usmle-hero__subtitle {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-usmle-hero__cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  max-width: 398px;
+  margin-top: 24px;
+}
+
+.premium-usmle-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.premium-usmle-hero__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+.premium-usmle-hero__cta-hint {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.premium-usmle-hero__panel-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  max-width: var(--pgs-premium-desk-panel-max);
+}
+
+.premium-usmle-hero__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  min-height: var(--pgs-premium-desk-panel-min-h);
+  padding: 13px 11px 20px;
+  background: var(--usmle-panel-bg);
+  border-radius: var(--pgs-premium-panel-radius);
+  overflow: hidden;
+}
+
+.premium-usmle-hero__media {
+  flex: 0 0 auto;
+  width: min(var(--pgs-premium-desk-media-w), 100%);
+  height: var(--pgs-premium-desk-media-h);
+  overflow: hidden;
+  border-radius: var(--pgs-premium-media-radius);
+  background: #d9d9d9;
+}
+
+.premium-usmle-hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+.premium-usmle-hero__panel-copy {
+  position: static;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 14px;
+  max-width: 100%;
+  padding-inline: 6px;
+}
+
+.premium-usmle-hero__panel-brand {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: var(--pgs-premium-desk-brand-size);
+  font-weight: 400;
+  line-height: 0.84;
+  color: #000;
+}
+
+.premium-usmle-hero__panel-brand-line {
+  display: block;
+}
+
+.premium-usmle-hero__panel-tag {
+  margin: 0 0 0.35em;
+  color: #000;
+  font-size: var(--pgs-premium-desk-tag-size);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.premium-usmle-hero__trust {
+  margin: 0;
+  width: 100%;
+  color: var(--usmle-muted);
+  font-size: var(--pgs-premium-desk-trust-size);
+  font-weight: 400;
+  line-height: 1.27;
+  text-align: center;
+}
+
+@media (min-width: 1367px) {
+  .premium-usmle-hero {
+    padding: 0 0 40px;
+  }
+}
+
+/* Phone ≤600 only. iPad does not use this block. */
+@media (max-width: 600px) {
+  .premium-usmle-hero {
+    padding: var(--pgs-premium-mob-hero-pad-top) 0 28px;
+  }
+
+  .premium-usmle-hero__inner {
+    width: var(--pgs-premium-mob-rail);
+    max-width: var(--pgs-premium-mob-rail);
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 41px;
+    align-items: stretch;
+  }
+
+  .premium-usmle-hero__headline {
+    align-self: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+    width: var(--pgs-premium-mob-opening-w);
+    max-width: var(--pgs-premium-mob-opening-w);
+    margin-inline: auto;
+  }
+
+  .premium-usmle-hero__title {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 0.9;
+    text-align: left;
+  }
+
+  .premium-usmle-hero__lead,
+  .premium-usmle-hero__subtitle {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+    letter-spacing: 0.2px;
+    color: #000;
+    text-align: left;
+  }
+
+  .premium-usmle-hero__cta-block {
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .premium-usmle-hero__cta {
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 8px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .premium-usmle-hero__cta-hint {
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-usmle-hero__panel-wrap {
+    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    gap: 8px;
+  }
+
+  .premium-usmle-hero__panel {
+    width: 100%;
+    max-width: var(--pgs-premium-mob-panel-w);
+    min-height: var(--pgs-premium-mob-panel-h);
+    margin-inline: auto;
+    padding: 13px 11px 16px;
+    gap: 10px;
+  }
+
+  .premium-usmle-hero__media {
+    width: 100%;
+    height: var(--pgs-premium-mob-media-h);
+  }
+
+  .premium-usmle-hero__panel-copy {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-inline: 4px;
+  }
+
+  .premium-usmle-hero__panel-brand {
+    font-size: var(--pgs-premium-mob-brand-size);
+    line-height: 1;
+    gap: 6px;
+  }
+
+  .premium-usmle-hero__panel-tag {
+    margin: 0;
+    font-size: var(--pgs-type-floor, 16px);
+    white-space: normal;
+  }
+
+  .premium-usmle-hero__trust {
+    max-width: 234px;
+    margin-inline: auto;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+  }
+}
+
+/*
+ * iPad 601–1366: saved copy of the QC phone card × 1.4, then frozen.
+ * Does not read phone size tokens. Edit this block to change iPad.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-hero {
+    --usmle-ipad-card-w: 406px;
+    --usmle-ipad-card-h: 630px;
+    --usmle-ipad-media-h: 499.8px;
+    --usmle-ipad-opening-w: 211.4px;
+    padding: 53.2px 0 39.2px;
+  }
+
+  .premium-usmle-hero__inner {
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 57.4px;
+    align-items: stretch;
+  }
+
+  .premium-usmle-hero__headline {
+    align-self: center;
+    align-items: flex-start;
+    text-align: left;
+    gap: 5px;
+    width: min(561px, 100%);
+    max-width: 561px;
+    margin-inline: auto;
+  }
+
+  .premium-usmle-hero__title {
+    margin: 0 0 8px;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 41.6px;
+    text-align: left;
+  }
+
+  .premium-usmle-hero__lead,
+  .premium-usmle-hero__subtitle {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    color: #000;
+    text-align: left;
+  }
+
+  .premium-usmle-hero__cta-block {
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    gap: 11.2px;
+  }
+
+  .premium-usmle-hero__cta {
+    width: 100%;
+    border-radius: 5.6px;
+    padding: 8.4px 11.2px;
+    font-size: var(--pgs-type-floor, 16px);
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .premium-usmle-hero__cta-hint {
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-usmle-hero__panel-wrap {
+    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    gap: 11.2px;
+  }
+
+  .premium-usmle-hero__panel {
+    width: 100%;
+    max-width: var(--usmle-ipad-card-w);
+    min-height: var(--usmle-ipad-card-h);
+    margin-inline: auto;
+    padding: 18.2px 15.4px 22.4px;
+    gap: 14px;
+  }
+
+  .premium-usmle-hero__media {
+    width: 100%;
+    height: var(--usmle-ipad-media-h);
+  }
+
+  .premium-usmle-hero__panel-copy {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11.2px;
+    padding-inline: 5.6px;
+  }
+
+  .premium-usmle-hero__panel-brand {
+    font-size: var(--pgs-premium-desk-brand-size);
+    line-height: 0.84;
+    gap: 8.4px;
+  }
+
+  .premium-usmle-hero__panel-tag {
+    margin: 0;
+    font-size: var(--pgs-premium-desk-tag-size);
+    white-space: normal;
+  }
+
+  .premium-usmle-hero__trust {
+    max-width: 327.6px;
+    margin-inline: auto;
+    font-size: var(--pgs-premium-desk-trust-size);
+    line-height: 1.27;
+  }
+}

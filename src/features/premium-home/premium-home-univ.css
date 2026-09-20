@@ -1,0 +1,332 @@
+/**
+ * purplePREMIUM HOME university discovery — owned CSS (H7).
+ * Desktop >1366 — Figma `17052:8319`.
+ * Mobile ≤600 — Figma `473:5530`.
+ */
+
+.premium-home-univ {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 24px 64px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-home-univ *,
+.premium-home-univ *::before,
+.premium-home-univ *::after {
+  box-sizing: border-box;
+}
+
+.premium-home-univ__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 65.6px;
+  width: 100%;
+  max-width: 903.2px;
+  margin: 0 auto;
+  padding: 52.8px 64px;
+  border-radius: 12.8px;
+  background: #d9d9d9;
+}
+
+.premium-home-univ__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2px;
+  width: 100%;
+  max-width: 698.4px;
+}
+
+.premium-home-univ__title {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: max(16px, 19.2px);
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-home-univ__lead {
+  margin: 0;
+  max-width: 642.4px;
+  color: #000;
+  font-weight: 400;
+  font-size: max(16px, 17.6px);
+  line-height: 22.4px;
+}
+
+.premium-home-univ__journey {
+  margin: 0;
+  max-width: 642.4px;
+  color: #000;
+  font-weight: 500;
+  /* Figma 12.8 → floor 16 */
+  font-size: max(16px, 12.8px);
+  line-height: 19.2px;
+  letter-spacing: 0.12px;
+}
+
+.premium-home-univ__bullets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14.16px;
+  width: 100%;
+  max-width: 684.32px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-home-univ__bullets li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #000;
+  font-weight: 600;
+  font-size: max(16px, 17.6px);
+  line-height: 22.4px;
+  white-space: nowrap;
+}
+
+.premium-home-univ__bullet-check {
+  display: none;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.premium-home-univ__logos {
+  display: flex;
+  flex-direction: column;
+  gap: 15.2px;
+  width: 100%;
+  max-width: 694.4px;
+}
+
+.premium-home-univ__logo-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 19.2px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.premium-home-univ__logo-item {
+  display: flex;
+  flex: 0 0 60px;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 45.6px;
+  padding: 8.8px 16px;
+  border-radius: 17px;
+  background: #f6f6f6;
+}
+
+.premium-home-univ__logo {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.premium-home-univ__paths {
+  margin: 0;
+  max-width: 376.8px;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+  font-size: 38.4px;
+  line-height: 34.4px;
+  text-align: center;
+  text-transform: none;
+}
+
+.premium-home-univ__connect {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 19.2px;
+  width: 100%;
+  max-width: 765.6px;
+}
+
+.premium-home-univ__connect-copy {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: #000;
+  font-weight: 400;
+  font-size: 28.8px;
+  line-height: 35.2px;
+}
+
+.premium-home-univ__connect-copy--mob {
+  display: none;
+}
+
+.premium-home-univ__connect-line {
+  display: block;
+  white-space: pre;
+}
+
+.premium-home-univ__collage {
+  display: block;
+  width: 470.4px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12.8px;
+}
+
+/* —— Mobile ≤600 — Figma `473:5530` —— */
+@media (max-width: 600px) {
+  .premium-home-univ {
+    padding: 32px 0 48px;
+  }
+
+  .premium-home-univ__panel {
+    width: 380px;
+    max-width: calc(100% - 20px);
+    margin: 0 auto;
+    padding: 30px 16px 24px;
+    gap: 28px;
+    border-radius: 12px;
+    align-items: stretch;
+  }
+
+  .premium-home-univ__intro {
+    max-width: 274px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+
+  .premium-home-univ__title {
+    font-size: max(16px, 14px);
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-home-univ__lead {
+    max-width: none;
+    font-size: max(16px, 14px);
+    line-height: 1.35;
+  }
+
+  .premium-home-univ__journey {
+    max-width: none;
+    font-size: max(16px, 12px);
+    line-height: 1.2;
+    letter-spacing: 0.06px;
+  }
+
+  .premium-home-univ__bullets {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 7.08px;
+    max-width: 252px;
+    margin: 0;
+  }
+
+  .premium-home-univ__bullets li {
+    font-size: max(16px, 12px);
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .premium-home-univ__bullet-check {
+    display: block;
+  }
+
+  .premium-home-univ__logos {
+    gap: 12px;
+    max-width: none;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .premium-home-univ__logos::-webkit-scrollbar {
+    display: none;
+  }
+
+  .premium-home-univ__logo-row {
+    gap: 11.52px;
+    justify-content: flex-start;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .premium-home-univ__logo-item {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    padding: 5.28px 9.6px;
+    border-radius: 8.16px;
+  }
+
+  .premium-home-univ__logo {
+    width: 16.8px;
+    height: 16.8px;
+  }
+
+  .premium-home-univ__paths {
+    max-width: 197px;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .premium-home-univ__connect {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+    max-width: 353px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .premium-home-univ__connect-copy--desk {
+    display: none;
+  }
+
+  .premium-home-univ__connect-copy--mob {
+    display: block;
+    max-width: 197px;
+    font-size: max(16px, 14px);
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .premium-home-univ__collage {
+    width: 353px;
+    max-width: 100%;
+    border-radius: 9.6px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-home-univ__panel {
+    padding: 40px 32px;
+    gap: 48px;
+  }
+
+  .premium-home-univ__logo-row {
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

@@ -1010,7 +1010,7 @@ export function CountryPage({
   onTabChange?: (id: CountryTab["id"]) => void;
   /** Preview shell: hero rendered outside (e.g. CountryHeroFigma). */
   hideHero?: boolean;
-  /** Extra root classes (e.g. `country-body-shell` for layout CSS). */
+  /** Extra root classes (e.g. `country-body-shell-usa` for layout CSS). */
   className?: string;
   /** Preview: Figma/custom lead for Study 101 Why block. */
   study101Lead?: ReactNode;
@@ -1030,7 +1030,7 @@ export function CountryPage({
   }
 
   const active = content.tabs.find((t) => t.id === tabId) ?? content.tabs[0];
-  const rootClass = ["countriesUSA", className].filter(Boolean).join(" ");
+  const rootClass = ["countriesUSA", "country-file-usa", className].filter(Boolean).join(" ");
 
   return (
     <div className={rootClass}>
@@ -1078,7 +1078,7 @@ export function CountryPage({
               <div className="col-md-6">
                 <h3 className="mb-2 text-black font-semibold usa-section-title fs-32 lh-35">
                   <span>{content.intro.titleLine1}</span>{" "}
-                  <br className="country-body-shell__intro-br" />
+                  <br className="country-body-shell-usa__intro-br" />
                   <span>{content.intro.titleLine2}</span>
                 </h3>
                 <p

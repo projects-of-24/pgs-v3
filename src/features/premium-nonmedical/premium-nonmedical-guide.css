@@ -1,0 +1,132 @@
+/**
+ * #premiumNonMedical guide — owned CSS (N9).
+ * Desktop card 863 × 249. Gap under the black panel is 192px
+ * (guide margin 144px + explain padding 48px).
+ * Phone card near full-bleed. Gap under the black panel is 56px
+ * (guide margin 32px + explain padding 24px).
+ * iPad 601–1366 keeps the desktop card.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: phone badge 12px
+ * ISSUE: below the readable floor
+ * PGS IMPLEMENTATION: badge sits at 16px.
+ */
+
+.premium-nonmedical-guide {
+  position: relative;
+  box-sizing: border-box;
+  width: min(863px, calc(100% - 48px));
+  margin: 144px auto 0;
+  padding: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-guide *,
+.premium-nonmedical-guide *::before,
+.premium-nonmedical-guide *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-guide__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 249px;
+  margin: 35px 0 0;
+  padding: 40px 36px 36px;
+  background: #f1f1f1;
+  border: 0;
+  border-radius: 12.8px;
+}
+
+.premium-nonmedical-guide__desk {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 100%;
+  margin: 0;
+  padding-right: 36px;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+}
+
+.premium-nonmedical-guide__words {
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.8px;
+}
+
+.premium-nonmedical-guide__mark {
+  flex: 0 0 auto;
+  font-size: 102.4px;
+  line-height: 0.52;
+}
+
+.premium-nonmedical-guide__mark--end {
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  line-height: 1;
+}
+
+.premium-nonmedical-guide__phone {
+  display: none;
+}
+
+.premium-nonmedical-guide__badge {
+  position: absolute;
+  top: 0;
+  right: -22px;
+  margin: 0;
+  padding: 16px 28px;
+  background: #c3ffa9;
+  border: 8px solid #fff;
+  border-radius: 12.8px;
+  color: #000;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 1.27;
+  letter-spacing: 1.6px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-guide {
+    width: min(364px, calc(100% - 26px));
+    margin-top: 32px;
+  }
+
+  .premium-nonmedical-guide__card {
+    min-height: 0;
+    margin-top: 23px;
+    padding: 16px 25px;
+    border-radius: 6px;
+  }
+
+  .premium-nonmedical-guide__desk {
+    display: none;
+  }
+
+  .premium-nonmedical-guide__phone {
+    display: block;
+    margin: 0;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.36px;
+    text-align: left;
+  }
+
+  .premium-nonmedical-guide__badge {
+    right: -4px;
+    padding: 6px 8px;
+    border-width: 4px;
+    border-radius: 6px;
+    font-size: 16px;
+    letter-spacing: 0.72px;
+  }
+}

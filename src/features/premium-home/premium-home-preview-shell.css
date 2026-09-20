@@ -1,0 +1,53 @@
+/**
+ * purplePREMIUM HOME shell base (P0).
+ * NEVER add a black side-test banner (owner lock 2026-09-09).
+ * Chrome is LOCKED. Body empty until the next gate.
+ *
+ * Pull-up + desktop univMeet gap from shared `premium-panel-lock.css`.
+ * Do not edit that file. iPad hero is not this gate.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.premium-home-preview-shell {
+  --pgs-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: var(--pgs-premium-shell-pull);
+  position: relative;
+  z-index: 0;
+}
+
+.premium-home-preview-shell *,
+.premium-home-preview-shell *::before,
+.premium-home-preview-shell *::after {
+  box-sizing: border-box;
+}
+
+.premium-home-preview-shell__body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.premium-home-preview-shell__univ-gap {
+  display: none;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+}
+
+@media (min-width: 1367px) {
+  .premium-home-preview-shell__univ-gap {
+    display: block;
+    height: var(--pgs-premium-desk-univ-gap);
+  }
+}

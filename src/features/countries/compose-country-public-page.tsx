@@ -7,18 +7,18 @@
  * Premium application modals omitted on purpose (`applyPremiumBusinessRule`).
  * Track C (popups/payments) owns future surfaces.
  */
+import type { ReactElement } from "react";
 import { ContentPreviewBanner } from "@/components/content-preview-banner";
 import { LegacyPage } from "@/components/legacy-page";
 import { StaffPreviewBanner } from "@/components/staff-preview-banner";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
-import { buildCountryHeroFigmaHtml } from "@/features/countries/country-hero-figma";
 import {
   countrySlugFromPublicRoute,
   getPublishedCountryHeroFigma,
   type PublicCountryRoute,
 } from "@/features/countries/country-public-hero";
-import { CountryBodyShell } from "@/features/countries/country-body-shell";
-import { getCountryContent } from "@/features/countries/content";
+import type { CountryPageContent } from "@/features/countries/content";
+import type { CountryHeroFigmaImages } from "@/features/countries/country-hero-figma";
 import {
   applyUnivMeetToHeaderHtml,
   buildPublicStripHtml,
@@ -44,8 +44,14 @@ import {
   studentExperienceAvatarUrl,
 } from "@/lib/student-experience";
 
-import "@/features/countries/countries.css";
 import "@/features/shell/legacy-header-breakpoints.css";
+
+export type CountryPhotoshopParts = {
+  /** This country's own body. Do not pass another country's shell. */
+  Body: (props: { content: CountryPageContent }) => ReactElement;
+  getContent: (slug: string) => CountryPageContent | null;
+  buildHero: (images?: Partial<CountryHeroFigmaImages>) => string;
+};
 
 function applyChrome(
   html: string,
@@ -76,7 +82,10 @@ function applyChrome(
   return applyPremiumBusinessRule(next);
 }
 
-export async function composeCountryPublicPage(route: PublicCountryRoute) {
+export async function composeCountryPublicPage(
+  route: PublicCountryRoute,
+  parts: CountryPhotoshopParts,
+) {
   const countrySlug = countrySlugFromPublicRoute(route);
   if (!countrySlug) {
     throw new Error(`Unknown country public route: ${route}`);
@@ -98,7 +107,7 @@ export async function composeCountryPublicPage(route: PublicCountryRoute) {
   const destinationName = dest.destinationName || countrySlug;
   const hero = await getPublishedCountryHeroFigma(route, destinationName);
 
-  const base = getCountryContent(countrySlug);
+  const base = parts.getContent(countrySlug);
   if (!base) {
     throw new Error(
       `Missing CountryPage content for slug ${countrySlug} (${route})`,
@@ -129,7 +138,7 @@ export async function composeCountryPublicPage(route: PublicCountryRoute) {
   let topHtml = [
     applyUnivMeetToHeaderHtml(getPublicHeaderHtml(), univMeet),
     buildPublicStripHtml(univMeet),
-    buildCountryHeroFigmaHtml(hero),
+    parts.buildHero(hero),
   ].join("");
   let bottomHtml = getPublicFooterHtml();
 
@@ -165,7 +174,7 @@ export async function composeCountryPublicPage(route: PublicCountryRoute) {
           dangerouslySetInnerHTML={{ __html: topHtml }}
           suppressHydrationWarning
         />
-        <CountryBodyShell content={bodyContent} />
+        <parts.Body content={bodyContent} />
         <div
           dangerouslySetInnerHTML={{ __html: bottomHtml }}
           suppressHydrationWarning

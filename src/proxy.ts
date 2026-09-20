@@ -10,7 +10,7 @@ const legacyControllers: Record<string, string> = {
   dashboard: "/dashboard", feed_track_progress: "/feed_track_progress", upload_your_doc: "/upload_your_doc",
   forgot_password: "/forgot_password", home: "/", login: "/login", programsfull: "/programsfull", purpleamc: "/purpleamc",
   purpleboard: "/purpleboard", purpleevents: "/purpleevents", purplenonmedical: "/purplenonmedical", purpleplab: "/purpleplab",
-  purplepremiumhome: "/purplepremiumhome", purpleusme: "/purpleusme", reset_password: "/reset_password", saved: "/saved",
+  purplepremiumhome: "/purplepremiumhome", purpleusme: "/purpleusmle", purpleusmle: "/purpleusmle", reset_password: "/reset_password", saved: "/saved",
   scholarship: "/scholarship", simplehome: "/simplehome", singup: "/singup", studentresources: "/studentresources",
   unitieup: "/unitieup", usmlerotation: "/usmlerotation", notifications: "/notifications"
 };

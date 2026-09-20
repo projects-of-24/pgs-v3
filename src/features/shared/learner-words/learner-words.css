@@ -1,0 +1,354 @@
+/**
+ * Shared “A word from Our learners”.
+ * Desktop >1366 — Figma `17052:8738`.
+ * Mobile ≤600 — Figma `366:4375` (horizontal snap + peek).
+ *
+ * Photo height fixed. Bio height fixed.
+ * Black body: min = Figma floor; grows so testimonial is never clipped
+ * (body max height = full quote at 15px + bio + pad). Owner 2026-09-15.
+ */
+
+.learner-words {
+  --learner-words-badge: #906afe;
+  --learner-words-card: #0a0d1c;
+  --learner-words-meta: rgba(255, 255, 255, 0.65);
+  --learner-words-card-w: 315.728px;
+  --learner-words-photo-h: 316.528px;
+  /* Figma black floor — grows taller if quote needs it. */
+  --learner-words-body-min-h: 266.403px;
+  --learner-words-bio-h: 56.8px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+}
+
+.learner-words *,
+.learner-words *::before,
+.learner-words *::after {
+  box-sizing: border-box;
+}
+
+.learner-words__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 19.2px;
+  width: 100%;
+  max-width: min(632px, 92%);
+  margin: 0 auto 25.6px;
+  text-align: center;
+}
+
+.learner-words__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 9.6px;
+}
+
+.learner-words__lead {
+  margin: 0;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 20.48px;
+  line-height: 25.6px;
+}
+
+.learner-words__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6.4px;
+  background: var(--learner-words-badge);
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 28.8px;
+  line-height: 28.16px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.learner-words__intro {
+  margin: 0;
+  max-width: 632px;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: max(16px, 17.6px);
+  line-height: 22.4px;
+}
+
+.learner-words__intro strong {
+  font-weight: 700;
+}
+
+.learner-words__track {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  max-width: min(979.2px, 96%);
+  margin: 0 auto;
+  padding: 8px;
+  list-style: none;
+  min-width: 0;
+}
+
+.learner-words__card {
+  display: flex;
+  flex: 0 0 var(--learner-words-card-w);
+  flex-direction: column;
+  align-self: stretch;
+  width: var(--learner-words-card-w);
+  max-width: var(--learner-words-card-w);
+  /* Photo fixed; black body grows with quote — no clip. */
+  height: auto;
+  min-height: calc(var(--learner-words-photo-h) + var(--learner-words-body-min-h));
+  max-height: none;
+}
+
+.learner-words__photo-wrap {
+  position: relative;
+  flex: 0 0 var(--learner-words-photo-h);
+  width: 100%;
+  height: var(--learner-words-photo-h);
+  overflow: hidden;
+  border: 0.8px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 0;
+  border-radius: 6.4px 6.4px 0 0;
+  background: #d9d9d9;
+}
+
+.learner-words__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.learner-words__body {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 11.2px;
+  width: 100%;
+  height: auto;
+  min-height: var(--learner-words-body-min-h);
+  max-height: none;
+  padding: 23.47px 19.2px 20px;
+  overflow: visible; /* quote mark hang-out · quote never clipped */
+  border: 0.8px solid rgba(255, 255, 255, 0.65);
+  border-top: 0;
+  border-radius: 0 0 6.4px 6.4px;
+  background: var(--learner-words-card);
+}
+
+.learner-words__quote-mark {
+  position: absolute;
+  top: -12.53px;
+  left: 19.2px;
+  width: 25.6px;
+  height: 25.6px;
+  pointer-events: none;
+}
+
+/* Full quote visible — black body grows to this. Owner: 15px. */
+.learner-words__quote {
+  flex: 0 1 auto;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.learner-words__quote--mob {
+  display: none;
+}
+
+/* Fixed bio — same every card; not tied to quote length. */
+.learner-words__bio {
+  display: flex;
+  flex: 0 0 var(--learner-words-bio-h);
+  flex-direction: column;
+  gap: 7.2px;
+  width: 100%;
+  height: var(--learner-words-bio-h);
+  min-height: var(--learner-words-bio-h);
+  max-height: var(--learner-words-bio-h);
+  margin-top: auto;
+}
+
+.learner-words__name {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: max(16px, 14.4px);
+  line-height: 21.6px;
+}
+
+.learner-words__meta {
+  margin: 0;
+  color: var(--learner-words-meta);
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: max(16px, 10.94px);
+  line-height: 16.8px;
+}
+
+/* ——— Mobile ≤600 — Figma `366:4375` snap-scroll + peek ——— */
+@media (max-width: 600px) {
+  .learner-words {
+    --learner-words-card-w: 231px;
+    --learner-words-photo-h: 179px;
+    --learner-words-body-min-h: 251px;
+    --learner-words-bio-h: 55px;
+    /* Shared module — own pad only. Prior page clears its own hang. */
+    padding: 32px 0 40px;
+  }
+
+  .learner-words__head {
+    gap: 12px;
+    max-width: min(253.2px, 88%);
+    margin-bottom: 22px;
+  }
+
+  .learner-words__title-row {
+    gap: 4.8px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .learner-words__lead {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .learner-words__badge {
+    padding: 0 3.2px;
+    font-size: 20px;
+    line-height: 17.6px;
+    letter-spacing: 0.8px;
+  }
+
+  .learner-words__intro {
+    max-width: 193px;
+    margin-inline: 0;
+    font-size: max(16px, 14px);
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  .learner-words__track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding: 4px max(16px, calc((100% - 231px) / 2));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: max(16px, calc((100% - 231px) / 2));
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .learner-words__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .learner-words__card {
+    flex: 0 0 var(--learner-words-card-w);
+    width: var(--learner-words-card-w);
+    min-width: var(--learner-words-card-w);
+    max-width: var(--learner-words-card-w);
+    height: auto;
+    min-height: calc(var(--learner-words-photo-h) + var(--learner-words-body-min-h));
+    max-height: none;
+    scroll-snap-align: center;
+  }
+
+  .learner-words__photo-wrap {
+    flex-basis: var(--learner-words-photo-h);
+    height: var(--learner-words-photo-h);
+    border-width: 0.32px;
+    border-radius: 0;
+  }
+
+  .learner-words__body {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: var(--learner-words-body-min-h);
+    max-height: none;
+    gap: 12px;
+    padding: 15px 8px 16px;
+    border-width: 0.32px;
+    border-radius: 0 0 2.56px 2.56px;
+  }
+
+  .learner-words__quote-mark {
+    top: -5px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .learner-words__quote--desk {
+    display: none;
+  }
+
+  .learner-words__quote--mob {
+    display: block;
+    flex: 0 1 auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .learner-words__bio {
+    flex: 0 0 var(--learner-words-bio-h);
+    height: var(--learner-words-bio-h);
+    min-height: var(--learner-words-bio-h);
+    max-height: var(--learner-words-bio-h);
+    gap: 2.88px;
+    margin-top: auto;
+  }
+
+  .learner-words__name {
+    font-size: max(16px, 12px);
+    line-height: 1.2;
+  }
+
+  .learner-words__meta {
+    font-size: max(16px, 12px);
+    line-height: 1.2;
+  }
+}
+
+/* Mid-band: keep desk card shells; scale track only. */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .learner-words__track {
+    max-width: min(900px, 94%);
+    justify-content: center;
+    overflow-x: auto;
+  }
+}

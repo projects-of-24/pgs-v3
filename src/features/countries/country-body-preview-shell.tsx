@@ -9,21 +9,21 @@ import { USA_CONTENT } from "./content";
 import { CountryPage } from "./CountryPage";
 import { CountryStudy101WhyFigma } from "./country-study101-why-figma";
 import "./country-body-layout.css";
-import "./country-study101-why-figma.css";
+import "./country-study101-why-figma-usa.css";
 
 export function CountryBodyPreviewShell() {
   const study101 = USA_CONTENT.tabs.find((t) => t.id === "study101");
 
   return (
     <>
-      <p className="country-body-shell__banner" role="status">
+      <p className="country-body-shell-usa__banner" role="status">
         Side-test — country body (all tabs). Desktop + iPad layout LOCKED. Mobile
         ≤600 under QC. Study 101 Why = Figma. Live country pages unchanged.
       </p>
       <CountryPage
         content={USA_CONTENT}
         hideHero
-        className="country-body-shell"
+        className="country-body-shell-usa"
         study101Lead={
           study101 && study101.id === "study101" ? (
             <CountryStudy101WhyFigma

@@ -1,0 +1,735 @@
+/**
+ * #premiumNonMedical explanation — owned CSS (N8).
+ * Desktop frame `17055:10657` (990.4 × 951.2). iPad 601–1366 scales this
+ * desktop panel so it fits. Phone frame is the black sheet `379:4374`.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: pathway note 9.6px · AI line 12px · stat labels 11.2px ·
+ *           pathway / card / community body 14.4px
+ * ISSUE: below the readable floor
+ * PGS IMPLEMENTATION: those sit at 16px. Headline, titles, 7x/5x, and
+ * launchpad stay at Figma size. Stat labels stay one line, so that pair
+ * is wider than the 182px Figma group.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: white “join” on #906afe
+ * ISSUE: 3.7:1
+ * PGS IMPLEMENTATION: pill #8054e4 (4.9:1). Border stays #0abf8c.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: phone labels, standout, point titles, and bodies at 14px
+ * ISSUE: below the readable floor
+ * PGS IMPLEMENTATION: those sit at 16px. “What Is” stays 20. The mark and
+ * “for non medical” stay 32. 7x/5x stay 22.4. Launchpad stays 19.2.
+ * Phone end-to-end shell grows from 188 to 216 so the 16px title clears
+ * the university icon and join pill.
+ */
+
+.premium-nonmedical-explain {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 82px 0 0;
+  padding: 0 0 48px;
+  background: #fff;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-nonmedical-explain *,
+.premium-nonmedical-explain *::before,
+.premium-nonmedical-explain *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-explain__stage {
+  width: min(990.4px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.premium-nonmedical-explain__panel {
+  position: relative;
+  width: 990.4px;
+  height: 980px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background: #000;
+  overflow: hidden;
+}
+
+.premium-nonmedical-explain__title,
+.premium-nonmedical-explain__family,
+.premium-nonmedical-explain__answers,
+.premium-nonmedical-explain__standout,
+.premium-nonmedical-explain__point,
+.premium-nonmedical-explain__ai,
+.premium-nonmedical-explain__stats,
+.premium-nonmedical-explain__card,
+.premium-nonmedical-explain__photo,
+.premium-nonmedical-explain__launch {
+  position: absolute;
+  margin: 0;
+}
+
+.premium-nonmedical-explain__launchpad {
+  display: contents;
+}
+
+.premium-nonmedical-explain__title {
+  left: 36px;
+  top: 78px;
+  width: 590px;
+  white-space: nowrap;
+  color: #b57cff;
+  font-size: 51.2px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.premium-nonmedical-explain__family {
+  left: 638px;
+  top: 99px;
+  margin: 0;
+  color: #eb0801;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 19.2px;
+  line-height: 1.15;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-explain__answers {
+  left: 36px;
+  top: 140px;
+  width: 476px;
+}
+
+.premium-nonmedical-explain__short,
+.premium-nonmedical-explain__real {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.premium-nonmedical-explain__short {
+  gap: 13px;
+}
+
+.premium-nonmedical-explain__real {
+  gap: 23px;
+  margin-top: 10px;
+}
+
+.premium-nonmedical-explain__short strong,
+.premium-nonmedical-explain__real strong {
+  flex: 0 0 auto;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-explain__short span,
+.premium-nonmedical-explain__real span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-explain__real span {
+  width: 347px;
+}
+
+.premium-nonmedical-explain__standout {
+  left: 611px;
+  top: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 309px;
+  color: #b57cff;
+}
+
+.premium-nonmedical-explain__standout span:first-child {
+  font-size: 19.2px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-explain__standout span:last-child {
+  font-size: 17.6px;
+  font-weight: 400;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-explain__arrow {
+  position: absolute;
+  left: 412px;
+  top: 188px;
+  width: 166px;
+  height: 167px;
+  transform: rotate(-68.43deg);
+  transform-origin: center center;
+}
+
+.premium-nonmedical-explain__point h3,
+.premium-nonmedical-explain__card h3,
+.premium-nonmedical-explain__point p,
+.premium-nonmedical-explain__card p {
+  margin: 0;
+}
+
+.premium-nonmedical-explain__point h3,
+.premium-nonmedical-explain__card h3 {
+  font-size: 19.2px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-nonmedical-explain__point--ai {
+  left: 36px;
+  top: 323px;
+  width: 408px;
+}
+
+.premium-nonmedical-explain__point--ai p {
+  width: 381px;
+  margin: 11px 0 0 27px;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-explain__ai {
+  left: 142px;
+  top: 523px;
+  width: 351px;
+  height: 99px;
+}
+
+.premium-nonmedical-explain__ai-box {
+  position: absolute;
+  inset: 0;
+  width: 351px;
+  height: 99px;
+}
+
+.premium-nonmedical-explain__ai p {
+  position: relative;
+  z-index: 1;
+  width: 253px;
+  margin: 16px 0 0 14px;
+  color: #ffc524;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.08px;
+}
+
+.premium-nonmedical-explain__cursor {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin: 2px 0 0 133px;
+}
+
+.premium-nonmedical-explain__stats {
+  left: 156px;
+  top: 644px;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.premium-nonmedical-explain__stats li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.premium-nonmedical-explain__stats strong {
+  color: #0abf8c;
+  font-size: 22.4px;
+  font-weight: 800;
+  line-height: 28.8px;
+}
+
+.premium-nonmedical-explain__stats span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.premium-nonmedical-explain__stats img {
+  display: block;
+  height: 6px;
+  margin-top: 3px;
+}
+
+.premium-nonmedical-explain__stats li:first-child img {
+  width: 74px;
+}
+
+.premium-nonmedical-explain__stats li:last-child img {
+  width: 91px;
+}
+
+.premium-nonmedical-explain__point--path {
+  left: 526px;
+  top: 318px;
+  width: 364px;
+}
+
+.premium-nonmedical-explain__point--path h3 {
+  width: 299px;
+}
+
+.premium-nonmedical-explain__sub {
+  width: 299px;
+  margin-top: 2px;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.32px;
+  text-align: right;
+}
+
+.premium-nonmedical-explain__point--path p:last-child {
+  width: 346px;
+  margin: 10px 0 0 18px;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-explain__card {
+  left: 526px;
+  top: 497px;
+  width: 452px;
+  height: 300px;
+  border-radius: 12.8px;
+  background: #303030;
+}
+
+.premium-nonmedical-explain__card-shell {
+  display: contents;
+}
+
+.premium-nonmedical-explain__card h3 {
+  left: 12px;
+  top: 14px;
+  width: 216px;
+}
+
+.premium-nonmedical-explain__card p {
+  position: absolute;
+  left: 239px;
+  top: 17px;
+  width: 208px;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-explain__uni {
+  position: absolute;
+  left: 117px;
+  top: 108px;
+  width: 56px;
+  height: 56px;
+}
+
+.premium-nonmedical-explain__join {
+  position: absolute;
+  left: 178px;
+  top: 113px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 49px;
+  height: 143px;
+  padding: 0 0 8px;
+  border: 4.8px solid #0abf8c;
+  border-radius: 12.8px;
+  background: #8054e4;
+  color: #fff;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 19.2px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.premium-nonmedical-explain__join:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.premium-nonmedical-explain__point--community {
+  left: 57px;
+  top: 750px;
+  width: 431px;
+}
+
+.premium-nonmedical-explain__point--community p {
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: 0.4px;
+}
+
+.premium-nonmedical-explain__photo {
+  left: 595px;
+  top: 820px;
+  width: 121px;
+  height: 121px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12.8px;
+}
+
+.premium-nonmedical-explain__photo img {
+  position: absolute;
+  left: -29px;
+  top: -52px;
+  width: 179px;
+  height: 269px;
+  object-fit: cover;
+}
+
+.premium-nonmedical-explain__launch {
+  left: 725px;
+  top: 820px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 248px;
+  min-height: 78px;
+  height: auto;
+  padding: 8px 12px 8px 16px;
+  border-radius: 12.8px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffc524;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 19.2px;
+  line-height: 20.8px;
+}
+
+.premium-nonmedical-explain__launch span {
+  display: block;
+}
+
+.premium-nonmedical-explain__card h3 {
+  position: absolute;
+}
+
+@media (max-width: 1366px) and (min-width: 601px) {
+  .premium-nonmedical-explain {
+    container-type: inline-size;
+  }
+
+  .premium-nonmedical-explain__stage {
+    width: min(990.4px, calc(100cqi - 48px));
+    height: calc(980px * min(1, (100cqi - 48px) / 990.4px));
+    overflow: hidden;
+  }
+
+  .premium-nonmedical-explain__panel {
+    transform: scale(min(1, (100cqi - 48px) / 990.4px));
+    transform-origin: top center;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-explain {
+    margin-top: 0;
+    padding: 0 0 24px;
+  }
+
+  .premium-nonmedical-explain__stage {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-explain__panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 25px 23px 40px;
+    overflow: visible;
+    border-radius: 0;
+    transform: none;
+  }
+
+  .premium-nonmedical-explain__panel > * {
+    position: relative;
+    left: auto;
+    top: auto;
+    flex: 1 0 100%;
+    width: auto;
+    height: auto;
+    margin: 0;
+  }
+
+  .premium-nonmedical-explain__title {
+    white-space: normal;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-explain__title-lead,
+  .premium-nonmedical-explain__title-mark {
+    display: block;
+  }
+
+  .premium-nonmedical-explain__title-mark {
+    margin-top: 4px;
+    font-size: 32px;
+  }
+
+  .premium-nonmedical-explain__family {
+    margin-top: 16px;
+    font-size: 32px;
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+
+  .premium-nonmedical-explain__answers {
+    margin-top: 27px;
+  }
+
+  .premium-nonmedical-explain__short,
+  .premium-nonmedical-explain__real {
+    gap: 8px;
+  }
+
+  .premium-nonmedical-explain__short strong,
+  .premium-nonmedical-explain__real strong {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-explain__real {
+    margin-top: 10px;
+  }
+
+  .premium-nonmedical-explain__real span {
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  .premium-nonmedical-explain__standout {
+    flex: 0 1 auto;
+    width: min(280px, 100%);
+    margin-top: 20px;
+    margin-left: auto;
+  }
+
+  .premium-nonmedical-explain__standout span:first-child,
+  .premium-nonmedical-explain__standout span:last-child {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-explain__arrow {
+    flex: 0 0 93px;
+    width: 93px;
+    height: 93px;
+    margin: 16px 0 0 84px;
+  }
+
+  .premium-nonmedical-explain__point h3,
+  .premium-nonmedical-explain__card h3 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-explain__point--ai {
+    margin-top: 8px;
+  }
+
+  .premium-nonmedical-explain__point--ai p {
+    width: auto;
+    margin: 8px 0 0 42px;
+  }
+
+  .premium-nonmedical-explain__point--path {
+    order: 1;
+    margin-top: 28px;
+  }
+
+  .premium-nonmedical-explain__point--path h3,
+  .premium-nonmedical-explain__sub {
+    width: 100%;
+  }
+
+  .premium-nonmedical-explain__point--path p:last-child {
+    width: auto;
+    margin: 10px 0 0 18px;
+  }
+
+  .premium-nonmedical-explain__ai {
+    order: 2;
+    flex: 0 0 212px;
+    width: 212px;
+    height: auto;
+    min-height: 60px;
+    margin: 20px 0 0 auto;
+  }
+
+  .premium-nonmedical-explain__ai-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .premium-nonmedical-explain__ai p {
+    width: auto;
+    margin: 10px 8px 0;
+  }
+
+  .premium-nonmedical-explain__cursor {
+    margin: 4px 0 8px 72px;
+  }
+
+  .premium-nonmedical-explain__stats {
+    order: 3;
+    flex: 0 0 auto;
+    width: auto;
+    gap: 12px;
+    margin: 12px 0 0 auto;
+  }
+
+  .premium-nonmedical-explain__stats span {
+    white-space: nowrap;
+    max-width: none;
+  }
+
+  .premium-nonmedical-explain__card {
+    order: 4;
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: 179px 146px;
+    column-gap: 7px;
+    align-items: start;
+    width: fit-content;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    margin: 24px auto 0;
+    padding: 0;
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .premium-nonmedical-explain__card-shell {
+    display: block;
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    width: 179px;
+    height: 216px;
+    border-radius: 9px;
+    background: #303030;
+  }
+
+  .premium-nonmedical-explain__card h3 {
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    z-index: 1;
+    width: 163px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .premium-nonmedical-explain__card::before {
+    content: none;
+  }
+
+  .premium-nonmedical-explain__card p {
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    max-width: 146px;
+    margin: 10px 0 0;
+  }
+
+  .premium-nonmedical-explain__uni {
+    position: absolute;
+    left: 82px;
+    top: 104px;
+    z-index: 1;
+    width: 39px;
+    height: 39px;
+    margin: 0;
+  }
+
+  .premium-nonmedical-explain__join {
+    position: absolute;
+    left: 124px;
+    top: 107px;
+    z-index: 1;
+    width: 34px;
+    height: 100px;
+    margin: 0;
+    padding-bottom: 6px;
+    border-width: 3.4px;
+    border-radius: 9px;
+    font-size: 16px;
+  }
+
+  .premium-nonmedical-explain__point--community {
+    order: 5;
+    margin-top: 28px;
+  }
+
+  .premium-nonmedical-explain__launchpad {
+    order: 6;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 24px auto 0;
+  }
+
+  .premium-nonmedical-explain__photo,
+  .premium-nonmedical-explain__launch {
+    position: relative;
+    left: auto;
+    top: auto;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .premium-nonmedical-explain__photo {
+    width: 121px;
+    height: 121px;
+  }
+
+  .premium-nonmedical-explain__launch {
+    width: 214px;
+    min-height: 78px;
+    margin: 0;
+    padding: 8px 12px;
+  }
+}

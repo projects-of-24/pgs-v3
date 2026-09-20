@@ -1,0 +1,288 @@
+/**
+ * purplePREMIUM HOME path chooser — owned CSS (H3).
+ * Desktop `17052:8172` · phone `366:4255`.
+ * Figma inset first on phone. Links are real pathway routes.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: path bars are visual blocks; photo "start now" is overlay text
+ * ISSUE: navigation needs real links with accessible names
+ * PGS IMPLEMENTATION: each path is an <a> with visible label text.
+ *   Photo + start now stay decorative (aria-hidden).
+ */
+
+.premium-home-paths {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 0 48px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-home-paths *,
+.premium-home-paths *::before,
+.premium-home-paths *::after {
+  box-sizing: border-box;
+}
+
+.premium-home-paths__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: min(872px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.premium-home-paths__title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(28px, 2.8vw, 38.4px);
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.premium-home-paths__title-line {
+  display: block;
+}
+
+.premium-home-paths__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20.8px;
+  width: 100%;
+}
+
+.premium-home-paths__photo-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(180px, 18vw, 247.2px);
+  height: clamp(320px, 32vw, 440.8px);
+  overflow: hidden;
+  border: 0.8px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 3.2px 3.2px rgba(0, 0, 0, 0.25);
+  background: #d9d9d9;
+}
+
+.premium-home-paths__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 55% 20%;
+  filter: blur(0.8px);
+}
+
+.premium-home-paths__focus {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* Figma noun-focus group is 280×280 square. */
+  width: min(85%, 220px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Four separate Figma SVGs — no rotate, no PNG overlay. */
+.premium-home-paths__focus-pair {
+  display: contents;
+}
+
+.premium-home-paths__focus-corner {
+  position: absolute;
+  width: 17%;
+  height: 17%;
+  display: block;
+}
+
+.premium-home-paths__focus-corner--mob {
+  display: none;
+}
+
+/* Positions match Figma inset % on the focus frame. */
+.premium-home-paths__focus-corner--tl {
+  top: 22%;
+  left: 22%;
+}
+
+.premium-home-paths__focus-corner--tr {
+  top: 22%;
+  left: 61%;
+}
+
+.premium-home-paths__focus-corner--br {
+  top: 61%;
+  left: 61%;
+}
+
+.premium-home-paths__focus-corner--bl {
+  top: 61%;
+  left: 22%;
+}
+
+.premium-home-paths__start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(24px, 2.6vw, 38.4px);
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.premium-home-paths__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 19.2px;
+  min-width: 0;
+  width: 100%;
+}
+
+.premium-home-paths__item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 3.2px;
+  width: 100%;
+}
+
+.premium-home-paths__hash {
+  flex: 0 0 auto;
+  width: 14.4px;
+  height: 19.2px;
+  margin-top: 2px;
+}
+
+.premium-home-paths__link {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin: 0;
+  padding: 6.4px 12.8px;
+  background: #000;
+  color: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: clamp(28px, 3.2vw, 45.6px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.2px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.premium-home-paths__link--tall {
+  padding: 12.8px;
+}
+
+.premium-home-paths__link-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.premium-home-paths__link:focus-visible {
+  outline: 3px solid #4d7bff;
+  outline-offset: 3px;
+}
+
+.premium-home-paths__link:hover {
+  background: #150035;
+}
+
+/* Phone ≤600 — stacked: title → photo → path list. Figma inset first. */
+@media (max-width: 600px) {
+  .premium-home-paths {
+    padding: 0 0 36px;
+  }
+
+  .premium-home-paths__inner {
+    gap: 16px;
+    max-width: min(302px, calc(100% - 48px));
+  }
+
+  .premium-home-paths__title {
+    width: 100%;
+    max-width: 181px;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .premium-home-paths__row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .premium-home-paths__photo-card {
+    width: 158.2px;
+    height: 282.1px;
+    border-radius: 10.24px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .premium-home-paths__start {
+    font-size: 24.6px;
+  }
+
+  /* Figma mobile focus `366:4199` on photo `366:4197` — size + overhang, not centered. */
+  .premium-home-paths__focus {
+    left: -10.24px;
+    top: 37.89px;
+    width: 179.2px;
+    height: 179.2px;
+    transform: none;
+  }
+
+  .premium-home-paths__focus-corner--desk {
+    display: none;
+  }
+
+  .premium-home-paths__focus-corner--mob {
+    display: block;
+  }
+
+  .premium-home-paths__list {
+    gap: 9.6px;
+  }
+
+  .premium-home-paths__list .premium-home-paths__item:last-child {
+    margin-top: 20.4px;
+  }
+
+  .premium-home-paths__link {
+    padding: 3.2px 6.4px;
+    font-size: max(22.8px, var(--pgs-type-floor, 16px));
+    line-height: 25.6px;
+    letter-spacing: -0.1px;
+  }
+
+  .premium-home-paths__link--tall {
+    padding: 6.4px;
+  }
+
+  .premium-home-paths__link-line {
+    white-space: normal;
+  }
+}

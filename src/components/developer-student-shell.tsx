@@ -100,7 +100,7 @@ export function DeveloperStudentShell({
               </Link>
               <ul className="header-tab-top">
                 <li><Link className={!premium && active === "feed" ? "active-tab" : ""} href="/student/dashboard">#feed</Link></li>
-                <li><details className="developer-header-dropdown"><summary className={premium || active === "premium" ? "active-tab" : ""}>#purplePremium</summary><div><Link href={premiumHref}>Premium dashboard</Link><Link href="/home/purplepremium_overview">Overview</Link><Link href="/purplenonmedical">STEM &amp; MBA pathways</Link><Link href="/purpleusme">USMLE</Link><Link href="/purpleplab">PLAB</Link><Link href="/purpleamc">AMC</Link></div></details></li>
+                <li><details className="developer-header-dropdown"><summary className={premium || active === "premium" ? "active-tab" : ""}>#purplePremium</summary><div><Link href={premiumHref}>Premium dashboard</Link><Link href="/home/purplepremium_overview">Overview</Link><Link href="/purplenonmedical">STEM &amp; MBA pathways</Link><Link href="/purpleusmle">USMLE</Link><Link href="/purpleplab">PLAB</Link><Link href="/purpleamc">AMC</Link></div></details></li>
                 <li><Link className={active === "cv" ? "active-tab" : ""} href="/cvreadyprogram">#cvReadyPrograms</Link></li>
               </ul>
               <div className="developer-header-links">
@@ -180,7 +180,7 @@ export function DeveloperStudentShell({
             <Link href={premiumHref}>#purplePremium</Link>
             <Link href="/home/purplepremium_overview">Premium overview</Link>
             <Link href="/purplenonmedical">STEM &amp; MBA pathways</Link>
-            <Link href="/purpleusme">USMLE pathway</Link>
+            <Link href="/purpleusmle">USMLE pathway</Link>
             <Link href="/purpleplab">PLAB pathway</Link>
             <Link href="/purpleamc">AMC pathway</Link>
             <Link href="/cvreadyprogram">#cvReadyPrograms</Link>

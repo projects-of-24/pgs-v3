@@ -1,0 +1,28 @@
+/**
+ * S1 — explore Countries inter-block rhythm (Figma Y gaps).
+ * Page-local only — do not edit shared premium-expense / support-hub sources.
+ * Desktop: all-pages-v6 `17056:19508`. Mobile: cas-v6 `466:7315`.
+ */
+
+@media (min-width: 601px) {
+  /* E3b frame bottom → E4 frame top ≈ 265px */
+  .explore-countries-preview-shell .explore-countries-univ {
+    margin-top: 291px;
+  }
+
+  /* E5 expense → E6 support ≈ 195px (lab-tuned @ 1440; shared hub default 52px) */
+  .explore-countries-preview-shell .support-hub {
+    margin-top: 215px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* E3b → E4 intro ≈ 99px (mob frame math; modular body has no outro between E5/E6) */
+  .explore-countries-preview-shell .explore-countries-univ {
+    margin-top: 109px;
+  }
+
+  .explore-countries-preview-shell .support-hub {
+    margin-top: 96px;
+  }
+}

@@ -1,0 +1,119 @@
+/**
+ * #premiumUSMLE why — owned CSS (U2).
+ * Desktop column from Figma `17055:14136`. Phone ≤600: 85% rail.
+ * iPad 601–1366: same desktop column, body text floor 16px.
+ */
+
+.premium-plab-why {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 48px 0 32px;
+  background: #fff;
+  overflow-x: clip;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.premium-plab-why *,
+.premium-plab-why *::before,
+.premium-plab-why *::after {
+  box-sizing: border-box;
+}
+
+.premium-plab-why__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 19.2px;
+  width: 100%;
+  max-width: 572px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+}
+
+.premium-plab-why__title {
+  margin: 0;
+  width: 100%;
+  max-width: 490px;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: center;
+}
+
+.premium-plab-why__title-line {
+  display: block;
+}
+
+.premium-plab-why__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 11.2px;
+  width: 100%;
+  max-width: 566px;
+}
+
+.premium-plab-why__kicker,
+.premium-plab-why__story,
+.premium-plab-why__outside,
+.premium-plab-why__warning {
+  margin: 0;
+}
+
+.premium-plab-why__kicker {
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+}
+
+.premium-plab-why__story,
+.premium-plab-why__outside,
+.premium-plab-why__warning {
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 600px) {
+  .premium-plab-why {
+    padding: 32px 0 24px;
+  }
+
+  .premium-plab-why__inner {
+    width: 85%;
+    max-width: 85%;
+    gap: 16px;
+    padding-inline: 0;
+    align-items: stretch;
+  }
+
+  .premium-plab-why__title {
+    max-width: none;
+    font-size: 24px;
+    line-height: normal;
+  }
+
+  .premium-plab-why__copy {
+    max-width: none;
+    gap: 12px;
+  }
+
+  .premium-plab-why__kicker {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+  }
+
+  .premium-plab-why__story {
+    font-weight: 300;
+  }
+
+  .premium-plab-why__outside {
+    font-weight: 700;
+  }
+}
+

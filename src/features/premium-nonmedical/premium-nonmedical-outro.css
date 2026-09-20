@@ -1,0 +1,123 @@
+/**
+ * #premiumNonMedical outro — owned CSS (N16).
+ * Gap under FAQ ≈ 87px (same as medical). Phone width uses page column, not the 86px crop.
+ * iPad 601–1366 keeps desktop. Do not import shared outro CSS.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: desk eyebrow 11.2 / CTA 14 · phone body/CTA ~15
+ * ISSUE: below type floor
+ * PGS IMPLEMENTATION: eyebrow, body, CTA at 16.
+ */
+
+.premium-nonmedical-outro {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: min(672px, calc(100% - clamp(32px, 4vw, 48px)));
+  margin: 87px auto 0;
+  padding: 4px 0 0;
+  color: #27272a;
+  font-family: Roboto, system-ui, sans-serif;
+  text-align: center;
+}
+
+.premium-nonmedical-outro *,
+.premium-nonmedical-outro *::before,
+.premium-nonmedical-outro *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-outro__eyebrow {
+  margin: 0;
+  color: #6a5ed9;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.premium-nonmedical-outro__title {
+  margin: 0;
+  max-width: 469px;
+  color: #27272a;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.premium-nonmedical-outro__body {
+  margin: 0;
+  max-width: 510px;
+  color: #71717a;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.premium-nonmedical-outro__body strong {
+  color: #71717a;
+  font-weight: 700;
+}
+
+.premium-nonmedical-outro__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 223px;
+  max-width: 100%;
+  min-height: 60px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: #6a5ed9;
+  color: #fff;
+  cursor: default;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.premium-nonmedical-outro__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-outro {
+    display: flex;
+    width: min(360px, calc(100% - 48px));
+    margin-top: 87px;
+  }
+
+  .premium-nonmedical-outro__eyebrow {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .premium-nonmedical-outro__title {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .premium-nonmedical-outro__body {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .premium-nonmedical-outro__cta {
+    width: auto;
+    min-height: 48px;
+    margin-top: 0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+}

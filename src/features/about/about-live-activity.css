@@ -1,0 +1,240 @@
+/**
+ * About Us Live Activity — owned CSS (A2) + autoscroll marquee.
+ * Desk `17057:13584` · mob `508:8768`.
+ * Pattern: Finance logos track (translateX -50%). Respects prefers-reduced-motion.
+ * Bands >1366 · ≤600; iPad deferred.
+ */
+
+.about-live {
+  --about-live-bg: #d1fff2;
+  --about-live-fg: #00825d;
+  --about-live-border: #009c70;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  background: var(--about-live-bg);
+  border-top: 1px solid var(--about-live-border);
+  border-bottom: 1px solid var(--about-live-border);
+  color: var(--about-live-fg);
+}
+
+.about-live *,
+.about-live *::before,
+.about-live *::after {
+  box-sizing: border-box;
+}
+
+.about-live__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  padding: 32px clamp(16px, 4vw, 48px);
+}
+
+.about-live__heading {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  z-index: 1;
+}
+
+.about-live__heading img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.about-live__heading-text {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.about-live__heading-inline {
+  display: none;
+}
+
+.about-live__viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 4%,
+    #000 96%,
+    transparent 100%
+  );
+}
+
+.about-live__track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: max-content;
+  gap: 0;
+  animation: about-live-marquee 112s linear infinite;
+  will-change: transform;
+}
+
+.about-live:hover .about-live__track {
+  animation-play-state: paused;
+}
+
+.about-live__set {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0;
+  padding: 0 24px 0 0;
+  list-style: none;
+}
+
+.about-live__item {
+  flex: 0 0 auto;
+  width: 330px;
+  max-width: 330px;
+}
+
+.about-live__item-top {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.about-live__item-top img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.about-live__name {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+
+.about-live__achievement {
+  margin: 0;
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+.about-live__meta {
+  margin: 0;
+  padding-left: 28px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+@keyframes about-live-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 1367px) {
+  .about-live__inner {
+    padding: 32px clamp(48px, 16vw, 282px);
+  }
+}
+
+@media (max-width: 600px) {
+  .about-live__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 20px;
+  }
+
+  .about-live__heading-line {
+    display: none;
+  }
+
+  .about-live__heading-inline {
+    display: inline;
+  }
+
+  .about-live__heading-text {
+    flex-direction: row;
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .about-live__viewport {
+    width: 100%;
+  }
+
+  .about-live__set {
+    gap: 16px;
+    padding-right: 16px;
+  }
+
+  .about-live__item {
+    width: min(304px, 85vw);
+    max-width: 85vw;
+  }
+
+  .about-live__track {
+    animation-duration: 88s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-live__track {
+    animation: none;
+    will-change: auto;
+  }
+
+  .about-live__viewport {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    mask-image: none;
+  }
+
+  .about-live__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .about-live__set[aria-hidden="true"] {
+    display: none;
+  }
+}

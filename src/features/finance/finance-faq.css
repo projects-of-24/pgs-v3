@@ -1,0 +1,247 @@
+/**
+ * Finance FAQ — owned CSS.
+ * Figma desktop `17041:17716` · mobile `323:2781`.
+ * Mobile ≤600: 85% rail (owner lock). Decorative slider visual only.
+ * Answer text: Figma 12px → 14px (a11y floor).
+ */
+
+.finance-faq {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 0 56px;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.finance-faq *,
+.finance-faq *::before,
+.finance-faq *::after {
+  box-sizing: border-box;
+}
+
+.finance-faq__inner {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 2vw, 24px);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.finance-faq__title {
+  margin: 0;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 38.4px;
+  font-weight: 400;
+  line-height: 22.4px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.finance-faq__row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+}
+
+.finance-faq__list {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6.4px;
+}
+
+.finance-faq__item {
+  border: 0.8px solid rgba(0, 0, 0, 0.33);
+  border-radius: 12.8px;
+  background: #fff;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.finance-faq__item-heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.finance-faq__trigger {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  padding: 12.8px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.finance-faq__trigger:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+}
+
+.finance-faq__question {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 17.6px;
+  font-weight: 600;
+  line-height: 22.4px;
+  color: #000;
+}
+
+.finance-faq__icon {
+  flex: 0 0 22px;
+  width: 22px;
+  font-family: Inter, Roboto, system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.64px;
+  text-align: center;
+  color: #000;
+}
+
+.finance-faq__item.is-open .finance-faq__icon {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.finance-faq__panel {
+  padding: 0;
+}
+
+.finance-faq__panel-inner {
+  padding: 0 12.8px 12.8px;
+}
+
+.finance-faq__panel:not(.is-open) .finance-faq__panel-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.finance-faq__answer {
+  margin: 0;
+  /* Figma 12px — a11y floor 14px */
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.08px;
+  color: #000;
+}
+
+.finance-faq__slider {
+  --finance-faq-slider-track: #e8def8;
+  --finance-faq-slider-mark: #65558f;
+  flex: 0 0 22px;
+  width: 22px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  min-height: 180px;
+  height: 70%;
+  max-height: 300px;
+  padding: 8px 0;
+  pointer-events: none;
+}
+
+.finance-faq__slider-cap {
+  display: block;
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--finance-faq-slider-mark);
+  flex: 0 0 auto;
+}
+
+.finance-faq__slider-track {
+  display: block;
+  width: 10px;
+  flex: 1 1 auto;
+  min-height: 120px;
+  margin: 6px 0;
+  border-radius: 999px;
+  background: var(--finance-faq-slider-track);
+}
+
+.finance-faq__slider-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--finance-faq-slider-mark);
+  flex: 0 0 auto;
+}
+
+@media (min-width: 1367px) {
+  .finance-faq__inner {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 600px) {
+  .finance-faq {
+    padding: 8px 0 40px;
+  }
+
+  .finance-faq__inner {
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 6.4vw, 28px);
+    gap: 20px;
+  }
+
+  .finance-faq__title {
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+    width: 100%;
+  }
+
+  .finance-faq__row {
+    gap: 8px;
+  }
+
+  .finance-faq__question {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .finance-faq__icon {
+    font-size: 28px;
+  }
+
+  .finance-faq__slider {
+    flex-basis: 16px;
+    width: 16px;
+    min-height: 140px;
+    max-height: 220px;
+  }
+
+  .finance-faq__slider-cap {
+    width: 14px;
+  }
+
+  .finance-faq__slider-track {
+    width: 8px;
+  }
+}

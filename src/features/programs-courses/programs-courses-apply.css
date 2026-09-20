@@ -1,0 +1,429 @@
+/**
+ * Courses C8 — How to Apply.
+ * Desk `17072:11084` · Mob `551:10566`.
+ * Bands: ≤600 mobile · >1366 desktop · 601–1366 deferred.
+ */
+
+.pc-apply {
+  --pc-apply-purple: #9747ff;
+  box-sizing: border-box;
+  display: none;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.pc-apply *,
+.pc-apply *::before,
+.pc-apply *::after {
+  box-sizing: border-box;
+}
+
+.pc-apply__link {
+  color: var(--pc-apply-purple);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.pc-apply__link:focus-visible {
+  outline: 2px solid #0044ff;
+  outline-offset: 2px;
+}
+
+/* —— Mobile ≤600 — Figma 551:10566 · 310 · stacked Option 1 arrows ↓ —— */
+@media (max-width: 600px) {
+  .pc-apply {
+    display: flex;
+    justify-content: center;
+    padding: 0 16px 40px;
+  }
+
+  .pc-apply__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 39px;
+    width: 310px;
+    max-width: 100%;
+  }
+
+  .pc-apply__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .pc-apply__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pc-apply__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-apply__subtitle {
+    margin: 0;
+    font-family: Mulish, Roboto, system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.16px;
+    color: #000;
+  }
+
+  .pc-apply__eligibility {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pc-apply__eligibility-label {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    color: #595959;
+  }
+
+  .pc-apply__chips {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4.8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+  }
+
+  .pc-apply__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.8px 6.4px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+
+  .pc-apply__options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 39px;
+    width: 100%;
+  }
+
+  .pc-apply__option {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 28px;
+    width: 100%;
+  }
+
+  .pc-apply__option-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    padding: 3.2px 6.4px;
+    border: 0.8px solid #000;
+  }
+
+  .pc-apply__option-label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-apply__option-num {
+    font-size: 45.6px;
+    font-weight: 500;
+    line-height: 51.2px;
+    letter-spacing: -0.2px;
+    text-align: right;
+    width: 100%;
+    color: var(--pc-apply-purple);
+  }
+
+  /* Steps stack vertically · arrows point down (rotate 180) */
+  .pc-apply__steps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12.8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 207px;
+    max-width: 100%;
+  }
+
+  .pc-apply__step-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12.8px;
+    width: 100%;
+  }
+
+  .pc-apply__arrow {
+    display: block;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    margin-left: 32px;
+    /* Figma: up-arrow rotated 180 → points down */
+    transform: rotate(180deg);
+  }
+
+  .pc-apply__step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11.2px;
+    width: 220.8px;
+    max-width: 100%;
+  }
+
+  .pc-apply__step--wide {
+    width: 220.8px;
+    max-width: 100%;
+    gap: 11.2px;
+  }
+
+  .pc-apply__step--wide .pc-apply__step-title {
+    width: 100%;
+  }
+
+  .pc-apply__step-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    color: #000;
+  }
+
+  .pc-apply__step-body {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    color: #000;
+  }
+}
+
+/* —— Desktop >1366 — Figma 17072:11084 —— */
+@media (min-width: 1367px) {
+  .pc-apply {
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 48px;
+  }
+
+  .pc-apply__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    width: 871.4px;
+    max-width: 100%;
+  }
+
+  .pc-apply__top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22.4px;
+    width: 694.4px;
+    max-width: 100%;
+  }
+
+  .pc-apply__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .pc-apply__title {
+    margin: 0;
+    font-size: 25.6px;
+    font-weight: 500;
+    line-height: 32px;
+    color: #000;
+  }
+
+  .pc-apply__subtitle {
+    margin: 0;
+    font-family: Mulish, Roboto, system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22.4px;
+    letter-spacing: -0.16px;
+    color: #000;
+  }
+
+  .pc-apply__eligibility {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6.4px;
+    width: 766.6px;
+    max-width: 100%;
+  }
+
+  .pc-apply__eligibility-label {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22.4px;
+    color: #595959;
+  }
+
+  .pc-apply__chips {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4.8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-apply__chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.8px 6.4px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+
+  .pc-apply__options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19.2px;
+    width: 100%;
+  }
+
+  .pc-apply__option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .pc-apply__option-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    padding: 3.2px 6.4px;
+    border: 0.8px solid #000;
+  }
+
+  .pc-apply__option-label {
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+    color: #000;
+  }
+
+  .pc-apply__option-num {
+    font-size: 45.6px;
+    font-weight: 500;
+    line-height: 51.2px;
+    letter-spacing: -0.2px;
+    text-align: right;
+    width: 100%;
+    color: var(--pc-apply-purple);
+  }
+
+  .pc-apply__steps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12.8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pc-apply__step-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12.8px;
+  }
+
+  .pc-apply__arrow {
+    display: block;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    transform: rotate(90deg);
+  }
+
+  .pc-apply__step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11.2px;
+    width: 220.8px;
+  }
+
+  .pc-apply__step--wide {
+    width: 288.8px;
+    gap: 8.8px;
+  }
+
+  .pc-apply__step--wide .pc-apply__step-title {
+    width: 264.8px;
+  }
+
+  .pc-apply__step-title {
+    margin: 0;
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+    color: #000;
+  }
+
+  .pc-apply__step-body {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    color: #000;
+  }
+}

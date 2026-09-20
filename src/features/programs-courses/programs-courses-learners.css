@@ -1,0 +1,27 @@
+/**
+ * C12 A word from Our learners — wraps shared LearnerWords for Courses spacing.
+ */
+
+.pc-learners {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.pc-learners .learner-words {
+  margin-top: 48px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 1367px) {
+  .pc-learners .learner-words {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pc-learners .learner-words {
+    margin-top: 40px;
+  }
+}

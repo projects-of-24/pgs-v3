@@ -4,11 +4,13 @@ description: >-
   Single owner workflow for PGS V3: frontend bodies, locked modular chrome vs
   editable globals.css, backend 10/10 rungs, CMS leave-alone, later popups/Zoho/payments.
   Read this first so agents do not re-derive order, locks, or gates. Owner lock 2026-09-05.
+  Face cards: `pgs-face-card-pass` + /preview/purpleevents-face.
+  Upcoming rail: `pgs-upcoming-sessions` + E8a–E8e on /preview/purpleevents-lite#pe-e8.
 ---
 
 # PGS master workflow (do not re-derive)
 
-**Read this skill first** on any PGS task. Companion skills: `pgs-propose-before-code`, `pgs-scout-what-why-how`, `pgs-modular-public-chrome`, `pgs-public-move-out`, `pgs-no-touch-unapproved-ui`, `pgs-never-invent`, `pgs-owner-teach-map` (owner briefs · deep teach · living maps), `pgs-backend-phase-wire` (backend gates · FE↔BE↔DB map · day-1 security · living Kanban MD), `pgs-student-family-doorman` (anon+standard Family A · Premium Family B separate · no ?premium= mix).
+**Read this skill first** on any PGS task. Companion skills: `pgs-propose-before-code`, `pgs-scout-what-why-how`, `pgs-modular-public-chrome`, `pgs-public-move-out`, `pgs-no-touch-unapproved-ui`, `pgs-never-invent`, `pgs-owner-teach-map` (owner briefs · deep teach · living maps), `pgs-backend-phase-wire` (backend gates · FE↔BE↔DB map · day-1 security · living Kanban MD), `pgs-student-family-doorman` (anon+standard Family A · Premium Family B separate · no ?premium= mix), `pgs-ipad-hero-body` (recall skill, not locked chrome: on Scholarship/Premium say recall and apply in that page’s CSS — copy that page’s mobile card once, save as its own 1.4× iPad sizes · body stays desktop · type floor 16px · do not re-explain), `pgs-face-card-pass` (listing faces: desk→mob pass · [/preview/purpleevents-face](/preview/purpleevents-face) · full Figma size · no transform scale), `pgs-upcoming-sessions` (E8 rail: 6 fixtures · E8a logic → E8b desk → E8c mob → E8d interact → E8e lock · [#pe-e8](/preview/purpleevents-lite#pe-e8)). `pgs-content-pass-then-code` (visual/position/next block: content pass, assess, then code).
 
 Owner docs (detail): [`docs/MODULAR-PUBLIC-FRONTEND.md`](../../docs/MODULAR-PUBLIC-FRONTEND.md) · [`docs/PUBLIC-MOVE-OUT-PLAN.md`](../../docs/PUBLIC-MOVE-OUT-PLAN.md) · [`docs/BACKEND-10-10-PLAN.md`](../../docs/BACKEND-10-10-PLAN.md) · [`docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md`](../../docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md)
 
@@ -28,13 +30,41 @@ LATER   Track B — Backend 10/10: Ops / roles / docs / lag (GO AHEAD rung N onl
 LATER   Track C — SaaS integrations: popups → Zoho/Google calendar → payments
         Never before A + core B spine · owner Figma / provider picks required
 
+LATER   Type floor — final-draft check only, not during fast section QC
+        Minimum text (13 / 14) → 16px on phone, iPad, and desktop
+        20px+ left alone unless a visual QC says otherwise
+        Skill: `pgs-ipad-hero-body` · do not sweep mid-page
+
 ALWAYS  CMS (junior) — leave alone unless owner reopens by name
 ALWAYS  propose → GO AHEAD → implement → gates → owner QC
+ALWAYS  Content pass (assess, no code) → owner confirms the relationship → then code
 ```
 
 **Parallel tracks:** Owner may work Hostinger/countries while backend stays closed. Agents must **not** drive-by Ops/backend while owner is mid-frontend CSS.
 
 ---
+
+## Content pass, then code (owner lock 2026-09-12)
+
+A visual correction is not a license to edit. One relationship per pass. Assess that relationship. Stop. Code only after the owner confirms the assessment.
+
+Do not stack fixes. The capsule misses came from coding the next guess (screen edge, then 177px, then grey pull-up) before the relationship was named.
+
+### Pass 1 — content (no code)
+
+Look at the named content only. Say where it sits in Figma, and where it sits now.
+
+Name the relationship in plain words: under the heart card, on the timeline card, 38px off the screen edge. Not a layer x until that relationship is clear. A raw Figma x can be the unrotated origin.
+
+If the live row is not the Figma frame width (zoom, 85% rail), say that. Do not apply a 390px left as a fixed margin on a wider row.
+
+### Pass 2 — assess
+
+Measure only that relationship. Report the gap in one sentence. No file edits.
+
+### Then code
+
+One change for that relationship. Re-measure it. Stop for owner QC. Do not start the next relationship in the same edit.
 
 ## Universal method (every job)
 
@@ -65,7 +95,7 @@ ALWAYS  propose → GO AHEAD → implement → gates → owner QC
 | **Other `globals.css`** | Ops/student bands, retained footer, non-chrome globals | **Editable** with propose → GO AHEAD |
 | **Header bar assets** | `src/features/shell/legacy-header-breakpoints.css` | **LOCKED** (chrome) unless owner reopens |
 | **Hello failsafe** | `src/features/shell/legacy-hello-aspirant.css` | **LOCKED** — Hello removed |
-| **Shared header/footer HTML** | `public-header.html` / `public-footer.html` (+ `.ts`) | **LOCKED** unless owner reopens |
+| **Shared header/footer HTML** | `public-header.html` / `public-footer.html` (+ `.ts`) | **LOCKED** unless owner reopens. **Owner 2026-09-16:** React chrome remount (`PublicHeader` / `PublicFooter`, drop `dangerouslySetInnerHTML`) = **PARKED until after Events + Countries** — then one-time mount swap per page; not during body gates. |
 | **Page bodies (default)** | `src/features/*/…css`, legacy HTML, page-scoped CSS | **Active frontend work** — propose → GO AHEAD |
 | **Hostinger leftovers** | `public/assets/css/style.css`, `responsive.css` | **REFERENCE ONLY** — never patch to win; port intent into globals or page CSS |
 
@@ -73,15 +103,26 @@ ALWAYS  propose → GO AHEAD → implement → gates → owner QC
 
 **Lesson (owner):** shared chrome cost a full day of CSS — lock it; bodies are cheaper to iterate.
 
+### Modular chrome vs React chrome (do not confuse)
+
+- **Today’s modular chrome** = shared HTML header/footer + locked modular CSS. Mounted via `LegacyPage` + `dangerouslySetInnerHTML`. This **is** the new shell (not Hostinger page bodies). CSS/layout fixes in the locked chrome section update every modular public page.
+- **`LegacyPage`** = host wrapper name only. It does **not** mean “serve Hostinger body.” Cutover pages put a **React body** between the shared chrome HTML.
+- **React chrome remount (PARKED):** later turn `public-header` / `public-footer` into `<PublicHeader />` / `<PublicFooter />` that output the **same** chrome DOM, then drop string inject.
+  - **Wins for:** login UI changes, new header menus, auth states, keyboard/a11y, typed props (structure + interaction).
+  - **Already fine without it:** paint/spacing/band CSS in locked modular chrome.
+  - **Do not** open during Events / Countries / other body gates. Owner reopens chrome by name after those bodies.
+
 ---
 
 ## Track A — Frontend workflow
 
 ### Programming model
 
-- Live pages = **legacy HTML bodies** + **locked shared shell** (`PublicLegacyPage`)
-- Figma/junior React bodies = **parked** — swap one template family at a time after QC
-- Hostinger = DNA + business intent; **not** sellable responsive (owner fixed chrome first)
+- Live pages not yet cut over = **Hostinger/legacy HTML bodies** + **locked shared chrome**
+- Cutover / preview labs = **React modular body** + same locked shared chrome (`LegacyPage` host)
+- Figma bodies = build in preview → owner QC → cutover live
+- Hostinger CSS = reference only for chrome DNA; never patch Hostinger to win
+- Events / courses templates: living map [`docs/PURPLE-EVENTS-ARCHITECTURE.md`](../../docs/PURPLE-EVENTS-ARCHITECTURE.md) — block-by-block gates
 
 ### Figma template families (one component → many routes)
 
@@ -115,7 +156,11 @@ Each swap: **body only** — shell stays locked · `GO AHEAD /route-or-template`
 
 - Visual: owner Preview desktop / iPad / phone  
 - Bands: 1366 / 601–1366 / 600  
-- Do not reopen locked chrome while fixing country body margins
+- Do not reopen locked chrome while fixing country body margins  
+- **Mobile width (owner lock 2026-09-12):** Figma inset first. If the owner says that block is too edgy, then apply the 85% rail, centered. Do not start at 85%. See `pgs-ipad-hero-body`.
+- **Playwright every pass (owner lock 2026-09-12):** after each body pass, measure 390 / 768 / 1440. Block present, no card overlap, text at least 16px. Do not close the pass on a visual guess.
+- **Gap analysis before lock (owner lock 2026-09-13):** do not tighten section gaps while the page is still being built from Figma. After that page’s Figma-to-code is done, one gap-analysis pass, then the page may be marked lock. USMLE living map: `docs/PREMIUM-MEDICAL-MODULAR.md` gate **GAP**.
+- **No black preview banner (owner lock 2026-09-09):** never render a dark/black “Side-test” strip above modular bodies. Body starts at closed `#toggleBtn` via shell `margin-top: calc(-1 * clamp(88px, 11vw, 157px))` — preview and live, desktop and mobile.
 
 **Inventory matrix:** [`docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md`](../../docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md)
 
@@ -128,6 +173,8 @@ Each swap: **body only** — shell stays locked · `GO AHEAD /route-or-template`
 **Feature wire (owner lock):** APIs, DB children, uploads, workspace routes → [`pgs-backend-phase-wire`](../pgs-backend-phase-wire/SKILL.md) — connection map first · one gate · day-1 security · living Kanban MD · live click QC · wait for next `GO AHEAD Wn`.
 
 **Open only with:** `GO AHEAD rung N` (see [`docs/BACKEND-10-10-PLAN.md`](../../docs/BACKEND-10-10-PLAN.md))
+
+**Parked for this pass (not now):** Add Country → live page from the shared template. Contract is in `pgs-backend-phase-wire` (gates C1–C4). Do not build it during frontend.
 
 | Rung | Target |
 |---|---|
@@ -237,6 +284,9 @@ Fortune 100 codebases are not perfect either. **Sellable 10/10** = roles/docs/Op
 | Skill / doc | Role |
 |---|---|
 | `pgs-propose-before-code` | Proposal format + STOP |
+| `pgs-face-card-pass` | Face cards desk→mob · [/preview/purpleevents-face](/preview/purpleevents-face) |
+| `pgs-upcoming-sessions` | E8 Upcoming rail · 6 fixtures · E8a–E8e · [#pe-e8](/preview/purpleevents-lite#pe-e8) |
+| `docs/PURPLE-EVENTS-ARCHITECTURE.md` | Events template + face + E8 living map |
 | `pgs-modular-public-chrome` | Chrome lock detail + breakpoints |
 | `pgs-no-touch-unapproved-ui` | Approved / locked surfaces |
 | `pgs-never-invent` | No invented UX |

@@ -1,0 +1,125 @@
+/**
+ * Purple Events — E3 Who / topics.
+ * Desk 17071:12273 · Mob 528:7261
+ * Bands: ≤600 mobile · >1367 desktop · 601–1366 deferred.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: mob chip text 14px
+ * ISSUE: below readable floor
+ * PGS IMPLEMENTATION: chip body 16px
+ */
+
+.pe-who {
+  --pe-who-green: #c3ffa9;
+  --pe-who-blue: #0044ff;
+  --pe-who-border: #9747ff;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  color: var(--pe-who-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pe-who *,
+.pe-who *::before,
+.pe-who *::after {
+  box-sizing: border-box;
+}
+
+.pe-who__col {
+  width: 100%;
+  max-width: 216px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.pe-who__heading {
+  margin: 0;
+  background: var(--pe-who-green);
+  border: 1.5px solid var(--pe-who-border);
+  padding: 8px;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 0.98;
+  text-transform: uppercase;
+  color: var(--pe-who-blue);
+}
+
+.pe-who__chips {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.pe-who__chip {
+  margin: 0;
+  background: var(--pe-who-green);
+  padding: 4px 8px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--pe-who-blue);
+}
+
+.pe-who__chip--audience {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  white-space: pre-line;
+}
+
+/* Desktop — Figma 17071:12273 */
+@media (min-width: 1367px) {
+  .pe-who {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 51px;
+    padding: 40px 24px 56px;
+  }
+
+  .pe-who__col {
+    max-width: 345px;
+    width: 345px;
+    gap: 20px;
+  }
+
+  .pe-who__heading {
+    border: 0;
+    display: inline-flex;
+    align-self: flex-start;
+    width: auto;
+    padding: 8px;
+    font-size: 29px;
+    line-height: 0.98;
+  }
+
+  .pe-who__chips {
+    gap: 20px;
+  }
+
+  .pe-who__chip {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 24px;
+    line-height: 0.98;
+  }
+
+  .pe-who__chip--audience {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}

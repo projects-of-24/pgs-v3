@@ -1,0 +1,163 @@
+/**
+ * About Us — USP strip (A5).
+ * Desk `17057:13777`+`17057:13783` · mob `511:5549`.
+ * Bands >1366 · ≤600; iPad deferred.
+ * Mobile: yellow arrows share left edge with copy (owner QC).
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.about-usp {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 56px clamp(16px, 4vw, 48px) 24px;
+  background: #fff;
+  overflow: visible;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.about-usp *,
+.about-usp *::before,
+.about-usp *::after {
+  box-sizing: border-box;
+}
+
+.about-usp__inner {
+  position: relative;
+  width: 100%;
+  max-width: 972px;
+  margin-inline: auto;
+  padding-left: 65px;
+  padding-top: 0;
+}
+
+.about-usp__badge {
+  position: absolute;
+  left: 0;
+  top: -22px;
+  z-index: 2;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 4px;
+  border: 2px solid #39a1ff;
+  background: #fff;
+  color: #000;
+  /* LOCKED desk type ×0.8 (owner 2026-09-11) — mob unchanged; reopen by name only */
+  font-size: calc(clamp(28px, 2.8vw, 40px) * 0.8);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.25px;
+  white-space: nowrap;
+}
+
+.about-usp__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 907px;
+  min-height: 186px;
+  padding: 35px 15px 20px;
+  background: #f1f1f1;
+}
+
+.about-usp__panel > .about-usp__arrows {
+  display: none;
+}
+
+.about-usp__copy {
+  margin: 0;
+  max-width: 882px;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: calc(clamp(22px, 2.4vw, 36px) * 0.8);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.about-usp__arrows-desk {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-right: clamp(40px, 8vw, 120px);
+}
+
+.about-usp__arrows {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* Figma overlap: second circle sits partly over first */
+  gap: 0;
+}
+
+.about-usp__arrow {
+  display: block;
+  flex-shrink: 0;
+  width: 59px;
+  height: 59px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.about-usp__arrow + .about-usp__arrow {
+  margin-left: -23px;
+}
+
+@media (max-width: 600px) {
+  .about-usp {
+    padding: 28px 0 16px;
+  }
+
+  .about-usp__inner {
+    width: var(--pgs-premium-mob-rail, 85%);
+    max-width: var(--pgs-premium-mob-rail, 85%);
+    margin-inline: auto;
+    padding-left: 0;
+    padding-top: 17px;
+  }
+
+  .about-usp__badge {
+    left: auto;
+    right: 0;
+    top: 0;
+    padding: 8px;
+    border-width: 1.5px;
+    font-size: 24px;
+  }
+
+  .about-usp__panel {
+    min-height: 0;
+    padding: 4px 8px 12px;
+    gap: 0;
+  }
+
+  .about-usp__panel > .about-usp__arrows {
+    display: flex;
+    margin: 8px 0 0;
+  }
+
+  .about-usp__arrows-desk {
+    display: none;
+  }
+
+  .about-usp__copy {
+    margin-top: 11px;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .about-usp__arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .about-usp__arrow + .about-usp__arrow {
+    margin-left: -14px;
+  }
+}
