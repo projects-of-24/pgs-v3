@@ -1,5 +1,7 @@
 "use client";
 
+/** @deprecated S-R (2026-09-27): use `<PublicStrip/>` from public-strip-react.tsx; delete once no page imports this. */
+
 /**
  * SR-2a lab helper. The desktop strip search field is still inside the DSIH
  * strip string until H-R, so this component listens to that input and

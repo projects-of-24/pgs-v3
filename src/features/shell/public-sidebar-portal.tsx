@@ -1,5 +1,7 @@
 "use client";
 
+/** @deprecated S-R (2026-09-27): use `<PublicStrip/>` from public-strip-react.tsx; delete once no page imports this. */
+
 /**
  * T-1 lab helper. The strip is still an HTML string (DSIH) until H-R; the lab
  * swaps the string #sidebar for `<div data-pgs-sidebar-slot>` and this

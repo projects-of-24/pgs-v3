@@ -432,7 +432,7 @@ main[data-legacy-page] {
 
   [data-legacy-page] #toggleBtn.arrow-box i,
   .developer-student-shell #toggleBtn.arrow-box i {
-    font-size: 9px !important;
+    font-size: 12px !important; /* owner QC 2026-09-27: was 9px */
   }
 }
 

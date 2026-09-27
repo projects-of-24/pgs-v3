@@ -5,29 +5,18 @@
  */
 import type { Viewport } from "next";
 import { LegacyPage } from "@/components/legacy-page";
-import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { HEADER_NAV } from "@/features/shell/header-nav";
 import { HeaderPreviewShell } from "@/features/shell/header-preview-shell";
 import { PublicHeader } from "@/features/shell/public-header";
-import { SearchResultsStripPortal } from "@/features/shell/search-results-strip-portal";
-import { buildPublicStripHtml } from "@/features/shell/public-strip";
 import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
 import "@/features/shell/legacy-header-breakpoints.css";
-import { applyAuthenticatedShell } from "@/lib/account-shell";
-import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
-import { withPreviewLoginReturn } from "@/lib/preview-login-return";
 import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
 } from "@/lib/student-experience";
-import {
-  applySharedHelloAspirant,
-  HELLO_ASPIRANT_DEFAULT_AVATAR
-} from "@/legacy/pages/hello-aspirant";
 import { PublicFooter } from "@/features/shell/public-footer";
-import { replaceFirstSidebar } from "@/legacy/pages/public-sidebar";
-import { PublicSidebarPortal } from "@/features/shell/public-sidebar-portal";
-import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
+import { PublicStrip } from "@/features/shell/public-strip-react";
+import { HELLO_ASPIRANT_DEFAULT_AVATAR } from "@/legacy/pages/hello-aspirant";
 
 export const dynamic = "force-dynamic";
 
@@ -73,9 +62,6 @@ export default async function HeaderPreviewPage({
       ? await studentExperienceAvatarUrl(state)
       : HELLO_ASPIRANT_DEFAULT_AVATAR;
 
-  const previewPath = forceLoggedOut
-    ? "/preview/header?loggedOut=1"
-    : "/preview/header";
   const loginHref = forceLoggedOut
     ? "/preview/header"
     : `/login?redirect=${encodeURIComponent("/preview/header")}`;
@@ -94,35 +80,6 @@ export default async function HeaderPreviewPage({
         ? 4
         : 0;
 
-  let stripHtml = buildPublicStripHtml(univMeet);
-  stripHtml = applySharedPublicSidebar(stripHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "User"
-  });
-  stripHtml = applySharedHelloAspirant(stripHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "Aspirant",
-    avatarUrl: avatarUrl ?? helloAvatar
-  });
-
-
-  if (studentState !== "anonymous") {
-    const shellFields = {
-      name: state && state.kind !== "anonymous" ? state.name : "Lab User",
-      unreadCount,
-      premium: studentState === "authenticated_premium",
-      notifications:
-        state && state.kind !== "anonymous" ? state.notifications : [],
-      notificationReadOnly: Boolean(state?.preview) || labFakeAuth
-    };
-    stripHtml = applyAuthenticatedShell(stripHtml, shellFields);
-    if (state && state.kind !== "anonymous") {
-      stripHtml = applyStudentIdentity(stripHtml, state, helloAvatar);
-    }
-  }
-
-  stripHtml = applyPremiumBusinessRule(stripHtml);
-  stripHtml = withPreviewLoginReturn(stripHtml, previewPath);
-  /* T-1: React #sidebar on the lab — string sidebar → mount slot (live pages keep the string until H-R). */
-  stripHtml = replaceFirstSidebar(stripHtml, '<div data-pgs-sidebar-slot></div>');
   const sidebarName = state && state.kind !== "anonymous" ? state.name : labFakeAuth ? "Lab User" : "User";
 
   return (
@@ -138,11 +95,9 @@ export default async function HeaderPreviewPage({
         }
         univMeet={univMeet}
       />
-      <div dangerouslySetInnerHTML={{ __html: stripHtml }} />
-      {/* SR-2a: typing in the strip field (DSIH until H-R) drives the React results card */}
-      <SearchResultsStripPortal />
-      {/* T-1: open toggle box (#sidebar) as React, portaled into the strip's slot */}
-      <PublicSidebarPortal
+      {/* S-R: strip row as React — toggle pill · #sidebar · univMeet · search (Hello Aspirant box removed) */}
+      <PublicStrip
+        univMeet={univMeet}
         signedIn={studentState !== "anonymous"}
         name={sidebarName}
         loginHref={loginHref}
