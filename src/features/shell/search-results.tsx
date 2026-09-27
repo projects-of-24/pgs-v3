@@ -2,18 +2,18 @@
 
 /**
  * SR-1 — search results card (owned). Figma `search bar UI` 19075:13657.
- * One UI on all bands: white card under the field, title + faint type label.
- * Sizes per band live in pgs-search-results.css. No fetching here (SR-2).
+ * One UI on all bands: white card under the field, label + faint type.
+ * Sizes per band in pgs-search-results.css. Rows = backend contract shape.
  */
-import type { SearchResultRow } from "@/features/shell/search-results-fixtures";
+import type { PublicSearchResult } from "@/features/shell/search-contract";
 import "@/features/shell/pgs-search-results.css";
 
 export type SearchResultsProps = {
-  results: SearchResultRow[];
+  results: PublicSearchResult[];
   open: boolean;
   activeIndex?: number;
   listId?: string;
-  onSelect?: (row: SearchResultRow) => void;
+  onSelect?: (row: PublicSearchResult) => void;
 };
 
 export function SearchResults({
@@ -29,18 +29,17 @@ export function SearchResults({
       {results.map((row, index) => (
         <li
           key={row.id}
+          id={`${listId}-${index}`}
           role="option"
           aria-selected={index === activeIndex}
-          className={`pgs-search-results__row${
-            index === activeIndex ? " is-active" : ""
-          }`}
+          className={`pgs-search-results__row${index === activeIndex ? " is-active" : ""}`}
         >
           <a
             className="pgs-search-results__link"
-            href={row.href}
+            href={row.url}
             onClick={onSelect ? () => onSelect(row) : undefined}
           >
-            <span className="pgs-search-results__title">{row.title}</span>
+            <span className="pgs-search-results__title">{row.label}</span>
             <span className="pgs-search-results__type">{row.type}</span>
           </a>
         </li>

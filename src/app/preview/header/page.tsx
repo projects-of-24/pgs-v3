@@ -9,7 +9,6 @@ import { applyStudentIdentity } from "@/components/recovered-student-legacy-page
 import { HEADER_NAV } from "@/features/shell/header-nav";
 import { HeaderPreviewShell } from "@/features/shell/header-preview-shell";
 import { PublicHeader } from "@/features/shell/public-header";
-import { SEARCH_RESULTS_FIXTURES } from "@/features/shell/search-results-fixtures";
 import { SearchResultsStripPortal } from "@/features/shell/search-results-strip-portal";
 import { buildPublicStripHtml } from "@/features/shell/public-strip";
 import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
@@ -53,11 +52,6 @@ export default async function HeaderPreviewPage({
   const forceLoggedOut =
     loggedOutParam === "1" ||
     (Array.isArray(loggedOutParam) && loggedOutParam[0] === "1");
-  /* SR-1: ?search=1 shows the Figma fixture rows open under both search fields. */
-  const searchParam = params.search;
-  const showSearchFixtures =
-    searchParam === "1" || (Array.isArray(searchParam) && searchParam[0] === "1");
-  const labSearchResults = showSearchFixtures ? SEARCH_RESULTS_FIXTURES : undefined;
 
   const [state, univMeet] = await Promise.all([
     resolveStudentExperience(),
@@ -138,12 +132,10 @@ export default async function HeaderPreviewPage({
         unreadCount={unreadCount}
         labFakeAuth={labFakeAuth}
         univMeet={univMeet}
-        labSearchResults={labSearchResults}
       />
       <div dangerouslySetInnerHTML={{ __html: stripHtml }} />
-      {labSearchResults ? (
-        <SearchResultsStripPortal results={labSearchResults} />
-      ) : null}
+      {/* SR-2a: typing in the strip field (DSIH until H-R) drives the React results card */}
+      <SearchResultsStripPortal />
       <HeaderPreviewShell
         studentState={studentState}
         labFakeAuth={labFakeAuth}
