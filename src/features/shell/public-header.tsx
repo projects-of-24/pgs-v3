@@ -11,6 +11,8 @@ import { MeNavDrop } from "@/features/shell/me-nav-drop";
 import { NotificationNavDrop } from "@/features/shell/notification-nav-drop";
 import { PremiumNavDrop } from "@/features/shell/premium-nav-drop";
 import { StudyAbroadNavDrop } from "@/features/shell/study-abroad-nav-drop";
+import { SearchResults } from "@/features/shell/search-results";
+import type { SearchResultRow } from "@/features/shell/search-results-fixtures";
 import type { UnivMeetPublic } from "@/features/shell/univmeet-slots";
 import { UNIVMEET_FALLBACK_CHIPS } from "@/features/shell/univmeet-slots";
 /* DSIH / legacy bar helpers + H6a drawer reset (via breakpoints @import) */
@@ -26,6 +28,8 @@ export type PublicHeaderProps = {
   /** Preview lab fake logged-in — Logout toggles lab state only */
   labFakeAuth?: boolean;
   univMeet?: UnivMeetPublic | { href: string; chips: Array<{ day: string; monthLine: string }> };
+  /** SR-1 lab only: rows to show open under the drawer search field (fixtures). SR-2 wires live results. */
+  labSearchResults?: SearchResultRow[];
 };
 
 function BrandMark() {
@@ -124,6 +128,7 @@ export function PublicHeader({
   unreadCount = 0,
   labFakeAuth = false,
   univMeet,
+  labSearchResults,
 }: PublicHeaderProps) {
   return (
     <>
@@ -268,6 +273,13 @@ export function PublicHeader({
                 aria-label="Search programs, courses, and events"
               />
             </div>
+            {labSearchResults ? (
+              <SearchResults
+                results={labSearchResults}
+                open
+                listId="pgs-search-results-drawer"
+              />
+            ) : null}
           </div>
         </div>
 
