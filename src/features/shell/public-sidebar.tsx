@@ -72,19 +72,25 @@ export function PublicSidebar({ signedIn, name, loginHref = "/login", rows = SID
           return (
             <li key={row.id} className={`pgs-sidebar__row${hasDrop ? " has-drop" : ""}${isOpen ? " is-open" : ""}`}>
               {hasDrop ? (
-                <button
-                  type="button"
+                <a
+                  href={row.href}
+                  role="button"
                   className="pgs-sidebar__link pgs-sidebar__drop-toggle"
                   aria-expanded={isOpen}
                   aria-controls={dropId}
-                  onClick={() => setOpenRow(isOpen ? null : row.id)}
+                  /* Capture phase: runs before legacy-page.tsx's click router on <main>, so the row toggles instead of navigating. */
+                  onClickCapture={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setOpenRow(isOpen ? null : row.id);
+                  }}
                 >
                   <span className="fit-icon-sidebar">
                     <img src={SIDEBAR_ICONS[row.icon]} alt="" data-no-retina="" />
                   </span>
                   <span className="pgs-sidebar__label">{row.label}</span>
                   <i className="bi bi-arrow-right-circle-fill pgs-sidebar__drop-glyph" aria-hidden="true" />
-                </button>
+                </a>
               ) : (
                 <a href={row.href} className="pgs-sidebar__link">
                   <span className="fit-icon-sidebar">
