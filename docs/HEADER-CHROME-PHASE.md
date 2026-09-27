@@ -275,7 +275,7 @@ Each gate: propose → `GO AHEAD` → implement → `/preview/header` QC → sto
 | 10 | iPad: mobile header + desktop body | **Locked** |
 | 11 | Fluid/clamp; page-by-page px in UI pass | **Locked** |
 | 12 | Safe-area pushes whole stack; body pull = aesthetic ruler | **Locked** |
-| 13 | PLAB remove from Premium menu? | **Open** |
+| 13 | PLAB remove from Premium menu | **Resolved** — lab menu is OVERVIEW · Short Term Abroad · STEM/MBA · USMLE · AMC (no PLAB); route `/purpleplab` stays |
 | 14 | Safe-area floor 24px | **Locked** (H7, 2026-09-27 — was already applied in globals `--pgs-safe-top`) |
 | 15 | WIP files keep+rewrite vs delete | **Open** |
 | 16 | Header: Hostinger ref → **CSS pass** → then UI (no invent-from-scratch CSS) | **Locked** (H1c) |
@@ -300,6 +300,7 @@ Each gate: propose → `GO AHEAD` → implement → `/preview/header` QC → sto
 | 35 | **Four breakpoints:** above 1366 desktop · `801–1366` wide iPad · `601–800` compact iPad · 600 and below mobile. Middle two reserved for iPad. Numbers in `pgs-breakpoints.ts`. Responsive asks = one Fable plan across all four bands, then one build. | **Locked** |
 | 36 | **Header + all dropdowns visually locked.** Saber stroke try failed owner QC 2026-09-26 and was removed. Resting borders and hard shadows stay. | **Locked** |
 | 37 | **#univMeet + search owned CSS (gate 1):** keep current look. Strip uses `.pgs-univmeet` / `.pgs-search` (`pgs-univmeet-search.css`). Drawer search uses the same owned input class. `search-box` + `search-control` stay as autocomplete hooks only. No visual invent. Search results list deferred. | **Preview QC** |
+| 41 | **Header lab verified (2026-09-27):** `/preview/header` on owned split measured at 1500 · 1100 · 700 · 390. Desktop full bar, all 7 labels + join #PGS, 36px (=40×0.9) outer inset, no horizontal overflow. 801–1366: logo · #feed · join #PGS · bell · avatar · hamburger. 601–800: join #PGS off the bar, in the menu. ≤600 mobile bar 7px inset. Menus carry the locked IA (Premium 5 · CV Ready 4 · CV Medical 2 · studyAbroad 2 stubs). Header = **done on lab**; remaining = H-R mount on pages + H7-LIVE. | **Locked** |
 | 40 | **Footer CSS pass DONE (2026-09-27):** owned-split footer zero-diff vs Hostinger desk + mob; compact iPad 601–800 overlap fixed with mobile card recipe; wide iPad unchanged (210px card). Owner QC passed on lab. | **Locked** |
 | 39 | **H7 preview (2026-09-27):** safe-area cascade verified on lab (token bump 24→80 moved bar/toggle/body/footer by the same amount); body pull stays strip-tied, no safe-top bake. Viewport-fit only on lab until H7-LIVE. | **Preview QC** |
 | 38 | **Search field restyle reverted (2026-09-27).** Owner: locked search bar UI must stay. Figma `search bar UI` is the results card when search happens — not a field restyle. | **Reverted** |
