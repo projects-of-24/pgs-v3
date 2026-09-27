@@ -72,10 +72,15 @@ The owned split is a 1:1 copy of Hostinger, so every inherited behaviour (hover 
 
 Owner approves the sheet, then build. Any inherited behaviour that is wrong for the new piece is overridden **on the new piece only** (scoped selector), never by editing the 1:1 copy.
 
+## 10. Answer the question asked (owner lock 2026-09-27)
+
+When the owner asks a direct question, answer **Yes / No / Maybe first**, then one or two lines of context for that answer only. Do not widen the answer to neighbouring topics the owner did not ask about. If a caveat changes the yes/no, it belongs in those lines; otherwise it waits until asked.
+
 ## Failure modes
 
 - Restyling a QC'd panel to "match Figma" when only one row changed.
 - Inventing a band UI instead of asking.
 - Fake data with invented field names.
 - "Done" without the file paths the owner needs to nudge it.
+- Answering a yes/no question with a tour of the architecture.
 - Shipping a piece without its state sheet (the greyed `#exploreCountries` row: inherited `a:hover { opacity:.6 }`).
