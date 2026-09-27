@@ -21,8 +21,12 @@
  * Sister template for body UI flush: pgs-page-ui-flush.css
  */
 
-/* ——— Document: no horizontal page shove when drawer translates ——— */
-html:has(main[data-legacy-page]) {
+/* ——— Document: no horizontal page shove when drawer translates ———
+   `clip` on body too (owner 2026-09-27): Hostinger's `body { overflow-x: hidden }`
+   makes body a scroll container, so the sticky header only stuck ≤767 where a
+   phone rule already used clip. Clip guards the same bleed without a scroller. */
+html:has(main[data-legacy-page]),
+body:has(main[data-legacy-page]) {
   overflow-x: clip;
   scrollbar-gutter: stable;
 }
