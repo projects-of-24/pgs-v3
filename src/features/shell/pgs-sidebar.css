@@ -70,6 +70,17 @@
   outline: none;
 }
 
+/* Interaction states of the #exploreCountries row (owner 2026-09-27).
+   1:1 copy gives every sidebar link `.sidebar-box ul li a:hover { opacity:.6 }` — fine for rows
+   that navigate, wrong for a row that stays put (pointer/tap leaves it dimmed). This row only:
+   rest 1 · hover 1 (underline on ≥801 from .pgs-sidebar__link:hover) · open = aria-expanded true. */
+[data-legacy-page] #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:hover,
+.developer-student-shell #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:hover,
+[data-legacy-page] #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:active,
+.developer-student-shell #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:active {
+  opacity: 1;
+}
+
 [data-pgs-sidebar="react"] .pgs-sidebar__drop-glyph {
   font-size: 16px;
   line-height: 1;

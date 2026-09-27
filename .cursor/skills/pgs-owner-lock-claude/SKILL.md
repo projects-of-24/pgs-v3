@@ -62,9 +62,20 @@ Every build report lists, as repo paths the owner can open in VS Code, **which C
 - Shared chrome and shared blocks (`src/features/shared/*`) propagate to every page that mounts them. Per-family folders do not: each `src/features/countries-<x>/` is its own copy (own `countries.css`, hero, why); only `countries/compose-country-public-page.tsx` is shared. A CSS pass on one country page does NOT reach the others until the family is consolidated onto the shared template (owner decision).
 - `legacy-page.tsx` has a click router on `<main>` that navigates sidebar `<a>`s; React handlers that must win use the capture phase.
 
+## 9. State sheet before every change (owner lock 2026-09-27)
+
+The owned split is a 1:1 copy of Hostinger, so every inherited behaviour (hover opacity, transitions, focus, active, sticky touch hover) comes with it. Before implementing a change, write a **state sheet** for the piece:
+
+| State | What the 1:1 copy does today | What the owner will see after |
+|---|---|---|
+| rest · hover · pressed/active · focus · open · closed · touch (sticky hover) · disabled/loading | measured from the live/lab rendering + the matching rules | the intended result, per band |
+
+Owner approves the sheet, then build. Any inherited behaviour that is wrong for the new piece is overridden **on the new piece only** (scoped selector), never by editing the 1:1 copy.
+
 ## Failure modes
 
 - Restyling a QC'd panel to "match Figma" when only one row changed.
 - Inventing a band UI instead of asking.
 - Fake data with invented field names.
 - "Done" without the file paths the owner needs to nudge it.
+- Shipping a piece without its state sheet (the greyed `#exploreCountries` row: inherited `a:hover { opacity:.6 }`).
