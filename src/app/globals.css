@@ -851,6 +851,19 @@ main[data-legacy-page] {
 }
 
 /*
+ * Shared public footer — compact iPad 601–800 ONLY (owner QC 2026-09-27)
+ * Mentor card is a fixed 210px (`.w-210px`) but its 35% column is ~116–160px
+ * in this band, so the card spilled into the contact column. Same recipe the
+ * ≤600 band already uses (owned split 30a: `.card-bg-pruple { width: auto }`).
+ * Wide iPad 801–1366 keeps 210px (column is wide enough there).
+ */
+@media (min-width: 601px) and (max-width: 800px) {
+  [data-legacy-page] .footer-bg > .footer .card-bg-pruple.w-210px {
+    width: auto !important;
+  }
+}
+
+/*
  * Shared public footer — iPad 601–1366 ONLY
  * Compact layout (mobile-shaped) + desktop text. Does not touch ≤600.
  */
