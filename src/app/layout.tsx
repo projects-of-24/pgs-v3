@@ -48,7 +48,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       </head>
       <body data-mobile-nav-style="classic" className="custom-cursor" data-pgs-preview={isPreviewLab ? "1" : undefined}>
         <StudentSidebarStateProvider>{children}</StudentSidebarStateProvider>
-        <Script src="/assets/js/jquery.js" strategy="beforeInteractive" />
+        {/* V-1 step 4 (2026-09-27): jQuery only where main.js / vendors.min.js still run.
+            legacy-page.tsx guards both of its jQuery uses (appear, isotope) with `if (!jQuery) return`. */}
+        {!skipHostingerJs ? <Script src="/assets/js/jquery.js" strategy="beforeInteractive" /> : null}
         {!skipHostingerJs ? (
           <>
             <Script src="/assets/js/vendors.min.js" strategy="afterInteractive" />
