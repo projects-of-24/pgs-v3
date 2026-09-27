@@ -1,0 +1,3086 @@
+/* PASS 7b · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 16372-21576 range, 13. Elements (modal popup … tab, testimonials))
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:16373 — no selector match in site (PASS 7b audit) */
+#popup-form {
+  cursor: default;
+}
+
+/* parked from style.css:16401 — no selector match in site (PASS 7b audit) */
+.lightbox-gallery a {
+  position: relative;
+  display: block;
+}
+
+/* parked from style.css:16406 — no selector match in site (PASS 7b audit) */
+.lightbox-gallery .gallary-over-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* parked from style.css:16470 — no selector match in site (PASS 7b audit) */
+.lightbox-gallery a {
+  position: relative;
+  display: block;
+}
+
+/* parked from style.css:16475 — no selector match in site (PASS 7b audit) */
+.lightbox-gallery .gallary-over-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* parked from style.css:16789 — no selector match in site (PASS 7b audit) */
+.newsletter-popup label {
+  cursor: pointer;
+}
+
+/* parked from style.css:16804 — no selector match in site (PASS 7b audit) */
+.video-icon-effect {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+/* parked from style.css:16812 — no selector match in site (PASS 7b audit) */
+.video-icon-effect:before {
+  position: absolute;
+  content: "";
+  animation: border-transform 7s linear infinite alternate forwards;
+  background-color: var(--white);
+  width: 100px;
+  height: 100px;
+  top: -15px;
+  left: -15px;
+  opacity: 0.2;
+}
+
+/* parked from style.css:16824 — no selector match in site (PASS 7b audit) */
+@-webkit-keyframes border-transform {
+
+  0%,
+  100% {
+    border-radius: 36% 64% 59% 41%/40% 45% 55% 60%;
+  }
+
+  24% {
+    border-radius: 37% 63% 60% 40%/46% 52% 48% 54%;
+  }
+
+  32% {
+    border-radius: 40% 60% 54% 46%/52% 56% 44% 48%;
+  }
+
+  42% {
+    border-radius: 52% 48% 62% 38%/54% 54% 46% 46%;
+  }
+
+  56% {
+    border-radius: 60% 40% 65% 35%/54% 50% 50% 46%;
+  }
+
+  70% {
+    border-radius: 44% 56% 43% 57%/42% 50% 50% 58%;
+  }
+}
+
+/* parked from style.css:16852 — no selector match in site (PASS 7b audit) */
+@keyframes border-transform {
+
+  0%,
+  100% {
+    border-radius: 36% 64% 59% 41%/40% 45% 55% 60%;
+  }
+
+  24% {
+    border-radius: 37% 63% 60% 40%/46% 52% 48% 54%;
+  }
+
+  32% {
+    border-radius: 40% 60% 54% 46%/52% 56% 44% 48%;
+  }
+
+  42% {
+    border-radius: 52% 48% 62% 38%/54% 54% 46% 46%;
+  }
+
+  56% {
+    border-radius: 60% 40% 65% 35%/54% 50% 50% 46%;
+  }
+
+  70% {
+    border-radius: 44% 56% 43% 57%/42% 50% 50% 58%;
+  }
+}
+
+/* parked from style.css:16903 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-01.popular-item {
+  margin-top: -30px;
+}
+
+/* parked from style.css:16908 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-02 .popular-item {
+  left: -10px;
+  position: relative;
+  z-index: 1;
+  width: calc(100% + 20px);
+}
+
+/* parked from style.css:16915 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-02 .popular-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 1px 20px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* parked from style.css:17149 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-10 .popular-label {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  z-index: 1;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+/* parked from style.css:17168 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-11 li {
+  list-style: none;
+  padding: 25px 0;
+  position: relative;
+  -webkit-transition: all 200ms cubic-bezier(0.37, 0.8, 0.63, 1);
+  transition: all 200ms cubic-bezier(0.37, 0.8, 0.63, 1);
+}
+
+/* parked from style.css:17176 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-11 li .popular-label {
+  position: absolute;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* parked from style.css:17184 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-11 li:hover {
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
+/* parked from style.css:17190 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-12 {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* parked from style.css:17196 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-12 li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 15px 0;
+  -webkit-transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:17208 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-12 li:last-child {
+  padding-bottom: 0;
+}
+
+/* parked from style.css:17212 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-12 li:hover {
+  -webkit-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* parked from style.css:17218 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-13 {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* parked from style.css:17224 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-13 li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 25px 0;
+  -webkit-transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:17236 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-13 li:last-child {
+  padding-bottom: 0;
+}
+
+/* parked from style.css:17240 — no selector match in site (PASS 7b audit) */
+.pricing-table-style-13 li:hover {
+  -webkit-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+/* parked from style.css:17246 — no selector match in site (PASS 7b audit) */
+.process-step-style-01 .progress-step-separator {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 20px);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* parked from style.css:17254 — no selector match in site (PASS 7b audit) */
+.process-step-style-01 .process-step-icon {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* parked from style.css:17261 — no selector match in site (PASS 7b audit) */
+.process-step-style-01:hover .box-overlay {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* parked from style.css:17271 — no selector match in site (PASS 7b audit) */
+.process-step-style-01:hover .border-color-transparent-on-hover {
+  border-color: transparent !important;
+}
+
+/* parked from style.css:17276 — no selector match in site (PASS 7b audit) */
+.process-step-style-02 .process-step-icon {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  will-change: transform;
+}
+
+/* parked from style.css:17285 — no selector match in site (PASS 7b audit) */
+.process-step-style-02 .progress-step-separator {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* parked from style.css:17293 — no selector match in site (PASS 7b audit) */
+.process-step-style-02:hover .process-step-icon {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  will-change: transform;
+}
+
+/* parked from style.css:17300 — no selector match in site (PASS 7b audit) */
+.process-step-style-03.hover-box * {
+  will-change: auto;
+  vertical-align: top;
+}
+
+/* parked from style.css:17305 — no selector match in site (PASS 7b audit) */
+.process-step-style-03 .process-step-icon-box .progress-step-separator {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* parked from style.css:17323 — no selector match in site (PASS 7b audit) */
+.process-step-style-03:hover .process-step-icon-box .box-overlay {
+  opacity: 0.9;
+}
+
+/* parked from style.css:17333 — no selector match in site (PASS 7b audit) */
+.process-step-style-03:hover .process-step-icon-box img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:17338 — no selector match in site (PASS 7b audit) */
+.process-step-style-03:hover .process-step-icon-box .progress-image {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:17344 — no selector match in site (PASS 7b audit) */
+.process-step-style-04 .process-step-icon-box {
+  will-change: transform;
+}
+
+/* parked from style.css:17348 — no selector match in site (PASS 7b audit) */
+.process-step-style-04 .process-step-icon-box .progress-step-separator {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* parked from style.css:17363 — no selector match in site (PASS 7b audit) */
+.process-step-style-05 .process-step-item {
+  display: flex;
+  position: relative;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* parked from style.css:17372 — no selector match in site (PASS 7b audit) */
+.process-step-style-05 .process-content {
+  overflow: hidden;
+  flex: 1;
+  max-width: 100%;
+}
+
+/* parked from style.css:17378 — no selector match in site (PASS 7b audit) */
+.process-step-style-05 .progress-step-separator {
+  position: absolute;
+  bottom: 15px;
+  width: 1px;
+  left: 50%;
+  height: calc(100% - 100px);
+}
+
+/* parked from style.css:17386 — no selector match in site (PASS 7b audit) */
+.process-step-style-05 .process-step-icon {
+  will-change: transform;
+  -webkit-transition: all 350ms cubic-bezier(0.165, 0.84, 0.44, 1.7);
+  transition: all 350ms cubic-bezier(0.165, 0.84, 0.44, 1.7);
+}
+
+/* parked from style.css:17392 — no selector match in site (PASS 7b audit) */
+.process-step-style-05:hover .process-step-icon {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:17403 — no selector match in site (PASS 7b audit) */
+.process-step-style-06 .process-step-icon-box .progress-step-separator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+/* parked from style.css:17415 — no selector match in site (PASS 7b audit) */
+.process-step-style-08 .process-step-item {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* parked from style.css:17422 — no selector match in site (PASS 7b audit) */
+.process-step-style-08 .process-step-item:hover {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+/* parked from style.css:17428 — no selector match in site (PASS 7b audit) */
+.process-step-style-09 .progress-right-icon {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* parked from style.css:17436 — no selector match in site (PASS 7b audit) */
+.process-step-style-09 .process-step-icon {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* parked from style.css:17443 — no selector match in site (PASS 7b audit) */
+.process-step-style-09:hover .box-overlay {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* parked from style.css:17448 — no selector match in site (PASS 7b audit) */
+.process-step-style-09:hover .border-color-transparent-on-hover {
+  border-color: transparent !important;
+}
+
+/* parked from style.css:17453 — no selector match in site (PASS 7b audit) */
+.process-step-style-10 .process-step-icon-box {
+  -webkit-transition: all 650ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 650ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* parked from style.css:17458 — no selector match in site (PASS 7b audit) */
+.process-step-style-10:hover .process-step-icon-box {
+  -webkit-transform: translateX(20px) scale(1.1);
+  transform: translateX(20px) scale(1.1);
+}
+
+/* parked from style.css:17463 — no selector match in site (PASS 7b audit) */
+.process-step-style-10.hover-box .hover-content {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+}
+
+/* parked from style.css:17470 — no selector match in site (PASS 7b audit) */
+.process-step-style-10.hover-box:hover .hover-content {
+  opacity: 1;
+  bottom: -5px;
+}
+
+/* parked from style.css:17476 — no selector match in site (PASS 7b audit) */
+.process-step-style-11 .process-step-icon-wrap {
+  z-index: 1;
+  background-color: var(--base-color);
+  background-size: 4px 4px;
+  -webkit-transition: all 650ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 650ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* parked from style.css:17484 — no selector match in site (PASS 7b audit) */
+.process-step-style-11:hover .process-step-icon-wrap {
+  background-color: var(--dark-gray);
+  background-image: none;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 650ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 650ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* parked from style.css:17513 — no selector match in site (PASS 7b audit) */
+.progress-bar-percent {
+  opacity: 0;
+}
+
+/* parked from style.css:17625 — no selector match in site (PASS 7b audit) */
+.review-star-icon i {
+  color: #fd961e;
+  letter-spacing: 1px;
+}
+
+/* parked from style.css:17630 — no selector match in site (PASS 7b audit) */
+.review-star-icon.review-star-icon-white i {
+  color: var(--white);
+}
+
+/* parked from style.css:17635 — no selector match in site (PASS 7b audit) */
+.review-style-03 .slider-review-image-thumbs {
+  padding: 10px;
+  height: auto;
+}
+
+/* parked from style.css:17645 — no selector match in site (PASS 7b audit) */
+.review-style-03 .slider-review-image-thumbs img {
+  border: 6px solid transparent;
+  margin: 0 auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* parked from style.css:17671 — no selector match in site (PASS 7b audit) */
+.rotate-box {
+  will-change: transform;
+  min-height: 250px;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17680 — no selector match in site (PASS 7b audit) */
+.rotate-box p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* parked from style.css:17684 — no selector match in site (PASS 7b audit) */
+.rotate-box .front-side,
+.rotate-box .back-side {
+  position: absolute;
+  top: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: transform 0.6s cubic-bezier(0.5, 0.3, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.5, 0.3, 0.3, 1);
+}
+
+/* parked from style.css:17694 — no selector match in site (PASS 7b audit) */
+.rotate-box .rotate-content-front,
+.rotate-box .rotate-content-back {
+  position: relative;
+  top: 50%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: transform 0.6s cubic-bezier(0.5, 0.3, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.5, 0.3, 0.3, 1);
+}
+
+/* parked from style.css:17704 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left .front-side,
+.rotate-box.to-right .front-side {
+  z-index: 1;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17713 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left .rotate-content-front,
+.rotate-box.to-right .rotate-content-front {
+  -webkit-transform: translateY(-50%) translateX(0px) scale(1);
+  transform: translateY(-50%) translateX(0px) scale(1);
+}
+
+/* parked from style.css:17719 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left:hover .back-side,
+.rotate-box.to-right:hover .back-side {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17727 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left:hover .rotate-content-back,
+.rotate-box.to-right:hover .rotate-content-back {
+  -webkit-transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
+  transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17735 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left .back-side {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* parked from style.css:17743 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left .rotate-content-back {
+  -webkit-transform: translateY(-50%) translateX(400px) translateZ(60px) scale(0.88);
+  transform: translateY(-50%) translateX(400px) translateZ(60px) scale(0.88);
+}
+
+/* parked from style.css:17748 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left:hover .front-side {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17755 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-left:hover .rotate-content-front {
+  -webkit-transform: translateY(-50%) translateX(-400px) scale(0.88);
+  transform: translateY(-50%) translateX(-400px) scale(0.88);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17762 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-right .back-side {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* parked from style.css:17770 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-right .rotate-content-back {
+  -webkit-transform: translateY(-50%) translateX(-400px) translateZ(60px) scale(0.88);
+  transform: translateY(-50%) translateX(-400px) translateZ(60px) scale(0.88);
+}
+
+/* parked from style.css:17775 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-right:hover .front-side {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17782 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-right:hover .rotate-content-front {
+  -webkit-transform: translateY(-50%) translateX(400px) scale(0.88);
+  transform: translateY(-50%) translateX(400px) scale(0.88);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17789 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top .front-side,
+.rotate-box.to-bottom .front-side {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17797 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top .rotate-content-front,
+.rotate-box.to-bottom .rotate-content-front {
+  -webkit-transform: translateY(-50%) translateX(0px) scale(1);
+  transform: translateY(-50%) translateX(0px) scale(1);
+}
+
+/* parked from style.css:17803 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top:hover .back-side,
+.rotate-box.to-bottom:hover .back-side {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* parked from style.css:17812 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top:hover .rotate-content-front,
+.rotate-box.to-bottom:hover .rotate-content-front {
+  -webkit-transform: translateY(-50%) translateY(400px) scale(0.88);
+  transform: translateY(-50%) translateY(400px) scale(0.88);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17820 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top:hover .rotate-content-back,
+.rotate-box.to-bottom:hover .rotate-content-back {
+  -webkit-transform: translateY(-50%) translateY(0px) translateZ(0px) scale(1);
+  transform: translateY(-50%) translateY(0px) translateZ(0px) scale(1);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17828 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top .back-side {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* parked from style.css:17836 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top .rotate-content-back {
+  -webkit-transform: translateY(-50%) translateY(-400px) translateZ(60px) scale(0.88);
+  transform: translateY(-50%) translateY(-400px) translateZ(60px) scale(0.88);
+}
+
+/* parked from style.css:17841 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-top:hover .front-side {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17848 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-bottom .back-side {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* parked from style.css:17856 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-bottom .rotate-content-back {
+  -webkit-transform: translateY(-50%) translateY(400px) translateZ(60px) scale(0.88);
+  transform: translateY(-50%) translateY(400px) translateZ(60px) scale(0.88);
+}
+
+/* parked from style.css:17861 — no selector match in site (PASS 7b audit) */
+.rotate-box.to-bottom:hover .front-side {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* parked from style.css:17868 — no selector match in site (PASS 7b audit) */
+.to-top {
+  animation: toTop 0.3s linear forwards;
+}
+
+/* parked from style.css:17872 — no selector match in site (PASS 7b audit) */
+.to-right {
+  animation: toRight 0.3s linear forwards;
+}
+
+/* parked from style.css:17876 — no selector match in site (PASS 7b audit) */
+.to-bottom {
+  animation: toBottom 0.3s linear forwards;
+}
+
+/* parked from style.css:17880 — no selector match in site (PASS 7b audit) */
+.to-left {
+  animation: toLeft 0.3s linear forwards;
+}
+
+/* parked from style.css:17885 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 * {
+  will-change: transform;
+}
+
+/* parked from style.css:17889 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .rm-rotate-box {
+  position: relative;
+}
+
+/* parked from style.css:17893 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper {
+  position: relative;
+}
+
+/* parked from style.css:17897 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper:hover .front {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+/* parked from style.css:17907 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper.to-right .front {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+/* parked from style.css:17917 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper.to-right:hover .front {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+/* parked from style.css:17927 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper.to-top .front {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+/* parked from style.css:17937 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper.to-top:hover .front {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+
+/* parked from style.css:17947 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper.to-bottom .front {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+/* parked from style.css:17957 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .flipper.to-bottom:hover .front {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+}
+
+/* parked from style.css:17967 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .thumb-wrap {
+  perspective: 1000px;
+}
+
+/* parked from style.css:17985 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-01 .front {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  background-size: cover;
+  z-index: 1;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: inherit;
+  transition: transform 0.8s cubic-bezier(0.5, 0.2, 0.2, 0.8);
+}
+
+/* parked from style.css:18028 — no selector match in site (PASS 7b audit) */
+.rotate-box-style-02 .rotate-box {
+  min-height: 350px;
+}
+
+/* parked from style.css:18038 — no selector match in site (PASS 7b audit) */
+.services-box-style-01 .box-image {
+  overflow: hidden;
+}
+
+/* parked from style.css:18042 — no selector match in site (PASS 7b audit) */
+.services-box-style-01 .box-image img {
+  width: 100%;
+}
+
+/* parked from style.css:18046 — no selector match in site (PASS 7b audit) */
+.services-box-style-01 .box-overlay {
+  z-index: 1;
+  -webkit-transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:18052 — no selector match in site (PASS 7b audit) */
+.services-box-style-01:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 500ms cubic-bezier(61, 10, 88, 10);
+  transition: all 500ms cubic-bezier(61, 10, 88, 10);
+}
+
+/* parked from style.css:18064 — no selector match in site (PASS 7b audit) */
+.services-box-style-01:hover .box-overlay {
+  opacity: 0.8;
+}
+
+/* parked from style.css:18069 — no selector match in site (PASS 7b audit) */
+.services-box-style-02 .box-overlay {
+  z-index: 1;
+  -webkit-transition: all 450ms ease-in-out;
+  transition: all 450ms ease-in-out;
+}
+
+/* parked from style.css:18075 — no selector match in site (PASS 7b audit) */
+.services-box-style-02.hover-box:hover .box-overlay {
+  opacity: 1;
+}
+
+/* parked from style.css:18080 — no selector match in site (PASS 7b audit) */
+.services-box-style-05 img {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 100%;
+}
+
+/* parked from style.css:18086 — no selector match in site (PASS 7b audit) */
+.services-box-style-05 figure {
+  position: relative;
+}
+
+/* parked from style.css:18090 — no selector match in site (PASS 7b audit) */
+.services-box-style-05 figure figcaption {
+  position: absolute;
+  top: 0;
+}
+
+/* parked from style.css:18095 — no selector match in site (PASS 7b audit) */
+.services-box-style-05 figure figcaption a {
+  display: inline-block;
+  color: var(--dark-gray);
+}
+
+/* parked from style.css:18109 — no selector match in site (PASS 7b audit) */
+.services-box-style-05 figure:hover figcaption .box-title {
+  color: var(--white);
+}
+
+/* parked from style.css:18113 — no selector match in site (PASS 7b audit) */
+.services-box-style-05 figure:hover figcaption .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:18119 — no selector match in site (PASS 7b audit) */
+.services-box-style-06 .services-text:after {
+  content: "\f309";
+  display: inline-block;
+  font-family: bootstrap-icons;
+  vertical-align: middle;
+  margin: -2px 2px 0;
+  font-size: 22px;
+  color: var(--medium-gray);
+  opacity: 0.7;
+}
+
+/* parked from style.css:18130 — no selector match in site (PASS 7b audit) */
+.services-box-style-06:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 500ms cubic-bezier(61, 10, 88, 10);
+  transition: all 500ms cubic-bezier(61, 10, 88, 10);
+}
+
+/* parked from style.css:18138 — no selector match in site (PASS 7b audit) */
+.services-box-style-07 .btn-hover {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+/* parked from style.css:18148 — no selector match in site (PASS 7b audit) */
+.services-box-style-07 .text-down {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+/* parked from style.css:18153 — no selector match in site (PASS 7b audit) */
+.services-box-style-07:hover .btn-hover {
+  top: 0;
+}
+
+/* parked from style.css:18157 — no selector match in site (PASS 7b audit) */
+.services-box-style-07:hover .text-down {
+  -webkit-transform: translateY(20px);
+  transform: translateY(20px);
+}
+
+/* parked from style.css:18163 — no selector match in site (PASS 7b audit) */
+@keyframes scale-effect {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* parked from style.css:18175 — no selector match in site (PASS 7b audit) */
+@-webkit-keyframes scale-effect {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* parked from style.css:18209 — no selector match in site (PASS 7b audit) */
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-25px);
+    transform: translateX(-25px);
+  }
+
+  to {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+/* parked from style.css:18221 — no selector match in site (PASS 7b audit) */
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-25px);
+    transform: translateX(-25px);
+  }
+
+  to {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+/* parked from style.css:18310 — no selector match in site (PASS 7b audit) */
+.sliding-box-style-03 .overlay-contnet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+/* parked from style.css:18590 — no selector match in site (PASS 7b audit) */
+.extra-small-icon li {
+  margin: 0 2px;
+}
+
+/* parked from style.css:18594 — no selector match in site (PASS 7b audit) */
+.extra-small-icon a {
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+}
+
+/* parked from style.css:18600 — no selector match in site (PASS 7b audit) */
+.small-icon li {
+  margin: 0 5px;
+}
+
+/* parked from style.css:18604 — no selector match in site (PASS 7b audit) */
+.small-icon a {
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+}
+
+/* parked from style.css:18610 — no selector match in site (PASS 7b audit) */
+.medium-icon li {
+  margin: 0 8px;
+}
+
+/* parked from style.css:18614 — no selector match in site (PASS 7b audit) */
+.medium-icon a {
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+}
+
+/* parked from style.css:18630 — no selector match in site (PASS 7b audit) */
+.extra-large-icon li {
+  margin: 0 12px;
+}
+
+/* parked from style.css:18634 — no selector match in site (PASS 7b audit) */
+.extra-large-icon a {
+  font-size: 30px;
+  width: 70px;
+  height: 70px;
+}
+
+/* parked from style.css:18640 — no selector match in site (PASS 7b audit) */
+.social-icon a {
+  margin: 0 15px;
+}
+
+/* parked from style.css:18644 — no selector match in site (PASS 7b audit) */
+.social-icon a:first-child {
+  margin-left: 0;
+}
+
+/* parked from style.css:18648 — no selector match in site (PASS 7b audit) */
+.social-icon a:last-child {
+  margin-right: 0;
+}
+
+/* parked from style.css:18672 — no selector match in site (PASS 7b audit) */
+.social-icon-style-01 ul li a:hover {
+  color: var(--base-color) !important;
+}
+
+/* parked from style.css:18677 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a {
+  color: var(--white);
+  border-radius: 100%;
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:18684 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a:hover {
+  background-color: var(--white) !important;
+  box-shadow: 0 0 30px rgba(23, 23, 23, 0.25);
+  transform: translate3d(0, -3px, 0);
+}
+
+/* parked from style.css:18690 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.behance {
+  background-color: #1769ff;
+}
+
+/* parked from style.css:18694 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.behance-square {
+  background-color: #1769ff;
+}
+
+/* parked from style.css:18698 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.blogger {
+  background-color: #ff8000;
+}
+
+/* parked from style.css:18702 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.codepen {
+  background-color: #0ebeff;
+}
+
+/* parked from style.css:18706 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.deviantart {
+  background-color: #05cc47;
+}
+
+/* parked from style.css:18710 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.digg {
+  background-color: #262626;
+}
+
+/* parked from style.css:18718 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.delicious {
+  background-color: #205cc0;
+}
+
+/* parked from style.css:18730 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.facebook-square {
+  background-color: #3b5998;
+}
+
+/* parked from style.css:18734 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.flickr {
+  background-color: #ff0084;
+}
+
+/* parked from style.css:18738 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.flipboard {
+  background-color: #e12828;
+}
+
+/* parked from style.css:18750 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.google-plus {
+  background-color: #dd4b39;
+}
+
+/* parked from style.css:18758 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.jsfiddle {
+  background-color: #0084FF;
+}
+
+/* parked from style.css:18766 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.livejournal {
+  background-color: #00b0ea;
+}
+
+/* parked from style.css:18774 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.meneame {
+  background-color: #ff6400;
+}
+
+/* parked from style.css:18778 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.mailru {
+  background-color: #168de2;
+}
+
+/* parked from style.css:18782 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.odnoklassniki {
+  background-color: #d7772d;
+}
+
+/* parked from style.css:18786 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.paypal {
+  background-color: #003087;
+}
+
+/* parked from style.css:18790 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.pinterest {
+  background-color: #CB2027;
+}
+
+/* parked from style.css:18794 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.pinterest-p {
+  background-color: #CB2027;
+}
+
+/* parked from style.css:18798 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.print {
+  background-color: #222222;
+}
+
+/* parked from style.css:18802 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.reddit {
+  background-color: #ff4500;
+}
+
+/* parked from style.css:18806 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.reddit-square {
+  background-color: #ff4500;
+}
+
+/* parked from style.css:18810 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.rss {
+  background-color: #f2890a;
+}
+
+/* parked from style.css:18814 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.skype {
+  background-color: #00aff0;
+}
+
+/* parked from style.css:18822 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.snapchat {
+  background-color: #fffc00;
+}
+
+/* parked from style.css:18826 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.soundcloud {
+  background-color: #ff8800;
+}
+
+/* parked from style.css:18830 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.spotify {
+  background-color: #1db954;
+}
+
+/* parked from style.css:18834 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.sms {
+  background-color: #ffbd00;
+}
+
+/* parked from style.css:18838 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.sharethis {
+  background-color: #95D03A;
+}
+
+/* parked from style.css:18842 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.stack-overflow {
+  background-color: #f48024;
+}
+
+/* parked from style.css:18846 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.stumbleupon {
+  background-color: #eb4924;
+}
+
+/* parked from style.css:18850 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.telegram {
+  background-color: #0088cc;
+}
+
+/* parked from style.css:18854 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.trello {
+  background-color: #0079bf;
+}
+
+/* parked from style.css:18858 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.tumblr {
+  background-color: #32506d;
+}
+
+/* parked from style.css:18862 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.twitch {
+  background-color: #6441a5;
+}
+
+/* parked from style.css:18870 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.twitter-square {
+  background-color: #00aced;
+}
+
+/* parked from style.css:18878 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.vine {
+  background-color: #00bf8f;
+}
+
+/* parked from style.css:18882 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.vk {
+  background-color: #4c6c91;
+}
+
+/* parked from style.css:18886 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.wordpress {
+  background-color: #21759b;
+}
+
+/* parked from style.css:18890 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.weibo {
+  background-color: #ff9933;
+}
+
+/* parked from style.css:18898 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.xing {
+  background-color: #1a7576;
+}
+
+/* parked from style.css:18906 — no selector match in site (PASS 7b audit) */
+.social-icon-style-03 ul li a.youtube-play {
+  background-color: #ff0000;
+}
+
+/* parked from style.css:19164 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a:hover {
+  color: var(--white) !important;
+}
+
+/* parked from style.css:19168 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.behance {
+  color: #1769ff;
+}
+
+/* parked from style.css:19172 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.behance-square {
+  color: #1769ff;
+}
+
+/* parked from style.css:19176 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.blogger {
+  color: #ff8000;
+}
+
+/* parked from style.css:19180 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.codepen {
+  color: #0ebeff;
+}
+
+/* parked from style.css:19184 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.deviantart {
+  color: #05cc47;
+}
+
+/* parked from style.css:19188 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.digg {
+  color: #262626;
+}
+
+/* parked from style.css:19196 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.delicious {
+  color: #205cc0;
+}
+
+/* parked from style.css:19208 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.facebook-square {
+  color: #3b5998;
+}
+
+/* parked from style.css:19212 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.flickr {
+  color: #ff0084;
+}
+
+/* parked from style.css:19216 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.flipboard {
+  color: #e12828;
+}
+
+/* parked from style.css:19228 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.google-plus {
+  color: #dd4b39;
+}
+
+/* parked from style.css:19236 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.jsfiddle {
+  color: #0084FF;
+}
+
+/* parked from style.css:19244 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.livejournal {
+  color: #00b0ea;
+}
+
+/* parked from style.css:19252 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.meneame {
+  color: #ff6400;
+}
+
+/* parked from style.css:19256 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.mailru {
+  color: #168de2;
+}
+
+/* parked from style.css:19260 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.odnoklassniki {
+  color: #d7772d;
+}
+
+/* parked from style.css:19264 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.paypal {
+  color: #003087;
+}
+
+/* parked from style.css:19268 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.pinterest {
+  color: #CB2027;
+}
+
+/* parked from style.css:19272 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.pinterest-p {
+  color: #CB2027;
+}
+
+/* parked from style.css:19276 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.print {
+  color: #222222;
+}
+
+/* parked from style.css:19280 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.reddit {
+  color: #ff4500;
+}
+
+/* parked from style.css:19284 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.reddit-square {
+  color: #ff4500;
+}
+
+/* parked from style.css:19288 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.rss {
+  color: #f2890a;
+}
+
+/* parked from style.css:19292 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.skype {
+  color: #00aff0;
+}
+
+/* parked from style.css:19300 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.snapchat {
+  color: #fffc00;
+}
+
+/* parked from style.css:19304 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.soundcloud {
+  color: #ff8800;
+}
+
+/* parked from style.css:19308 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.spotify {
+  color: #1db954;
+}
+
+/* parked from style.css:19312 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.sms {
+  color: #ffbd00;
+}
+
+/* parked from style.css:19316 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.sharethis {
+  color: #95D03A;
+}
+
+/* parked from style.css:19320 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.stack-overflow {
+  color: #f48024;
+}
+
+/* parked from style.css:19324 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.stumbleupon {
+  color: #eb4924;
+}
+
+/* parked from style.css:19328 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.telegram {
+  color: #0088cc;
+}
+
+/* parked from style.css:19332 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.trello {
+  color: #0079bf;
+}
+
+/* parked from style.css:19336 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.tumblr {
+  color: #32506d;
+}
+
+/* parked from style.css:19340 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.twitch {
+  color: #6441a5;
+}
+
+/* parked from style.css:19348 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.twitter-square {
+  color: #00aced;
+}
+
+/* parked from style.css:19356 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.vine {
+  color: #00bf8f;
+}
+
+/* parked from style.css:19360 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.vk {
+  color: #4c6c91;
+}
+
+/* parked from style.css:19364 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.wordpress {
+  color: #21759b;
+}
+
+/* parked from style.css:19368 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.weibo {
+  color: #ff9933;
+}
+
+/* parked from style.css:19376 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.xing {
+  color: #1a7576;
+}
+
+/* parked from style.css:19384 — no selector match in site (PASS 7b audit) */
+.social-icon-style-05 ul li a.youtube-play {
+  color: #ff0000;
+}
+
+/* parked from style.css:19393 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a {
+  display: inline-block;
+  height: auto;
+  width: auto;
+  padding: 0 24px;
+  position: relative;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+/* parked from style.css:19403 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a .brand-icon {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  transition-duration: 0.3s;
+}
+
+/* parked from style.css:19412 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a>span {
+  line-height: inherit;
+  top: 0px;
+  position: relative;
+  transition: 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+/* parked from style.css:19419 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a:hover .brand-label {
+  top: -50px;
+  transition: 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+/* parked from style.css:19424 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a:hover .brand-icon {
+  top: 0;
+  transition-duration: 0.3s;
+}
+
+/* parked from style.css:19429 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.behance {
+  color: #1769ff;
+}
+
+/* parked from style.css:19433 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.behance-square {
+  color: #1769ff;
+}
+
+/* parked from style.css:19437 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.blogger {
+  color: #ff8000;
+}
+
+/* parked from style.css:19441 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.codepen {
+  color: #0ebeff;
+}
+
+/* parked from style.css:19445 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.deviantart {
+  color: #05cc47;
+}
+
+/* parked from style.css:19449 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.digg {
+  color: #262626;
+}
+
+/* parked from style.css:19457 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.delicious {
+  color: #205cc0;
+}
+
+/* parked from style.css:19469 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.facebook-square {
+  color: #3b5998;
+}
+
+/* parked from style.css:19473 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.flickr {
+  color: #ff0084;
+}
+
+/* parked from style.css:19477 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.flipboard {
+  color: #e12828;
+}
+
+/* parked from style.css:19489 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.google-plus {
+  color: #dd4b39;
+}
+
+/* parked from style.css:19497 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.jsfiddle {
+  color: #0084FF;
+}
+
+/* parked from style.css:19505 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.livejournal {
+  color: #00b0ea;
+}
+
+/* parked from style.css:19513 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.meneame {
+  color: #ff6400;
+}
+
+/* parked from style.css:19517 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.mailru {
+  color: #168de2;
+}
+
+/* parked from style.css:19521 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.odnoklassniki {
+  color: #d7772d;
+}
+
+/* parked from style.css:19525 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.paypal {
+  color: #003087;
+}
+
+/* parked from style.css:19529 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.pinterest {
+  color: #CB2027;
+}
+
+/* parked from style.css:19533 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.pinterest-p {
+  color: #CB2027;
+}
+
+/* parked from style.css:19537 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.print {
+  color: #222222;
+}
+
+/* parked from style.css:19541 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.reddit {
+  color: #ff4500;
+}
+
+/* parked from style.css:19545 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.reddit-square {
+  color: #ff4500;
+}
+
+/* parked from style.css:19549 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.rss {
+  color: #f2890a;
+}
+
+/* parked from style.css:19553 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.skype {
+  color: #00aff0;
+}
+
+/* parked from style.css:19561 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.snapchat {
+  color: #fffc00;
+}
+
+/* parked from style.css:19565 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.soundcloud {
+  color: #ff8800;
+}
+
+/* parked from style.css:19569 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.spotify {
+  color: #1db954;
+}
+
+/* parked from style.css:19573 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.sms {
+  color: #ffbd00;
+}
+
+/* parked from style.css:19577 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.sharethis {
+  color: #95D03A;
+}
+
+/* parked from style.css:19581 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.stack-overflow {
+  color: #f48024;
+}
+
+/* parked from style.css:19585 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.stumbleupon {
+  color: #eb4924;
+}
+
+/* parked from style.css:19589 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.telegram {
+  color: #0088cc;
+}
+
+/* parked from style.css:19593 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.trello {
+  color: #0079bf;
+}
+
+/* parked from style.css:19597 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.tumblr {
+  color: #32506d;
+}
+
+/* parked from style.css:19601 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.twitch {
+  color: #6441a5;
+}
+
+/* parked from style.css:19609 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.twitter-square {
+  color: #00aced;
+}
+
+/* parked from style.css:19617 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.vine {
+  color: #00bf8f;
+}
+
+/* parked from style.css:19621 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.vk {
+  color: #4c6c91;
+}
+
+/* parked from style.css:19625 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.wordpress {
+  color: #21759b;
+}
+
+/* parked from style.css:19629 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.weibo {
+  color: #ff9933;
+}
+
+/* parked from style.css:19637 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.xing {
+  color: #1a7576;
+}
+
+/* parked from style.css:19645 — no selector match in site (PASS 7b audit) */
+.social-icon-style-06 ul li a.youtube-play {
+  color: #ff0000;
+}
+
+/* parked from style.css:19650 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+/* parked from style.css:19657 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a:hover {
+  color: var(--white) !important;
+}
+
+/* parked from style.css:19661 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a:hover>span {
+  top: 0;
+}
+
+/* parked from style.css:19665 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a>span {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:19676 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.behance {
+  color: #1769ff;
+}
+
+/* parked from style.css:19680 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.behance span {
+  background-color: #1769ff;
+}
+
+/* parked from style.css:19684 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.behance-square {
+  color: #1769ff;
+}
+
+/* parked from style.css:19688 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.behance-square span {
+  background-color: #1769ff;
+}
+
+/* parked from style.css:19692 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.blogger {
+  color: #ff8000;
+}
+
+/* parked from style.css:19696 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.blogger span {
+  background-color: #ff8000;
+}
+
+/* parked from style.css:19700 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.codepen {
+  color: #0ebeff;
+}
+
+/* parked from style.css:19704 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.codepen span {
+  background-color: #0ebeff;
+}
+
+/* parked from style.css:19708 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.deviantart {
+  color: #05cc47;
+}
+
+/* parked from style.css:19712 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.deviantart span {
+  background-color: #05cc47;
+}
+
+/* parked from style.css:19716 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.digg {
+  color: #262626;
+}
+
+/* parked from style.css:19720 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.digg span {
+  background-color: #262626;
+}
+
+/* parked from style.css:19732 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.delicious {
+  color: #205cc0;
+}
+
+/* parked from style.css:19736 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.delicious span {
+  background-color: #205cc0;
+}
+
+/* parked from style.css:19756 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.facebook-square {
+  color: #3b5998;
+}
+
+/* parked from style.css:19760 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.facebook-square span {
+  background-color: #3b5998;
+}
+
+/* parked from style.css:19764 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.flickr {
+  color: #ff0084;
+}
+
+/* parked from style.css:19768 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.flickr span {
+  background-color: #ff0084;
+}
+
+/* parked from style.css:19772 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.flipboard {
+  color: #e12828;
+}
+
+/* parked from style.css:19776 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.flipboard span {
+  background-color: #e12828;
+}
+
+/* parked from style.css:19796 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.google-plus {
+  color: #dd4b39;
+}
+
+/* parked from style.css:19800 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.google-plus span {
+  background-color: #dd4b39;
+}
+
+/* parked from style.css:19812 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.jsfiddle {
+  color: #0084FF;
+}
+
+/* parked from style.css:19816 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.jsfiddle span {
+  background-color: #0084FF;
+}
+
+/* parked from style.css:19828 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.livejournal {
+  color: #00b0ea;
+}
+
+/* parked from style.css:19832 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.livejournal span {
+  background-color: #00b0ea;
+}
+
+/* parked from style.css:19844 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.meneame {
+  color: #ff6400;
+}
+
+/* parked from style.css:19848 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.meneame span {
+  background-color: #ff6400;
+}
+
+/* parked from style.css:19852 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.mailru {
+  color: #168de2;
+}
+
+/* parked from style.css:19856 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.mailru span {
+  background-color: #168de2;
+}
+
+/* parked from style.css:19860 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.odnoklassniki {
+  color: #d7772d;
+}
+
+/* parked from style.css:19864 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.odnoklassniki span {
+  background-color: #d7772d;
+}
+
+/* parked from style.css:19868 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.paypal {
+  color: #003087;
+}
+
+/* parked from style.css:19872 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.paypal span {
+  background-color: #003087;
+}
+
+/* parked from style.css:19876 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.pinterest {
+  color: #CB2027;
+}
+
+/* parked from style.css:19880 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.pinterest span {
+  background-color: #CB2027;
+}
+
+/* parked from style.css:19884 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.pinterest-p {
+  color: #CB2027;
+}
+
+/* parked from style.css:19888 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.pinterest-p span {
+  background-color: #CB2027;
+}
+
+/* parked from style.css:19892 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.print {
+  color: #222222;
+}
+
+/* parked from style.css:19896 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.print span {
+  background-color: #222222;
+}
+
+/* parked from style.css:19900 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.reddit {
+  color: #ff4500;
+}
+
+/* parked from style.css:19904 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.reddit span {
+  background-color: #ff4500;
+}
+
+/* parked from style.css:19908 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.reddit-square {
+  color: #ff4500;
+}
+
+/* parked from style.css:19912 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.reddit-square span {
+  background-color: #ff4500;
+}
+
+/* parked from style.css:19916 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.rss {
+  color: #f2890a;
+}
+
+/* parked from style.css:19920 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.rss span {
+  background-color: #f2890a;
+}
+
+/* parked from style.css:19924 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.skype {
+  color: #00aff0;
+}
+
+/* parked from style.css:19928 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.skype span {
+  background-color: #00aff0;
+}
+
+/* parked from style.css:19940 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.snapchat {
+  color: #fffc00;
+}
+
+/* parked from style.css:19944 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.snapchat span {
+  background-color: #fffc00;
+}
+
+/* parked from style.css:19948 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.soundcloud {
+  color: #ff8800;
+}
+
+/* parked from style.css:19952 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.soundcloud span {
+  background-color: #ff8800;
+}
+
+/* parked from style.css:19956 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.spotify {
+  color: #1db954;
+}
+
+/* parked from style.css:19960 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.spotify span {
+  background-color: #1db954;
+}
+
+/* parked from style.css:19964 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.sms {
+  color: #ffbd00;
+}
+
+/* parked from style.css:19968 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.sms span {
+  background-color: #ffbd00;
+}
+
+/* parked from style.css:19972 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.sharethis {
+  color: #95D03A;
+}
+
+/* parked from style.css:19976 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.sharethis span {
+  background-color: #95D03A;
+}
+
+/* parked from style.css:19980 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.stack-overflow {
+  color: #f48024;
+}
+
+/* parked from style.css:19984 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.stack-overflow span {
+  background-color: #f48024;
+}
+
+/* parked from style.css:19988 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.stumbleupon {
+  color: #eb4924;
+}
+
+/* parked from style.css:19992 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.stumbleupon span {
+  background-color: #eb4924;
+}
+
+/* parked from style.css:19996 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.telegram {
+  color: #0088cc;
+}
+
+/* parked from style.css:20000 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.telegram span {
+  background-color: #0088cc;
+}
+
+/* parked from style.css:20004 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.trello {
+  color: #0079bf;
+}
+
+/* parked from style.css:20008 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.trello span {
+  background-color: #0079bf;
+}
+
+/* parked from style.css:20012 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.tumblr {
+  color: #32506d;
+}
+
+/* parked from style.css:20016 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.tumblr span {
+  background-color: #32506d;
+}
+
+/* parked from style.css:20020 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.twitch {
+  color: #6441a5;
+}
+
+/* parked from style.css:20024 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.twitch span {
+  background-color: #6441a5;
+}
+
+/* parked from style.css:20036 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.twitter-square {
+  color: #00aced;
+}
+
+/* parked from style.css:20040 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.twitter-square span {
+  background-color: #00aced;
+}
+
+/* parked from style.css:20052 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.vine {
+  color: #00bf8f;
+}
+
+/* parked from style.css:20056 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.vine span {
+  background-color: #00bf8f;
+}
+
+/* parked from style.css:20060 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.vk {
+  color: #4c6c91;
+}
+
+/* parked from style.css:20064 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.vk span {
+  background-color: #4c6c91;
+}
+
+/* parked from style.css:20068 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.wordpress {
+  color: #21759b;
+}
+
+/* parked from style.css:20072 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.wordpress span {
+  background-color: #21759b;
+}
+
+/* parked from style.css:20076 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.weibo {
+  color: #ff9933;
+}
+
+/* parked from style.css:20080 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.weibo span {
+  background-color: #ff9933;
+}
+
+/* parked from style.css:20092 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.xing {
+  color: #1a7576;
+}
+
+/* parked from style.css:20096 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.xing span {
+  background-color: #1a7576;
+}
+
+/* parked from style.css:20108 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.youtube-play {
+  color: #ff0000;
+}
+
+/* parked from style.css:20112 — no selector match in site (PASS 7b audit) */
+.social-icon-style-07 ul li a.youtube-play span {
+  background-color: #ff0000;
+}
+
+/* parked from style.css:20117 — no selector match in site (PASS 7b audit) */
+.social-icon-style-08 ul li a:hover {
+  opacity: 0.5;
+  color: var(--dark-gray) !important;
+}
+
+/* parked from style.css:20128 — no selector match in site (PASS 7b audit) */
+.social-icon-style-09 ul li a {
+  z-index: 9;
+  border: 1px solid rgba(35, 35, 35, 0.15);
+  border-radius: 100%;
+  position: relative;
+}
+
+/* parked from style.css:20135 — no selector match in site (PASS 7b audit) */
+.social-icon-style-09 ul li a:hover {
+  color: var(--white) !important;
+}
+
+/* parked from style.css:20139 — no selector match in site (PASS 7b audit) */
+.social-icon-style-09 ul li a:hover span {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* parked from style.css:20145 — no selector match in site (PASS 7b audit) */
+.social-icon-style-09 ul li a span {
+  display: block;
+  border-radius: 100%;
+  height: 100%;
+  width: 100%;
+  top: -1px;
+  left: -1px;
+  padding: 1px;
+  box-sizing: content-box;
+  margin: 0;
+  position: absolute;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  opacity: 0;
+  -webkit-transition: 0.5s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.5s cubic-bezier(0.12, 0, 0.39, 0);
+  pointer-events: none;
+  z-index: -1;
+  background-color: var(--dark-gray);
+}
+
+/* parked from style.css:20179 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 ul li a {
+  color: var(--dark-gray);
+}
+
+/* parked from style.css:20183 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 ul li a:hover {
+  color: var(--base-color) !important;
+}
+
+/* parked from style.css:20187 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.behance {
+  color: #1769ff;
+}
+
+/* parked from style.css:20191 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.behance-square {
+  color: #1769ff;
+}
+
+/* parked from style.css:20195 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.blogger {
+  color: #ff8000;
+}
+
+/* parked from style.css:20199 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.codepen {
+  color: #0ebeff;
+}
+
+/* parked from style.css:20203 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.deviantart {
+  color: #05cc47;
+}
+
+/* parked from style.css:20207 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.digg {
+  color: #262626;
+}
+
+/* parked from style.css:20215 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.delicious {
+  color: #205cc0;
+}
+
+/* parked from style.css:20227 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.facebook-square {
+  color: #3b5998;
+}
+
+/* parked from style.css:20231 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.flickr {
+  color: #ff0084;
+}
+
+/* parked from style.css:20235 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.flipboard {
+  color: #e12828;
+}
+
+/* parked from style.css:20247 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.google-plus {
+  color: #dd4b39;
+}
+
+/* parked from style.css:20255 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.jsfiddle {
+  color: #0084FF;
+}
+
+/* parked from style.css:20263 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.livejournal {
+  color: #00b0ea;
+}
+
+/* parked from style.css:20271 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.meneame {
+  color: #ff6400;
+}
+
+/* parked from style.css:20275 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.mailru {
+  color: #168de2;
+}
+
+/* parked from style.css:20279 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.odnoklassniki {
+  color: #d7772d;
+}
+
+/* parked from style.css:20283 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.paypal {
+  color: #003087;
+}
+
+/* parked from style.css:20287 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.pinterest {
+  color: #CB2027;
+}
+
+/* parked from style.css:20291 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.pinterest-p {
+  color: #CB2027;
+}
+
+/* parked from style.css:20295 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.print {
+  color: #222222;
+}
+
+/* parked from style.css:20299 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.reddit {
+  color: #ff4500;
+}
+
+/* parked from style.css:20303 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.reddit-square {
+  color: #ff4500;
+}
+
+/* parked from style.css:20307 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.rss {
+  color: #f2890a;
+}
+
+/* parked from style.css:20311 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.skype {
+  color: #00aff0;
+}
+
+/* parked from style.css:20319 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.snapchat {
+  color: #fffc00;
+}
+
+/* parked from style.css:20323 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.soundcloud {
+  color: #ff8800;
+}
+
+/* parked from style.css:20327 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.spotify {
+  color: #1db954;
+}
+
+/* parked from style.css:20331 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.sms {
+  color: #ffbd00;
+}
+
+/* parked from style.css:20335 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.sharethis {
+  color: #95D03A;
+}
+
+/* parked from style.css:20339 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.stack-overflow {
+  color: #f48024;
+}
+
+/* parked from style.css:20343 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.stumbleupon {
+  color: #eb4924;
+}
+
+/* parked from style.css:20347 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.telegram {
+  color: #0088cc;
+}
+
+/* parked from style.css:20351 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.trello {
+  color: #0079bf;
+}
+
+/* parked from style.css:20355 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.tumblr {
+  color: #32506d;
+}
+
+/* parked from style.css:20359 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.twitch {
+  color: #6441a5;
+}
+
+/* parked from style.css:20367 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.twitter-square {
+  color: #00aced;
+}
+
+/* parked from style.css:20375 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.vine {
+  color: #00bf8f;
+}
+
+/* parked from style.css:20379 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.vk {
+  color: #4c6c91;
+}
+
+/* parked from style.css:20383 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.wordpress {
+  color: #21759b;
+}
+
+/* parked from style.css:20387 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.weibo {
+  color: #ff9933;
+}
+
+/* parked from style.css:20395 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.xing {
+  color: #1a7576;
+}
+
+/* parked from style.css:20403 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a.youtube-play {
+  color: #ff0000;
+}
+
+/* parked from style.css:20407 — no selector match in site (PASS 7b audit) */
+.social-icon-style-10 .default-color a:hover {
+  color: var(--dark-gray) !important;
+}
+
+/* parked from style.css:20412 — no selector match in site (PASS 7b audit) */
+.social-text-style-01 ul li a {
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+
+/* parked from style.css:20419 — no selector match in site (PASS 7b audit) */
+.newsletter-style-01 input {
+  border-radius: 4px;
+  padding-right: 160px;
+}
+
+/* parked from style.css:20441 — no selector match in site (PASS 7b audit) */
+.newsletter-style-02 input {
+  border-radius: 4px;
+  padding-right: 60px !important;
+}
+
+/* parked from style.css:20466 — no selector match in site (PASS 7b audit) */
+.newsletter-style-03 input {
+  padding-right: 165px !important;
+  padding-left: 30px !important;
+}
+
+/* parked from style.css:20485 — no selector match in site (PASS 7b audit) */
+.newsletter-style-04 input {
+  padding-left: 0;
+  padding-right: 40px;
+  border-radius: 0;
+}
+
+/* parked from style.css:20956 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.5s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:20964 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .social-icon a {
+  margin: 0 12px;
+  opacity: 0;
+  -webkit-transition: 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transform: translateY(-25px);
+  transform: translateY(-25px);
+  display: inline-block;
+}
+
+/* parked from style.css:20974 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .social-icon a:nth-child(1) {
+  -webkit-transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:20979 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .social-icon a:nth-child(2) {
+  -webkit-transition: all 0.4s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:20984 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .social-icon a:nth-child(3) {
+  -webkit-transition: all 0.6s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:20989 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .social-icon a:nth-child(4) {
+  -webkit-transition: all 0.8s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.8s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:20994 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .social-icon a:nth-child(5) {
+  -webkit-transition: all 1s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 1s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:20999 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .team-member-name {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 15px, 0);
+  transform: translate3d(0, 15px, 0);
+  -webkit-transition: all 1s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 1s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21007 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure figcaption .member-designation {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 15px, 0);
+  transform: translate3d(0, 15px, 0);
+  -webkit-transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21015 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption {
+  opacity: 1;
+}
+
+/* parked from style.css:21019 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption .team-member-name {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.4s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21027 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption .member-designation {
+  opacity: 0.7;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21035 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption a {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* parked from style.css:21041 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption a:nth-child(1) {
+  -webkit-transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21046 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption a:nth-child(2) {
+  -webkit-transition: all 0.4s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21051 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption a:nth-child(3) {
+  -webkit-transition: all 0.6s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21056 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption a:nth-child(4) {
+  -webkit-transition: all 0.8s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.8s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21061 — no selector match in site (PASS 7b audit) */
+.team-style-02 figure:hover figcaption a:nth-child(5) {
+  -webkit-transition: all 1s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 1s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21067 — no selector match in site (PASS 7b audit) */
+.team-style-04 .team-content {
+  position: absolute;
+  bottom: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.37, 0.31, 0.2, 0.85);
+  transition: all 0.5s cubic-bezier(0.37, 0.31, 0.2, 0.85);
+}
+
+/* parked from style.css:21074 — no selector match in site (PASS 7b audit) */
+.team-style-04 figure figcaption {
+  position: absolute;
+  bottom: -20px;
+  -webkit-transition: all 0.5s cubic-bezier(0.37, 0.31, 0.2, 0.85);
+  transition: all 0.5s cubic-bezier(0.37, 0.31, 0.2, 0.85);
+}
+
+/* parked from style.css:21081 — no selector match in site (PASS 7b audit) */
+.team-style-04 figure figcaption .social-icon {
+  -webkit-transition: all 0s linear;
+  transition: all 0s linear;
+}
+
+/* parked from style.css:21086 — no selector match in site (PASS 7b audit) */
+.team-style-04 figure figcaption .social-icon a {
+  margin: 0 10px;
+}
+
+/* parked from style.css:21090 — no selector match in site (PASS 7b audit) */
+.team-style-04 figure:hover figcaption {
+  bottom: 0px;
+}
+
+/* parked from style.css:21095 — no selector match in site (PASS 7b audit) */
+.team-style-05 .team-content {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:21103 — no selector match in site (PASS 7b audit) */
+.team-style-05 .team-content p {
+  top: 55%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/* parked from style.css:21109 — no selector match in site (PASS 7b audit) */
+.team-style-05 .social-icon a {
+  opacity: 0;
+  -webkit-transition: 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transform: translateY(25px);
+  transform: translateY(25px);
+  margin: 0 10px;
+  display: inline-block;
+}
+
+/* parked from style.css:21119 — no selector match in site (PASS 7b audit) */
+.team-style-05 .social-icon a:nth-child(1) {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* parked from style.css:21124 — no selector match in site (PASS 7b audit) */
+.team-style-05 .social-icon a:nth-child(2) {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* parked from style.css:21129 — no selector match in site (PASS 7b audit) */
+.team-style-05 .social-icon a:nth-child(3) {
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+/* parked from style.css:21134 — no selector match in site (PASS 7b audit) */
+.team-style-05 .social-icon a:nth-child(4) {
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+/* parked from style.css:21139 — no selector match in site (PASS 7b audit) */
+.team-style-05 .social-icon a:nth-child(5) {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+/* parked from style.css:21144 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .team-content {
+  opacity: 1;
+}
+
+/* parked from style.css:21148 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .team-content p {
+  top: 50%;
+}
+
+/* parked from style.css:21152 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .social-icon a {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* parked from style.css:21158 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .social-icon a:nth-child(1) {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* parked from style.css:21163 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .social-icon a:nth-child(2) {
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+/* parked from style.css:21168 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .social-icon a:nth-child(3) {
+  -webkit-transition: all 0.9s ease;
+  transition: all 0.9s ease;
+}
+
+/* parked from style.css:21173 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .social-icon a:nth-child(4) {
+  -webkit-transition: all 1.1s ease;
+  transition: all 1.1s ease;
+}
+
+/* parked from style.css:21178 — no selector match in site (PASS 7b audit) */
+.team-style-05:hover .social-icon a:nth-child(5) {
+  -webkit-transition: all 1.4s ease;
+  transition: all 1.4s ease;
+}
+
+/* parked from style.css:21184 — no selector match in site (PASS 7b audit) */
+.team-style-08 figure {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21191 — no selector match in site (PASS 7b audit) */
+.team-style-08 figure figcaption {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/* parked from style.css:21199 — no selector match in site (PASS 7b audit) */
+.team-style-08 figure figcaption .social-icon a {
+  margin: 0 0 10px;
+  opacity: 0;
+  display: inline-block;
+  background-color: var(--dark-gray);
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: translate3d(0, 15px, 0);
+  transform: translate3d(0, 15px, 0);
+  -webkit-transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:21218 — no selector match in site (PASS 7b audit) */
+.team-style-08 figure figcaption .social-icon a:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:21222 — no selector match in site (PASS 7b audit) */
+.team-style-08 figure figcaption .team-member-name {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 15px, 0);
+  transform: translate3d(0, 15px, 0);
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21230 — no selector match in site (PASS 7b audit) */
+.team-style-08 figure figcaption .member-designation {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0);
+  -webkit-transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21238 — no selector match in site (PASS 7b audit) */
+.team-style-08:hover figure {
+  -webkit-transform: translate3d(0, -8px, 0);
+  transform: translate3d(0, -8px, 0);
+}
+
+/* parked from style.css:21243 — no selector match in site (PASS 7b audit) */
+.team-style-08:hover figure figcaption {
+  opacity: 1;
+}
+
+/* parked from style.css:21247 — no selector match in site (PASS 7b audit) */
+.team-style-08:hover figure figcaption .social-icon a:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:21252 — no selector match in site (PASS 7b audit) */
+.team-style-08:hover figure figcaption .team-member-name {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* parked from style.css:21258 — no selector match in site (PASS 7b audit) */
+.team-style-08:hover figure figcaption .member-designation {
+  opacity: 0.6;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* parked from style.css:21264 — no selector match in site (PASS 7b audit) */
+.team-style-08:hover figure figcaption a {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+/* parked from style.css:21309 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21316 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure .hover-switch-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.2s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21327 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure figcaption {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/* parked from style.css:21335 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure figcaption .social-icon a {
+  margin: 0 0 10px;
+  opacity: 0;
+  display: inline-block;
+  background-color: var(--dark-gray);
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  -webkit-transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.3, 1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:21353 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure figcaption .social-icon a:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:21357 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure figcaption .team-member-strip {
+  -webkit-transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0);
+  -webkit-transition: all 0.3s cubic-bezier(0.2, 0, 0.8, 1);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.8, 1);
+}
+
+/* parked from style.css:21364 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure figcaption .team-member-strip .team-member-name {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 15px, 0);
+  transform: translate3d(0, 15px, 0);
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21372 — no selector match in site (PASS 7b audit) */
+.team-style-10 figure figcaption .team-member-strip .member-designation {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0);
+  -webkit-transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.7s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+/* parked from style.css:21380 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure .hover-switch-image {
+  left: 0;
+  opacity: 1;
+}
+
+/* parked from style.css:21385 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption {
+  opacity: 1;
+}
+
+/* parked from style.css:21389 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption .social-icon a {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:21394 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption .social-icon a:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:21399 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption .team-member-strip {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* parked from style.css:21404 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption .team-member-strip .team-member-name {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* parked from style.css:21410 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption .team-member-strip .member-designation {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+/* parked from style.css:21416 — no selector match in site (PASS 7b audit) */
+.team-style-10:hover figure figcaption a {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+/* parked from style.css:21423 — no selector match in site (PASS 7b audit) */
+.testimonials-style-01 .testimonial-arrow:after {
+  content: "";
+  top: 100%;
+  left: 50px;
+  height: 0;
+  width: 0;
+  z-index: 9;
+  margin-left: -14px;
+  position: absolute;
+  pointer-events: none;
+  border: solid transparent;
+  border-width: 14px;
+  border-top-color: var(--white);
+}
+
+/* parked from style.css:21438 — no selector match in site (PASS 7b audit) */
+.testimonials-style-01 .author-detail img {
+  width: 60px;
+  height: 60px;
+}
+
+/* parked from style.css:21515 — no selector match in site (PASS 7b audit) */
+.testimonials-style-05 .testimonials-bubble {
+  position: relative;
+  border: 1px solid;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+/* parked from style.css:21522 — no selector match in site (PASS 7b audit) */
+.testimonials-style-05 .testimonials-bubble:after,
+.testimonials-style-05 .testimonials-bubble:before {
+  top: 100%;
+  left: 50px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* parked from style.css:21534 — no selector match in site (PASS 7b audit) */
+.testimonials-style-05 .testimonials-bubble:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-top-color: var(--white);
+  border-width: 15px 15px 0 0;
+  margin-left: 1px;
+}
+
+/* parked from style.css:21541 — no selector match in site (PASS 7b audit) */
+.testimonials-style-05 .testimonials-bubble:before {
+  border-color: rgba(237, 237, 237, 0);
+  border-top-color: var(--extra-medium-gray);
+  border-width: 18px 18px 0 0;
+}

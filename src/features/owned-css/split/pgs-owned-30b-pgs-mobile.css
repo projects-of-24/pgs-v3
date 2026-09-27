@@ -1,0 +1,1125 @@
+/* PASS 13b · rules verbatim · wrapper 767→600 by owner decision 2026-09-26 · UNLINKED · do not edit values
+   Source: public/assets/css/style.css lines 34651-35953, inside the mobile block @media (max-width: 767px) opened at line 33420 and closed at 39912
+   Slice 2 of 5; first rule: .mobile-dashboard-box .row.justify-content-center.position-relative
+   Owner decision: site bands are up to 600 mobile, 601-1366 iPad, above 1366 desk; Hostinger 767 dropped, so the ONLY change
+   in this file is the wrapper query (max-width: 767px) → (max-width: 600px). Every rule inside is copied 1:1.
+   Splitting the single source @media into several identical wrappers (same query, same order) is cascade-neutral.
+   Parked (dead, no EXACT class-name match in site) → parked/pgs-owned-parked-30.css; cut-point comments mark where.
+   Kept live regardless of grep: runtime classes (.mfp-* .swiper-* .isotope* .jg-* .accordion* .tab-* .nav-tabs* .modal*), attribute selectors,
+   classes added at runtime by public/assets/js (main.js, vendors.min.js, pgs-*.js).
+   url() rewrites: none in this range. */
+@media (max-width: 600px) {
+.mobile-dashboard-box .row.justify-content-center.position-relative
+{
+        margin: 0px !important;
+}
+.section-video-category
+{
+         margin-top: 0px !important;
+        padding: 0px !important;
+}
+
+.mobile-home-hero .row.position-relative.align-items-center
+{
+       margin: 0px !important;
+}
+
+.col-lg-6.mobile-p-0.mobile-pt-10
+{
+        padding: 0px 20px !important;
+}
+.mobile-slider-pgs
+{
+    padding-right: 15px !important;
+}
+.mobile-ht-full{
+    height : 100% !important;
+}
+
+.w-956px {
+    width: 100% !important;
+}
+.pgs-box-setup{
+    
+}
+.w-309px {
+    width: 100% !important;
+            padding: 0px !important;
+}
+
+ .pgs-box-setup .w-469px {
+        width: 100% !important;
+        padding: 12px 12px !important;
+        height: 11rem !important;
+}
+
+.mobile-wrap{
+    flex-wrap  :wrap;
+            gap: 7px !important;
+}
+
+.mobile-w-55{
+    width : 65% !important;
+}
+
+.mobile-w-40{
+    width : 30% !important;
+}
+.pgs-box-setup .card-custom .fs-25{
+        font-size: 20px !important;
+}
+.w-150px {
+    width: 100% !important;
+}
+
+.pgs-box-setup .card-custom .fs-28 {
+    font-size: 20px !important;
+}
+.pgs-box-setup .card-custom.ht-107px {
+        height: 6rem !important;
+        border-radius: 10px !important;
+}
+.pgs-box-setup .card-custom.ht-107px.bg-yellow {
+        height: 53px !important;
+                width: 70px !important;
+        border-radius: 10px !important;
+}
+
+.pgs-box-setup .ht-343px {
+          height: 18rem !important;
+}
+.pgs-box-setup .ht-222px {
+    /*height: 163px !important;*/
+            height: 13.6rem !important;
+}
+.pgs-box-setup .fixed-img img {
+    width: 100%;
+    height: 92%;
+}
+.ht-224px {
+    height: auto !important;
+}
+.pgs-box-setup  .text-calendar{
+            color: rgba(0, 156, 112, 1);
+        line-height: 17px !important;
+        margin-top: 10px;
+        font-size: 16px !important;
+        font-weight: 600;
+}
+.banner-points h5 {
+    font-size: 20px;
+    color: black;
+    font-family: "Bebas Neue", sans-serif;
+    text-align: start;
+    display: flex;
+        margin-bottom: 6px;
+    justify-content: start;
+}
+.check_box ul li {
+    font-size: 12px !important;
+    
+        line-height: 12px !important;
+}
+
+.check_box ul li i {
+    color: #009C70;
+    font-size: 17px;
+}
+.card-custom.w-76px .fs-25
+{
+ font-size: 16px !important;
+}
+.mobile-d-flex{
+            justify-content: space-around;
+        display: flex;
+                align-items: start;
+                        gap: 10px;
+}
+
+.mobile-d-flex .card-custom.bg-yellow
+{
+   margin-bottom: 10px !important;
+}
+    .pgs-box-setup .card-custom.bg-yellow .fs-25 {
+        font-size: 16px !important;
+        text-align : center !important;
+}
+  .pgs-box-setup  .w-310px {
+          padding: 12px !important
+  }
+  .pgs-box-setup  .w-50 {
+        padding-top: 0px;
+    }
+  .pgs-box-setup  .w-50.pt-2 {
+    width: 40% !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-top: 10px !important;
+}
+  .pgs-box-setup .w-310px {
+    width: 100% !important;
+}
+  .pgs-box-setup .mobile-w-60 {
+    width: 60% !important;
+}
+  .pgs-box-setup .full-box-1 {
+        position: relative;
+        margin-top: -10.16rem;
+        left: 0;
+        width: calc(100% - 69px) !important;
+        margin-right: 86px !important;
+        margin-left: 7px;
+
+}
+.pgs-box-setup h5.text-black.fw-700
+{
+     font-size: 16px !important;
+    line-height: 17px !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    margin-top: 80px;   
+}
+.mobile-student-cart .card-box-avatar
+{
+        flex-direction: column;
+}
+.mobile-student-cart .card-box-avatar
+{
+         width: 50% !important;
+        margin: auto !important;
+        padding: 55px 0px !important;
+        position: relative;
+        z-index: 8;
+}
+.mobile-student-cart .card-box-avatar .avatar-img h5
+{
+    font-size : 12px;
+       background: black;
+    color: white;
+    padding: 2px 4px;
+    letter-spacing: 1px;
+    border-radius: 1px;
+    line-height: 1;
+    display: inline-block !important;
+}
+
+.mobile-student-cart .avatar-info {
+    width: 95%;
+}
+
+.mobile-student-cart .card-box-avatar .title-info h5 {
+    font-size: 24px;
+    color: #009C70;
+    letter-spacing: 0.5px;
+    margin-bottom: 0px !important;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    line-height: 1;
+     
+}
+
+.w-841px {
+    width: 100% !important;
+}
+
+.mobile-student-cart .avatar-heading-right-box h4 {
+    border-radius: 12px;
+    padding: 4px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 24px;
+    color: black;
+    line-height: 100%;
+}
+.mobile-student-cart .avatar-heading-right-box h4 br{
+   display : none; 
+}
+.mobile-student-cart  .w-170px {
+    width: auto !important;
+    height: auto !important;
+}
+
+.mobile-student-cart .avatar-heading-right-box
+{
+        border-radius: 8px;
+}
+.mobile-student-cart .card-box-avatar .title-info
+{
+        margin-top: 15px;
+    padding: 0px 15px;
+}
+
+.mobile-student-cart .w-170px {
+        text-align: start !important;
+        width: 83% !important;
+        padding: 0px 12px !important;
+        height: auto !important;
+        margin-top: 20px !important;
+}
+.mobile-student-cart .card-box-avatar .avatar-img span
+{
+    display: block;
+    color: black;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    font-weight: 600;
+}
+
+.mobile-student-cart .card-box-avatar .avatar-info img {
+    width: 58px;
+    height: 62px;
+    border-radius: 10px !important;
+}
+.mobile-student-cart
+{
+    margin-top: 5px !important;
+}
+.explore-section h5 {
+    font-size: 14px;
+    line-height: 100%;
+    font-weight: 500;
+}
+.w-520px {
+    width: 100% !important;
+}
+
+.explore-section h5 span
+{
+        width: 80% !important;
+        margin: auto;
+        font-size: 12px !important;
+        line-height: 13px !important;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:34934) */
+.w-230px
+{
+    width: 100% !important;
+}
+
+.mobile-w-60
+{
+     width: 60% !important;
+     margin-right: 20px !important;
+}
+
+.mobile-mb-40px
+{
+    margin-bottom: 50px !important;
+}
+
+.flot-arrow-1 {
+    margin-left: -20px;
+    width: 90px;
+    margin-top: 17px;
+    rotate: 10deg;
+}
+
+.flot-arrow-2 {
+    width: 64px;
+    margin-bottom: 39px;
+    margin-left: -25px;
+    display: block;
+    margin-right: 22px;
+}
+.mobile-login-pgs .w-803px
+{
+    width: 90% !important;
+}
+
+.mobile-login-pgs .mobile-w-50 {
+          padding: 5px 7px !important;
+        width: 50% !important;
+}
+.mobile-login-pgs .card-half-content {
+        padding: 20px 12px;
+        color: black;
+        font-size: 12px;
+        line-height: 100% !important;
+        height: 79px !important;
+        min-height: auto !important;
+}
+.mobile-login-pgs .yellow-bg-header h6 {
+    width: 90% !important;
+    line-height: 100%;
+    margin-top: 17px;
+    font-size: 12px;
+    color: black;
+    font-weight: 500;
+}
+.mobile-login-pgs .yellow-bg-header {
+    background: #FFC524;
+    padding: 1px 20px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 30px !important;
+    max-height: 120px !important;
+}
+.mobile-fs-10
+{
+    font-size : 10px !important;
+}
+.mobile-login-box,
+.mobile-login-pgs
+{
+    z-index: 100;
+}
+.mobile-login-box .ht-48 {
+    height: 30px !important;
+    margin-top: 10px !important;
+}
+.mobile-login-box
+{
+   margin-top: 6px !important;
+   padding-left: 20px !important;
+   width: 70% !important;
+   margin: auto;  
+}
+.login-box .form-controls .form-control {
+    height: 30px !important;
+}
+
+.mobile-login-box .form-controls label {
+    color: #000000;
+    font-size: 14px;
+    line-height: 100% !important;
+    margin-top: 10px;
+}
+.mobile-login-box .btn-google img {
+    position: absolute;
+    left: 14px;
+    width: 13px;
+}
+
+.mobile-fs-12
+{
+    font-size : 12px !important;
+}
+.mobil-flex-align-center
+{
+    display : flex;
+    align-items : center;
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35046) */
+.mobile-login-box .w-258px {
+    width: 100% !important;
+    border-radius: 5px !important;
+}
+.mobile-login-box .btn-outline-purple {
+border: 1px solid #6a5ed9;
+        color: #6a5ed9;
+        font-weight: 800;
+        padding: 2px 6px;
+        height: 24px;
+        margin-top: 5px;
+        border-radius: 1px;
+        font-size: 12px;
+        text-transform: math-auto !important;
+}
+.mobile-login-box .sinup-box {
+    background: #F1F1F1;
+    border-radius: 5px !important;
+    padding: 20px;
+    border: 0px solid #00000033 !important;
+}
+
+.mobile-header .btn-login {
+    background-color: #FFC524 !important;
+    white-space: nowrap;
+    border-radius: 4px !important;
+    text-transform: uppercase;
+    height: 24px !important;
+    font-size: 12px !important;
+    line-height: 15px !important;
+    font-weight: 400 !important;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.65) !important;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 1) !important;
+    padding: 4px !important;
+    width: 65px !important;
+}
+
+.mobile-block.mobile-header {
+  transition: 
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    -webkit-backdrop-filter 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.sticky .mobile-block.mobile-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  top: env(safe-area-inset-top);
+   padding-top: env(safe-area-inset-top);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  transform: translateY(0);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+  top: var(--safe-top);
+          padding-top: 10px !important;
+}
+body.sticky {
+  padding-top: calc(70px + env(safe-area-inset-top)) !important;
+}
+.mobile-student-cart .avatar-heading-right-box {
+    width: 85% !important;
+    margin-top: 10px !important;
+    
+}
+.avatar-heading-right-box
+{
+    height: auto !important;
+}
+
+.saved-list-pgs .w-990px
+{
+    width : 100% !important;
+}
+
+.saved-list-pgs .cardbox
+{
+       flex-direction: column; 
+}
+
+.saved-list-pgs .explore-section.m-auto {
+    width: 49% !important;
+    display: inline-block !important;
+}
+.saved-list-pgs .w-30.cardbox-middle h3{
+    width : 100% !important;
+}
+.saved-list-pgs .w-30 {
+    width: 100% !important;
+}
+.saved-list-pgs .explore-section .w-30.cardbox-left{
+   width: 100% !important;   
+}
+
+.saved-list-pgs .cardbox-logo {
+position: absolute !important;
+        bottom: 5px !important;
+        right: 5px !important;
+        background: white !important;
+        padding: 0px !important;
+        border-radius: 0px !important;
+        width: 107px !important;
+        border: 1px solid black !important;
+}
+
+.saved-list-pgs .purple-dot-1:after {
+    content: '';
+    position: absolute;
+    width: 8px  !important;
+    height: 8px  !important;
+    top: -2px;
+    background: #B57CFF;
+    left: -5px  !important;
+    border: 1.12px solid #9747FF  !important;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35175-35207, 5 consecutive rules) */
+.cardbox-scholarship
+{
+    font-size: 12.6px;
+    margin-bottom: 0px !important;
+    line-height: 14px;
+}
+
+.cardbox-scholarship span {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 300;
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35220) */
+.tag-perks {
+    background-color: black;
+    color: white;
+    font-size: 13px;
+    padding: 1px 5px;
+    display: inline-block;
+    line-height: 20px;
+    margin-bottom: -3px;
+}
+
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35235-35274, 4 consecutive rules) */
+   .cardbox-right .w-50 {
+        padding-top: 9px;
+    }
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35279-35292, 2 consecutive rules) */
+.green-bg-box .bg-black {
+    border-radius: 12px;
+    color: white;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35299) */
+.cardbox-right .d-flex.gap-4
+{
+       gap: 9px !important;
+}
+
+.w-50 {
+    width: 30% !important;
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35313-35341, 2 consecutive rules) */
+.btn i {
+    position: relative;
+    margin-left: 1px;
+}
+
+.w-30.cardbox-right img {
+    width: 50px !important;
+    height: 52px !important;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35353-35361, 2 consecutive rules) */
+.sop-image-wrapper {
+    position: relative;
+    height: 110px;
+}
+
+.sop-top-label {
+    position: absolute;
+    top: 20px;
+    left: 3px;
+    background-color: black;
+    color: white;
+    font-size: 10px;
+    padding: 0px 10px;
+    border-radius: 0;
+    display: flex;
+    z-index: 10;
+    align-items: center;
+    line-height: 7px;
+    height: 18px !important;
+}
+.sop-start-free {
+    position: absolute;
+    top: 40px;
+    left: 4px;
+    background: #B57CFF;
+    color: black;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 0;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: 0px 4px 0px 1px black;
+    line-height: 11px;
+}
+
+.sop-heart-icon {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.sop-title {
+    background: black;
+    color: white;
+    padding: 6px;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    width: 80%;
+    line-height: 15px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px !important;
+}
+.sop-tag {
+    background: black;
+    color: white;
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 8px;
+    font-size: 11px;
+    margin-right: 8px;
+    line-height: 19px;
+}
+
+.sop-learn-btn {
+    background: #8D66FF;
+    color: white;
+    border: none;
+    padding: 0px 4px;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 22px;
+    margin-top: 2% !important;
+    line-height: 10px;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35442) */
+.county-box-short .img-box-fit {
+    height: auto !important;
+    overflow: hidden;
+}
+
+.county-box-short .fs-24 {
+    font-size: 18px !important;
+    line-height: 20px;
+    
+}
+
+.county-box-short .fs-14 {
+    font-size: 14px !important;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35467-35483, 2 consecutive rules) */
+.sop-top-label img {
+    width: 15px;
+}
+
+.explore-section .w-30.cardbox-left {
+          height: 160px !important;
+        flex: none !important;
+}
+
+.w-723px {
+    width: 100% !important;
+}
+
+.w-704px {
+    width: 100% !important;
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35501) */
+.path-item.active .bg-gray {
+    background-color: black !important;
+    color: #B57CFF !important;
+    font-size: 14px !important;
+    line-height: 24px !important;
+}
+
+
+.path-item .bg-gray
+ {
+    font-size: 14px !important;
+    line-height: 20px !important;
+    width: 100%;
+}
+    .bg-path {
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+    }
+.bg-path i {
+        margin-left: -2px;
+        font-size: 27px;
+        rotate: 90deg;
+    }
+.heart-icon {
+    text-align: end;
+    font-size: 40px;
+    color: #9747FF;
+    margin: 2px;
+    width: 85% !important;
+    margin-top: 30px;
+    margin-bottom: 31px;
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35542) */
+.singup-process
+{
+ width : 100% !important;   
+}
+.circle-avartar {
+    width: 65px;
+    border-radius: 50%;
+    height: 55px;
+    border: 1px solid #00000040;
+    padding: 4px;
+    overflow: hidden;
+}
+.choose-avatar-text label {
+    box-shadow: 0px 1px 4px 0px #1A0F011F;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 43px;
+    top: 25px;
+    background: white;
+    cursor: pointer;
+}
+.choose-avatar-text label img {
+    width: 13px;
+}
+
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35576) */
+.black-border .fs-24 {
+        font-size: 14px !important;
+        line-height: 14px;
+        padding-top: 1px !important;
+}
+.margin-left-mobile .d-flex input
+{
+    padding: 10px !important;
+}
+.margin-left-mobile .d-flex
+{
+      margin-left: 10px;  
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35595) */
+.btn.btn-purple.w-50
+{
+    width: auto !important;
+    padding-top: 4px !important;
+}
+    /* parked → parked/pgs-owned-parked-30.css (style.css:35607) */
+.form-group .form-label
+{
+            font-size: 14px !important;
+        line-height: 14px;
+        padding-top: 1px !important;
+}
+
+.w-729px {
+    width: 100% !important;
+}
+
+.pl-100px {
+    padding-left: 0px !important;
+}
+
+/*.mobile-student-cart*/
+/*{*/
+/* z-index: 100;*/
+/*}*/
+
+.w-616px {
+    width: 100% !important;
+}
+
+.w-616px h1 br {
+   display : none;
+}
+
+.card-fill-box {
+    background-color: #F1F1F1;
+    border-radius: 16px;
+    padding: 23px 14px;
+    font-size: 12.8px;
+    color: black;
+    width: 40% !important;
+    line-height: 16px;
+    height: 120px;
+    font-weight: 400;
+}
+
+.mobile-wrap-2-template
+{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.w-303px {
+    width: 100% !important;
+}
+
+.post-arrow {
+    position: inherit;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    bottom: 55%;
+    right: -30%;
+    gap: 10px;
+}
+
+ .sinup-process .form-group.d-flex  .margin-left-mobile{
+    margin-left: 0px;
+ }
+ .sinup-process .form-group.d-flex  .w-70
+ {
+    width: 100% !important;
+ }
+ .sinup-process .form-group.d-flex
+ {
+    align-items: start !important;
+    flex-direction: column;
+    gap: 10px;
+ }
+    .sinup-process .form-group.d-flex .w-50 {
+        width: 100% !important;
+}
+
+    .d-flex.gap-3.px-3 .w-50 {
+        width: 50% !important;
+    }
+ .mobile-m-auto
+ {
+     margin : auto;
+ }
+ .mobile-w-80
+ {
+     width : 80% !important;
+ }
+ 
+ .mobile-pb-0{
+         padding-bottom: 0 !important;
+ }
+ .mobile-mb-0{
+         margin-bottom: 0 !important;
+ }
+ 
+ .group-todo-list{
+    width: 90% !important;
+    margin: auto;
+    margin-top: 20px;
+ }
+ 
+ .new-mobile-todo-list{
+        width: 90% !important;
+        margin: auto;
+        margin-top: 20px;
+        border: 1px solid #00000045;
+        border-radius: 20px;
+        overflow: hidden;
+ }
+ .mobile-notes-div{
+       flex-direction: column !important;
+ }
+
+.mobile-notes-div{
+    
+}
+.mobile-notes-div .w-50
+{
+       width: 90% !important;
+        margin: auto;
+}
+.post-arrow
+{
+    width: 40%;
+    margin: 47px -15px 18px auto;
+}
+.post-arrow p {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+}
+.post-arrow img{
+     width: 50px !important;   
+}
+
+.mobile-top-space{
+    margin-top: -70px;
+}
+.btn-progress{
+       font-size: 14px;
+           width: 60% !important;
+}
+
+.post-arrow-2 img {
+        width: 70px;
+}
+
+.post-arrow-2 {
+    width: 36%;
+    margin: 0 0 0 auto;
+    margin-right: 0;
+    margin-top: -38px;
+}
+.post-arrow-2 p {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+}
+.mobile-width-set
+{
+    width: 70%;
+    margin: auto;
+}
+
+.new-mobile-todo-list .body-of-todo.show{
+        padding: 10px !important;
+}
+.new-mobile-todo-list .top-todo-list::after{
+        content: '';
+        width: 100%;
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        background: rgba(187, 200, 255, 1);
+        height: 7px;
+        margin: auto;
+        bottom: -2px;
+}
+.new-mobile-todo-list .top-todo-list .d-flex img{
+        width: 20px;
+}
+
+.new-mobile-todo-list .top-todo-list .d-flex{
+        margin-top: -3px;
+}
+
+.body-of-todo {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+.new-mobile-todo-list .top-todo-list{
+        border: 0px solid #00000045;
+        padding: 10px 16px;
+        height: 50px;
+        overflow: hidden;
+        position: relative;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 20px;
+}
+.body-of-todo.show {
+    max-height: 2000px; /* large enough to fit content */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-box-border {
+    background-color: transparent !important;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 7px;
+}
+
+.mobile-wrap-box-style-4{
+    flex-wrap : wrap;
+            align-items: end;
+        justify-content: end !important;
+}
+.mobile-wrap-box-style-4 .w-40{
+    width : 65% !important;
+}
+.mobile-wrap-box-style-4 .w-264px{
+    width : 65% !important;
+}
+.checkbox-card h5 {
+    font-size: 16px;
+}
+
+.mobile-wrap-box-style-4 .w-100px {
+    width: 26% !important;
+            padding: 0px !important;
+        margin: 0px !important;
+}
+
+.mobile-wrap-box-style-4 .fs-36 {
+    font-size: 28px !important;
+    line-height: 30px !important;
+}
+
+.card-with-image {
+    border: 3px solid #009C70;
+    border-radius: 2px;
+    width: 47% !important;
+    height: auto !important;
+}
+
+.fix-image-box {
+    height: 120px !important;
+}
+
+.card-with-image .header-caption {
+    background: #009C70;
+    color: black;
+    font-size: 13px;
+    line-height: 17px;
+}
+
+.mobile-flex-boxes .w-70 {
+    width: 100% !important;
+    
+}
+.mobile-flex-boxes{
+   margin: 3px;
+   padding: 18px 9px !important;
+}
+
+.card-white-box-border .list-type{
+    font-size: 14px !important;
+}
+
+
+    .mobile-tag-perks {
+        background-color: black;
+        color: white;
+        font-size: 13px;
+        padding: 1px 5px;
+        display: inline-block;
+        line-height: 20px;
+        margin-bottom: -3px;
+        width: auto !important;
+    }
+    
+    .mobile-row-reverse{
+            flex-direction: row-reverse;
+    }
+
+   .mobile-pb-10{
+       padding-bottom  :10% !important;
+   }
+   .comment-content {
+    margin-bottom: 10px;
+    color: #00000099;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px !important;
+}
+
+.custom-mobile-margin
+{
+        margin: 0px 7px 15px 12px !important;
+}
+.mobile-grid-calendar{
+    flex-direction: column;
+}
+
+   .mobile-grid-calendar .w-50 {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+
+ .mobile-grid-calendar .grid-box-style-2 {
+    gap: 11px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.mobile-pb-4{
+    padding-bottom : 4%;
+}
+
+.mobile-grid-calendar .grid-box-style-2 .card-box-1 {
+    border: 1px solid #00000033;
+    border-radius: 15px;
+    padding: 10px;
+    width: 48%;
+    margin-bottom: 5px;
+}
+
+.comment-text textarea::placeholder,
+.comment-text textarea
+{
+    color:black !important;
+    line-height : 16px !important;
+    font-size : 14px !important;
+}
+}

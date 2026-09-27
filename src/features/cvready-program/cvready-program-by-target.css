@@ -1,0 +1,473 @@
+/**
+ * CV Ready #by target — CR8.
+ * Desk intro `19053:14304`: centered column · title · body 139 · chips ~440
+ * Desk rail: Pair 11 ×4 · gap 2 · arrows `19054:15100` 48px + Section 1
+ * Mob: intro left · chips 270 · horizontal Pair 11 strip · arrows `1318:8862` 19.2
+ * Bands: >1366 desk · 601–1366 interim · ≤600 mob.
+ */
+
+.cvready-program-by-target {
+  --cvready-program-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: clip;
+}
+
+.cvready-program-by-target *,
+.cvready-program-by-target *::before,
+.cvready-program-by-target *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-by-target__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.cvready-program-by-target__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cvready-program-by-target__title {
+  margin: 0;
+  font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+}
+
+.cvready-program-by-target__body {
+  margin: 0;
+  font-weight: 400;
+  color: #000;
+  text-align: left;
+}
+
+.cvready-program-by-target__body-line {
+  display: block;
+}
+
+.cvready-program-by-target__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.cvready-program-by-target__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border-style: solid;
+  border-radius: 19.2px;
+  font-family: inherit;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  background: #fff;
+  color: #0d0f12;
+  border-color: #c1cbdb;
+}
+
+.cvready-program-by-target__chip:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.cvready-program-by-target__chip--selected {
+  background: #1c2026;
+  color: #fff;
+  border-color: #1c2026;
+  font-weight: 600;
+}
+
+.cvready-program-by-target__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.cvready-program-by-target__rail {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  outline: none;
+}
+
+.cvready-program-by-target__rail.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.cvready-program-by-target__rail:focus,
+.cvready-program-by-target__rail:focus-visible {
+  outline: none;
+}
+
+.cvready-program-by-target__rail::-webkit-scrollbar {
+  display: none;
+}
+
+.cvready-program-by-target__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  /* Equal row height = tallest card in the strip (flex cross-size). */
+  align-items: stretch;
+  width: max-content;
+}
+
+.cvready-program-by-target__cell {
+  margin: 0;
+  padding: 0;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+}
+
+.cvready-program-by-target__cell .calendar-session-photo-face {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cvready-program-by-target__cell .calendar-session-photo-face__mob,
+.cvready-program-by-target__cell .calendar-session-photo-face__desk {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.cvready-program-by-target .calendar-session-photo-face__band-note {
+  display: none !important;
+}
+
+.cvready-program-by-target__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.cvready-program-by-target__arrows {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvready-program-by-target__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.cvready-program-by-target__arrow:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.cvready-program-by-target__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.cvready-program-by-target__arrow img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cvready-program-by-target__section-label {
+  margin: 0;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .cvready-program-by-target {
+    /* Keep intro/chips centered (previous). Only rail pads to match. */
+    --cvready-by-target-intro-w: 270px;
+    padding: 24px 12px 40px;
+    gap: 20px;
+  }
+
+  .cvready-program-by-target__intro {
+    gap: 12px;
+    align-items: flex-start;
+    max-width: var(--cvready-by-target-intro-w);
+    width: var(--cvready-by-target-intro-w);
+  }
+
+  .cvready-program-by-target__copy {
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .cvready-program-by-target__title {
+    font-size: 24px;
+    line-height: 22.4px;
+    text-align: left;
+  }
+
+  .cvready-program-by-target__body {
+    width: 100%;
+    max-width: 202px;
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 14px
+     * ISSUE: below floor
+     * PGS: 16px
+     */
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.25;
+    letter-spacing: 0.4px;
+  }
+
+  .cvready-program-by-target__chips {
+    width: var(--cvready-by-target-intro-w);
+    max-width: 100%;
+    gap: 4.8px;
+  }
+
+  .cvready-program-by-target__chip {
+    min-height: 24px;
+    padding: 4px 10px;
+    border-width: 0.6px;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.2;
+    letter-spacing: 0.084px;
+  }
+
+  .cvready-program-by-target__stack {
+    gap: 16px;
+    width: 100%;
+  }
+
+  .cvready-program-by-target__rail {
+    /* First card left = centered intro left; strip still scrolls right. */
+    padding: 0 0 0 max(0px, calc((100% - var(--cvready-by-target-intro-w)) / 2));
+    width: 100%;
+  }
+
+  .cvready-program-by-target__list {
+    gap: 6px;
+  }
+
+  .cvready-program-by-target__nav {
+    gap: 8px;
+    align-self: center;
+  }
+
+  .cvready-program-by-target__arrows {
+    width: 40.4px;
+  }
+
+  .cvready-program-by-target__arrow {
+    width: 19.2px;
+    height: 19.2px;
+  }
+
+  .cvready-program-by-target__section-label {
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.2;
+    letter-spacing: 0.16px;
+  }
+}
+
+/* —— iPad interim —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-by-target {
+    padding: 32px 40px 48px;
+    gap: 20px;
+  }
+
+  .cvready-program-by-target__intro {
+    gap: 16px;
+    max-width: 440px;
+  }
+
+  .cvready-program-by-target__copy {
+    gap: 8px;
+  }
+
+  .cvready-program-by-target__title {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .cvready-program-by-target__body {
+    width: 139px;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+  }
+
+  .cvready-program-by-target__chips {
+    width: 440px;
+    max-width: 100%;
+    gap: 4.8px;
+  }
+
+  .cvready-program-by-target__chip {
+    min-height: 24px;
+    padding: 4px 10px;
+    border-width: 0.6px;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.2;
+  }
+
+  .cvready-program-by-target__stack {
+    gap: 16px;
+  }
+
+  .cvready-program-by-target__list {
+    gap: 8px;
+  }
+
+  .cvready-program-by-target__nav {
+    gap: 8px;
+  }
+
+  .cvready-program-by-target__arrow {
+    width: 38.4px;
+    height: 38.4px;
+  }
+
+  .cvready-program-by-target__section-label {
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* —— Desktop >1366 —— */
+@media (min-width: 1367px) {
+  .cvready-program-by-target {
+    padding: 40px 0 56px;
+    gap: 20.8px;
+  }
+
+  .cvready-program-by-target__intro {
+    gap: 16px;
+    /* Centered column on the page — Figma `19053:14304` */
+    width: auto;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .cvready-program-by-target__copy {
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .cvready-program-by-target__title {
+    font-size: 38.4px;
+    line-height: 22.4px;
+  }
+
+  .cvready-program-by-target__body {
+    width: 139px;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+  }
+
+  .cvready-program-by-target__chips {
+    width: 440px;
+    gap: 4.8px;
+  }
+
+  .cvready-program-by-target__chip {
+    min-height: 19.2px;
+    padding: 2px 8px;
+    border-width: 0.6px;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.2;
+    letter-spacing: 0.084px;
+  }
+
+  .cvready-program-by-target__stack {
+    gap: 16px;
+    width: 100%;
+  }
+
+  .cvready-program-by-target__rail {
+    max-width: 1240.8px;
+    margin-inline: auto;
+    padding: 8px 0;
+  }
+
+  .cvready-program-by-target__list {
+    gap: 2px;
+  }
+
+  .cvready-program-by-target__nav {
+    gap: 0;
+    width: 80.8px;
+    justify-content: space-between;
+    min-height: 62.4px;
+  }
+
+  .cvready-program-by-target__arrows {
+    width: 100%;
+  }
+
+  /* Figma `19054:15100`: 38.4 + 38.4 inside 80.8 nav (not 48 — overlaps). */
+  .cvready-program-by-target__arrow {
+    width: 38.4px;
+    height: 38.4px;
+  }
+
+  .cvready-program-by-target__section-label {
+    width: 100%;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 24px;
+    letter-spacing: 0.5px;
+  }
+}

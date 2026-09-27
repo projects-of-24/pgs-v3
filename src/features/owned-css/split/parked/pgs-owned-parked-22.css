@@ -1,0 +1,364 @@
+/* PASS 11 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 29008-33263 range, PGS patches C: body B (countriesUSA/visa, premium/pricing, USMLE, misc))
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:29014 — no selector match in site (PASS 11 audit) */
+.sop-card-unique-unique-1 .closed-box {
+  height: 70%;
+  font-size: 55px;
+  line-height: 61px;
+  padding: 32px;
+  width: 70%;
+}
+
+/* parked from style.css:29108 — no selector match in site (PASS 11 audit) */
+.univmeet-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  position: absolute;
+  right: -340%;
+  top: 47%;
+  transform: translateY(-50%);
+}
+
+/* parked from style.css:29118 — no selector match in site (PASS 11 audit) */
+.univmeet-section {
+  display: flex;
+  align-items: center;
+  gap: 0;
+
+}
+
+/* parked from style.css:29125 — no selector match in site (PASS 11 audit) */
+.univ-pill {
+  background: #EBF7FF;
+  border-radius: 16px 0 0 16px;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* parked from style.css:29167 — no selector match in site (PASS 11 audit) */
+.input-groupp {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* parked from style.css:29174 — no selector match in site (PASS 11 audit) */
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* parked from style.css:29244 — no selector match in site (PASS 11 audit) */
+.w-93 {
+  width: 93% !important;
+}
+
+/* parked from style.css:29248 — no selector match in site (PASS 11 audit) */
+.object-cover-style-2 {
+  width: 90%;
+  margin: 0 0 0 auto;
+  height: 500px;
+}
+
+/* parked from style.css:29254 — no selector match in site (PASS 11 audit) */
+.object-cover-style-2 img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/* parked from style.css:29338 — no selector match in site (PASS 11 audit) */
+.cm-5 {
+  padding: 8px;
+  padding-left: 0;
+}
+
+/* parked from style.css:29381 — no selector match in site (PASS 11 audit) */
+.border-black-100 {
+  border: 1px solid #000000A6;
+}
+
+/* parked from style.css:30237 — no selector match in site (PASS 11 audit) */
+.text-black-underline {
+  text-decoration: underline;
+}
+
+/* parked from style.css:30241 — no selector match in site (PASS 11 audit) */
+.content-404::after {
+  letter-spacing: 4px;
+  content: '404';
+  position: absolute;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 390px;
+  top: 40%;
+  z-index: -1;
+  left: 28%;
+  font-weight: 500;
+  right: 0;
+  color: #D9F1FD;
+  filter: blur(1px);
+}
+
+/* parked from style.css:30256 — no selector match in site (PASS 11 audit) */
+.pt-200 {
+  padding-top: 200px;
+}
+
+/* parked from style.css:31234 — no selector match in site (PASS 11 audit) */
+.pr-1 {
+  padding-right: 1% !important;
+}
+
+/* parked from style.css:31344 — no selector match in site (PASS 11 audit) */
+.text-box-logo span {
+    background: #009C70;
+    color: #FFFFFF;
+    font-weight: 500;
+    text-align: center;
+    width: 78px;
+    height: 40px;
+    opacity: 1;
+    padding: 10px;
+    border-radius: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 12px;
+}
+
+/* parked from style.css:31361 — no selector match in site (PASS 11 audit) */
+.text-box-logo {
+  border: 1px solid #000000;
+  padding: 15px;
+  border-radius: 0;
+}
+
+/* parked from style.css:31367 — no selector match in site (PASS 11 audit) */
+.text-box-logo:after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: -7px;
+  background: #E4E4E4;
+  left: -7px;
+  border: 3.12px solid #9747FF;
+}
+
+/* parked from style.css:31399 — no selector match in site (PASS 11 audit) */
+.scroll-down {
+  margin-top: 43px;
+}
+
+/* parked from style.css:31431 — no selector match in site (PASS 11 audit) */
+.mb-50-minus {
+  margin-bottom: -50px
+}
+
+/* parked from style.css:31642 — no selector match in site (PASS 11 audit) */
+.none-replace {
+  display: none;
+}
+
+/* parked from style.css:31650 — no selector match in site (PASS 11 audit) */
+.dark-green-800 {
+  color: #009C70 !important;
+}
+
+/* parked from style.css:31666 — no selector match in site (PASS 11 audit) */
+.wrapper-content-2 {
+  width: 85% !important;
+  margin: auto;
+}
+
+/* parked from style.css:31768 — no selector match in site (PASS 11 audit) */
+.custom-font-25 {
+  font-size: 35px !important;
+}
+
+/* parked from style.css:31772 — no selector match in site (PASS 11 audit) */
+.custom-heading-box {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  padding: 22px !important;
+  margin-bottom: 3px !important;
+  padding-bottom: 1px;
+}
+
+/* parked from style.css:31836 — no selector match in site (PASS 11 audit) */
+.pl-87 {
+  padding-left: 87px !important;
+}
+
+/* parked from style.css:31845 — no selector match in site (PASS 11 audit) */
+.ht-80 {
+  height: 80%
+}
+
+/* parked from style.css:32005 — no selector match in site (PASS 11 audit) */
+.fs-21
+{
+    font-size : 21px !important;
+}
+
+/* parked from style.css:32068 — no selector match in site (PASS 11 audit) */
+.black-box-border {
+  border: 1px solid black !important;
+  padding: 7px !important;
+  border-radius: 7px !important;
+}
+
+/* parked from style.css:32145 — no selector match in site (PASS 11 audit) */
+.box-compact-img {
+    height: 280px;
+}
+
+/* parked from style.css:32152 — no selector match in site (PASS 11 audit) */
+.scale-down-hero-student-resource {
+    transform: scale(0.8);
+    margin-top: -75px;
+}
+
+/* parked from style.css:32194 — no selector match in site (PASS 11 audit) */
+.w-32
+{
+    width : 32% !important;
+}
+
+/* parked from style.css:32277 — no selector match in site (PASS 11 audit) */
+.ht-230px{
+    height : 230px;
+}
+
+/* parked from style.css:32281 — no selector match in site (PASS 11 audit) */
+.purple-dot-1:after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: -5px;
+    background: #B57CFF;
+    left: -5px;
+    border: 2.12px solid #9747FF;
+}
+
+/* parked from style.css:32305 — no selector match in site (PASS 11 audit) */
+.ht-100px
+{
+    height : 100px !important;
+}
+
+/* parked from style.css:32323 — no selector match in site (PASS 11 audit) */
+.text-aligment-flot
+{
+    position: absolute;
+    top: 36%;
+    left: 10%;
+}
+
+/* parked from style.css:32330 — no selector match in site (PASS 11 audit) */
+.text-aligment-flot span
+{
+    color: #666666;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: -6px !important;
+    display: block;
+}
+
+/* parked from style.css:32339 — no selector match in site (PASS 11 audit) */
+.text-aligment-flot h6
+{
+    color: #EB0801 !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25.6px;
+}
+
+/* parked from style.css:32366 — no selector match in site (PASS 11 audit) */
+.w-332px{
+    width  : 322px !important;
+}
+
+/* parked from style.css:32508 — no selector match in site (PASS 11 audit) */
+.w-108px h5{
+    width : 108px !important;
+}
+
+/* parked from style.css:32512 — no selector match in site (PASS 11 audit) */
+.custom-width-pad{
+    width: 110.6px !important;
+    padding: 3px 0px !important;
+    margin-top: 7px !important;
+    font-size: 18px !important;
+}
+
+/* parked from style.css:32552 — no selector match in site (PASS 11 audit) */
+.w-209px
+{
+    width: 209px !important;
+}
+
+/* parked from style.css:32609 — no selector match in site (PASS 11 audit) */
+.h-225px{
+    height : 225px;
+}
+
+/* parked from style.css:32612 — no selector match in site (PASS 11 audit) */
+.minus-15
+{
+    margin-top : -15%;
+}
+
+/* parked from style.css:32642 — no selector match in site (PASS 11 audit) */
+.w-979px{
+    width : 979px;
+}
+
+/* parked from style.css:32663 — no selector match in site (PASS 11 audit) */
+.w-912px
+{
+    width : 912px !important;
+}
+
+/* parked from style.css:32807 — no selector match in site (PASS 11 audit) */
+.w-304px{
+    width : 304px !important;
+}
+
+/* parked from style.css:32810 — no selector match in site (PASS 11 audit) */
+.gray-bg{
+    background : rgba(241, 241, 241, 1);
+}
+
+/* parked from style.css:32814 — no selector match in site (PASS 11 audit) */
+.no-log-dot:after
+{
+    top: -5px;
+    left: -5px;
+}
+
+/* parked from style.css:32847 — no selector match in site (PASS 11 audit) */
+.w-860px{
+    width : 860px;
+}
+
+/* parked from style.css:33114 — no selector match in site (PASS 11 audit) */
+.w-85px{
+    width  :85px;
+}

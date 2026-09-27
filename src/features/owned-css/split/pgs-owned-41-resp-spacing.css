@@ -1,0 +1,99 @@
+/* PASS 15 · 1:1 copy · UNLINKED · do not edit values
+   Source: public/assets/css/responsive.css lines 4183-18505 (Crafto responsive padding/margin utilities per breakpoint (1600 / 1399 / 1199 / 991 / 767 / 575) — heavy park)
+   Method (owner lock 2026-09-25): rules copied verbatim, same numbers, original order, html{zoom:0.9} kept (split/pgs-owned-00-zoom.css).
+   Owner decision 2026-09-26: every wrapper @media (max-width: 767px) → @media (max-width: 600px) (same as P13; 601–767px now gets iPad/desk rules).
+   575 / 991 / 1199 / 1399 / 1600 / min-width 992 / min-width 1400 / max-height 380 wrappers copied VERBATIM. No url(), no nested @media in this range.
+   Dead rules (no class/id token anywhere in site) → parked/pgs-owned-parked-41*.css with source lines; cut points marked below.
+   Wrapper kept live if any inner rule is live. Live routes do NOT import this file; only split/pgs-owned-split.css does, and nothing imports that yet (OWN-LINK later). */
+
+/* Padding and margin */
+/* PASS 15 cut: whole wrapper @media (max-width: 1600px) (795 dead rules) parked → parked/pgs-owned-parked-41a.css (responsive.css:4184-6570) */
+@media (max-width: 1399px) {
+  /* PASS 15 cut: 17 dead rules parked → parked/pgs-owned-parked-41b.css (responsive.css:6572-6622) */
+  .xl-p-4 {
+    padding: 4% !important;
+  }
+  /* PASS 15 cut: 777 dead rules parked → parked/pgs-owned-parked-41b.css (responsive.css:6626-8956) */
+}
+@media (max-width: 1199px) {
+  /* PASS 15 cut: 23 dead rules parked → parked/pgs-owned-parked-41c.css (responsive.css:8959-9027) */
+  .lg-p-10 {
+    padding: 10% !important;
+  }
+  /* PASS 15 cut: 330 dead rules parked → parked/pgs-owned-parked-41c.css (responsive.css:9031-10020) */
+  .lg-mb-15px {
+    margin-bottom: 15px !important;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-41c.css (responsive.css:10024-10029) */
+  .lg-mb-30px {
+    margin-bottom: 30px !important;
+  }
+  /* PASS 15 cut: 437 dead rules parked → parked/pgs-owned-parked-41c.css (responsive.css:10033-11343) */
+}
+@media (max-width: 991px) {
+  /* PASS 15 cut: 6 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:11346-11363) */
+  .md-p-35px {
+    padding: 35px !important;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:11367-11372) */
+  .md-p-50px {
+    padding: 50px !important;
+  }
+  /* PASS 15 cut: 210 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:11376-12005) */
+  .md-m-5px {
+    margin: 5px !important;
+  }
+  /* PASS 15 cut: 134 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:12009-12410) */
+  .md-mb-20px {
+    margin-bottom: 20px !important;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:12414-12419) */
+  .md-mb-35px {
+    margin-bottom: 35px !important;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:12423-12428) */
+  .md-mb-50px {
+    margin-bottom: 50px !important;
+  }
+  /* PASS 15 cut: 433 dead rules parked → parked/pgs-owned-parked-41d.css (responsive.css:12432-13730) */
+}
+@media (max-width: 600px) {
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-41e.css (responsive.css:13733-13735) */
+  .sm-p-10px {
+    padding: 10px !important;
+  }
+  /* PASS 15 cut: 3 dead rules parked → parked/pgs-owned-parked-41e.css (responsive.css:13739-13747) */
+  .sm-p-30px {
+    padding: 30px !important;
+  }
+  /* PASS 15 cut: 303 dead rules parked → parked/pgs-owned-parked-41e.css (responsive.css:13751-14659) */
+  .sm-me-10px {
+    margin-right: 10px !important;
+  }
+  /* PASS 15 cut: 45 dead rules parked → parked/pgs-owned-parked-41e.css (responsive.css:14663-14797) */
+  .sm-mb-20px {
+    margin-bottom: 20px !important;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-41e.css (responsive.css:14801-14806) */
+  .sm-mb-35px {
+    margin-bottom: 35px !important;
+  }
+  .sm-mb-40px {
+    margin-bottom: 40px !important;
+  }
+  .sm-mb-45px {
+    margin-bottom: 45px !important;
+  }
+  /* PASS 15 cut: 13 dead rules parked → parked/pgs-owned-parked-41e.css (responsive.css:14816-14854) */
+  .sm-mb-9 {
+    margin-bottom: 9% !important;
+  }
+  /* PASS 15 cut: 420 dead rules parked → parked/pgs-owned-parked-41e.css (responsive.css:14858-16117) */
+}
+@media (max-width: 575px) {
+  /* PASS 15 cut: 359 dead rules parked → parked/pgs-owned-parked-41f.css (responsive.css:16120-17196) */
+  .xs-mb-40px {
+    margin-bottom: 40px !important;
+  }
+  /* PASS 15 cut: 435 dead rules parked → parked/pgs-owned-parked-41f.css (responsive.css:17200-18504) */
+}

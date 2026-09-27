@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  /** Dev only: lets http://127.0.0.1:7100 load page scripts (Playwright baseURL + manual QC). */
+  allowedDevOrigins: ["127.0.0.1"],
   async rewrites() {
     return [
       { source: "/ops", destination: "/admin" },

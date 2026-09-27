@@ -1,0 +1,49 @@
+/**
+ * PGS PAGE UI FLUSH — copy this pattern when flushing a page body
+ * =============================================================================
+ * Owner: OWN-* track (see docs/HEADER-CHROME-PHASE.md § OWN-0).
+ *
+ * ORDER (do not reverse)
+ * 1. OWN-H / OWN-T / OWN-F — shared chrome owned CSS first (header → toggle → footer)
+ * 2. OWN-BODY — this template: flush one page body during that page’s final UI audit
+ * 3. On that page: port needed Hostinger recipes → owned CSS → then unlink Hostinger
+ *    for that page (page-by-page; never sitewide delete in one shot)
+ *
+ * HOW TO USE
+ * 1. Copy this file → `src/features/<page>/<page>-ui-flush.css`
+ *    (or keep importing this shared starter and add page sections below).
+ * 2. Scope EVERY rule under: main[data-legacy-page="<pageKey>"] …
+ * 3. Port from Hostinger only what that page still needs; bake zoom **fully**:
+ *    owned_px = design_css_px × 0.9 for font-size, width, height, margin,
+ *    padding, gap, offsets (px), border-radius — not fonts alone.
+ *    Skip unitless line-height and % layout.
+ *    Token: --pgs-hostinger-zoom: 0.9
+ * 4. Import AFTER Hostinger (while still linked). For header chrome, import
+ *    `pgs-owned-header.css` (OWN-H single link) — not Hostinger header rules.
+ *
+ * DO NOT
+ * - Invent layout from scratch when Hostinger/Figma already has the recipe
+ * - Put Hostinger class names on new React markup
+ * - Kill html{zoom:0.9} sitewide without ×0.9 bake into owned tokens first
+ * - Edit public/assets/css/style.css
+ *
+ * SISTER (header + drawer — link this): pgs-owned-header.css
+ */
+
+/* ——— Shared document guards (safe to keep when flushing any page) ——— */
+html:has(main[data-legacy-page]) {
+  overflow-x: clip;
+  scrollbar-gutter: stable;
+}
+
+/*
+ * Example — replace `your-page` and fill rules during that page’s UI flush:
+ *
+ * @media (min-width: 601px) and (max-width: 1366px) {
+ *   main[data-legacy-page="your-page"] .some-hostinger-block {
+ *     / * owned values at ×0.9 of Hostinger raw * /
+ *   }
+ * }
+ */
+
+/* Page-specific flush rules go in per-feature files, not here, once a page starts. */

@@ -1,0 +1,228 @@
+/**
+ * CV Ready photo bento — CR7.
+ * Desk: row gap 19.2 · tile 277.864 · photo 394.4×294.4 · radius 19.2 · #009c70
+ * Mob:  row gap 12 · tile 138.932 · photo 197.2×147.2 · radius 9.6
+ * FIGMA ACCESSIBILITY ADAPTATION: mob body 12→16.
+ * Bands: >1366 desk · 601–1366 interim · ≤600 mob.
+ */
+
+.cvready-program-bento {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvready-program-bento *,
+.cvready-program-bento *::before,
+.cvready-program-bento *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-bento__rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.cvready-program-bento__row {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.cvready-program-bento__row[data-layout="photo-stat"] {
+  flex-direction: row-reverse;
+}
+
+.cvready-program-bento__stat {
+  background: #fffefc;
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.cvready-program-bento__stat-value {
+  margin: 0;
+  color: #009c70;
+  font-weight: 500;
+}
+
+.cvready-program-bento__stat-copy {
+  margin: 0;
+  color: #000;
+  font-weight: 500;
+}
+
+.cvready-program-bento__stat-line {
+  display: block;
+}
+
+.cvready-program-bento__photo {
+  position: relative;
+  overflow: hidden;
+  background: #f1f1f1;
+  flex: 0 0 auto;
+}
+
+.cvready-program-bento__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .cvready-program-bento {
+    padding: 24px 12px 32px;
+  }
+
+  .cvready-program-bento__rows {
+    gap: 12px;
+    width: 345.732px;
+    max-width: 100%;
+  }
+
+  .cvready-program-bento__row {
+    gap: 9.6px;
+  }
+
+  .cvready-program-bento__stat,
+  .cvready-program-bento__photo {
+    border-radius: 9.6px;
+  }
+
+  .cvready-program-bento__stat {
+    width: 138.932px;
+    min-height: 147.2px;
+    padding: 12px 10px;
+  }
+
+  .cvready-program-bento__stat-value {
+    font-size: 22.8px;
+    line-height: 25.6px;
+    letter-spacing: -0.1px;
+  }
+
+  .cvready-program-bento__stat-copy {
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 12px / 12.8
+     * ISSUE: below readable floor
+     * PGS: 16px
+     */
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .cvready-program-bento__photo {
+    width: 197.2px;
+    height: 147.2px;
+  }
+}
+
+/* —— iPad interim —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-bento {
+    padding: 32px 40px 40px;
+  }
+
+  .cvready-program-bento__rows {
+    gap: 16px;
+    width: min(691.464px, 100%);
+  }
+
+  .cvready-program-bento__row {
+    gap: 14px;
+  }
+
+  .cvready-program-bento__stat,
+  .cvready-program-bento__photo {
+    border-radius: 14px;
+  }
+
+  .cvready-program-bento__stat {
+    width: 200px;
+    min-height: 220px;
+    padding: 20px 16px;
+  }
+
+  .cvready-program-bento__stat-value {
+    font-size: 34px;
+    line-height: 40px;
+  }
+
+  .cvready-program-bento__stat-copy {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .cvready-program-bento__photo {
+    width: 280px;
+    height: 220px;
+  }
+}
+
+/* —— Desktop >1366 —— */
+@media (min-width: 1367px) {
+  .cvready-program-bento {
+    padding: 40px 0 48px;
+  }
+
+  .cvready-program-bento__rows {
+    gap: 19.2px;
+    width: 691.464px;
+  }
+
+  .cvready-program-bento__row {
+    gap: 19.2px;
+  }
+
+  .cvready-program-bento__stat,
+  .cvready-program-bento__photo {
+    border-radius: 19.2px;
+  }
+
+  .cvready-program-bento__stat {
+    width: 277.864px;
+    min-height: 294.4px;
+    padding: 32px 20px;
+  }
+
+  .cvready-program-bento__stat-value {
+    font-size: 45.6px;
+    line-height: 51.2px;
+    letter-spacing: -0.25px;
+  }
+
+  .cvready-program-bento__stat-copy {
+    font-size: 19.2px;
+    line-height: 25.6px;
+  }
+
+  .cvready-program-bento__photo {
+    width: 394.4px;
+    height: 294.4px;
+  }
+}

@@ -1,0 +1,496 @@
+/* PASS 10 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 25704-29007 range, PGS patches B: body A (toggle, comments, charts, event/sop bits))
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:25891 — no selector match in site (PASS 10 audit) */
+.cardbox {
+  display: flex;
+  width: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 2px solid #B57CFF;
+  padding: 8px;
+  background: white;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+/* parked from style.css:25904 — no selector match in site (PASS 10 audit) */
+.cardbox-left {
+  position: relative;
+  flex: 1;
+}
+
+/* parked from style.css:25909 — no selector match in site (PASS 10 audit) */
+.cardbox-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* parked from style.css:25915 — no selector match in site (PASS 10 audit) */
+.cardbox-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 0px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+}
+
+/* parked from style.css:25926 — no selector match in site (PASS 10 audit) */
+.cardbox-logo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  padding: 4px;
+  border-radius: 6px;
+  width: 160px;
+  border: 1px solid black;
+}
+
+/* parked from style.css:25938 — no selector match in site (PASS 10 audit) */
+.cardbox-middle {
+  flex: 1;
+  padding: 20px;
+  background: #F1F1F1;
+}
+
+/* parked from style.css:25944 — no selector match in site (PASS 10 audit) */
+.cardbox-tag img {
+  width: 26px;
+  margin-top: -15px;
+}
+
+/* parked from style.css:25949 — no selector match in site (PASS 10 audit) */
+.cardbox-middle h3 {
+font-size: 22px;
+    margin: 0;
+    background: #FFC524;
+    line-height: 29px;
+    color: black;
+    font-weight: 500;
+    margin-bottom: 8px;
+    padding: 1px 4px;
+    line-height: 23px;
+    text-transform: uppercase;
+    width: 255px;
+        display: inline-block;
+}
+
+/* parked from style.css:25965 — no selector match in site (PASS 10 audit) */
+.cardbox-highlight {
+    background: #FFC524;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 19px;
+    color: black;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 1px 5px;
+    margin-bottom: 14px;
+}
+
+/* parked from style.css:25977 — no selector match in site (PASS 10 audit) */
+.cardbox-highlight span {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* parked from style.css:26008 — no selector match in site (PASS 10 audit) */
+.cardbox-tags {
+  margin-top: 0px;
+}
+
+/* parked from style.css:26012 — no selector match in site (PASS 10 audit) */
+.cardbox-tags span {
+    background: black;
+    color: white;
+    font-size: 16px;
+    /*font-size: 12px;*/
+    padding: 8px 6px;
+    margin-right: 5px;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    margin-top: 13px !important;
+    display: inline-block;
+    line-height: 19px;
+}
+
+/* parked from style.css:26027 — no selector match in site (PASS 10 audit) */
+.cardbox-right {
+    width: 312px;
+    background: #f0fdf4;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    position: relative;
+}
+
+/* parked from style.css:26040 — no selector match in site (PASS 10 audit) */
+.cardbox-check-btn {
+  background: black;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* parked from style.css:26049 — no selector match in site (PASS 10 audit) */
+.cardbox-learn-btn {
+  background: black;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* parked from style.css:26067 — no selector match in site (PASS 10 audit) */
+.cardbox-date {
+  font-size: 12px;
+  margin-top: 20px;
+  color: gray;
+}
+
+/* parked from style.css:26073 — no selector match in site (PASS 10 audit) */
+.cardbox-download {
+  margin-top: 20px;
+  background: teal;
+  color: white;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* parked from style.css:26086 — no selector match in site (PASS 10 audit) */
+.green-bg-box {
+    background-color: #C3FFA9;
+    border: 1px solid #00000033;
+    border-radius: 24px;
+    overflow: hidden;
+    padding: 5px 7px;
+        margin-bottom: 4px;
+}
+
+/* parked from style.css:26095 — no selector match in site (PASS 10 audit) */
+.green-bg-box h4 {
+    font-size: 19px;
+    margin: 0;
+    color: #000000;
+    text-align: center;
+    font-weight: 500;
+    line-height: 19px;
+    margin-bottom: 10px !important;
+}
+
+/* parked from style.css:26129 — no selector match in site (PASS 10 audit) */
+.btn-download {
+background: #0ABF8C !important;
+    border-radius: 19px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 2px 11px;
+    padding-left: 5px;
+    margin: 0 0 0 auto;
+    display: block;
+    width: 49px;
+    height: 39px;
+}
+
+/* parked from style.css:26143 — no selector match in site (PASS 10 audit) */
+.btn-saved {
+  background: transparent !important;
+  border-radius: 19px;
+  text-align: center;
+  color: #EB0801;
+  font-size: 27px;
+  padding: 2px 11px;
+  padding-left: 5px;
+  margin: 0 0 0 auto;
+  display: block;
+}
+
+/* parked from style.css:26155 — no selector match in site (PASS 10 audit) */
+.btn-unsaved {
+  background: transparent !important;
+  border-radius: 19px;
+  text-align: center;
+  color: black;
+  font-size: 27px;
+  padding: 2px 11px;
+  padding-left: 5px;
+  margin: 0 0 0 auto;
+  display: block;
+}
+
+/* parked from style.css:26167 — no selector match in site (PASS 10 audit) */
+.text-red-heart {
+  color: #EB0801;
+}
+
+/* parked from style.css:26295 — no selector match in site (PASS 10 audit) */
+.sop-close-date {
+    background: white;
+    border: 0.5px solid #B57CFF;
+    padding: 6px 10px;
+    font-size: 16px;
+    /*font-size: 11.5px;*/
+    border-radius: 6px;
+    text-align: center;
+    color: black;
+    line-height: 1.0;
+    text-align: start;
+}
+
+/* parked from style.css:26321 — no selector match in site (PASS 10 audit) */
+.card-box-out .sop-title-2 {
+  font-size: 20px;
+  font-weight: 500;
+  width: 100%;
+  color: black;
+}
+
+/* parked from style.css:26328 — no selector match in site (PASS 10 audit) */
+.card-box-out .sop-subtext-2 {
+  font-size: 15px;
+  font-weight: 400;
+  width: 100%;
+  color: black;
+  line-height: 20px;
+}
+
+/* parked from style.css:26336 — no selector match in site (PASS 10 audit) */
+.card-box-out {
+  background-color: transparent;
+}
+
+/* parked from style.css:26340 — no selector match in site (PASS 10 audit) */
+.text-blue-dark {
+  color: #009C70;
+}
+
+/* parked from style.css:26349 — no selector match in site (PASS 10 audit) */
+.cardbox-right::after {
+  content: '';
+  background-color: #FFC524;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 10px;
+  top: 0;
+}
+
+/* parked from style.css:26359 — no selector match in site (PASS 10 audit) */
+.no-logo {
+    border-radius: 16px;
+    display: inline-block;
+    background-color: #009C70;
+    color: white;
+    font-size: 12.8px !important;
+    padding: 11px 10px !important;
+    margin: 11px 11px;
+    margin-bottom: 10px !important;
+    line-height: 19px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12px;
+}
+
+/* parked from style.css:26637 — no selector match in site (PASS 10 audit) */
+.custom-padding-20 {
+  padding-top: 20%;
+  padding-bottom: 40%;
+}
+
+/* parked from style.css:26985 — no selector match in site (PASS 10 audit) */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* parked from style.css:26992 — no selector match in site (PASS 10 audit) */
+.calendar-header select {
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* parked from style.css:27001 — no selector match in site (PASS 10 audit) */
+.calendar-header button {
+  background: #f1f1f1;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* parked from style.css:27416 — no selector match in site (PASS 10 audit) */
+.social-flex-img img {
+  max-width: 130px;
+}
+
+/* parked from style.css:27420 — no selector match in site (PASS 10 audit) */
+.social-flex-img {
+  align-items: center;
+  margin-top: 50px;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+/* parked from style.css:27605 — no selector match in site (PASS 10 audit) */
+.closed-status .cardbox {
+  filter: grayscale(1);
+}
+
+/* parked from style.css:27609 — no selector match in site (PASS 10 audit) */
+.closed-status {
+  position: relative;
+}
+
+/* parked from style.css:27613 — no selector match in site (PASS 10 audit) */
+.closed-box-status {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  left: 0;
+  top: 0;
+}
+
+/* parked from style.css:27623 — no selector match in site (PASS 10 audit) */
+.closed-box-status .closed-box {
+  color: #EB0801;
+  border: 2px solid;
+  border-image-slice: 1;
+  font-family: 'Bebas Neue';
+  border-image-source: linear-gradient(90deg, #9747FF 0%, #F756FF 50%, #0ABF8C 100%);
+  background: #D9D9D9;
+  height: 100px;
+  width: 73%;
+  margin: auto;
+  font-size: 43px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* parked from style.css:27661 — no selector match in site (PASS 10 audit) */
+.box-style-4 {
+  display: flex;
+  align-items: start;
+  width: 32%;
+}
+
+/* parked from style.css:27823 — no selector match in site (PASS 10 audit) */
+.closed-status {
+   filter: grayscale(1); 
+}
+
+/* parked from style.css:27827 — no selector match in site (PASS 10 audit) */
+.sop-card-unique-unique .closed-box {
+height: 182px;
+    font-size: 19px;
+    line-height: 100%;
+    padding: 12px;
+    width: 135px;
+}
+
+/* parked from style.css:28037 — no selector match in site (PASS 10 audit) */
+.px-5-pl-5 {
+  padding-right: 4rem !important;
+  padding-left: 3rem !important;
+}
+
+/* parked from style.css:28041 — no selector match in site (PASS 10 audit) */
+.explor-pb-10
+{
+     padding: 15px 0px 60px 0px;
+}
+
+/* parked from style.css:28096 — no selector match in site (PASS 10 audit) */
+.w-32 {
+  width: 32%;
+}
+
+/* parked from style.css:28226 — no selector match in site (PASS 10 audit) */
+.plr-5 {
+  padding-left: 4rem;
+}
+
+/* parked from style.css:28395 — no selector match in site (PASS 10 audit) */
+.minus-100 {
+  margin-bottom: -100px;
+}
+
+/* parked from style.css:28581 — no selector match in site (PASS 10 audit) */
+.step-progress-img-2 {
+  top: 0%;
+  position: relative;
+  width: 80%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F4E5E4;
+  border-radius: 15px;
+  border: 1px solid #00000033;
+}
+
+/* parked from style.css:28594 — no selector match in site (PASS 10 audit) */
+.step-progress-img-2 img {
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  width: 100% !important;
+}
+
+/* parked from style.css:28601 — no selector match in site (PASS 10 audit) */
+.ht-75 {
+  height: 75%;
+}
+
+/* parked from style.css:28704 — no selector match in site (PASS 10 audit) */
+.box-object-fit-1 {
+  height: 300px;
+  width: 200px;
+  margin: 0 0 0 auto;
+}
+
+/* parked from style.css:28710 — no selector match in site (PASS 10 audit) */
+.box-object-fit-1 img {
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
+}
+
+/* parked from style.css:28716 — no selector match in site (PASS 10 audit) */
+.mt-350 {
+  margin-top: 350px;
+}
+
+/* parked from style.css:28832 — no selector match in site (PASS 10 audit) */
+.position-absolute-flot {
+  position: relative;
+  left: -23px;
+  top: -2px;
+  padding: 4px 5px;
+  white-space: nowrap;
+}

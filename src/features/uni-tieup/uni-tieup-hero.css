@@ -1,0 +1,386 @@
+/**
+ * Uni Tie-up hero — UT2.
+ * Desk `17067:12096`: panel 1511×368 · #f1f1f1 · border #9747ff · content ~633 centered
+ *   (Figma inner 607 used impact 364; we use impact 390 so 174.4 cols fit padding).
+ * Icon desk: 43.2 @ left of content (−61px), same top as inner (`17067:12113`).
+ * Mob `524:6689` @ x58 y370 · wash rect `524:6690` 380×300 @ x5 y350 (#f1f1f1 · border).
+ * Icon mob: 28 @ x22 y385 → panel-relative left 17 / top 35.
+ * Bands: >1366 desk · 601–1366 interim · ≤600 mob.
+ */
+
+.uni-tieup-hero {
+  --uni-tieup-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+}
+
+.uni-tieup-hero *,
+.uni-tieup-hero *::before,
+.uni-tieup-hero *::after {
+  box-sizing: border-box;
+}
+
+.uni-tieup-hero__panel {
+  position: relative;
+  width: 100%;
+  background: #f1f1f1;
+  border: 0.8px solid #9747ff;
+  border-radius: 12.8px;
+}
+
+.uni-tieup-hero__icon {
+  display: none;
+  pointer-events: none;
+}
+
+.uni-tieup-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.uni-tieup-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.uni-tieup-hero__title {
+  margin: 0;
+  font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none;
+  color: #000;
+}
+
+.uni-tieup-hero__title-line {
+  display: block;
+}
+
+.uni-tieup-hero__body {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: #000;
+}
+
+.uni-tieup-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: var(--uni-tieup-type-floor);
+  line-height: 16px;
+  letter-spacing: 0.08px;
+  text-decoration: none;
+}
+
+.uni-tieup-hero__cta:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.uni-tieup-hero__impact {
+  background: #fff;
+  border-radius: 12.8px;
+  padding: 8px;
+}
+
+.uni-tieup-hero__impact-heading {
+  margin: 0 0 12px;
+  font-weight: 700;
+  font-size: var(--uni-tieup-type-floor);
+  line-height: 20.8px;
+  text-align: center;
+  color: #000;
+}
+
+.uni-tieup-hero__stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.uni-tieup-hero__stat {
+  margin: 0;
+}
+
+.uni-tieup-hero__stat-value {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: var(--uni-tieup-type-floor);
+  line-height: 20.8px;
+}
+
+.uni-tieup-hero__stat-label {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-weight: 400;
+  font-size: var(--uni-tieup-type-floor);
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.uni-tieup-hero__stat-label span {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* —— Mobile ≤600 (Figma 390) —— */
+@media (max-width: 600px) {
+  .uni-tieup-hero {
+    /* Wash nearly full-bleed: Figma x5 w380 → ~5px side inset */
+    padding: 16px 5px 24px;
+  }
+
+  .uni-tieup-hero__panel {
+    min-height: 300px;
+    border-width: 1.5px;
+    border-radius: 12px;
+    overflow: visible;
+  }
+
+  .uni-tieup-hero__icon {
+    /* Inner-relative: panel icon 17/35 · inner inset 53/20 → −36 / 15 */
+    display: block;
+    position: absolute;
+    left: -36px;
+    top: 15px;
+    width: 28px;
+    height: 28px;
+    z-index: 2;
+  }
+
+  .uni-tieup-hero__inner {
+    /* Figma inner 274 @ x58 → centered: (390-274)/2 = 58; top inset 20 */
+    width: 274px;
+    max-width: 274px;
+    margin: 20px auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .uni-tieup-hero__copy {
+    width: 130px;
+    max-width: 130px;
+    flex: 0 0 130px;
+    gap: 12px;
+  }
+
+  .uni-tieup-hero__title {
+    font-size: 24px;
+  }
+
+  .uni-tieup-hero__body {
+    font-size: var(--uni-tieup-type-floor);
+    line-height: 1.35;
+  }
+
+  .uni-tieup-hero__cta {
+    width: 100%;
+    letter-spacing: 0.08px;
+  }
+
+  .uni-tieup-hero__impact {
+    flex: 0 0 auto;
+    width: 120px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .uni-tieup-hero__impact-heading {
+    margin: 0;
+    width: 100%;
+  }
+
+  .uni-tieup-hero__stats {
+    width: 104px;
+    margin-inline: auto;
+  }
+}
+
+/* —— iPad interim —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .uni-tieup-hero {
+    padding: 24px 40px 32px;
+  }
+
+  .uni-tieup-hero__panel {
+    max-width: 920px;
+    margin-inline: auto;
+    padding: 40px 48px;
+  }
+
+  .uni-tieup-hero__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .uni-tieup-hero__icon {
+    display: block;
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+  }
+
+  .uni-tieup-hero__title {
+    font-size: 32px;
+  }
+
+  .uni-tieup-hero__body {
+    max-width: 280px;
+    font-size: var(--uni-tieup-type-floor);
+    line-height: 1.35;
+  }
+
+  .uni-tieup-hero__impact {
+    width: min(100%, 320px);
+    padding: 12.8px;
+    min-width: 0;
+  }
+
+  .uni-tieup-hero__stats {
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .uni-tieup-hero__stat {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+/* —— Desktop >1366 (Figma 1728 · panel 1511×368 @ x109) —— */
+@media (min-width: 1367px) {
+  .uni-tieup-hero {
+    padding: 40px 0 48px;
+  }
+
+  .uni-tieup-hero__panel {
+    width: min(1511px, calc(100% - 218px));
+    max-width: 1511px;
+    min-height: 368px;
+    margin-inline: auto;
+    padding: 71.2px 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .uni-tieup-hero__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 9.6px;
+    width: 100%;
+    /* copy 233.6 + gap 9.6 + impact 390 (padded room for 174.4×2 cols) */
+    max-width: 633px;
+  }
+
+  .uni-tieup-hero__icon {
+    /* Figma: content x451.9 · icon x391 → −60.9px from inner left */
+    display: block;
+    position: absolute;
+    left: -61px;
+    top: 0;
+    width: 43.2px;
+    height: 42.4px;
+  }
+
+  .uni-tieup-hero__copy {
+    width: 233.6px;
+    gap: 14.4px;
+  }
+
+  .uni-tieup-hero__title {
+    font-size: 38.4px;
+    line-height: 1;
+  }
+
+  .uni-tieup-hero__body {
+    width: 233.6px;
+    font-size: var(--uni-tieup-type-floor);
+    line-height: 19.2px;
+  }
+
+  .uni-tieup-hero__impact {
+    /*
+      Figma card 364 with two fixed 174.4 cols + 15.2 gap ignores padding
+      12.8×2 → cols overflow / clip. Widen card so padded content fits
+      174.4×2 + 15.2 (= 390 outer).
+    */
+    width: 390px;
+    max-width: 100%;
+    min-width: 0;
+    padding: 12.8px;
+    display: flex;
+    flex-direction: column;
+    gap: 19.2px;
+    align-items: stretch;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .uni-tieup-hero__impact-heading {
+    margin: 0;
+    width: 100%;
+  }
+
+  .uni-tieup-hero__stats {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15.2px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .uni-tieup-hero__stat {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .uni-tieup-hero__stat-value {
+    width: 100%;
+  }
+
+  .uni-tieup-hero__stat-label {
+    font-size: var(--uni-tieup-type-floor);
+    line-height: 19.2px;
+  }
+}

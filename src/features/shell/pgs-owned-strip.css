@@ -1,0 +1,451 @@
+/**
+ * PGS OWNED STRIP — single CSS link for #toggleBtn + page strip + univMeet tools (OWN-T)
+ * =============================================================================
+ * Gate: OWN-T workshop (UNLINKED — OWN-UNLINK). Do not import from pages until OWN-LINK.
+ *
+ * Sources (reference only — do not edit Hostinger):
+ *   - public/assets/css/style.css `.arrow-box` (~24424, mobile ~33495)
+ *   - src/app/globals.css PGS MODULAR PUBLIC CHROME (toggle / strip / univMeet / body pull)
+ *
+ * Zoom bake: when React gated header is mounted (OWN-H sets html zoom:1), sizes below
+ * use owned = design_px × 0.9 so strip matches the old Hostinger zoomed look.
+ *
+ * DO NOT edit public/assets/css/style.css.
+ */
+
+:root {
+  --pgs-hostinger-zoom: 0.9;
+  /* Strip column / body pull — same clamp as closed toggle reserve */
+  --pgs-chrome-strip-pull: clamp(88px, 11vw, 157px);
+  --pgs-toggle-w: 82px;
+  --pgs-toggle-h: 157px;
+  --pgs-toggle-radius: 16px;
+  --pgs-toggle-font: 24px;
+  --pgs-toggle-pad: 15px;
+  --pgs-toggle-pad-top: 30px;
+  --pgs-toggle-top: 40px;
+  --pgs-toggle-left-desk: 140px;
+  --pgs-toggle-bg: #bbc8ff;
+  --pgs-univmeet-bar-h: 36px;
+  --pgs-univmeet-date-min-h: 48px;
+  --pgs-univmeet-label: 18px;
+}
+
+/* ——— Hostinger .arrow-box paint (closed toggle) ——— */
+[data-legacy-page] #toggleBtn.arrow-box,
+.developer-student-shell #toggleBtn.arrow-box {
+  background-color: var(--pgs-toggle-bg);
+  opacity: 1;
+  text-align: end;
+  color: #000;
+  cursor: pointer;
+}
+
+[data-legacy-page] #toggleBtn.arrow-box:hover,
+.developer-student-shell #toggleBtn.arrow-box:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* --- Strip under sticky header (in flow). Overrides Hostinger ≤767 absolute. --- */
+[data-legacy-page] .mobile-frame-sidebar,
+.developer-student-shell .mobile-frame-sidebar {
+  position: relative !important;
+  top: auto;
+  left: auto;
+  width: 100%;
+  z-index: var(--pgs-layer-student-sidebar, 100) !important;
+  pointer-events: none;
+  padding-top: clamp(12px, 1.1vw, 20px);
+}
+
+/* --- Closed #toggleBtn (not open .sidebar-box panel) --- */
+[data-legacy-page] #toggleBtn.arrow-box,
+.developer-student-shell #toggleBtn.arrow-box {
+  position: absolute;
+  z-index: 1;
+  pointer-events: auto;
+  box-sizing: border-box;
+  width: var(--pgs-toggle-w) !important;
+  height: var(--pgs-toggle-h) !important;
+  padding: var(--pgs-toggle-pad) !important;
+  padding-top: var(--pgs-toggle-pad-top) !important;
+  border-radius: var(--pgs-toggle-radius) !important;
+  font-size: var(--pgs-toggle-font) !important;
+  left: clamp(16px, 8vw, 116px);
+  top: var(--pgs-toggle-top);
+  transform-origin: top left;
+}
+
+[data-legacy-page] #toggleBtn.arrow-box i,
+.developer-student-shell #toggleBtn.arrow-box i {
+  font-size: var(--pgs-toggle-font) !important;
+}
+
+@media (min-width: 1367px) {
+  [data-legacy-page] #toggleBtn.arrow-box,
+  .developer-student-shell #toggleBtn.arrow-box {
+    left: var(--pgs-toggle-left-desk);
+    /* Extra desk compact (was under Hostinger zoom) — keep */
+    transform: scale(0.9);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  [data-legacy-page] #toggleBtn.arrow-box,
+  .developer-student-shell #toggleBtn.arrow-box {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 600px) {
+  [data-legacy-page] #toggleBtn.arrow-box,
+  .developer-student-shell #toggleBtn.arrow-box {
+    width: 32px !important;
+    height: 60px !important;
+    padding: 0 7px !important;
+    border-radius: 10px !important;
+    font-size: 9px !important;
+    transform: scale(1.4);
+    top: 20px !important;
+  }
+
+  [data-legacy-page] #toggleBtn.arrow-box i,
+  .developer-student-shell #toggleBtn.arrow-box i {
+    font-size: 9px !important;
+  }
+}
+
+/* Toggle column reserve */
+[data-legacy-page] .mobile-frame-sidebar .row > .col-xl-1.col-lg-1,
+.developer-student-shell .mobile-frame-sidebar .row > .col-xl-1.col-lg-1 {
+  min-height: var(--pgs-chrome-strip-pull);
+}
+
+/* Body start — strip-tied pull (aesthetic hero align with closed toggle) */
+[data-legacy-page] .wrapper-content > section.about-section.minus-5:first-of-type,
+.developer-student-shell .wrapper-content > section.about-section.minus-5:first-of-type {
+  margin-top: calc(-1 * var(--pgs-chrome-strip-pull)) !important;
+}
+
+/* Strip tools clickable */
+[data-legacy-page] .mobile-frame-sidebar #univMeet,
+[data-legacy-page] .mobile-frame-sidebar a.pgs-univmeet,
+[data-legacy-page] .mobile-frame-sidebar .pgs-search,
+[data-legacy-page] .mobile-frame-sidebar .avatar-box,
+.developer-student-shell .mobile-frame-sidebar #univMeet,
+.developer-student-shell .mobile-frame-sidebar a.pgs-univmeet,
+.developer-student-shell .mobile-frame-sidebar .pgs-search,
+.developer-student-shell .mobile-frame-sidebar .avatar-box {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+[data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.pgs-univmeet .pgs-univmeet__label {
+  font-size: var(--pgs-univmeet-label);
+}
+
+@media (min-width: 1367px) {
+  [data-legacy-page] section.mobile-frame-sidebar .row {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-1 {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-5 {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none {
+    position: static !important;
+    top: auto;
+    right: auto;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 12px;
+    margin-left: auto !important;
+    z-index: 5;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none > .d-flex {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.pgs-univmeet {
+    box-sizing: content-box;
+    height: var(--pgs-univmeet-bar-h);
+    min-height: var(--pgs-univmeet-bar-h);
+    align-items: center;
+  }
+
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none .pgs-univmeet__chip {
+    min-height: var(--pgs-univmeet-date-min-h);
+  }
+}
+
+@media (max-width: 1366px) {
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none {
+    display: none !important;
+  }
+}
+
+/* Drawer #univMeet + search (≤1366) */
+#drawer .pgs-drawer-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 12px 14px;
+  position: relative;
+  z-index: 2;
+}
+
+#drawer .pgs-drawer-univmeet {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ebf7ff;
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-sizing: content-box;
+  height: var(--pgs-univmeet-bar-h);
+  min-height: var(--pgs-univmeet-bar-h);
+  margin-top: 12px;
+  margin-bottom: 12px;
+  overflow: visible;
+  color: #000;
+}
+
+#drawer .pgs-drawer-univmeet__label {
+  flex: 1 1 auto;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: var(--pgs-univmeet-label);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+#drawer .pgs-drawer-univmeet__date {
+  flex-shrink: 0;
+  width: 54px;
+  min-height: var(--pgs-univmeet-date-min-h);
+  background: #d9f1fd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #eb0801;
+  line-height: 1.05;
+  text-align: center;
+  padding: 4px 6px;
+}
+
+#drawer .pgs-drawer-univmeet__day,
+#drawer .pgs-drawer-univmeet__month {
+  font-size: var(--pgs-univmeet-label);
+  font-weight: 500;
+}
+
+#drawer .pgs-drawer-search {
+  width: 100%;
+  margin: 20px 0 0;
+  position: relative;
+  z-index: 5;
+}
+
+#drawer .pgs-drawer-search .pgs-search__group {
+  width: 100%;
+  margin: 0;
+}
+
+#drawer .pgs-drawer-search .pgs-search__input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  min-height: 32px;
+  border-radius: 999px !important;
+  padding-left: 36px;
+  font-size: 13px;
+}
+
+/* Open #sidebar — same origin as closed #toggleBtn */
+@media (max-width: 600px) {
+  [data-legacy-page] #sidebar.active {
+    top: 20px !important;
+    left: clamp(16px, 8vw, 116px) !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    width: 310px !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: calc(100dvh - 56px) !important;
+    padding: 24px !important;
+    box-sizing: border-box;
+    transform: none;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  [data-legacy-page] #sidebar.active > ul {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  [data-legacy-page] #sidebar.active h5 {
+    font-size: clamp(32px, 8vw, 40px) !important;
+    line-height: 1.05 !important;
+  }
+
+  [data-legacy-page] #sidebar.active ul li a {
+    font-size: 22px !important;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 4px !important;
+  }
+
+  [data-legacy-page] #sidebar.active ul li .fit-icon-sidebar {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  [data-legacy-page] #sidebar.active .mt-30 {
+    margin-top: 16px !important;
+  }
+
+  [data-legacy-page] #sidebar.active .mt-30 a,
+  [data-legacy-page] #sidebar.active .mt-30 .text-black.fs-20 {
+    font-size: 18px !important;
+  }
+
+  [data-legacy-page] #sidebar.active #close_Btn.flot-arrow-sidebar {
+    right: 34px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  [data-legacy-page] #sidebar.active {
+    top: var(--pgs-toggle-top) !important;
+    left: clamp(16px, 8vw, 116px) !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    width: 350px !important;
+    max-width: none !important;
+    padding: 30px !important;
+    box-sizing: border-box;
+    transform: none;
+  }
+}
+
+@media (min-width: 1367px) {
+  [data-legacy-page] #sidebar.active {
+    top: var(--pgs-toggle-top) !important;
+    left: var(--pgs-toggle-left-desk) !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+/*
+ * OWN-H companion bake — only when React gated header killed Hostinger zoom.
+ * Formula: design_px × 0.9. Mobile toggle keep owner QC ratios (×0.9 of 32/60/20/9).
+ */
+html:has(header.pgs-figma-header[data-pgs-header-gate]) {
+  --pgs-chrome-strip-pull: clamp(79px, 11vw, 141px);
+  --pgs-toggle-w: 74px;
+  --pgs-toggle-h: 141px;
+  --pgs-toggle-radius: 14px;
+  --pgs-toggle-font: 22px;
+  --pgs-toggle-pad: 14px;
+  --pgs-toggle-pad-top: 27px;
+  --pgs-toggle-top: 36px;
+  --pgs-toggle-left-desk: 126px;
+  --pgs-univmeet-bar-h: 32px;
+  --pgs-univmeet-date-min-h: 43px;
+  --pgs-univmeet-label: 16px;
+}
+
+html:has(header.pgs-figma-header[data-pgs-header-gate]) #drawer .pgs-drawer-tools {
+  padding: 7px 11px 13px;
+}
+
+html:has(header.pgs-figma-header[data-pgs-header-gate]) #drawer .pgs-drawer-univmeet {
+  gap: 5px;
+  border-radius: 9px;
+  padding: 5px 7px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+
+html:has(header.pgs-figma-header[data-pgs-header-gate]) #drawer .pgs-drawer-univmeet__date {
+  width: 49px;
+  border-radius: 7px;
+}
+
+html:has(header.pgs-figma-header[data-pgs-header-gate]) #drawer .pgs-drawer-search {
+  margin-top: 18px;
+}
+
+html:has(header.pgs-figma-header[data-pgs-header-gate]) #drawer .pgs-drawer-search .pgs-search__input {
+  height: 29px;
+  min-height: 29px;
+  padding-left: 32px;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    #toggleBtn.arrow-box,
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    .developer-student-shell
+    #toggleBtn.arrow-box {
+    width: 29px !important;
+    height: 54px !important;
+    padding: 0 6px !important;
+    border-radius: 9px !important;
+    font-size: 8px !important;
+    top: 18px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    #toggleBtn.arrow-box
+    i,
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    .developer-student-shell
+    #toggleBtn.arrow-box
+    i {
+    font-size: 8px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate]) [data-legacy-page] #sidebar.active {
+    top: 18px !important;
+    width: 279px !important;
+    padding: 22px !important;
+    max-height: calc(100dvh - 50px) !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  html:has(header.pgs-figma-header[data-pgs-header-gate]) [data-legacy-page] #sidebar.active {
+    width: 315px !important;
+    padding: 27px !important;
+  }
+}

@@ -1,0 +1,647 @@
+/* PASS 14c · 1:1 copy · UNLINKED · do not edit values
+   Source: public/assets/css/style.css lines 40113-40823 (PGS-D tail, after the 767px mobile block that closes at 39912)
+   Contents: premium modal (.modal-overlay, .panel-left/right, fields, toggles, CTA), .pgs-modal variants, @media 600px / 756px, .newarrow-singup, .modal-usa
+   Method (owner lock 2026-09-25): rules copied verbatim, same numbers, original order, html{zoom:0.9} kept (split/pgs-owned-00-zoom.css).
+   Media queries in this range copied VERBATIM (360 / 320 / 600 / 756px) — owner to decide 756px separately (site bands ≤600 / 601–1366 / >1366).
+   Dead rules (no selector token anywhere in site) → parked/pgs-owned-parked-31.css with source lines; cut points marked below.
+   Live routes do NOT import this file; only split/pgs-owned-split.css does, and nothing imports that yet (OWN-LINK later). */
+
+
+
+  /* ── MODAL OVERLAY ── */
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40117-40124) */
+
+  @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+  /* ── MODAL CARD ── */
+  .modal {
+    /*grid-template-columns: 320px 1fr;*/
+    /*width: min(740px, 100%);*/
+    /*border-radius: 20px;*/
+    /*overflow: hidden;*/
+    /*box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.07);*/
+    animation: slideUp 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+   
+  .modal-backdrop
+  {
+          width: 100%;
+    height: 100%;
+  }
+  @keyframes slideUp {
+    from { opacity:0; transform: translateY(30px) scale(0.97) }
+    to   { opacity:1; transform: translateY(0) scale(1) }
+  }
+
+  /* ── LEFT PANEL ── */
+  .panel-left {
+        background: #150035;
+    padding: 36px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    border-radius: 20px !important;
+    overflow: hidden;
+  }
+
+  .panel-left::before {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .heart-badge {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 17px;
+  }
+
+  .sub-label {
+   font-size: 24px;
+    color: var(--white);
+        text-indent: 16px;
+    margin-top: -9px;
+    opacity: 0.9;
+  }
+
+  .tagline {
+    margin-bottom: 50px;
+    font-size: 16px;
+    line-height: 20px !important;
+    color: rgba(255, 255, 255, 0.72);
+    letter-spacing: 0.3px;
+  }
+
+  .boost-wrap {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40212-40218) */
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40220-40223) */
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40225-40230) */
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40232-40237) */
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1) rotate(-4deg) }
+    50%      { transform: scale(1.04) rotate(2deg) }
+  }
+
+  /* ── RIGHT PANEL ── */
+  .panel-right {
+height: 91%;
+    padding: 20px 30px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background : white;
+    gap: 20px;
+    border: 2px solid #000000;
+    width: 53%;
+    border-radius: 0px 20px 20px 4px;
+    border-left: none;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+    color: black;
+    font-size: 20px;
+  }
+  .close-btn:hover { background: #f0f0f5; color: #333; }
+
+  /* ── INPUT FIELDS ── */
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .field label .req { color: #e53935; font-size: 13px; }
+  .field label .opt { color: var(--gray-mid); font-weight: 400; font-size: 12px; }
+
+  .field input {
+    border: none;
+    border-bottom: 2px solid #000000;
+    padding: 7px 0;
+    font-size: 14px;
+    color: black !important;
+    background: transparent;
+    transition: border-color 0.2s;
+    padding-left: 15px;
+  }
+  
+
+  .field input:focus { border-color: var(--purple); }
+  .field input::placeholder { color: #000000 !important; font-size: 15px; font-weight : 500; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+
+  /* ── TOGGLE ROWS ── */
+  .toggle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .toggle-row span {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 400;
+  }
+
+  /* Toggle switch */
+  .toggle {
+    position: relative;
+    width: 42px; height: 24px;
+    flex-shrink: 0;
+  }
+
+  .toggle input { display: none; }
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40356-40361) */
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40363-40371) */
+
+  .toggle input:checked ~ .toggle-track { background: var(--green); }
+  .toggle input:checked ~ .toggle-thumb { transform: translateX(18px); }
+
+  /* ── SELECT DROPDOWN ── */
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40377-40381) */
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40383-40397) */
+
+  /* parked → parked/pgs-owned-parked-31.css (style.css:40399-40407) */
+
+  /* ── DIVIDER ── */
+  .divider {
+height: 2px;
+    background: black;
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    padding-top: 2px;
+  }
+
+  .cta-btn {
+    background: none;
+    border: none;
+    font-size: 19px;
+    font-weight: 500;
+    color: #0400FF;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.2s, gap 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: #f0f4ff;
+    gap: 14px;
+  }
+
+  .cta-btn .arrow {
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+
+  .cta-btn:hover .arrow { transform: translateX(4px); }
+
+  /* ── SUCCESS MESSAGE ── */
+  .success-msg {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .success-msg .checkmark { font-size: 48px; }
+  .success-msg h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); }
+  .success-msg p { font-size: 13.5px; color: #666; line-height: 1.6; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .modal { grid-template-columns: 1fr; }
+    .panel-left { padding: 28px 24px; background: #150035; }
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40468-40468) */
+    .boost-wrap { margin-top: 20px; }
+    .panel-right { padding: 24px 22px 22px; }
+  }
+  
+  .pgs-modal .premium-modal-container
+  {  
+    padding: 0px !important;
+    background: transparent;
+    max-width: 800px;
+    box-shadow : none !important;
+    border-radius: 0px !important;
+    align-items: center;
+  }
+
+   .pgs-modal .panel-left
+   {
+       width: 377px !important;
+   }
+   .pgs-modal .brand-title {
+    font-size: 64px;
+    color: var(--white);
+        margin-bottom: -20px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.modal-btn-pgs
+{
+background: #FFC524;
+    border: 1px solid #000000;
+    box-shadow: 2px 2px 0px 0px #000000 !important;
+    height: 26px !important;
+    width: 65% !important;
+    line-height: 24px;
+    color : black !important;
+    font-size: 16px !important;
+    padding: 2px !important;
+}
+
+  .pgs-modal .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 23px;
+}
+
+.pgs-modal .slider:before
+{
+left: 4px;
+    height: 19px;
+    width: 19px;
+    bottom: 2px;
+}
+
+
+.pgs-modal .toggle-switch input:checked+.slider:before {
+    transform: translateX(17px);
+}
+
+.pgs-modal-2
+{
+    border : 4px solid black; border-radius : 20px !important; justify-content: space-evenly; height : 619px;
+}
+#joinPremiumModal .panel-right
+{
+    padding: 70px 29px 95px;
+}
+
+.cursor-pointer
+{
+    cursor : pointer;
+}
+
+/* parked → parked/pgs-owned-parked-31.css (style.css:40542-40545) */
+.ht-full-pgs-modal-1
+{
+    padding: 55px 30px 100px;
+}
+
+
+
+ #joinPremiumModal.pgs-modal .divider {
+        height: 2px;
+        background: black;
+        margin-top: 20px !important;
+}
+    
+
+#joinPremiumModal .section-label
+{
+        margin-bottom: 10px !important;
+}
+
+
+.modal-email-1
+{
+    padding-left: 5px !important;
+    height: 30px;
+    font-size: 18px;
+    width: 100% !important;
+    color: black !important;
+}
+
+.modal-pgsamc .panel-right
+{
+    padding: 160px 30px 100px;
+}
+.pgs-modal-uni .panel-right
+{
+    padding: 80px 30px 100px;
+}
+
+.pgs-modalSc .panel-right
+{
+        padding: 80px 30px 70px;
+}
+#REFRapplicantPremiumModal .panel-right
+{
+        padding: 130px 30px 130px;
+}
+
+
+
+  @media (max-width: 756px) {
+      
+      .pgs-modal-uni-2 .mb-50-uni
+      {
+        margin-bottom: -100px !important;
+      }
+     .modal-pgsamc-2 .mobile-bottom-50
+      {
+             margin-bottom: -290px;
+      }
+     .pgs-modal-uni .mobile-bottom-50
+      {
+             margin-bottom: -290px;
+      }
+      .modal-modal-uni .panel-right
+      {
+         padding : 24px !important;
+      }
+      .pgs-modalamc .panel-right
+      {
+         padding : 24px !important;
+      }
+      .modal-pgsamc .panel-right
+      {
+         padding : 24px !important;
+      }
+      .modal-pgsamc-2 .w-180px
+      {
+          margin : auto !important;
+      }
+       .modal-pgsamc .w-180px {
+        width: 69% !important;
+        text-align: justify;
+        margin: auto;
+    }
+              /* parked → parked/pgs-owned-parked-31.css (style.css:40630-40633) */
+
+    .mobile-applicant .premium-modal-container{
+             display: block !important;
+        width: 100% !important;
+        max-height: 100vh !important;
+    }
+    .pgs-modal .brand-title {
+            margin-bottom: 0px;
+    font-size: 48px !important;
+    }
+   .pgs-modal .boost-wrap img
+   {
+      width: 170px;
+   }
+   .panel-right
+   {
+     padding: 24px 22px 22px;
+     width: 100% !important;
+     border-radius: 0px !important;
+   }
+   .premium-modal-overlay
+   {
+       padding: 15px !important;
+   }
+   
+   .pgs-modal .panel-left {
+    width: 100% !important;
+    position: relative;
+    z-index: 1;
+   }
+  .panel-right
+  {
+        border: 4px solid black;
+        padding: 24px 22px 22px;
+        width: 94% !important;
+        border-radius: 0px 0px 20px 20px !important;
+        margin: auto;
+        margin-top: -5px;
+        position: relative;
+        z-index: 0;
+  }
+    .pgs-modal  .boost-wrap {
+        margin-top: -18px;
+        margin-bottom: -5px;
+    }
+    .pgs-modal .divider {
+    height: 2px;
+    background: black;
+    margin-top: -18px;
+}
+.pgs-modal .close-btn
+{
+    color: white !important;
+}
+
+#applicantPremiumModal2.pgs-modal .w-180px
+ {
+     width: 56% !important;
+    text-align: justify;
+ }
+#applicantPremiumModal2.pgs-modal .premium-modal-container
+{
+        display: flex !important;
+        text-align: center;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        flex-wrap: wrap;
+        padding-top: 81px !important;
+        padding-bottom: 80px !important;
+}
+
+#applicantPremiumModal2.pgs-modal .close-btn {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+#REFRapplicantPremiumModal2.pgs-modal .w-180px
+ {
+     width: 56% !important;
+    text-align: justify;
+ }
+#REFRapplicantPremiumModal2.pgs-modal .premium-modal-container
+{
+        display: flex !important;
+        text-align: center;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        flex-wrap: wrap;
+        padding-top: 81px !important;
+        padding-bottom: 80px !important;
+}
+
+#REFRapplicantPremiumModal2.pgs-modal .close-btn {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+#USMLapplicantPremiumModal2.pgs-modal .w-180px
+ {
+     width: 56% !important;
+    text-align: justify;
+ }
+#USMLapplicantPremiumModal2.pgs-modal .premium-modal-container
+{
+        display: flex !important;
+        text-align: center;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        flex-wrap: wrap;
+        padding-top: 81px !important;
+        padding-bottom: 80px !important;
+}
+
+#USMLapplicantPremiumModal2.pgs-modal .close-btn {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+    
+#joinPremiumModal2.pgs-modal .w-180px
+ {
+     width: 56% !important;
+    text-align: justify;
+ }
+#joinPremiumModal2.pgs-modal .premium-modal-container
+{
+        display: flex !important;
+        text-align: center;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        flex-wrap: wrap;
+        padding-top: 156px !important;
+        padding-bottom: 175px !important;
+}
+
+#joinPremiumModal2.pgs-modal .close-btn {
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+
+     #joinPremiumModal.pgs-modal .modal-btn-pgs {
+    background: #FFC524;
+    border: 1px solid #000000;
+    box-shadow: 2px 2px 0px 0px #000000;
+    height: 29px !important;
+    width: 60% !important;
+    line-height: 26px;
+    font-size: 16px !important;
+}   
+       .mobile-flow-arrow img
+      {
+		      width: 100px !important;
+				top: 83px !important;
+				left: -128px !important;
+				transform: rotate(304deg) !important;
+	  }
+
+	  .mobile-flow-arrow h5
+	  {
+		      width: 49% !important;
+			font-size: 35px;
+			margin: auto !important;
+			text-align: start !important;
+			line-height: 38px;
+			margin-top: 73px !important;
+	  }
+
+ }
+ 
+
+
+.newarrow-singup
+{
+	    position: absolute;
+    left: 0;
+    right: 36%; 
+    margin: auto;
+    top: 0;
+    transform: rotate(333deg);
+}
+
+
+
+.modal-usa .panel-left {
+    width: 377px !important;
+    margin: auto;
+}
+
+
+
+

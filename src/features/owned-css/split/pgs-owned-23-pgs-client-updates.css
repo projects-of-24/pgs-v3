@@ -1,0 +1,58 @@
+/* PASS 12 · 1:1 copy · UNLINKED · do not edit values; UI-pass changes come later
+   Source: public/assets/css/style.css lines 33269-33419 (PGS custom client updates (after html zoom, before the 767px block))
+   Parked (dead, no EXACT class-name match in site): 7 rules → parked/pgs-owned-parked-23.css
+   Kept live regardless of grep: runtime classes (.mfp-* .swiper-* .isotope* .jg-* .accordion* .tab-* .nav-tabs* .modal*), attribute selectors,
+   classes added at runtime by public/assets/js (main.js, vendors.min.js, pgs-*.js), keyframes referenced by live animations.
+   url() rewrites: none in this range.
+   LOAD ORDER: in style.css this block sits directly after html{zoom:0.9} (33264-33268, owned by pgs-owned-00-zoom.css).
+   The split barrel imports this file AFTER pgs-owned-00-zoom.css to preserve source order. */
+.accordion-body p
+{
+    line-height: 1.0 !important;
+    font-size: 16px !important;
+}
+.fs-12 {
+    line-height: 1.0 !important;
+    font-size: 16px !important;
+}
+.fs-14 {
+  font-size: 15px !important;
+}
+
+.btn.btn-purple.mt-1.bg-black-btn.fs-11.mt-1.mb-0
+{ 
+ font-size: 13px !important;
+}
+
+/* parked → parked/pgs-owned-parked-23.css (style.css:33287) */
+.mobile-block{
+    display : none;
+}
+.sinup-box.d-flex
+{
+        z-index: 100;
+}
+@media (min-width: 768px) {
+.desktop-none{
+    display : none !important;
+}
+}
+/* parked → parked/pgs-owned-parked-23.css (style.css:33304) */
+.lh-25 {
+    line-height: 25px !important;
+}
+
+/* parked → parked/pgs-owned-parked-23.css (style.css:33323-33354, 4 consecutive rules) */
+.sop-learn-btn
+{
+    border  :1px solid transparent !important;
+}
+.sop-learn-btn:hover
+{
+    color : #8D66FF !important;
+    background : white !important;
+    border : 1px solid #8D66FF !important;
+}
+
+/* parked → parked/pgs-owned-parked-23.css (style.css:33366) */
+/*custom css*/

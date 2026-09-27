@@ -2,6 +2,8 @@
  * Owned public strip under the locked header.
  * Ports Hostinger strip DOM (#toggleBtn, #univMeet, search, sidebar slot, login popup)
  * so LOCKED globals.css chrome selectors keep working — then Hostinger strip HTML can go.
+ *
+ * OWN-T CSS (`pgs-owned-strip.css`) = UNLINKED workshop (OWN-UNLINK). Do not import here.
  */
 import type { UnivMeetPublic } from "./univmeet-slots";
 import { UNIVMEET_FALLBACK_CHIPS } from "./univmeet-slots";
@@ -22,11 +24,11 @@ function chipHtml(chips: UnivMeetPublic["chips"]): string {
     .slice(0, 2)
     .map(
       (c) => `
-                            <div class="box-date-info" style="display:flex;flex-direction:column;align-items:center;background:#ddeeff;border-radius:8px;padding:6px 12px;min-width:54px;">
-                                <span class="date" style="font-size:26px;     margin-bottom: -5px;font-weight:700;color:#d0021b;line-height:1;white-space:nowrap;display:block;">
+                            <div class="pgs-univmeet__chip">
+                                <span class="pgs-univmeet__day">
                                     ${escapeHtml(c.day)}
                                 </span>
-                                <span class="month" style="white-space:nowrap;">
+                                <span class="pgs-univmeet__month">
                                     ${escapeHtml(c.monthLine)}
                                 </span>
                             </div>`,
@@ -62,7 +64,6 @@ export function applyUnivMeetToHeaderHtml(
     `<a
       href="${href}"
       class="pgs-drawer-univmeet"
-      style="text-decoration:none;cursor:pointer;"
     >
       <span class="pgs-drawer-univmeet__label">#univMeet</span>${dates}
     </a>`,
@@ -248,16 +249,16 @@ export function buildPublicStripHtml(univMeet?: UnivMeetPublic): string {
 
             <div class="col-xl-4 justify-content-end col-lg-4 d-flex gap-7 mobile-none" style="width: 37%;">
                 <div class="d-flex align-items-start gap-3">
-                    <a href="${href}" class="date-box" id="univMeet" style="text-decoration:none;cursor:pointer;display:flex;align-items:center;gap:8px;background:#f0f4ff;border-radius:10px;padding:8px 12px;">
-                        <h5 style="white-space:nowrap;">#univMeet</h5>
+                    <a href="${href}" class="pgs-univmeet" id="univMeet">
+                        <h5 class="pgs-univmeet__label">#univMeet</h5>
                         ${chipHtml(meet.chips)}
                     </a>
-                    <div class="search-box" style="position: relative;">
-                        <div class="input-group">
-                            <span><i class="bi bi-search"></i></span>
-                            <input type="search" class="search-control" placeholder="Search" data-autocomplete-endpoint="/Search/autocomplete" data-pgs-autocomplete="1" autocomplete="off" aria-label="Search programs, courses, and events">
+                    <div class="pgs-search search-box">
+                        <div class="pgs-search__group">
+                            <span class="pgs-search__icon"><i class="bi bi-search"></i></span>
+                            <input type="search" class="pgs-search__input search-control" placeholder="Search" data-autocomplete-endpoint="/Search/autocomplete" data-pgs-autocomplete="1" autocomplete="off" aria-label="Search programs, courses, and events">
                         </div>
-                        <div class="pgs-autocomplete" style="position: absolute; left: 0px; right: 0px; top: 100%; margin-top: 6px; background: rgb(255, 255, 255); border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 25px; z-index: 9999; overflow: hidden; display: none;"></div>
+                        <div class="pgs-autocomplete"></div>
                     </div>
                 </div>
             </div>

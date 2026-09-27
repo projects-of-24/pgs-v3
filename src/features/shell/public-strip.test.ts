@@ -16,8 +16,8 @@ describe("public strip", () => {
     });
     expect(html).toContain('id="toggleBtn"');
     expect(html).toContain("mobile-frame-sidebar");
-    expect(html).toContain('class="date-box"');
-    expect(html).toContain("search-box");
+    expect(html).toContain('class="pgs-univmeet"');
+    expect(html).toContain("pgs-search");
     expect(html).toContain("data-pgs-autocomplete");
     expect(html).toContain("Sep 12");
     expect(html).toContain("Sep 18");
@@ -32,7 +32,7 @@ describe("public strip", () => {
   it("patches drawer univMeet dates", () => {
     const header = `
   <div class="pgs-drawer-tools">
-    <a href="/Programsfull" class="pgs-drawer-univmeet" style="text-decoration:none;cursor:pointer;">
+    <a href="/Programsfull" class="pgs-drawer-univmeet">
       <span class="pgs-drawer-univmeet__label">#univMeet</span>
       <span class="pgs-drawer-univmeet__date" aria-hidden="true">
         <span class="pgs-drawer-univmeet__day">31</span>

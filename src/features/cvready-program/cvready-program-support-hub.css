@@ -1,0 +1,24 @@
+/**
+ * CV Ready SupportHub wrap — CR12.
+ * Shared `.support-hub` owns the Figma chrome; this only spaces the block in the page.
+ */
+
+.cvready-program-support-hub {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.cvready-program-support-hub .support-hub {
+  /* Shared default margin-top 52; keep snug under OutroCta. */
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 1367px) {
+  .cvready-program-support-hub .support-hub {
+    margin-top: 24px;
+    margin-bottom: 64px;
+  }
+}

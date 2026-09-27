@@ -1,0 +1,366 @@
+/* PASS 15 · 1:1 copy · UNLINKED · do not edit values
+   Source: public/assets/css/responsive.css lines 20365-21642 (Crafto responsive elements, blog/portfolio/shop, footer (max-height 380, 1600 / 1399 / 1199 / 991 / 767 / 575))
+   Method (owner lock 2026-09-25): rules copied verbatim, same numbers, original order, html{zoom:0.9} kept (split/pgs-owned-00-zoom.css).
+   Owner decision 2026-09-26: every wrapper @media (max-width: 767px) → @media (max-width: 600px) (same as P13; 601–767px now gets iPad/desk rules).
+   575 / 991 / 1199 / 1399 / 1600 / min-width 992 / min-width 1400 / max-height 380 wrappers copied VERBATIM. No url(), no nested @media in this range.
+   Dead rules (no class/id token anywhere in site) → parked/pgs-owned-parked-43.css with source lines; cut points marked below.
+   Wrapper kept live if any inner rule is live. Live routes do NOT import this file; only split/pgs-owned-split.css does, and nothing imports that yet (OWN-LINK later). */
+
+/* PASS 15 cut: whole wrapper @media (max-height: 380px) (7 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20365-20391) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20392-20396) */
+@media (max-width: 600px) {
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:20398-20401) */
+  .page-title-extra-small h2 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:20406-20409) */
+}
+@media (max-width: 575px) {
+  .breadcrumb ul li:after {
+    padding: 0 6px 0 8px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:20415-20417) */
+}
+@media (max-width: 1600px) {
+  /* PASS 15 cut: 4 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20420-20431) */
+  .grid.xxl-grid-4col li {
+    width: 25%;
+  }
+  /* PASS 15 cut: 7 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20435-20455) */
+}
+@media (max-width: 1399px) {
+  /* PASS 15 cut: 6 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20458-20475) */
+  .grid.xl-grid-3col li {
+    width: 33.33%;
+  }
+  /* PASS 15 cut: 5 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20479-20493) */
+}
+@media (max-width: 1199px) {
+  /* PASS 15 cut: 8 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20496-20519) */
+  .grid.lg-grid-2col li {
+    width: 50%;
+  }
+  /* PASS 15 cut: 3 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20523-20531) */
+}
+@media (max-width: 991px) {
+  /* PASS 15 cut: 8 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20534-20557) */
+  .grid.md-grid-2col li {
+    width: 50%;
+  }
+  /* PASS 15 cut: 3 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20561-20569) */
+}
+@media (max-width: 600px) {
+  /* PASS 15 cut: 10 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20572-20601) */
+  .grid.sm-grid-1col li {
+    width: 100%;
+  }
+  /* PASS 15 cut: 3 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20605-20613) */
+  .grid.gutter-extra-large li {
+    padding: 15px;
+  }
+  .grid.gutter-extra-large {
+    margin: 0 -15px;
+  }
+  /* PASS 15 cut: 5 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20620-20634) */
+}
+@media (max-width: 575px) {
+  /* PASS 15 cut: 10 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20637-20666) */
+  .grid.xs-grid-1col li {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .accordion-style-04 .accordion-item .accordion-header {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .accordion-style-04 .accordion-item .accordion-body {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .accordion-style-02 .accordion-item .accordion-body {
+    padding-bottom: 25px;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20683-20688) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (4 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20690-20703) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1399px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20704-20711) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20712-20720) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20721-20728) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20729-20734) */
+@media (max-width: 600px) {
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:20736-20739) */
+  .btn.btn-large {
+    font-size: 13px;
+    padding: 16px 36px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:20744-20746) */
+  .btn.btn-rounded.btn-large {
+    padding: 12px 30px;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20750-20755) */
+  .btn.btn-link {
+    padding: 0 0 2px;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20759-20764) */
+  .btn.btn-switch-text.btn-large {
+    padding: 0;
+  }
+  /* PASS 15 cut: 3 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20768-20776) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20778-20785) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20786-20793) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20794-20801) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20802-20811) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20812-20819) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (8 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20820-20852) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20853-20857) */
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20858-20862) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (5 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20863-20883) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (6 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20884-20906) */
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20907-20911) */
+@media (max-width: 991px) {
+  #map {
+    height: 450px;
+  }
+}
+@media (max-width: 575px) {
+  #map {
+    height: 420px;
+  }
+  .infowindow {
+    padding: 20px 20px 20px 20px !important;
+  }
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20925-20929) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20930-20937) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (3 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:20938-20949) */
+@media (max-width: 600px) {
+  .feature-box.feature-box-left-icon .feature-box-icon, .feature-box.feature-box-left-icon-middle .feature-box-icon {
+    margin-right: 20px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:20954-20957) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20959-20963) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:20964-20968) */
+@media (max-width: 1199px) {
+  button.mfp-close,
+  .mfp-image-holder button.mfp-close,
+  .mfp-iframe-holder button.mfp-close,
+  .subscribe-popup .mfp-close,
+  .subscribe-popup .mfp-close:active,
+  .mfp-gallery button.mfp-close,
+  .mfp-iframe-holder ~ button.mfp-close,
+  button.mfp-close:active {
+    right: 10px;
+    top: 10px;
+  }
+}
+@media (max-width: 991px) {
+  .mfp-container {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+@media (max-width: 600px) {
+  .mfp-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:20993-20998) */
+}
+@media (max-width: 1199px) {
+  [data-parallax-background-ratio],
+  .fix-background {
+    background-attachment: inherit !important;
+    background-position: center !important;
+  }
+}
+.is-touchable [data-parallax-background-ratio] {
+  background-attachment: inherit !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21013-21021) */
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (6 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21022-21044) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:21045-21049) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21050-21062) */
+@media (max-width: 1199px) {
+  .sliding-box .sliding-box-item {
+    width: 33.33% !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 15px;
+    box-shadow: none;
+  }
+  .sliding-box .sliding-box-item .sliding-box-content {
+    width: 100% !important;
+    left: 0 !important;
+    position: relative;
+    height: auto;
+  }
+  .sliding-box .sliding-box-item.active .sliding-box-content {
+    border-radius: 0;
+  }
+  .sliding-box .sliding-box-item.active .sliding-box-img {
+    border-radius: 0;
+  }
+  .sliding-box .sliding-box-img {
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21087-21099) */
+}
+@media (max-width: 991px) {
+  .sliding-box {
+    justify-content: center;
+  }
+  .sliding-box .sliding-box-item {
+    width: 50% !important;
+  }
+}
+@media (max-width: 600px) {
+  .sliding-box .sliding-box-item {
+    width: 100% !important;
+    padding: 0;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21114-21120) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:21122-21126) */
+@media (max-width: 600px) {
+  .elements-social ul li {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 575px) {
+  .large-icon li, .medium-icon li, .extra-large-icon li {
+    margin: 0 6px;
+  }
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (8 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21137-21167) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1399px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:21168-21172) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (2 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21173-21180) */
+@media (max-width: 991px) {
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21182-21184) */
+  .tab-style-03 .nav-tabs .nav-link {
+    padding: 10px 28px;
+    margin-bottom: 0;
+  }
+  .tab-style-03 .nav-tabs > li.nav-item {
+    padding: 0 5px;
+  }
+  /* PASS 15 cut: 4 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21192-21205) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (14 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21207-21261) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (5 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21262-21289) */
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (5 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21290-21306) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1600px) (3 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21307-21321) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:21322-21326) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (3 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21327-21337) */
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (7 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21338-21362) */
+@media (max-width: 1600px) {
+  .sticky-image-distortion-wrapper .menu {
+    padding-left: 30px;
+  }
+  /* PASS 15 cut: 4 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21367-21378) */
+}
+@media (max-width: 1399px) {
+  .threeD-letter-menu .menu-item .hover-reveal {
+    width: 320px;
+    height: 320px;
+  }
+  /* PASS 15 cut: 5 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21385-21399) */
+}
+@media (max-width: 1199px) {
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21402-21404) */
+  .threeD-letter-menu .menu-item .hover-reveal {
+    width: 320px;
+    height: 320px;
+  }
+  .sticky-image-distortion-wrapper .menu {
+    padding-top: 160px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21412-21414) */
+}
+@media (max-width: 991px) {
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21417-21422) */
+  .mousetip-wrapper .caption {
+    display: none !important;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21426-21428) */
+  .sticky-image-distortion-wrapper .menu .menu__link.active .svg-wrapper {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 600px) {
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21434-21440) */
+  .nav-tabs li {
+    padding: 0;
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .sticky-image-distortion-wrapper .menu {
+    padding: 130px 30px 30px 30px;
+    width: 100%;
+  }
+  .sticky-image-distortion-wrapper .menu .menu__link {
+    flex-direction: column;
+  }
+  .sticky-image-distortion-wrapper .menu .menu__link.active .svg-wrapper {
+    height: auto;
+    margin-top: 0;
+  }
+  .sticky-image-distortion-wrapper .menu .svg-wrapper {
+    position: relative;
+    right: 22px;
+    width: 100%;
+    height: 0;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21464-21469) */
+}
+@media (max-width: 575px) {
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21472-21474) */
+  .sticky-image-distortion-wrapper .menu {
+    padding: 130px 0 0 0;
+  }
+  .sticky-image-distortion-wrapper .menu .svg-wrapper {
+    right: 20px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21481-21483) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (1 dead rule) parked → parked/pgs-owned-parked-43.css (responsive.css:21485-21489) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (7 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21490-21516) */
+/* PASS 15 cut: whole wrapper @media (max-width: 600px) (12 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21517-21595) */
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (3 dead rules) parked → parked/pgs-owned-parked-43.css (responsive.css:21596-21608) */
+@media (max-width: 1600px) {
+  footer {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+@media (max-width: 991px) {
+  footer {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-43.css (responsive.css:21620-21625) */
+}
+@media (max-width: 600px) {
+  footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21632-21634) */
+  footer .elements-social li {
+    margin-bottom: 0;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-43.css (responsive.css:21638-21641) */
+}
+
+/* END OF LIVE responsive.css COPY (source line 21642).
+   responsive.css 21643-21693 (EOF) is a BROKEN TAIL: an unclosed `{` at source line 21650 makes browsers swallow every rule after it
+   (.wrapper-content .qd-heading / .grid-box-style-2 / .heading-up-event and a 767px .d-sm-none). Parked verbatim, never imported:
+   parked/pgs-owned-parked-44-broken-tail.css (owner decision 2026-09-26). */

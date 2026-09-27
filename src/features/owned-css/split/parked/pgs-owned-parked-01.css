@@ -1,0 +1,598 @@
+/* PASS 2 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 229-1131 range, 04. Typography)
+   Dead = class name(s) appear nowhere in src/**, scripts/**, public/assets/js/*.js
+   (no dynamic fs-/lh-/ls-/icon-/text- class generation found in templates).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:297 — no selector match in site (PASS 2 audit) */
+.text-white-space-nowrap {
+  white-space: nowrap;
+}
+
+/* parked from style.css:301 — no selector match in site (PASS 2 audit) */
+.text-white-space-normal {
+  white-space: normal;
+}
+
+/* parked from style.css:309 — no selector match in site (PASS 2 audit) */
+.text-uppercase-inherit {
+  text-transform: inherit !important;
+}
+
+/* parked from style.css:318 — no selector match in site (PASS 2 audit) */
+.word-break-normal {
+  word-break: normal;
+}
+
+/* parked from style.css:322 — no selector match in site (PASS 2 audit) */
+.vertical-align-top {
+  vertical-align: top;
+}
+
+/* parked from style.css:327 — no selector match in site (PASS 2 audit) */
+.fs-0 {
+  font-size: 0;
+}
+
+/* parked from style.css:419 — no selector match in site (PASS 2 audit) */
+.fs-55 {
+  font-size: 3.438rem;
+  line-height: 3.5rem;
+}
+
+/* parked from style.css:429 — no selector match in site (PASS 2 audit) */
+.fs-65 {
+  font-size: 4.063rem;
+  line-height: 4.688rem;
+}
+
+/* parked from style.css:434 — no selector match in site (PASS 2 audit) */
+.fs-70 {
+  font-size: 4.375rem;
+  line-height: 4.375rem;
+}
+
+/* parked from style.css:449 — no selector match in site (PASS 2 audit) */
+.fs-85 {
+  font-size: 5.313rem;
+  line-height: 5.313rem;
+}
+
+/* parked from style.css:469 — no selector match in site (PASS 2 audit) */
+.fs-110 {
+  font-size: 6.875rem;
+  line-height: 6.875rem;
+}
+
+/* parked from style.css:474 — no selector match in site (PASS 2 audit) */
+.fs-120 {
+  font-size: 7.5rem;
+  line-height: 7.5rem;
+}
+
+/* parked from style.css:479 — no selector match in site (PASS 2 audit) */
+.fs-130 {
+  font-size: 8.125rem;
+  line-height: 8.125rem;
+}
+
+/* parked from style.css:484 — no selector match in site (PASS 2 audit) */
+.fs-140 {
+  font-size: 8.75rem;
+  line-height: 8.75rem;
+}
+
+/* parked from style.css:489 — no selector match in site (PASS 2 audit) */
+.fs-150 {
+  font-size: 9.375rem;
+  line-height: 9.375rem;
+}
+
+/* parked from style.css:494 — no selector match in site (PASS 2 audit) */
+.fs-160 {
+  font-size: 10rem;
+  line-height: 10rem;
+}
+
+/* parked from style.css:499 — no selector match in site (PASS 2 audit) */
+.fs-170 {
+  font-size: 10.625rem;
+  line-height: 10.625rem;
+}
+
+/* parked from style.css:504 — no selector match in site (PASS 2 audit) */
+.fs-180 {
+  font-size: 11.25rem;
+  line-height: 11.25rem;
+}
+
+/* parked from style.css:509 — no selector match in site (PASS 2 audit) */
+.fs-190 {
+  font-size: 11.875rem;
+  line-height: 11.875rem;
+}
+
+/* parked from style.css:514 — no selector match in site (PASS 2 audit) */
+.fs-200 {
+  font-size: 12.5rem;
+  line-height: 12.5rem;
+}
+
+/* parked from style.css:519 — no selector match in site (PASS 2 audit) */
+.fs-225 {
+  font-size: 14.063rem;
+  line-height: 14.063rem;
+}
+
+/* parked from style.css:524 — no selector match in site (PASS 2 audit) */
+.fs-250 {
+  font-size: 15.625rem;
+  line-height: 15.625rem;
+}
+
+/* parked from style.css:529 — no selector match in site (PASS 2 audit) */
+.fs-275 {
+  font-size: 17.188rem;
+  line-height: 17.188rem;
+}
+
+/* parked from style.css:534 — no selector match in site (PASS 2 audit) */
+.fs-300 {
+  font-size: 18.75rem;
+  line-height: 18.75rem;
+}
+
+/* parked from style.css:544 — no selector match in site (PASS 2 audit) */
+.fs-400 {
+  font-size: 25rem;
+  line-height: 25rem;
+}
+
+/* parked from style.css:550 — no selector match in site (PASS 2 audit) */
+.lh-0px {
+  line-height: 0px;
+}
+
+/* parked from style.css:558 — no selector match in site (PASS 2 audit) */
+.lh-11 {
+  line-height: 11px;
+}
+
+/* parked from style.css:566 — no selector match in site (PASS 2 audit) */
+.lh-13 {
+  line-height: 13px;
+}
+
+/* parked from style.css:602 — no selector match in site (PASS 2 audit) */
+.lh-26 {
+  line-height: 26px;
+}
+
+/* parked from style.css:626 — no selector match in site (PASS 2 audit) */
+.lh-38 {
+  line-height: 2.375rem;
+}
+
+/* parked from style.css:638 — no selector match in site (PASS 2 audit) */
+.lh-44 {
+  line-height: 2.75rem;
+}
+
+/* parked from style.css:642 — no selector match in site (PASS 2 audit) */
+.lh-46 {
+  line-height: 2.875rem;
+}
+
+/* parked from style.css:654 — no selector match in site (PASS 2 audit) */
+.lh-55 {
+  line-height: 3.438rem;
+}
+
+/* parked from style.css:658 — no selector match in site (PASS 2 audit) */
+.lh-60 {
+  line-height: 3.75rem;
+}
+
+/* parked from style.css:666 — no selector match in site (PASS 2 audit) */
+.lh-70 {
+  line-height: 4.375rem;
+}
+
+/* parked from style.css:670 — no selector match in site (PASS 2 audit) */
+.lh-75 {
+  line-height: 4.688rem;
+}
+
+/* parked from style.css:678 — no selector match in site (PASS 2 audit) */
+.lh-85 {
+  line-height: 5.313rem;
+}
+
+/* parked from style.css:682 — no selector match in site (PASS 2 audit) */
+.lh-90 {
+  line-height: 5.625rem;
+}
+
+/* parked from style.css:686 — no selector match in site (PASS 2 audit) */
+.lh-95 {
+  line-height: 5.938rem;
+}
+
+/* parked from style.css:694 — no selector match in site (PASS 2 audit) */
+.lh-105 {
+  line-height: 6.563rem;
+}
+
+/* parked from style.css:698 — no selector match in site (PASS 2 audit) */
+.lh-110 {
+  line-height: 6.875rem;
+}
+
+/* parked from style.css:702 — no selector match in site (PASS 2 audit) */
+.lh-115 {
+  line-height: 7.188rem;
+}
+
+/* parked from style.css:706 — no selector match in site (PASS 2 audit) */
+.lh-120 {
+  line-height: 7.5rem;
+}
+
+/* parked from style.css:710 — no selector match in site (PASS 2 audit) */
+.lh-0 {
+  line-height: 0;
+}
+
+/* parked from style.css:714 — no selector match in site (PASS 2 audit) */
+.lh-normal {
+  line-height: normal;
+}
+
+/* parked from style.css:718 — no selector match in site (PASS 2 audit) */
+.lh-initial {
+  line-height: initial;
+}
+
+/* parked from style.css:722 — no selector match in site (PASS 2 audit) */
+.lh-inherit {
+  line-height: inherit;
+}
+
+/* parked from style.css:733 — no selector match in site (PASS 2 audit) */
+.text-base-color-hover:hover {
+  color: var(--base-color) !important;
+}
+
+/* parked from style.css:826 — no selector match in site (PASS 2 audit) */
+.text-majorelle-blue {
+  color: var(--majorelle-blue);
+}
+
+/* parked from style.css:830 — no selector match in site (PASS 2 audit) */
+.text-orange {
+  color: var(--orange);
+}
+
+/* parked from style.css:834 — no selector match in site (PASS 2 audit) */
+.text-crusoe-green {
+  color: var(--crusoe-green);
+}
+
+/* parked from style.css:838 — no selector match in site (PASS 2 audit) */
+.text-tropical-blue {
+  color: var(--tropical-blue);
+}
+
+/* parked from style.css:842 — no selector match in site (PASS 2 audit) */
+.text-camarone {
+  color: var(--camarone);
+}
+
+/* parked from style.css:846 — no selector match in site (PASS 2 audit) */
+.text-seal-brown {
+  color: var(--seal-brown);
+}
+
+/* parked from style.css:850 — no selector match in site (PASS 2 audit) */
+.text-Wasabi {
+  color: var(--Wasabi);
+}
+
+/* parked from style.css:855 — no selector match in site (PASS 2 audit) */
+.text-gradient-blue-magenta-orange,
+.text-gradient-light-gray-white,
+.text-gradient-light-purple-light-orange,
+.text-gradient-sky-blue-pink,
+.text-gradient-light-blue-light-turquoise,
+.text-gradient-fast-blue-purple-light-orange,
+.text-gradient-light-pink-light-purple,
+.text-gradient-fast-blue-purple,
+.text-gradient-pink-orange,
+.text-gradient-fast-pink-light-yellow,
+.text-gradient-purple-pink,
+.text-gradient-light-pink-light-orange {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* parked from style.css:871 — no selector match in site (PASS 2 audit) */
+.text-gradient-light-pink-light-orange {
+  background-image: linear-gradient(to right, #ffafbd, #ffb3b4, #ffb7ac, #ffbda5, #ffc3a0);
+}
+
+/* parked from style.css:875 — no selector match in site (PASS 2 audit) */
+.text-gradient-purple-pink {
+  background-image: linear-gradient(to right, #8b14b1, #ab019e, #c00c8b, #cd267b, #d53d6e);
+}
+
+/* parked from style.css:879 — no selector match in site (PASS 2 audit) */
+.text-gradient-fast-pink-light-yellow {
+  background-image: linear-gradient(to right, #f7567f, #fe7177, #ff8a74, #ffa378, #ffba83);
+}
+
+/* parked from style.css:883 — no selector match in site (PASS 2 audit) */
+.text-gradient-pink-orange {
+  background-image: linear-gradient(to right, #de347f, #e73a70, #ed4461, #f05152, #ef5f43);
+}
+
+/* parked from style.css:887 — no selector match in site (PASS 2 audit) */
+.text-gradient-fast-blue-purple {
+  background-image: linear-gradient(to right, #2a46f4, #5f42f9, #833cfc, #a233fe, #bf25ff);
+}
+
+/* parked from style.css:891 — no selector match in site (PASS 2 audit) */
+.text-gradient-light-pink-light-purple {
+  background-image: linear-gradient(to right, #ed579b, #e855ad, #df57c0, #d15cd4, #bc63e8);
+}
+
+/* parked from style.css:895 — no selector match in site (PASS 2 audit) */
+.text-gradient-fast-blue-purple-light-orange {
+  background-image: linear-gradient(to right top, #183fb9, #4f41df, #ae2eb9, #ef3f59, #e9522d);
+}
+
+/* parked from style.css:899 — no selector match in site (PASS 2 audit) */
+.text-gradient-light-blue-light-turquoise {
+  background-image: linear-gradient(to right, #18cdbb, #22d2ae, #3cd69d, #57da89, #73dc73);
+}
+
+/* parked from style.css:903 — no selector match in site (PASS 2 audit) */
+.text-gradient-sky-blue-pink {
+  background-image: linear-gradient(to right, #556fff, #556fff, #e05fc4, #f767a6, #ff798e);
+}
+
+/* parked from style.css:907 — no selector match in site (PASS 2 audit) */
+.text-gradient-light-purple-light-orange {
+  background-image: linear-gradient(to right, #b783ff, #b783ff, #fa7cc1, #ff85a6, #ff9393);
+}
+
+/* parked from style.css:911 — no selector match in site (PASS 2 audit) */
+.text-gradient-light-gray-white {
+  background-image: linear-gradient(to bottom, #efefef, #efefef, #f7f7f7, #fdfdfc, #ffffff);
+}
+
+/* parked from style.css:915 — no selector match in site (PASS 2 audit) */
+.text-gradient-blue-magenta-orange {
+  background-image: linear-gradient(to right, #002fff, #ab00ff, #ff137d, #ff562f, #ee8502);
+}
+
+/* parked from style.css:920 — no selector match in site (PASS 2 audit) */
+.text-shadow-large {
+  text-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+/* parked from style.css:924 — no selector match in site (PASS 2 audit) */
+.text-shadow-extra-large {
+  text-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+/* parked from style.css:928 — no selector match in site (PASS 2 audit) */
+.text-shadow-double-large {
+  text-shadow: 0 0 100px rgba(0, 0, 0, 0.9);
+}
+
+/* parked from style.css:937 — no selector match in site (PASS 2 audit) */
+.text-decoration-line-bottom-medium {
+  border-bottom: 2px solid;
+}
+
+/* parked from style.css:941 — no selector match in site (PASS 2 audit) */
+.text-decoration-line-bottom-thick {
+  border-bottom: 3px solid;
+}
+
+/* parked from style.css:945 — no selector match in site (PASS 2 audit) */
+.text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+/* parked from style.css:950 — no selector match in site (PASS 2 audit) */
+.text-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--white);
+}
+
+/* parked from style.css:957 — no selector match in site (PASS 2 audit) */
+.text-outline-width-1px {
+  -webkit-text-stroke-width: 1px;
+}
+
+/* parked from style.css:961 — no selector match in site (PASS 2 audit) */
+.text-outline-width-2px {
+  -webkit-text-stroke-width: 2px;
+}
+
+/* parked from style.css:965 — no selector match in site (PASS 2 audit) */
+.text-outline-width-3px {
+  -webkit-text-stroke-width: 3px;
+}
+
+/* parked from style.css:969 — no selector match in site (PASS 2 audit) */
+.text-outline-width-4px {
+  -webkit-text-stroke-width: 4px;
+}
+
+/* parked from style.css:973 — no selector match in site (PASS 2 audit) */
+.text-outline-width-5px {
+  -webkit-text-stroke-width: 5px;
+}
+
+/* parked from style.css:978 — no selector match in site (PASS 2 audit) */
+.text-outline-color-black {
+  -webkit-text-stroke-color: var(--black);
+}
+
+/* parked from style.css:982 — no selector match in site (PASS 2 audit) */
+.text-outline-color-base-color {
+  -webkit-text-stroke-color: var(--base-color);
+}
+
+/* parked from style.css:986 — no selector match in site (PASS 2 audit) */
+.text-outline-color-red {
+  -webkit-text-stroke-color: var(--red);
+}
+
+/* parked from style.css:990 — no selector match in site (PASS 2 audit) */
+.text-outline-color-dark-gray {
+  -webkit-text-stroke-color: var(--dark-gray);
+}
+
+/* parked from style.css:994 — no selector match in site (PASS 2 audit) */
+.text-outline-color-medium-gray {
+  -webkit-text-stroke-color: var(--medium-gray);
+}
+
+/* parked from style.css:998 — no selector match in site (PASS 2 audit) */
+.text-outline-color-extra-medium-gray {
+  -webkit-text-stroke-color: var(--extra-medium-gray);
+}
+
+/* parked from style.css:1003 — no selector match in site (PASS 2 audit) */
+.ls-0px {
+  letter-spacing: 0px !important;
+}
+
+/* parked from style.css:1007 — no selector match in site (PASS 2 audit) */
+.ls-05px {
+  letter-spacing: 0.5px !important;
+}
+
+/* parked from style.css:1015 — no selector match in site (PASS 2 audit) */
+.ls-2px {
+  letter-spacing: 2px !important;
+}
+
+/* parked from style.css:1019 — no selector match in site (PASS 2 audit) */
+.ls-3px {
+  letter-spacing: 3px !important;
+}
+
+/* parked from style.css:1023 — no selector match in site (PASS 2 audit) */
+.ls-4px {
+  letter-spacing: 4px !important;
+}
+
+/* parked from style.css:1027 — no selector match in site (PASS 2 audit) */
+.ls-5px {
+  letter-spacing: 5px !important;
+}
+
+/* parked from style.css:1031 — no selector match in site (PASS 2 audit) */
+.ls-6px {
+  letter-spacing: 6px !important;
+}
+
+/* parked from style.css:1035 — no selector match in site (PASS 2 audit) */
+.ls-7px {
+  letter-spacing: 7px !important;
+}
+
+/* parked from style.css:1039 — no selector match in site (PASS 2 audit) */
+.ls-8px {
+  letter-spacing: 8px !important;
+}
+
+/* parked from style.css:1043 — no selector match in site (PASS 2 audit) */
+.ls-9px {
+  letter-spacing: 9px !important;
+}
+
+/* parked from style.css:1047 — no selector match in site (PASS 2 audit) */
+.ls-10px {
+  letter-spacing: 10px !important;
+}
+
+/* parked from style.css:1067 — no selector match in site (PASS 2 audit) */
+.ls-minus-4px {
+  letter-spacing: -4px !important;
+}
+
+/* parked from style.css:1071 — no selector match in site (PASS 2 audit) */
+.ls-minus-5px {
+  letter-spacing: -5px !important;
+}
+
+/* parked from style.css:1075 — no selector match in site (PASS 2 audit) */
+.ls-minus-6px {
+  letter-spacing: -6px !important;
+}
+
+/* parked from style.css:1079 — no selector match in site (PASS 2 audit) */
+.ls-minus-7px {
+  letter-spacing: -7px !important;
+}
+
+/* parked from style.css:1083 — no selector match in site (PASS 2 audit) */
+.ls-minus-8px {
+  letter-spacing: -8px !important;
+}
+
+/* parked from style.css:1087 — no selector match in site (PASS 2 audit) */
+.ls-minus-9px {
+  letter-spacing: -9px !important;
+}
+
+/* parked from style.css:1091 — no selector match in site (PASS 2 audit) */
+.ls-minus-10px {
+  letter-spacing: -10px !important;
+}
+
+/* parked from style.css:1096 — no selector match in site (PASS 2 audit) */
+.icon-extra-double-large {
+  font-size: 80px;
+}
+
+/* parked from style.css:1100 — no selector match in site (PASS 2 audit) */
+.icon-double-large {
+  font-size: 60px;
+}
+
+/* parked from style.css:1104 — no selector match in site (PASS 2 audit) */
+.icon-extra-large {
+  font-size: 50px;
+}
+
+/* parked from style.css:1108 — no selector match in site (PASS 2 audit) */
+.icon-large {
+  font-size: 42px;
+}
+
+/* parked from style.css:1112 — no selector match in site (PASS 2 audit) */
+.icon-medium {
+  font-size: 34px;
+}
+
+/* parked from style.css:1116 — no selector match in site (PASS 2 audit) */
+.icon-very-medium {
+  font-size: 28px;
+}
+
+/* parked from style.css:1124 — no selector match in site (PASS 2 audit) */
+.icon-small {
+  font-size: 18px;
+}
+
+/* parked from style.css:1128 — no selector match in site (PASS 2 audit) */
+.icon-very-small {
+  font-size: 14px;
+}

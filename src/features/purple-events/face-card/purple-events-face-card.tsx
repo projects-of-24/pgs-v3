@@ -2,7 +2,8 @@
  * Purple Events face card — desk + mob, open | closed.
  * Desk open `18961:12995` · closed `18961:13038` · 383×592.
  * Mob open `1242:7586` · closed `1242:7587` · 176×761.
- * Bands ≤600 mob · >1367 desk · no transform scale. Heart deferred.
+ * Bands ≤600 mob · >1367 desk · no transform scale.
+ * Heart = filled visual only (save deferred B*).
  *
  * FIGMA ACCESSIBILITY ADAPTATION
  * ORIGINAL: mob bio/time/note ~12px; desk who/topics ~14px; CTA desk ~11px
@@ -118,6 +119,11 @@ export function PurpleEventsFaceCard({ card }: Props) {
           <img src={card.shareIcon} alt="" width={20} height={20} />
         </button>
 
+        <span className="pe-face__heart pe-face__heart--mob" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={card.heartIcon} alt="" width={16} height={16} />
+        </span>
+
         <div className="pe-face__mob-main">
           <div className="pe-face__headline pe-face__headline--mob">
             <p className="pe-face__title pe-face__title--mob" aria-hidden="true">
@@ -210,6 +216,11 @@ export function PurpleEventsFaceCard({ card }: Props) {
             </p>
             <span className="pe-face__corner" aria-hidden="true" />
           </div>
+
+          <span className="pe-face__heart pe-face__heart--desk" aria-hidden="true">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={card.heartIcon} alt="" width={26} height={26} />
+          </span>
 
           <div className="pe-face__desk-body">
             <div className="pe-face__dates pe-face__dates--desk">

@@ -1,0 +1,131 @@
+/**
+ * Preview QC — public header lab.
+ * Default: fake logged-in (lab avatar) so avatar → Logout is QC-able.
+ * ?loggedOut=1 → yellow login button.
+ */
+import { LegacyPage } from "@/components/legacy-page";
+import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
+import { HEADER_NAV } from "@/features/shell/header-nav";
+import { HeaderPreviewShell } from "@/features/shell/header-preview-shell";
+import { PublicHeader } from "@/features/shell/public-header";
+import { buildPublicStripHtml } from "@/features/shell/public-strip";
+import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
+import "@/features/shell/legacy-header-breakpoints.css";
+import { applyAuthenticatedShell } from "@/lib/account-shell";
+import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
+import { withPreviewLoginReturn } from "@/lib/preview-login-return";
+import {
+  resolveStudentExperience,
+  studentExperienceAvatarUrl
+} from "@/lib/student-experience";
+import {
+  applySharedHelloAspirant,
+  HELLO_ASPIRANT_DEFAULT_AVATAR
+} from "@/legacy/pages/hello-aspirant";
+import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
+import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
+
+export const dynamic = "force-dynamic";
+
+type HeaderPreviewPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function HeaderPreviewPage({
+  searchParams,
+}: HeaderPreviewPageProps) {
+  const params = (await searchParams) ?? {};
+  const loggedOutParam = params.loggedOut;
+  const forceLoggedOut =
+    loggedOutParam === "1" ||
+    (Array.isArray(loggedOutParam) && loggedOutParam[0] === "1");
+
+  const [state, univMeet] = await Promise.all([
+    resolveStudentExperience(),
+    getPublishedUnivMeet()
+  ]);
+  const realLoggedIn = Boolean(state && state.kind !== "anonymous");
+  const studentState = forceLoggedOut
+    ? "anonymous"
+    : realLoggedIn
+      ? (state!.kind as
+          | "authenticated_standard"
+          | "authenticated_premium")
+      : "authenticated_standard";
+
+  const helloAvatar =
+    state && state.kind !== "anonymous"
+      ? await studentExperienceAvatarUrl(state)
+      : HELLO_ASPIRANT_DEFAULT_AVATAR;
+
+  const previewPath = forceLoggedOut
+    ? "/preview/header?loggedOut=1"
+    : "/preview/header";
+  const loginHref = forceLoggedOut
+    ? "/preview/header"
+    : `/login?redirect=${encodeURIComponent("/preview/header")}`;
+
+  const avatarUrl = forceLoggedOut
+    ? null
+    : realLoggedIn
+      ? helloAvatar
+      : HEADER_NAV.labAvatarSrc;
+
+  const labFakeAuth = !forceLoggedOut && !realLoggedIn;
+  const unreadCount =
+    state && state.kind !== "anonymous"
+      ? state.unreadCount
+      : labFakeAuth
+        ? 4
+        : 0;
+
+  let stripHtml = buildPublicStripHtml(univMeet);
+  stripHtml = applySharedPublicSidebar(stripHtml, studentState, {
+    name: state && state.kind !== "anonymous" ? state.name : "User"
+  });
+  stripHtml = applySharedHelloAspirant(stripHtml, studentState, {
+    name: state && state.kind !== "anonymous" ? state.name : "Aspirant",
+    avatarUrl: avatarUrl ?? helloAvatar
+  });
+
+  let footerHtml = getPublicFooterHtml();
+
+  if (studentState !== "anonymous") {
+    const shellFields = {
+      name: state && state.kind !== "anonymous" ? state.name : "Lab User",
+      unreadCount,
+      premium: studentState === "authenticated_premium",
+      notifications:
+        state && state.kind !== "anonymous" ? state.notifications : [],
+      notificationReadOnly: Boolean(state?.preview) || labFakeAuth
+    };
+    stripHtml = applyAuthenticatedShell(stripHtml, shellFields);
+    if (state && state.kind !== "anonymous") {
+      stripHtml = applyStudentIdentity(stripHtml, state, helloAvatar);
+    }
+    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
+  }
+
+  stripHtml = applyPremiumBusinessRule(stripHtml);
+  footerHtml = applyPremiumBusinessRule(footerHtml);
+  stripHtml = withPreviewLoginReturn(stripHtml, previewPath);
+  footerHtml = withPreviewLoginReturn(footerHtml, previewPath);
+
+  return (
+    <LegacyPage page="preview-header" studentState={studentState}>
+      <PublicHeader
+        loginHref={loginHref}
+        avatarUrl={avatarUrl}
+        unreadCount={unreadCount}
+        labFakeAuth={labFakeAuth}
+        univMeet={univMeet}
+      />
+      <div dangerouslySetInnerHTML={{ __html: stripHtml }} />
+      <HeaderPreviewShell
+        studentState={studentState}
+        labFakeAuth={labFakeAuth}
+      />
+      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+    </LegacyPage>
+  );
+}

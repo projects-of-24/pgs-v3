@@ -1,0 +1,147 @@
+/**
+ * PGS HEADER CHROME RESET — owned authority for header + drawer
+ * =============================================================================
+ * Gate: H6a-CSS → pulled into OWN-H entry `pgs-owned-header.css` (prefer that link).
+ *
+ * Hostinger `public/assets/css/style.css` may stay in layout for the rest of the page.
+ * For header bar + #drawer + open-scroll lock, THIS file wins.
+ *
+ * Ported / killed from Hostinger (reference only — do not edit Hostinger):
+ *   - html { zoom: 0.9 }           → OWN-H kills zoom on gated React header pages
+ *                                    and bakes ×0.9 into tokens (see pgs-owned-header.css)
+ *   - .drawer { right:-280px; transition:0.3s all; width:280px }
+ *   - .drawer.active { right: 0 }
+ *   - .overlay { … }               → leave Hostinger; we only lock scroll pad
+ *
+ * Load order (required):
+ *   1. /assets/css/style.css (layout <link>) — until page OWN-BODY unlink
+ *   2. Prefer: import "@/features/shell/pgs-owned-header.css" (OWN-H entry)
+ *      Legacy: this file via legacy-header-breakpoints @import + public-header.css
+ *
+ * Sister template for body UI flush: pgs-page-ui-flush.css
+ */
+
+/* ——— Document: no horizontal page shove when drawer translates ——— */
+html:has(main[data-legacy-page]) {
+  overflow-x: clip;
+  scrollbar-gutter: stable;
+}
+
+/*
+ * Scroll lock when drawer/overlay opens (LegacyPage toggles body.overflow-hidden).
+ * Pad = scrollbar width set in legacy-page.tsx --pgs-scrollbar-pad
+ * so body/footer do not jump when the scrollbar disappears.
+ */
+body.overflow-hidden {
+  overflow: hidden !important;
+  padding-right: var(--pgs-scrollbar-pad, 0px) !important;
+}
+
+/* =============================================================================
+ * DRAWER — full owned recipe (beats Hostinger .drawer / .drawer.active)
+ * Opens like a mac menu: anchored 8px under the bar, right edge on the 40px
+ * header inset, no slide, no page lock. Top is set by legacy-page.tsx
+ * (--pgs-drawer-top / --pgs-drawer-max-h) from the bar's bottom edge.
+ * Content = Figma 19094:13341 (unchanged).
+ * ============================================================================= */
+@media (max-width: 1366px) {
+  main[data-legacy-page] #drawer.drawer,
+  main[data-legacy-page] #drawer.pgs-header-drawer {
+    --pgs-drawer-width: 340px;
+    --pgs-drawer-inset: 40px;
+    --pgs-drawer-top: 100px;
+    --pgs-drawer-max-h: calc(100dvh - 24px);
+
+    /* fixed: a tall absolute panel was growing the page and jerking the footer */
+    position: fixed !important;
+    top: var(--pgs-drawer-top) !important;
+    bottom: auto !important;
+    /* Hostinger .drawer { right:-280px } / .drawer.active { right:0 } — owned inset wins.
+       --pgs-drawer-right is set from the hamburger's right edge so the radius stays on screen. */
+    right: var(--pgs-drawer-right, var(--pgs-drawer-inset)) !important;
+    left: auto !important;
+    width: var(--pgs-drawer-width) !important;
+    max-width: var(--pgs-drawer-width) !important;
+    height: auto !important;
+    max-height: var(--pgs-drawer-max-h);
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    z-index: 1200 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 15px 15px 28px !important;
+    border-radius: 20px !important;
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    box-shadow: 8px 8px 0 0 #000 !important;
+    /* Kill Hostinger transition:0.3s all (was sliding `right` + shoving page). Pop, no slide. */
+    transition: opacity 0.12s ease-out, visibility 0.12s ease-out !important;
+    transform: none !important;
+    opacity: 0;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  main[data-legacy-page] #drawer.drawer.active,
+  main[data-legacy-page] #drawer.drawer.open,
+  main[data-legacy-page] #drawer.drawer.show,
+  main[data-legacy-page] #drawer.pgs-header-drawer.active,
+  main[data-legacy-page] #drawer.pgs-header-drawer.open,
+  main[data-legacy-page] #drawer.pgs-header-drawer.show {
+    opacity: 1;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    right: var(--pgs-drawer-right, var(--pgs-drawer-inset)) !important;
+    left: auto !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    main[data-legacy-page] #drawer.drawer,
+    main[data-legacy-page] #drawer.pgs-header-drawer {
+      transition: none !important;
+    }
+  }
+}
+
+/* =============================================================================
+ * GATED REACT HEADER BAR — equal L/R page inset (owner 40px)
+ * Lives here (not only public-header.css) so DSIH pages + React lab share truth.
+ * ============================================================================= */
+@media (min-width: 601px) and (max-width: 1366px) {
+  header.pgs-figma-header[data-pgs-header-gate] {
+    display: block;
+    /* 100% of the page, same as desktop. 100vw + html{zoom:0.9} left a gap on the right. */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] > .mobile-none {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] nav.pgs-header-bar,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-bar {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+    min-width: 0;
+  }
+}

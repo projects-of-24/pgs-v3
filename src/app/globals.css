@@ -305,16 +305,27 @@ body {
  *   601–1366  iPad
  *   ≤600  mobile
  *
- * Header: sticky top 0 at rest and when stuck (shell + pill top flush).
- * Strip flows under header. Body pull = strip-tied clamp (Hostinger .minus-5 port).
+ * Header: sticky top 0; padding-top = safe-area so notch / Dynamic Island /
+ * camera cutouts clear the bar. Strip + body + footer flow down with it.
+ * Body pull = strip-tied clamp + same safe-area token (closed #toggleBtn align).
  *
  * Hostinger public/assets/css/* = REFERENCE ONLY — override here, do not edit Hostinger.
  *
  * Still elsewhere until migrated:
  *   - Figma header bar visuals (logo/login/bell/menu assets) → legacy-header-breakpoints.css
  *   - Hello Aspirant strip removed → legacy-hello-aspirant.css (failsafe hide)
+ *   - OWN-T toggle/strip/univMeet authority → src/features/shell/pgs-owned-strip.css
+ *   - OWN-F footer authority → src/features/shell/pgs-owned-footer.css
+ *     (rules below remain until OWN-CLEAR; prefer owned-* when editing)
  * =============================================================================
  */
+
+:root {
+  /* Floor 24px (owner 20–40 range) · grows with env(safe-area-inset-top) on notched devices */
+  --pgs-safe-top: max(24px, env(safe-area-inset-top, 0px));
+  --pgs-chrome-strip-pull: clamp(88px, 11vw, 157px);
+  --pgs-chrome-body-pull: calc(-1 * (var(--pgs-chrome-strip-pull) + var(--pgs-safe-top)));
+}
 
 /* --- Page canvas --- */
 main[data-legacy-page] {
@@ -327,6 +338,10 @@ main[data-legacy-page] {
   top: 0;
   z-index: 1100;
   margin-top: 0;
+  padding-top: var(--pgs-safe-top);
+  box-sizing: border-box;
+  /* Fill the safe-area band so content does not show through the notch gap */
+  background-color: #ffffff;
 }
 
 /* Pill top flush with sticky shell (overrides legacy-header bar margin-top 20px). */
@@ -439,12 +454,12 @@ main[data-legacy-page] {
 
 /* Strip tools clickable (strip itself is pointer-events: none) */
 [data-legacy-page] .mobile-frame-sidebar #univMeet,
-[data-legacy-page] .mobile-frame-sidebar a.date-box,
-[data-legacy-page] .mobile-frame-sidebar .search-box,
+[data-legacy-page] .mobile-frame-sidebar a.pgs-univmeet,
+[data-legacy-page] .mobile-frame-sidebar .pgs-search,
 [data-legacy-page] .mobile-frame-sidebar .avatar-box,
 .developer-student-shell .mobile-frame-sidebar #univMeet,
-.developer-student-shell .mobile-frame-sidebar a.date-box,
-.developer-student-shell .mobile-frame-sidebar .search-box,
+.developer-student-shell .mobile-frame-sidebar a.pgs-univmeet,
+.developer-student-shell .mobile-frame-sidebar .pgs-search,
 .developer-student-shell .mobile-frame-sidebar .avatar-box {
   position: relative;
   z-index: 1;
@@ -455,7 +470,7 @@ main[data-legacy-page] {
  * Page-strip #univMeet + search
  * >1366: top-right strip · ≤1366: hidden (live in hamburger drawer)
  */
-[data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.date-box h5 {
+[data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.pgs-univmeet .pgs-univmeet__label {
   font-size: 18px;
 }
 
@@ -500,14 +515,14 @@ main[data-legacy-page] {
   }
 
   /* Strip #univMeet bar — content height 36px; dates stay min-height 48 */
-  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.date-box {
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.pgs-univmeet {
     box-sizing: content-box;
     height: 36px;
     min-height: 36px;
     align-items: center;
   }
 
-  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none .box-date-info {
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none .pgs-univmeet__chip {
     min-height: 48px;
   }
 }
@@ -577,19 +592,19 @@ main[data-legacy-page] {
   font-weight: 500;
 }
 
-#drawer .pgs-drawer-search.search-box {
+#drawer .pgs-drawer-search {
   width: 100%;
   margin: 20px 0 0;
   position: relative;
   z-index: 5;
 }
 
-#drawer .pgs-drawer-search .input-group {
+#drawer .pgs-drawer-search .pgs-search__group {
   width: 100%;
   margin: 0;
 }
 
-#drawer .pgs-drawer-search .search-control {
+#drawer .pgs-drawer-search .pgs-search__input {
   width: 100%;
   min-width: 0;
   height: 32px;
@@ -1335,24 +1350,10 @@ div[data-retained-student-footer="true"][data-student-state="authenticated_premi
   }
 }
 
-/* Mobile drawer: keep closed off-screen until hamburger opens it (footer.php openDrawer parity). */
-@media (max-width: 767px) {
+/* Phone only — clip horizontal bleed without affecting iPad fixed drawer. */
+@media (max-width: 600px) {
   main[data-legacy-page] {
     overflow-x: clip;
-  }
-
-  main[data-legacy-page] .drawer:not(.active) {
-    visibility: hidden;
-    pointer-events: none;
-    right: 0 !important;
-    transform: translate3d(100%, 0, 0);
-  }
-
-  main[data-legacy-page] .drawer.active {
-    visibility: visible !important;
-    pointer-events: auto;
-    right: 0 !important;
-    transform: translate3d(0, 0, 0) !important;
   }
 }
 

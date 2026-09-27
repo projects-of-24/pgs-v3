@@ -1,0 +1,1174 @@
+/* PASS 3 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 1132-4004 range, 05. General)
+   Dead = class name(s) appear nowhere in src/**, scripts/**, public/assets/js/*.js
+   (main.js, vendors.min.js, pgs-*.js); .swiper-* always kept live.
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:1136 — no selector match in site (PASS 3 audit) */
+.separator-line-1px {
+  height: 1px;
+}
+
+/* parked from style.css:1140 — no selector match in site (PASS 3 audit) */
+.separator-line-2px {
+  height: 2px;
+}
+
+/* parked from style.css:1144 — no selector match in site (PASS 3 audit) */
+.separator-line-3px {
+  height: 3px;
+}
+
+/* parked from style.css:1148 — no selector match in site (PASS 3 audit) */
+.separator-line-4px {
+  height: 4px;
+}
+
+/* parked from style.css:1152 — no selector match in site (PASS 3 audit) */
+.separator-line-5px {
+  height: 5px;
+}
+
+/* parked from style.css:1157 — no selector match in site (PASS 3 audit) */
+.separator-line-vertical {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/* parked from style.css:1163 — no selector match in site (PASS 3 audit) */
+.separator-line-small {
+  width: 35px;
+  height: 1px;
+  display: inline-block;
+  margin-right: 7px;
+}
+
+/* parked from style.css:1170 — no selector match in site (PASS 3 audit) */
+.separator-line-extra-small {
+  width: 18px;
+  height: 1px;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* parked from style.css:1178 — no selector match in site (PASS 3 audit) */
+.separator-line-very-small {
+  width: 12px;
+  height: 1px;
+  display: inline-block;
+  margin-right: 9px;
+  vertical-align: middle;
+}
+
+/* parked from style.css:1200 — no selector match in site (PASS 3 audit) */
+.opacity-very-light {
+  opacity: 0.2;
+}
+
+/* parked from style.css:1204 — no selector match in site (PASS 3 audit) */
+.opacity-light {
+  opacity: 0.3;
+}
+
+/* parked from style.css:1212 — no selector match in site (PASS 3 audit) */
+.opacity-medium {
+  opacity: 0.75;
+}
+
+/* parked from style.css:1216 — no selector match in site (PASS 3 audit) */
+.opacity-full {
+  opacity: 0.8;
+}
+
+/* parked from style.css:1220 — no selector match in site (PASS 3 audit) */
+.opacity-full-dark {
+  opacity: 0.9;
+}
+
+/* parked from style.css:1225 — no selector match in site (PASS 3 audit) */
+.position-inherit {
+  position: inherit !important;
+}
+
+/* parked from style.css:1229 — no selector match in site (PASS 3 audit) */
+.position-initial {
+  position: initial !important;
+}
+
+/* parked from style.css:1233 — no selector match in site (PASS 3 audit) */
+.absolute-middle-center {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* parked from style.css:1241 — no selector match in site (PASS 3 audit) */
+.absolute-middle-left {
+  left: 0;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* parked from style.css:1249 — no selector match in site (PASS 3 audit) */
+.absolute-middle-right {
+  right: 0;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* parked from style.css:1257 — no selector match in site (PASS 3 audit) */
+.absolute-top-center {
+  left: 50%;
+  top: 0;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* parked from style.css:1265 — no selector match in site (PASS 3 audit) */
+.absolute-bottom-center {
+  left: 50%;
+  bottom: 0;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* parked from style.css:1273 — no selector match in site (PASS 3 audit) */
+.absolute-bottom-left {
+  left: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+/* parked from style.css:1279 — no selector match in site (PASS 3 audit) */
+.absolute-bottom-right {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+/* parked from style.css:1286 — no selector match in site (PASS 3 audit) */
+.vertical-title-center {
+  display: flex;
+  height: 100%;
+}
+
+/* parked from style.css:1298 — no selector match in site (PASS 3 audit) */
+.skrollr-parallax {
+  position: relative !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  transition-timing-function: none;
+  -webkit-transition-timing-function: none;
+  transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+}
+
+/* parked from style.css:1312 — no selector match in site (PASS 3 audit) */
+.blur-box {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* parked from style.css:1318 — no selector match in site (PASS 3 audit) */
+.transform-origin-right {
+  transform-origin: right;
+}
+
+/* parked from style.css:1322 — no selector match in site (PASS 3 audit) */
+.transform-origin-left {
+  transform-origin: left;
+}
+
+/* parked from style.css:1343 — no selector match in site (PASS 3 audit) */
+.no-transition {
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+/* parked from style.css:1353 — no selector match in site (PASS 3 audit) */
+.pointer-events-all {
+  pointer-events: all;
+}
+
+/* parked from style.css:1421 — no selector match in site (PASS 3 audit) */
+.sticky-wrap-right {
+  position: fixed;
+  top: 50%;
+  right: 110px;
+  z-index: 1;
+  -webkit-transform: rotate(-90deg) translate(50%, 100%);
+  transform: rotate(-90deg) translate(50%, 100%);
+  transform-origin: 100% 0%;
+}
+
+/* parked from style.css:1440 — no selector match in site (PASS 3 audit) */
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
+/* parked from style.css:1454 — no selector match in site (PASS 3 audit) */
+.outside-box-top-15 {
+  margin-top: -15vw;
+}
+
+/* parked from style.css:1458 — no selector match in site (PASS 3 audit) */
+.outside-box-top-18 {
+  margin-top: -18vw;
+}
+
+/* parked from style.css:1462 — no selector match in site (PASS 3 audit) */
+.outside-box-left-1 {
+  margin-left: -1vw;
+}
+
+/* parked from style.css:1466 — no selector match in site (PASS 3 audit) */
+.outside-box-left-2 {
+  margin-left: -2vw;
+}
+
+/* parked from style.css:1470 — no selector match in site (PASS 3 audit) */
+.outside-box-left-5 {
+  margin-left: -5vw;
+}
+
+/* parked from style.css:1474 — no selector match in site (PASS 3 audit) */
+.outside-box-left-7 {
+  margin-left: -7vw;
+}
+
+/* parked from style.css:1478 — no selector match in site (PASS 3 audit) */
+.outside-box-left-8 {
+  margin-left: -8vw;
+}
+
+/* parked from style.css:1482 — no selector match in site (PASS 3 audit) */
+.outside-box-left-10 {
+  margin-left: -10vw;
+}
+
+/* parked from style.css:1486 — no selector match in site (PASS 3 audit) */
+.outside-box-left-15 {
+  margin-left: -15vw;
+}
+
+/* parked from style.css:1490 — no selector match in site (PASS 3 audit) */
+.outside-box-left-20 {
+  margin-left: -20vw;
+}
+
+/* parked from style.css:1494 — no selector match in site (PASS 3 audit) */
+.outside-box-left-25 {
+  margin-left: -25vw;
+}
+
+/* parked from style.css:1498 — no selector match in site (PASS 3 audit) */
+.outside-box-left-30 {
+  margin-left: -30vw;
+}
+
+/* parked from style.css:1502 — no selector match in site (PASS 3 audit) */
+.outside-box-left-35 {
+  margin-left: -35vw;
+}
+
+/* parked from style.css:1506 — no selector match in site (PASS 3 audit) */
+.outside-box-left-40 {
+  margin-left: -40vw;
+}
+
+/* parked from style.css:1510 — no selector match in site (PASS 3 audit) */
+.outside-box-left-50 {
+  margin-left: -50vw;
+}
+
+/* parked from style.css:1514 — no selector match in site (PASS 3 audit) */
+.outside-box-left-60 {
+  margin-left: -60vw;
+}
+
+/* parked from style.css:1518 — no selector match in site (PASS 3 audit) */
+.outside-box-left-65 {
+  margin-left: -65vw;
+}
+
+/* parked from style.css:1530 — no selector match in site (PASS 3 audit) */
+.outside-box-right-5 {
+  margin-right: -5vw;
+}
+
+/* parked from style.css:1534 — no selector match in site (PASS 3 audit) */
+.outside-box-right-7 {
+  margin-right: -7vw;
+}
+
+/* parked from style.css:1538 — no selector match in site (PASS 3 audit) */
+.outside-box-right-10 {
+  margin-right: -10vw;
+}
+
+/* parked from style.css:1554 — no selector match in site (PASS 3 audit) */
+.outside-box-right-30 {
+  margin-right: -30vw;
+}
+
+/* parked from style.css:1558 — no selector match in site (PASS 3 audit) */
+.outside-box-right-35 {
+  margin-right: -35vw;
+}
+
+/* parked from style.css:1562 — no selector match in site (PASS 3 audit) */
+.outside-box-right-40 {
+  margin-right: -40vw;
+}
+
+/* parked from style.css:1566 — no selector match in site (PASS 3 audit) */
+.outside-box-right-45 {
+  margin-right: -45vw;
+}
+
+/* parked from style.css:1570 — no selector match in site (PASS 3 audit) */
+.outside-box-right-50 {
+  margin-right: -50vw;
+}
+
+/* parked from style.css:1574 — no selector match in site (PASS 3 audit) */
+.outside-box-right-60 {
+  margin-right: -60vw;
+}
+
+/* parked from style.css:1578 — no selector match in site (PASS 3 audit) */
+.outside-box-right-65 {
+  margin-right: -65vw;
+}
+
+/* parked from style.css:1583 — no selector match in site (PASS 3 audit) */
+.filter-mix-100 {
+  filter: grayscale(100%) invert(100%);
+}
+
+/* parked from style.css:1587 — no selector match in site (PASS 3 audit) */
+.filter-grayscale-100 {
+  filter: grayscale(100%);
+}
+
+/* parked from style.css:1600 — no selector match in site (PASS 3 audit) */
+.box-shadow-small,
+.box-shadow-small-hover:hover {
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:1616 — no selector match in site (PASS 3 audit) */
+.box-shadow-medium-bottom,
+.box-shadow-medium-bottom-hover:hover {
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:1624 — no selector match in site (PASS 3 audit) */
+.box-shadow-large,
+.box-shadow-large-hover:hover {
+  -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:1632 — no selector match in site (PASS 3 audit) */
+.box-shadow-extra-large,
+.box-shadow-extra-large-hover:hover {
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:1648 — no selector match in site (PASS 3 audit) */
+.box-shadow-triple-large,
+.box-shadow-triple-large-hover:hover {
+  -webkit-box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:1675 — no selector match in site (PASS 3 audit) */
+.box-shadow-bottom {
+  -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* parked from style.css:1734 — no selector match in site (PASS 3 audit) */
+.placeholder-light::-webkit-input-placeholder {
+  color: var(--white) !important;
+  text-overflow: ellipsis;
+}
+
+/* parked from style.css:1739 — no selector match in site (PASS 3 audit) */
+.placeholder-light::-moz-placeholder {
+  color: var(--white) !important;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+
+/* parked from style.css:1745 — no selector match in site (PASS 3 audit) */
+.placeholder-light:-ms-input-placeholder {
+  color: var(--white) !important;
+  text-overflow: ellipsis;
+  opacity: 1;
+}
+
+/* parked from style.css:1777 — no selector match in site (PASS 3 audit) */
+.date-icon {
+  position: relative;
+}
+
+/* parked from style.css:1781 — no selector match in site (PASS 3 audit) */
+.date-icon input[type=date]::-webkit-inner-spin-button,
+.date-icon input[type=date]::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  opacity: 0;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* parked from style.css:1789 — no selector match in site (PASS 3 audit) */
+.date-icon:after {
+  content: "\e83a";
+  font-family: feather !important;
+  right: 28px;
+  top: 50%;
+  height: 34px;
+  position: absolute;
+  pointer-events: none;
+  font-size: 22px;
+  margin-top: -15px;
+}
+
+/* parked from style.css:1801 — no selector match in site (PASS 3 audit) */
+.date-icon input[type=date]::-webkit-date-and-time-value {
+  text-align: left !important;
+}
+
+/* parked from style.css:1806 — no selector match in site (PASS 3 audit) */
+@-moz-document url-prefix() {
+  .date-icon:after {
+    display: none;
+  }
+}
+
+/* parked from style.css:1813 — no selector match in site (PASS 3 audit) */
+.time-icon {
+  position: relative;
+}
+
+/* parked from style.css:1817 — no selector match in site (PASS 3 audit) */
+.time-icon input[type=time]::-webkit-inner-spin-button,
+.time-icon input[type=time]::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  opacity: 0;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* parked from style.css:1825 — no selector match in site (PASS 3 audit) */
+.time-icon:after {
+  content: "\e84d";
+  font-family: feather !important;
+  right: 28px;
+  top: 50%;
+  height: 34px;
+  position: absolute;
+  pointer-events: none;
+  font-size: 22px;
+  margin-top: -15px;
+}
+
+/* parked from style.css:1838 — no selector match in site (PASS 3 audit) */
+.input-small,
+.textarea-small,
+.select-small {
+  padding: 7px 15px;
+  font-size: 12px;
+}
+
+/* parked from style.css:1845 — no selector match in site (PASS 3 audit) */
+.input-medium,
+.textarea-medium,
+.select-medium {
+  padding: 14px 28px;
+}
+
+/* parked from style.css:1851 — no selector match in site (PASS 3 audit) */
+.input-large {
+  padding: 16px 32px;
+}
+
+/* parked from style.css:1860 — no selector match in site (PASS 3 audit) */
+.box-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 400ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 400ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:1872 — no selector match in site (PASS 3 audit) */
+.hover-box {
+  z-index: 1;
+}
+
+/* parked from style.css:1876 — no selector match in site (PASS 3 audit) */
+.hover-box * {
+  -webkit-transition: all 500ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 500ms cubic-bezier(0.5, 1, 0.89, 1);
+  will-change: transform;
+}
+
+/* parked from style.css:1882 — no selector match in site (PASS 3 audit) */
+.hover-box:hover .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:1887 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover .border-dark-opacity {
+  border-color: rgba(35, 35, 35, 0.15) !important;
+}
+
+/* parked from style.css:1909 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover [class*=separator-line] {
+  background-color: var(--white);
+}
+
+/* parked from style.css:1913 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover [class*=btn-link-gradient] span {
+  background: var(--white);
+  background-image: none;
+}
+
+/* parked from style.css:1918 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover [class*=btn-transparent] {
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--dark-gray) !important;
+}
+
+/* parked from style.css:1924 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover .text-light-opacity {
+  opacity: 0.7;
+}
+
+/* parked from style.css:1928 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover .text-medium-opacity {
+  opacity: 0.5;
+}
+
+/* parked from style.css:1932 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover .border-dark-opacity {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* parked from style.css:1936 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover .content-slide-up .text-light-opacity {
+  opacity: 0.7;
+}
+
+/* parked from style.css:1944 — no selector match in site (PASS 3 audit) */
+.hover-box.dark-hover:hover [class*=text-gradient-] {
+  color: var(--white);
+  background-image: none;
+  -webkit-background-clip: inherit;
+  -webkit-text-fill-color: var(--white);
+  -webkit-text-fill-color: var(--white);
+}
+
+/* parked from style.css:1952 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover .border-light-opacity {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* parked from style.css:1972 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover:hover .text-light-opacity {
+  opacity: 0.7;
+}
+
+/* parked from style.css:1976 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover:hover .text-medium-opacity {
+  opacity: 0.5;
+}
+
+/* parked from style.css:1980 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover:hover .border-light-opacity {
+  border-color: rgba(35, 35, 35, 0.15) !important;
+}
+
+/* parked from style.css:1984 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover:hover .content-slide-up .text-light-opacity {
+  opacity: 0.7;
+}
+
+/* parked from style.css:1992 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover:hover [class*=separator-line] {
+  background-color: var(--dark-gray);
+}
+
+/* parked from style.css:1996 — no selector match in site (PASS 3 audit) */
+.hover-box.light-hover:hover [class*=text-gradient-] {
+  color: var(--dark-gray);
+  background-image: none;
+  -webkit-background-clip: var(--dark-gray);
+  -webkit-text-fill-color: var(--dark-gray);
+}
+
+/* parked from style.css:2195 — no selector match in site (PASS 3 audit) */
+.slider-custom-image .slider-custom-image-pagination {
+  display: flex;
+  align-items: center;
+  bottom: 0;
+}
+
+/* parked from style.css:2223 — no selector match in site (PASS 3 audit) */
+.slider-custom-image .slider-custom-image-pagination.slider-custom-image-pagination-top {
+  top: 0;
+  bottom: auto;
+}
+
+/* parked from style.css:2502 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-01 {
+  position: absolute;
+  top: 50%;
+  left: 65px;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:2519 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-01:hover {
+  opacity: 0.8;
+}
+
+/* parked from style.css:2524 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-02 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+/* parked from style.css:2539 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-03 {
+  position: absolute;
+  top: 50%;
+  left: -60px;
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:2559 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-03:hover {
+  -webkit-box-shadow: 0px 0 20px rgba(35, 35, 35, 0.1);
+  box-shadow: 0px 0 20px rgba(35, 35, 35, 0.1);
+}
+
+/* parked from style.css:2600 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-05 {
+  left: -30%;
+}
+
+/* parked from style.css:2610 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-06 {
+  width: auto;
+  height: auto;
+  left: 60px;
+}
+
+/* parked from style.css:2622 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-07 {
+  left: 50%;
+  bottom: 0;
+  top: inherit;
+  width: 75px;
+  height: 75px;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+/* parked from style.css:2639 — no selector match in site (PASS 3 audit) */
+.slider-navigation-style-08 {
+  width: auto;
+  height: auto;
+  position: relative;
+  -webkit-transform: translateX(0px);
+  transform: translateX(0px);
+  left: 0;
+}
+
+/* parked from style.css:2654 — no selector match in site (PASS 3 audit) */
+.slider-custom-verticle-text>span {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/* parked from style.css:2696 — no selector match in site (PASS 3 audit) */
+.slider-shadow-right {
+  mask-image: linear-gradient(to right, transparent 0%, #000000 0%, #000000 50%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000000 0%, #000000 50%, transparent 80%);
+}
+
+/* parked from style.css:2701 — no selector match in site (PASS 3 audit) */
+.slider-shadow-left {
+  mask-image: linear-gradient(to right, transparent 50%, #000000 80%, #000000 0%, transparent 0%);
+  -webkit-mask-image: linear-gradient(to right, transparent 50%, #000000 80%, #000000 0%, transparent 0%);
+}
+
+/* parked from style.css:2706 — no selector match in site (PASS 3 audit) */
+.slider-shadow-left-right {
+  mask-image: linear-gradient(to right, transparent 18%, #000000 22%, #000000 78%, transparent 82%);
+  -webkit-mask-image: linear-gradient(to right, transparent 18%, #000000 22%, #000000 78%, transparent 82%);
+}
+
+/* parked from style.css:2762 — no selector match in site (PASS 3 audit) */
+@-webkit-keyframes video-icon-sonar {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+/* parked from style.css:2776 — no selector match in site (PASS 3 audit) */
+@keyframes video-icon-sonar {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+/* parked from style.css:2790 — no selector match in site (PASS 3 audit) */
+.video-icon-box {
+  z-index: 1;
+}
+
+/* parked from style.css:2794 — no selector match in site (PASS 3 audit) */
+.video-icon-box>span {
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row wrap;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+/* parked from style.css:2858 — no selector match in site (PASS 3 audit) */
+.video-icon {
+  position: relative;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* parked from style.css:2869 — no selector match in site (PASS 3 audit) */
+.video-icon i {
+  margin-left: 5px;
+}
+
+/* parked from style.css:2873 — no selector match in site (PASS 3 audit) */
+.video-icon .video-icon-sonar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  -webkit-animation: video-icon-sonar 2s linear infinite;
+  animation: video-icon-sonar 2s linear infinite;
+}
+
+/* parked from style.css:2885 — no selector match in site (PASS 3 audit) */
+.video-icon .video-icon-sonar .video-icon-sonar-bfr {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: -25px;
+  left: -25px;
+  z-index: -100;
+}
+
+/* parked from style.css:2894 — no selector match in site (PASS 3 audit) */
+.video-icon .video-icon-sonar .video-icon-sonar-afr {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: -10px;
+  left: -10px;
+  z-index: -50;
+}
+
+/* parked from style.css:2903 — no selector match in site (PASS 3 audit) */
+.video-icon-small .video-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 11px;
+}
+
+/* parked from style.css:2909 — no selector match in site (PASS 3 audit) */
+.video-icon-small .video-icon .video-icon-sonar .video-icon-sonar-bfr {
+  top: -15px;
+  left: -15px;
+  width: 70px;
+  height: 70px;
+}
+
+/* parked from style.css:2916 — no selector match in site (PASS 3 audit) */
+.video-icon-small .video-icon .video-icon-sonar .video-icon-sonar-afr {
+  top: 0px;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+}
+
+/* parked from style.css:2923 — no selector match in site (PASS 3 audit) */
+.video-icon-medium .video-icon {
+  width: 50px;
+  height: 50px;
+  font-size: 14px;
+}
+
+/* parked from style.css:2929 — no selector match in site (PASS 3 audit) */
+.video-icon-medium .video-icon .video-icon-sonar .video-icon-sonar-bfr {
+  width: 100px;
+  height: 100px;
+}
+
+/* parked from style.css:2934 — no selector match in site (PASS 3 audit) */
+.video-icon-medium .video-icon .video-icon-sonar .video-icon-sonar-afr {
+  width: 70px;
+  height: 70px;
+}
+
+/* parked from style.css:2939 — no selector match in site (PASS 3 audit) */
+.video-icon-large.video-icon-box .video-icon i {
+  margin-left: 5px;
+}
+
+/* parked from style.css:2943 — no selector match in site (PASS 3 audit) */
+.video-icon-large .video-icon {
+  width: 85px;
+  height: 85px;
+  font-size: 20px;
+}
+
+/* parked from style.css:2949 — no selector match in site (PASS 3 audit) */
+.video-icon-large .video-icon .video-icon-sonar .video-icon-sonar-bfr {
+  width: 135px;
+  height: 135px;
+}
+
+/* parked from style.css:2954 — no selector match in site (PASS 3 audit) */
+.video-icon-large .video-icon .video-icon-sonar .video-icon-sonar-afr {
+  width: 105px;
+  height: 105px;
+}
+
+/* parked from style.css:2959 — no selector match in site (PASS 3 audit) */
+.video-icon-extra-large.video-icon-box .video-icon i {
+  margin-left: 10px;
+}
+
+/* parked from style.css:2963 — no selector match in site (PASS 3 audit) */
+.video-icon-extra-large .video-icon {
+  width: 120px;
+  height: 120px;
+  font-size: 30px;
+}
+
+/* parked from style.css:2969 — no selector match in site (PASS 3 audit) */
+.video-icon-extra-large .video-icon .video-icon-sonar .video-icon-sonar-bfr {
+  width: 170px;
+  height: 170px;
+}
+
+/* parked from style.css:2974 — no selector match in site (PASS 3 audit) */
+.video-icon-extra-large .video-icon .video-icon-sonar .video-icon-sonar-afr {
+  width: 140px;
+  height: 140px;
+}
+
+/* parked from style.css:2980 — no selector match in site (PASS 3 audit) */
+.will-change-transform * {
+  will-change: transform;
+}
+
+/* parked from style.css:2984 — no selector match in site (PASS 3 audit) */
+.will-change-inherit * {
+  will-change: inherit !important;
+}
+
+/* parked from style.css:2988 — no selector match in site (PASS 3 audit) */
+.animation-rotation {
+  -webkit-animation: rotation 8s infinite linear;
+}
+
+/* parked from style.css:3003 — no selector match in site (PASS 3 audit) */
+.animation-float {
+  animation: float 2000ms linear 500ms infinite alternate both;
+}
+
+/* parked from style.css:3007 — no selector match in site (PASS 3 audit) */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+
+  100% {
+    transform: translateY(30px);
+  }
+}
+
+/* parked from style.css:3021 — no selector match in site (PASS 3 audit) */
+.animation-float-small {
+  animation: float 2000ms linear 500ms infinite alternate both;
+}
+
+/* parked from style.css:3025 — no selector match in site (PASS 3 audit) */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/* parked from style.css:3096 — no selector match in site (PASS 3 audit) */
+.masked-image {
+  position: absolute;
+  top: -100px;
+  right: 0;
+}
+
+/* parked from style.css:3102 — no selector match in site (PASS 3 audit) */
+.masked-image svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+/* parked from style.css:3112 — no selector match in site (PASS 3 audit) */
+.masked-image figure {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* parked from style.css:3118 — no selector match in site (PASS 3 audit) */
+.masked-image img {
+  width: 100%;
+  height: auto;
+  visibility: visible;
+}
+
+/* parked from style.css:3125 — no selector match in site (PASS 3 audit) */
+.shape-image-animation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* parked from style.css:3131 — no selector match in site (PASS 3 audit) */
+.shape-image-animation svg {
+  height: 100%;
+  width: 100%;
+}
+
+/* parked from style.css:3136 — no selector match in site (PASS 3 audit) */
+.shape-image-animation svg path {
+  width: 100%;
+}
+
+/* parked from style.css:3140 — no selector match in site (PASS 3 audit) */
+.page-divider-wrapper {
+  margin-bottom: -1px;
+}
+
+/* parked from style.css:3144 — no selector match in site (PASS 3 audit) */
+.page-divider-wrapper svg {
+  width: 100%;
+  margin-bottom: -3px;
+}
+
+/* parked from style.css:3535 — no selector match in site (PASS 3 audit) */
+.transform-3d {
+  transform: translate3d(0px, 0px, 100px);
+}
+
+/* parked from style.css:3540 — no selector match in site (PASS 3 audit) */
+.marquees-text {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-animation: example1 50s linear infinite;
+  animation: example1 50s linear infinite;
+  width: 100%;
+}
+
+/* parked from style.css:3569 — no selector match in site (PASS 3 audit) */
+.looping-wrapper-gray {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 1px;
+  height: 100vh;
+  left: 50%;
+  top: 0;
+}
+
+/* parked from style.css:3591 — no selector match in site (PASS 3 audit) */
+.marquee-slide {
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+  position: relative;
+}
+
+/* parked from style.css:3598 — no selector match in site (PASS 3 audit) */
+.feather-shadow {
+  mask-image: linear-gradient(to right, transparent 0%, #000000 20%, #000000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000000 20%, #000000 80%, transparent 100%);
+}
+
+/* parked from style.css:3604 — no selector match in site (PASS 3 audit) */
+.text-sliding-line {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  z-index: 1;
+  background-image: linear-gradient(135deg, transparent 45%, var(--white) 45%, var(--white) 55%, transparent 0);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* parked from style.css:3617 — no selector match in site (PASS 3 audit) */
+.bg-sliding-line {
+  background-image: linear-gradient(45deg, transparent 45%, var(--white) 45%, var(--white) 55%, transparent 0);
+  background-size: 0.1em 0.1em;
+}
+
+/* parked from style.css:3679 — no selector match in site (PASS 3 audit) */
+.cookie-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 370px;
+  z-index: 999999;
+  padding: 40px;
+  display: none;
+}
+
+/* parked from style.css:3967 — no selector match in site (PASS 3 audit) */
+@-moz-keyframes example1 {
+  0% {
+    -moz-transform: translateX(100%);
+  }
+
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+/* parked from style.css:3977 — no selector match in site (PASS 3 audit) */
+@-webkit-keyframes example1 {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+/* parked from style.css:3987 — no selector match in site (PASS 3 audit) */
+@keyframes example1 {
+  0% {
+    -moz-transform: translateX(100%);
+    /* Firefox bug fix */
+    -webkit-transform: translateX(100%);
+    /* Firefox bug fix */
+    transform: translateX(100%);
+  }
+
+  100% {
+    -moz-transform: translateX(-100%);
+    /* Firefox bug fix */
+    -webkit-transform: translateX(-100%);
+    /* Firefox bug fix */
+    transform: translateX(-100%);
+  }
+}

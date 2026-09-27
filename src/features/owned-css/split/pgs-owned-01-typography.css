@@ -1,0 +1,650 @@
+/* PASS 2 · 1:1 copy · UNLINKED · do not edit values; UI-pass changes come later
+   Source: public/assets/css/style.css lines 229-1131 (04. Typography)
+   Parked (dead, no selector match in site): 112 rules → parked/pgs-owned-parked-01.css
+   url() rewrites: none in this range. */
+/* ===================================
+    04. Typography
+====================================== */
+/* Heading */
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+  font-weight: inherit;
+}
+
+h1,
+.h1 {
+  font-size: 4.375rem;
+  line-height: 4.375rem;
+}
+
+h2,
+.h2 {
+  font-size: 3.438rem;
+  line-height: 3.438rem;
+}
+
+h3,
+.h3 {
+  font-size: 2.813rem;
+  line-height: 3.125rem;
+}
+
+h4 {
+  font-size: 2.375rem;
+  line-height: 2.7rem;
+}
+
+h5 {
+  font-size: 2rem;
+  line-height: 2.2rem;
+}
+
+h6 {
+  font-size: 1.75rem;
+  line-height: 1.95rem;
+}
+
+/* Font custom */
+.font-style-italic {
+  font-style: italic;
+}
+
+.hover-text {
+  display: none;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:297) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:301) */
+
+.text-transform-none {
+  text-transform: none !important;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:309) */
+
+
+.text-uppercase{
+ text-transform: uppercase !important;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:318) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:322) */
+
+/* Font size */
+/* parked → parked/pgs-owned-parked-01.css (style.css:327) */
+
+.fs-9 {
+  font-size: 9px;
+}
+
+.fs-10 {
+  font-size: 10px;
+}
+
+.fs-11 {
+  font-size: 11px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-17 {
+  font-size: 17px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-19 {
+  font-size: 19px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-24 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.fs-26 {
+  font-size: 26px;
+  line-height: 38px;
+}
+
+.fs-28 {
+  font-size: 1.75rem;
+  line-height: 2.6rem;
+}
+
+.fs-30 {
+  font-size: 1.875rem;
+  line-height: 2.8rem;
+}
+
+.fs-32 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.fs-40 {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.fs-45 {
+  font-size: 2.813rem;
+  line-height: 3rem;
+}
+
+.fs-50 {
+  font-size: 3.125rem;
+  line-height: 3.25rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:419) */
+
+.fs-60 {
+  font-size: 3.75rem;
+  line-height: 3.75rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:429) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:434) */
+
+.fs-75 {
+  font-size: 4.668rem;
+  line-height: 4.668rem;
+}
+
+.fs-80 {
+  font-size: 5rem;
+  line-height: 5rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:449) */
+
+.fs-90 {
+  font-size: 5.625rem;
+  line-height: 5.625rem;
+}
+
+.fs-95 {
+  font-size: 5.938rem;
+  line-height: 5.938rem;
+}
+
+.fs-100 {
+  font-size: 6.25rem;
+  line-height: 6.25rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:469) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:474) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:479) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:484) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:489) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:494) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:499) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:504) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:509) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:514) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:519) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:524) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:529) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:534) */
+
+.fs-350 {
+  font-size: 21.875rem;
+  line-height: 21.875rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:544) */
+
+/* Line height */
+/* parked → parked/pgs-owned-parked-01.css (style.css:550) */
+
+.lh-10 {
+  line-height: 10px;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:558) */
+
+.lh-12 {
+  line-height: 12px;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:566) */
+
+.lh-14 {
+  line-height: 14px;
+}
+
+.lh-15 {
+  line-height: 15px;
+}
+
+.lh-16 {
+  line-height: 16px;
+}
+
+.lh-18 {
+  line-height: 18px;
+}
+
+.lh-19 {
+  line-height: 19px;
+}
+
+.lh-20 {
+  line-height: 20px;
+}
+
+.lh-22 {
+  line-height: 22px;
+}
+
+.lh-24 {
+  line-height: 24px;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:602) */
+
+.lh-28 {
+  line-height: 28px;
+}
+
+.lh-30 {
+  line-height: 30px;
+}
+
+.lh-32 {
+  line-height: 2rem;
+}
+
+.lh-34 {
+  line-height: 2.125rem;
+}
+
+.lh-36 {
+  line-height: 2.25rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:626) */
+
+.lh-40 {
+  line-height: 2.5rem;
+}
+
+.lh-42 {
+  line-height: 2.625rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:638) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:642) */
+
+.lh-48 {
+  line-height: 3rem;
+}
+
+.lh-50 {
+  line-height: 3.125rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:654) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:658) */
+
+.lh-65 {
+  line-height: 4.063rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:666) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:670) */
+
+.lh-80 {
+  line-height: 5rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:678) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:682) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:686) */
+
+.lh-100 {
+  line-height: 6.25rem;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:694) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:698) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:702) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:706) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:710) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:714) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:718) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:722) */
+
+/* Text color */
+.text-white,
+.btn-link.text-white,
+a.text-white-hover:hover {
+  color: var(--white);
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:733) */
+
+.text-base-color,
+.btn-link.text-base-color {
+  color: var(--base-color);
+}
+
+.text-black,
+.btn-link.text-black,
+a.text-black-hover:hover {
+  color: var(--black);
+}
+
+.text-dark-gray,
+.btn-link.text-dark-gray,
+a.text-dark-gray-hover:hover {
+  color: #009C70;
+}
+
+.text-medium-gray,
+.btn-link.text-medium-gray,
+a.text-medium-gray-hover:hover {
+  color: var(--medium-gray);
+}
+
+.text-extra-medium-gray,
+.btn-link.text-extra-medium-gray,
+a.text-extra-medium-gray-hover:hover {
+  color: var(--extra-medium-gray);
+}
+
+.text-light-medium-gray,
+.btn-link.text-light-medium-gray,
+a.text-light-medium-gray:hover {
+  color: var(--light-medium-gray);
+}
+
+.text-light-gray,
+.btn-link.text-light-gray,
+a.text-light-gray-hover:hover {
+  color: var(--light-gray);
+}
+
+.text-very-light-gray,
+.btn-link.text-very-light-gray,
+a.text-very-light-gray-hover:hover {
+  color: var(--very-light-gray);
+}
+
+.text-red,
+.btn-link.text-red,
+a.text-red-hover:hover {
+  color: var(--red);
+}
+
+.text-green,
+.btn-link.text-green,
+a.text-green-hover:hover {
+  color: var(--green);
+}
+
+.text-yellow,
+.btn-link.text-yellow,
+a.text-yellow-hover:hover {
+  color: #40608a;
+}
+
+.text-golden-yellow,
+.btn-link.text-golden-yellow,
+a.text-golden-yellow-hover:hover {
+  color: var(--golden-yellow);
+}
+
+.text-tussock-yellow,
+.btn-link.text-tussock-yellow,
+a.text-tussock-yellow-hover:hover {
+  color: var(--tussock-yellow);
+}
+
+.text-cornflower-blue,
+.btn-link.text-cornflower-blue,
+a.text-cornflower-blue-hover:hover {
+  color: var(--cornflower-blue);
+}
+
+.text-jade,
+.btn-link.text-jade,
+a.text-jade-hover:hover {
+  color: var(--jade);
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:826) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:830) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:834) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:838) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:842) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:846) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:850) */
+
+/* Text gradient color */
+/* parked → parked/pgs-owned-parked-01.css (style.css:855) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:871) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:875) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:879) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:883) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:887) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:891) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:895) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:899) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:903) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:907) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:911) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:915) */
+
+/* Text shadow */
+/* parked → parked/pgs-owned-parked-01.css (style.css:920) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:924) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:928) */
+
+/* Text bottom line */
+.text-decoration-line-bottom {
+  border-bottom: 1px solid;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:937) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:941) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:945) */
+
+/* Text outline*/
+/* parked → parked/pgs-owned-parked-01.css (style.css:950) */
+
+/* Text stroke width */
+/* parked → parked/pgs-owned-parked-01.css (style.css:957) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:961) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:965) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:969) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:973) */
+
+/* Text stroke color */
+/* parked → parked/pgs-owned-parked-01.css (style.css:978) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:982) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:986) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:990) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:994) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:998) */
+
+/* Letter spacing */
+/* parked → parked/pgs-owned-parked-01.css (style.css:1003) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1007) */
+
+.ls-1px {
+  letter-spacing: 1px !important;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1015) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1019) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1023) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1027) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1031) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1035) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1039) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1043) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1047) */
+
+.ls-minus-05px {
+  letter-spacing: -0.5px !important;
+}
+
+.ls-minus-1px {
+  letter-spacing: -1px !important;
+}
+
+.ls-minus-2px {
+  letter-spacing: -2px !important;
+}
+
+.ls-minus-3px {
+  letter-spacing: -3px !important;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1067) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1071) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1075) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1079) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1083) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1087) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1091) */
+
+/* Icon size */
+/* parked → parked/pgs-owned-parked-01.css (style.css:1096) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1100) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1104) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1108) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1112) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1116) */
+
+.icon-extra-medium {
+  font-size: 24px;
+}
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1124) */
+
+/* parked → parked/pgs-owned-parked-01.css (style.css:1128) */
+

@@ -1,0 +1,13 @@
+/**
+ * COUNTRIES UK — owned CSS workshop barrel
+ * =============================================================================
+ * UNLINKED from live `/countriesuk`. Lab: /preview/countriesuk-owned-css
+ *
+ * Do not @import block files here for live. Preview shell imports ONE block
+ * component; that component imports its own CSS. Fill blocks as you convert.
+ *
+ * Bake: owned_px = design_px × 0.9 (font, w/h, margin, pad, gap, px lh, radius).
+ * DO NOT edit public/assets/css/style.css.
+ */
+
+/* Barrel intentionally empty — blocks self-import from preview shell. */

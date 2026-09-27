@@ -1,0 +1,1257 @@
+/* PASS 15 parked rules · 1:1 copies moved out of split/pgs-owned-43-resp-elements-footer.css · NEVER imported
+   Source: public/assets/css/responsive.css 20365-21642. Each rule below has no class/id token anywhere in the site
+   (src/** excl. owned-css, scripts/**, public/assets/js, public HTML files, or the re-joined legacy HTML chunks — all 41 src/legacy/generated
+   folders, chunks concatenated before matching). Restoring one = move it back to its cut point.
+   Rules are re-wrapped in their source media query; (max-width: 767px) is written as (max-width: 600px) per owner decision 2026-09-26. */
+
+/* parked whole wrapper from responsive.css:20365-20391 — no selector match in site (PASS 15 audit) */
+@media (max-height: 380px) {
+  .search-form-wrapper .search-form {
+    height: 85vh !important;
+  }
+  .search-form-wrapper .search-form h6 {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 10px !important;
+  }
+  .search-form-wrapper .search-form .search-input {
+    font-size: 14px;
+    height: 50px;
+  }
+  .search-form-wrapper .search-form .search-button {
+    bottom: 10px;
+    font-size: 18px;
+  }
+  .header-cart-icon .header-cart .cart-item-list .cart-item {
+    padding: 12px;
+  }
+  .header-cart-icon .header-cart .cart-item-list .cart-item.cart-total .mb-15px {
+    margin-bottom: 0px !important;
+  }
+  .header-cart-icon .header-cart .cart-item-list .cart-item .product-image {
+    max-width: 40px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20392-20396 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .down-section {
+    bottom: 35px;
+  }
+}
+
+/* parked from responsive.css:20398-20401 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .page-title-extra-large h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+/* parked from responsive.css:20406-20409 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .page-title-large h1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+/* parked from responsive.css:20415-20417 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .down-section {
+    bottom: 20px;
+  }
+}
+
+/* parked from responsive.css:20420-20431 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1600px) {
+  .grid.xxl-grid-6col li {
+    width: 16.67%;
+  }
+  .grid.xxl-grid-6col li.grid-item-double {
+    width: 33.33%;
+  }
+  .grid.xxl-grid-5col li {
+    width: 20%;
+  }
+  .grid.xxl-grid-5col li.grid-item-double {
+    width: 40%;
+  }
+}
+
+/* parked from responsive.css:20435-20455 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1600px) {
+  .grid.xxl-grid-4col li.grid-item-double {
+    width: 50%;
+  }
+  .grid.xxl-grid-3col li {
+    width: 33.33%;
+  }
+  .grid.xxl-grid-3col li.grid-item-double {
+    width: 66.67%;
+  }
+  .grid.xxl-grid-2col li {
+    width: 50%;
+  }
+  .grid.xxl-grid-2col li.grid-item-double {
+    width: 100%;
+  }
+  .grid.xxl-grid-1col li {
+    width: 100%;
+  }
+  .grid.xxl-grid-1col li.grid-item-double {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20458-20475 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1399px) {
+  .grid.xl-grid-6col li {
+    width: 16.67%;
+  }
+  .grid.xl-grid-6col li.grid-item-double {
+    width: 33.33%;
+  }
+  .grid.xl-grid-5col li {
+    width: 20%;
+  }
+  .grid.xl-grid-5col li.grid-item-double {
+    width: 40%;
+  }
+  .grid.xl-grid-4col li {
+    width: 25%;
+  }
+  .grid.xl-grid-4col li.grid-item-double {
+    width: 50%;
+  }
+}
+
+/* parked from responsive.css:20479-20493 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1399px) {
+  .grid.xl-grid-3col li.grid-item-double {
+    width: 66.67%;
+  }
+  .grid.xl-grid-2col li {
+    width: 50%;
+  }
+  .grid.xl-grid-2col li.grid-item-double {
+    width: 100%;
+  }
+  .grid.xl-grid-1col li {
+    width: 100%;
+  }
+  .grid.xl-grid-1col li.grid-item-double {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20496-20519 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .grid.lg-grid-6col li {
+    width: 16.67%;
+  }
+  .grid.lg-grid-6col li.grid-item-double {
+    width: 33.33%;
+  }
+  .grid.lg-grid-5col li {
+    width: 20%;
+  }
+  .grid.lg-grid-5col li.grid-item-double {
+    width: 40%;
+  }
+  .grid.lg-grid-4col li {
+    width: 25%;
+  }
+  .grid.lg-grid-4col li.grid-item-double {
+    width: 50%;
+  }
+  .grid.lg-grid-3col li {
+    width: 33.33%;
+  }
+  .grid.lg-grid-3col li.grid-item-double {
+    width: 66.67%;
+  }
+}
+
+/* parked from responsive.css:20523-20531 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .grid.lg-grid-2col li.grid-item-double {
+    width: 100%;
+  }
+  .grid.lg-grid-1col li {
+    width: 100%;
+  }
+  .grid.lg-grid-1col li.grid-item-double {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20534-20557 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .grid.md-grid-6col li {
+    width: 16.67%;
+  }
+  .grid.md-grid-6col li.grid-item-double {
+    width: 33.33%;
+  }
+  .grid.md-grid-5col li {
+    width: 20%;
+  }
+  .grid.md-grid-5col li.grid-item-double {
+    width: 40%;
+  }
+  .grid.md-grid-4col li {
+    width: 25%;
+  }
+  .grid.md-grid-4col li.grid-item-double {
+    width: 50%;
+  }
+  .grid.md-grid-3col li {
+    width: 33.33%;
+  }
+  .grid.md-grid-3col li.grid-item-double {
+    width: 66.67%;
+  }
+}
+
+/* parked from responsive.css:20561-20569 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .grid.md-grid-2col li.grid-item-double {
+    width: 100%;
+  }
+  .grid.md-grid-1col li {
+    width: 100%;
+  }
+  .grid.md-grid-1col li.grid-item-double {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20572-20601 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .grid.sm-grid-6col li {
+    width: 16.67%;
+  }
+  .grid.sm-grid-6col li.grid-item-double {
+    width: 33.33%;
+  }
+  .grid.sm-grid-5col li {
+    width: 20%;
+  }
+  .grid.sm-grid-5col li.grid-item-double {
+    width: 40%;
+  }
+  .grid.sm-grid-4col li {
+    width: 25%;
+  }
+  .grid.sm-grid-4col li.grid-item-double {
+    width: 50%;
+  }
+  .grid.sm-grid-3col li {
+    width: 33.33%;
+  }
+  .grid.sm-grid-3col li.grid-item-double {
+    width: 66.67%;
+  }
+  .grid.sm-grid-2col li {
+    width: 50%;
+  }
+  .grid.sm-grid-2col li.grid-item-double {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20605-20613 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .grid.sm-grid-1col li.grid-item-double {
+    width: 100%;
+  }
+  .grid.gutter-small {
+    margin: 0 -7px;
+  }
+  .grid.gutter-small li {
+    padding: 7px 7px;
+  }
+}
+
+/* parked from responsive.css:20620-20634 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .grid.gutter-double-extra-large li {
+    padding: 15px;
+  }
+  .grid.gutter-medium {
+    margin: 0 -7px;
+  }
+  .grid.gutter-medium li {
+    padding: 7px 7px;
+  }
+  .grid.gutter-large {
+    margin: 0 -10px;
+  }
+  .grid.gutter-large li {
+    padding: 10px 10px;
+  }
+}
+
+/* parked from responsive.css:20637-20666 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .grid.xs-grid-6col li {
+    width: 16.67%;
+  }
+  .grid.xs-grid-6col li.grid-item-double {
+    width: 33.33%;
+  }
+  .grid.xs-grid-5col li {
+    width: 20%;
+  }
+  .grid.xs-grid-5col li.grid-item-double {
+    width: 40%;
+  }
+  .grid.xs-grid-4col li {
+    width: 25%;
+  }
+  .grid.xs-grid-4col li.grid-item-double {
+    width: 50%;
+  }
+  .grid.xs-grid-3col li {
+    width: 33.33%;
+  }
+  .grid.xs-grid-3col li.grid-item-double {
+    width: 66.67%;
+  }
+  .grid.xs-grid-2col li {
+    width: 50%;
+  }
+  .grid.xs-grid-2col li.grid-item-double {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20683-20688 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .accordion-style-05 .accordion-item {
+    padding: 20px 35px 22px 55px;
+  }
+  .accordion-style-05 .accordion-item .number {
+    top: 17px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20690-20703 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .accordion-style-05 .accordion-item {
+    padding: 18px 20px 20px 55px;
+  }
+  .accordion-style-05 .accordion-item .number {
+    top: 15px;
+  }
+  .accordion-style-05 .accordion-item .accordion-body {
+    padding-right: 25px;
+  }
+  .accordion-style-06 .accordion-item {
+    padding: 15px 70px 15px 30px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20704-20711 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1399px) {
+  .blockquote-style-04 .blockquote-img img {
+    margin-top: -106px;
+  }
+  .blockquote-style-04 .blockquote-content {
+    padding-left: 23%;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20712-20720 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .blockquote-style-04 .blockquote-img img {
+    margin-top: -89px;
+  }
+  .blockquote-style-04 .blockquote-content {
+    padding-left: 20%;
+    border-bottom-right-radius: 89px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20721-20728 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .blockquote-style-04 .blockquote-img img {
+    margin-top: -72px;
+  }
+  .blockquote-style-04 .blockquote-content {
+    border-bottom-right-radius: 64px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20729-20734 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .blockquote-style-04 .blockquote-content {
+    margin-left: 0;
+    padding: 8% 10%;
+  }
+}
+
+/* parked from responsive.css:20736-20739 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .btn.btn-extra-large {
+    font-size: 15px;
+    padding: 20px 40px;
+  }
+}
+
+/* parked from responsive.css:20744-20746 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .btn.btn-rounded.btn-extra-large {
+    padding: 16px 36px;
+  }
+}
+
+/* parked from responsive.css:20750-20755 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .btn.with-rounded.btn-extra-large {
+    padding-right: 70px;
+  }
+  .btn.with-rounded.btn-large {
+    padding-right: 55px;
+  }
+}
+
+/* parked from responsive.css:20759-20764 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .btn.btn-link-gradient {
+    padding: 0 0 3px;
+  }
+  .btn.btn-switch-text.btn-extra-large {
+    padding: 0;
+  }
+}
+
+/* parked from responsive.css:20768-20776 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .btn.btn-switch-text.btn-medium {
+    padding: 0;
+  }
+  .btn.btn-switch-text.btn-small {
+    padding: 0;
+  }
+  .btn.btn-switch-text.btn-very-small {
+    padding: 0;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20778-20785 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .clients-style-02 .swiper-button-prev {
+    left: -30px;
+  }
+  .clients-style-02 .swiper-button-next {
+    right: -30px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20786-20793 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .clients-style-02 .swiper-button-prev {
+    left: -15px;
+  }
+  .clients-style-02 .swiper-button-next {
+    right: -15px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20794-20801 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .clients-style-02 .swiper-button-prev {
+    left: 0px;
+  }
+  .clients-style-02 .swiper-button-next {
+    right: 0px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20802-20811 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .text-slider-style-05 .swiper-slide {
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    opacity: 1;
+  }
+  .text-slider-style-05 .swiper-slide .services-box-style-01 .icon-box {
+    opacity: 1;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20812-20819 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .countdown-style-02 .countdown-box {
+    width: 145px;
+  }
+  .countdown-style-04 .countdown-box {
+    width: 150px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20820-20852 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .countdown-style-01 .countdown {
+    width: 100%;
+  }
+  .countdown-style-01 .counter-container {
+    display: block;
+    width: 100%;
+  }
+  .countdown-style-01 .counter-container .countdown-box {
+    margin: 5% 5%;
+    width: 40%;
+    float: left;
+  }
+  .countdown-style-02 .countdown-box, .countdown-style-04 .countdown-box {
+    width: 50%;
+    margin: 0 0 30px;
+  }
+  .countdown-style-02 .countdown-box span, .countdown-style-04 .countdown-box span {
+    position: relative;
+    top: 0;
+  }
+  .countdown-style-02 .countdown-box:before, .countdown-style-04 .countdown-box:before {
+    transform: none;
+    top: 15px;
+  }
+  .countdown-style-02 .countdown-box:nth-child(2):before, .countdown-style-04 .countdown-box:nth-child(2):before {
+    display: none;
+  }
+  .countdown-style-03 .countdown-box {
+    width: 50%;
+    margin: 0 0 30px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20853-20857 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .counter-style-06 .feature-box:nth-last-child(2n+1) .feature-box-content:after {
+    display: none;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20858-20862 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .counter-style-06 .feature-box .feature-box-content:after {
+    display: none;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20863-20883 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .event-style-03 .accordion .trainer-box {
+    margin-bottom: 25px;
+    margin-top: 15px;
+    margin-right: 0;
+  }
+  .event-style-03 .nav-tabs .nav-link {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .event-style-03 .accordion .accordion-title .event-time {
+    min-width: 290px;
+  }
+  .time-schedule-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .time-schedule-scroll .time-schedule-min-width {
+    min-width: 1050px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20884-20906 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .time-schedule-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .time-schedule-scroll .time-schedule-min-width {
+    min-width: 980px;
+  }
+  .time-table-box.day {
+    padding: 15px 10px;
+  }
+  .event-style-03 .accordion .accordion-title .event-time {
+    min-width: 1px;
+    margin-right: 20px;
+  }
+  .event-style-03 .accordion .accordion-item .accordion-body {
+    padding-right: 0;
+  }
+  .event-style-03 .nav-tabs > li.nav-item:not(:last-child) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* parked whole wrapper from responsive.css:20907-20911 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .fancy-text-box-style-01 {
+    border-right: 0 solid;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20925-20929 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .fancy-text-style-3 {
+    transform: rotate(0deg) !important;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20930-20937 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .shadow-in .separator-animation {
+    width: calc(100% + 5px) !important;
+  }
+  .text-highlight .separator-animation {
+    left: -1px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:20938-20949 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .feature-box:hover .content-slide-up.content-scale .feature-box-overlay {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  .icon-with-text-style-05 .feature-box {
+    overflow: hidden;
+  }
+  .icon-with-text-style-05 .feature-box .content-slide-up {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:20954-20957 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .feature-box:hover .content-slide-up.content-scale .feature-box-overlay {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* parked whole wrapper from responsive.css:20959-20963 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .interactive-banner-style-06 .interactive-banners-content {
+    transform: translateY(calc(100% - 110px));
+  }
+}
+
+/* parked whole wrapper from responsive.css:20964-20968 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .html-video {
+    height: 100%;
+  }
+}
+
+/* parked from responsive.css:20993-20998 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .mfp-arrow-right {
+    right: 10px;
+  }
+  .mfp-arrow-left {
+    left: 10px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21013-21021 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .pricing-table-style-01.popular-item, .pricing-table-style-02.popular-item {
+    margin-top: 0;
+  }
+  .pricing-table-style-02 .popular-item {
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21022-21044 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .pricing-table-style-04 .accordion-item {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .pricing-table-style-04 .accordion-item.active-accordion {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  .pricing-table-style-08 .nav-tabs > li.nav-item > a.nav-link .tab-nav-text {
+    margin: 0 12px;
+  }
+  .pricing-table-style-12 li {
+    display: block;
+  }
+  .pricing-table-style-12 li:hover {
+    -webkit-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+  .pricing-table-style-12 li img {
+    margin-bottom: 10px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21045-21049 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .process-step-style-02:nth-child(2) .progress-step-separator, .process-step-style-03:nth-child(2) .progress-step-separator, .process-step-style-04:nth-child(2) .progress-step-separator {
+    display: none;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21050-21062 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .process-step-style-02 .progress-step-separator, .process-step-style-03 .progress-step-separator, .process-step-style-04 .progress-step-separator {
+    display: none;
+  }
+  .process-step-style-01 .progress-step-separator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: none;
+    right: 0;
+    margin: 0 auto;
+  }
+}
+
+/* parked from responsive.css:21087-21099 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .sliding-box-style-01 .sliding-box-item .sliding-box-content:after {
+    top: 0;
+    opacity: 1;
+    right: 50%;
+    margin-top: -23px;
+    border: solid transparent;
+    border-bottom-color: var(--white);
+    border-width: 12px;
+    margin-right: -10px;
+  }
+  .sliding-box-style-02 .sliding-box-item.active .content-hover {
+    animation: fade 0s;
+  }
+}
+
+/* parked from responsive.css:21114-21120 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .sliding-box-style-03 .number {
+    bottom: -22px;
+  }
+  .sliding-box-style-03 .sliding-box-item {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21122-21126 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .social-icon-style-06 ul li a {
+    padding: 0 20px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21137-21167 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .newsletter-style-01.box-shadow {
+    box-shadow: none;
+  }
+  .newsletter-style-01 input {
+    padding-right: 25px;
+  }
+  .newsletter-style-01 input.is-invalid {
+    padding-right: 30px;
+  }
+  .newsletter-style-01 .btn {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 4px;
+  }
+  .newsletter-style-03 input {
+    padding-right: 90px !important;
+    padding-left: 30px !important;
+  }
+  .newsletter-style-03 .btn {
+    padding: 12px 30px 12px 30px;
+  }
+  .newsletter-style-03 .btn i {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .newsletter-style-03 .btn span {
+    display: none;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21168-21172 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1399px) {
+  .tab-style-05 .nav-tabs .nav-item .nav-link {
+    padding: 18px 20px 20px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21173-21180 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .tab-style-05 .nav-tabs .nav-item .nav-link {
+    padding: 16px 20px;
+  }
+  .tab-style-08 ul .nav-item .nav-link {
+    padding: 25px 10px;
+  }
+}
+
+/* parked from responsive.css:21182-21184 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .tab-style-02 .nav-tabs > li.nav-item {
+    margin: 0 10px;
+  }
+}
+
+/* parked from responsive.css:21192-21205 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .tab-style-04 .nav-tabs .nav-item {
+    padding: 0 20px;
+  }
+  .tab-style-05 .nav-tabs > li.nav-item {
+    width: auto;
+    padding: 0 3px;
+  }
+  .tab-style-05 .nav-tabs > li.nav-item .nav-link {
+    padding: 12px 20px;
+  }
+  .tab-style-07 .nav-tabs .nav-item .nav-link {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21207-21261 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .tab-style-01 .nav-tabs {
+    border-bottom: 0;
+  }
+  .tab-style-01 .nav-tabs > li.nav-item {
+    margin-bottom: 15px;
+  }
+  .tab-style-01 .nav-tabs > li.nav-item .nav-link {
+    border-bottom: 1px solid var(--light-medium-gray);
+    border-radius: 6px;
+  }
+  .tab-style-02 .nav-tabs > li.nav-item {
+    margin-bottom: 30px;
+  }
+  .tab-style-01 .nav-tabs > li.nav-item {
+    margin-bottom: 15px;
+  }
+  .tab-style-04 .nav-tabs {
+    display: inline-block;
+    width: 100%;
+  }
+  .tab-style-04 .nav-tabs .nav-item {
+    width: auto;
+    display: table;
+    margin: 0 auto 10px;
+  }
+  .tab-style-05 .nav-tabs {
+    display: inline-block;
+    width: 100%;
+  }
+  .tab-style-05 .nav-tabs .nav-item {
+    display: table;
+    margin: 0 auto;
+    width: auto;
+  }
+  .tab-style-05 .nav-tabs .nav-item .nav-link {
+    padding: 12px 30px;
+  }
+  .tab-style-07 .nav-tabs .nav-item .nav-link {
+    padding: 25px;
+  }
+  .tab-style-07 .nav-tabs .nav-item .nav-link .number-box {
+    right: 40px;
+  }
+  .tab-style-08 ul .nav-item {
+    border-right: 0;
+    border-bottom: 1px solid var(--light-medium-gray);
+    flex-grow: inherit;
+    flex-basis: auto;
+    width: 100%;
+  }
+  .tab-style-08 ul .nav-item .nav-link {
+    padding: 18px 25px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21262-21289 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .swiper-horizontal-3d .swiper-slide.swiper-slide-active {
+    box-shadow: none;
+  }
+  .testimonials-style-04 {
+    padding: 0 15px;
+  }
+  .testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-prev, .testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-next {
+    opacity: 0;
+  }
+  .testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .testimonials-style-11 .swiper-button-prev.slider-custom-text-prev,
+  .testimonials-style-11 .swiper-button-next.slider-custom-text-next {
+    min-height: 1px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    top: initial;
+    right: auto;
+    left: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    margin: 30px -3px 0;
+    display: inline-block;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21290-21306 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .testimonials-style-12 .swiper-button-previous-nav {
+    left: 25px;
+  }
+  .testimonials-style-12 .swiper-button-next-nav {
+    right: 25px;
+  }
+  .testimonials-style-13 .swiper-slide {
+    opacity: 1;
+  }
+  .testimonials-style-13 .swiper-slide.swiper-slide-active {
+    opacity: 1;
+  }
+  .testimonials-style-13 .swiper-slide.swiper-slide-next {
+    opacity: 1;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21307-21321 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1600px) {
+  .blog-simple figure figcaption .hover-text {
+    display: block !important;
+    height: auto !important;
+    margin-bottom: -50px !important;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .blog-simple figure:hover figcaption .hover-text {
+    margin-bottom: 0 !important;
+  }
+  .blog-modern figure .post-content-wrapper .post-content .hover-text {
+    display: block !important;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21322-21326 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .blog-date .feature-box .feature-box-icon {
+    margin-right: 35px !important;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21327-21337 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .blog-standard .entry-meta span {
+    margin-right: 20px;
+  }
+  .blog-comment li {
+    padding-bottom: 50px;
+  }
+  .blog-comment li ul.child-comment li {
+    margin-top: 45px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21338-21362 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .blog-date .feature-box .feature-box-icon {
+    margin-right: 25px !important;
+  }
+  .blog-date .feature-box .post-date {
+    min-width: 65px;
+    padding: 15px 0;
+  }
+  .blog-standard .entry-meta span {
+    display: block;
+  }
+  .blog-standard .blog-details .entry-meta span {
+    display: inline-block;
+  }
+  .blog-modern figure .post-content-wrapper {
+    width: 90%;
+  }
+  .blog-comment li ul.child-comment {
+    margin-left: 20px;
+    padding-left: 20px;
+  }
+  .pagination-style-01 .page-item .page-link {
+    margin: 0 5px;
+  }
+}
+
+/* parked from responsive.css:21367-21378 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1600px) {
+  .sticky-image-title a {
+    padding-left: 50px;
+  }
+  .sticky-category {
+    left: 35px;
+  }
+  .sticky-image-distortion-wrapper .menu .menu__link.active .sticky-image-title a {
+    padding-left: 70px;
+  }
+  .sticky-image-distortion-wrapper .menu .menu__link.active .sticky-category {
+    left: 20px;
+  }
+}
+
+/* parked from responsive.css:21385-21399 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1399px) {
+  .sticky-image-distortion-wrapper .menu .menu__link.active .sticky-image-title .title {
+    left: 65px;
+  }
+  .sticky-image-title .title {
+    left: 50px;
+  }
+  .sticky-category {
+    left: 0;
+  }
+  .sticky-image-distortion-wrapper .menu .menu__link.active .sticky-category {
+    left: 0;
+  }
+  .sticky-image-distortion-wrapper .menu .menu__link.active .sticky-image-title a {
+    padding-left: 55px;
+  }
+}
+
+/* parked from responsive.css:21402-21404 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .portfolio-creative .portfolio-box .portfolio-title:after {
+    font-size: 80px;
+  }
+}
+
+/* parked from responsive.css:21412-21414 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .sticky-image-title a {
+    padding-left: 15px;
+  }
+}
+
+/* parked from responsive.css:21417-21422 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .portfolio-filter.filter-btn li {
+    padding: 0 6px;
+  }
+  .portfolio-filter.filter-btn li a {
+    padding: 6px 25px;
+  }
+}
+
+/* parked from responsive.css:21426-21428 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .portfolio-creative .portfolio-box .portfolio-title:after {
+    font-size: 60px;
+  }
+}
+
+/* parked from responsive.css:21434-21440 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .portfolio-filter.filter-btn li {
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  .portfolio-filter.filter-btn li a {
+    display: block;
+  }
+}
+
+/* parked from responsive.css:21464-21469 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .sticky-image-distortion-wrapper .sticky-image-title {
+    width: 100%;
+  }
+  .sticky-image-distortion-wrapper .sticky-image-title a {
+    padding: 30px 35px 30px;
+  }
+}
+
+/* parked from responsive.css:21472-21474 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .portfolio-attractive .portfolio-box:hover .portfolio-hover .icon-box {
+    margin-top: -10px;
+  }
+}
+
+/* parked from responsive.css:21481-21483 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .sticky-image-title .title {
+    display: none;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21485-21489 — no selector match in site (PASS 15 audit) */
+@media (max-width: 1199px) {
+  .btn-cart.btn.btn-switch-text.btn-extra-large > span {
+    padding: 13px 20px;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21490-21516 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  .btn-cart.btn.btn-switch-text.btn-extra-large > span {
+    padding: 13px 48px;
+  }
+  .single-product-thumb .slider-vertical {
+    position: relative;
+    left: 0;
+    touch-action: pan-y;
+    overflow: hidden;
+    margin-top: 15px;
+  }
+  .single-product-thumb .slider-vertical .swiper-wrapper {
+    flex-direction: row;
+  }
+  .product-image-thumb .swiper-slide.swiper-slide-thumb-active {
+    border-color: transparent;
+  }
+  .product-image-thumb .swiper-slide img {
+    border: 1px solid transparent;
+  }
+  .product-image-thumb .swiper-slide.swiper-slide-thumb-active img {
+    border-color: var(--light-gray);
+  }
+  .single-product-thumb .slider-vertical .swiper-slide {
+    width: 25%;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21517-21595 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .cart-products thead {
+    display: none;
+  }
+  .cart-products tbody tr td {
+    padding: 0;
+    border: 0;
+    clear: both;
+    margin: 0 0 15px 0;
+    line-height: 1.5em;
+    display: block !important;
+    text-align: right !important;
+  }
+  .cart-products tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  .cart-products tbody tr td::before {
+    content: attr(data-title) !important;
+    font-weight: 500 !important;
+    float: left !important;
+    display: block !important;
+    color: var(--dark-gray);
+    font-size: 15px;
+  }
+  .cart-products tbody tr {
+    border-bottom: 1px solid var(--extra-medium-gray);
+    position: relative;
+    display: block;
+    padding-left: 95px;
+    padding-bottom: 30px;
+    background: none;
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: block !important;
+    min-height: 100px;
+  }
+  .cart-products tbody tr:last-child {
+    margin-bottom: 0;
+  }
+  .cart-products tbody tr .product-remove {
+    width: 20px;
+    position: absolute;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    text-align: right !important;
+    top: 5px;
+    z-index: 11;
+  }
+  .cart-products tbody tr .product-remove a {
+    line-height: 13px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-align: center;
+  }
+  .cart-products tbody tr .product-thumbnail {
+    position: absolute;
+    left: 0;
+    width: 80px;
+    display: inline-block;
+    top: 0;
+    overflow: hidden;
+    text-align: left !important;
+  }
+  .cart-products tbody tr .product-name {
+    text-align: left !important;
+    padding-right: 25px;
+    margin-bottom: 15px;
+  }
+  .cart-products tbody tr td.product-quantity:before {
+    margin-top: 8px;
+  }
+  .cart-products tbody tr .product-remove::before,
+  .cart-products tbody tr .product-thumbnail::before,
+  .cart-products tbody tr .product-name::before {
+    display: none;
+  }
+}
+
+/* parked whole wrapper from responsive.css:21596-21608 — no selector match in site (PASS 15 audit) */
+@media (max-width: 575px) {
+  .product-info .quantity {
+    margin-right: auto !important;
+  }
+  .product-info .wishlist {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .product-info .btn-cart {
+    width: 100%;
+  }
+}
+
+/* parked from responsive.css:21620-21625 — no selector match in site (PASS 15 audit) */
+@media (max-width: 991px) {
+  footer.half-footer {
+    padding: 65px 0;
+  }
+  .footer-sticky {
+    position: relative !important;
+  }
+}
+
+/* parked from responsive.css:21632-21634 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  footer.half-footer {
+    padding: 50px 0;
+  }
+}
+
+/* parked from responsive.css:21638-21641 — no selector match in site (PASS 15 audit) */
+@media (max-width: 600px) {
+  .footer-navbar li .nav-link {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+

@@ -1,0 +1,279 @@
+/* PASS 6 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 8756-11676 range, 10. Header (navbar, hover submenu, push/hamburger menus, search popup))
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:9942 — no selector match in site (PASS 6 audit) */
+.header-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* parked from style.css:10005 — no selector match in site (PASS 6 audit) */
+.header-icon .header-mail {
+  padding-right: 35px;
+  top: 0;
+}
+
+/* parked from style.css:10019 — no selector match in site (PASS 6 audit) */
+.header-icon .header-social-icon a {
+  font-size: 17px;
+  padding-left: 20px;
+  flex-shrink: 0;
+}
+
+/* parked from style.css:10140 — no selector match in site (PASS 6 audit) */
+.header-account-icon {
+  line-height: normal !important;
+}
+
+/* parked from style.css:10144 — no selector match in site (PASS 6 audit) */
+.header-account-icon .header-account {
+  display: inline-block;
+}
+
+/* parked from style.css:10148 — no selector match in site (PASS 6 audit) */
+.header-account-icon .header-account .account-item-list {
+  display: none;
+  left: auto;
+  right: 0;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  background-color: var(--white);
+  border: 0;
+  padding: 35px 0;
+  min-width: 220px;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+}
+
+/* parked from style.css:10164 — no selector match in site (PASS 6 audit) */
+.header-account-icon .header-account .account-item-list .account-item {
+  display: inline-block;
+  padding: 0 45px 12px 40px;
+  width: 100%;
+  position: relative;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+/* parked from style.css:10173 — no selector match in site (PASS 6 audit) */
+.header-account-icon .header-account .account-item-list .account-item a {
+  padding-left: 0;
+}
+
+/* parked from style.css:10177 — no selector match in site (PASS 6 audit) */
+.header-account-icon .header-account .account-item-list .account-item a:hover {
+  padding-left: 3px;
+}
+
+/* parked from style.css:10181 — no selector match in site (PASS 6 audit) */
+.header-account-icon .header-account .account-item-list .account-item:last-child {
+  padding-bottom: 0;
+}
+
+/* parked from style.css:10191 — no selector match in site (PASS 6 audit) */
+.header-account-icon a {
+  position: relative;
+}
+
+/* parked from style.css:10478 — no selector match in site (PASS 6 audit) */
+.center-logo .navbar-left,
+.center-logo .navbar-right {
+  width: 42%;
+}
+
+/* parked from style.css:10566 — no selector match in site (PASS 6 audit) */
+.social-text {
+  width: 100%;
+  display: inline-block;
+  color: var(--medium-gray);
+  font-size: 13px;
+  line-height: 16px;
+}
+
+/* parked from style.css:10574 — no selector match in site (PASS 6 audit) */
+.connect-me a {
+  color: var(--dark-gray);
+  display: table;
+}
+
+/* parked from style.css:10579 — no selector match in site (PASS 6 audit) */
+.connect-me a:hover {
+  opacity: 0.6;
+}
+
+/* parked from style.css:10841 — no selector match in site (PASS 6 audit) */
+.side-menu-hover-background-color {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+}
+
+/* parked from style.css:10851 — no selector match in site (PASS 6 audit) */
+.header-dark .social-text {
+  color: var(--white);
+}
+
+/* parked from style.css:10859 — no selector match in site (PASS 6 audit) */
+.header-dark .connect-me a {
+  color: var(--white);
+}
+
+/* parked from style.css:10863 — no selector match in site (PASS 6 audit) */
+.header-dark .connect-me a:hover {
+  opacity: 0.6;
+}
+
+/* parked from style.css:10871 — no selector match in site (PASS 6 audit) */
+.vertical-title {
+  display: flex;
+  height: 100%;
+  flex: 1;
+  justify-content: flex-end;
+  flex-direction: column;
+  -webkit-transform: translateY(-75px);
+  transform: translateY(-75px);
+}
+
+/* parked from style.css:10888 — no selector match in site (PASS 6 audit) */
+.menu-list-wrapper {
+  overflow: auto;
+  height: calc(100vh - 150px);
+  padding: 50px 0;
+}
+
+/* parked from style.css:10937 — no selector match in site (PASS 6 audit) */
+.hamburger-nav {
+  width: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* parked from style.css:11049 — no selector match in site (PASS 6 audit) */
+.hamburger-menu-half .hamburger-logo {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+}
+
+/* parked from style.css:11055 — no selector match in site (PASS 6 audit) */
+.hamburger-menu-half .menu-address {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+}
+
+/* parked from style.css:11234 — no selector match in site (PASS 6 audit) */
+.hamburger-menu-simple {
+  width: 100%;
+  right: 0;
+  opacity: 1;
+  visibility: collapse;
+  height: 100vh;
+  max-height: 100dvh;
+  top: -100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:11264 — no selector match in site (PASS 6 audit) */
+.hamburger-menu-simple .hamburger-logo {
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+}
+
+/* parked from style.css:11270 — no selector match in site (PASS 6 audit) */
+.hamburger-menu-simple .menu-address {
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+}
+
+/* parked from style.css:11276 — no selector match in site (PASS 6 audit) */
+.hamburger-menu-simple .menu-text {
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+}
+
+/* parked from style.css:11364 — no selector match in site (PASS 6 audit) */
+.hamburger-logo img {
+  max-height: 45px;
+}
+
+/* parked from style.css:11382 — no selector match in site (PASS 6 audit) */
+.right-push-menu .left-menu-bottom {
+  margin-top: 30px;
+}
+
+/* parked from style.css:11386 — no selector match in site (PASS 6 audit) */
+.right-push-menu .left-menu-bottom .header-icon {
+  position: relative;
+  bottom: 0;
+}
+
+/* parked from style.css:11413 — no selector match in site (PASS 6 audit) */
+.search-form-wrapper {
+  background: rgba(35, 35, 35, 0.9);
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden !important;
+  display: block !important;
+  height: 100vh;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 999;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+/* parked from style.css:11561 — no selector match in site (PASS 6 audit) */
+.navbar-toggler-line {
+  background: var(--dark-gray);
+  height: 2px;
+  width: 22px;
+  content: "";
+  display: block;
+  border-radius: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+/* parked from style.css:11579 — no selector match in site (PASS 6 audit) */
+.navbar-toggler-line:nth-child(1) {
+  top: 0px;
+  width: 14px;
+}
+
+/* parked from style.css:11584 — no selector match in site (PASS 6 audit) */
+.navbar-toggler-line:nth-child(2) {
+  top: 6px;
+}
+
+/* parked from style.css:11588 — no selector match in site (PASS 6 audit) */
+.navbar-toggler-line:nth-child(3) {
+  top: 6px;
+}
+
+/* parked from style.css:11592 — no selector match in site (PASS 6 audit) */
+.navbar-toggler-line:nth-child(4) {
+  top: 12px;
+  width: 14px;
+}

@@ -1,8 +1,9 @@
 <!--
   Shared public header — Figma V6 responsive (18724:10893).
-  Breakpoints: pgs-breakpoints.ts (desktop >1366 · tablet ≤1366 · mobile ≤767)
+  Breakpoints: >1366 desktop · 601–1366 iPad · ≤600 mobile (never 767 for chrome).
   Styles: src/features/shell/legacy-header-breakpoints.css
   Preserved: #ppWrapper dropslide, #exploreCountriesWrapper, notifications, drawer.
+  Nav hrefs = canonical App Router paths (router-ready; unfinished bodies link later).
 -->
 <header class="pgs-figma-header">
   <div class="mobile-none">
@@ -39,18 +40,18 @@
 
         <ul class="header-tab-top">
           <li>
-            <a href="/Home/defaultdashboard" class="tab-button text-black">#feed</a>
+            <a href="/student/dashboard" class="tab-button text-black">#feed</a>
           </li>
 
           <li class="dropdown-wrapper tab-premium" id="ppWrapper">
-            <a href="#" class="tab-button text-black" aria-haspopup="true" aria-expanded="false" aria-controls="ppDropdown">
+            <a href="/purplepremiumhome" class="tab-button text-black" aria-haspopup="true" aria-expanded="false" aria-controls="ppDropdown">
               #purplePremium
             </a>
             <div class="dropdown-menu" id="ppDropdown" role="menu">
               <a href="/purplepremiumhome" role="menuitem">OVERVIEW</a>
-              <a href="/Purplenonmedical" role="menuitem">STEM, MBA &amp; Other Paths</a>
+              <a href="/purplenonmedical" role="menuitem">STEM, MBA &amp; Other Paths</a>
               <a href="/purpleusmle" role="menuitem">USMLE</a>
-              <a href="/Purpleplab" role="menuitem">PLAB</a>
+              <a href="/purpleplab" role="menuitem">PLAB</a>
               <a href="/purpleamc" role="menuitem">AMC</a>
             </div>
           </li>
@@ -62,10 +63,10 @@
       </div>
 
       <div class="col-auto col-lg-4 text-end flex-grid pgs-header-right">
-        <a href="/Usmlerotation" class="btn btn-trapsparent text-decoration-none pgs-header-link-desktop">#USMLERotation</a>
+        <a href="/usmlerotation" class="btn btn-trapsparent text-decoration-none pgs-header-link-desktop">#USMLERotation</a>
 
         <div class="explore-wrapper pgs-header-link-desktop" id="exploreCountriesWrapper">
-          <a href="#" class="btn btn-trapsparent text-decoration-none">#exploreCountries</a>
+          <a href="/explorecountries" class="btn btn-trapsparent text-decoration-none">#exploreCountries</a>
           <div class="explore-dropdown-menu" id="exploreCountriesDropdown">
             <a href="/countriesusa">USA</a>
             <a href="/countriesuk">UK</a>
@@ -76,7 +77,7 @@
         </div>
 
         <div class="site-notification-dropdown">
-          <a href="#" class="header-notification-wrapper" aria-label="Notifications" title="Notifications">
+          <a href="/notifications" class="header-notification-wrapper" aria-label="Notifications" title="Notifications">
             <img class="pgs-header-bell pgs-header-bell-desktop" src="/assets/img/figma-header/bell-desktop.svg" alt="" width="27" height="32" data-no-retina="">
             <img class="pgs-header-bell pgs-header-bell-tablet" src="/assets/img/figma-header/bell-tablet.svg" alt="" width="32" height="38" data-no-retina="">
             <img class="pgs-header-bell pgs-header-bell-mobile" src="/assets/img/figma-header/bell-mobile.svg" alt="" width="17" height="20" data-no-retina="">
@@ -159,7 +160,7 @@
   -->
   <div class="pgs-drawer-tools">
     <a
-      href="/Programsfull"
+      href="/programsfull"
       class="pgs-drawer-univmeet"
       style="text-decoration:none;cursor:pointer;"
     >
@@ -174,12 +175,12 @@
       </span>
     </a>
 
-    <div class="search-box pgs-drawer-search">
-      <div class="input-group">
-        <span><i class="bi bi-search"></i></span>
+    <div class="pgs-drawer-search search-box">
+      <div class="pgs-search__group">
+        <span class="pgs-search__icon"><i class="bi bi-search"></i></span>
         <input
           type="search"
-          class="search-control"
+          class="pgs-search__input search-control"
           placeholder="Search"
           data-autocomplete-endpoint="/Search/autocomplete"
           autocomplete="off"
@@ -191,11 +192,11 @@
 
   <ul class="header-tab-top d-block">
     <li>
-      <a href="/Home/defaultdashboard" style="padding: 2px 5px;" class="tab-button text-black">#feed</a>
+      <a href="/student/dashboard" style="padding: 2px 5px;" class="tab-button text-black">#feed</a>
     </li>
 
     <li class="mb-2" id="mobilePpWrapper">
-      <a href="#" class="tab-button text-black" style="padding: 4px; display:inline-flex; align-items:center; gap:4px;">
+      <a href="/purplepremiumhome" class="tab-button text-black" style="padding: 4px; display:inline-flex; align-items:center; gap:4px;">
         #purplePremium
         <span id="mobilePpArrow" style="font-size:11px; transition:transform 0.2s;">▼</span>
       </a>
@@ -210,9 +211,9 @@
         border-radius: 10px;
         border: 0.5px solid #e0d200;">
         <li><a href="/purplepremiumhome" class="pp-mobile-link">OVERVIEW</a></li>
-        <li><a href="/Purplenonmedical" class="pp-mobile-link">STEM, MBA &amp; Other Paths</a></li>
+        <li><a href="/purplenonmedical" class="pp-mobile-link">STEM, MBA &amp; Other Paths</a></li>
         <li><a href="/purpleusmle" class="pp-mobile-link">USMLE</a></li>
-        <li><a href="/Purpleplab" class="pp-mobile-link">PLAB</a></li>
+        <li><a href="/purpleplab" class="pp-mobile-link">PLAB</a></li>
         <li><a href="/purpleamc" class="pp-mobile-link">AMC</a></li>
       </ul>
     </li>
@@ -221,10 +222,10 @@
       <a href="/cvreadyprogram" class="tab-button text-black" style="padding: 4px;">#cvReadyPrograms</a>
     </li>
     <li class="mb-2">
-      <a href="/Usmlerotation" class="tab-button text-black" style="padding: 4px;">#USMLERotation</a>
+      <a href="/usmlerotation" class="tab-button text-black" style="padding: 4px;">#USMLERotation</a>
     </li>
     <li class="mb-2" id="mobileExploreWrapper">
-      <a href="#" class="tab-button text-black" style="padding:4px; display:inline-flex; align-items:center; gap:4px;">
+      <a href="/explorecountries" class="tab-button text-black" style="padding:4px; display:inline-flex; align-items:center; gap:4px;">
         #exploreCountries
         <span id="mobileExploreArrow" style="font-size:11px; transition:transform .2s;">▼</span>
       </a>

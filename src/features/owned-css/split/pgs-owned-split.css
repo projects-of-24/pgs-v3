@@ -1,0 +1,59 @@
+/* UNLINKED — imported nowhere.
+   Full 1:1 Hostinger replacement, in original cascade order.
+   Load order when linked: vendors.min.css → icon.min.css → this file (replaces style.css + responsive.css).
+   Parked files (split/parked/*) are NEVER imported.
+   Every @import below maps to one README split pass; placeholders stay commented until that pass is built. */
+
+/* P1  style.css 1-228 */
+@import './pgs-owned-00-fonts-vars-reset.css';
+
+/* P2  style.css 229-1131 */
+@import './pgs-owned-01-typography.css';
+/* P3  style.css 1132-4004 */
+@import './pgs-owned-02-general.css';
+/* P4  style.css 4005-5414 */
+@import './pgs-owned-03-bg-border-size.css';
+/* P5  style.css 5415-8755 */
+@import './pgs-owned-04-utility-loop.css';
+/* P6  style.css 8756-11676 */
+@import './pgs-owned-10-crafto-header.css';
+/* P7  style.css 11677-21576 (split at 16372 "Modal popup" for reviewability) */
+@import './pgs-owned-11a-elements.css';
+@import './pgs-owned-11b-elements.css';
+/* P8  style.css 21577-24339 */
+@import './pgs-owned-12-blog-portfolio-shop-footer.css';
+/* P9  style.css 24340-25703 (25700 split .minus-2; ended at its closing brace) */
+@import './pgs-owned-20-pgs-chrome-desk.css';
+/* P10 style.css 25704-29007 (29000 split .event-author-info; ended at its closing brace) */
+@import './pgs-owned-21-pgs-body-a.css';
+/* P11 style.css 29008-33263 */
+@import './pgs-owned-22-pgs-body-b.css';
+
+/* P1 (zoom) style.css 33264-33268 — imported HERE, not at the top, to preserve the source cascade
+   position: in style.css the html{zoom:0.9} rule sits after the P11 range and before P12.
+   Only matters if a later rule also set html zoom; none does (see pgs-owned-00-zoom.css header). */
+@import './pgs-owned-00-zoom.css';
+
+/* P12 style.css 33269-33419 (after the zoom import above, as in the source) */
+@import './pgs-owned-23-pgs-client-updates.css';
+/* P13 style.css 33420-39912: the single mobile block @media (max-width: 767px), split into five files in source order.
+   Owner decision 2026-09-26: wrapper is (max-width: 600px) in the owned copy (bands up to 600 mobile, 601-1366 iPad, above 1366 desk).
+   Rules inside are verbatim. Same query repeated per file = cascade-neutral. */
+@import './pgs-owned-30a-pgs-mobile.css';
+@import './pgs-owned-30b-pgs-mobile.css';
+@import './pgs-owned-30c-pgs-mobile.css';
+@import './pgs-owned-30d-pgs-mobile.css';
+@import './pgs-owned-30e-pgs-mobile.css';
+/* P14 style.css 39913-40823 (PGS-D tail), three files in source order. All @media verbatim (360/320/600/756px);
+   756px falls in the 601-1366 iPad band — owner decision pending, not changed here. */
+@import './pgs-owned-31a-pgs-tail-misc-small-screens.css';
+@import './pgs-owned-31b-pgs-tail-drawer.css';
+@import './pgs-owned-31c-pgs-tail-premium-modal.css';
+/* P15 responsive.css 1-21642, four files in source order, imported LAST (responsive.css loads after style.css on Hostinger).
+   Owner decision 2026-09-26: every wrapper @media (max-width: 767px) → (max-width: 600px) (as P13); 575 / 991 / 1199 / 1399 / 1600 /
+   min-width 992 / min-width 1400 / max-height 380 verbatim. responsive.css 21643-21693 is a broken tail (unclosed brace, browsers drop it) →
+   parked/pgs-owned-parked-44-broken-tail.css, never imported. */
+@import './pgs-owned-40-resp-bootstrap-type.css';
+@import './pgs-owned-41-resp-spacing.css';
+@import './pgs-owned-42-resp-header-nav.css';
+@import './pgs-owned-43-resp-elements-footer.css';

@@ -1,0 +1,264 @@
+/**
+ * Error 404 body CSS.
+ * Bands (owner lock): >1366 desk · 601–1366 iPad · ≤600 mob.
+ * Gate 1 desk · gate 2 mob (Figma `1285:7640`). iPad deferred.
+ * NEVER black side-test banner.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION (mob)
+ * ORIGINAL: copy 14.4 / 8 / 8 / 8
+ * ISSUE: below PGS type floor + WCAG
+ * PGS IMPLEMENTATION: all copy ≥16px; layout kept
+ */
+
+.error-404-body {
+  --error-404-ink: #000;
+  --error-404-bg-num: #d9f1fd;
+  --error-404-type: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --error-404-display: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  --error-404-type-floor: 16px;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  color: var(--error-404-ink);
+  background: #fff;
+}
+
+.error-404-body *,
+.error-404-body *::before,
+.error-404-body *::after {
+  box-sizing: border-box;
+}
+
+.error-404-body__stage {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 32px 24px 64px;
+}
+
+.error-404-body__composition {
+  position: relative;
+  width: 100%;
+  max-width: 724px;
+  margin-inline: auto;
+  min-height: 280px;
+}
+
+.error-404-body__bg-404 {
+  margin: 0;
+  font-family: var(--error-404-display);
+  font-weight: 400;
+  font-size: clamp(120px, 28vw, 192px);
+  line-height: 1;
+  color: var(--error-404-bg-num);
+  letter-spacing: 0;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(0.8px);
+}
+
+.error-404-body__dino {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: min(118px, 32vw);
+  height: auto;
+  aspect-ratio: 294 / 300;
+  pointer-events: none;
+}
+
+.error-404-body__dino-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.error-404-body__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 22rem;
+  margin-top: -2.5rem;
+}
+
+.error-404-body__heading,
+.error-404-body__line,
+.error-404-body__cta {
+  margin: 0;
+  font-family: var(--error-404-type);
+  font-weight: 400;
+  color: var(--error-404-ink);
+}
+
+.error-404-body__heading {
+  font-size: max(var(--error-404-type-floor), 1.125rem);
+  line-height: 1.25;
+}
+
+.error-404-body__line,
+.error-404-body__cta {
+  font-size: max(var(--error-404-type-floor), 1rem);
+  line-height: 1.35;
+}
+
+.error-404-body__cta {
+  font-weight: 700;
+}
+
+.error-404-body__home {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  font-weight: 700;
+}
+
+.error-404-body__home:hover,
+.error-404-body__home:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+.error-404-body__home:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+/* —— Desktop >1366 (Figma desk 1440 · Group 18153:10870) —— */
+@media (min-width: 1367px) {
+  .error-404-body__stage {
+    padding: 72px 0 120px;
+  }
+
+  .error-404-body__composition {
+    width: 724px;
+    max-width: 724px;
+    height: 496px;
+    min-height: 496px;
+    margin-inline: auto;
+  }
+
+  .error-404-body__bg-404 {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    font-size: 480px;
+    line-height: 1;
+    filter: blur(2px);
+    white-space: nowrap;
+  }
+
+  .error-404-body__dino {
+    left: 430px;
+    right: auto;
+    top: 196px;
+    width: 294px;
+    height: 300px;
+  }
+
+  .error-404-body__copy {
+    position: absolute;
+    left: 0;
+    top: 318px;
+    width: 368px;
+    max-width: 368px;
+    margin-top: 0;
+  }
+
+  .error-404-body__heading {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0;
+  }
+
+  .error-404-body__line,
+  .error-404-body__cta {
+    font-size: 20px;
+    line-height: 44px;
+  }
+}
+
+/* iPad 601–1366 — deferred (gate later). Keep readable interim. */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .error-404-body__stage {
+    padding: 48px 40px 80px;
+  }
+
+  .error-404-body__composition {
+    max-width: 640px;
+  }
+
+  .error-404-body__heading {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .error-404-body__line,
+  .error-404-body__cta {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}
+
+/* —— Mobile ≤600 (Figma 390 · Group 1285:7640) —— */
+@media (max-width: 600px) {
+  .error-404-body__stage {
+    /* Figma inset ~50 on 390 — not 85% rail */
+    padding: 28px 50px 56px;
+  }
+
+  .error-404-body__composition {
+    position: relative;
+    width: 100%;
+    max-width: 290px;
+    height: auto;
+    min-height: 230px;
+    margin-inline: auto;
+  }
+
+  .error-404-body__bg-404 {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    margin: 0;
+    font-size: 192px;
+    line-height: 1;
+    filter: blur(0.8px);
+    white-space: nowrap;
+  }
+
+  .error-404-body__dino {
+    position: absolute;
+    left: 172px;
+    right: auto;
+    top: 78px;
+    width: 117px;
+    height: 120px;
+  }
+
+  .error-404-body__copy {
+    position: absolute;
+    left: 0;
+    top: 127px;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 0;
+    z-index: 1;
+  }
+
+  .error-404-body__heading,
+  .error-404-body__line,
+  .error-404-body__cta {
+    font-size: var(--error-404-type-floor);
+    line-height: 1.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-404-body__bg-404 {
+    filter: none;
+  }
+}

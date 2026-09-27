@@ -1,0 +1,218 @@
+/**
+ * CV Ready Program partners — CR4.
+ * Desk Container `17046:10473` 888.8 · title gap 9.6 · logos gap 52 · pad 12.
+ * Mob Container `357:4039` 303.6 · title 16 + badge 20 · logos wrap gap 14.4.
+ * Badge #906afe white — large text ≥3:1 (measured 3.7). Keep Figma.
+ * Bands: >1366 desk · 601–1366 interim · ≤600 mob.
+ */
+
+.cvready-program-partners {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvready-program-partners *,
+.cvready-program-partners *::before,
+.cvready-program-partners *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-partners__title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  text-align: center;
+}
+
+.cvready-program-partners__title-lead {
+  color: #000;
+}
+
+.cvready-program-partners__title-badge {
+  background: #906afe;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvready-program-partners__logos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvready-program-partners__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvready-program-partners__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .cvready-program-partners {
+    padding: 8px 0 28px;
+    gap: 20px;
+  }
+
+  .cvready-program-partners__title {
+    gap: 4.8px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .cvready-program-partners__title-badge {
+    padding: 0 3.2px;
+    font-size: 20px;
+    line-height: 17.6px;
+    letter-spacing: 0.8px;
+  }
+
+  .cvready-program-partners__logos {
+    width: 291.6px;
+    max-width: 291.6px;
+    gap: 14.4px;
+  }
+
+  .cvready-program-partners__img {
+    height: 20.8px;
+    width: auto;
+  }
+
+  .cvready-program-partners__item:nth-child(1) .cvready-program-partners__img {
+    width: 67.4px;
+  }
+
+  .cvready-program-partners__item:nth-child(2) .cvready-program-partners__img {
+    width: 55.3px;
+  }
+
+  .cvready-program-partners__item:nth-child(3) .cvready-program-partners__img {
+    width: 135.4px;
+  }
+
+  .cvready-program-partners__item:nth-child(4) .cvready-program-partners__img {
+    width: 31.1px;
+  }
+
+  .cvready-program-partners__item:nth-child(5) .cvready-program-partners__img {
+    width: 70.8px;
+  }
+
+  .cvready-program-partners__item:nth-child(6) .cvready-program-partners__img {
+    width: 75.5px;
+  }
+}
+
+/* —— iPad interim —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-partners {
+    padding: 24px 40px 40px;
+    gap: 24px;
+  }
+
+  .cvready-program-partners__title {
+    gap: 8px;
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .cvready-program-partners__title-badge {
+    padding: 0 5px;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 1.2px;
+  }
+
+  .cvready-program-partners__logos {
+    max-width: 44rem;
+    gap: 28px 32px;
+  }
+
+  .cvready-program-partners__img {
+    height: 24px;
+    width: auto;
+  }
+}
+
+/* —— Desktop >1366 —— */
+@media (min-width: 1367px) {
+  .cvready-program-partners {
+    padding: 0 12px 48px;
+    gap: 32px;
+  }
+
+  .cvready-program-partners__title {
+    gap: 9.6px;
+    font-size: 25.6px;
+    line-height: 32px;
+  }
+
+  .cvready-program-partners__title-badge {
+    padding: 0 6.4px;
+    font-size: 28.8px;
+    line-height: 28.16px;
+    letter-spacing: 1.6px;
+  }
+
+  .cvready-program-partners__logos {
+    width: 864.8px;
+    max-width: 864.8px;
+    flex-wrap: nowrap;
+    gap: 52px;
+  }
+
+  .cvready-program-partners__img {
+    height: 28.8px;
+    width: auto;
+  }
+
+  .cvready-program-partners__item:nth-child(1) .cvready-program-partners__img {
+    width: 93.6px;
+  }
+
+  .cvready-program-partners__item:nth-child(2) .cvready-program-partners__img {
+    width: 76.8px;
+  }
+
+  .cvready-program-partners__item:nth-child(3) .cvready-program-partners__img {
+    width: 188px;
+  }
+
+  .cvready-program-partners__item:nth-child(4) .cvready-program-partners__img {
+    width: 43.2px;
+  }
+
+  .cvready-program-partners__item:nth-child(5) .cvready-program-partners__img {
+    width: 98.4px;
+  }
+
+  .cvready-program-partners__item:nth-child(6) .cvready-program-partners__img {
+    width: 104.8px;
+  }
+}

@@ -1,0 +1,97 @@
+/* PASS 14a · 1:1 copy · UNLINKED · do not edit values
+   Source: public/assets/css/style.css lines 39913-40014 (PGS-D tail, after the 767px mobile block that closes at 39912)
+   Contents: misc PGS fixes (.box-border-fix, .saved-list-pgs, #typewriter), @media 360px / 320px login tweaks
+   Method (owner lock 2026-09-25): rules copied verbatim, same numbers, original order, html{zoom:0.9} kept (split/pgs-owned-00-zoom.css).
+   Media queries in this range copied VERBATIM (360 / 320 / 600 / 756px) — owner to decide 756px separately (site bands ≤600 / 601–1366 / >1366).
+   Dead rules (no selector token anywhere in site) → parked/pgs-owned-parked-31.css with source lines; cut points marked below.
+   Live routes do NOT import this file; only split/pgs-owned-split.css does, and nothing imports that yet (OWN-LINK later). */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.box-border-fix{
+    border : 1px solid rgb(0, 0, 0) !important;
+        background-color: #F1F1F1;
+}
+
+.box-border-fix .card-box-gradiant.border.p-4
+{ 
+    
+  border : none !important;  
+}
+
+
+
+.saved-list-pgs .explore-section.m-auto
+{
+    margin-left: 3px !important;
+        margin-top: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* parked → parked/pgs-owned-parked-31.css (style.css:39962-39964) */
+
+/* parked → parked/pgs-owned-parked-31.css (style.css:39966-39972) */
+
+/* parked → parked/pgs-owned-parked-31.css (style.css:39974-39978) */
+
+
+
+
+@media (max-width: 360px) {
+    .mobile-login-box .sinup-box
+    {
+      padding: 15px !important;    
+    }
+    .mobile-fs-12 {
+        font-size: 11px !important;
+    }
+    .mobile-fs-15s {
+        font-size: 14px !important;
+    }
+    .mobile-login-box .w-258px
+    {
+             font-size: 12px !important;   
+    }
+}
+
+@media (max-width: 320px) {
+    .mobile-login-box .sinup-box
+    {
+      padding: 12px !important;    
+    }
+    .mobile-fs-12 {
+        font-size: 10px !important;
+    }
+    .mobile-fs-13 {
+        font-size: 11px !important;
+    }
+        .mobile-fs-24 {
+        font-size: 22px !important;
+    }
+}
