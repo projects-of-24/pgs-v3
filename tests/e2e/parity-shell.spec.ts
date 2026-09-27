@@ -5,7 +5,8 @@ const goto = (page: import("@playwright/test").Page, route: string) => page.goto
 async function expectAnonymousHeader(page:import("@playwright/test").Page){
   await expect(page.locator("header #ppWrapper")).toHaveCount(1);
   await expect(page.locator("header #exploreCountriesWrapper")).toHaveCount(1);
-  await expect(page.locator('header a[href="/Usmlerotation"]')).toHaveCount(1);
+  // Route is lowercase since the Cursor checkpoint (header-nav.ts); the old /Usmlerotation still redirects.
+  await expect(page.locator('header a[href="/usmlerotation"]')).toHaveCount(1);
   await expect(page.locator("header a",{hasText:"#purplePremium"})).toHaveCount(1);
   await expect(page.locator("header a",{hasText:"#exploreCountries"})).toHaveCount(1);
   await expect(page.locator("header .pgs-auth-account")).toHaveCount(0);
@@ -96,10 +97,14 @@ test("USA destination keeps its complex tabbed content", { tag: "@smoke" }, asyn
   await expect(page.locator(".countriesUSA")).toBeVisible();
   await expect(page.getByText("Comprehensive Guide to", { exact: true })).toBeVisible();
   await expect(page.getByText("Studying in the USA", { exact: true })).toBeVisible();
-  const studyCost = page.locator('[data-filter=".tab_study_cost"]');
-  await studyCost.click();
-  await expect(page.locator(".grid-item.tab_study_cost").first()).toBeVisible();
-  await expect(page.locator(".grid-item.tab_usa_study_101").first()).toBeHidden();
+  // Modular USA body (src/features/countries/CountryPage.tsx): React tab bar `li.nav` + one
+  // `.filter-content` panel that re-renders per tab — no isotope `.grid-item.tab_*` classes any more.
+  await expect(page.locator("li.nav.active")).toHaveText(/USA Study 101/);
+  await page.locator('li.nav a[href="#cost"]').click();
+  await expect(page.locator("li.nav.active")).toHaveText(/Study Cost/);
+  const panel = page.locator(".filter-content");
+  await expect(panel).toContainText("College Budgeting 101");
+  await expect(panel).not.toContainText("Language You’ll Study In");
 });
 
 test("legacy CMS entry merges into the protected typed operations editor", async ({ page }) => {
