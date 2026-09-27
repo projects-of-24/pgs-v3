@@ -25,6 +25,8 @@ import {
   HELLO_ASPIRANT_DEFAULT_AVATAR
 } from "@/legacy/pages/hello-aspirant";
 import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
+import { replaceFirstSidebar } from "@/legacy/pages/public-sidebar";
+import { PublicSidebarPortal } from "@/features/shell/public-sidebar-portal";
 import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 
 export const dynamic = "force-dynamic";
@@ -122,6 +124,9 @@ export default async function HeaderPreviewPage({
   stripHtml = applyPremiumBusinessRule(stripHtml);
   footerHtml = applyPremiumBusinessRule(footerHtml);
   stripHtml = withPreviewLoginReturn(stripHtml, previewPath);
+  /* T-1: React #sidebar on the lab — string sidebar → mount slot (live pages keep the string until H-R). */
+  stripHtml = replaceFirstSidebar(stripHtml, '<div data-pgs-sidebar-slot></div>');
+  const sidebarName = state && state.kind !== "anonymous" ? state.name : labFakeAuth ? "Lab User" : "User";
   footerHtml = withPreviewLoginReturn(footerHtml, previewPath);
 
   return (
@@ -136,6 +141,12 @@ export default async function HeaderPreviewPage({
       <div dangerouslySetInnerHTML={{ __html: stripHtml }} />
       {/* SR-2a: typing in the strip field (DSIH until H-R) drives the React results card */}
       <SearchResultsStripPortal />
+      {/* T-1: open toggle box (#sidebar) as React, portaled into the strip's slot */}
+      <PublicSidebarPortal
+        signedIn={studentState !== "anonymous"}
+        name={sidebarName}
+        loginHref={loginHref}
+      />
       <HeaderPreviewShell
         studentState={studentState}
         labFakeAuth={labFakeAuth}
