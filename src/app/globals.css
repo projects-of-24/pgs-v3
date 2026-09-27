@@ -356,6 +356,11 @@ main[data-legacy-page] {
 @media (max-width: 600px) {
   [data-legacy-page] header.pgs-figma-header {
     --pgs-header-bg: #ffffff;
+    /* Owner QC 2026-09-27: rounded 12px, 8px below the bar, 2px side margins so contents don't sit on the edge */
+    border-radius: 12px;
+    padding-bottom: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
   }
 
   [data-legacy-page] header.pgs-figma-header .pgs-header-bar,
