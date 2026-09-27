@@ -79,3 +79,33 @@ Run passes 1–3 on the pilot country only. Then the slug-swap propagation (owne
 ## F. Page order (Track A)
 
 About (pilot, plan file) → Explore → Finance → Scholarship → Premium Home → Medical (USMLE/PLAB/AMC) → Non-medical → USMLE Rotation → CV Ready → Uni Tie-up → Feed → Track Progress → Upload Docs → Error 404 → pilot country → propagation. Not-modular pages (Home, Profile, Purpleboard, studentresources, …) wait for their body pass first.
+
+## G. Page lifecycle (owner, 2026-09-27 — About pilot)
+
+1. **Chrome import** — replace the string shell with the React shell exactly as `/preview/header` mounts it (`<PublicHeader/>` · `<PublicStrip/>` · body · `<PublicFooter/>`). Import only; no font/UI/size changes. Owner QCs.
+2. **CSS** — page route on `OWNED_SPLIT_ROUTES`. Import only. Owner QCs.
+3. **Body QC (owner-led)** — owner audits the body band by band and names low-level nudges (gaps, block sizes, iPad sizes). Opus edits only the named piece, scoped to the named band, in the page family's CSS; never shared tokens, chrome or the owned split. Known carry-overs to expect:
+   - **801–1366 (iPad):** React compact header shows at its proportional (larger) size while the body still renders at desktop size → iPad body sizes are an owner QC item per page.
+   - **Hostinger element-selector leaks** into body tags (e.g. a `<footer>` inside a block inherits `footer { padding: 90/110px 0 }`) → reset on the block's own class, per band.
+   - **Gap pass (About 2026-09-27, option A):** one section gap per band, measured content to content: on screen **100 desk · 100 iPad · 72 mobile** (CSS 112 · 112 · 80, zoom .9). Implementation in the page shell CSS: token `--<page>-section-gap` per band; sections lose outer `padding-block`; `margin-top: var(gap)` on every section after the hero; hero top (univMeet gap) untouched. Then measure (snippet §H) and correct only pairs that miss: overhanging badges (add their overhang to that block's margin), empty reserved room at a block's bottom (trim it, scoped per band). Leave on purpose and report: toggled panels that reserve the taller panel's height (About online), chrome gaps (body → footer = footer's own margin).
+   - **Leak check:** run snippet §H at 1500 · 1100 · 700 · 390. Structural tags (`section`, `header`, `footer`, `nav`, `article`) that still take a Hostinger element value → reset on the block's own class, all bands. Type leaks (Hostinger `h1–h6 { letter-spacing:-.5px }`, `p { margin-bottom:25px }`) → list only; they belong to the type pass.
+   - **iPad hero card (About 2026-09-27):** owner cut the iPad hero card to **80% of its height** (681 → 545 CSS; width 406, text and spacing unchanged; photo 500 → 364). Tokens `--about-ipad-card-h: 545px` · `--about-ipad-media-h: 364px` in `about-hero.css` iPad block. Offer the same 80% cut on every page with the saved iPad hero card.
+   - **Per page = UI only (owner 2026-09-27).** Page by page: chrome import → CSS → body QC → cutover → commit + push. No test runs per page (typecheck · lint · vitest · build · e2e · visual-parity snapshots). Those run once, in the **final QA + security pass after every page is done**, before backend work.
+4. **Done** — no Hostinger CSS, no DSIH, no `legacy/pages` string builders, no portal/string-strip references left on the page → mark page DONE, then cut over: live route gets the same tree + allowlist (pass 3).
+
+## H. Body QC snippets (paste in Chrome console on the preview route)
+
+**Section gaps (content to content, on-screen px):**
+```js
+(()=>{const body=document.querySelector('[class$="-preview-shell__body"],[class*="-preview-shell__body "]');const secs=[...body.children].filter(e=>e.getBoundingClientRect().height>0&&!/univ-gap/.test(e.className));
+const vis=e=>{const cs=getComputedStyle(e),bg=cs.backgroundColor;return [...e.childNodes].some(n=>n.nodeType===3&&n.textContent.trim())||/^(IMG|svg)$/.test(e.tagName)||(bg!=='rgba(0, 0, 0, 0)'&&bg!=='rgb(255, 255, 255)')||cs.borderTopWidth!=='0px'||cs.backgroundImage!=='none'};
+const box=s=>{let t=1e9,b=-1e9;for(const e of s.querySelectorAll('*')){const r=e.getBoundingClientRect(),cs=getComputedStyle(e);if(r.height<1||r.width<1||cs.visibility==='hidden'||cs.opacity==='0'||!vis(e))continue;t=Math.min(t,r.top);b=Math.max(b,r.bottom)}return[s.className.split(' ')[0],t,b]};
+const r=secs.map(box);console.table(r.slice(1).map((x,i)=>({pair:r[i][0]+' > '+x[0],gap:Math.round(x[1]-r[i][2])})))})()
+```
+
+**Hostinger element leaks (owned split rules on bare tags that still win):**
+```js
+(()=>{const sh=[...document.styleSheets].find(s=>(s.href||'').includes('owned-split'));const rules=[];const walk=(l,m)=>{for(const r of l){if(r.media){if(matchMedia(r.media.mediaText).matches)walk(r.cssRules,r.media.mediaText);continue}if(r.selectorText)rules.push([r.selectorText,m,r.style])}};walk(sh.cssRules,'');
+const tag=/^(section|header|footer|article|nav|aside|h[1-6]|p|ul|ol|li|a|button|figure)$/,props=['padding-top','padding-bottom','margin-top','margin-bottom','font-size','line-height','letter-spacing'];const out=new Set();
+for(const e of document.querySelectorAll('[class*="-preview-shell"] *')){const cs=getComputedStyle(e);for(const [sel,m,st] of rules){if(!sel.split(',').map(s=>s.trim()).filter(s=>tag.test(s)).some(s=>e.matches(s)))continue;for(const p of props){const v=st.getPropertyValue(p);if(v&&!v.includes('var(')&&cs.getPropertyValue(p)===v)out.add(`${e.className.toString().split(' ')[0]} <${e.tagName.toLowerCase()}> ${p}:${v} [${sel.slice(0,30)}${m?' @'+m:''}]`)}}}console.log([...out].join('\n')||'no leaks')})()
+```

@@ -57,6 +57,8 @@ Starting sizes (mobile lock × 1.4, then frozen):
 
 Page-local exceptions (About already QC'd) stay exceptions. They are not part of the shared 1.4 copy.
 
+**Owner update 2026-09-27 (About):** the saved iPad card is too tall. Cut the card to **80% of its rendered height**, photo takes the cut; width, text and spacing stay. About: card 681 → 545 CSS, photo 500 → 364 (`--about-ipad-card-h: 545px`, `--about-ipad-media-h: 364px`). Apply the same 80% on each page's iPad hero during its body QC (measure the card first; the number differs per page).
+
 ## What a token is
 
 A **token** is a named number written once. Example: `--pgs-ipad-card-w: 406px` means "the iPad card is 406px wide." Pages say the name instead of repeating the number.
