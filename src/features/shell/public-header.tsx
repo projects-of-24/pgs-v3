@@ -13,6 +13,7 @@ import { PremiumNavDrop } from "@/features/shell/premium-nav-drop";
 import { StudyAbroadNavDrop } from "@/features/shell/study-abroad-nav-drop";
 import { DrawerSearch } from "@/features/shell/drawer-search";
 import type { UnivMeetPublic } from "@/features/shell/univmeet-slots";
+import type { StudentHeaderNotification } from "@/lib/student-experience";
 import { UNIVMEET_FALLBACK_CHIPS } from "@/features/shell/univmeet-slots";
 /* DSIH / legacy bar helpers + H6a drawer reset (via breakpoints @import) */
 import "@/features/shell/legacy-header-breakpoints.css";
@@ -26,6 +27,10 @@ export type PublicHeaderProps = {
   unreadCount?: number;
   /** Preview lab fake logged-in — Logout toggles lab state only */
   labFakeAuth?: boolean;
+  /** Real signed-in state; defaults to avatar present or lab fake auth. */
+  signedIn?: boolean;
+  /** Real notification rows (signed in). Lab fake auth shows Figma fixtures instead. */
+  notifications?: StudentHeaderNotification[];
   univMeet?: UnivMeetPublic | { href: string; chips: Array<{ day: string; monthLine: string }> };
 };
 
@@ -124,8 +129,11 @@ export function PublicHeader({
   avatarUrl = null,
   unreadCount = 0,
   labFakeAuth = false,
+  signedIn,
+  notifications = [],
   univMeet,
 }: PublicHeaderProps) {
+  const isSignedIn = signedIn ?? (Boolean(avatarUrl) || labFakeAuth);
   return (
     <>
       <header className="pgs-figma-header" data-pgs-header-gate="h6a-ipad">
@@ -176,7 +184,12 @@ export function PublicHeader({
                 <span>{HEADER_NAV.joinPgs.label}</span>
               </a>
 
-              <NotificationNavDrop unreadCount={unreadCount} />
+              <NotificationNavDrop
+                signedIn={isSignedIn}
+                unreadCount={unreadCount}
+                notifications={notifications}
+                labFixtures={labFakeAuth}
+              />
 
               <AuthNavControl
                 loginHref={loginHref}

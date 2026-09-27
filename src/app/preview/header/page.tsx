@@ -132,6 +132,10 @@ export default async function HeaderPreviewPage({
         avatarUrl={avatarUrl}
         unreadCount={unreadCount}
         labFakeAuth={labFakeAuth}
+        signedIn={studentState !== "anonymous"}
+        notifications={
+          state && state.kind !== "anonymous" ? state.notifications : []
+        }
         univMeet={univMeet}
       />
       <div dangerouslySetInnerHTML={{ __html: stripHtml }} />
