@@ -340,8 +340,19 @@ main[data-legacy-page] {
   margin-top: 0;
   padding-top: var(--pgs-safe-top);
   box-sizing: border-box;
-  /* Fill the safe-area band so content does not show through the notch gap */
-  background-color: #ffffff;
+  /* Glass header (owner 2026-09-27, Gemini-app look): the shell is transparent so
+     scrolling content stays visible in the margins around the pill; the pill itself
+     is a frosted tint (see --pgs-header-glass below). Was opaque #ffffff. */
+  background-color: transparent;
+  --pgs-header-glass: rgba(235, 247, 255, 0.8); /* #ebf7ff at 80% */
+  --pgs-header-blur: blur(16px) saturate(150%);
+}
+
+/* Glass pill: content scrolling under it shows through, blurred. */
+[data-legacy-page] header.pgs-figma-header .pgs-header-bar {
+  background: var(--pgs-header-glass) !important;
+  -webkit-backdrop-filter: var(--pgs-header-blur);
+  backdrop-filter: var(--pgs-header-blur);
 }
 
 /* Pill top flush with sticky shell (overrides legacy-header bar margin-top 20px). */
@@ -356,6 +367,11 @@ main[data-legacy-page] {
 @media (max-width: 600px) {
   [data-legacy-page] header.pgs-figma-header {
     --pgs-header-bg: #ffffff;
+    /* Glass on mobile: the whole rounded header is the frosted surface (white at 80%). */
+    --pgs-header-glass: rgba(255, 255, 255, 0.8);
+    background: var(--pgs-header-glass);
+    -webkit-backdrop-filter: var(--pgs-header-blur);
+    backdrop-filter: var(--pgs-header-blur);
     /* Owner QC 2026-09-27: rounded 12px, 8px below the bar, 2px side margins so contents don't sit on the edge */
     border-radius: 12px;
     padding-bottom: 8px;
@@ -368,9 +384,12 @@ main[data-legacy-page] {
   [data-legacy-page] header.pgs-figma-header .pgs-header-bar,
   [data-legacy-page] header.pgs-figma-header .pgs-header-bar.navbar,
   [data-legacy-page] header.pgs-figma-header > .mobile-none {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
+    /* Inner bars transparent so the header-level glass is the only surface (was #ffffff). */
+    background: transparent !important;
+    background-color: transparent !important;
     background-image: none !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
