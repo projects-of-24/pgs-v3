@@ -54,8 +54,6 @@ function StripSearch() {
           onKeyDown={s.onKeyDown}
         />
       </div>
-      {/* legacy autocomplete slot (string parity; the legacy script is not loaded on React chrome) */}
-      <div className="pgs-autocomplete" />
       <SearchResults results={s.rows} open={s.open} activeIndex={s.activeIndex} listId={listId} />
     </div>
   );
