@@ -91,7 +91,7 @@
 @media (max-width: 800px) {
   [data-pgs-sidebar="react"] .pgs-sidebar__drop {
     position: static;
-    width: auto;
+    width: 172px; /* owner DevTools 2026-09-27: 172.22px CSS = 155 on screen */
     margin: 10px 0 10px 40px; /* under the label (icon 28 + gap) */
   }
 
