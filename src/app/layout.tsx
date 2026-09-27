@@ -31,7 +31,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang="en" className="no-js">
       <head>
         <link rel="icon" href="/favicon.png" />
-        <link rel="stylesheet" href="/assets/css/vendors.min.css" />
+        {/* V-1 step 3 (2026-09-27): Bootstrap + plugin bundle only where string chrome still
+            lives. Owned-split routes carry the rules they use in P0 (pgs-owned-000-vendor-used.css). */}
+        {!isOwnedSplitRoute ? <link rel="stylesheet" href="/assets/css/vendors.min.css" /> : null}
         {/* V-1 step 2 (2026-09-27): icon font (Bootstrap Icons + Font Awesome) only where
             string chrome still lives. React chrome draws its icons inline (pgs-icon.tsx). */}
         {!isOwnedSplitRoute ? <link rel="stylesheet" href="/assets/css/icon.min.css" /> : null}

@@ -1,8 +1,12 @@
 /* UNLINKED — imported nowhere.
    Full 1:1 Hostinger replacement, in original cascade order.
-   Load order when linked: vendors.min.css → icon.min.css → this file (replaces style.css + responsive.css).
+   Load order when linked: this file alone on owned-split routes (P0 replaces vendors.min.css; icons are inline SVG so icon.min.css is not needed; replaces style.css + responsive.css).
    Parked files (split/parked/*) are NEVER imported.
    Every @import below maps to one README split pass; placeholders stay commented until that pass is built. */
+
+/* P0  vendors.min.css — only the rules the React chrome + H-R'd bodies match (V-1 step 3).
+       Loads first: Hostinger linked vendors.min.css before style.css. */
+@import './pgs-owned-000-vendor-used.css';
 
 /* P1  style.css 1-228 */
 @import './pgs-owned-00-fonts-vars-reset.css';
