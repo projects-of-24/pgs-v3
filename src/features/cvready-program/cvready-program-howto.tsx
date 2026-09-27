@@ -19,7 +19,6 @@ import "./cvready-program-howto.css";
 export function CvreadyProgramHowto() {
   const c = CVREADY_PROGRAM_HOWTO;
   const [index, setIndex] = useState(0);
-  const slide = c.slides[index] ?? c.slides[0]!;
 
   return (
     <section

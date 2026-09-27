@@ -56,6 +56,7 @@ export function AuthNavControl({
     if (busy) return;
     setBusy(true);
     if (labFakeAuth) {
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full page reload on purpose after sign-out (clears auth state)
       window.location.assign("/preview/header?loggedOut=1");
       return;
     }
@@ -63,6 +64,7 @@ export function AuthNavControl({
       await signOutAndNavigate();
     } catch {
       setBusy(false);
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full page reload on purpose after sign-out (clears auth state)
       window.location.assign("/logout");
     }
   }
