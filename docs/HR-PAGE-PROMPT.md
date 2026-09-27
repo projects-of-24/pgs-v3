@@ -14,18 +14,23 @@ LAB:  <preview route, e.g. /preview/finance>
 BODY: <body component + folder, e.g. FinancePreviewShell in src/features/finance/>
 MAP:  <living map, e.g. docs/FINANCE-MODULAR.md>
 
-Job = three passes on this page, one GO AHEAD each. The body is QC'd and untouchable; only the shell around it changes.
+Job = one page, one branch, one PR. Body is QC'd; the shell changes, and the body only gets the owner's named nudges in step 3. Workflow = §G. One GO AHEAD per step.
 
-PASS 1 — CHROME (gate HR-<page>-1, preview only)
-Replace the string chrome on LAB with the React chrome from /preview/header: <PublicHeader/> (header + drawer), <PublicStrip/> from `src/features/shell/public-strip-react.tsx` (toggle pill · #sidebar · univMeet · search card — replaces the string strip AND the two portals, S-R 2026-09-27), <PublicFooter/>. Remove getPublicHeaderHtml / getPublicFooterHtml / buildPublicStripHtml / applySharedPublicSidebar / applySharedHelloAspirant / applyUnivMeetToHeaderHtml from the page file (the Hello Aspirant avatar box is gone by design). Hostinger CSS stays on for this pass. Measure before/after at 1500·1100·700·390 (snippet in the pilot plan, step 1). Only allowed delta: the whole stack (strip → toggle → body → footer) moving by the header-height change (≤600 ≈ −12px, note 42). State sheet "same as /preview/header?" for tabs, bell, login/avatar, hamburger drawer, strip search, toggle box, footer button. Report, then STOP for my Preview QC.
+STEP 1 — CHROME (gate HR-<page>-1, preview only)
+Mount exactly what /preview/header mounts: <PublicHeader/> (signedIn, notifications, unreadCount, avatarUrl, univMeet) · <PublicStrip/> · <Body/> · <PublicFooter/>. Delete every chrome string builder from the page file (getPublicHeaderHtml, getPublicFooterHtml, buildPublicStripHtml, applyUnivMeetToHeaderHtml, applyAuthenticatedShell, applySharedPublicSidebar, applySharedHelloAspirant, dangerouslySetInnerHTML). Import only: no font/UI/size change. Measure 1500·1100·700·390 against the live ruler: only allowed delta = stack moving by the header-height change (≤600 ≈ −13). Report → my QC.
 
-PASS 2 — CSS (gate HR-<page>-2, preview only)
-Add LAB to OWNED_SPLIT_ROUTES in src/app/layout.tsx so it loads /preview/owned-split instead of Hostinger style.css + responsive.css. Nothing else changes. Measure again at the four bands: expected delta = 0 everywhere (the split is a 1:1 copy; the only known difference is 601–767 now renders desktop rules, decision 28 — record it if the body shows it, do not fix). Footer computed-style parity snippet (pilot plan step 7) at 1500 and 390. Report, then STOP for my Preview QC.
+STEP 2 — CSS (gate HR-<page>-2, preview only)
+Add LAB to OWNED_SPLIT_ROUTES in src/app/layout.tsx. Import only. Expected delta 0 except 601–767 (owned split renders desktop rules there, decision 28) — record it, don't fix. Report → my QC.
 
-PASS 3 — LIVE (gate HR-<page>-3)
-Same page tree on PAGE + PAGE on OWNED_SPLIT_ROUTES. Live loads main.js (labs do not): check the console at 1500 and 390, sticky header on scroll, drawer, toggle box, footer button. Owner runs pnpm typecheck, pnpm lint, pnpm test, pnpm build, public-pages e2e; refresh only this page's visual-parity snapshot after my QC. Docs: decision row in docs/HEADER-CHROME-PHASE.md, MAP "Two surfaces" row, exception list in src/features/shell/OWNED-CHROME-UNLINKED.md. Commit with author project-mtfbwu <project.mtfbwu@gmail.com>; I push.
+STEP 3 — BODY QC (owner-led, preview)
+Run the §H snippets (gaps, leaks) and do the §G body items: gap pass, leak reset, iPad hero card 80%, then my named nudges band by band. Only the named piece, scoped to the named band, in the page family's CSS. Report → my QC.
 
-Rules that override everything: pgs-owner-lock §1 (QC'd context untouchable), §2 (state sheet), §7 (file links in every report). Never edit src/features/<body folder>/**, the LOCKED chrome files, the owned split, globals.css or Hostinger CSS. If parity needs one of those, STOP and ask. Terminal commands for me one at a time, with what to expect, and a preview link for every step.
+STEP 4 — CUTOVER (gate HR-<page>-3)
+Same tree on PAGE + PAGE on OWNED_SPLIT_ROUTES (that also skips Hostinger vendors.min.js + main.js via skipHostingerJs). Check: 200, no error overlay, CSS = owned-split only, no main.js, bell has no badge logged out, gaps + page height = preview at the four bands. Docs: decision row in docs/HEADER-CHROME-PHASE.md, MAP "Two surfaces", OWNED-CHROME-UNLINKED.md exception list. Then I commit + push and open the PR; CI (lint · typecheck · vitest · RLS · secrets · audit · build · Playwright smoke), CodeQL and CodeRabbit check it. I paste red checks / CodeRabbit findings back; we fix on the same PR; I merge.
+
+No local test runs per page (owner 2026-09-27): the PR checks cover them; the final QA + security pass runs after all pages.
+
+Rules that override everything: pgs-owner-lock §0 (answer the question asked), §1 (QC'd context untouchable), §2 (state sheet), §7 (file links in every report). Never edit the LOCKED chrome files, the owned split, globals.css or Hostinger CSS; the body folder only for my named nudges in step 3. If parity needs any of those, STOP and ask. Terminal commands for me one at a time, with what to expect, and a preview link for every step. No artifacts; give me context + console snippets.
 
 Start with the pre-flight in HR-PAGE-PROMPT.md §B, then say "ready for GO AHEAD HR-<page>-1".
 ```
@@ -38,7 +43,7 @@ Start with the pre-flight in HR-PAGE-PROMPT.md §B, then say "ready for GO AHEAD
 2. Open the live page, the lab and `/preview/header` in the built-in browser; run the measuring snippet at 1500·1100·700·390; fill the BEFORE table (pilot plan §9.1 layout). Screenshots per band.
 3. `grep -rn "top-space-margin\|top-space-padding\|nav.navbar" src/features/<body folder>` → must be empty (main.js hooks). Non-empty = STOP.
 4. Read the current page file and list, line by line, what it does to the header/footer strings that React props must carry (login href, avatar, unreadCount, univMeet). Anything the string pipeline does that React chrome cannot (today: real notification rows → fixtures) goes in the report as a decision for the owner.
-5. `git status -sb` (owner runs) must be clean; branch `feat/track-a-hr-<page>` cut from the current Track A branch.
+5. `git status -sb` (owner runs) must be clean; previous page's PR merged; branch `feat/hr-<page>` cut from `main`.
 
 ## C. Report shape — every pass ends with this, always with links
 
@@ -90,7 +95,7 @@ About (pilot, plan file) → Explore → Finance → Scholarship → Premium Hom
    - **Gap pass (About 2026-09-27, option A):** one section gap per band, measured content to content: on screen **100 desk · 100 iPad · 72 mobile** (CSS 112 · 112 · 80, zoom .9). Implementation in the page shell CSS: token `--<page>-section-gap` per band; sections lose outer `padding-block`; `margin-top: var(gap)` on every section after the hero; hero top (univMeet gap) untouched. Then measure (snippet §H) and correct only pairs that miss: overhanging badges (add their overhang to that block's margin), empty reserved room at a block's bottom (trim it, scoped per band). Leave on purpose and report: toggled panels that reserve the taller panel's height (About online), chrome gaps (body → footer = footer's own margin).
    - **Leak check:** run snippet §H at 1500 · 1100 · 700 · 390. Structural tags (`section`, `header`, `footer`, `nav`, `article`) that still take a Hostinger element value → reset on the block's own class, all bands. Type leaks (Hostinger `h1–h6 { letter-spacing:-.5px }`, `p { margin-bottom:25px }`) → list only; they belong to the type pass.
    - **iPad hero card (About 2026-09-27):** owner cut the iPad hero card to **80% of its height** (681 → 545 CSS; width 406, text and spacing unchanged; photo 500 → 364). Tokens `--about-ipad-card-h: 545px` · `--about-ipad-media-h: 364px` in `about-hero.css` iPad block. Offer the same 80% cut on every page with the saved iPad hero card.
-   - **Per page = UI only (owner 2026-09-27).** Page by page: chrome import → CSS → body QC → cutover → commit + push. No test runs per page (typecheck · lint · vitest · build · e2e · visual-parity snapshots). Those run once, in the **final QA + security pass after every page is done**, before backend work.
+   - **Per page = UI only (owner 2026-09-27).** Page by page: chrome import → CSS → body QC → cutover → commit + push. No test runs per page (typecheck · lint · vitest · build · e2e · visual-parity snapshots). Those run once, in the **final QA + security pass after every page is done**, before backend work. Each page ships as its own PR (`feat/hr-<page>` → `main`): GitHub CI (`.github/workflows/ci.yml`: lint · typecheck · vitest · RLS · secrets · audit · build · Playwright smoke), CodeQL (`codeql.yml`) and CodeRabbit (`.coderabbit.yaml`) review it; owner pastes red checks / findings back, fixes land on the same PR, owner merges, next page branches from `main`. Per-page Playwright tests may be written in parallel by another agent (tests only, from the finished page + its MODULAR map; no UI edits).
 4. **Done** — no Hostinger CSS, no DSIH, no `legacy/pages` string builders, no portal/string-strip references left on the page → mark page DONE, then cut over: live route gets the same tree + allowlist (pass 3).
 
 ## H. Body QC snippets (paste in Chrome console on the preview route)
