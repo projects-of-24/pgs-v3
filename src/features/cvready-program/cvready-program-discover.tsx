@@ -75,7 +75,7 @@ function readDeskPageSize() {
 export function CvreadyProgramDiscover() {
   const c = CVREADY_PROGRAM_DISCOVER;
   const items = useMemo(() => discoverItems(), []);
-  const [pageSize, setPageSize] = useState(c.pageSizeMob);
+  const [pageSize, setPageSize] = useState<number>(c.pageSizeMob);
   const [page, setPage] = useState(0);
   const [query, setQuery] = useState("");
   const [placeholder, setPlaceholder] = useState<string>(

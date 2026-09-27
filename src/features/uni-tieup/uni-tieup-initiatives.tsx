@@ -55,7 +55,7 @@ export function UniTieupInitiatives() {
   const items = initiativeItems();
   const gridRef = useRef<HTMLUListElement>(null);
   const lockedHeightRef = useRef<number>(0);
-  const [pageSize, setPageSize] = useState(c.pageSizeMob);
+  const [pageSize, setPageSize] = useState<number>(c.pageSizeMob);
   const [page, setPage] = useState(0);
 
   useEffect(() => {

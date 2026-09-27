@@ -22,7 +22,7 @@ function pickVideoSrc(): string {
 export function CvreadyProgramVideo() {
   const c = CVREADY_PROGRAM_VIDEO;
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoSrc, setVideoSrc] = useState(c.videoDeskSrc);
+  const [videoSrc, setVideoSrc] = useState<string>(c.videoDeskSrc);
 
   useEffect(() => {
     function syncSrc() {

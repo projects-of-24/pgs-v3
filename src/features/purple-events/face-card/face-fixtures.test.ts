@@ -26,10 +26,14 @@ describe("FACE-FIXTURES bank", () => {
     expect(ids.size).toBe(FACE_FIXTURES.length);
 
     for (const row of listFaceFixtures({ face_layout: "event_session" })) {
-      expect(row.card.href).toBe("/preview/purpleevents-lite");
+      expect("href" in row.card ? row.card.href : undefined).toBe(
+        "/preview/purpleevents-lite"
+      );
     }
     for (const row of listFaceFixtures({ face_layout: "cvready" })) {
-      expect(row.card.href).toBe("/preview/programs-courses");
+      expect("href" in row.card ? row.card.href : undefined).toBe(
+        "/preview/programs-courses"
+      );
     }
   });
 

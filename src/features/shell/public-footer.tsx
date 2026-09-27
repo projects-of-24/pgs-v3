@@ -5,6 +5,14 @@
  * OWN-F CSS (`pgs-owned-footer.css`) = UNLINKED workshop (OWN-UNLINK). Do not import here.
  */
 
+declare global {
+  interface Window {
+    /** Legacy Hostinger modal hooks (public/assets/js). Optional until owned popups (Track C). */
+    joinPremiumOpen?: () => void;
+    REFRppOpenModal?: () => void;
+  }
+}
+
 export type PublicFooterProps = {
   /** Optional account label for Join/login bits if needed later. Mostly static today. */
   accountLabel?: string;
