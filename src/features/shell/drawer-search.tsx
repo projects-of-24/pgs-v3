@@ -7,6 +7,7 @@
 import { useRef } from "react";
 import { SearchResults } from "@/features/shell/search-results";
 import { useSearchResults } from "@/features/shell/use-search-results";
+import { PgsIcon } from "./pgs-icon";
 
 export function DrawerSearch() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -16,7 +17,7 @@ export function DrawerSearch() {
     <div className="pgs-drawer-search search-box" ref={rootRef}>
       <div className="pgs-search__group">
         <span className="pgs-search__icon">
-          <i className="bi bi-search" />
+          <PgsIcon name="search" />
         </span>
         <input
           type="search"

@@ -18,6 +18,7 @@ import { useSearchResults } from "@/features/shell/use-search-results";
 import type { UnivMeetPublic } from "@/features/shell/univmeet-slots";
 import { UNIVMEET_FALLBACK_CHIPS } from "@/features/shell/univmeet-slots";
 import "@/features/shell/public-strip.css";
+import { PgsIcon } from "./pgs-icon";
 
 export type PublicStripProps = {
   univMeet?: UnivMeetPublic | { href: string; chips: Array<{ day: string; monthLine: string }> };
@@ -35,7 +36,7 @@ function StripSearch() {
     <div className="pgs-search search-box" ref={rootRef}>
       <div className="pgs-search__group">
         <span className="pgs-search__icon">
-          <i className="bi bi-search" />
+          <PgsIcon name="search" />
         </span>
         <input
           type="search"
@@ -77,7 +78,7 @@ export function PublicStrip({ univMeet, signedIn, name, loginHref = "/Login", si
             ×
           </button>
           <div className="pgs-login-popup-icon">
-            <i className="bi bi-lock-fill" />
+            <PgsIcon name="lock-fill" />
           </div>
           <h4 id="pgsLoginPopupTitle">Login Required</h4>
           <p>Please login to access this option.</p>
@@ -94,7 +95,7 @@ export function PublicStrip({ univMeet, signedIn, name, loginHref = "/Login", si
           <div className="row g-4" style={{ alignItems: "flex-start", justifyContent: "space-evenly" }}>
             <div className="col-xl-1 col-lg-1">
               <div className="arrow-box" id="toggleBtn">
-                <i className="bi bi-arrow-right-square-fill" />
+                <PgsIcon name="arrow-right-square-fill" />
               </div>
             </div>
 

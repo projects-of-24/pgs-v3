@@ -125,9 +125,14 @@ function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
     toggle.setAttribute("aria-controls", "sidebar");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.classList.toggle("hidenone", open);
+    // Icon-font arrow flip for the string strip only. The React strip renders an
+    // inline SVG (<PgsIcon/>, V-1); adding `bi-*` classes to it would draw the
+    // font glyph on top of the SVG while icon.min.css is still loaded.
     const icon = toggle.querySelector("i");
-    icon?.classList.toggle("bi-arrow-right-square-fill", !open);
-    icon?.classList.toggle("bi-arrow-left-square-fill", open);
+    if (icon && !icon.classList.contains("pgs-icon")) {
+      icon.classList.toggle("bi-arrow-right-square-fill", !open);
+      icon.classList.toggle("bi-arrow-left-square-fill", open);
+    }
   };
 
   // Do not force-close on rewire. A later effect re-run (including after the

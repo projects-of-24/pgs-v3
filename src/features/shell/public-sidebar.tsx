@@ -18,6 +18,7 @@ import {
   type SidebarRow
 } from "@/features/shell/sidebar-nav";
 import "@/features/shell/pgs-sidebar.css";
+import { PgsIcon } from "./pgs-icon";
 
 export type PublicSidebarProps = {
   signedIn: boolean;
@@ -89,7 +90,7 @@ export function PublicSidebar({ signedIn, name, loginHref = "/login", rows = SID
                     <img src={SIDEBAR_ICONS[row.icon]} alt="" data-no-retina="" />
                   </span>
                   <span className="pgs-sidebar__label">{row.label}</span>
-                  <i className="bi bi-arrow-right-circle-fill pgs-sidebar__drop-glyph" aria-hidden="true" />
+                  <PgsIcon name="arrow-right-circle-fill" className="pgs-sidebar__drop-glyph" />
                 </a>
               ) : (
                 <a href={row.href} className="pgs-sidebar__link">

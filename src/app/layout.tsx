@@ -32,7 +32,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <head>
         <link rel="icon" href="/favicon.png" />
         <link rel="stylesheet" href="/assets/css/vendors.min.css" />
-        <link rel="stylesheet" href="/assets/css/icon.min.css" />
+        {/* V-1 step 2 (2026-09-27): icon font (Bootstrap Icons + Font Awesome) only where
+            string chrome still lives. React chrome draws its icons inline (pgs-icon.tsx). */}
+        {!isOwnedSplitRoute ? <link rel="stylesheet" href="/assets/css/icon.min.css" /> : null}
         {isOwnedSplitRoute ? (
           <link rel="stylesheet" href="/preview/owned-split" />
         ) : (
