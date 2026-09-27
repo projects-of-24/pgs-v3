@@ -14,7 +14,7 @@
 
 :root {
   /* Shared chrome pull-up (closed #toggleBtn) */
-  --pgs-premium-shell-pull: calc(-1 * clamp(88px, 11vw, 157px));
+  --pgs-premium-shell-pull: calc(-1 * var(--pgs-chrome-strip-pull));
 
   /* Desktop page position — spacer under shell top ≈ univMeet top */
   --pgs-premium-desk-univ-gap: clamp(56px, 4.8vw, 74px);

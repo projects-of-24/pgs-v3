@@ -249,7 +249,7 @@ Each gate: propose → `GO AHEAD` → implement → `/preview/header` QC → sto
 | **OWN-T** / **OWN-F** | Toggle/strip then footer owned CSS | Body flush |
 | **OWN-BODY** | Per-page UI flush **+ unlink Hostinger for that page** (owner final UI audit) | Sitewide residual clear |
 | **OWN-CLEAR** | Residual Hostinger unlink after enough pages opted out | — |
-| **H7** | **Safe-area** cascade (header → strip → body pull token → footer) | — |
+| **H7** | **Safe-area** cascade (header → strip → body pull token → footer). **Preview done 2026-09-27:** `viewportFit: cover` on `/preview/header` page only; pull literal unified to `--pgs-chrome-strip-pull` (same value). Measured 390/700/1100/1500: stack moves together, zero visual delta. **H7-LIVE** = promote viewport export to root layout (named gate). | Root layout |
 | **H-R** | Mount React chrome on modular pages; **drop chrome DSIH** | Hostinger CSS delete (use OWN-* unlink instead) |
 | **Later — CMS nav** | Admin manage **`#cvReadyPrograms`**, **`#cvForMedical`**, **`#me`** (add/change/remove program/page/event links) with **audit logs** (`audit_events`) | Not in H1–H-R |
 | **Later — Marquee** | Top **announcement bar / marquee** (legacy `marquee_tbl` → `site_notices`): admin **add / edit / enable / disable / remove** promo lines that scroll above the header. **Only after H-R chrome rework is done** — not inside H1–H7 | Do not build during current header gates |
@@ -276,7 +276,7 @@ Each gate: propose → `GO AHEAD` → implement → `/preview/header` QC → sto
 | 11 | Fluid/clamp; page-by-page px in UI pass | **Locked** |
 | 12 | Safe-area pushes whole stack; body pull = aesthetic ruler | **Locked** |
 | 13 | PLAB remove from Premium menu? | **Open** |
-| 14 | Safe-area floor 24px? | **Open** |
+| 14 | Safe-area floor 24px | **Locked** (H7, 2026-09-27 — was already applied in globals `--pgs-safe-top`) |
 | 15 | WIP files keep+rewrite vs delete | **Open** |
 | 16 | Header: Hostinger ref → **CSS pass** → then UI (no invent-from-scratch CSS) | **Locked** (H1c) |
 | 17 | Top **marquee / announcement bar** — admin add/remove later; **after chrome H-R** | **Locked** (deferred) |
@@ -300,6 +300,7 @@ Each gate: propose → `GO AHEAD` → implement → `/preview/header` QC → sto
 | 35 | **Four breakpoints:** above 1366 desktop · `801–1366` wide iPad · `601–800` compact iPad · 600 and below mobile. Middle two reserved for iPad. Numbers in `pgs-breakpoints.ts`. Responsive asks = one Fable plan across all four bands, then one build. | **Locked** |
 | 36 | **Header + all dropdowns visually locked.** Saber stroke try failed owner QC 2026-09-26 and was removed. Resting borders and hard shadows stay. | **Locked** |
 | 37 | **#univMeet + search owned CSS (gate 1):** keep current look. Strip uses `.pgs-univmeet` / `.pgs-search` (`pgs-univmeet-search.css`). Drawer search uses the same owned input class. `search-box` + `search-control` stay as autocomplete hooks only. No visual invent. Search results list deferred. | **Preview QC** |
+| 39 | **H7 preview (2026-09-27):** safe-area cascade verified on lab (token bump 24→80 moved bar/toggle/body/footer by the same amount); body pull stays strip-tied, no safe-top bake. Viewport-fit only on lab until H7-LIVE. | **Preview QC** |
 | 38 | **Search field restyle reverted (2026-09-27).** Owner: locked search bar UI must stay. Figma `search bar UI` is the results card when search happens — not a field restyle. | **Reverted** |
 
 ---

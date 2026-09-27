@@ -439,7 +439,7 @@ main[data-legacy-page] {
 /* Toggle column reserve (absolute pill does not hold row height alone) */
 [data-legacy-page] .mobile-frame-sidebar .row > .col-xl-1.col-lg-1,
 .developer-student-shell .mobile-frame-sidebar .row > .col-xl-1.col-lg-1 {
-  min-height: clamp(88px, 11vw, 157px);
+  min-height: var(--pgs-chrome-strip-pull);
 }
 
 /*
@@ -449,7 +449,7 @@ main[data-legacy-page] {
  */
 [data-legacy-page] .wrapper-content > section.about-section.minus-5:first-of-type,
 .developer-student-shell .wrapper-content > section.about-section.minus-5:first-of-type {
-  margin-top: calc(-1 * clamp(88px, 11vw, 157px)) !important;
+  margin-top: calc(-1 * var(--pgs-chrome-strip-pull)) !important;
 }
 
 /* Strip tools clickable (strip itself is pointer-events: none) */

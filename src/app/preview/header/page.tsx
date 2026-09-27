@@ -3,6 +3,7 @@
  * Default: fake logged-in (lab avatar) so avatar → Logout is QC-able.
  * ?loggedOut=1 → yellow login button.
  */
+import type { Viewport } from "next";
 import { LegacyPage } from "@/components/legacy-page";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { HEADER_NAV } from "@/features/shell/header-nav";
@@ -26,6 +27,17 @@ import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
 import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 
 export const dynamic = "force-dynamic";
+
+/**
+ * H7 (preview only): let the page extend under the notch / Dynamic Island so
+ * `env(safe-area-inset-top)` inside `--pgs-safe-top` is non-zero on phones.
+ * Promote to the root layout in gate H7-LIVE after owner QC.
+ */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover"
+};
 
 type HeaderPreviewPageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
