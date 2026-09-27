@@ -1,8 +1,12 @@
+"use client";
+
 /**
  * React port of `src/legacy/pages/public-footer.html`.
  * Same DOM/classes so LegacyPage retained interactions keep working.
  *
  * OWN-F CSS (`pgs-owned-footer.css`) = UNLINKED workshop (OWN-UNLINK). Do not import here.
+ * "use client": the Join / mentor buttons carry click handlers (legacy modal hooks).
+ * Mounted on /preview/header 2026-09-27 (F-R); live pages swap in at H-R.
  */
 
 declare global {

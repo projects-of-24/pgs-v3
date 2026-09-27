@@ -24,7 +24,7 @@ import {
   applySharedHelloAspirant,
   HELLO_ASPIRANT_DEFAULT_AVATAR
 } from "@/legacy/pages/hello-aspirant";
-import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
+import { PublicFooter } from "@/features/shell/public-footer";
 import { replaceFirstSidebar } from "@/legacy/pages/public-sidebar";
 import { PublicSidebarPortal } from "@/features/shell/public-sidebar-portal";
 import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
@@ -103,7 +103,6 @@ export default async function HeaderPreviewPage({
     avatarUrl: avatarUrl ?? helloAvatar
   });
 
-  let footerHtml = getPublicFooterHtml();
 
   if (studentState !== "anonymous") {
     const shellFields = {
@@ -118,16 +117,13 @@ export default async function HeaderPreviewPage({
     if (state && state.kind !== "anonymous") {
       stripHtml = applyStudentIdentity(stripHtml, state, helloAvatar);
     }
-    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
   }
 
   stripHtml = applyPremiumBusinessRule(stripHtml);
-  footerHtml = applyPremiumBusinessRule(footerHtml);
   stripHtml = withPreviewLoginReturn(stripHtml, previewPath);
   /* T-1: React #sidebar on the lab — string sidebar → mount slot (live pages keep the string until H-R). */
   stripHtml = replaceFirstSidebar(stripHtml, '<div data-pgs-sidebar-slot></div>');
   const sidebarName = state && state.kind !== "anonymous" ? state.name : labFakeAuth ? "Lab User" : "User";
-  footerHtml = withPreviewLoginReturn(footerHtml, previewPath);
 
   return (
     <LegacyPage page="preview-header" studentState={studentState}>
@@ -151,7 +147,8 @@ export default async function HeaderPreviewPage({
         studentState={studentState}
         labFakeAuth={labFakeAuth}
       />
-      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+      {/* F-R: React footer (same DOM/classes as the string; string footer carried no tokens) */}
+      <PublicFooter />
     </LegacyPage>
   );
 }
