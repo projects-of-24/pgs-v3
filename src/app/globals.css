@@ -367,8 +367,9 @@ main[data-legacy-page] {
 @media (max-width: 600px) {
   [data-legacy-page] header.pgs-figma-header {
     --pgs-header-bg: #ffffff;
-    /* Glass on mobile: the whole rounded header is the frosted surface, same tint as
-       desktop/iPad (owner 2026-09-27; was white at 80%). */
+    /* Glass on mobile: the whole rounded header is the frosted surface — white at 80%
+       (owner QC 2026-09-27: "make bg color white"), desktop/iPad keep the blue tint. */
+    --pgs-header-glass: rgba(255, 255, 255, 0.8);
     background: var(--pgs-header-glass);
     /* Top gap = bottom gap: bar has 12px margin top+bottom, header 8px bottom, so 8px
        top too (20 = 20), plus the notch/dynamic-island inset so the bar never sits
