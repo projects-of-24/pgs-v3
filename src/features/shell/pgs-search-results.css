@@ -7,10 +7,10 @@
  * · >1366 desktop (strip). Drawer bands share the Figma sizes; desktop is the
  * same card, wider and one step up in type.
  *
- * Type (owner lock 2026-09-27): Figma = visual reference only; sizes follow
- * the PGS scale. Floor `--pgs-type-floor` (16px) on every band; desktop title
- * = header label size (18px). Layout px follow Figma; html{zoom:.9} (owned
- * split) scales them like the field they hang from.
+ * Type (owner QC 2026-09-27): results title 14px on every band, type label
+ * 12px (Figma ratio). Owner named the size on the lab — direct nudge, not
+ * the 16px body floor. Layout px follow Figma; html{zoom:.9} (owned split)
+ * scales them like the field they hang from.
  */
 
 /* ——— Card (all bands) ——— */
@@ -30,7 +30,7 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   box-sizing: border-box;
-  max-height: calc(6 * 48px + 22px); /* 6 rows before scroll */
+  max-height: calc(6 * 42px + 22px); /* 6 rows before scroll */
   overflow-y: auto;
   text-align: left;
 }
@@ -64,8 +64,8 @@
 .pgs-search-results__title {
   font-family: Roboto, sans-serif;
   font-weight: 500;
-  font-size: var(--pgs-type-floor, 16px);
-  line-height: 26px;
+  font-size: 14px;
+  line-height: 24px;
   letter-spacing: 0.15px;
   color: #000;
   white-space: nowrap;
@@ -76,8 +76,8 @@
 .pgs-search-results__type {
   font-family: Roboto, sans-serif;
   font-weight: 500;
-  font-size: var(--pgs-type-floor, 16px);
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 12px;
   letter-spacing: 0.15px;
   color: rgba(0, 0, 0, 0.2);
   text-align: right;
@@ -92,16 +92,6 @@
     min-width: 320px;
     padding: 12px 14px;
     gap: 6px;
-    max-height: calc(8 * 54px + 24px); /* 8 rows before scroll */
-  }
-
-  .pgs-strip-tools .pgs-search-results__title {
-    font-size: 18px; /* = header label size */
-    line-height: 28px;
-  }
-
-  .pgs-strip-tools .pgs-search-results__type {
-    font-size: var(--pgs-type-floor, 16px);
-    line-height: 16px;
+    max-height: calc(8 * 44px + 24px); /* 8 rows before scroll */
   }
 }
