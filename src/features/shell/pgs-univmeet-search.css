@@ -105,6 +105,14 @@
 }
 
 @media (min-width: 1367px) {
+  /* Owner QC 2026-09-27: univMeet + search block ends under the header bell,
+     not at the bar's right edge. Bell right edge sits 90px (CSS, ×0.9 = 81
+     on screen) inside the bar edge on every desktop width — fixed px on purpose. */
+  [data-legacy-page] .pgs-strip-tools,
+  .developer-student-shell .pgs-strip-tools {
+    margin-right: 90px;
+  }
+
   [data-legacy-page] #univMeet.pgs-univmeet,
   .developer-student-shell #univMeet.pgs-univmeet {
     box-sizing: content-box;

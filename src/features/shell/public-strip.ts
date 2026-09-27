@@ -248,7 +248,7 @@ export function buildPublicStripHtml(univMeet?: UnivMeetPublic): string {
             <div class="col-xl-5 mt-0 col-lg-5 d-flex align-items-center mobile-tags-scrolling"></div>
 
             <div class="col-xl-4 justify-content-end col-lg-4 d-flex gap-7 mobile-none" style="width: 37%;">
-                <div class="d-flex align-items-start gap-3">
+                <div class="d-flex align-items-start gap-3 pgs-strip-tools">
                     <a href="${href}" class="pgs-univmeet" id="univMeet">
                         <h5 class="pgs-univmeet__label">#univMeet</h5>
                         ${chipHtml(meet.chips)}
