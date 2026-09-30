@@ -1,7 +1,8 @@
 /**
- * Purple Events face card fixtures (FACE / T6).
+ * Purple Events face card fixtures (FACE / T6) — layout `event_session`.
  * Importable into E8 Upcoming rail and later listing surfaces.
- * No DB reads — B* plugs live rows later.
+ * Inventory of all face layouts: `./face-layouts.ts`.
+ * No DB reads — B* plugs live rows later (docs/CATALOG-B-STAR.md).
  */
 
 import type { PurpleEventDateParts } from "../content";
@@ -34,6 +35,8 @@ export type PurpleEventFaceCard = {
   designedNote: string;
   shareIcon: string;
   shareLabel: string;
+  /** Filled heart — visual only (save deferred B*). */
+  heartIcon: string;
   /** Closed overlay — Bebas red copy */
   closedLabel: string;
 };
@@ -70,7 +73,9 @@ const FACE_SHARED = {
   designedNote:
     "More sessions coming up for Medical & STEM aspirants — reach out to our counsellors.",
   shareIcon: "/assets/img/purple-events/share.svg",
-  shareLabel: "Share this event"
+  shareLabel: "Share this event",
+  /** Same filled heart as other faces (`cvready` / Figma `heart mobile` 12:310). */
+  heartIcon: "/assets/img/purple-events/face/cvready/heart-filled.svg"
 } as const;
 
 /** Open face — Figma desk 18961:13084 open · mob 1242:7585 open */

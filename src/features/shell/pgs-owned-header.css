@@ -1,0 +1,176 @@
+/**
+ * PGS OWNED HEADER — UNLINKED workshop barrel (OWN-UNLINK 2026-09-25)
+ * =============================================================================
+ * DO NOT import this file from pages / PublicHeader until OWN-LINK after block QC.
+ *
+ * Workshop order (owner):
+ * 1. Block-by-block Hostinger → this stack (×0.9 bake, no UI change intent)
+ * 2. Preview lab QC per block
+ * 3. Then link page-by-page / chrome
+ *
+ * Index (siblings, also unlinked except reset which stays via legacy-header-breakpoints):
+ *   pgs-header-chrome-reset.css  — H6a drawer (still linked)
+ *   pgs-owned-strip.css          — OWN-T workshop
+ *   pgs-owned-footer.css         — OWN-F workshop
+ *   public-header.css            — React recipes (linked from PublicHeader only)
+ *
+ * See: OWNED-CHROME-UNLINKED.md · docs/HEADER-CHROME-PHASE.md § OWN-UNLINK
+ *
+ * DO NOT edit public/assets/css/style.css.
+ */
+
+@import "./pgs-header-chrome-reset.css";
+@import "./pgs-owned-strip.css";
+@import "./pgs-owned-footer.css";
+@import "./public-header.css";
+
+/*
+ * When OWN-LINK: pages import this file (or per-block files).
+ * Bake / zoom:1 rules below are WORKSHOP drafts — not live until linked.
+ */
+html:has(header.pgs-figma-header[data-pgs-header-gate]) {
+  --pgs-hostinger-zoom: 0.9;
+  zoom: 1;
+}
+
+/*
+ * Baked tokens — FULL ×0.9 (fonts + box + space), not fonts alone.
+ * Formula: owned = design_css_px × 0.9.
+ * Apply to: font-size, width, height, margin, padding, gap, offsets (px), radius.
+ * Skip: unitless line-height, %, vw/vh mid terms.
+ */
+header.pgs-figma-header[data-pgs-header-gate] {
+  --pgs-header-label-size: 18px; /* was 20 */
+  --pgs-header-drop-size: 16px; /* was 18 */
+  --pgs-header-bar-height: 64px; /* was 71 */
+  --pgs-header-tab-height: 43px; /* was 48 */
+  --pgs-header-tab-width: 619px; /* was 688 */
+  --pgs-header-radius-bar: 14px; /* was 16 */
+  --pgs-header-radius-ctl: 7px; /* was 8 */
+  --pgs-header-drop-radius: 9px; /* was 10 */
+  --pgs-header-drop-gap: 4px; /* 4 × 0.9 ≈ 4 */
+}
+
+/* Brand mark: 173×32 → 156×29 */
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand img,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand svg.default-logo {
+  width: 156px;
+  height: 29px;
+}
+
+/* Left cluster gap: clamp max 45 → 41 */
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-left {
+  gap: clamp(22px, 2.5vw, 41px);
+}
+
+/* Drop / panel paddings & gaps (hard px in public-header.css) */
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop a {
+  padding: 4px 16px; /* was 4px 18px */
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top {
+  padding: 9px; /* was 10 */
+  gap: clamp(7px, 1.2vw, 18px); /* was max 20 */
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button {
+  padding: 4px 7px; /* was 4px 8px */
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-avatar {
+  width: 40px; /* was 44 */
+  height: 40px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-join {
+  gap: 9px; /* was 10 */
+  padding: 6px 7px; /* was 7px 8px */
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-study-abroad,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-login {
+  padding: 6px 7px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-logout {
+  padding: 7px 11px;
+  gap: 7px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me-panel,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-logout-panel {
+  border-radius: 9px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me-panel__title {
+  padding: 11px 14px 7px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me-row {
+  padding: 7px 14px;
+  gap: 7px;
+}
+
+/* Desk bar side inset: 40 → 36; bottom margin 20 → 18; pad 28/12 → 25/11 */
+@media (min-width: 1367px) {
+  header.pgs-figma-header[data-pgs-header-gate] nav.pgs-header-bar {
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-bottom: 18px;
+    padding-left: 25px;
+    padding-right: 11px;
+    gap: 11px; /* was 12 */
+  }
+}
+
+/* iPad equal page inset (reset used 40) → 36 under bake */
+@media (min-width: 601px) and (max-width: 1366px) {
+  header.pgs-figma-header[data-pgs-header-gate] {
+    padding-left: 36px !important;
+    padding-right: 36px !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] nav.pgs-header-bar,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-bar {
+    margin-bottom: 18px;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    gap: 11px;
+  }
+}
+
+/* Drawer park inset / width math — match baked 36px side inset */
+@media (max-width: 1366px) {
+  main[data-legacy-page]:has(header.pgs-figma-header[data-pgs-header-gate])
+    #drawer.pgs-header-drawer,
+  main[data-legacy-page]:has(header.pgs-figma-header[data-pgs-header-gate])
+    #drawer.drawer {
+    --pgs-drawer-inset: 36px;
+    --pgs-drawer-top: 11px;
+    padding: 14px 14px 25px !important;
+    border-radius: 18px !important;
+  }
+
+  #drawer.pgs-header-drawer .pgs-drawer-nav .tab-button {
+    padding: 9px 11px;
+    font-size: 16px; /* was 18 visual lock under zoom — bake when zoom:1 */
+  }
+
+  #drawer.pgs-header-drawer .pgs-drawer-sub a,
+  #drawer.pgs-header-drawer .pgs-drawer-sub a.pp-mobile-link {
+    padding: 7px 11px;
+    font-size: 14px;
+  }
+
+  #drawer.pgs-header-drawer .pgs-drawer-join {
+    padding: 9px 14px;
+    margin-bottom: 11px;
+    border-radius: 9px;
+  }
+}

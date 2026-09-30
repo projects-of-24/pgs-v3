@@ -1,0 +1,539 @@
+/**
+ * Internship face — Pair 4 desk+mob · no scale · no drop shadow (owner).
+ * ≤600 mob open `1:3068` · closed `1:3094` · ~175×290 · pair `1:3183`
+ * >1367 desk open `18:320` · closed `18:342` · ~224×371 · pair `18:319`
+ * 601–1366 iPad deferred
+ */
+
+.internship-face {
+  box-sizing: border-box;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #172b4d;
+  width: 100%;
+  max-width: 100%;
+}
+
+.internship-face *,
+.internship-face *::before,
+.internship-face *::after {
+  box-sizing: border-box;
+}
+
+.internship-face__sr-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.internship-face p {
+  margin: 0;
+  padding: 0;
+}
+
+.internship-face__desk,
+.internship-face__mob {
+  display: none;
+}
+
+.internship-face__band-note {
+  display: block;
+  max-width: 28rem;
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #4a4a4a;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #22272e;
+}
+
+/* ——— Mob ≤600 — Figma 1:3068 / 1:3094 ——— */
+@media (max-width: 600px) {
+  .internship-face {
+    width: 175px;
+  }
+
+  .internship-face__band-note {
+    display: none;
+  }
+
+  .internship-face__mob {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5.518px;
+    width: 175px;
+    min-height: 290px;
+    height: auto;
+    padding: 4.598px 4.598px 7.357px;
+    overflow: hidden;
+    border: 0.46px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4.138px;
+    background: #fff;
+    /* Owner lock: no drop shadow */
+  }
+
+  .internship-face__mob .internship-face__media {
+    position: relative;
+    flex-shrink: 0;
+    width: 165px;
+    height: 127px;
+    overflow: hidden;
+  }
+
+  .internship-face__mob .internship-face__photo {
+    position: absolute;
+    left: -11.25px;
+    top: -18.85px;
+    width: 210.859px;
+    height: 140.6px;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .internship-face__mob .internship-face__photo-tag {
+    position: absolute;
+    top: 2.3px;
+    right: 2.3px;
+    left: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4.138px;
+    border-radius: 2.299px;
+    background: #b57cff;
+    color: #fff;
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: ~2.54px
+     * ISSUE: unreadable
+     * PGS: 12px (owner pick B) · right inset
+     */
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.23px;
+    white-space: nowrap;
+  }
+
+  .internship-face__mob .internship-face__body {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .internship-face__mob .internship-face__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.839px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .internship-face__mob .internship-face__title {
+    width: 114.03px;
+    max-width: 100%;
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 13.3px
+     * PGS: 14px
+     */
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    color: #172b4d;
+  }
+
+  .internship-face__mob .internship-face__blurb {
+    width: 142.078px;
+    max-width: 100%;
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 11.4px
+     * PGS: 14px
+     */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.115px;
+    color: #172b4d;
+  }
+
+  .internship-face__mob .internship-face__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 5.7px;
+    align-items: flex-start;
+    width: 165px;
+  }
+
+  .internship-face__mob .internship-face__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.8px;
+    border-radius: 2.299px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.046px;
+    white-space: nowrap;
+  }
+
+  .internship-face__mob .internship-face__rating {
+    display: flex;
+    align-items: center;
+    gap: 2.759px;
+  }
+
+  .internship-face__mob .internship-face__rating-icon {
+    display: block;
+    width: 14.714px;
+    height: 14.714px;
+    flex-shrink: 0;
+  }
+
+  .internship-face__mob .internship-face__rating-label {
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    /* Figma mob 19px (desk owner lock 22px stays desk-only) */
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .internship-face__mob .internship-face__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.8px;
+    border-radius: 2.299px;
+    background: #009c70;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.046px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .internship-face__mob .internship-face__cta:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 2px;
+  }
+
+  .internship-face__mob .internship-face__cta[aria-disabled="true"] {
+    pointer-events: none;
+  }
+
+  .internship-face__mob .internship-face__heart {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 8px;
+    bottom: 10px;
+    z-index: 5;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  .internship-face__mob .internship-face__heart img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mob closed — Figma 1:3094 */
+  .internship-face__mob .internship-face__wash {
+    position: absolute;
+    inset: -0.46px -2.46px -0.46px -2.46px;
+    z-index: 3;
+    width: auto;
+    height: auto;
+    background: #d9d9d9;
+    mix-blend-mode: hue;
+    pointer-events: none;
+  }
+
+  .internship-face__mob .internship-face__closed {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 124.45px;
+    padding: 11.4px;
+    border: 1.52px solid #9747ff;
+    border-radius: 15.2px;
+    background: #c3ffa9;
+    transform: translate(calc(-50% - 0.28px), calc(-50% + 0.48px));
+    pointer-events: none;
+  }
+
+  .internship-face__mob .internship-face__closed-text {
+    margin: 0;
+    width: 100%;
+    padding: 6.08px 9.12px;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    text-align: center;
+  }
+}
+
+/* ——— Desk >1367 — Figma 18:320 / 18:342 ——— */
+@media (min-width: 1367px) {
+  .internship-face {
+    width: 224px;
+  }
+
+  .internship-face__band-note {
+    display: none;
+  }
+
+  .internship-face__desk {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7.063px;
+    width: 224px;
+    height: 371.2px;
+    padding: 5.885px 5.885px 9.417px;
+    overflow: hidden;
+    border: 0.589px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5.297px;
+    background: #fff;
+    /* Owner lock: no drop shadow */
+  }
+
+  .internship-face__desk .internship-face__media {
+    position: relative;
+    flex-shrink: 0;
+    width: 211.2px;
+    height: 162.56px;
+    overflow: hidden;
+  }
+
+  .internship-face__desk .internship-face__photo {
+    position: absolute;
+    left: -14.4px;
+    top: -24.13px;
+    width: 269.899px;
+    height: 179.968px;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .internship-face__desk .internship-face__photo-tag {
+    position: absolute;
+    top: 8.41px;
+    right: 12.47px;
+    left: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7.628px;
+    border-radius: 4.238px;
+    background: #b57cff;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.424px;
+    white-space: nowrap;
+  }
+
+  .internship-face__desk .internship-face__body {
+    display: flex;
+    flex-direction: column;
+    gap: 24.32px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .internship-face__desk .internship-face__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2.354px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .internship-face__desk .internship-face__title {
+    width: 145.959px;
+    max-width: 100%;
+    font-size: 17.024px;
+    font-weight: 600;
+    line-height: normal;
+    color: #172b4d;
+  }
+
+  .internship-face__desk .internship-face__blurb {
+    width: 181.86px;
+    max-width: 100%;
+    font-size: 14.592px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.147px;
+    color: #172b4d;
+  }
+
+  .internship-face__desk .internship-face__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 7.296px;
+    align-items: flex-start;
+    width: 211.2px;
+  }
+
+  .internship-face__desk .internship-face__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.864px;
+    border-radius: 2.943px;
+    background: #000;
+    color: #fff;
+    font-size: 14.592px;
+    font-weight: 600;
+    line-height: 11.771px;
+    letter-spacing: 0.059px;
+    white-space: nowrap;
+  }
+
+  .internship-face__desk .internship-face__rating {
+    display: flex;
+    align-items: center;
+    gap: 3.531px;
+  }
+
+  .internship-face__desk .internship-face__rating-icon {
+    display: block;
+    width: 18.833px;
+    height: 18.833px;
+    flex-shrink: 0;
+  }
+
+  .internship-face__desk .internship-face__rating-label {
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .internship-face__desk .internship-face__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.864px;
+    border-radius: 2.943px;
+    background: #009c70;
+    color: #fff;
+    font-size: 14.592px;
+    font-weight: 600;
+    line-height: 11.771px;
+    letter-spacing: 0.059px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .internship-face__desk .internship-face__cta:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 2px;
+  }
+
+  .internship-face__desk .internship-face__cta[aria-disabled="true"] {
+    pointer-events: none;
+  }
+
+  .internship-face__desk .internship-face__heart {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 12px;
+    bottom: 12px;
+    z-index: 5;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+  }
+
+  .internship-face__desk .internship-face__heart img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Desk closed — Figma 18:342 */
+  .internship-face__desk .internship-face__wash {
+    position: absolute;
+    top: -0.59px;
+    left: -3.15px;
+    z-index: 3;
+    width: 227.84px;
+    height: 377.6px;
+    background: #d9d9d9;
+    mix-blend-mode: hue;
+    pointer-events: none;
+  }
+
+  .internship-face__desk .internship-face__closed {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 159.296px;
+    padding: 14.592px;
+    border: 1.946px solid #9747ff;
+    border-radius: 19.456px;
+    background: #c3ffa9;
+    transform: translate(calc(-50% - 0.35px), calc(-50% + 0.61px));
+    pointer-events: none;
+  }
+
+  .internship-face__desk .internship-face__closed-text {
+    margin: 0;
+    width: 100%;
+    padding: 7.782px 11.674px;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 24.32px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    text-align: center;
+  }
+}

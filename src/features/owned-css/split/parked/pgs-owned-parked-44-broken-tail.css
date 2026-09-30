@@ -1,0 +1,67 @@
+/* PASS 15 parked BROKEN TAIL · raw copy of public/assets/css/responsive.css lines 21643-21693 (EOF) · NEVER imported
+   Owner decision 2026-09-26: park verbatim, do not repair.
+
+   WHY IT IS BROKEN: lines 21643-21650 are a half-commented-out `.db-u-title` rule. Two declarations were left outside the
+   comments at the stylesheet root (`font-style: normal;` and `letter-spacing: 0.5px;`), followed by a stray `{` at line 21650
+   (`/*}*/{`). A CSS parser reads everything from `font-style` up to that `{` as the prelude of one qualified rule, and the `{`
+   opens a block that is never closed before EOF (all later `}` only close their own inner rules). Browsers therefore treat the
+   whole remainder — `.wrapper-content .qd-heading`, `.wrapper-content .grid-box-style-2 .card-box-1`,
+   `.wrapper-content .grid-box-style-2 h5`, `.wrapper-content .heading-up-event`, and the `@media (max-width: 767px) { .d-sm-none }`
+   block — as part of that one invalid rule and DROP IT. None of these declarations ever applied on Hostinger.
+   postcss also refuses to parse this fragment ("Unclosed block"), so it is excluded from scripts/owned-css-split-verify.mjs;
+   checked manually: the text below is byte-identical to the source lines (see README P15 row).
+
+   If any of these rules is ever wanted, restore it as a NEW, properly closed rule into split/pgs-owned-43-resp-elements-footer.css
+   (and write the 767px wrapper as 600px per owner decision). Raw source follows, unchanged, including the unclosed brace: */
+
+/*.db-u-title {*/
+/*  font-weight: 600;*/
+  font-style: normal; /* SemiBold is not a valid CSS value */
+/*  font-size: 17.6px;*/
+/*  line-height: 22.4px;*/
+  letter-spacing: 0.5px; /* Replace with your actual tracking value */
+/*  text-transform: uppercase;*/
+/*}*/{
+
+/*.lh-new-100*/
+/*{*/
+/*    line-height:100%;*/
+/*}*/
+
+
+.wrapper-content .qd-heading {
+  font-size: 17.6px !important;
+  line-height: 22.4px !important;
+}
+
+.wrapper-content .grid-box-style-2 .card-box-1 {
+  border-radius: 16px !important;
+  padding: 12.8px !important;
+}
+
+.wrapper-content .grid-box-style-2 h5 {
+  font-size: 17.6px !important;
+  line-height: 22.4px !important;
+}
+
+.wrapper-content .heading-up-event {
+  font-size: 38.4px !important;
+  line-height: 1 !important;
+}
+
+/*custom css*/
+@media (max-width: 767px) {
+    .d-sm-none{
+        display : none;
+    }
+ }
+
+
+
+
+
+
+
+
+
+

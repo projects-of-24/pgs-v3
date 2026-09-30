@@ -1,0 +1,9 @@
+/*
+ * PGS inline icons (pgs-icon.tsx) — V-1 step 2.
+ * The 1:1 owned split gives every `[class*="bi-"]` element `display:inline-block`;
+ * the React icon wrapper carries no `bi-` class, so it takes the same box here.
+ * The 1em SVG inside mirrors `.bi::before` (1em, vertical-align -.125em, currentColor).
+ */
+.pgs-icon {
+  display: inline-block;
+}

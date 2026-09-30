@@ -1,0 +1,1420 @@
+/**
+ * H1c — owned public header CSS (desk first).
+ *
+ * Order locked: Hostinger/legacy reference → this file → then UI.
+ * Do not invent floating-menu CSS. Port proven recipes, rename to pgs-header-*.
+ *
+ * Sources read this pass:
+ * - Figma 19075:13853 (desk default bar tokens)
+ * - Hostinger style.css ~24355–24421 (.header-tab-top, .btn-trapsparent, .btn-login)
+ * - legacy-header-breakpoints.css #ppDropdown / .explore-dropdown-menu (dropslide)
+ *
+ * Hostinger fights (why we own classes):
+ * - .btn-trapsparent { font-weight: 400 } vs Figma Medium 500
+ * - .btn-toggle-mobile bordered box + dual hamburger icons on desk
+ * - global .header-tab-top / .navbar .btn still linked until site-clear
+ *
+ * Drop recipe below is CSS-only (not wired in React yet). H2 mounts it.
+ */
+
+/* ——— Tokens (Figma desk + Hostinger PGS header block) ——— */
+header.pgs-figma-header[data-pgs-header-gate] {
+  --pgs-header-font: Roboto, sans-serif;
+  /* Figma Roboto Medium; Hostinger .btn-trapsparent was 400 — REJECTED */
+  --pgs-header-label-size: 20px;
+  --pgs-header-label-weight: 500;
+  --pgs-header-drop-size: 18px;
+  --pgs-header-drop-weight: 500;
+  --pgs-header-bg: #ebf7ff;
+  --pgs-tab-bg: #c1e4ff;
+  --pgs-header-active: #ffde7f;
+  --pgs-header-active-hover: #fff176;
+  --pgs-header-join-bg: #8c5fff;
+  --pgs-header-login-bg: #ffc524;
+  --pgs-header-pill-border: rgba(0, 0, 0, 0.2);
+  --pgs-header-login-border: rgba(0, 0, 0, 0.65);
+  --pgs-header-bar-height: 71px;
+  --pgs-header-tab-height: 48px;
+  --pgs-header-tab-width: 688px;
+  --pgs-header-radius-bar: 16px;
+  --pgs-header-radius-ctl: 8px;
+  --pgs-header-drop-radius: 10px;
+  --pgs-header-drop-gap: 4px;
+  --pgs-header-z-drop: 200;
+}
+
+/* ——— Desk bar (Hostinger navbar height/margin + Figma layout) ——— */
+header.pgs-figma-header[data-pgs-header-gate] nav.pgs-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  max-width: none;
+  height: var(--pgs-header-bar-height);
+  margin: 0 40px 20px;
+  padding: 0 12px 0 28px;
+  background: var(--pgs-header-bg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--pgs-header-radius-bar);
+  flex-wrap: nowrap;
+  gap: 12px;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 2.5vw, 45px);
+  min-width: 0;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  padding: 0;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand img,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand svg.default-logo {
+  display: block;
+  width: 173px;
+  height: 32px;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Pill — Hostinger .header-tab-top + Figma 688×48 / gap 20 */
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(var(--pgs-header-tab-width), 48vw);
+  max-width: min(var(--pgs-header-tab-width), 52vw);
+  height: var(--pgs-header-tab-height);
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  background: var(--pgs-tab-bg);
+  border-radius: var(--pgs-header-radius-bar);
+  gap: clamp(8px, 1.2vw, 20px);
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top > li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--pgs-header-radius-ctl);
+  background: transparent;
+  color: #000;
+  font-family: var(--pgs-header-font);
+  font-size: var(--pgs-header-label-size);
+  font-weight: var(--pgs-header-label-weight);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Hostinger .header-tab-top .tab-button:hover → yellow chip */
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button:hover,
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button.active-tab,
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button[aria-expanded="true"],
+header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button:focus-visible {
+  background: var(--pgs-header-active);
+  border-color: var(--pgs-header-pill-border);
+  text-decoration: none;
+  color: #000;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+/* Owned pills — Hostinger .btn-trapsparent shape, not that class name */
+header.pgs-figma-header .pgs-header-me,
+header.pgs-figma-header .pgs-header-study-abroad {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 6px;
+  box-sizing: border-box;
+  border: 1px solid var(--pgs-header-pill-border);
+  border-radius: var(--pgs-header-radius-ctl);
+  background: #fff;
+  color: #000;
+  font-family: var(--pgs-header-font);
+  font-size: var(--pgs-header-label-size);
+  font-weight: var(--pgs-header-label-weight);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Same yellow chip as tab-button hover */
+header.pgs-figma-header .pgs-header-me:hover,
+header.pgs-figma-header .pgs-header-study-abroad:hover,
+header.pgs-figma-header .pgs-header-me[aria-expanded="true"],
+header.pgs-figma-header .pgs-header-study-abroad[aria-expanded="true"] {
+  background: var(--pgs-header-active);
+  border-color: var(--pgs-header-pill-border);
+}
+
+header.pgs-figma-header .pgs-header-join {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 7px 8px;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border-radius: var(--pgs-header-radius-ctl);
+  background: var(--pgs-header-join-bg);
+  color: #fff;
+  font-family: var(--pgs-header-font);
+  font-size: var(--pgs-header-label-size);
+  font-weight: var(--pgs-header-label-weight);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+header.pgs-figma-header .pgs-header-join:hover,
+header.pgs-figma-header .pgs-header-join:focus-visible {
+  color: #fff;
+  text-decoration: none;
+  filter: brightness(1.05);
+}
+
+header.pgs-figma-header .pgs-header-join__heart {
+  display: block;
+  width: 23px;
+  height: 25px;
+  object-fit: contain;
+  border-radius: 6.4px;
+}
+
+/* Hostinger .btn-login shape → owned class */
+header.pgs-figma-header .pgs-header-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 4px 22px;
+  box-sizing: border-box;
+  border: 1px solid var(--pgs-header-login-border);
+  border-radius: var(--pgs-header-radius-ctl);
+  background: var(--pgs-header-login-bg);
+  color: #000;
+  font-family: var(--pgs-header-font);
+  font-size: var(--pgs-header-label-size);
+  font-weight: 400;
+  line-height: 1.15;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 0 #000;
+}
+
+header.pgs-figma-header .pgs-header-login:hover,
+header.pgs-figma-header .pgs-header-login:focus-visible {
+  color: #000;
+  text-decoration: none;
+  filter: brightness(1.03);
+}
+
+header.pgs-figma-header .pgs-header-login:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+header.pgs-figma-header .pgs-header-auth-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+header.pgs-figma-header .pgs-header-avatar {
+  appearance: none;
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #000;
+  border-radius: var(--pgs-header-radius-ctl);
+  overflow: hidden;
+  background: #ddd;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 0 #000;
+  cursor: pointer;
+}
+
+header.pgs-figma-header .pgs-header-avatar img {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+}
+
+/* Logout panel — Figma 19073:13354 · solid card (no glass opacity) */
+header.pgs-figma-header .pgs-header-logout-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: auto;
+  right: 0;
+  z-index: calc(var(--pgs-header-z-drop) + 1);
+  margin: 0;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  overflow: visible;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+header.pgs-figma-header .pgs-header-logout-panel.is-open {
+  display: block;
+}
+
+header.pgs-figma-header .pgs-header-logout {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 4px 8px;
+  border: 0;
+  background: transparent;
+  font-family: var(--pgs-header-font);
+  font-size: var(--pgs-header-drop-size);
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: 0.4px;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+header.pgs-figma-header .pgs-header-logout:hover,
+header.pgs-figma-header .pgs-header-logout:focus-visible {
+  text-decoration: underline;
+}
+
+header.pgs-figma-header .pgs-header-logout:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+header.pgs-figma-header .pgs-header-logout:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+header.pgs-figma-header .pgs-header-logout__icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  overflow: visible;
+}
+
+/*
+ * Desk >1366: hamburger hidden.
+ * 801–1366 (Figma 19072:15812): logo · #feed · join #PGS · bell · login · hamburger.
+ * 601–800: compact bar — logo · #feed · bell · auth · menu.
+ * ≤600: Figma 19073:13319 — logo · #feed · bell · login · menu. No blue pill.
+ * Never use Hostinger .btn-toggle-mobile on the desk bar.
+ */
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  cursor: pointer;
+  line-height: 0;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu .pgs-menu-mobile {
+  display: none;
+}
+
+/* 801–1366 — Figma 19072:15812. Join sits after #feed. Hamburger stays in the bar. */
+@media (min-width: 801px) and (max-width: 1366px) {
+  header.pgs-figma-header[data-pgs-header-gate] nav.pgs-header-bar {
+    justify-content: flex-start;
+    gap: 21px;
+  }
+
+  /* Flatten the two clusters so join can move next to #feed. */
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-left,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-right {
+    display: contents;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand {
+    order: 1;
+    margin-right: 24px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .header-tab-top {
+    order: 2;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-join {
+    order: 3;
+    display: inline-flex !important;
+    height: 35px;
+    padding: 6px 8px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap {
+    order: 4;
+    margin-left: auto;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-auth-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-login {
+    order: 5;
+  }
+
+  /* Hamburger stays in the bar, after login. Click opens the Figma drawer as a dropdown. */
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu {
+    order: 6;
+    display: inline-flex !important;
+    flex-shrink: 0;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-study-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-premium,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-cv,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-cv-medical {
+    display: none !important;
+  }
+
+  /* Figma logo is 173×32. Legacy ≤1366 rule forces 208×39. */
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand img,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand svg.default-logo {
+    width: 173px !important;
+    height: 32px !important;
+  }
+
+  /* Join #PGS is already on the bar in this band. */
+  #drawer.pgs-header-drawer .pgs-drawer-join {
+    display: none !important;
+  }
+}
+
+/* 601–800 — same logo and label size as 801–1366. Only the bar contents change. */
+@media (min-width: 601px) and (max-width: 800px) {
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand img,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand svg.default-logo {
+    width: 173px !important;
+    height: 32px !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu {
+    display: inline-flex;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-join,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-study-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-premium,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-cv,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-cv-medical {
+    display: none !important;
+  }
+
+  /* Desk tab pill is wide for 4 labels — hug #feed only on compact */
+  header.pgs-figma-header[data-pgs-header-gate] .header-tab-top {
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+
+  /*
+   * Equal L/R inset — CANONICAL in pgs-header-chrome-reset.css (H6a-CSS).
+   * Keep compact-bar behavior here (hide desk tabs, hug #feed, one bell).
+   */
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-right {
+    flex: 0 0 auto;
+    flex-shrink: 0;
+  }
+
+  /* Keep hamburger inside the pill (do not fly past bar edge) */
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu {
+    flex-shrink: 0;
+    margin-left: 2px;
+  }
+
+  /* One bell only — tablet asset in this band */
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .header-notification-wrapper {
+    width: 32px;
+    height: 38px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .pgs-header-bell-desktop,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .pgs-header-bell-mobile {
+    display: none !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .pgs-header-bell-tablet {
+    display: block !important;
+    width: 32px;
+    height: 38px;
+  }
+}
+
+/* Phone ≤600 — Figma 19073:13319. Flat row. Desktop and iPad rules stay above. */
+@media (max-width: 600px) {
+  header.pgs-figma-header[data-pgs-header-gate] nav.pgs-header-bar {
+    height: auto;
+    min-height: 0;
+    margin: 12px 8px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    justify-content: flex-start;
+    /* html zoom 0.9: 10px paints as 9px, keeps the owner's 8px minimum */
+    gap: 10px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-left {
+    display: contents;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 0 0 #000;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-avatar img {
+    width: 100%;
+    height: 100%;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand img,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-brand svg.default-logo {
+    width: 161px !important;
+    height: 30px !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu .pgs-menu-tablet {
+    display: none !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-menu .pgs-menu-mobile {
+    display: block !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-join,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-me-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-study-wrap,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-premium,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-cv,
+  header.pgs-figma-header[data-pgs-header-gate] .tab-cv-medical {
+    display: none !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .header-tab-top {
+    display: flex !important;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    height: auto;
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 4px;
+    border-radius: 8px;
+    background: #c1e4ff;
+    gap: 0;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .header-tab-top .tab-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-right {
+    gap: 10px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-login {
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    box-shadow: 1px 1px 0 0 #000;
+  }
+}
+
+/* Phone ≤600: mobile bell only */
+@media (max-width: 600px) {
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .header-notification-wrapper {
+    width: 24px;
+    height: 24px;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .pgs-header-bell-desktop,
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .pgs-header-bell-tablet {
+    display: none !important;
+  }
+
+  header.pgs-figma-header[data-pgs-header-gate] .pgs-header-notif-wrap .pgs-header-bell-mobile {
+    display: block !important;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* =============================================================================
+ * H6a drawer — desk drop colors reused; no invented blue cluster; type ≥14px
+ * ============================================================================= */
+
+#drawer.pgs-header-drawer .pgs-drawer-join {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 10px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  background: var(--pgs-header-join-bg, #8c5fff);
+  border: 1px solid #000;
+  border-radius: 8px;
+  color: #fff;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-join__heart {
+  display: block;
+  width: 23px;
+  height: 25px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav > li {
+  margin: 0 0 8px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav .tab-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav a.tab-button:hover,
+#drawer.pgs-header-drawer .pgs-drawer-nav button.tab-button:hover {
+  text-decoration: underline;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav .tab-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-arrow {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+#drawer.pgs-header-drawer details[open] > summary .pgs-drawer-arrow {
+  transform: rotate(180deg);
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav summary {
+  list-style: none;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Desk drop recipe — hug content, hard shadow, same hover as desk */
+#drawer.pgs-header-drawer .pgs-drawer-sub {
+  list-style: none;
+  display: block;
+  width: max-content;
+  min-width: max-content;
+  max-width: min(280px, 85vw);
+  margin: 6px 0 10px;
+  padding: 10px 0;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+  box-sizing: border-box;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-sub--premium,
+#drawer.pgs-header-drawer .pgs-drawer-sub--panel {
+  background: #ffde7f;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Desk studyAbroad stays white + underline */
+#drawer.pgs-header-drawer .pgs-drawer-sub--study {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  min-width: 145px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-sub--panel {
+  min-width: 167px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-sub a,
+#drawer.pgs-header-drawer .pgs-drawer-sub a.pp-mobile-link {
+  display: block;
+  padding: 5px 16px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Premium + CV: lighter yellow hover (same as desk Premium) */
+#drawer.pgs-header-drawer .pgs-drawer-sub--premium a:hover,
+#drawer.pgs-header-drawer .pgs-drawer-sub--premium a:focus-visible,
+#drawer.pgs-header-drawer .pgs-drawer-sub--premium a.pp-mobile-link:hover,
+#drawer.pgs-header-drawer .pgs-drawer-sub--panel a:hover,
+#drawer.pgs-header-drawer .pgs-drawer-sub--panel a:focus-visible,
+#drawer.pgs-header-drawer .pgs-drawer-sub--panel a.pp-mobile-link:hover {
+  background: #fff176;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Desk studyAbroad: underline only, no yellow fill */
+#drawer.pgs-header-drawer .pgs-drawer-sub--study a:hover,
+#drawer.pgs-header-drawer .pgs-drawer-sub--study a:focus-visible,
+#drawer.pgs-header-drawer .pgs-drawer-sub--study a.pp-mobile-link:hover {
+  background: transparent;
+  color: #000;
+  text-decoration: underline;
+}
+
+/*
+ * Figma 19094:13356 — Upcoming card in hamburger.
+ * Drawer is outside <header>, so desk .pgs-header-me-* rules do not apply.
+ * Layout: index · title · badge. Badges hang past the card’s right edge.
+ * Type floor 14px (owner).
+ */
+#drawer.pgs-header-drawer .pgs-drawer-me-panel {
+  position: relative;
+  display: block;
+  width: 270px;
+  max-width: 270px;
+  margin: 6px 28px 12px 0;
+  padding: 8px 6px 12px 8px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 0 #000;
+  overflow: visible;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-panel__title {
+  margin: 0 0 6px;
+  padding: 0 6px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.15px;
+  color: #000;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: visible;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  width: calc(100% + 22px);
+  max-width: none;
+  text-decoration: none;
+  color: #000;
+  overflow: visible;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-row:hover .pgs-drawer-me-row__title,
+#drawer.pgs-header-drawer .pgs-drawer-me-row:focus-visible .pgs-drawer-me-row__title {
+  text-decoration: underline;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-row:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-index {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  padding: 0 2px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #000;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-row__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Sit outside the white card (Figma) — hang past right border */
+#drawer.pgs-header-drawer .pgs-drawer-me-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 70px;
+  margin-left: 2px;
+  margin-right: -18px;
+  padding: 2px 4px;
+  box-sizing: border-box;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 0 #000;
+  position: relative;
+  z-index: 2;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-badge--join-free {
+  background: #ffc524;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-me-badge--few-seats {
+  background: #0abf8c;
+}
+
+/* =============================================================================
+ * Drop recipe — ported from legacy #ppDropdown (yellow Premium dropslide).
+ * CSS only in H1c. H2 wires React to these class names (not #ppDropdown).
+ * Source: legacy-header-breakpoints.css header.pgs-figma-header #ppDropdown…
+ * ============================================================================= */
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop-wrap {
+  position: relative;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--pgs-header-drop-gap));
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 6px 0 10px;
+  background: var(--pgs-header-active);
+  border: 1px solid var(--pgs-header-pill-border);
+  border-radius: var(--pgs-header-drop-radius);
+  z-index: var(--pgs-header-z-drop);
+  box-shadow: none;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop.is-open {
+  display: block;
+}
+
+/* Under each tab trigger — Figma: sit under the label, hug content */
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--premium,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--figma-panel {
+  left: 50%;
+  right: auto;
+  width: max-content;
+  min-width: max-content;
+  max-width: min(280px, 85vw);
+  transform: translateX(-50%);
+  padding: 10px 0;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--premium {
+  background: var(--pgs-header-active);
+  border: 1px solid var(--pgs-header-pill-border);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--figma-panel {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+  min-width: 167px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--premium a,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--figma-panel a {
+  font-size: var(--pgs-header-drop-size);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  padding: 5px 16px;
+  white-space: nowrap;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--premium a:hover,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--premium a:focus-visible {
+  background: var(--pgs-header-active-hover);
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--figma-panel a:hover,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--figma-panel a:focus-visible {
+  background: var(--pgs-header-active);
+  text-decoration: none;
+  color: #000;
+  outline: none;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--figma-panel a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop a {
+  display: block;
+  padding: 4px 18px;
+  font-family: var(--pgs-header-font);
+  font-size: var(--pgs-header-drop-size);
+  font-weight: var(--pgs-header-drop-weight);
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop a:hover,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop a:focus-visible {
+  background: var(--pgs-header-active-hover);
+  color: #000;
+  outline: none;
+}
+
+/* Explore-style white panel (Hostinger .explore-dropdown-menu) — optional variant */
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--panel {
+  left: 50%;
+  right: auto;
+  width: auto;
+  min-width: 150px;
+  max-width: none;
+  transform: translateX(-50%);
+  top: calc(100% + 6px);
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 6px;
+  padding: 5px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--panel a {
+  font-weight: 600;
+  color: #212529;
+  line-height: 20px;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--panel a:hover,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop--panel a:focus-visible {
+  background: #f3f3f3;
+  color: #000;
+}
+
+/* StudyAbroad — white Figma panel under #studyAbroad (center on trigger) */
+header.pgs-figma-header .pgs-header-study-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop.pgs-header-drop--study {
+  top: calc(100% + 8px);
+  left: 50%;
+  right: auto;
+  width: max-content;
+  min-width: 145px;
+  max-width: min(280px, 85vw);
+  transform: translateX(-50%);
+  padding: 10px 0;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop.pgs-header-drop--study a {
+  font-size: var(--pgs-header-drop-size);
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  padding: 5px 16px;
+  white-space: nowrap;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop.pgs-header-drop--study a:hover,
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop.pgs-header-drop--study a:focus-visible {
+  background: transparent;
+  text-decoration: underline;
+  color: #000;
+  outline: none;
+}
+
+header.pgs-figma-header[data-pgs-header-gate] .pgs-header-drop.pgs-header-drop--study a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+header.pgs-figma-header .pgs-header-me-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+header.pgs-figma-header .pgs-header-me-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: auto;
+  right: 0;
+  z-index: calc(var(--pgs-header-z-drop) + 1);
+  width: min(371px, 85vw);
+  min-height: 0;
+  margin: 0;
+  padding: 11px 13px 16px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+header.pgs-figma-header .pgs-header-me-panel.is-open {
+  display: block;
+}
+
+header.pgs-figma-header .pgs-header-me-panel__title {
+  margin: 0 0 2px;
+  padding: 0 17px;
+  font-family: var(--pgs-header-font);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+  text-align: right;
+}
+
+header.pgs-figma-header .pgs-header-me-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 4px 10px;
+  list-style: none;
+}
+
+header.pgs-figma-header .pgs-header-me-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+}
+
+header.pgs-figma-header .pgs-header-me-row:hover .pgs-header-me-row__title,
+header.pgs-figma-header .pgs-header-me-row:focus-visible .pgs-header-me-row__title {
+  text-decoration: underline;
+}
+
+header.pgs-figma-header .pgs-header-me-row:hover .pgs-header-me-badge,
+header.pgs-figma-header .pgs-header-me-row:focus-visible .pgs-header-me-badge {
+  text-decoration: none;
+}
+
+header.pgs-figma-header .pgs-header-me-row:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+header.pgs-figma-header .pgs-header-me-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  font-family: var(--pgs-header-font);
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+header.pgs-figma-header .pgs-header-me-badge--join-free {
+  background: #ffc524;
+}
+
+header.pgs-figma-header .pgs-header-me-badge--few-seats {
+  background: #0abf8c;
+}
+
+header.pgs-figma-header .pgs-header-me-index {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1em;
+  padding: 0 2px;
+  border: 1px solid #000;
+  font-family: var(--pgs-header-font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+}
+
+header.pgs-figma-header .pgs-header-me-row__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--pgs-header-font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =============================================================================
+ * Notification panel — Figma 19070:15287 (same white card family as #me)
+ * ============================================================================= */
+
+/* Notification badge — absolute; must not resize the bell */
+header.pgs-figma-header .pgs-header-notif-wrap .header-notification-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 27px;
+  height: 32px;
+  overflow: visible;
+}
+
+/* Desk default: desktop bell only (tablet/mobile hidden) */
+header.pgs-figma-header .pgs-header-notif-wrap .pgs-header-bell-desktop {
+  display: block;
+  width: 27px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+header.pgs-figma-header .pgs-header-notif-wrap .pgs-header-bell-tablet,
+header.pgs-figma-header .pgs-header-notif-wrap .pgs-header-bell-mobile {
+  display: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-wrap .header-notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  min-width: 18px;
+  height: auto;
+  min-height: 18px;
+  padding: 1px 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: auto;
+  right: 0;
+  z-index: calc(var(--pgs-header-z-drop) + 1);
+  width: min(283px, 85vw);
+  margin: 0;
+  padding: 13px 10px 16px;
+  box-sizing: border-box;
+  background: var(--pgs-header-active);
+  border: 1px solid var(--pgs-header-pill-border);
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+header.pgs-figma-header .pgs-header-notif-panel.is-open {
+  display: block;
+}
+
+/* Figma 19094:13339 — decoration only; not clickable */
+header.pgs-figma-header .pgs-header-notif-corner {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-clear {
+  appearance: none;
+  display: block;
+  width: auto;
+  max-width: calc(100% - 40px);
+  margin: 0 0 10px auto;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  font-family: var(--pgs-header-font);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #150035;
+  text-align: right;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+header.pgs-figma-header .pgs-header-notif-clear:disabled {
+  opacity: 0.45;
+  cursor: default;
+  text-decoration: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-clear:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+header.pgs-figma-header .pgs-header-notif-empty {
+  margin: 0;
+  padding: 8px 2px;
+  font-family: var(--pgs-header-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: right;
+}
+
+header.pgs-figma-header .pgs-header-notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  width: 100%;
+  padding: 4px 6px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #000;
+}
+
+header.pgs-figma-header .pgs-header-notif-row:hover,
+header.pgs-figma-header .pgs-header-notif-row:focus-visible {
+  background: var(--pgs-header-active-hover);
+  text-decoration: none;
+  color: #000;
+  outline: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-row:hover .pgs-header-notif-row__title,
+header.pgs-figma-header .pgs-header-notif-row:focus-visible .pgs-header-notif-row__title {
+  text-decoration: none;
+}
+
+header.pgs-figma-header .pgs-header-notif-row:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+header.pgs-figma-header .pgs-header-notif-row__title {
+  display: block;
+  max-width: 100%;
+  font-family: var(--pgs-header-font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+header.pgs-figma-header .pgs-header-notif-row__time {
+  display: block;
+  font-family: var(--pgs-header-font);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: right;
+}

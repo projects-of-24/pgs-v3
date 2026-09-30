@@ -1,0 +1,97 @@
+/**
+ * PGS OWNED — search results card (SR-1, owner GO AHEAD 2026-09-27)
+ * Figma authority: `search bar UI` 19075:13657 (mobile frame, built first).
+ * One UI on every band; only sizes change (owner lock 2026-09-27).
+ *
+ * Bands (pgs-breakpoints.ts): ≤600 mobile · 601–800 · 801–1366 iPad (drawer)
+ * · >1366 desktop (strip). Drawer bands share the Figma sizes; desktop is the
+ * same card, wider and one step up in type.
+ *
+ * Type (owner QC 2026-09-27): results title 14px on every band, type label
+ * 12px (Figma ratio). Owner named the size on the lab — direct nudge, not
+ * the 16px body floor. Layout px follow Figma; html{zoom:.9} (owned split)
+ * scales them like the field they hang from.
+ */
+
+/* ——— Card (all bands) ——— */
+.pgs-search-results {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 9999;
+  margin: 0;
+  padding: 11px 12px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-sizing: border-box;
+  max-height: calc(6 * 42px + 22px); /* 6 rows before scroll */
+  overflow-y: auto;
+  text-align: left;
+}
+
+.pgs-search-results__row {
+  margin: 0;
+  padding: 0;
+}
+
+.pgs-search-results__link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 2px;
+  border-radius: 4px;
+  color: #000;
+  text-decoration: none;
+}
+
+.pgs-search-results__row.is-active .pgs-search-results__link,
+.pgs-search-results__link:hover,
+.pgs-search-results__link:focus-visible {
+  background: rgba(0, 0, 0, 0.04);
+  outline: none;
+}
+
+.pgs-search-results__link:focus-visible {
+  box-shadow: 0 0 0 2px #8c5fff;
+}
+
+.pgs-search-results__title {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pgs-search-results__type {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.2);
+  text-align: right;
+  padding: 0 2px;
+}
+
+/* ——— Desktop strip (>1366): same card, wider, one type step up ——— */
+@media (min-width: 1367px) {
+  .pgs-strip-tools .pgs-search-results {
+    left: auto;
+    right: 0;
+    min-width: 320px;
+    padding: 12px 14px;
+    gap: 6px;
+    max-height: calc(8 * 44px + 24px); /* 8 rows before scroll */
+  }
+}

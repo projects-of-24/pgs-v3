@@ -1,0 +1,790 @@
+/**
+ * Program (full) face — Pair 3 desk + own mob · no transform scale.
+ * >1367 desk open `1:1830` · closed `1:1882` · ~366.4×727.2
+ * ≤600 mob open cas-v6 `91:2908` @ 80% shell · ~283×389 · type full size (≥14)
+ * 601–1366 deferred
+ */
+
+.program-full-face {
+  box-sizing: border-box;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  width: 100%;
+  max-width: 100%;
+}
+
+.program-full-face *,
+.program-full-face *::before,
+.program-full-face *::after {
+  box-sizing: border-box;
+}
+
+.program-full-face__sr-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.program-full-face p,
+.program-full-face ul,
+.program-full-face li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Default: hide both artboards (iPad mid-band uses note) */
+.program-full-face__desk,
+.program-full-face__mob {
+  display: none;
+}
+
+.program-full-face__band-note {
+  display: block;
+  max-width: 22rem;
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #4a4a4a;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #22272e;
+}
+
+.program-full-face__band-note code {
+  font-size: 0.9em;
+}
+
+/* ——— Mob ≤600 — cas-v6 `91:2908` @ 80% shell · type full size ——— */
+@media (max-width: 600px) {
+  .program-full-face {
+    width: 283.2px; /* 354 × 0.8 */
+    max-width: 100%;
+  }
+
+  .program-full-face__band-note {
+    display: none;
+  }
+
+  .program-full-face__mob {
+    position: relative;
+    display: block;
+    width: 283.2px; /* 354 × 0.8 */
+    height: 388.8px; /* 486 × 0.8 */
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .program-full-face__mob-plate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 283.2px;
+    height: 388.52px; /* 485.65 × 0.8 */
+    background: #f1f1f1;
+    border: 0.6px solid #000; /* 0.75 × 0.8 */
+    border-radius: 9.6px; /* 12 × 0.8 */
+  }
+
+  .program-full-face__mob-photo {
+    position: absolute;
+    left: 197.6px; /* 247 × 0.8 */
+    top: 41.92px; /* 52.4 × 0.8 */
+    z-index: 1;
+    width: 85.6px; /* 107 × 0.8 */
+    height: 347.68px; /* 434.6 × 0.8 */
+    overflow: hidden;
+    background: #000;
+    border-left: 0.6px solid rgba(255, 255, 255, 0.2);
+    border-top: 0.6px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9.6px 0 9.6px 0;
+  }
+
+  .program-full-face__mob-photo-img {
+    position: absolute;
+    left: -396px; /* -495 × 0.8 */
+    top: -173.4px; /* -216.75 × 0.8 */
+    width: 873px; /* 1091.25 × 0.8 */
+    height: 582px; /* 727.5 × 0.8 */
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .program-full-face__mob-headline {
+    position: absolute;
+    left: 18.6px; /* 23.25 × 0.8 */
+    top: 21.42px; /* 26.77 × 0.8 */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50.46px; /* 63.07 × 0.8 */
+    padding: 3px 9.6px; /* 3.75 / 12 × 0.8 */
+    background: #fff;
+    border: 0.6px solid #000;
+  }
+
+  .program-full-face__mob-title {
+    margin: 0;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    /* Type full size — not scaled with shell */
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .program-full-face__mob-title span {
+    display: block;
+  }
+
+  .program-full-face__mob-corner {
+    position: absolute;
+    left: -2.4px; /* -3 × 0.8 */
+    top: -3.6px; /* -4.5 × 0.8 */
+    width: 7.2px; /* 9 × 0.8 */
+    height: 7.2px;
+    background: #b57cff;
+    border: 1.274px solid #9747ff; /* 1.592 × 0.8 */
+  }
+
+  /* Heart top-right — filled visual only; chrome @ 80% */
+  .program-full-face__mob-heart {
+    position: absolute;
+    top: 12.8px; /* 16 × 0.8 */
+    right: 9.6px; /* 12 × 0.8 */
+    z-index: 2;
+    display: block;
+    width: 16px; /* 20 × 0.8 */
+    height: 16px;
+    pointer-events: none;
+  }
+
+  .program-full-face__mob-heart img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .program-full-face__mob-body {
+    position: absolute;
+    left: 19.8px; /* 24.75 × 0.8 */
+    top: 82.82px; /* 103.53 × 0.8 */
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11.2px; /* 14 × 0.8 */
+    width: 150px; /* 187.5 × 0.8 */
+  }
+
+  .program-full-face__mob-dates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px; /* 3.75 × 0.8 */
+    width: 150px;
+    text-align: center;
+  }
+
+  .program-full-face__mob-date-pair {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .program-full-face__mob-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 72.6px; /* 90.75 × 0.8 */
+    height: 76.8px; /* 96 × 0.8 */
+    padding: 7.2px 9.6px; /* 9 / 12 × 0.8 */
+    background: #b57cff;
+    border-radius: 6.4px; /* 8 × 0.8 */
+    color: #000;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .program-full-face__mob-date-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32.4px; /* 40.5 × 0.8 — slot only; type full size */
+    /* Type full size — not scaled with shell */
+    font-size: 49.5px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: -3px;
+  }
+
+  .program-full-face__mob-date-meta {
+    display: block;
+    width: 100%;
+    /* Type full size — not scaled with shell */
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+  }
+
+  .program-full-face__mob-times {
+    display: flex;
+    justify-content: space-between;
+    width: 130.8px; /* 163.5 × 0.8 */
+    gap: 6.4px; /* 8 × 0.8 */
+  }
+
+  .program-full-face__mob-time {
+    margin: 0;
+    width: 53.4px; /* 66.75 × 0.8 */
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 12px
+     * ISSUE: below readable floor
+     * PGS: 14px (owner) — type full size @ 80% shell
+     */
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0.075px;
+    text-align: left;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .program-full-face__mob-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 12.8px; /* 16 × 0.8 */
+    width: 100%;
+    color: #000;
+  }
+
+  .program-full-face__mob-who {
+    display: flex;
+    flex-direction: column;
+    gap: 6.4px; /* 8 × 0.8 */
+    width: 100%;
+  }
+
+  .program-full-face__mob-who-heading {
+    margin: 0;
+    /* Type full size — not scaled with shell */
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.1125px;
+  }
+
+  .program-full-face__mob-who-line {
+    margin: 0;
+    /* Type full size — floor 14 */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .program-full-face__mob-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 6.4px; /* 8 × 0.8 */
+    width: 120.6px; /* 150.75 × 0.8 */
+  }
+
+  .program-full-face__mob-topics-heading {
+    margin: 0;
+    /* Type full size — not scaled with shell */
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0.075px;
+  }
+
+  .program-full-face__mob-topics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px; /* 3.75 × 0.8 */
+    list-style: none;
+    /* Type full size — floor 14 */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .program-full-face__mob-topics-row {
+    display: flex;
+    gap: 6px; /* 7.5 × 0.8 */
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .program-full-face__mob-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.8px; /* 6 × 0.8 */
+    border-radius: 4.8px; /* 6 × 0.8 */
+    background: #0abf8c;
+    color: #fff;
+    /* Type full size — floor 14 */
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 12px;
+    letter-spacing: 0.06px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .program-full-face__mob-cta:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 3px;
+  }
+
+  .program-full-face__mob-cta[aria-disabled="true"] {
+    pointer-events: none;
+  }
+}
+
+/* ——— Desk >1367 — Figma 1:1830 ——— */
+@media (min-width: 1367px) {
+  .program-full-face {
+    width: 366.4px;
+  }
+
+  .program-full-face__band-note {
+    display: none;
+  }
+
+  .program-full-face__mob {
+    display: none;
+  }
+
+  .program-full-face__desk {
+    position: relative;
+    display: block;
+    width: 366.4px;
+    height: 727.2px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #f1f1f1;
+  }
+
+  .program-full-face__media {
+    position: absolute;
+    top: 10.4px;
+    left: 50%;
+    width: 269.6px;
+    height: 289.6px;
+    overflow: hidden;
+    border-radius: 16px;
+    transform: translateX(-50%);
+  }
+
+  .program-full-face__photo {
+    position: absolute;
+    left: -218.4px;
+    top: -88.8px;
+    width: 669.6px;
+    height: 446.4px;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .program-full-face__filling {
+    position: absolute;
+    top: 30.4px;
+    left: 12.8px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 6.4px;
+    background: #000;
+    color: #fff;
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 11.2px / line 16
+     * ISSUE: below readable floor
+     * PGS: 14px
+     */
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+  }
+
+  .program-full-face__filling img {
+    display: block;
+    width: 10.4px;
+    height: 12.8px;
+    object-fit: cover;
+  }
+
+  .program-full-face__mode {
+    position: absolute;
+    top: 68px;
+    left: 12.8px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7.2px;
+    border-radius: 3.2px;
+    background: #b57cff;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .program-full-face__share {
+    position: absolute;
+    top: 20.8px;
+    right: 16px;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 0;
+    padding: 4px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .program-full-face__share img {
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
+
+  .program-full-face__share:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 3px;
+  }
+
+  /* Heart left of share — filled visual only (save deferred) */
+  .program-full-face__heart {
+    position: absolute;
+    top: 20.8px;
+    right: 52px;
+    z-index: 2;
+    display: block;
+    width: 25.6px;
+    height: 25.6px;
+    pointer-events: none;
+  }
+
+  .program-full-face__heart img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .program-full-face__speaker {
+    position: absolute;
+    top: 160px;
+    left: 12.8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2px;
+    max-width: calc(100% - 40px);
+    padding: 6.4px 14.4px;
+    border: 0.8px solid rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background: #fff8eb;
+  }
+
+  .program-full-face__speaker-name {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.238;
+    color: #22272e;
+  }
+
+  .program-full-face__speaker-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8px;
+    text-transform: capitalize;
+    color: #4a4a4a;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+  }
+
+  .program-full-face__speaker-bio p {
+    line-height: 1.15;
+  }
+
+  .program-full-face__dates {
+    position: absolute;
+    top: 280px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    transform: translateX(calc(-50% + 12px));
+  }
+
+  .program-full-face__date-pair {
+    display: flex;
+    gap: 3.84px;
+    align-items: flex-start;
+    filter: drop-shadow(2.4px 2.4px 25.44px rgba(255, 255, 255, 0.25));
+  }
+
+  .program-full-face__date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 96.8px;
+    height: 102.4px;
+    padding: 9.6px 12.8px;
+    border-radius: 8px;
+    background: #000;
+    color: #b57cff;
+    text-align: center;
+  }
+
+  .program-full-face__date-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59.2px;
+    height: 43.2px;
+    font-size: 52.8px;
+    font-weight: 600;
+    line-height: 51.2px;
+    letter-spacing: -3px;
+  }
+
+  .program-full-face__date-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 88.8px;
+    height: 27.2px;
+    font-weight: 400;
+  }
+
+  .program-full-face__date-month {
+    font-size: 28.8px;
+    line-height: 1;
+  }
+
+  .program-full-face__date-year {
+    font-size: 25.6px;
+    line-height: 1;
+  }
+
+  .program-full-face__times {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .program-full-face__time {
+    /* Keep one line — 14px a11y in Figma 71.2px width was wrapping under headline */
+    width: max-content;
+    min-width: 71.2px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .program-full-face__headline {
+    position: absolute;
+    top: 411.2px;
+    left: 50%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 12.8px;
+    border: 0.8px solid #000;
+    background: #fff;
+    transform: translateX(-50%);
+  }
+
+  .program-full-face__title {
+    display: flex;
+    flex-direction: column;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .program-full-face__corner {
+    position: absolute;
+    top: -4.8px;
+    left: -3.2px;
+    width: 9.6px;
+    height: 9.6px;
+    border: 1.698px solid #9747ff;
+    background: #b57cff;
+  }
+
+  .program-full-face__tags {
+    position: absolute;
+    top: 504.8px;
+    left: 52.8px;
+    z-index: 2;
+    display: flex;
+    gap: 12.8px;
+    align-items: center;
+    list-style: none;
+  }
+
+  .program-full-face__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 16px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19.2px;
+    letter-spacing: 0.15px;
+    white-space: nowrap;
+  }
+
+  .program-full-face__designed {
+    position: absolute;
+    top: 557.6px;
+    /* Same left rail as Learn More (owner QC) */
+    left: 39.8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8.8px;
+    width: 301.6px;
+    color: #000;
+  }
+
+  .program-full-face__designed-title {
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .program-full-face__designed-note {
+    /*
+     * FIGMA ACCESSIBILITY ADAPTATION
+     * ORIGINAL: 9.6px
+     * ISSUE: below readable floor
+     * PGS: 14px
+     */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.32px;
+    color: #22272e;
+  }
+
+  .program-full-face__cta {
+    position: absolute;
+    top: 677px;
+    /* Align left with designed copy (owner QC) */
+    left: 39.8px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #0abf8c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .program-full-face__cta:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 3px;
+  }
+
+  .program-full-face__cta[aria-disabled="true"] {
+    pointer-events: none;
+  }
+
+  /* Desk closed — Figma 1:1882 · wash + plate */
+  .program-full-face__wash {
+    position: absolute;
+    top: 12.8px;
+    left: 8px;
+    z-index: 3;
+    width: 351.2px;
+    height: 706.4px;
+    background: #d9d9d9;
+    mix-blend-mode: saturation;
+    pointer-events: none;
+  }
+
+  .program-full-face__closed {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    box-sizing: border-box;
+    width: 244px;
+    height: 407.2px;
+    border: 0.8px solid #9747ff;
+    border-radius: 16px;
+    background: #c3ffa9;
+    transform: translate(calc(-50% + 0.2px), -50%);
+    pointer-events: none;
+  }
+
+  .program-full-face__closed-text {
+    position: absolute;
+    top: calc(50% - 77.2px);
+    left: calc(50% - 82.6px);
+    z-index: 5;
+    margin: 0;
+    width: 165.6px;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 38.4px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    pointer-events: none;
+  }
+}

@@ -127,7 +127,8 @@
   }
 
   function initInput(input) {
-    if (input.getAttribute('data-pgs-autocomplete') === '1') return;
+    if (input.getAttribute('data-pgs-autocomplete-bound') === '1') return;
+    input.setAttribute('data-pgs-autocomplete-bound', '1');
     input.setAttribute('data-pgs-autocomplete', '1');
 
     var endpoint = input.getAttribute('data-autocomplete-endpoint') || (window.PGS_AUTOCOMPLETE_ENDPOINT || '');

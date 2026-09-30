@@ -1,0 +1,2748 @@
+/* PASS 7b · 1:1 copy · UNLINKED · do not edit values; UI-pass changes come later
+   Source: public/assets/css/style.css lines 16372-21576 (13. Elements (modal popup … tab, testimonials))
+   Parked (dead, no EXACT class-name match in site): 492 rules → parked/pgs-owned-parked-11b.css
+   Kept live regardless of grep: .mfp-* .swiper-* .accordion* .tab-* .nav-tabs* .modal* (runtime classes), attribute selectors,
+   classes added at runtime by public/assets/js (main.js, vendors.min.js, pgs-*.js), keyframes referenced by live animations.
+   url() rewrites: none — relative image urls in this range point at files that do not exist under public/assets; kept verbatim. */
+/* Modal popup */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16373) */
+.mfp-image-holder .mfp-close,
+.mfp-iframe-holder .mfp-close {
+  color: var(--white);
+  background: transparent;
+}
+
+.mfp-iframe-holder .mfp-content {
+  max-width: 1050px;
+}
+
+.mfp-close,
+.mfp-close:active {
+  opacity: 1;
+  background-color: transparent;
+  right: 20px;
+  top: 20px;
+  height: 30px;
+  width: 30px;
+  font-size: 13px;
+  line-height: 31px;
+  position: absolute;
+  color: var(--dark-gray);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16401-16410, 2 consecutive rules) */
+.show-search-popup>section {
+  filter: grayscale(100%);
+}
+
+.show-search-popup .mfp-search.mfp-bg.mfp-ready {
+  opacity: 0.5;
+}
+
+.mfp-arrow {
+  opacity: 1;
+}
+
+.mfp-wrap {
+  cursor: url("../images/mfg-close.png"), auto;
+}
+
+.mfp-wrap .mfp-container {
+  cursor: auto;
+}
+
+.show-search-popup .mfp-close,
+.show-search-popup .mfp-close:active {
+  color: var(--dark-gray);
+}
+
+.show-search-popup .search-form .search-input {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.show-search-popup .search-form .search-button {
+  color: var(--dark-gray);
+}
+
+.show-search-popup .mfp-container {
+  position: fixed;
+  height: 300px;
+  background-color: var(--white);
+  -webkit-animation-name: "ani-mfp";
+  animation-name: "ani-mfp";
+  -webkit-animation-duration: 0.2s;
+  -moz-animation-duration: 0.2s;
+  -o-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+}
+
+.show-search-popup .mfp-removing .mfp-container {
+  -webkit-animation-name: "ani-mfp-close";
+  animation-name: "ani-mfp-close";
+  -webkit-animation-duration: 0.2s;
+  -moz-animation-duration: 0.2s;
+  -o-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+}
+
+.show-search-popup .search-form .search-input {
+  color: var(--dark-gray);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16470-16479, 2 consecutive rules) */
+.mfp-arrow-right:after,
+.mfp-arrow-left:after {
+  display: none;
+}
+
+.mfp-arrow-left {
+  left: 30px;
+}
+
+.mfp-arrow-right {
+  right: 30px;
+}
+
+.mfp-arrow-left:before {
+  border-right: none;
+  content: "\e629";
+  font-size: 20px;
+  font-family: "themify";
+  color: var(--white);
+  line-height: 60px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  opacity: 1;
+}
+
+.mfp-arrow-right:before {
+  border-left: none;
+  content: "\e628";
+  font-size: 20px;
+  font-family: "themify";
+  color: var(--white);
+  line-height: 60px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  opacity: 1;
+}
+
+.mfp-bottom-bar {
+  margin-top: -24px;
+  font-size: 12px;
+}
+
+.mfp-close {
+  font-size: 28px;
+  font-family: var(--alt-font);
+}
+
+.mfp-figure {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name: fadeIn;
+  -o-animation-name: fadeIn;
+  -ms-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  -ms-animation-duration: 0.4s;
+  -o-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+  webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+/* Zoom animation */
+.my-mfp-zoom-in .zoom-anim-dialog {
+  opacity: 0;
+  -webkit-transform: scale3d(0.9, 0.9, 1);
+  -o-transform: scale3d(0.9, 0.9, 1);
+  transform: scale3d(0.9, 0.9, 1);
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+}
+
+.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  -o-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+.my-mfp-zoom-in.mfp-bg {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+.my-mfp-zoom-in.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+
+.my-mfp-zoom-in.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+/* Fade animation */
+.my-mfp-slide-bottom .zoom-anim-dialog {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+  -o-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+  transform: translateY(-20px) perspective(600px) rotateX(10deg);
+}
+
+.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
+  opacity: 1;
+  -webkit-transform: translateY(0) perspective(600px) rotateX(0);
+  -o-transform: translateY(0) perspective(600px) rotateX(0);
+  transform: translateY(0) perspective(600px) rotateX(0);
+}
+
+.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
+  opacity: 0;
+  -webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+  -o-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+  transform: translateY(-10px) perspective(600px) rotateX(10deg);
+}
+
+.my-mfp-slide-bottom.mfp-bg {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+.my-mfp-slide-bottom.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+
+.my-mfp-slide-bottom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+/* Slide up animation */
+.my-mfp-slide-up .slide-up-popup {
+  -webkit-transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  transition: all 0.5s cubic-bezier(0.2, 0, 0.3, 1);
+  -webkit-transform: translate3d(0, 30px, 0);
+  transform: translate3d(0, 30px, 0);
+}
+
+.my-mfp-slide-up.mfp-ready .slide-up-popup {
+  -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  -o-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.my-mfp-slide-up.mfp-removing .slide-up-popup {
+  opacity: 0;
+  -webkit-transform: translate3d(0, 30px, 0);
+  transform: translate3d(0, 30px, 0);
+}
+
+.my-mfp-slide-up.mfp-bg {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+
+.my-mfp-slide-up.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+
+.my-mfp-slide-up.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+.mfp-bg {
+  background: var(--dark-gray);
+  opacity: 0.9;
+}
+
+.mfp-bg,
+.mfp-wrap {
+  z-index: 10007;
+}
+
+.mfp-fade.mfp-bg {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.mfp-fade.mfp-bg.mfp-ready {
+  opacity: 0.93;
+}
+
+.mfp-fade.mfp-bg.mfp-removing {
+  opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}
+
+.mfp-ajax-holder {
+  width: 70%;
+  height: calc(100% - 100px);
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+button.mfp-close,
+button.mfp-close:active {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+}
+
+button.mfp-close:before,
+button.mfp-close:active:before {
+  content: "\f00d";
+  color: var(--black);
+  font-family: "Font Awesome 6 Free";
+  font-size: 20px;
+  font-weight: 900;
+}
+
+/* Images gallery */
+.mfp-gallery button.mfp-close,
+.mfp-iframe-holder~button.mfp-close {
+  right: 40px;
+  top: 40px;
+  background-color: var(--white);
+}
+
+.mfp-gallery button.mfp-close:before,
+.mfp-iframe-holder~button.mfp-close:before {
+  color: var(--dark-gray);
+}
+
+/* Modal popup */
+.modal-popup-main {
+  position: relative;
+}
+
+/* Auto newsletter popup */
+.subscribe-popup .mfp-close,
+.subscribe-popup .mfp-close:active {
+  background-color: transparent;
+  font-size: 13px;
+  line-height: 30px;
+  top: 20px;
+  right: 20px;
+}
+
+.subscribe-popup .mfp-close.mfp-close-btn {
+  bottom: 0;
+  top: inherit;
+  position: relative;
+  width: auto;
+  right: 0;
+  height: auto;
+  font-size: 14px;
+}
+
+.subscribe-popup .mfp-close.mfp-close-btn:before {
+  display: none;
+}
+
+.subscribe-popup .mfp-close:before {
+  color: var(--dark-gray);
+}
+
+.subscribe-popup .newsletter-style-02 input {
+  padding-right: 70px;
+}
+
+.subscribe-popup .newsletter-style-02 .btn {
+  padding: 6px 25px 9px 25px;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16789) */
+/* Parallax background */
+[data-parallax-background-ratio] {
+  position: relative !important;
+  background-size: cover !important;
+  overflow: hidden;
+  background-attachment: fixed !important;
+  transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+}
+
+/* Video icon effect  */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16804-16878, 4 consecutive rules) */
+/* Particles */
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* Pie chart style 01 */
+.pie-chart-style-01 {
+  position: relative;
+  display: inline-block;
+}
+
+.pie-chart-style-01 .percent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* Pricing table style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16903) */
+/* Pricing table style 02 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:16908-16922, 2 consecutive rules) */
+/* Pricing table style 04 */
+.pricing-table-style-04 .accordion-item {
+  border-radius: 5px !important;
+  padding: 16px 35px;
+}
+
+.pricing-table-style-04 .accordion-item .accordion-body {
+  padding: 10px 0;
+}
+
+.pricing-table-style-04 .accordion-item .icon-round {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  text-align: center;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.pricing-table-style-04 .accordion-item .icon-round i {
+  left: 0;
+  font-size: 13px;
+}
+
+.pricing-table-style-04 .accordion-item.active-accordion {
+  padding: 30px 40px;
+  background-color: var(--base-color) !important;
+  color: var(--white) !important;
+}
+
+.pricing-table-style-04 .accordion-item.active-accordion .accordion-header .accordion-title {
+  color: var(--white) !important;
+}
+
+.pricing-table-style-04 .accordion-item.active-accordion .icon-round {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: var(--white) !important;
+}
+
+/* Pricing table style 07 */
+.pricing-table-style-07 .nav-tabs {
+  padding: 0;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link {
+  border: 0;
+  color: var(--medium-gray);
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link .icon {
+  border-color: rgba(23, 23, 23, 0.2) !important;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link .icon i {
+  opacity: 0;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link .text-dark-gray {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link:hover,
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link.active {
+  box-shadow: none;
+  background-color: var(--base-color);
+  color: var(--white) !important;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link:hover .text-dark-gray,
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link.active .text-dark-gray {
+  color: var(--white) !important;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link:hover .icon i,
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link.active .icon i {
+  opacity: 1;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link:hover .offer,
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link.active .offer {
+  background-color: var(--dark-gray);
+  border-color: var(--dark-gray) !important;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link.active .icon {
+  border-color: rgb(255, 255, 255) !important;
+}
+
+.pricing-table-style-07 .nav-tabs .nav-item .nav-link.active .offer {
+  background-color: var(--dark-gray);
+  border-color: var(--dark-gray) !important;
+}
+
+/* Pricing table style 08 */
+.pricing-table-style-08 .nav-tabs {
+  position: relative;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item {
+  padding: 0;
+  margin: 0;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item>a.nav-link {
+  position: relative;
+  padding: 0;
+  border: 0;
+  color: var(--medium-gray);
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item>a.nav-link .tab-nav-text {
+  margin: 0 15px;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item>a:before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  bottom: 5px;
+  left: calc(50% - 15px);
+  opacity: 0;
+  border-radius: 50em;
+  background-color: #fff;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item>a:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 32px;
+  background-color: #152bca;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item>a.active {
+  color: var(--dark-gray);
+  background-color: transparent;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item>a.active:before {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item:first-child a {
+  flex-direction: row;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item:first-child a:before {
+  left: auto;
+  right: 0px;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item:first-child a:after {
+  border-radius: 50em 0 0 50em;
+  width: 28px;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item:last-child a {
+  flex-direction: row-reverse;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item:last-child a:after {
+  width: 30px;
+  border-radius: 0 50em 50em 0;
+}
+
+.pricing-table-style-08 .nav-tabs>li.nav-item:last-child a:before {
+  left: 2px;
+}
+
+/* Pricing table style 09 */
+.pricing-table-style-09 .row {
+  -webkit-transition: all 400ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 400ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.pricing-table-style-09 .row img,
+.pricing-table-style-09 .row i {
+  -webkit-transition: all 400ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 400ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.pricing-table-style-09 .row:hover {
+  -webkit-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-table-style-09 .row:hover img,
+.pricing-table-style-09 .row:hover i {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.pricing-table-style-09 .action {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.pricing-table-style-09 .action:hover {
+  margin-right: -5px;
+}
+
+/* Pricing table style 10 */
+.pricing-table-style-10 .cover-background {
+  filter: grayscale(0);
+  -webkit-transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17149) */
+.pricing-table-style-10:hover .cover-background {
+  filter: grayscale(100%);
+}
+
+/* Pricing table style 11 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17168-17187, 3 consecutive rules) */
+/* Pricing table style 12 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17190-17215, 4 consecutive rules) */
+/* Pricing table style 13 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17218-17243, 4 consecutive rules) */
+/* Process step style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17246-17264, 3 consecutive rules) */
+.process-step-style-01:hover .number,
+.process-step-style-01:hover .icon {
+  color: var(--white);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17271) */
+/* Process step style 02 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17276-17297, 3 consecutive rules) */
+/* Process step style 03 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17300-17313, 2 consecutive rules) */
+.process-step-style-03 .process-step-icon-box .number {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  top: 55%;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17323) */
+.process-step-style-03:hover .process-step-icon-box .number {
+  opacity: 1;
+  visibility: visible;
+  top: 50%;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17333-17341, 2 consecutive rules) */
+/* Process step style 04 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17344-17354, 2 consecutive rules) */
+.process-step-style-04:hover .process-step-icon-box .number,
+.process-step-style-04:hover .process-step-icon-box .icon {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+/* Process step style 05 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17363-17395, 5 consecutive rules) */
+.process-step-style-05:hover .number,
+.process-step-style-05:hover .icon {
+  color: var(--white);
+}
+
+/* Process step style 07 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17403) */
+.process-step-style-06:hover .process-step-icon-box .step-box {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+/* Process step style 08 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17415-17425, 2 consecutive rules) */
+/* Process step style 09 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17428-17450, 4 consecutive rules) */
+/* Process step style 10 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17453-17473, 4 consecutive rules) */
+/* Process step style 11 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17476-17491, 2 consecutive rules) */
+/* Progress bar */
+.progress {
+  position: relative;
+  overflow: visible;
+}
+
+.progress .progress-bar {
+  width: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  -webkit-transition: all 1s cubic-bezier(0.5, 1, 0.5, 1);
+  transition: all 1s cubic-bezier(0.5, 1, 0.5, 1);
+}
+
+.progress .progress-bar.appear .progress-bar-percent {
+  opacity: 1;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17513) */
+/* Progress bar style 01 */
+.progress-bar-style-01 .progress {
+  height: 4px;
+  border-radius: 0;
+}
+
+.progress-bar-style-01 .progress .progress-bar-title {
+  position: absolute;
+  bottom: 10px;
+}
+
+.progress-bar-style-01 .progress .progress-bar-percent {
+  position: absolute;
+  bottom: 17px;
+  right: -20px;
+  padding: 7px;
+  min-width: 40px;
+  min-height: 26px;
+  border-radius: 3px;
+}
+
+.progress-bar-style-01 .progress .progress-bar-percent:after {
+  content: "";
+  top: 100%;
+  left: 50%;
+  height: 0;
+  width: 0;
+  z-index: 9;
+  margin-left: -4px;
+  border-width: 4px;
+  position: absolute;
+  pointer-events: none;
+  border: solid transparent;
+  border-top-color: #232323;
+}
+
+.progress-bar-style-01 .progress .progress-bar {
+  height: 100%;
+}
+
+/* Progress bar style 02 */
+.progress-bar-style-02 .progress {
+  height: 30px;
+  overflow: hidden;
+}
+
+.progress-bar-style-02 .progress .progress-bar-percent {
+  position: absolute;
+  top: 9px;
+  right: 20px;
+  min-width: 26px;
+}
+
+.progress-bar-style-02 .progress .progress-bar-title {
+  position: absolute;
+  top: 9px;
+  left: 20px;
+}
+
+.progress-bar-style-02 .progress .progress-bar {
+  width: 0px;
+  height: 100%;
+  position: absolute;
+}
+
+/* Progress bar style 03 */
+.progress-bar-style-03 .progress {
+  height: 4px;
+}
+
+.progress-bar-style-03 .progress .progress-bar-title {
+  position: absolute;
+  bottom: 14px;
+}
+
+.progress-bar-style-03 .progress .progress-bar {
+  height: 100%;
+}
+
+.progress-bar-style-03 .progress .progress-bar-percent {
+  position: absolute;
+  bottom: 14px;
+  right: 0;
+  opacity: 1;
+}
+
+/* Progress bar style 04 */
+.progress-bar-style-04 .progress {
+  height: 8px;
+  border-radius: 6px;
+}
+
+.progress-bar-style-04 .progress .progress-bar-title {
+  position: absolute;
+  bottom: 15px;
+}
+
+.progress-bar-style-04 .progress .progress-bar {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.progress-bar-style-04 .progress .progress-bar-percent {
+  position: absolute;
+  bottom: 15px;
+  right: 0px;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17625-17632, 2 consecutive rules) */
+/* Review style 03 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17635) */
+.review-style-03 .slider-review-image-thumbs .swiper-slide:not(.swiper-slide-thumb-active) img {
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17645) */
+.review-style-03 .slider-review-image-thumbs .swiper-slide-thumb-active img {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+  border: 6px solid #ffffff;
+}
+
+.review-style-03 .slider-review-image-thumbs .swiper-slide {
+  cursor: pointer;
+}
+
+/* Review style 08 */
+.swiper-fade .review-style-08.swiper-slide {
+  opacity: 0 !important;
+}
+
+.swiper-fade .review-style-08.swiper-slide.swiper-slide-active {
+  opacity: 1 !important;
+}
+
+/* Rotate box */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17671-17882, 31 consecutive rules) */
+/* Rotate box style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17885-17900, 4 consecutive rules) */
+.rotate-box-style-01 .flipper:hover .back {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17907) */
+.rotate-box-style-01 .flipper.to-right .back {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17917) */
+.rotate-box-style-01 .flipper.to-right:hover .back {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17927) */
+.rotate-box-style-01 .flipper.to-top .back {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17937) */
+.rotate-box-style-01 .flipper.to-top:hover .back {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17947) */
+.rotate-box-style-01 .flipper.to-bottom .back {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17957) */
+.rotate-box-style-01 .flipper.to-bottom:hover .back {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17967) */
+.rotate-box-style-01 .content-wrap {
+  position: absolute;
+  width: 100%;
+  display: block;
+  transform-style: preserve-3d;
+  perspective: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  z-index: 2;
+  bottom: 55px;
+  left: 0;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:17985) */
+.rotate-box-style-01 .back {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: inherit;
+  transition: transform 0.8s cubic-bezier(0.5, 0.2, 0.2, 0.8);
+}
+
+.rotate-box-style-01 .back .content-wrap {
+  top: 50%;
+  bottom: inherit;
+  left: 0;
+  transform: translate3d(0, -50%, 0) scale(1);
+}
+
+.rotate-box-style-01 .back .box-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Rotate box style 02 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18028) */
+/* Services box style 01 */
+.services-box-style-01 .icon-box {
+  opacity: 0;
+  margin-top: 15px;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18038-18057, 4 consecutive rules) */
+.services-box-style-01:hover .icon-box {
+  opacity: 1;
+  margin-top: 0;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18064) */
+/* Services box style 02 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18069-18077, 2 consecutive rules) */
+/* Services box style 05 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18080-18098, 4 consecutive rules) */
+.services-box-style-05 figure figcaption .content-box {
+  margin-bottom: -80px;
+}
+
+.services-box-style-05 figure:hover figcaption .btn-link {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18109-18116, 2 consecutive rules) */
+/* Services box style 06 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18119-18135, 2 consecutive rules) */
+/* Services box style 07 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18138-18160, 4 consecutive rules) */
+/* Sliding box zoom effect */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18163-18185, 2 consecutive rules) */
+/* Sliding box fade effect */
+@keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Sliding box right effect */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18209-18231, 2 consecutive rules) */
+/* Sliding box */
+.sliding-box * {
+  will-change: transform;
+}
+
+.sliding-box .sliding-box-item {
+  margin-left: 15px;
+  margin-right: 15px;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: width 0.7s;
+  transition: width 0.7s;
+}
+
+.sliding-box .sliding-box-item .sliding-box-content {
+  top: 0;
+  height: 100%;
+  position: absolute;
+}
+
+/* Sliding box style 01 */
+.sliding-box-style-01 .sliding-box-item .sliding-box-content:after {
+  content: "";
+  right: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  z-index: 9;
+  margin-top: -10px;
+  position: absolute;
+  border: solid transparent;
+  border-right-color: var(--white);
+  border-width: 12px;
+  pointer-events: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.sliding-box-style-01 .sliding-box-item.active .sliding-box-content:after,
+.sliding-box-style-01 .sliding-box-item:hover .sliding-box-content:after {
+  opacity: 1;
+}
+
+/* Sliding box style 02 */
+.sliding-box-style-02 .sliding-box-item .sliding-box-img {
+  border-radius: 4px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.sliding-box-style-02 .sliding-box-item.active .sliding-box-img {
+  border-radius: 4px 0 0 4px;
+}
+
+.sliding-box-style-02 .sliding-box-item.active .sliding-box-content {
+  border-radius: 0 4px 4px 0;
+}
+
+.sliding-box-style-02 .sliding-box-item.active .content-hover {
+  animation: fade 1s;
+}
+
+/* Sliding box style 03 */
+.sliding-box-style-03 .overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 1;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18310) */
+.sliding-box-style-03 .number {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.sliding-box-style-03 .sliding-box-content:after {
+  display: none;
+}
+
+.sliding-box-style-03.active .overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sliding-box-style-03.active .overlay-contnet {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Social media icon */
+.elements-social .behance:hover {
+  color: #1769ff;
+}
+
+.elements-social .behance-square:hover {
+  color: #1769ff;
+}
+
+.elements-social .blogger:hover {
+  color: #ff8000;
+}
+
+.elements-social .codepen:hover {
+  color: #0ebeff;
+}
+
+.elements-social .deviantart:hover {
+  color: #05cc47;
+}
+
+.elements-social .digg:hover {
+  color: #262626;
+}
+
+.elements-social .dribbble:hover {
+  color: #ea4c89;
+}
+
+.elements-social .delicious:hover {
+  color: #205cc0;
+}
+
+.elements-social .email:hover {
+  color: #7d7d7d;
+}
+
+.elements-social .facebook:hover {
+  color: #3b5998;
+}
+
+.elements-social .facebook-square:hover {
+  color: #3b5998;
+}
+
+.elements-social .flickr:hover {
+  color: #ff0084;
+}
+
+.elements-social .flipboard:hover {
+  color: #e12828;
+}
+
+.elements-social .github:hover {
+  color: #4078c0;
+}
+
+.elements-social .google:hover {
+  color: #dc4a38;
+}
+
+.elements-social .google-plus:hover {
+  color: #dd4b39;
+}
+
+.elements-social .instagram:hover {
+  color: #FE1F49;
+}
+
+.elements-social .jsfiddle:hover {
+  color: #0084FF;
+}
+
+.elements-social .linkedin:hover {
+  color: #0077b5;
+}
+
+.elements-social .livejournal:hover {
+  color: #00b0ea;
+}
+
+.elements-social .medium:hover {
+  color: #00ab6c;
+}
+
+.elements-social .meneame:hover {
+  color: #ff6400;
+}
+
+.elements-social .mailru:hover {
+  color: #168de2;
+}
+
+.elements-social .odnoklassniki:hover {
+  color: #d7772d;
+}
+
+.elements-social .paypal:hover {
+  color: #003087;
+}
+
+.elements-social .pinterest:hover {
+  color: #CB2027;
+}
+
+.elements-social .pinterest-p:hover {
+  color: #CB2027;
+}
+
+.elements-social .print:hover {
+  color: #222222;
+}
+
+.elements-social .reddit:hover {
+  color: #ff4500;
+}
+
+.elements-social .reddit-square:hover {
+  color: #ff4500;
+}
+
+.elements-social .rss:hover {
+  color: #f2890a;
+}
+
+.elements-social .skype:hover {
+  color: #00aff0;
+}
+
+.elements-social .slack:hover {
+  color: #6ecadc;
+}
+
+.elements-social .snapchat:hover {
+  color: #fffc00;
+}
+
+.elements-social .soundcloud:hover {
+  color: #ff8800;
+}
+
+.elements-social .spotify:hover {
+  color: #1db954;
+}
+
+.elements-social .sms:hover {
+  color: #ffbd00;
+}
+
+.elements-social .sharethis:hover {
+  color: #95D03A;
+}
+
+.elements-social .stack-overflow:hover {
+  color: #f48024;
+}
+
+.elements-social .stumbleupon:hover {
+  color: #eb4924;
+}
+
+.elements-social .telegram:hover {
+  color: #0088cc;
+}
+
+.elements-social .trello:hover {
+  color: #0079bf;
+}
+
+.elements-social .tumblr:hover {
+  color: #32506d;
+}
+
+.elements-social .twitch:hover {
+  color: #6441a5;
+}
+
+.elements-social .twitter:hover {
+  color: #00aced;
+}
+
+.elements-social .twitter-square:hover {
+  color: #00aced;
+}
+
+.elements-social .vimeo:hover {
+  color: #1ab7ea;
+}
+
+.elements-social .vine:hover {
+  color: #00bf8f;
+}
+
+.elements-social .vk:hover {
+  color: #4c6c91;
+}
+
+.elements-social .wordpress:hover {
+  color: #21759b;
+}
+
+.elements-social .weibo:hover {
+  color: #ff9933;
+}
+
+.elements-social .whatsapp:hover {
+  color: #25d366;
+}
+
+.elements-social .xing:hover {
+  color: #1a7576;
+}
+
+.elements-social .youtube:hover {
+  color: #ff0000;
+}
+
+.elements-social .youtube-play:hover {
+  color: #ff0000;
+}
+
+.elements-social ul {
+  margin-bottom: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.elements-social ul li {
+  display: inline-block;
+}
+
+.elements-social ul li:first-child {
+  margin-left: 0 !important;
+}
+
+.elements-social ul li:last-child {
+  margin-right: 0 !important;
+}
+
+.elements-social ul li a {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18590-18618, 6 consecutive rules) */
+.large-icon li {
+  margin: 0 10px;
+}
+
+.large-icon a {
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18630-18650, 5 consecutive rules) */
+[class^=social-icon-] ul,
+[class*=" social-icon-"] ul {
+  list-style: none;
+}
+
+/*  Social icon dark and light */
+.elements-social .light li a {
+  color: var(--white);
+}
+
+.elements-social .dark li a {
+  color: var(--dark-gray);
+}
+
+.elements-social .icon-with-animation a:hover {
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+/* Social icon style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18672) */
+/* Social icon style 03 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18677-18712, 8 consecutive rules) */
+.social-icon-style-03 ul li a.dribbble {
+  background-color: #ea4c89;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18718) */
+.social-icon-style-03 ul li a.email {
+  background-color: #7d7d7d;
+}
+
+.social-icon-style-03 ul li a.facebook {
+  background-color: #3b5998;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18730-18740, 3 consecutive rules) */
+.social-icon-style-03 ul li a.github {
+  background-color: #4078c0;
+}
+
+.social-icon-style-03 ul li a.google {
+  background-color: #dc4a38;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18750) */
+.social-icon-style-03 ul li a.instagram {
+  background-color: #FE1F49;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18758) */
+.social-icon-style-03 ul li a.linkedin {
+  background-color: #0077b5;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18766) */
+.social-icon-style-03 ul li a.medium {
+  background-color: #00ab6c;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18774-18816, 11 consecutive rules) */
+.social-icon-style-03 ul li a.slack {
+  background-color: #6ecadc;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18822-18864, 11 consecutive rules) */
+.social-icon-style-03 ul li a.twitter {
+  background-color: #00aced;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18870) */
+.social-icon-style-03 ul li a.vimeo {
+  background-color: #1ab7ea;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18878-18892, 4 consecutive rules) */
+.social-icon-style-03 ul li a.whatsapp {
+  background-color: #25d366;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18898) */
+.social-icon-style-03 ul li a.youtube {
+  background-color: #ff0000;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:18906) */
+/* Social icon style 04 */
+.social-icon-style-04 ul li a {
+  z-index: 9;
+  position: relative;
+}
+
+.social-icon-style-04 ul li a:hover {
+  color: var(--white) !important;
+}
+
+.social-icon-style-04 ul li a:hover span {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  top: 0;
+  left: 0;
+}
+
+.social-icon-style-04 ul li a span {
+  border-radius: 0;
+  display: block;
+  height: 0;
+  width: 0;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  z-index: -1;
+  background-color: var(--dark-gray);
+}
+
+.social-icon-style-04 ul li a.behance span {
+  background-color: #1769ff;
+}
+
+.social-icon-style-04 ul li a.behance-square span {
+  background-color: #1769ff;
+}
+
+.social-icon-style-04 ul li a.blogger span {
+  background-color: #ff8000;
+}
+
+.social-icon-style-04 ul li a.codepen span {
+  background-color: #0ebeff;
+}
+
+.social-icon-style-04 ul li a.deviantart span {
+  background-color: #05cc47;
+}
+
+.social-icon-style-04 ul li a.digg span {
+  background-color: #262626;
+}
+
+.social-icon-style-04 ul li a.dribbble span {
+  background-color: #ea4c89;
+}
+
+.social-icon-style-04 ul li a.delicious span {
+  background-color: #205cc0;
+}
+
+.social-icon-style-04 ul li a.email span {
+  background-color: #7d7d7d;
+}
+
+.social-icon-style-04 ul li a.facebook span {
+  background-color: #3b5998;
+}
+
+.social-icon-style-04 ul li a.facebook-square span {
+  background-color: #3b5998;
+}
+
+.social-icon-style-04 ul li a.flickr span {
+  background-color: #ff0084;
+}
+
+.social-icon-style-04 ul li a.flipboard span {
+  background-color: #e12828;
+}
+
+.social-icon-style-04 ul li a.github span {
+  background-color: #4078c0;
+}
+
+.social-icon-style-04 ul li a.google span {
+  background-color: #dc4a38;
+}
+
+.social-icon-style-04 ul li a.google-plus span {
+  background-color: #dd4b39;
+}
+
+.social-icon-style-04 ul li a.instagram span {
+  background-color: #FE1F49;
+}
+
+.social-icon-style-04 ul li a.jsfiddle span {
+  background-color: #0084FF;
+}
+
+.social-icon-style-04 ul li a.linkedin span {
+  background-color: #0077b5;
+}
+
+.social-icon-style-04 ul li a.livejournal span {
+  background-color: #00b0ea;
+}
+
+.social-icon-style-04 ul li a.medium span {
+  background-color: #00ab6c;
+}
+
+.social-icon-style-04 ul li a.meneame span {
+  background-color: #ff6400;
+}
+
+.social-icon-style-04 ul li a.mailru span {
+  background-color: #168de2;
+}
+
+.social-icon-style-04 ul li a.odnoklassniki span {
+  background-color: #d7772d;
+}
+
+.social-icon-style-04 ul li a.paypal span {
+  background-color: #003087;
+}
+
+.social-icon-style-04 ul li a.pinterest span {
+  background-color: #CB2027;
+}
+
+.social-icon-style-04 ul li a.pinterest-p span {
+  background-color: #CB2027;
+}
+
+.social-icon-style-04 ul li a.print span {
+  background-color: #222222;
+}
+
+.social-icon-style-04 ul li a.reddit span {
+  background-color: #ff4500;
+}
+
+.social-icon-style-04 ul li a.reddit-square span {
+  background-color: #ff4500;
+}
+
+.social-icon-style-04 ul li a.rss span {
+  background-color: #f2890a;
+}
+
+.social-icon-style-04 ul li a.skype span {
+  background-color: #00aff0;
+}
+
+.social-icon-style-04 ul li a.slack span {
+  background-color: #6ecadc;
+}
+
+.social-icon-style-04 ul li a.snapchat span {
+  background-color: #fffc00;
+}
+
+.social-icon-style-04 ul li a.soundcloud span {
+  background-color: #ff8800;
+}
+
+.social-icon-style-04 ul li a.spotify span {
+  background-color: #1db954;
+}
+
+.social-icon-style-04 ul li a.sms span {
+  background-color: #ffbd00;
+}
+
+.social-icon-style-04 ul li a.sharethis span {
+  background-color: #95D03A;
+}
+
+.social-icon-style-04 ul li a.stack-overflow span {
+  background-color: #f48024;
+}
+
+.social-icon-style-04 ul li a.stumbleupon span {
+  background-color: #eb4924;
+}
+
+.social-icon-style-04 ul li a.telegram span {
+  background-color: #0088cc;
+}
+
+.social-icon-style-04 ul li a.trello span {
+  background-color: #0079bf;
+}
+
+.social-icon-style-04 ul li a.tumblr span {
+  background-color: #32506d;
+}
+
+.social-icon-style-04 ul li a.twitch span {
+  background-color: #6441a5;
+}
+
+.social-icon-style-04 ul li a.twitter span {
+  background-color: #00aced;
+}
+
+.social-icon-style-04 ul li a.twitter-square span {
+  background-color: #00aced;
+}
+
+.social-icon-style-04 ul li a.vimeo span {
+  background-color: #1ab7ea;
+}
+
+.social-icon-style-04 ul li a.vine span {
+  background-color: #00bf8f;
+}
+
+.social-icon-style-04 ul li a.vk span {
+  background-color: #4c6c91;
+}
+
+.social-icon-style-04 ul li a.wordpress span {
+  background-color: #21759b;
+}
+
+.social-icon-style-04 ul li a.weibo span {
+  background-color: #ff9933;
+}
+
+.social-icon-style-04 ul li a.whatsapp span {
+  background-color: #25d366;
+}
+
+.social-icon-style-04 ul li a.xing span {
+  background-color: #1a7576;
+}
+
+.social-icon-style-04 ul li a.youtube span {
+  background-color: #ff0000;
+}
+
+.social-icon-style-04 ul li a.youtube-play span {
+  background-color: #ff0000;
+}
+
+/* Social icon style 05 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19164-19190, 7 consecutive rules) */
+.social-icon-style-05 ul li a.dribbble {
+  color: #ea4c89;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19196) */
+.social-icon-style-05 ul li a.email {
+  color: #7d7d7d;
+}
+
+.social-icon-style-05 ul li a.facebook {
+  color: #3b5998;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19208-19218, 3 consecutive rules) */
+.social-icon-style-05 ul li a.github {
+  color: #4078c0;
+}
+
+.social-icon-style-05 ul li a.google {
+  color: #dc4a38;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19228) */
+.social-icon-style-05 ul li a.instagram {
+  color: #FE1F49;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19236) */
+.social-icon-style-05 ul li a.linkedin {
+  color: #0077b5;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19244) */
+.social-icon-style-05 ul li a.medium {
+  color: #00ab6c;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19252-19294, 11 consecutive rules) */
+.social-icon-style-05 ul li a.slack {
+  color: #6ecadc;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19300-19342, 11 consecutive rules) */
+.social-icon-style-05 ul li a.twitter {
+  color: #00aced;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19348) */
+.social-icon-style-05 ul li a.vimeo {
+  color: #1ab7ea;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19356-19370, 4 consecutive rules) */
+.social-icon-style-05 ul li a.whatsapp {
+  color: #25d366;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19376) */
+.social-icon-style-05 ul li a.youtube {
+  color: #ff0000;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19384) */
+.social-icon-style-05 ul.dark li a:hover {
+  color: var(--dark-gray) !important;
+}
+
+/* Social icon style 06 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19393-19451, 11 consecutive rules) */
+.social-icon-style-06 ul li a.dribbble {
+  color: #ea4c89;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19457) */
+.social-icon-style-06 ul li a.email {
+  color: #7d7d7d;
+}
+
+.social-icon-style-06 ul li a.facebook {
+  color: #3b5998;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19469-19479, 3 consecutive rules) */
+.social-icon-style-06 ul li a.github {
+  color: #4078c0;
+}
+
+.social-icon-style-06 ul li a.google {
+  color: #dc4a38;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19489) */
+.social-icon-style-06 ul li a.instagram {
+  color: #FE1F49;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19497) */
+.social-icon-style-06 ul li a.linkedin {
+  color: #0077b5;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19505) */
+.social-icon-style-06 ul li a.medium {
+  color: #00ab6c;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19513-19555, 11 consecutive rules) */
+.social-icon-style-06 ul li a.slack {
+  color: #6ecadc;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19561-19603, 11 consecutive rules) */
+.social-icon-style-06 ul li a.twitter {
+  color: #00aced;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19609) */
+.social-icon-style-06 ul li a.vimeo {
+  color: #1ab7ea;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19617-19631, 4 consecutive rules) */
+.social-icon-style-06 ul li a.whatsapp {
+  color: #25d366;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19637) */
+.social-icon-style-06 ul li a.youtube {
+  color: #ff0000;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19645) */
+/* Social icon style 07 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19650-19722, 16 consecutive rules) */
+.social-icon-style-07 ul li a.dribbble {
+  color: #ea4c89;
+}
+
+.social-icon-style-07 ul li a.dribbble span {
+  background-color: #ea4c89;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19732-19738, 2 consecutive rules) */
+.social-icon-style-07 ul li a.email {
+  color: #7d7d7d;
+}
+
+.social-icon-style-07 ul li a.email span {
+  background-color: #7d7d7d;
+}
+
+.social-icon-style-07 ul li a.facebook {
+  color: #3b5998;
+}
+
+.social-icon-style-07 ul li a.facebook span {
+  background-color: #3b5998;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19756-19778, 6 consecutive rules) */
+.social-icon-style-07 ul li a.github {
+  color: #4078c0;
+}
+
+.social-icon-style-07 ul li a.github span {
+  background-color: #4078c0;
+}
+
+.social-icon-style-07 ul li a.google {
+  color: #dc4a38;
+}
+
+.social-icon-style-07 ul li a.google span {
+  background-color: #dc4a38;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19796-19802, 2 consecutive rules) */
+.social-icon-style-07 ul li a.instagram {
+  color: #FE1F49;
+}
+
+.social-icon-style-07 ul li a.instagram span {
+  background-color: #FE1F49;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19812-19818, 2 consecutive rules) */
+.social-icon-style-07 ul li a.linkedin {
+  color: #0077b5;
+}
+
+.social-icon-style-07 ul li a.linkedin span {
+  background-color: #0077b5;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19828-19834, 2 consecutive rules) */
+.social-icon-style-07 ul li a.medium {
+  color: #00ab6c;
+}
+
+.social-icon-style-07 ul li a.medium span {
+  background-color: #00ab6c;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19844-19930, 22 consecutive rules) */
+.social-icon-style-07 ul li a.slack {
+  color: #6ecadc;
+}
+
+.social-icon-style-07 ul li a.slack span {
+  background-color: #6ecadc;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:19940-20026, 22 consecutive rules) */
+.social-icon-style-07 ul li a.twitter {
+  color: #00aced;
+}
+
+.social-icon-style-07 ul li a.twitter span {
+  background-color: #00aced;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20036-20042, 2 consecutive rules) */
+.social-icon-style-07 ul li a.vimeo {
+  color: #1ab7ea;
+}
+
+.social-icon-style-07 ul li a.vimeo span {
+  background-color: #1ab7ea;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20052-20082, 8 consecutive rules) */
+.social-icon-style-07 ul li a.whatsapp {
+  color: #25d366;
+}
+
+.social-icon-style-07 ul li a.whatsapp span {
+  background-color: #25d366;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20092-20098, 2 consecutive rules) */
+.social-icon-style-07 ul li a.youtube {
+  color: #ff0000;
+}
+
+.social-icon-style-07 ul li a.youtube span {
+  background-color: #ff0000;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20108-20114, 2 consecutive rules) */
+/* Social icon style 08 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20117) */
+.social-icon-style-08 ul.light li a:hover {
+  opacity: 0.5;
+  color: var(--white) !important;
+}
+
+/* Social icon style 09 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20128-20164, 4 consecutive rules) */
+.social-icon-style-09 ul.light li a {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-icon-style-09 ul.light li a:hover {
+  color: var(--dark-gray) !important;
+}
+
+.social-icon-style-09 ul.light li a span {
+  background-color: var(--white);
+}
+
+/* Social icon style 10 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20179-20209, 8 consecutive rules) */
+.social-icon-style-10 .default-color a.dribbble {
+  color: #ea4c89;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20215) */
+.social-icon-style-10 .default-color a.email {
+  color: #7d7d7d;
+}
+
+.social-icon-style-10 .default-color a.facebook {
+  color: #3b5998;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20227-20237, 3 consecutive rules) */
+.social-icon-style-10 .default-color a.github {
+  color: #4078c0;
+}
+
+.social-icon-style-10 .default-color a.google {
+  color: #dc4a38;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20247) */
+.social-icon-style-10 .default-color a.instagram {
+  color: #FE1F49;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20255) */
+.social-icon-style-10 .default-color a.linkedin {
+  color: #0077b5;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20263) */
+.social-icon-style-10 .default-color a.medium {
+  color: #00ab6c;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20271-20313, 11 consecutive rules) */
+.social-icon-style-10 .default-color a.slack {
+  color: #6ecadc;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20319-20361, 11 consecutive rules) */
+.social-icon-style-10 .default-color a.twitter {
+  color: #00aced;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20367) */
+.social-icon-style-10 .default-color a.vimeo {
+  color: #1ab7ea;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20375-20389, 4 consecutive rules) */
+.social-icon-style-10 .default-color a.whatsapp {
+  color: #25d366;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20395) */
+.social-icon-style-10 .default-color a.youtube {
+  color: #ff0000;
+}
+
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20403-20409, 2 consecutive rules) */
+/* Social text style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20412) */
+/* Subcribe style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20419) */
+.newsletter-style-01 input.is-invalid {
+  padding-right: 160px;
+}
+
+.newsletter-style-01 .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+}
+
+.newsletter-style-01 .btn i {
+  top: 1px;
+}
+
+/* Subcribe style 02 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20441) */
+.newsletter-style-02 .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  padding: 10px 25px 9px 25px;
+  display: inline-block;
+}
+
+.newsletter-style-02 .btn i {
+  margin-left: 0;
+  top: inherit;
+}
+
+.newsletter-style-02 .btn:active {
+  border-color: transparent;
+}
+
+/* Subcribe style 03 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20466) */
+.newsletter-style-03 .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 100px 100px 0;
+  height: 100%;
+  padding: 12px 35px 12px 30px;
+}
+
+.newsletter-style-03 .btn:active {
+  border-color: transparent;
+}
+
+/* Subcribe style 04 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20485) */
+.newsletter-style-04 .btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.newsletter-style-04 .btn i {
+  margin-left: 0;
+}
+
+.newsletter-style-01 .form-control,
+.newsletter-style-01 .form-control.is-invalid,
+.newsletter-style-01 .was-validated .form-control:invalid,
+.newsletter-style-02 .form-control,
+.newsletter-style-02 .form-control.is-invalid,
+.newsletter-style-02 .was-validated .form-control:invalid,
+.newsletter-style-03 .form-control,
+.newsletter-style-03 .form-control.is-invalid,
+.newsletter-style-03 .was-validated .form-control:invalid,
+.newsletter-style-04 .form-control,
+.newsletter-style-04 .form-control.is-invalid,
+.newsletter-style-04 .was-validated .form-control:invalid {
+  background-image: inherit;
+}
+
+/* Tab */
+.nav-tabs>li.nav-item {
+  display: inline-block;
+  float: none;
+  margin: 0;
+  padding: 0 17px;
+}
+
+/* Tab style 03 */
+.tab-style-03 .nav-tabs .nav-link {
+  padding: 10px 33px;
+  color: var(--medium-gray);
+  border: 1px solid var(--light-medium-gray);
+  border-bottom: none;
+  -webkit-border-radius: 6px 6px 0 0;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab-style-03 .nav-tabs .nav-link.active,
+.tab-style-03 .nav-tabs .nav-link.show,
+.tab-style-03 .nav-tabs .nav-link:hover {
+  color: var(--dark-gray);
+  background-color: var(--white);
+}
+
+.tab-style-03 .nav-tabs>li.nav-item {
+  padding: 0 8px;
+}
+
+/* Tab style 02 */
+.tab-style-02 .nav-tabs {
+  border-bottom: none;
+}
+
+.tab-style-02 .nav-tabs>li.nav-item {
+  margin: 0 34px;
+}
+
+.tab-style-02 .nav-tabs>li.nav-item>a.nav-link {
+  border: none;
+  padding: 0;
+  color: var(--medium-gray);
+  border-bottom: 2px solid transparent;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.tab-style-02 .nav-tabs>li.nav-item>a.nav-link i {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.tab-style-02 .nav-tabs>li.nav-item>a.nav-link:hover {
+  color: var(--dark-gray);
+  border-bottom: 2px solid;
+}
+
+.tab-style-02 .nav-tabs>li.nav-item>a.nav-link:hover i {
+  color: var(--base-color);
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.tab-style-02 .nav-tabs>li.nav-item>a.nav-link.active {
+  color: var(--dark-gray);
+  border-bottom: 2px solid;
+  background: transparent;
+}
+
+.tab-style-02 .nav-tabs>li.nav-item>a.nav-link.active i {
+  color: var(--base-color);
+}
+
+/* Tab style 03 */
+.tab-style-01 .nav-tabs .nav-link {
+  border: none;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  padding: 10px 40px;
+  color: var(--medium-gray);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.tab-style-01 .nav-tabs .nav-link.show,
+.tab-style-01 .nav-tabs .nav-link.active,
+.tab-style-01 .nav-tabs .nav-link:hover {
+  color: var(--dark-gray);
+  background-color: var(--white);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  -webkit-transform: translate3d(0, -3px, 0);
+  transform: translate3d(0, -3px, 0);
+}
+
+.tab-style-01 .nav-tabs>li.nav-item {
+  padding: 0 4px;
+}
+
+/* Tab style 04 */
+.tab-style-04 .nav-tabs .nav-item {
+  padding: 0 35px;
+}
+
+.tab-style-04 .nav-tabs .nav-item .nav-link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  position: relative;
+  color: var(--medium-gray);
+}
+
+.tab-style-04 .nav-tabs .nav-item .nav-link .tab-border {
+  width: 100%;
+  height: 2px;
+  display: block;
+  -wekit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
+}
+
+.tab-style-04 .nav-tabs .nav-item .nav-link.active,
+.tab-style-04 .nav-tabs .nav-item .nav-link.show,
+.tab-style-04 .nav-tabs .nav-item .nav-link:hover {
+  color: var(--dark-gray);
+}
+
+.tab-style-04 .nav-tabs .nav-item .nav-link.active .tab-border,
+.tab-style-04 .nav-tabs .nav-item .nav-link.show .tab-border,
+.tab-style-04 .nav-tabs .nav-item .nav-link:hover .tab-border {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+/* Tab style 05 */
+.tab-style-05 .nav-tabs>li {
+  width: 100%;
+}
+
+.tab-style-05 .nav-tabs>li.nav-item {
+  padding: 0;
+}
+
+.tab-style-05 .nav-tabs .nav-item .nav-link {
+  border: none;
+  padding: 20px 28px 22px;
+  margin-bottom: 15px;
+  background: transparent;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  display: flex;
+  align-items: center;
+}
+
+.tab-style-05 .nav-tabs .nav-item .nav-link i {
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.tab-style-05 .nav-tabs .nav-item .nav-link span {
+  position: relative;
+  top: 1px;
+  color: var(--dark-gray);
+  -webkit-transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+.tab-style-05 .nav-tabs .nav-item .nav-link:hover,
+.tab-style-05 .nav-tabs .nav-item .nav-link.show,
+.tab-style-05 .nav-tabs .nav-item .nav-link.active {
+  background: var(--white);
+  color: var(--base-color);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+
+.tab-style-05 .nav-tabs .nav-item .nav-link:hover i,
+.tab-style-05 .nav-tabs .nav-item .nav-link.show i,
+.tab-style-05 .nav-tabs .nav-item .nav-link.active i {
+  color: var(--base-color);
+}
+
+.tab-style-05 .nav-tabs .nav-item .nav-link:hover span,
+.tab-style-05 .nav-tabs .nav-item .nav-link.show span,
+.tab-style-05 .nav-tabs .nav-item .nav-link.active span {
+  color: var(--base-color);
+}
+
+.tab-style-05 .nav-tabs .nav-item:last-child .nav-link {
+  border-bottom: none;
+}
+
+/* Tab style 06 */
+.tab-style-06 .nav-tabs>li.nav-item {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 4px 0 0 4px;
+}
+
+.tab-style-06 .nav-tabs>li.nav-item:last-child {
+  border-radius: 0 4px 4px 0;
+  margin-left: -1px;
+}
+
+.tab-style-06 .nav-tabs>li.nav-item>a.nav-link {
+  border-bottom: none;
+  border-radius: 0;
+  line-height: 18px;
+  padding: 16px 40px;
+  text-transform: uppercase;
+  z-index: 1;
+  background-color: transparent;
+  color: var(--medium-gray);
+  border: 0;
+}
+
+.tab-style-06 .nav-tabs>li.nav-item>a.nav-link.active {
+  color: #fff !important;
+}
+
+.tab-style-06 .nav-tabs>li.nav-item>a.nav-link.active+.tab-bg-active {
+  opacity: 1;
+}
+
+.tab-style-06 .tab-bg-active {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  z-index: -1;
+  opacity: 0;
+}
+
+/* Tab style 07 */
+.tab-style-07 .nav-tabs>li {
+  width: 100%;
+}
+
+.tab-style-07 .nav-tabs>li.nav-item {
+  padding: 0;
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link {
+  border: none;
+  border-bottom: 1px solid;
+  border-color: var(--extra-medium-gray);
+  padding: 38px 60px 38px;
+  background: transparent;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link span {
+  color: var(--dark-gray);
+  z-index: 9;
+  position: relative;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link:hover,
+.tab-style-07 .nav-tabs .nav-item .nav-link.show,
+.tab-style-07 .nav-tabs .nav-item .nav-link.active {
+  color: var(--white);
+  isolation: inherit;
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link:hover span,
+.tab-style-07 .nav-tabs .nav-item .nav-link.show span,
+.tab-style-07 .nav-tabs .nav-item .nav-link.active span {
+  color: var(--white);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link:hover .number-box,
+.tab-style-07 .nav-tabs .nav-item .nav-link.show .number-box,
+.tab-style-07 .nav-tabs .nav-item .nav-link.active .number-box {
+  opacity: 1;
+  -webkit-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
+  transition: opacity 0.4s, transform 0.4s;
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link:hover .bg-hover,
+.tab-style-07 .nav-tabs .nav-item .nav-link.show .bg-hover,
+.tab-style-07 .nav-tabs .nav-item .nav-link.active .bg-hover {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link .number-box {
+  position: absolute;
+  top: 50%;
+  z-index: 9;
+  right: 0;
+  opacity: 0;
+  -webkit-transform: translate(25%, -50%);
+  transform: translate(25%, -50%);
+  transition: opacity 0s, transform 0s;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+.tab-style-07 .nav-tabs .nav-item .nav-link .bg-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  content: "";
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  transform-origin: left;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  z-index: 1;
+}
+
+.tab-style-07 .nav-tabs .nav-item:last-child .nav-link {
+  border-bottom: none;
+}
+
+/* Tab style 08 */
+.tab-style-08 ul .nav-item {
+  padding: 0;
+  background-color: transparent;
+  border-right: 1px solid var(--light-medium-gray);
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.tab-style-08 ul .nav-item .nav-link {
+  border: 0;
+  margin-bottom: 0;
+  padding: 30px 15px;
+  background-color: transparent;
+  position: relative;
+  color: var(--medium-gray);
+}
+
+.tab-style-08 ul .nav-item .nav-link.active,
+.tab-style-08 ul .nav-item .nav-link.show,
+.tab-style-08 ul .nav-item .nav-link:hover {
+  border: 0;
+  color: var(--base-color);
+}
+
+.tab-style-08 ul .nav-item .nav-link.active .tab-border,
+.tab-style-08 ul .nav-item .nav-link.show .tab-border,
+.tab-style-08 ul .nav-item .nav-link:hover .tab-border {
+  -wekit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.tab-style-08 ul .nav-item .tab-border {
+  width: calc(100% + 2px);
+  height: 3px;
+  display: block;
+  -wekit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
+  position: absolute;
+  left: -1px;
+  top: 0;
+}
+
+.tab-style-08 ul .nav-item:last-child {
+  border: 0;
+}
+
+.tab-style-08 ul.active-tab-border-bottom .nav-item .tab-border {
+  bottom: 0;
+  top: auto;
+}
+
+/* Team style 01 */
+.team-style-01 figure figcaption {
+  position: absolute;
+  bottom: -1px;
+}
+
+.team-style-01 figure figcaption .social-icon {
+  display: block !important;
+  height: auto !important;
+  margin-bottom: -50px !important;
+  overflow: visible !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.team-style-01 figure figcaption .social-icon a {
+  margin: 0 10px;
+}
+
+.team-style-01 figure figcaption .social-icon a:last-child {
+  margin-right: 0;
+}
+
+.team-style-01 figure figcaption .social-icon a:first-child {
+  margin-left: 0;
+}
+
+.team-style-01 figure .text-light-opacity:hover {
+  opacity: 1 !important;
+}
+
+.team-style-01 figure:hover figcaption .social-icon {
+  margin-bottom: 0px !important;
+}
+
+/* Team style 02 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:20956-21064, 18 consecutive rules) */
+/* Team style 04 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:21067-21092, 5 consecutive rules) */
+/* Team style 05 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:21095-21181, 16 consecutive rules) */
+/* Team style 08 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:21184-21268, 12 consecutive rules) */
+/* Team style 09 */
+.team-style-09 .nav-tabs>li.nav-item {
+  padding: 0;
+}
+
+.team-style-09 .nav-tabs>li.nav-item .number {
+  color: var(--dark-gray);
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+.team-style-09 .nav-tabs>li.nav-item:last-child .nav-link {
+  border-bottom: 0;
+}
+
+.team-style-09 .nav-tabs .nav-link {
+  border: 0;
+  display: flex;
+  border-bottom: 1px solid var(--extra-medium-gray);
+  padding: 20px 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+.team-style-09 .nav-tabs .nav-link:hover {
+  -webkit-transform: translate3d(10px, 0, 0);
+  transform: translate3d(10px, 0, 0);
+}
+
+.team-style-09 .nav-tabs .nav-link.active,
+.team-style-09 .nav-tabs .nav-link:hover {
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+/* Team style 10 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:21309-21420, 16 consecutive rules) */
+/* Testimonial style 01 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:21423-21441, 2 consecutive rules) */
+/* Testimonial style 04 */
+.testimonials-style-04.swiper-horizontal-3d.swiper {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  box-sizing: content-box;
+}
+
+.testimonials-style-04.swiper-horizontal-3d.swiper-pagination-bottom .swiper-wrapper {
+  margin-bottom: 0;
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide {
+  filter: grayscale(100%);
+  opacity: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex: 0 0 auto;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-prev,
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-next {
+  opacity: 0.7;
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-active {
+  opacity: 1;
+  filter: grayscale(0);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.17);
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide.swiper-slide-active .slider-image:hover .preview-icon {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  z-index: 1;
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide img {
+  opacity: 0;
+}
+
+.testimonials-style-04.swiper-horizontal-3d.swiper {
+  width: 100%;
+  padding-bottom: 60px;
+}
+
+.testimonials-style-04.swiper-horizontal-3d.swiper-3d .swiper-slide-shadow-left,
+.testimonials-style-04.swiper-horizontal-3d.swiper-3d .swiper-slide-shadow-right {
+  background-image: none;
+}
+
+.testimonials-style-04.swiper-horizontal-3d .swiper-slide-active img {
+  opacity: 1;
+}
+
+/* Testimonial style 05 */
+/* parked → parked/pgs-owned-parked-11b.css (style.css:21515-21545, 4 consecutive rules) */
+/* Testimonial style 12 */
+.testimonials-style-12 .swiper-button-next-nav {
+  right: -8px;
+}
+
+.testimonials-style-12 .swiper-button-next-nav:hover {
+  opacity: 1;
+}
+
+.testimonials-style-12 .swiper-button-previous-nav {
+  left: -8px;
+}
+
+.testimonials-style-12 .swiper-button-previous-nav:hover {
+  opacity: 1;
+}
+
+/* Testimonial style 13  */
+.testimonials-style-13 .swiper-slide {
+  opacity: 0.1;
+}
+
+.testimonials-style-13 .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+
+.testimonials-style-13 .swiper-slide.swiper-slide-next {
+  opacity: 0.4;
+}
+

@@ -18,6 +18,7 @@
 
 @import "./pgs-breakpoints.css";
 @import "./legacy-hello-aspirant.css";
+@import "./pgs-univmeet-search.css";
 
 /* ——— Figma header tokens ——— */
 header.pgs-figma-header {
@@ -109,7 +110,7 @@ header.pgs-figma-header .header-tab-top .tab-button {
   color: #000 !important;
   font-family: Roboto, sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.15;
   text-decoration: none;
   white-space: nowrap;
@@ -150,7 +151,8 @@ header.pgs-figma-header .btn-trapsparent {
   border: 1px solid var(--pgs-border) !important;
   border-radius: 8px;
   background: #fff !important;
-  font-weight: 500;
+  /* Beat Hostinger .btn-trapsparent { font-weight: 400 } — owner Semibold */
+  font-weight: 600 !important;
 }
 
 header.pgs-figma-header .btn-login {
@@ -236,7 +238,11 @@ header.pgs-figma-header button:focus-visible {
   outline-offset: 3px;
 }
 
-/* ——— #purplePremium dropslide (previous clean yellow menu) ——— */
+/*
+ * ——— #purplePremium dropslide (previous clean yellow menu) ———
+ * H1c: owned port of this recipe → public-header.css (.pgs-header-drop*).
+ * Keep for string chrome / DSIH until H-R. New React chrome must use owned classes.
+ */
 header.pgs-figma-header .dropdown-wrapper {
   position: relative;
   display: inline-block;
@@ -389,11 +395,18 @@ header.pgs-figma-header .explore-dropdown-menu a:hover {
   max-width: 100%;
 }
 
-/* Let results float over the blue nav without clipping */
-#drawer.open,
-#drawer.active,
-#drawer.show {
+/* Let autocomplete float over nav — owned React drawer scrolls instead */
+#drawer.open:not(.pgs-header-drawer),
+#drawer.active:not(.pgs-header-drawer),
+#drawer.show:not(.pgs-header-drawer) {
   overflow: visible;
+}
+
+#drawer.pgs-header-drawer.open,
+#drawer.pgs-header-drawer.active,
+#drawer.pgs-header-drawer.show {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #drawer .header-tab-top {
@@ -851,3 +864,9 @@ header.pgs-figma-header .site-notification-menu {
  * Page-strip #univMeet + search layout — CANONICAL in src/app/globals.css
  * (PGS MODULAR PUBLIC CHROME). Do not re-add Hostinger forks here.
  */
+
+/* H6a-CSS: drawer/bar reset still linked (owner default: reset on).
+ * OWN-T / OWN-F barrels UNLINKED — workshop only until OWN-LINK after block QC.
+ * See OWNED-CHROME-UNLINKED.md
+ */
+@import "./pgs-header-chrome-reset.css";

@@ -11,6 +11,7 @@
 
 :root {
   --pgs-bp-header-mobile: 1366px;
+  --pgs-bp-header-ipad-wide-min: 801px;
   --pgs-bp-header-desktop-logo-min: 981px;
   --pgs-bp-mobile-handover: 980px;
   --pgs-bp-header-compact: 600px;

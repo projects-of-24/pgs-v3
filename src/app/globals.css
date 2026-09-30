@@ -305,16 +305,27 @@ body {
  *   601–1366  iPad
  *   ≤600  mobile
  *
- * Header: sticky top 0 at rest and when stuck (shell + pill top flush).
- * Strip flows under header. Body pull = strip-tied clamp (Hostinger .minus-5 port).
+ * Header: sticky top 0; padding-top = safe-area so notch / Dynamic Island /
+ * camera cutouts clear the bar. Strip + body + footer flow down with it.
+ * Body pull = strip-tied clamp + same safe-area token (closed #toggleBtn align).
  *
  * Hostinger public/assets/css/* = REFERENCE ONLY — override here, do not edit Hostinger.
  *
  * Still elsewhere until migrated:
  *   - Figma header bar visuals (logo/login/bell/menu assets) → legacy-header-breakpoints.css
  *   - Hello Aspirant strip removed → legacy-hello-aspirant.css (failsafe hide)
+ *   - OWN-T toggle/strip/univMeet authority → src/features/shell/pgs-owned-strip.css
+ *   - OWN-F footer authority → src/features/shell/pgs-owned-footer.css
+ *     (rules below remain until OWN-CLEAR; prefer owned-* when editing)
  * =============================================================================
  */
+
+:root {
+  /* Floor 24px (owner 20–40 range) · grows with env(safe-area-inset-top) on notched devices */
+  --pgs-safe-top: max(24px, env(safe-area-inset-top, 0px));
+  --pgs-chrome-strip-pull: clamp(88px, 11vw, 157px);
+  --pgs-chrome-body-pull: calc(-1 * (var(--pgs-chrome-strip-pull) + var(--pgs-safe-top)));
+}
 
 /* --- Page canvas --- */
 main[data-legacy-page] {
@@ -327,6 +338,21 @@ main[data-legacy-page] {
   top: 0;
   z-index: 1100;
   margin-top: 0;
+  padding-top: var(--pgs-safe-top);
+  box-sizing: border-box;
+  /* Glass header (owner 2026-09-27, Gemini-app look): the shell is transparent so
+     scrolling content stays visible in the margins around the pill; the pill itself
+     is a frosted tint (see --pgs-header-glass below). Was opaque #ffffff. */
+  background-color: transparent;
+  --pgs-header-glass: rgba(235, 247, 255, 0.8); /* #ebf7ff at 80% */
+  --pgs-header-blur: blur(16px) saturate(150%);
+}
+
+/* Glass pill: content scrolling under it shows through, blurred. */
+[data-legacy-page] header.pgs-figma-header .pgs-header-bar {
+  background: var(--pgs-header-glass) !important;
+  -webkit-backdrop-filter: var(--pgs-header-blur);
+  backdrop-filter: var(--pgs-header-blur);
 }
 
 /* Pill top flush with sticky shell (overrides legacy-header bar margin-top 20px). */
@@ -341,14 +367,34 @@ main[data-legacy-page] {
 @media (max-width: 600px) {
   [data-legacy-page] header.pgs-figma-header {
     --pgs-header-bg: #ffffff;
+    /* Glass on mobile: the whole rounded header is the frosted surface — white at 80%
+       (owner QC 2026-09-27: "make bg color white"), desktop/iPad keep the blue tint. */
+    --pgs-header-glass: rgba(255, 255, 255, 0.8);
+    background: var(--pgs-header-glass);
+    /* Top gap = bottom gap: bar has 12px margin top+bottom, header 8px bottom, so 8px
+       top too (20 = 20), plus the notch/dynamic-island inset so the bar never sits
+       under it. Was the 24px floor. */
+    padding-top: calc(env(safe-area-inset-top, 0px) + 8px);
+    -webkit-backdrop-filter: var(--pgs-header-blur);
+    backdrop-filter: var(--pgs-header-blur);
+    /* Owner QC 2026-09-27: rounded 12px, 8px below the bar, 2px side margins so contents don't sit on the edge */
+    border-radius: 12px;
+    padding-bottom: 8px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    top: 2px; /* sticky: keep the same 2px gap while scrolled */
   }
 
   [data-legacy-page] header.pgs-figma-header .pgs-header-bar,
   [data-legacy-page] header.pgs-figma-header .pgs-header-bar.navbar,
   [data-legacy-page] header.pgs-figma-header > .mobile-none {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
+    /* Inner bars transparent so the header-level glass is the only surface (was #ffffff). */
+    background: transparent !important;
+    background-color: transparent !important;
     background-image: none !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
@@ -417,14 +463,14 @@ main[data-legacy-page] {
 
   [data-legacy-page] #toggleBtn.arrow-box i,
   .developer-student-shell #toggleBtn.arrow-box i {
-    font-size: 9px !important;
+    font-size: 12px !important; /* owner QC 2026-09-27: was 9px */
   }
 }
 
 /* Toggle column reserve (absolute pill does not hold row height alone) */
 [data-legacy-page] .mobile-frame-sidebar .row > .col-xl-1.col-lg-1,
 .developer-student-shell .mobile-frame-sidebar .row > .col-xl-1.col-lg-1 {
-  min-height: clamp(88px, 11vw, 157px);
+  min-height: var(--pgs-chrome-strip-pull);
 }
 
 /*
@@ -434,17 +480,17 @@ main[data-legacy-page] {
  */
 [data-legacy-page] .wrapper-content > section.about-section.minus-5:first-of-type,
 .developer-student-shell .wrapper-content > section.about-section.minus-5:first-of-type {
-  margin-top: calc(-1 * clamp(88px, 11vw, 157px)) !important;
+  margin-top: calc(-1 * var(--pgs-chrome-strip-pull)) !important;
 }
 
 /* Strip tools clickable (strip itself is pointer-events: none) */
 [data-legacy-page] .mobile-frame-sidebar #univMeet,
-[data-legacy-page] .mobile-frame-sidebar a.date-box,
-[data-legacy-page] .mobile-frame-sidebar .search-box,
+[data-legacy-page] .mobile-frame-sidebar a.pgs-univmeet,
+[data-legacy-page] .mobile-frame-sidebar .pgs-search,
 [data-legacy-page] .mobile-frame-sidebar .avatar-box,
 .developer-student-shell .mobile-frame-sidebar #univMeet,
-.developer-student-shell .mobile-frame-sidebar a.date-box,
-.developer-student-shell .mobile-frame-sidebar .search-box,
+.developer-student-shell .mobile-frame-sidebar a.pgs-univmeet,
+.developer-student-shell .mobile-frame-sidebar .pgs-search,
 .developer-student-shell .mobile-frame-sidebar .avatar-box {
   position: relative;
   z-index: 1;
@@ -455,7 +501,7 @@ main[data-legacy-page] {
  * Page-strip #univMeet + search
  * >1366: top-right strip · ≤1366: hidden (live in hamburger drawer)
  */
-[data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.date-box h5 {
+[data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.pgs-univmeet .pgs-univmeet__label {
   font-size: 18px;
 }
 
@@ -500,14 +546,14 @@ main[data-legacy-page] {
   }
 
   /* Strip #univMeet bar — content height 36px; dates stay min-height 48 */
-  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.date-box {
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none a.pgs-univmeet {
     box-sizing: content-box;
     height: 36px;
     min-height: 36px;
     align-items: center;
   }
 
-  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none .box-date-info {
+  [data-legacy-page] section.mobile-frame-sidebar .row > .col-xl-4.mobile-none .pgs-univmeet__chip {
     min-height: 48px;
   }
 }
@@ -577,19 +623,19 @@ main[data-legacy-page] {
   font-weight: 500;
 }
 
-#drawer .pgs-drawer-search.search-box {
+#drawer .pgs-drawer-search {
   width: 100%;
   margin: 20px 0 0;
   position: relative;
   z-index: 5;
 }
 
-#drawer .pgs-drawer-search .input-group {
+#drawer .pgs-drawer-search .pgs-search__group {
   width: 100%;
   margin: 0;
 }
 
-#drawer .pgs-drawer-search .search-control {
+#drawer .pgs-drawer-search .pgs-search__input {
   width: 100%;
   min-width: 0;
   height: 32px;
@@ -639,10 +685,10 @@ main[data-legacy-page] {
   }
 
   [data-legacy-page] #sidebar.active ul li a {
-    /* Owner DevTools scout mobile 390px */
-    font-size: 22px !important;
+    /* Owner DevTools scout mobile 390px · owner QC 2026-09-27 (T-2): 22→20px (20 on every band), margin-bottom 10→6 */
+    font-size: 20px !important;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     padding: 4px !important;
   }
 
@@ -832,6 +878,19 @@ main[data-legacy-page] {
     width: 180px !important;
     height: 180px !important;
     margin-top: 12px !important;
+  }
+}
+
+/*
+ * Shared public footer — compact iPad 601–800 ONLY (owner QC 2026-09-27)
+ * Mentor card is a fixed 210px (`.w-210px`) but its 35% column is ~116–160px
+ * in this band, so the card spilled into the contact column. Same recipe the
+ * ≤600 band already uses (owned split 30a: `.card-bg-pruple { width: auto }`).
+ * Wide iPad 801–1366 keeps 210px (column is wide enough there).
+ */
+@media (min-width: 601px) and (max-width: 800px) {
+  [data-legacy-page] .footer-bg > .footer .card-bg-pruple.w-210px {
+    width: auto !important;
   }
 }
 
@@ -1335,24 +1394,10 @@ div[data-retained-student-footer="true"][data-student-state="authenticated_premi
   }
 }
 
-/* Mobile drawer: keep closed off-screen until hamburger opens it (footer.php openDrawer parity). */
-@media (max-width: 767px) {
+/* Phone only — clip horizontal bleed without affecting iPad fixed drawer. */
+@media (max-width: 600px) {
   main[data-legacy-page] {
     overflow-x: clip;
-  }
-
-  main[data-legacy-page] .drawer:not(.active) {
-    visibility: hidden;
-    pointer-events: none;
-    right: 0 !important;
-    transform: translate3d(100%, 0, 0);
-  }
-
-  main[data-legacy-page] .drawer.active {
-    visibility: visible !important;
-    pointer-events: auto;
-    right: 0 !important;
-    transform: translate3d(0, 0, 0) !important;
   }
 }
 

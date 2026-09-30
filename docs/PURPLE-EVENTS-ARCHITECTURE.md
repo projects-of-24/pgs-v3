@@ -6,8 +6,8 @@ Living map. Update at **phase ends**, not every pixel tweak.
 
 1. Detail bodies are **named templates**, not “one page type forever.” Staff create an **event or course** and pick a template: **`lite`** (current modular body) · **`courses`** (programsfull — next) · **future templates** owner adds later.
 2. Current Figma `#purpleEVENTS` body = template **`lite`** lab at [/preview/purpleevents-lite](/preview/purpleevents-lite). QC felt “meh” as the only event look — **Courses** template is the richer next body; either catalog type can use Lite or Courses.
-3. **Face cards** — event face v1 **LOCKED** (desk+mob · open+closed). Future faces: same desk→mob pass, same preview. Heart later.
-4. **Backend** = read + link only now. Later backend pass = **rebuild from scratch** (not patch junior, not incremental forever-extend of today’s half-wire). Template choice is a catalog field at rebuild time.
+3. **Face cards** — product contract locked 2026-09-20: one `face_layout` per row → one desk+mob pair; tags + badge chips; Learn More → detail. UI: **all face chrome LOCKED** — listing pairs 1–6 + Pair 9 `program_compact_sm` + Pair 10 `program_compact_sm_desk` + Pair 7 `calendar_session` + Pair 11 `calendar_session_photo` (calendar surfaces). Heart save + B\* wiring later.
+4. **Backend** = read + link only now. Later = **rebuild from scratch** — living Kanban [`docs/CATALOG-B-STAR.md`](./CATALOG-B-STAR.md). Template + face_layout are catalog fields at rebuild time.
 5. **Junior** (`.ref/pgs_app`) = **read-only**. Incomplete. Not a port target. Not product authority.
 6. Chrome stays **LOCKED** for Events/Courses body work. Bodies = modular owned CSS (same pattern as USMLE / About).
 7. **React chrome shell pass (Option B)** — **PARKED** until **after Events and Countries**. Today chrome stays shared HTML + modular CSS + `dangerouslySetInnerHTML`. Later: one-time mount swap per page → `<PublicHeader />` / `<PublicFooter />`, then edits to those components reflect everywhere. Not part of E0–E* or country body gates.
@@ -19,11 +19,12 @@ Living map. Update at **phase ends**, not every pixel tweak.
 ```text
 R0   Architecture read pass + living MD          ← DONE
 F-L  Lite template (was T5 / #purpleEVENTS)      ← E0–E13 mounted · lab purpleevents-lite
-F-C  Courses template (programsfull) — fixtures  ← Figma locked · propose C0 next
-F-F  Face cards (T6) desk + mob — fixtures       ← event face LOCKED; more later
+F-C  Courses template (programsfull) — fixtures  ← C0–C13 mounted · many READY — owner QC
+F-F  Face cards (T6) desk + mob — fixtures       ← **DONE UI** · pairs 1–7 + 9 + 10 locked · heart save + B* later
 …    Countries body work (owner track — separate)
 CHROME-B  React header/footer remount (PARKED — after Events + Countries)
-B*   Backend rebuild from scratch (new gates)    ← detail_template picker
+B*   Backend rebuild from scratch (new gates)    ← see docs/CATALOG-B-STAR.md
+     └─ after faces: temp listing rails (fixtures) → then Bn schema
 ```
 
 No silent jump. Each letter needs `GO AHEAD …`.
@@ -183,16 +184,18 @@ How this was built, and how it will work when staff publish.
 ONE catalog row (event OR course)
         │
         ├── detail_template   → lite | courses | … (events OR courses may use any)
-        ├── face card choice  → which card layout(s) + where they appear
+        ├── face_layout       → one FaceLayoutId → desk+mob pair (see Face cards T6)
         ├── tags              → one tag system (join to catalog tags)
-        └── heart / saved     → logged-in standard|premium → /saved
+        ├── badge / urgency   → admin override OR backend auto-rule
+        └── heart / saved     → logged-in standard|premium → /saved (B6 for events)
 ```
 
 | Concept | Meaning |
 |---|---|
 | **Detail template** | Named full-page body (`lite`, `courses`, …). Staff pick when creating an **event or course**. Duplicate = create row from defaults, not copy HTML files. |
-| **Face card** | Listing / board / saved presentation. Chosen when creating the row. Populates purpleboard, CV Ready, feed, saved, etc. |
+| **Face layout** | Listing / board / saved presentation. **One** layout id per row; desk+mob are the same layout. Populates purpleboard, CV Ready, feed, saved, etc. Inventory in `face-layouts.ts`. |
 | **Tags** | Shared vocabulary on the entity (and shown on faces). One backend tag truth at rebuild time. |
+| **Badge** | Filling Fast / seats chip — not a face type. |
 | **Heart** | Anon → login. Standard/Premium → save/unsave → `/saved`. |
 
 Frontend phases use **fixtures** shaped like this contract. Backend rebuild later plugs real data into the same slots.
@@ -294,23 +297,65 @@ Reuse Lite/shared modules **only** where Figma matches (e.g. highlights, FAQ, ou
 
 ---
 
-## Face cards (T6)
+## Face cards (T6) — product contract (locked 2026-09-20)
 
-**Event face v1 LOCKED** — see [Face card module](#face-card-module-face--locked-2026-09-17) + skill `pgs-face-card-pass`.  
-**Preview (all faces):** [/preview/purpleevents-face](/preview/purpleevents-face)
+**Skill:** `.cursor/skills/pgs-face-card-pass/SKILL.md`  
+**Preview (all faces):** [/preview/purpleevents-face](/preview/purpleevents-face)  
+**Inventory registry:** `src/features/purple-events/face-card/face-layouts.ts`  
+**Canonical Figma:** [pgs-facecards](https://www.figma.com/design/reEbIrfkffyoIzXQyVm09z/pgs-facecards?node-id=0-1)  
+**B\* living Kanban:** [`docs/CATALOG-B-STAR.md`](./CATALOG-B-STAR.md)
 
-Future face families still land on that same lab (desk→mob pass each). Examples:
+**Fixture bridge (owner 2026-09-21):** face UI pair-by-pair → temp listing rails (CV Ready / programs / saved) → ~5 made-up events + ~5 made-up courses per face for UI fit → later real catalog + flush seeds.
 
-| Face family (examples) | Typical use |
+### Product contract (one row → one pair)
+
+```text
+ONE catalog row (event OR course)
+        │
+        ├── detail_template     → lite | courses | …  (full-page body)
+        ├── face_layout         → ONE layout id for that row
+        │         └── renders as ONE desk+mob pair (same layout, two bands)
+        ├── tags[]              → catalog_tags joins (search / sort / differentiate)
+        ├── badge / urgency     → admin override OR backend rule (e.g. Filling Fast)
+        └── Learn More          → that row's public detail URL (template body)
+```
+
+| Rule | Meaning |
 |---|---|
-| Program / full | Purple Board, rich saved |
-| Promo | Urgency / seats / closes-on |
-| Internship | Batch-style listing |
-| Compact | Dense grids / saved compact |
-| Events upcoming / hero | Events listing surfaces |
+| **One pair per row** | Staff pick **one** `face_layout`. Desktop and mobile are the **same** layout at Figma desk/mob sizes — not two separate face picks. |
+| **Many layouts in the catalog** | The picker lists available face layouts; each event/course chooses one. |
+| **Tags** | Shared `catalog_tags` truth. Shown on faces; used for search/sort/filter. |
+| **Filling Fast / seats / closed** | Chip/state on the face — **not** a separate face type. Admin can set; later rules can auto-set. |
+| **Learn More** | Always the detail page for that row (`lite` / `courses` / …). Fixtures → preview labs until B\*. |
+| **Junior** | Read-only shape only (`.ref/pgs_app`). ADAPT into certified V3 + Figma — never dump. |
 
-Each face needs **desktop + mobile** (not two catalog products unless owner requires separate crops). Hearts deferred until named GO AHEAD. Placement (purpleboard, CV Ready, feed, …) is a **backend rebuild concern**.
+### V1 face layout inventory (owner-confirmed 2026-09-20)
 
+ADAPT from junior `components/cards/types.ts` + locked event face. Do **not** invent artboards without Figma nodes.
+
+| Layout id | Status | Desk+mob | Typical use | Notes |
+|---|---|---|---|---|
+| `cvready` | **LOCKED** | Yes | CV Ready · clinical listings | Pair 1 · `CvreadyFaceCard` |
+| `event_session` | **LOCKED** | Yes | Upcoming rail, event listings | Pair 2 · `PurpleEventsFaceCard` |
+| `program_full` | **LOCKED** | Desk yes · mob open yes | Purple Board, rich saved | Pair 3 invite tall · mob cas-v6 `91:2908` · closed mob deferred |
+| `program_compact` | LOCKED | Yes | Dense saved / grids | Pair 6 · desk `1:2150`/`1:2151` · mob `1:3032`/`1:2992` |
+| `program_compact_sm` | LOCKED | Yes | Dense grids · smaller shell | Pair 9 · Pair 6 @ 80% shell, type full · ~243×369 / ~164×250 |
+| `program_compact_sm_desk` | LOCKED | Yes | Desk small · phone full Pair 6 | Pair 10 · desk Pair 9 @ 80% · mob Pair 6 · ~243×369 / ~171×260 |
+| `calendar_session` | LOCKED | Calendar only | Feed beside calendar · calendar lists | Pair 7 · desk `4:377`/`4:387` · mob `4:305`/`4:364` |
+| `calendar_session_photo` | LOCKED | Calendar only | Feed / calendar lists with thumb | Pair 11 · Pair 7 + fixed photo · no Mode · desk `42:290`/`42:311` · mob `42:328`/`42:340` |
+| `internship` | **LOCKED** | Yes | Featured / batch listing | Pair 4 · `18:319` / `1:3183` |
+| `promo` | Locked | Yes | Urgency / QR / deadline | Pair 5 · desk `1:1067`/`1:1206` · mob `1:2372`/`1:3119` |
+
+### Not face layouts (chips / surfaces)
+
+| Concept | Treatment |
+|---|---|
+| Filling Fast / fire chip | Badge field + style (admin or auto) |
+| Closed / sold out | State on face (`event_session` open\|closed plate already) |
+| `card_surfaces` / purpleboard / cvready / usmlerotation | **Where** the row appears — placement flags, not the face artboard. TEMP TS today; B\* finalizes DB |
+| Heart | Deferred until named `GO AHEAD` |
+
+Each new layout: same lab · desk→mob pass · full Figma size · no `transform: scale`. See [Face card module](#face-card-module-face--locked-2026-09-17).
 ---
 
 ## Junior read pass (NOT fully built — do not port)
@@ -342,7 +387,7 @@ Everything below is **what exists today for linking understanding**. Marked **TE
 | `/purpleevents` | Legacy HTML (`PublicLegacyPage` + `legacy/generated/purpleevents`) | Listing / marketing shell — not the new base template |
 | `/purpleevents/session/:id` | Legacy HTML + `eventId` | Detail presentation state; not modular Figma body yet |
 | `/programsfull/program/:id` | Legacy / catalog detail path | Course detail target for T4 later |
-| `/purpleboard`, `/cvreadyprogram` | Legacy listing pages | Future face-card consumers |
+| `/purpleboard`, `/cvreadyprogram` | Listing pages | Face-card consumers · `/cvreadyprogram` modular cutover DONE |
 | `/saved` | React saved list | Programs + courses only today |
 
 ### Catalog tables (exists)
@@ -408,14 +453,16 @@ Staff /admin/catalog/events
 
 ## Target data sketch (B* rebuild — not implementing now)
 
-Owner-facing intent only. Exact schema invented at B* with `GO AHEAD`.
+Owner-facing intent only. Exact schema at B* with `GO AHEAD Bn`. Living Kanban: [`docs/CATALOG-B-STAR.md`](./CATALOG-B-STAR.md).
 
 ```text
-detail_template_key     on event/course row
-face / placement        chosen at create (exact columns TBD at B*)
-tags                    one tag domain + joins
-saved_*                 hearts for event + course (+ program if kept)
-publish                 fail closed; unpublished → 404 on public detail
+detail_template     on event/course row   → lite | courses | …
+face_layout         on event/course row   → one FaceLayoutId (desk+mob pair)
+placement surfaces  where row appears     → ADAPT card-surfaces idea (B4)
+tags                catalog_tags + joins
+badge / urgency     admin override OR server auto-rule
+saved_*             hearts for event + course (+ program if kept)
+publish             fail closed; unpublished → 404 on public detail
 ```
 
 Day-1 security themes for B* (preview): session-forced student_id on saves; publish permission on catalog; no IDOR oracle on saved/detail.
@@ -605,8 +652,14 @@ No silent jump E8a→E8d. Do not reopen face-card internals unless a rail bug pr
 | 2026-09-17 | **C8b** | **DESK IN QC** | Option 1 (3 steps + arrows) · Option 2 · purple links · mob parked |
 | 2026-09-17 | **C8 mob** | **READY — owner QC** | `551:10566` · 310 · chips wrap · Option 1 stacked ↓ arrows · gap 39 |
 | 2026-09-20 | **C13** | **READY — owner QC** | FAQ tabs+accordion · desk `17072:11640` · mob `551:9580` · Programme Details only · Learning/Refund empty · desk Q2 |
-| — | **F-F** | Partial | Event face locked; remaining face variants / heart on same preview via `pgs-face-card-pass` |
-| — | **B\*** | Parked | Backend rebuild from scratch |
+| 2026-09-20 | **F-F contract** | **DONE** | Pair rule + v1 inventory locked (`event_session` + program_full/compact + promo + internship); tags/badge/Learn More; `face-layouts.ts` |
+| — | **F-F UI** | Done (UI) | All face chrome locked: listing pairs 1–6 + Pair 9 `program_compact_sm` + Pair 10 `program_compact_sm_desk` + `calendar_session` Pair 7 + `calendar_session_photo` Pair 11. Heart save + B\* `face_layout` wiring later. |
+| 2026-09-22 | **F-F pairs 1–3** | **LOCKED** | Desk 1+2+3 · mob 1 · mob 2&3 shared |
+| 2026-09-24 | **F-F Pair 10** | **LOCKED** | `program_compact_sm_desk` · desk Pair 9 @ 80% · mob Pair 6 full · lab `#pe-face-program-compact-sm-desk` |
+| 2026-09-24 | **F-F Pair 11** | **LOCKED** | `calendar_session_photo` · desk+mob · Pair 7 + fixed photo · no Mode · lab `#pe-face-calendar-session-photo` |
+| 2026-09-24 | **F-F UI** | **DONE** | Face chrome complete (1–7 + 9 + 10 + 11). Deferred: Pair 3 closed mob · heart save · B\* wiring |
+| 2026-09-20 | **B0** | **READY** | Catalog B\* Kanban opened — [`docs/CATALOG-B-STAR.md`](./CATALOG-B-STAR.md) |
+| — | **B1–B7** | Parked | Schema / pickers / listings — one `GO AHEAD Bn` each |
 | — | **CHROME-B** | Parked | React chrome shell after Events + Countries; one-time page mount swap then modular forever |
 
 ---
@@ -614,8 +667,8 @@ No silent jump E8a→E8d. Do not reopen face-card internals unless a rail bug pr
 ## Open decisions (ask before the gate that needs them)
 
 1. Keep `/purpleevents` as a **listing** of upcoming cards, while each event uses the detail template? Or listing deferred?
-2. Course Figma desk + mob URLs (required before `GO AHEAD F-C`).
-3. At F-F: which face variants are in scope for v1 (all four saved faces + upcoming, or a subset)?
+2. ~~Figma desk + mob for `program_full`~~ **RESOLVED 2026-09-22**. ~~Pair 4 `internship`~~ **LOCKED**. ~~Pair 5 `promo`~~ **LOCKED**. ~~Pair 6 `program_compact`~~ **LOCKED**. ~~Pair 9 `program_compact_sm`~~ **LOCKED** (Pair 6 @ 80% shell). ~~Pair 10 `program_compact_sm_desk`~~ **LOCKED** (desk Pair 9 / mob Pair 6). ~~Pair 7 `calendar_session`~~ **LOCKED** desk+mob. ~~Pair 11 `calendar_session_photo`~~ **LOCKED** desk+mob. **Face card UI complete.**
+3. ~~At F-F: which face variants for v1?~~ **RESOLVED 2026-09-20** — `event_session` + `program_full` + `program_compact` + `promo` + `internship` (+ `cvready` Pair 1).
 4. At B*: URL shape for event detail — keep `/purpleevents/session/:id` or move to slug?
 
 ---
@@ -626,7 +679,8 @@ No silent jump E8a→E8d. Do not reopen face-card internals unless a rail bug pr
 - Migrations / RLS changes / live Supabase body reads  
 - Porting junior CMS or `user_saved_items`  
 - Live cutover of `/purpleevents` or `/purpleevents/session/:id`  
-- Course template / remaining face variants (same preview · `pgs-face-card-pass`) / heart  
+- Course template / heart save / B\* `face_layout` wiring (face chrome UI done)  
+- Catalog B\* schema (see [`CATALOG-B-STAR.md`](./CATALOG-B-STAR.md) — `GO AHEAD Bn`)  
 - Zoho booking / payments / popups  
 
 ---
@@ -636,13 +690,12 @@ No silent jump E8a→E8d. Do not reopen face-card internals unless a rail bug pr
 | You say | What happens |
 |---|---|
 | Owner QC E7 | Confirm sticky/trac at `/preview/purpleevents-lite#pe-e7` (desk + phone) |
-| FACE locked | [/preview/purpleevents-face](/preview/purpleevents-face) — event face done; next face = `GO AHEAD FACE <name>` |
+| FACE locked | [/preview/purpleevents-face](/preview/purpleevents-face) — **all face UI locked** (1–7) |
+| `GO AHEAD FACE <layout_id>` | Face chrome complete. New layout only with Figma + owner gate. |
 | E8 locked | [#pe-e8](/preview/purpleevents-lite#pe-e8) — upcoming rail done (desk+mob QC) |
 | `GO AHEAD E9` | Share poster — then E10…E13 one at a time |
-| `GO AHEAD FACE <variant>` | Next face on same preview — desk open → closed → mob (skill `pgs-face-card-pass`) |
 | `GO AHEAD E10` … `E13` | Next block only |
 | `GO AHEAD F-C` | After event template path is far enough **and** course Figma URLs exist |
-| `GO AHEAD F-F` | After both templates (owner lock) |
-| `GO AHEAD B1` (later) | Backend rebuild gate 1 — map first, one gate only |
+| `GO AHEAD B0` … `B7` | Catalog rebuild — see [`CATALOG-B-STAR.md`](./CATALOG-B-STAR.md); map first, one gate only |
 | Reopen chrome by name (later) | React `PublicHeader` / `PublicFooter` remount — not during E* |
 | `GO AHEAD CHROME-B` (later) | Only after Events + Countries — React header/footer remount |

@@ -55,7 +55,8 @@ export function buildPublicSidebarHtml(
   return extractVariant(loadVariantsFile(), variant).replaceAll("{{name}}", name);
 }
 
-function replaceFirstSidebar(source: string, nextSidebar: string): string {
+/** Exported for the header lab (T-1): swap the string #sidebar for a React mount slot. */
+export function replaceFirstSidebar(source: string, nextSidebar: string): string {
   const opening = /<div\b[^>]*\bid=["']sidebar["'][^>]*>/i.exec(source);
   if (!opening || opening.index === undefined) {
     // also match class-first markup

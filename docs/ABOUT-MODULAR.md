@@ -10,8 +10,8 @@ Branch: `feat/finance-modular` (shared public modular lane until owner splits)
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (QC lab)** | `/preview/about` | Locked chrome + modular body (no black banner). |
-| **Live** | `/about` | **CUTOVER DONE** — modular React body, Hostinger HTML unhooked. |
+| **Preview (QC lab)** | `/preview/about` | React chrome (`PublicHeader` · `PublicStrip` · `PublicFooter`) + owned split + modular body. Same tree as live. |
+| **Live** | `/about` | **H-R DONE + LOCKED (2026-09-27)** — React chrome, owned split, no Hostinger main.js, no chrome strings. First Hostinger-free page. |
 
 ---
 

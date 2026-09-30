@@ -1,0 +1,164 @@
+/* PASS 15 · 1:1 copy · UNLINKED · do not edit values
+   Source: public/assets/css/responsive.css lines 1-4182 (Crafto responsive: Bootstrap overwrite, typography, general/utility per breakpoint (min 1400 / 1600 / 1399 / 1199 / 991 / 767 / 575))
+   Method (owner lock 2026-09-25): rules copied verbatim, same numbers, original order, html{zoom:0.9} kept (split/pgs-owned-00-zoom.css).
+   Owner decision 2026-09-26: every wrapper @media (max-width: 767px) → @media (max-width: 600px) (same as P13; 601–767px now gets iPad/desk rules).
+   575 / 991 / 1199 / 1399 / 1600 / min-width 992 / min-width 1400 / max-height 380 wrappers copied VERBATIM. No url(), no nested @media in this range.
+   Dead rules (no class/id token anywhere in site) → parked/pgs-owned-parked-40.css with source lines; cut points marked below.
+   Wrapper kept live if any inner rule is live. Live routes do NOT import this file; only split/pgs-owned-split.css does, and nothing imports that yet (OWN-LINK later). */
+
+/* -------------------------------------------------------
+
+    Theme Name: Crafto - The Multipurpose HTML5 Template
+    Theme URL: https://craftohtml.themezaa.com/
+    Description: Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 52+ ready demos.
+    Author: ThemeZaa - https://www.themezaa.com/
+    Author ThemeForest URL: https://themeforest.net/user/themezaa
+    Copyright(c) 2024 themezaa.com
+    Version: 2.0
+------------------------------------------------------- */
+/* Bootstrap overwrite css */
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1320px;
+  }
+}
+/* PASS 15 cut: whole wrapper @media (min-width: 992px) (2 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:17-26) */
+@media (max-width: 1600px) {
+  section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:32-39) */
+}
+@media (max-width: 991px) {
+  html {
+    font-size: 14px;
+  }
+  section {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+  section.half-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  /* PASS 15 cut: 6 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:53-76) */
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  section.half-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  /* PASS 15 cut: 6 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:90-113) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 1600px) (14 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:115-173) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1399px) (72 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:174-424) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1199px) (72 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:425-675) */
+/* PASS 15 cut: whole wrapper @media (max-width: 991px) (72 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:676-926) */
+@media (max-width: 600px) {
+  /* Heading */
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 25px;
+  }
+  /* Font size */
+  /* PASS 15 cut: 72 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:933-1180) */
+}
+/* PASS 15 cut: whole wrapper @media (max-width: 575px) (72 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:1182-1432) */
+/* PASS 15 cut: whole wrapper @media (max-width: 1600px) (2 dead rules) parked → parked/pgs-owned-parked-40.css (responsive.css:1433-1442) */
+@media (max-width: 1399px) {
+  /* Width */
+  /* PASS 15 cut: 42 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:1445-1576) */
+  .xl-outside-box-right-20 {
+    margin-right: -20vw;
+  }
+  /* PASS 15 cut: 2 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:1580-1585) */
+  /* for buy and demo button */
+  .theme-demos .demos-wrapper .demos-wrapper-inner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (max-width: 1199px) {
+  /* Screen height */
+  /* PASS 15 cut: 159 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:1594-2094) */
+  /* Stack box */
+  .stack-box {
+    height: auto;
+  }
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-40.css (responsive.css:2099-2102) */
+  .stack-box .stack-item {
+    height: auto;
+    position: relative;
+    display: block;
+  }
+  /* PASS 15 cut: 3 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:2108-2120) */
+  /* for buy and demo button */
+  .theme-demos {
+    display: none !important;
+  }
+}
+@media (max-width: 991px) {
+  /* Screen height */
+  /* PASS 15 cut: 80 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:2128-2368) */
+  .md-w-100 {
+    width: 100% !important;
+  }
+  /* PASS 15 cut: 135 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:2372-2818) */
+  /* Scrolling text */
+  .looping-wrapper .el {
+    height: 18vh;
+    margin-top: -20vh;
+  }
+}
+@media (max-width: 600px) {
+  /* Screen height */
+  /* PASS 15 cut: 7 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:2827-2847) */
+  .extra-small-screen {
+    height: 250px !important;
+  }
+  /* PASS 15 cut: 116 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:2851-3200) */
+  .sm-h-450px {
+    height: 450px !important;
+  }
+  /* PASS 15 cut: 27 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:3204-3287) */
+  .sm-ls-minus-1px {
+    letter-spacing: -1px !important;
+  }
+  /* PASS 15 cut: 10 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:3291-3322) */
+  /* Slider shadow */
+  .sm-slider-shadow-none {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  /* Swiper slider navigation */
+  /* PASS 15 cut: 39 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:3329-3463) */
+  /* Outside box right */
+  .sm-outside-box-right-0 {
+    margin-right: 0;
+  }
+  /* Outside box left */
+  /* PASS 15 cut: 21 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:3469-3550) */
+  /* Scrolling text */
+  .looping-wrapper .el {
+    height: 145px;
+    margin-top: -145px;
+  }
+  /* Cookie message */
+  /* PASS 15 cut: 1 dead rule parked → parked/pgs-owned-parked-40.css (responsive.css:3557-3560) */
+}
+@media (max-width: 575px) {
+  /* Screen height */
+  /* PASS 15 cut: 196 dead rules parked → parked/pgs-owned-parked-40.css (responsive.css:3564-4176) */
+  /* Scrolling text */
+  .looping-wrapper .el {
+    height: 105px;
+    margin-top: -105px;
+  }
+}

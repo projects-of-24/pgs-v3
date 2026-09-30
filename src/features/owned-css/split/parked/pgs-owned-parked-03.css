@@ -1,0 +1,1268 @@
+/* PASS 4 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 4005-5414 range, 06. Background and border · 07. Width · 08. Height)
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML
+   (numbered utilities matched per full name, e.g. w-10 does not count as w-100).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:4022 — no selector match in site (PASS 4 audit) */
+.bg-medium-gray {
+  background-color: var(--medium-gray);
+}
+
+/* parked from style.css:4026 — no selector match in site (PASS 4 audit) */
+.bg-light-medium-gray {
+  background-color: var(--light-medium-gray);
+}
+
+/* parked from style.css:4030 — no selector match in site (PASS 4 audit) */
+.bg-extra-medium-gray {
+  background-color: var(--extra-medium-gray);
+}
+
+/* parked from style.css:4034 — no selector match in site (PASS 4 audit) */
+.bg-light-gray {
+  background-color: var(--light-gray);
+}
+
+/* parked from style.css:4046 — no selector match in site (PASS 4 audit) */
+.bg-light-red {
+  background-color: var(--light-red);
+}
+
+/* parked from style.css:4054 — no selector match in site (PASS 4 audit) */
+.bg-crusoe-green {
+  background-color: var(--crusoe-green);
+}
+
+/* parked from style.css:4062 — no selector match in site (PASS 4 audit) */
+.bg-charcoal-blue {
+  background-color: var(--charcoal-blue);
+}
+
+/* parked from style.css:4066 — no selector match in site (PASS 4 audit) */
+.bg-slate-blue {
+  background-color: var(--slate-blue);
+}
+
+/* parked from style.css:4070 — no selector match in site (PASS 4 audit) */
+.bg-medium-slate-blue {
+  background-color: var(--medium-slate-blue);
+}
+
+/* parked from style.css:4074 — no selector match in site (PASS 4 audit) */
+.bg-extra-medium-slate-blue {
+  background-color: var(--extra-medium-slate-blue);
+}
+
+/* parked from style.css:4082 — no selector match in site (PASS 4 audit) */
+.bg-extra-dark-slate-blue {
+  background-color: var(--extra-dark-slate-blue);
+}
+
+/* parked from style.css:4086 — no selector match in site (PASS 4 audit) */
+.bg-extra-very-slate-blue {
+  background-color: var(--extra-very-slate-blue);
+}
+
+/* parked from style.css:4090 — no selector match in site (PASS 4 audit) */
+.bg-tussock-yellow {
+  background-color: var(--tussock-yellow);
+}
+
+/* parked from style.css:4094 — no selector match in site (PASS 4 audit) */
+.bg-solitude-blue {
+  background-color: var(--solitude-blue);
+}
+
+/* parked from style.css:4098 — no selector match in site (PASS 4 audit) */
+.bg-aluminium-grey {
+  background-color: var(--aluminium-grey);
+}
+
+/* parked from style.css:4102 — no selector match in site (PASS 4 audit) */
+.bg-selago {
+  background-color: var(--selago);
+}
+
+/* parked from style.css:4106 — no selector match in site (PASS 4 audit) */
+.bg-white-ice {
+  background-color: var(--white-ice);
+}
+
+/* parked from style.css:4110 — no selector match in site (PASS 4 audit) */
+.bg-golden-yellow {
+  background-color: var(--golden-yellow);
+}
+
+/* parked from style.css:4114 — no selector match in site (PASS 4 audit) */
+.bg-jade {
+  background-color: var(--jade);
+}
+
+/* parked from style.css:4118 — no selector match in site (PASS 4 audit) */
+.bg-orange {
+  background-color: var(--orange);
+}
+
+/* parked from style.css:4122 — no selector match in site (PASS 4 audit) */
+.bg-light-majorelle-blue {
+  background-color: var(--light-majorelle-blue);
+}
+
+/* parked from style.css:4126 — no selector match in site (PASS 4 audit) */
+.bg-majorelle-blue {
+  background-color: var(--majorelle-blue);
+}
+
+/* parked from style.css:4130 — no selector match in site (PASS 4 audit) */
+.bg-spring-wood {
+  background-color: var(--spring-wood);
+}
+
+/* parked from style.css:4134 — no selector match in site (PASS 4 audit) */
+.bg-tropical-blue {
+  background-color: var(--tropical-blue);
+}
+
+/* parked from style.css:4138 — no selector match in site (PASS 4 audit) */
+.bg-cornflower-blue {
+  background-color: var(--cornflower-blue);
+}
+
+/* parked from style.css:4142 — no selector match in site (PASS 4 audit) */
+.bg-camarone {
+  background-color: var(--camarone);
+}
+
+/* parked from style.css:4146 — no selector match in site (PASS 4 audit) */
+.bg-seal-brown {
+  background-color: var(--seal-brown);
+}
+
+/* parked from style.css:4150 — no selector match in site (PASS 4 audit) */
+.bg-Wasabi {
+  background-color: var(--Wasabi);
+}
+
+/* parked from style.css:4155 — no selector match in site (PASS 4 audit) */
+.bg-gradient-light-pink-light-orange {
+  background-image: linear-gradient(to right top, #ffafbd, #ffb3b4, #ffb7ac, #ffbda5, #ffc3a0);
+}
+
+/* parked from style.css:4159 — no selector match in site (PASS 4 audit) */
+.bg-gradient-purple-pink {
+  background-image: linear-gradient(to right top, #8b14b1, #ab019e, #c00c8b, #cd267b, #d53d6e);
+}
+
+/* parked from style.css:4163 — no selector match in site (PASS 4 audit) */
+.bg-gradient-fast-pink-light-yellow {
+  background-image: linear-gradient(to right top, #f7567f, #fe7177, #ff8a74, #ffa378, #ffba83);
+}
+
+/* parked from style.css:4167 — no selector match in site (PASS 4 audit) */
+.bg-gradient-pink-orange {
+  background-image: linear-gradient(to right top, #de347f, #e73a70, #ed4461, #f05152, #ef5f43);
+}
+
+/* parked from style.css:4171 — no selector match in site (PASS 4 audit) */
+.bg-gradient-fast-blue-purple {
+  background-image: linear-gradient(to right top, #2a46f4, #5f42f9, #833cfc, #a233fe, #bf25ff);
+}
+
+/* parked from style.css:4175 — no selector match in site (PASS 4 audit) */
+.bg-gradient-light-pink-light-purple {
+  background-image: linear-gradient(to right top, #ed579b, #e855ad, #df57c0, #d15cd4, #bc63e8);
+}
+
+/* parked from style.css:4179 — no selector match in site (PASS 4 audit) */
+.bg-gradient-purple-magento {
+  background-image: linear-gradient(to right top, #5553e1, #a34dcc, #ce4fb5, #e75ca1, #f47291);
+}
+
+/* parked from style.css:4183 — no selector match in site (PASS 4 audit) */
+.bg-gradient-blue-green {
+  background-image: linear-gradient(to right top, #18cdbb, #22d2ae, #3cd69d, #57da89, #73dc73);
+}
+
+/* parked from style.css:4187 — no selector match in site (PASS 4 audit) */
+.bg-gradient-light-purple-light-orange {
+  background-image: linear-gradient(to right top, #b783ff, #e37be0, #fa7cc1, #ff85a6, #ff9393);
+}
+
+/* parked from style.css:4191 — no selector match in site (PASS 4 audit) */
+.bg-gradient-sky-blue-pink {
+  background-image: linear-gradient(to right top, #5758df, #a553cb, #d055b5, #ea63a0, #f77991);
+}
+
+/* parked from style.css:4195 — no selector match in site (PASS 4 audit) */
+.bg-gradient-dark-gray-brown {
+  background-image: linear-gradient(to right top, #0f130f, #1e1d15, #3d2f20, #4e3b27, #664a2f);
+}
+
+/* parked from style.css:4199 — no selector match in site (PASS 4 audit) */
+.bg-gradient-tan-geraldine {
+  background-image: linear-gradient(to right top, #fb7f87, #fc8a82, #fb957f, #fa9f7f, #f7aa80);
+}
+
+/* parked from style.css:4203 — no selector match in site (PASS 4 audit) */
+.bg-gradient-very-light-gray {
+  background-image: linear-gradient(to bottom, #f7f8f9, #f9fafb, #fbfbfc, #fdfdfd, #ffffff);
+}
+
+/* parked from style.css:4207 — no selector match in site (PASS 4 audit) */
+.bg-gradient-top-very-light-gray {
+  background-image: linear-gradient(to top, #f7f7f7, #f7f7f7, #fcfafa, #fcfafa, #ffffff);
+}
+
+/* parked from style.css:4211 — no selector match in site (PASS 4 audit) */
+.bg-gradient-orange-transparent {
+  background: linear-gradient(to right, rgb(233, 117, 34) 10%, rgba(255, 255, 255, 0) 95%);
+}
+
+/* parked from style.css:4215 — no selector match in site (PASS 4 audit) */
+.bg-gradient-blue-transparent {
+  background: linear-gradient(to right, rgb(30, 163, 177) 10%, rgba(255, 255, 255, 0) 95%);
+}
+
+/* parked from style.css:4219 — no selector match in site (PASS 4 audit) */
+.bg-gradient-emerald-blue-emerald-green {
+  background-image: linear-gradient(50deg, #09afea 0, #19e089 100%);
+}
+
+/* parked from style.css:4223 — no selector match in site (PASS 4 audit) */
+.bg-gradient-very-ghost-white {
+  background-image: linear-gradient(to bottom, #f4f6ff, #f7f8ff, #fafaff, #fdfdff, #ffffff);
+}
+
+/* parked from style.css:4232 — no selector match in site (PASS 4 audit) */
+.bg-gradient-fast-blue-purple-transparent {
+  background-image: linear-gradient(to right top, rgb(42, 70, 244), rgba(95, 66, 249, 0.9), rgba(131, 60, 252, 0.9), rgba(162, 51, 254, 0.9), rgba(191, 37, 255, 0.9));
+}
+
+/* parked from style.css:4236 — no selector match in site (PASS 4 audit) */
+.bg-gradient-fast-pink-light-yellow-transparent {
+  background-image: linear-gradient(to right top, rgba(247, 86, 127, 0.9), rgba(254, 113, 119, 0.9), rgba(255, 138, 116, 0.9), rgba(255, 163, 120, 0.9), rgba(255, 186, 131, 0.9));
+}
+
+/* parked from style.css:4240 — no selector match in site (PASS 4 audit) */
+.bg-gradient-sky-blue-pink-transparent {
+  background-image: linear-gradient(to right top, rgba(87, 88, 223, 0.9), rgba(165, 83, 203, 0.9), rgba(208, 85, 181, 0.9), rgba(234, 99, 160, 0.9), rgba(247, 121, 145, 0.9));
+}
+
+/* parked from style.css:4244 — no selector match in site (PASS 4 audit) */
+.bg-gradient-gray-light-dark-transparent {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(32, 35, 41, 0.8)), to(transparent));
+  background-image: linear-gradient(to top, rgba(32, 35, 41, 0.8) 0%, transparent 100%);
+}
+
+/* parked from style.css:4249 — no selector match in site (PASS 4 audit) */
+.bg-gradient-dark-transparent {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(7%, #141622), to(transparent));
+  background: linear-gradient(to top, #141622 7%, transparent 100%);
+}
+
+/* parked from style.css:4254 — no selector match in site (PASS 4 audit) */
+.bg-gradient-dark-gray-left-transparent {
+  background: -webkit-linear-gradient(right, rgba(24, 25, 28, 0.5), rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, rgba(24, 25, 28, 0.5), rgba(255, 255, 255, 0));
+}
+
+/* parked from style.css:4259 — no selector match in site (PASS 4 audit) */
+.bg-gradient-white-transparent {
+  background: linear-gradient(to top, #ffffff 20%, rgba(255, 255, 255, 0) 80%);
+}
+
+/* parked from style.css:4263 — no selector match in site (PASS 4 audit) */
+.bg-gradient-white-dark-transparent {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(35%, #ffffff), to(transparent));
+  background: linear-gradient(to top, #ffffff 30%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* parked from style.css:4268 — no selector match in site (PASS 4 audit) */
+.bg-gradient-white-bottom-transparent {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgb(255, 255, 255) 60%);
+}
+
+/* parked from style.css:4273 — no selector match in site (PASS 4 audit) */
+.bg-gradient-black-bottom-transparent {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* parked from style.css:4278 — no selector match in site (PASS 4 audit) */
+.bg-gradient-solitude-blue-transparent {
+  background: -webkit-linear-gradient(bottom, rgb(240, 244, 253), rgba(255, 255, 255, 0));
+  background: linear-gradient(to top, rgb(240, 244, 253), rgba(255, 255, 255, 0));
+}
+
+/* parked from style.css:4283 — no selector match in site (PASS 4 audit) */
+.bg-gradient-extra-midium-gray-transparent {
+  background: -webkit-gradient(left top, left bottom, color-stop(50%, rgba(0, 0, 0, 0.5)), color-stop(150%, rgba(20, 20, 20, 0.3)));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(20, 20, 20, 0.3) 150%);
+}
+
+/* parked from style.css:4288 — no selector match in site (PASS 4 audit) */
+.bg-dark-gray-transparent {
+  background-color: rgba(35, 35, 35, 0.8);
+}
+
+/* parked from style.css:4292 — no selector match in site (PASS 4 audit) */
+.bg-dark-gray-transparent-light {
+  background-color: rgba(35, 35, 35, 0.2);
+}
+
+/* parked from style.css:4296 — no selector match in site (PASS 4 audit) */
+.bg-dark-gray-transparent-medium {
+  background-color: rgba(35, 35, 35, 0.4);
+}
+
+/* parked from style.css:4300 — no selector match in site (PASS 4 audit) */
+.bg-medium-gray-transparent {
+  background-color: rgba(111, 111, 111, 0.1);
+}
+
+/* parked from style.css:4304 — no selector match in site (PASS 4 audit) */
+.bg-light-gray-transparent {
+  background-color: rgb(251, 251, 251);
+}
+
+/* parked from style.css:4308 — no selector match in site (PASS 4 audit) */
+.bg-medium-gray-transparent {
+  background-color: rgba(136, 136, 136, 0.3);
+}
+
+/* parked from style.css:4312 — no selector match in site (PASS 4 audit) */
+.bg-black-transparent-light {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* parked from style.css:4316 — no selector match in site (PASS 4 audit) */
+.bg-black-transparent-medium {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* parked from style.css:4320 — no selector match in site (PASS 4 audit) */
+.bg-black-transparent {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* parked from style.css:4324 — no selector match in site (PASS 4 audit) */
+.bg-white-transparent-extra-light,
+.bg-white-transparent-extra-light:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* parked from style.css:4329 — no selector match in site (PASS 4 audit) */
+.bg-white-transparent-very-light {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* parked from style.css:4333 — no selector match in site (PASS 4 audit) */
+.bg-white-transparent-light {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* parked from style.css:4337 — no selector match in site (PASS 4 audit) */
+.bg-white-transparent {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* parked from style.css:4342 — no selector match in site (PASS 4 audit) */
+.contain-background {
+  background-size: contain;
+}
+
+/* parked from style.css:4354 — no selector match in site (PASS 4 audit) */
+.fix-background {
+  position: relative;
+  background-size: cover !important;
+  -webkit-animation-duration: 0s;
+  -webkit-animation-fill-mode: none;
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* parked from style.css:4365 — no selector match in site (PASS 4 audit) */
+.background-size-inherit {
+  background-size: inherit !important;
+}
+
+/* parked from style.css:4369 — no selector match in site (PASS 4 audit) */
+.background-attachment-inherit {
+  background-attachment: inherit !important;
+}
+
+/* parked from style.css:4373 — no selector match in site (PASS 4 audit) */
+.background-position-left {
+  background-position: left center !important;
+}
+
+/* parked from style.css:4377 — no selector match in site (PASS 4 audit) */
+.background-position-left-bottom {
+  background-position: left bottom !important;
+}
+
+/* parked from style.css:4381 — no selector match in site (PASS 4 audit) */
+.background-position-left-center {
+  background-position: left center !important;
+}
+
+/* parked from style.css:4385 — no selector match in site (PASS 4 audit) */
+.background-position-right {
+  background-position: right center !important;
+}
+
+/* parked from style.css:4389 — no selector match in site (PASS 4 audit) */
+.background-position-right-top {
+  background-position: right top !important;
+}
+
+/* parked from style.css:4393 — no selector match in site (PASS 4 audit) */
+.background-position-center-top {
+  background-position: center top !important;
+}
+
+/* parked from style.css:4397 — no selector match in site (PASS 4 audit) */
+.background-position-left-top {
+  background-position: left top !important;
+}
+
+/* parked from style.css:4401 — no selector match in site (PASS 4 audit) */
+.background-position-right-bottom {
+  background-position: right bottom !important;
+}
+
+/* parked from style.css:4405 — no selector match in site (PASS 4 audit) */
+.background-position-center-bottom {
+  background-position: center bottom 0px !important;
+}
+
+/* parked from style.css:4413 — no selector match in site (PASS 4 audit) */
+.background-no-repeat {
+  background-repeat: no-repeat;
+}
+
+/* parked from style.css:4417 — no selector match in site (PASS 4 audit) */
+.background-no-repeat-y {
+  background-repeat-y: no-repeat;
+}
+
+/* parked from style.css:4421 — no selector match in site (PASS 4 audit) */
+.background-position-center {
+  background-position: center !important;
+}
+
+/* parked from style.css:4426 — no selector match in site (PASS 4 audit) */
+.background-size-100 {
+  background-size: 100% !important;
+}
+
+/* parked from style.css:4430 — no selector match in site (PASS 4 audit) */
+.background-size-auto-100 {
+  background-size: auto 100% !important;
+}
+
+/* parked from style.css:4434 — no selector match in site (PASS 4 audit) */
+.background-size-contain {
+  background-size: contain !important;
+}
+
+/* parked from style.css:4439 — no selector match in site (PASS 4 audit) */
+.border-6 {
+  border-width: 6px !important;
+}
+
+/* parked from style.css:4443 — no selector match in site (PASS 4 audit) */
+.border-7 {
+  border-width: 7px !important;
+}
+
+/* parked from style.css:4447 — no selector match in site (PASS 4 audit) */
+.border-8 {
+  border-width: 8px !important;
+}
+
+/* parked from style.css:4451 — no selector match in site (PASS 4 audit) */
+.border-9 {
+  border-width: 9px !important;
+}
+
+/* parked from style.css:4455 — no selector match in site (PASS 4 audit) */
+.border-10 {
+  border-width: 10px !important;
+}
+
+/* parked from style.css:4460 — no selector match in site (PASS 4 audit) */
+.border-dotted {
+  border-style: dotted !important;
+}
+
+/* parked from style.css:4464 — no selector match in site (PASS 4 audit) */
+.border-dashed {
+  border-style: dashed !important;
+}
+
+/* parked from style.css:4468 — no selector match in site (PASS 4 audit) */
+.border-solid {
+  border-style: solid !important;
+}
+
+/* parked from style.css:4472 — no selector match in site (PASS 4 audit) */
+.border-double {
+  border-style: double !important;
+}
+
+/* parked from style.css:4476 — no selector match in site (PASS 4 audit) */
+.border-groove {
+  border-style: groove !important;
+}
+
+/* parked from style.css:4480 — no selector match in site (PASS 4 audit) */
+.border-ridge {
+  border-style: ridge !important;
+}
+
+/* parked from style.css:4484 — no selector match in site (PASS 4 audit) */
+.border-inset {
+  border-style: inset !important;
+}
+
+/* parked from style.css:4488 — no selector match in site (PASS 4 audit) */
+.border-outset {
+  border-style: outset !important;
+}
+
+/* parked from style.css:4496 — no selector match in site (PASS 4 audit) */
+.border-hidden {
+  border-style: hidden !important;
+}
+
+/* parked from style.css:4501 — no selector match in site (PASS 4 audit) */
+.border-color-base-color {
+  border-color: var(--base-color) !important;
+}
+
+/* parked from style.css:4505 — no selector match in site (PASS 4 audit) */
+.border-color-white {
+  border-color: var(--white) !important;
+}
+
+/* parked from style.css:4509 — no selector match in site (PASS 4 audit) */
+.border-color-dark-gray {
+  border-color: var(--dark-gray) !important;
+}
+
+/* parked from style.css:4513 — no selector match in site (PASS 4 audit) */
+.border-color-medium-gray {
+  border-color: var(--medium-gray) !important;
+}
+
+/* parked from style.css:4517 — no selector match in site (PASS 4 audit) */
+.border-color-light-gray {
+  border-color: var(--light-gray) !important;
+}
+
+/* parked from style.css:4521 — no selector match in site (PASS 4 audit) */
+.border-color-very-light-gray {
+  border-color: var(--very-light-gray) !important;
+}
+
+/* parked from style.css:4533 — no selector match in site (PASS 4 audit) */
+.border-color-yellow {
+  border-color: var(--yellow) !important;
+}
+
+/* parked from style.css:4537 — no selector match in site (PASS 4 audit) */
+.border-color-orange {
+  border-color: var(--orange) !important;
+}
+
+/* parked from style.css:4541 — no selector match in site (PASS 4 audit) */
+.border-color-red {
+  border-color: var(--red) !important;
+}
+
+/* parked from style.css:4545 — no selector match in site (PASS 4 audit) */
+.border-color-transparent-dark-very-light {
+  border-color: rgba(35, 35, 35, 0.1) !important;
+}
+
+/* parked from style.css:4549 — no selector match in site (PASS 4 audit) */
+.border-color-transparent-dark-light {
+  border-color: rgba(35, 35, 35, 0.2) !important;
+}
+
+/* parked from style.css:4553 — no selector match in site (PASS 4 audit) */
+.border-color-transparent-white-very-light {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* parked from style.css:4561 — no selector match in site (PASS 4 audit) */
+.border-color-transparent-white {
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* parked from style.css:4569 — no selector match in site (PASS 4 audit) */
+.border-color-transparent-on-hover:hover {
+  border-color: transparent !important;
+}
+
+/* parked from style.css:4574 — no selector match in site (PASS 4 audit) */
+.border-gradient-light-pink-light-orange {
+  border-image: linear-gradient(to right top, #ffafbd, #ffb3b4, #ffb7ac, #ffbda5, #ffc3a0);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4588 — no selector match in site (PASS 4 audit) */
+.border-gradient-fast-pink-light-yellow {
+  border-image: linear-gradient(to right top, #f7567f, #fe7177, #ff8a74, #ffa378, #ffba83);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4593 — no selector match in site (PASS 4 audit) */
+.border-gradient-pink-orange {
+  border-image: linear-gradient(to right top, #de347f, #e73a70, #ed4461, #f05152, #ef5f43);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4598 — no selector match in site (PASS 4 audit) */
+.border-gradient-fast-blue-purple {
+  border-image: linear-gradient(to right top, #2a46f4, #5f42f9, #833cfc, #a233fe, #bf25ff);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4603 — no selector match in site (PASS 4 audit) */
+.border-gradient-light-pink-light-purple {
+  border-image: linear-gradient(to right top, #ed579b, #e855ad, #df57c0, #d15cd4, #bc63e8);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4608 — no selector match in site (PASS 4 audit) */
+.border-gradient-light-green-light-perotgreen {
+  border-image: linear-gradient(to right top, #5553e1, #a34dcc, #ce4fb5, #e75ca1, #f47291);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4613 — no selector match in site (PASS 4 audit) */
+.border-gradient-sky-blue-pink {
+  border-image: linear-gradient(to right top, #556fff, #556fff, #e05fc4, #f767a6, #ff798e);
+  border-image-slice: 1;
+}
+
+/* parked from style.css:4623 — no selector match in site (PASS 4 audit) */
+.border-radius-1px {
+  border-radius: 1px !important;
+}
+
+/* parked from style.css:4627 — no selector match in site (PASS 4 audit) */
+.border-radius-2px {
+  border-radius: 2px !important;
+}
+
+/* parked from style.css:4631 — no selector match in site (PASS 4 audit) */
+.border-radius-3px {
+  border-radius: 3px !important;
+}
+
+/* parked from style.css:4639 — no selector match in site (PASS 4 audit) */
+.border-radius-5px {
+  border-radius: 5px !important;
+}
+
+/* parked from style.css:4647 — no selector match in site (PASS 4 audit) */
+.border-radius-7px {
+  border-radius: 7px !important;
+}
+
+/* parked from style.css:4655 — no selector match in site (PASS 4 audit) */
+.border-radius-9px {
+  border-radius: 9px !important;
+}
+
+/* parked from style.css:4667 — no selector match in site (PASS 4 audit) */
+.border-radius-18px {
+  border-radius: 18px !important;
+}
+
+/* parked from style.css:4675 — no selector match in site (PASS 4 audit) */
+.border-radius-22px {
+  border-radius: 22px !important;
+}
+
+/* parked from style.css:4679 — no selector match in site (PASS 4 audit) */
+.border-radius-24px {
+  border-radius: 24px !important;
+}
+
+/* parked from style.css:4683 — no selector match in site (PASS 4 audit) */
+.border-radius-26px {
+  border-radius: 26px !important;
+}
+
+/* parked from style.css:4691 — no selector match in site (PASS 4 audit) */
+.border-radius-40px {
+  border-radius: 40px !important;
+}
+
+/* parked from style.css:4699 — no selector match in site (PASS 4 audit) */
+.border-radius-100px {
+  border-radius: 100px !important;
+}
+
+/* parked from style.css:4703 — no selector match in site (PASS 4 audit) */
+.border-radius-50 {
+  border-radius: 50% !important;
+}
+
+/* parked from style.css:4707 — no selector match in site (PASS 4 audit) */
+.border-radius-100 {
+  border-radius: 100% !important;
+}
+
+/* parked from style.css:4711 — no selector match in site (PASS 4 audit) */
+.no-border-radius {
+  border-radius: 0 !important;
+}
+
+/* parked from style.css:4715 — no selector match in site (PASS 4 audit) */
+.border-radius-top-left {
+  border-radius: 10px 0 0 10px !important;
+}
+
+/* parked from style.css:4734 — no selector match in site (PASS 4 audit) */
+.w-1px {
+  width: 1px !important;
+}
+
+/* parked from style.css:4738 — no selector match in site (PASS 4 audit) */
+.w-2px {
+  width: 2px !important;
+}
+
+/* parked from style.css:4742 — no selector match in site (PASS 4 audit) */
+.w-3px {
+  width: 3px !important;
+}
+
+/* parked from style.css:4746 — no selector match in site (PASS 4 audit) */
+.w-4px {
+  width: 4px !important;
+}
+
+/* parked from style.css:4750 — no selector match in site (PASS 4 audit) */
+.w-5px {
+  width: 5px !important;
+}
+
+/* parked from style.css:4754 — no selector match in site (PASS 4 audit) */
+.w-6px {
+  width: 6px !important;
+}
+
+/* parked from style.css:4758 — no selector match in site (PASS 4 audit) */
+.w-7px {
+  width: 7px !important;
+}
+
+/* parked from style.css:4762 — no selector match in site (PASS 4 audit) */
+.w-8px {
+  width: 8px !important;
+}
+
+/* parked from style.css:4766 — no selector match in site (PASS 4 audit) */
+.w-9px {
+  width: 9px !important;
+}
+
+/* parked from style.css:4770 — no selector match in site (PASS 4 audit) */
+.w-10px {
+  width: 10px !important;
+}
+
+/* parked from style.css:4774 — no selector match in site (PASS 4 audit) */
+.w-15px {
+  width: 15px !important;
+}
+
+/* parked from style.css:4778 — no selector match in site (PASS 4 audit) */
+.w-20px {
+  width: 20px !important;
+}
+
+/* parked from style.css:4782 — no selector match in site (PASS 4 audit) */
+.w-25px {
+  width: 25px !important;
+}
+
+/* parked from style.css:4786 — no selector match in site (PASS 4 audit) */
+.w-30px {
+  width: 30px !important;
+}
+
+/* parked from style.css:4798 — no selector match in site (PASS 4 audit) */
+.w-45px {
+  width: 45px !important;
+}
+
+/* parked from style.css:4802 — no selector match in site (PASS 4 audit) */
+.w-50px {
+  width: 50px !important;
+}
+
+/* parked from style.css:4806 — no selector match in site (PASS 4 audit) */
+.w-55px {
+  width: 55px !important;
+}
+
+/* parked from style.css:4810 — no selector match in site (PASS 4 audit) */
+.w-60px {
+  width: 60px !important;
+}
+
+/* parked from style.css:4814 — no selector match in site (PASS 4 audit) */
+.w-65px {
+  width: 65px !important;
+}
+
+/* parked from style.css:4822 — no selector match in site (PASS 4 audit) */
+.w-75px {
+  width: 75px !important;
+}
+
+/* parked from style.css:4830 — no selector match in site (PASS 4 audit) */
+.w-85px {
+  width: 85px !important;
+}
+
+/* parked from style.css:4838 — no selector match in site (PASS 4 audit) */
+.w-95px {
+  width: 95px !important;
+}
+
+/* parked from style.css:4846 — no selector match in site (PASS 4 audit) */
+.w-110px {
+  width: 110px !important;
+}
+
+/* parked from style.css:4850 — no selector match in site (PASS 4 audit) */
+.w-120px {
+  width: 120px !important;
+}
+
+/* parked from style.css:4858 — no selector match in site (PASS 4 audit) */
+.w-140px {
+  width: 140px !important;
+}
+
+/* parked from style.css:4866 — no selector match in site (PASS 4 audit) */
+.w-160px {
+  width: 160px !important;
+}
+
+/* parked from style.css:4870 — no selector match in site (PASS 4 audit) */
+.w-170px {
+  width: 170px !important;
+}
+
+/* parked from style.css:4878 — no selector match in site (PASS 4 audit) */
+.w-190px {
+  width: 190px !important;
+}
+
+/* parked from style.css:4890 — no selector match in site (PASS 4 audit) */
+.w-220px {
+  width: 220px !important;
+}
+
+/* parked from style.css:4898 — no selector match in site (PASS 4 audit) */
+.w-240px {
+  width: 240px !important;
+}
+
+/* parked from style.css:4906 — no selector match in site (PASS 4 audit) */
+.w-260px {
+  width: 260px !important;
+}
+
+/* parked from style.css:4914 — no selector match in site (PASS 4 audit) */
+.w-280px {
+  width: 280px !important;
+}
+
+/* parked from style.css:4918 — no selector match in site (PASS 4 audit) */
+.w-290px {
+  width: 290px !important;
+}
+
+/* parked from style.css:4930 — no selector match in site (PASS 4 audit) */
+.w-320px {
+  width: 320px !important;
+}
+
+/* parked from style.css:4934 — no selector match in site (PASS 4 audit) */
+.w-330px {
+  width: 330px !important;
+}
+
+/* parked from style.css:4938 — no selector match in site (PASS 4 audit) */
+.w-340px {
+  width: 340px !important;
+}
+
+/* parked from style.css:4941 — no selector match in site (PASS 4 audit) */
+.w-107px{
+    height : 107px !important;
+}
+
+/* parked from style.css:4945 — no selector match in site (PASS 4 audit) */
+.w-350px {
+  width: 350px !important;
+}
+
+/* parked from style.css:4949 — no selector match in site (PASS 4 audit) */
+.w-360px {
+  width: 360px !important;
+}
+
+/* parked from style.css:4953 — no selector match in site (PASS 4 audit) */
+.w-370px {
+  width: 370px !important;
+}
+
+/* parked from style.css:4957 — no selector match in site (PASS 4 audit) */
+.w-380px {
+  width: 380px !important;
+}
+
+/* parked from style.css:4961 — no selector match in site (PASS 4 audit) */
+.w-390px {
+  width: 390px !important;
+}
+
+/* parked from style.css:4973 — no selector match in site (PASS 4 audit) */
+.w-500px {
+  width: 500px !important;
+}
+
+/* parked from style.css:4977 — no selector match in site (PASS 4 audit) */
+.w-550px {
+  width: 550px !important;
+}
+
+/* parked from style.css:4981 — no selector match in site (PASS 4 audit) */
+.w-600px {
+  width: 600px !important;
+}
+
+/* parked from style.css:5001 — no selector match in site (PASS 4 audit) */
+.w-800px {
+  width: 800px !important;
+}
+
+/* parked from style.css:5013 — no selector match in site (PASS 4 audit) */
+.w-950px {
+  width: 950px !important;
+}
+
+/* parked from style.css:5097 — no selector match in site (PASS 4 audit) */
+.w-auto {
+  width: auto !important;
+}
+
+/* parked from style.css:5108 — no selector match in site (PASS 4 audit) */
+.h-2px {
+  height: 2px !important;
+}
+
+/* parked from style.css:5112 — no selector match in site (PASS 4 audit) */
+.h-3px {
+  height: 3px !important;
+}
+
+/* parked from style.css:5116 — no selector match in site (PASS 4 audit) */
+.h-4px {
+  height: 4px !important;
+}
+
+/* parked from style.css:5120 — no selector match in site (PASS 4 audit) */
+.h-5px {
+  height: 5px !important;
+}
+
+/* parked from style.css:5124 — no selector match in site (PASS 4 audit) */
+.h-6px {
+  height: 6px !important;
+}
+
+/* parked from style.css:5128 — no selector match in site (PASS 4 audit) */
+.h-7px {
+  height: 7px !important;
+}
+
+/* parked from style.css:5132 — no selector match in site (PASS 4 audit) */
+.h-8px {
+  height: 8px !important;
+}
+
+/* parked from style.css:5136 — no selector match in site (PASS 4 audit) */
+.h-9px {
+  height: 9px !important;
+}
+
+/* parked from style.css:5144 — no selector match in site (PASS 4 audit) */
+.h-11px {
+  height: 11px !important;
+}
+
+/* parked from style.css:5148 — no selector match in site (PASS 4 audit) */
+.h-12px {
+  height: 12px !important;
+}
+
+/* parked from style.css:5152 — no selector match in site (PASS 4 audit) */
+.h-13px {
+  height: 13px !important;
+}
+
+/* parked from style.css:5156 — no selector match in site (PASS 4 audit) */
+.h-14px {
+  height: 14px !important;
+}
+
+/* parked from style.css:5160 — no selector match in site (PASS 4 audit) */
+.h-15px {
+  height: 15px !important;
+}
+
+/* parked from style.css:5176 — no selector match in site (PASS 4 audit) */
+.h-35px {
+  height: 35px !important;
+}
+
+/* parked from style.css:5184 — no selector match in site (PASS 4 audit) */
+.h-42px {
+  height: 42px !important;
+}
+
+/* parked from style.css:5188 — no selector match in site (PASS 4 audit) */
+.h-45px {
+  height: 45px !important;
+}
+
+/* parked from style.css:5192 — no selector match in site (PASS 4 audit) */
+.h-50px {
+  height: 50px !important;
+}
+
+/* parked from style.css:5196 — no selector match in site (PASS 4 audit) */
+.h-55px {
+  height: 55px !important;
+}
+
+/* parked from style.css:5200 — no selector match in site (PASS 4 audit) */
+.h-60px {
+  height: 60px !important;
+}
+
+/* parked from style.css:5204 — no selector match in site (PASS 4 audit) */
+.h-65px {
+  height: 65px !important;
+}
+
+/* parked from style.css:5208 — no selector match in site (PASS 4 audit) */
+.h-70px {
+  height: 70px !important;
+}
+
+/* parked from style.css:5212 — no selector match in site (PASS 4 audit) */
+.h-75px {
+  height: 75px !important;
+}
+
+/* parked from style.css:5220 — no selector match in site (PASS 4 audit) */
+.h-85px {
+  height: 85px !important;
+}
+
+/* parked from style.css:5224 — no selector match in site (PASS 4 audit) */
+.h-90px {
+  height: 90px !important;
+}
+
+/* parked from style.css:5228 — no selector match in site (PASS 4 audit) */
+.h-95px {
+  height: 95px !important;
+}
+
+/* parked from style.css:5236 — no selector match in site (PASS 4 audit) */
+.h-110px {
+  height: 110px !important;
+}
+
+/* parked from style.css:5244 — no selector match in site (PASS 4 audit) */
+.h-130px {
+  height: 130px !important;
+}
+
+/* parked from style.css:5248 — no selector match in site (PASS 4 audit) */
+.h-140px {
+  height: 140px !important;
+}
+
+/* parked from style.css:5252 — no selector match in site (PASS 4 audit) */
+.h-150px {
+  height: 150px !important;
+}
+
+/* parked from style.css:5256 — no selector match in site (PASS 4 audit) */
+.h-160px {
+  height: 160px !important;
+}
+
+/* parked from style.css:5260 — no selector match in site (PASS 4 audit) */
+.h-170px {
+  height: 170px !important;
+}
+
+/* parked from style.css:5268 — no selector match in site (PASS 4 audit) */
+.h-190px {
+  height: 190px !important;
+}
+
+/* parked from style.css:5272 — no selector match in site (PASS 4 audit) */
+.h-200px {
+  height: 200px !important;
+}
+
+/* parked from style.css:5276 — no selector match in site (PASS 4 audit) */
+.h-210px {
+  height: 210px !important;
+}
+
+/* parked from style.css:5280 — no selector match in site (PASS 4 audit) */
+.h-220px {
+  height: 220px !important;
+}
+
+/* parked from style.css:5284 — no selector match in site (PASS 4 audit) */
+.h-230px {
+  height: 230px !important;
+}
+
+/* parked from style.css:5288 — no selector match in site (PASS 4 audit) */
+.h-240px {
+  height: 240px !important;
+}
+
+/* parked from style.css:5296 — no selector match in site (PASS 4 audit) */
+.h-260px {
+  height: 260px !important;
+}
+
+/* parked from style.css:5300 — no selector match in site (PASS 4 audit) */
+.h-270px {
+  height: 270px !important;
+}
+
+/* parked from style.css:5304 — no selector match in site (PASS 4 audit) */
+.h-280px {
+  height: 280px !important;
+}
+
+/* parked from style.css:5308 — no selector match in site (PASS 4 audit) */
+.h-290px {
+  height: 290px !important;
+}
+
+/* parked from style.css:5316 — no selector match in site (PASS 4 audit) */
+.h-350px {
+  height: 350px !important;
+}
+
+/* parked from style.css:5324 — no selector match in site (PASS 4 audit) */
+.h-450px {
+  height: 450px !important;
+}
+
+/* parked from style.css:5328 — no selector match in site (PASS 4 audit) */
+.h-480px {
+  height: 480px !important;
+}
+
+/* parked from style.css:5332 — no selector match in site (PASS 4 audit) */
+.h-500px {
+  height: 500px !important;
+}
+
+/* parked from style.css:5336 — no selector match in site (PASS 4 audit) */
+.h-550px {
+  height: 550px !important;
+}
+
+/* parked from style.css:5340 — no selector match in site (PASS 4 audit) */
+.h-580px {
+  height: 580px !important;
+}
+
+/* parked from style.css:5352 — no selector match in site (PASS 4 audit) */
+.h-700px {
+  height: 700px !important;
+}
+
+/* parked from style.css:5356 — no selector match in site (PASS 4 audit) */
+.h-750px {
+  height: 750px !important;
+}
+
+/* parked from style.css:5360 — no selector match in site (PASS 4 audit) */
+.h-800px {
+  height: 800px !important;
+}
+
+/* parked from style.css:5364 — no selector match in site (PASS 4 audit) */
+.h-850px {
+  height: 850px !important;
+}
+
+/* parked from style.css:5373 — no selector match in site (PASS 4 audit) */
+.extra-very-small-screen {
+  height: 250px !important;
+}
+
+/* parked from style.css:5381 — no selector match in site (PASS 4 audit) */
+.small-screen {
+  height: 400px !important;
+}
+
+/* parked from style.css:5385 — no selector match in site (PASS 4 audit) */
+.one-half-screen {
+  height: 600px !important;
+}
+
+/* parked from style.css:5389 — no selector match in site (PASS 4 audit) */
+.one-third-screen {
+  height: 700px !important;
+}
+
+/* parked from style.css:5393 — no selector match in site (PASS 4 audit) */
+.one-fourth-screen {
+  height: 800px !important;
+}
+
+/* parked from style.css:5397 — no selector match in site (PASS 4 audit) */
+.one-fifth-screen {
+  height: 900px !important;
+}
+
+/* parked from style.css:5401 — no selector match in site (PASS 4 audit) */
+.one-sixth-screen {
+  height: 1000px !important;
+}
+
+/* parked from style.css:5405 — no selector match in site (PASS 4 audit) */
+.one-seventh-screen {
+  height: 1200px !important;
+}

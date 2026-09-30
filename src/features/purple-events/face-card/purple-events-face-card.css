@@ -193,6 +193,28 @@
   outline-offset: 2px;
 }
 
+/* Heart left of share — filled visual only (save deferred) */
+.pe-face__heart--mob {
+  position: absolute;
+  top: 13px;
+  right: 36px;
+  z-index: 2;
+  display: block;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.pe-face__heart--mob img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pe-face__heart--desk {
+  display: none;
+}
+
 .pe-face__mob-main {
   display: flex;
   flex-direction: column;
@@ -496,6 +518,24 @@
     height: 12px;
     background: var(--pe-purple);
     border: 2px solid var(--pe-purple-border);
+  }
+
+  /* Desk heart — top-right (no share on Pair 2 desk); filled visual only */
+  .pe-face__heart--desk {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    z-index: 2;
+    display: block;
+    width: 25.6px;
+    height: 25.6px;
+    pointer-events: none;
+  }
+
+  .pe-face__heart--desk img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .pe-face__desk-body {

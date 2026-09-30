@@ -1,0 +1,167 @@
+/**
+ * Owned #univMeet + search — current look, Hostinger classes off the tools.
+ * Gate 1 (2026-09-27): desktop strip + drawer. Field look locked (class move only).
+ * Search autocomplete list stays Hostinger/existing (deferred).
+ */
+
+/* ——— Desktop page strip (>1366) ——— */
+[data-legacy-page] #univMeet.pgs-univmeet,
+.developer-student-shell #univMeet.pgs-univmeet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: #000;
+}
+
+[data-legacy-page] #univMeet.pgs-univmeet .pgs-univmeet__label,
+.developer-student-shell #univMeet.pgs-univmeet .pgs-univmeet__label {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+[data-legacy-page] #univMeet.pgs-univmeet .pgs-univmeet__chip,
+.developer-student-shell #univMeet.pgs-univmeet .pgs-univmeet__chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ddeeff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  min-width: 54px;
+  color: #eb0801;
+}
+
+[data-legacy-page] #univMeet.pgs-univmeet .pgs-univmeet__day,
+.developer-student-shell #univMeet.pgs-univmeet .pgs-univmeet__day {
+  display: block;
+  font-size: 26px;
+  font-weight: 700;
+  color: #eb0801;
+  line-height: 1;
+  margin-bottom: -5px;
+  white-space: nowrap;
+}
+
+[data-legacy-page] #univMeet.pgs-univmeet .pgs-univmeet__month,
+.developer-student-shell #univMeet.pgs-univmeet .pgs-univmeet__month {
+  white-space: nowrap;
+  color: #eb0801;
+}
+
+[data-legacy-page] .pgs-search,
+.developer-student-shell .pgs-search {
+  position: relative;
+}
+
+[data-legacy-page] .pgs-search .pgs-search__group,
+.developer-student-shell .pgs-search .pgs-search__group {
+  position: relative;
+  margin: 0 0 0 auto;
+}
+
+[data-legacy-page] .pgs-search .pgs-search__icon,
+.developer-student-shell .pgs-search .pgs-search__icon {
+  position: absolute;
+  top: 1px;
+  left: 9px;
+  color: #000;
+  font-weight: bold;
+}
+
+[data-legacy-page] .pgs-search .pgs-search__input,
+.developer-student-shell .pgs-search .pgs-search__input {
+  width: 100%;
+  min-width: 169px;
+  height: 29px;
+  box-sizing: border-box;
+  border: 1px solid #bababa;
+  outline: none;
+  font-size: 14px;
+  border-radius: 10px !important;
+  padding: 3px 3px 3px 37px;
+}
+
+[data-legacy-page] .pgs-search .pgs-autocomplete,
+.developer-student-shell .pgs-search .pgs-autocomplete {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 25px;
+  z-index: 9999;
+  overflow: hidden;
+  display: none;
+}
+
+@media (min-width: 1367px) {
+  /* Owner QC 2026-09-27: univMeet + search block ends under the header bell,
+     not at the bar's right edge. Bell right edge sits 90px (CSS, ×0.9 = 81
+     on screen) inside the bar edge on every desktop width — fixed px on purpose. */
+  [data-legacy-page] .pgs-strip-tools,
+  .developer-student-shell .pgs-strip-tools {
+    margin-right: 90px;
+  }
+
+  [data-legacy-page] #univMeet.pgs-univmeet,
+  .developer-student-shell #univMeet.pgs-univmeet {
+    box-sizing: content-box;
+    height: 36px;
+    min-height: 36px;
+  }
+
+  [data-legacy-page] #univMeet.pgs-univmeet .pgs-univmeet__chip,
+  .developer-student-shell #univMeet.pgs-univmeet .pgs-univmeet__chip {
+    min-height: 48px;
+  }
+}
+
+/* ——— Drawer (≤1366) — current locked sizes, owned search class ——— */
+#drawer .pgs-drawer-search {
+  width: 100%;
+  margin: 20px 0 0;
+  position: relative;
+  z-index: 5;
+}
+
+#drawer .pgs-drawer-search .pgs-search__group {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+#drawer .pgs-drawer-search .pgs-search__icon {
+  position: absolute;
+  top: 1px;
+  left: 9px;
+  color: #000;
+  font-weight: bold;
+}
+
+#drawer .pgs-drawer-search .pgs-search__input {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  min-height: 32px;
+  box-sizing: border-box;
+  border: 1px solid #bababa;
+  outline: none;
+  border-radius: 999px;
+  padding-left: 36px;
+  font-size: 13px;
+}
+
+#drawer.pgs-header-drawer .pgs-drawer-univmeet {
+  text-decoration: none;
+  cursor: pointer;
+}

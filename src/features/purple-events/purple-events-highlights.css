@@ -1,31 +1,18 @@
 /**
- * E10 #higlights — wraps shared PremiumHighlights for Events spacing.
- * Hide photo-track scrollbar (owner lock, same as upcoming rail).
+ * E10 #higlights — wraps shared PremiumHighlights for Events spacing only.
+ * Scroll / drag / focus ring = shared modular (do not re-implement here).
  */
 
 .pe-hl {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  overflow-x: clip;
+  overflow-x: visible;
 }
 
 .pe-hl .premium-highlights {
   margin-top: 48px;
   margin-bottom: 0;
-}
-
-.pe-hl .premium-highlights__photos--desk,
-.pe-hl .premium-highlights__scroller {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.pe-hl .premium-highlights__photos--desk::-webkit-scrollbar,
-.pe-hl .premium-highlights__scroller::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
 }
 
 @media (min-width: 1367px) {

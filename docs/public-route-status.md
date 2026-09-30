@@ -13,7 +13,7 @@ This inventory reconciles all 84 callable public methods identified in `legacy-r
 | `Contact/index` | 1 | `/contact` |
 | `Countriesaus/index`, `Countriescanada/index`, `Countrieseurope/index`, `Countriesfrance/index`, `Countriesgermany/index`, `Countriesmauritius/index`, `Countriesnz/index`, `Countriesothers/index`, `Countriesuk/index`, `Countriesusa/index` | 10 | Ten distinct destination screens and legacy-cased redirects |
 | `Cvreadyprogram/index` | 1 | `/cvreadyprogram` |
-| `Error_404/index` | 1 | `/error_404` and the Next.js not-found boundary |
+| `Error_404/index` | 1 | `/error_404` and the Next.js not-found boundary — modular Figma body (Hostinger HTML retired 2026-09-22) |
 | `Explorecountries/index` | 1 | `/explorecountries` |
 | `Finance/index` | 1 | `/finance` |
 | `Forgot_password/index` | 1 | `/forgot_password` UI |
@@ -28,7 +28,7 @@ This inventory reconciles all 84 callable public methods identified in `legacy-r
 | `Reset_password/reset_passwords` | 1 | `/reset_password` UI |
 | `Scholarship/index`, `Simplehome/index` | 2 | `/scholarship`, `/simplehome` |
 | `Singup/index` | 1 | Exact legacy `/singup` spelling retained |
-| `Studentresources/index`, `Unitieup/index`, `Usmlerotation/index` | 3 | `/studentresources`, `/unitieup`, `/usmlerotation` |
+| `Studentresources/index`, `Unitieup/index`, `Usmlerotation/index` | 3 | `/studentresources`; `/unitieup` modular Figma body (Hostinger HTML unhooked 2026-09-22); `/usmlerotation` |
 
 ## REPLACED SECURELY — 5 endpoints
 

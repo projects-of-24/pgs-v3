@@ -1,0 +1,895 @@
+/* PASS 4 · 1:1 copy · UNLINKED · do not edit values; UI-pass changes come later
+   Source: public/assets/css/style.css lines 4005-5414 (06. Background and border · 07. Width · 08. Height)
+   Parked (dead, no EXACT class-name match in site): 248 rules → parked/pgs-owned-parked-03.css
+   url() rewrites: none in this range. */
+/* ===================================
+    06. Background and border
+====================================== */
+/* Background color */
+.bg-base-color {
+  background-color: var(--base-color);
+}
+
+.bg-dark-gray,
+.bg-dark-gray:focus {
+  background-color: var(--dark-gray);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4022) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4026) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4030) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4034) */
+
+.bg-very-light-gray {
+  background-color: var(--very-light-gray);
+}
+
+.bg-red {
+  background-color: var(--red);
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4046) */
+
+.bg-green {
+  background-color: var(--green);
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4054) */
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4062) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4066) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4070) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4074) */
+
+.bg-dark-slate-blue {
+  background-color: var(--dark-slate-blue);
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4082) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4086) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4090) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4094) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4098) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4102) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4106) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4110) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4114) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4118) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4122) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4126) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4130) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4134) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4138) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4142) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4146) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4150) */
+
+/* Gradient background color */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4155) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4159) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4163) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4167) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4171) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4175) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4179) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4183) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4187) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4191) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4195) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4199) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4203) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4207) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4211) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4215) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4219) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4223) */
+
+/* Transparent background color */
+.bg-transparent {
+  background-color: transparent;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4232) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4236) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4240) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4244) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4249) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4254) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4259) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4263) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4268) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4273) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4278) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4283) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4288) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4292) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4296) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4300) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4304) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4308) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4312) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4316) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4320) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4324) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4329) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4333) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4337) */
+
+/* Background image */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4342) */
+
+.cover-background {
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  background-position: center center !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4354) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4365) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4369) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4373) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4377) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4381) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4385) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4389) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4393) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4397) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4401) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4405) */
+
+.background-repeat {
+  background-repeat: repeat;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4413) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4417) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4421) */
+
+/* Background size */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4426) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4430) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4434) */
+
+/* Border width */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4439) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4443) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4447) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4451) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4455) */
+
+/* Border style */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4460) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4464) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4468) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4472) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4476) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4480) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4484) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4488) */
+
+.border-none {
+  border-style: none !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4496) */
+
+/* Border color */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4501) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4505) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4509) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4513) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4517) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4521) */
+
+.border-color-light-medium-gray {
+  border-color: var(--light-medium-gray) !important;
+}
+
+.border-color-extra-medium-gray {
+  border-color: var(--extra-medium-gray) !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4533) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4537) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4541) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4545) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4549) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4553) */
+
+.border-color-transparent-white-light {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4561) */
+
+.border-color-transparent {
+  border-color: transparent !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4569) */
+
+/* Gradient border color */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4574) */
+
+.border-gradient-purple-pink {
+  border-image: linear-gradient(to right, #8b14b1, #ab019e, #c00c8b, #cd267b, #d53d6e);
+  border-image-slice: 1;
+  border: 3px solid;
+  border-image-source: linear-gradient(90deg, #9747FF 0%, #F756FF 50%, #0ABF8C 100%);
+  border-image-slice: 1;
+
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4588) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4593) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4598) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4603) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4608) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4613) */
+
+/* Border radius */
+.border-radius-0px {
+  border-radius: 0 !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4623) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4627) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4631) */
+
+.border-radius-4px {
+  border-radius: 4px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4639) */
+
+.border-radius-6px {
+  border-radius: 6px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4647) */
+
+.border-radius-8px {
+  border-radius: 8px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4655) */
+
+.border-radius-10px {
+  border-radius: 10px !important;
+}
+
+.border-radius-15px {
+  border-radius: 15px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4667) */
+
+.border-radius-20px {
+  border-radius: 20px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4675) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4679) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4683) */
+
+.border-radius-30px {
+  border-radius: 30px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4691) */
+
+.border-radius-50px {
+  border-radius: 50px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4699) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4703) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4707) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4711) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4715) */
+
+/* Parallax background */
+.parallax {
+  position: relative !important;
+  background-size: cover !important;
+  overflow: hidden;
+  background-attachment: fixed !important;
+  transition-timing-function: none;
+  -webkit-transition-timing-function: none;
+  transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+}
+
+/* ===================================
+    07. Width
+====================================== */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4734) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4738) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4742) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4746) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4750) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4754) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4758) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4762) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4766) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4770) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4774) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4778) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4782) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4786) */
+
+.w-35px {
+  width: 35px !important;
+}
+
+.w-40px {
+  width: 40px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4798) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4802) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4806) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4810) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4814) */
+
+.w-70px {
+  width: 70px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4822) */
+
+.w-80px {
+  width: 80px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4830) */
+
+.w-90px {
+  width: 90px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4838) */
+
+.w-100px {
+  width: 100px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4846) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4850) */
+
+.w-130px {
+  width: 130px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4858) */
+
+.w-150px {
+  width: 150px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4866) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4870) */
+
+.w-180px {
+  width: 180px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4878) */
+
+.w-200px {
+  width: 200px !important;
+}
+
+.w-210px {
+  width: 210px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4890) */
+
+.w-230px {
+  width: 230px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4898) */
+
+.w-250px {
+  width: 250px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4906) */
+
+.w-270px {
+  width: 270px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4914) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4918) */
+
+.w-300px {
+  width: 300px !important;
+}
+
+.w-310px {
+  width: 310px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4930) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4934) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4938) */
+/* parked → parked/pgs-owned-parked-03.css (style.css:4941) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4945) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4949) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4953) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4957) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4961) */
+
+.w-400px {
+  width: 400px !important;
+}
+
+.w-450px {
+  width: 450px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4973) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4977) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:4981) */
+
+.w-650px {
+  width: 650px !important;
+}
+
+.w-780px {
+  width: 780px !important;
+}
+
+.w-700px {
+  width: 700px !important;
+}
+
+.w-750px {
+  width: 750px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5001) */
+
+.w-850px {
+  width: 850px !important;
+}
+
+.w-900px {
+  width: 900px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5013) */
+
+.w-1000px {
+  width: 1000px !important;
+}
+
+.w-10 {
+  width: 10% !important;
+}
+
+.w-15 {
+  width: 15% !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
+.w-25 {
+  width: 25% !important;
+}
+
+.w-30 {
+  width: 30% !important;
+}
+
+.w-35 {
+  width: 35% !important;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.w-45 {
+  width: 45% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.w-55 {
+  width: 55% !important;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.w-65 {
+  width: 65% !important;
+}
+
+.w-70 {
+  width: 70% !important;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+.w-80 {
+  width: 80% !important;
+}
+
+.w-85 {
+  width: 85% !important;
+}
+
+.w-90 {
+  width: 90% !important;
+}
+
+.w-95 {
+  width: 95% !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5097) */
+
+/* ===================================
+    08. Height
+====================================== */
+.h-1px {
+  height: 1px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5108) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5112) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5116) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5120) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5124) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5128) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5132) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5136) */
+
+.h-10px {
+  height: 10px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5144) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5148) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5152) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5156) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5160) */
+
+.h-20px {
+  height: 20px !important;
+}
+
+.h-25px {
+  height: 25px !important;
+}
+
+.h-30px {
+  height: 30px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5176) */
+
+.h-40px {
+  height: 40px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5184) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5188) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5192) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5196) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5200) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5204) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5208) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5212) */
+
+.h-80px {
+  height: 80px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5220) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5224) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5228) */
+
+.h-100px {
+  height: 100px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5236) */
+
+.h-120px {
+  height: 120px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5244) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5248) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5252) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5256) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5260) */
+
+.h-180px {
+  height: 180px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5268) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5272) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5276) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5280) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5284) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5288) */
+
+.h-250px {
+  height: 250px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5296) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5300) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5304) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5308) */
+
+.h-300px {
+  height: 300px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5316) */
+
+.h-400px {
+  height: 400px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5324) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5328) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5332) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5336) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5340) */
+
+.h-600px {
+  height: 600px !important;
+}
+
+.h-650px {
+  height: 650px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5352) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5356) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5360) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5364) */
+
+.h-auto {
+  height: auto !important;
+}
+
+/* Screen height */
+/* parked → parked/pgs-owned-parked-03.css (style.css:5373) */
+
+.extra-small-screen {
+  height: 300px !important;
+}
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5381) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5385) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5389) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5393) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5397) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5401) */
+
+/* parked → parked/pgs-owned-parked-03.css (style.css:5405) */
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: auto;
+  }
+}
+

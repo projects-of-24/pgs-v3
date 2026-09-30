@@ -1,7 +1,9 @@
 /**
- * Shared highlights block. Lives under `src/features/shared/`. Pages import this. Do not copy the component.
+ * Shared highlights block. Lives under `src/features/shared/`. Pages import this.
+ * Do not copy the component. Do not rebuild scroll/drag in page wrappers.
  * Desktop `17055:12784` · phone `433:5182`. Spelling stays `#higlights`.
- * PLAB / AMC import this module at their copy gate. Do not invent their copy here.
+ * Rail interaction (wheel + drag, no focus ring) lives in `premium-highlights.tsx`.
+ * PLAB / AMC / Events / Courses / Uni Tie-up import this module.
  */
 export const PREMIUM_HIGHLIGHTS = {
   title: "#higlights",

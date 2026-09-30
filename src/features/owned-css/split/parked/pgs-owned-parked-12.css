@@ -1,0 +1,1254 @@
+/* PASS 8 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 21577-24339 range, 14. Blog · 15. Portfolio · 16. Shop · 17. Footer)
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:21715 — no selector match in site (PASS 8 audit) */
+.blog-only-text {
+  counter-reset: card-body;
+}
+
+/* parked from style.css:21719 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body {
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+/* parked from style.css:21725 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body .hover-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 300ms cubic-bezier(0.37, 0, 0.63, 1);
+  -webkit-transform: scale(1.1) rotate(-3deg);
+  transform: scale(1.1) rotate(-3deg);
+}
+
+/* parked from style.css:21741 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body:after {
+  counter-increment: card-body;
+  content: counter(card-body, decimal-leading-zero);
+  position: absolute;
+  font-size: 70px;
+  line-height: 70px;
+  letter-spacing: -3px;
+  top: 30px;
+  right: -8px;
+  font-weight: 600;
+  opacity: 0.1;
+  color: var(--dark-gray);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:21757 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body:hover .hover-img {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  -webkit-transform: scale(1) rotate(0deg);
+  transform: scale(1) rotate(0deg);
+}
+
+/* parked from style.css:21766 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body:hover:after {
+  opacity: 0.2;
+  color: var(--white);
+  right: 30px;
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:21774 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body:hover .card-title {
+  text-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+/* parked from style.css:21778 — no selector match in site (PASS 8 audit) */
+.blog-only-text .card-body:hover .categories-btn {
+  background: var(--white);
+  color: var(--dark-gray) !important;
+  -webkit-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  -webkit-transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 350ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:21788 — no selector match in site (PASS 8 audit) */
+.blog-metro figure .blog-image .blog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #1f232c;
+  background: linear-gradient(0deg, rgba(23, 23, 23, 0.8) 0, rgba(23, 23, 23, 0) 70%);
+  -webkit-transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+/* parked from style.css:21800 — no selector match in site (PASS 8 audit) */
+.blog-metro figure .categories-btn {
+  border: 1px solid transparent;
+}
+
+/* parked from style.css:21804 — no selector match in site (PASS 8 audit) */
+.blog-metro figure img {
+  -webkit-transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  width: 100%;
+}
+
+/* parked from style.css:21810 — no selector match in site (PASS 8 audit) */
+.blog-metro figure figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* parked from style.css:21816 — no selector match in site (PASS 8 audit) */
+.blog-metro figure .card-title {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:21820 — no selector match in site (PASS 8 audit) */
+.blog-metro figure:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: 0.5;
+}
+
+/* parked from style.css:21826 — no selector match in site (PASS 8 audit) */
+.blog-metro figure:hover .categories-btn {
+  background: transparent !important;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* parked from style.css:21912 — no selector match in site (PASS 8 audit) */
+.blog-simple figure .blog-image {
+  overflow: hidden;
+}
+
+/* parked from style.css:21916 — no selector match in site (PASS 8 audit) */
+.blog-simple figure .blog-hover-icon {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  transition: all 400ms cubic-bezier(0.37, 0, 0.63, 1);
+  opacity: 0;
+}
+
+/* parked from style.css:21924 — no selector match in site (PASS 8 audit) */
+.blog-simple figure figcaption {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+/* parked from style.css:21933 — no selector match in site (PASS 8 audit) */
+.blog-simple figure:hover .blog-hover-icon {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:21940 — no selector match in site (PASS 8 audit) */
+.blog-simple figure:hover .post-content .card-title a:hover {
+  color: var(--base-color);
+}
+
+/* parked from style.css:21944 — no selector match in site (PASS 8 audit) */
+.blog-simple figure:hover .blog-image img {
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:21951 — no selector match in site (PASS 8 audit) */
+.blog-simple figure:hover .blog-image .box-overlay {
+  opacity: 0.3;
+}
+
+/* parked from style.css:21955 — no selector match in site (PASS 8 audit) */
+.blog-simple figure:hover .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:21988 — no selector match in site (PASS 8 audit) */
+.blog-side-image .blog-box .blog-image {
+  min-height: 300px;
+  will-change: transform;
+  -webkit-transition: all 600ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 600ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:21995 — no selector match in site (PASS 8 audit) */
+.blog-side-image .blog-box .blog-image .blog-post-image-overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 600ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 600ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:22006 — no selector match in site (PASS 8 audit) */
+.blog-side-image .blog-box .blog-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* parked from style.css:22021 — no selector match in site (PASS 8 audit) */
+.blog-side-image .blog-box .blog-content .categories-btn {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  margin-left: 0;
+  margin-right: 5px;
+  line-height: 20px;
+  padding: 4px 15px;
+}
+
+/* parked from style.css:22030 — no selector match in site (PASS 8 audit) */
+.blog-side-image .blog-box:hover .blog-image {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:22035 — no selector match in site (PASS 8 audit) */
+.blog-side-image .blog-box:hover .blog-image .blog-post-image-overlay {
+  opacity: 0.4;
+}
+
+/* parked from style.css:22044 — no selector match in site (PASS 8 audit) */
+.blog-modern figure .blog-image {
+  margin-bottom: 48px;
+}
+
+/* parked from style.css:22048 — no selector match in site (PASS 8 audit) */
+.blog-modern figure .blog-image img {
+  -webkit-transition: all 900ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 900ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:22053 — no selector match in site (PASS 8 audit) */
+.blog-modern figure .post-content-wrapper {
+  position: absolute;
+  bottom: -51px;
+  width: 85%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  -webkit-box-shadow: 0px 4px 10px rgba(111, 111, 111, 0.1);
+  box-shadow: 0px 4px 10px rgba(111, 111, 111, 0.1);
+}
+
+/* parked from style.css:22064 — no selector match in site (PASS 8 audit) */
+.blog-modern figure .post-content-wrapper .post-content {
+  -webkit-transition: all 400ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 400ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:22075 — no selector match in site (PASS 8 audit) */
+.blog-modern figure:hover .blog-image img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:22080 — no selector match in site (PASS 8 audit) */
+.blog-modern figure:hover .post-content-wrapper .post-content .card-title {
+  color: var(--white);
+}
+
+/* parked from style.css:22084 — no selector match in site (PASS 8 audit) */
+.blog-modern figure:hover .post-content-wrapper .post-content .card-title:hover {
+  color: var(--white);
+}
+
+/* parked from style.css:22088 — no selector match in site (PASS 8 audit) */
+.blog-modern figure:hover .post-content-wrapper .post-content .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:22094 — no selector match in site (PASS 8 audit) */
+.blog-standard .blog-image {
+  position: relative;
+}
+
+/* parked from style.css:22098 — no selector match in site (PASS 8 audit) */
+.blog-standard .blog-image .blog-categories {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
+
+/* parked from style.css:22104 — no selector match in site (PASS 8 audit) */
+.blog-standard .entry-meta span {
+  position: relative;
+  margin-right: 20px;
+}
+
+/* parked from style.css:22109 — no selector match in site (PASS 8 audit) */
+.blog-standard .entry-meta span:last-child {
+  margin-right: 0;
+}
+
+/* parked from style.css:22113 — no selector match in site (PASS 8 audit) */
+.blog-standard .entry-meta span i {
+  margin-right: 7px;
+}
+
+/* parked from style.css:22118 — no selector match in site (PASS 8 audit) */
+.blog-comment {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+/* parked from style.css:22123 — no selector match in site (PASS 8 audit) */
+.blog-comment li {
+  padding-bottom: 65px;
+  position: relative;
+  list-style: none;
+}
+
+/* parked from style.css:22129 — no selector match in site (PASS 8 audit) */
+.blog-comment li:last-child {
+  border-bottom: medium none;
+  padding-bottom: 0;
+}
+
+/* parked from style.css:22134 — no selector match in site (PASS 8 audit) */
+.blog-comment li .btn-reply {
+  float: right;
+  font-size: 11px;
+  line-height: initial;
+  padding: 7px 20px 6px;
+  border-radius: 50px;
+  border: 1px solid rgba(44, 44, 44, 0.25);
+  background-color: var(--white);
+}
+
+/* parked from style.css:22144 — no selector match in site (PASS 8 audit) */
+.blog-comment li .btn-reply:hover {
+  border-color: var(--base-color);
+  background: var(--base-color);
+  color: var(--white);
+}
+
+/* parked from style.css:22150 — no selector match in site (PASS 8 audit) */
+.blog-comment li ul.child-comment {
+  list-style: outside none none;
+  margin-left: 70px;
+}
+
+/* parked from style.css:22155 — no selector match in site (PASS 8 audit) */
+.blog-comment li ul.child-comment li {
+  margin-top: 60px;
+  padding-bottom: 0;
+}
+
+/* parked from style.css:22160 — no selector match in site (PASS 8 audit) */
+.blog-comment>li:first-child {
+  padding-top: 0;
+}
+
+/* parked from style.css:22165 — no selector match in site (PASS 8 audit) */
+.pagination-style-01 .page-item .page-link {
+  border: 0;
+  padding: 0 2px;
+  margin: 0 7px;
+  background: 0 0;
+  color: var(--medium-gray);
+  min-width: 45px;
+  font-size: inherit;
+  text-align: center;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  line-height: 45px;
+  min-height: 45px;
+}
+
+/* parked from style.css:22180 — no selector match in site (PASS 8 audit) */
+.pagination-style-01 .page-item .page-link i {
+  line-height: 40px;
+}
+
+/* parked from style.css:22184 — no selector match in site (PASS 8 audit) */
+.pagination-style-01 .page-item .page-link:hover {
+  background: var(--white);
+  color: var(--dark-gray);
+  box-shadow: 0 0 10px rgba(23, 23, 23, 0.15) !important;
+}
+
+/* parked from style.css:22190 — no selector match in site (PASS 8 audit) */
+.pagination-style-01 .page-item .page-link:focus {
+  box-shadow: none;
+}
+
+/* parked from style.css:22200 — no selector match in site (PASS 8 audit) */
+.pagination-style-01 .page-item:first-child .page-link,
+.pagination-style-01 .page-item:last-child .page-link {
+  background: transparent;
+  box-shadow: none !important;
+}
+
+/* parked from style.css:22274 — no selector match in site (PASS 8 audit) */
+.portfolio-grid .work-1col li {
+  width: 100%;
+}
+
+/* parked from style.css:22587 — no selector match in site (PASS 8 audit) */
+.portfolio-attractive .portfolio-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* parked from style.css:22957 — no selector match in site (PASS 8 audit) */
+.portfolio-pagination {
+  position: relative;
+  z-index: 1;
+}
+
+/* parked from style.css:22962 — no selector match in site (PASS 8 audit) */
+.portfolio-pagination .bg-fancy-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  visibility: hidden;
+  background-size: cover;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* parked from style.css:23030 — no selector match in site (PASS 8 audit) */
+.portfolio-pagination h6,
+.portfolio-pagination span {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+/* parked from style.css:23036 — no selector match in site (PASS 8 audit) */
+.portfolio-pagination:hover .bg-fancy-image {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:23050 — no selector match in site (PASS 8 audit) */
+.portfolio-pagination:hover span {
+  color: var(--white);
+}
+
+/* parked from style.css:23199 — no selector match in site (PASS 8 audit) */
+.sticky-image-title {
+  position: relative;
+  display: flex;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding: 0;
+  width: 100%;
+}
+
+/* parked from style.css:23208 — no selector match in site (PASS 8 audit) */
+.sticky-image-title a {
+  padding: 25px 50px 25px;
+  width: 100%;
+}
+
+/* parked from style.css:23227 — no selector match in site (PASS 8 audit) */
+.sticky-category {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 32px;
+  height: 100%;
+  width: 50px;
+  justify-content: center;
+  top: 0;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:23331 — no selector match in site (PASS 8 audit) */
+.categories-style-01 .categories-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* parked from style.css:23354 — no selector match in site (PASS 8 audit) */
+.categories-style-01 a {
+  position: relative;
+}
+
+/* parked from style.css:23358 — no selector match in site (PASS 8 audit) */
+.categories-style-01 a:last-child:after {
+  content: "";
+  position: absolute;
+  border-bottom: 2px solid;
+  border-color: var(--dark-gray);
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:23370 — no selector match in site (PASS 8 audit) */
+.categories-style-01 .count-circle {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  opacity: 0;
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+/* parked from style.css:23381 — no selector match in site (PASS 8 audit) */
+.categories-style-01:hover .categories-box {
+  -webkit-transform: translate3d(0, -7px, 0);
+  transform: translate3d(0, -7px, 0);
+}
+
+/* parked from style.css:23386 — no selector match in site (PASS 8 audit) */
+.categories-style-01:hover a:last-child:after {
+  border-color: var(--dark-gray);
+  color: var(--dark-gray);
+  width: 100%;
+}
+
+/* parked from style.css:23392 — no selector match in site (PASS 8 audit) */
+.categories-style-01:hover .count-circle {
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:23398 — no selector match in site (PASS 8 audit) */
+.categories-style-01:hover img {
+  opacity: 0.6;
+}
+
+/* parked from style.css:23403 — no selector match in site (PASS 8 audit) */
+.categories-style-02 {
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:23408 — no selector match in site (PASS 8 audit) */
+.categories-style-02 .categories-box {
+  position: relative;
+}
+
+/* parked from style.css:23412 — no selector match in site (PASS 8 audit) */
+.categories-style-02:hover {
+  transform: translate3d(0, -8px, 0);
+}
+
+/* parked from style.css:23417 — no selector match in site (PASS 8 audit) */
+.categories-style-03 .categories-box {
+  position: relative;
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:23423 — no selector match in site (PASS 8 audit) */
+.categories-style-03 .categories-box .category-title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 30px;
+  width: 100%;
+}
+
+/* parked from style.css:23431 — no selector match in site (PASS 8 audit) */
+.categories-style-03 .categories-box .category-image {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:23438 — no selector match in site (PASS 8 audit) */
+.categories-style-03 .categories-box:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/* parked from style.css:23443 — no selector match in site (PASS 8 audit) */
+.categories-style-03 .categories-box:hover .category-image {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:23449 — no selector match in site (PASS 8 audit) */
+.shop-boxed {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/* parked from style.css:23454 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box {
+  border: 6px solid #fff;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+/* parked from style.css:23460 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box .shop-image {
+  overflow: hidden;
+}
+
+/* parked from style.css:23464 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box .shop-image a {
+  display: block;
+  overflow: hidden;
+}
+
+/* parked from style.css:23469 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box .shop-image .product-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:23480 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box .shop-image .shop-hover {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+/* parked from style.css:23488 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box .shop-image .shop-hover a {
+  -webkit-transform: translateY(15px);
+  transform: translateY(15px);
+  opacity: 0;
+}
+
+/* parked from style.css:23494 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box .shop-footer del {
+  margin-right: 8px;
+}
+
+/* parked from style.css:23498 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover {
+  -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+  border: 6px solid #fff;
+}
+
+/* parked from style.css:23504 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover .shop-image .product-overlay {
+  opacity: 1;
+}
+
+/* parked from style.css:23508 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover .shop-image .shop-hover {
+  bottom: 25px;
+}
+
+/* parked from style.css:23512 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover .shop-image .shop-hover a {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  opacity: 1;
+}
+
+/* parked from style.css:23520 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover .shop-image .shop-hover a:nth-child(2) {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+/* parked from style.css:23525 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover .shop-image .shop-hover a:nth-child(3) {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+/* parked from style.css:23530 — no selector match in site (PASS 8 audit) */
+.shop-boxed .shop-box:hover .shop-image .shop-hover a:nth-child(4) {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+/* parked from style.css:23536 — no selector match in site (PASS 8 audit) */
+.shop-modern {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/* parked from style.css:23663 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* parked from style.css:23669 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li {
+  position: relative;
+  margin-bottom: 2px;
+  padding: 0 25px;
+}
+
+/* parked from style.css:23675 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li a {
+  display: block;
+}
+
+/* parked from style.css:23679 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li a:hover .product-cb {
+  border-color: var(--dark-gray);
+}
+
+/* parked from style.css:23683 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li a:hover .product-cb:after {
+  opacity: 1;
+}
+
+/* parked from style.css:23687 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li .product-cb {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--medium-gray);
+  display: inline-block;
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+
+/* parked from style.css:23698 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li .product-cb:after {
+  width: 8px;
+  height: 8px;
+  background-color: var(--dark-gray);
+  border-radius: 100%;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* parked from style.css:23714 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li .item-qty {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: var(--very-light-gray);
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  font-size: 11px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--dark-gray);
+  line-height: 30px;
+}
+
+/* parked from style.css:23729 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:23733 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter.color-filter li .product-cb {
+  border: 0;
+}
+
+/* parked from style.css:23737 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter.color-filter li .product-cb:after {
+  background-color: var(--white);
+}
+
+/* parked from style.css:23741 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter.fabric-filter li .product-cb {
+  line-height: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+/* parked from style.css:23747 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter.fabric-filter li .product-cb:after {
+  background-color: var(--white);
+}
+
+/* parked from style.css:23751 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter.rating-filter li {
+  padding-left: 0;
+}
+
+/* parked from style.css:23755 — no selector match in site (PASS 8 audit) */
+.shop-sidebar .shop-filter.tag-cloud a {
+  padding: 5px 10px;
+}
+
+/* parked from style.css:23760 — no selector match in site (PASS 8 audit) */
+.toolbar-wrapper a img {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:23765 — no selector match in site (PASS 8 audit) */
+.toolbar-wrapper a:hover img {
+  opacity: 1;
+}
+
+/* parked from style.css:23770 — no selector match in site (PASS 8 audit) */
+.shop-image {
+  position: relative;
+}
+
+/* parked from style.css:23774 — no selector match in site (PASS 8 audit) */
+.shop-image .lable {
+  padding: 0 8px;
+  position: absolute;
+  left: 17px;
+  top: 17px;
+  color: var(--white);
+  font-size: 9px;
+  line-height: 21px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* parked from style.css:23791 — no selector match in site (PASS 8 audit) */
+.shop-image .lable.hot {
+  background-color: var(--red);
+}
+
+/* parked from style.css:23806 — no selector match in site (PASS 8 audit) */
+.single-product-thumb .slider-vertical {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 15px;
+}
+
+/* parked from style.css:23818 — no selector match in site (PASS 8 audit) */
+.product-image-slider img {
+  cursor: crosshair;
+}
+
+/* parked from style.css:23823 — no selector match in site (PASS 8 audit) */
+.shop-color {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+/* parked from style.css:23829 — no selector match in site (PASS 8 audit) */
+.shop-color li {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* parked from style.css:23835 — no selector match in site (PASS 8 audit) */
+.shop-color li>input[type=radio]+label {
+  display: flex;
+}
+
+/* parked from style.css:23839 — no selector match in site (PASS 8 audit) */
+.shop-color li>input[type=radio]+label span {
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  margin-right: 6px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* parked from style.css:23850 — no selector match in site (PASS 8 audit) */
+.shop-color li input[type=radio]:checked+label span:after {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: var(--white);
+  height: 28px;
+  width: 28px;
+  border: 2px solid var(--white);
+  border-radius: 100%;
+  text-align: center;
+  content: "";
+  font-weight: 900;
+}
+
+/* parked from style.css:23865 — no selector match in site (PASS 8 audit) */
+.shop-size {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+/* parked from style.css:23871 — no selector match in site (PASS 8 audit) */
+.shop-size li {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* parked from style.css:23878 — no selector match in site (PASS 8 audit) */
+.shop-size li>input[type=radio]+label {
+  display: flex;
+}
+
+/* parked from style.css:23882 — no selector match in site (PASS 8 audit) */
+.shop-size li>input[type=radio]+label span {
+  height: 37px;
+  width: 37px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid var(--extra-medium-gray);
+  text-align: center;
+  font-size: 12px;
+  line-height: normal;
+  color: var(--dark-gray);
+  font-weight: 500;
+}
+
+/* parked from style.css:23899 — no selector match in site (PASS 8 audit) */
+.shop-size li input[type=radio]:checked+label span:after {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: 37px;
+  width: 37px;
+  border: 1px solid var(--dark-gray);
+  border-radius: 100%;
+  text-align: center;
+  content: "";
+}
+
+/* parked from style.css:23950 — no selector match in site (PASS 8 audit) */
+.wishlist {
+  height: 54px;
+  width: 54px;
+}
+
+/* parked from style.css:23956 — no selector match in site (PASS 8 audit) */
+.cart-products th {
+  border-top: 0;
+  border-bottom: 1px solid var(--extra-medium-gray) !important;
+  padding: 15px 10px;
+  font-weight: normal;
+  text-transform: capitalize;
+  color: var(--dark-gray);
+}
+
+/* parked from style.css:23965 — no selector match in site (PASS 8 audit) */
+.cart-products td {
+  vertical-align: middle;
+  border-bottom: 1px solid var(--extra-medium-gray);
+  border-top: 0;
+  padding: 25px 10px;
+  color: var(--medium-gray);
+}
+
+/* parked from style.css:23973 — no selector match in site (PASS 8 audit) */
+.cart-products .product-remove {
+  width: 25px;
+}
+
+/* parked from style.css:23977 — no selector match in site (PASS 8 audit) */
+.cart-products .product-thumbnail {
+  width: 100px;
+}
+
+/* parked from style.css:23991 — no selector match in site (PASS 8 audit) */
+.coupon-code-panel {
+  position: relative;
+}
+
+/* parked from style.css:23995 — no selector match in site (PASS 8 audit) */
+.coupon-code-panel:before {
+  content: "\e8bf";
+  font-family: feather;
+  position: absolute;
+  left: 20px;
+  z-index: 2;
+  line-height: 50px;
+}
+
+/* parked from style.css:24004 — no selector match in site (PASS 8 audit) */
+.coupon-code-panel input {
+  margin: 0;
+  border: none;
+  border: 1px dashed var(--extra-medium-gray);
+  padding: 8px 70px 9px 45px;
+  width: 100%;
+  position: relative;
+  font-size: 14px;
+}
+
+/* parked from style.css:24014 — no selector match in site (PASS 8 audit) */
+.coupon-code-panel .apply-coupon-btn {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: var(--dark-gray);
+  line-height: 30px;
+  letter-spacing: 0;
+}
+
+/* parked from style.css:24026 — no selector match in site (PASS 8 audit) */
+.coupon-code-panel .apply-coupon-btn:active {
+  border-color: transparent;
+}
+
+/* parked from style.css:24030 — no selector match in site (PASS 8 audit) */
+.total-price-table th,
+.total-price-table td {
+  border-bottom: 1px solid #e4e4e4;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  vertical-align: top;
+}
+
+/* parked from style.css:24038 — no selector match in site (PASS 8 audit) */
+.total-price-table .total-amount th,
+.total-price-table .total-amount td {
+  border-bottom: 0;
+}
+
+/* parked from style.css:24104 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box {
+  overflow: hidden;
+  position: relative;
+}
+
+/* parked from style.css:24109 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box .category-title {
+  padding: 0 15px;
+  width: 100%;
+}
+
+/* parked from style.css:24114 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box img {
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:24119 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box .category-hover-content {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+/* parked from style.css:24131 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box .category-hover-content a {
+  opacity: 0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+}
+
+/* parked from style.css:24139 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box .category-hover-content a:hover {
+  color: var(--dark-gray);
+}
+
+/* parked from style.css:24151 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+
+/* parked from style.css:24157 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box:hover .category-hover-content {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:24172 — no selector match in site (PASS 8 audit) */
+.shop-category-02 .category-box:hover .category-hover-content a {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+/* parked from style.css:24188 — no selector match in site (PASS 8 audit) */
+footer.half-footer {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+/* parked from style.css:24193 — no selector match in site (PASS 8 audit) */
+footer.big-footer {
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+/* parked from style.css:24198 — no selector match in site (PASS 8 audit) */
+footer .footer-logo img {
+  max-height: 30px;
+}
+
+/* parked from style.css:24227 — no selector match in site (PASS 8 audit) */
+footer .newsletter-style-05 .input-small {
+  font-size: 14px;
+}
+
+/* parked from style.css:24241 — no selector match in site (PASS 8 audit) */
+.footer-dark {
+  color: var(--aluminium-grey);
+}
+
+/* parked from style.css:24245 — no selector match in site (PASS 8 audit) */
+.footer-dark p,
+.footer-dark a {
+  color: var(--aluminium-grey);
+}
+
+/* parked from style.css:24250 — no selector match in site (PASS 8 audit) */
+.footer-dark a:hover {
+  color: var(--base-color);
+}
+
+/* parked from style.css:24255 — no selector match in site (PASS 8 audit) */
+.footer-light a:hover {
+  color: var(--base-color);
+}
+
+/* parked from style.css:24260 — no selector match in site (PASS 8 audit) */
+.footer-navbar li {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+/* parked from style.css:24265 — no selector match in site (PASS 8 audit) */
+.footer-navbar li a:hover {
+  color: var(--base-color);
+}
+
+/* parked from style.css:24269 — no selector match in site (PASS 8 audit) */
+.footer-navbar li:last-child a {
+  padding-right: 0;
+}
+
+/* parked from style.css:24273 — no selector match in site (PASS 8 audit) */
+.footer-navbar li:first-child a {
+  padding-left: 0;
+}
+
+/* parked from style.css:24288 — no selector match in site (PASS 8 audit) */
+.footer-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  overflow: hidden;
+}
+
+/* parked from style.css:24296 — no selector match in site (PASS 8 audit) */
+.footer-demo ul li {
+  margin-bottom: 0;
+  line-height: 30px;
+}
+
+/* parked from style.css:24301 — no selector match in site (PASS 8 audit) */
+.footer-demo a:hover {
+  color: #fff;
+}
+
+/* parked from style.css:24305 — no selector match in site (PASS 8 audit) */
+.footer-demo img {
+  max-height: 55px !important;
+}
+
+/* parked from style.css:24309 — no selector match in site (PASS 8 audit) */
+.bg-gradient-chablis-red-quartz-white {
+  background-image: linear-gradient(to right, #fce7e1, #fce7e1, #efe2ea, #dcdaf5, #dcdaf5);
+}
+
+/* parked from style.css:24332 — no selector match in site (PASS 8 audit) */
+.bg-gradient-emerald-blue-emerald-green {
+  background-image: linear-gradient(50deg, #002b63 0, #d2093c 100%) !important
+}

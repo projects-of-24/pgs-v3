@@ -1,0 +1,232 @@
+/**
+ * CV Ready hero video — CR-OPEN.
+ * Desk `19054:15075` 1322×533 · overlay filter.
+ * Mob `19055:13342` 270×418 · filter overlap `19055:13357` (−54px) · chips ≤2 cols.
+ * iPad 601–1366: mob plate (interim).
+ */
+
+.cvready-program-video {
+  --cvready-program-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+}
+
+.cvready-program-video *,
+.cvready-program-video *::before,
+.cvready-program-video *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-video__inner {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvready-program-video__card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #1c2026;
+  /* Figma hero video frames — no stroke (Filter/Sort card keeps 25% black) */
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.cvready-program-video__player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.cvready-program-video__title {
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.cvready-program-video__title-line {
+  display: block;
+  line-height: 0.9;
+}
+
+.cvready-program-video__filter--overlay {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cvready-program-video__filter--below {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  /*
+   * Figma `19055:12530`: video y90 = left menu / #toggleBtn y90.
+   * Shell pull lands section ~74; 16px pad → card top ≈ 90.
+   */
+  .cvready-program-video {
+    --cvready-program-mob-toggle-align: 16px;
+    /* Figma filter y453.76 − video bottom (90+418=508) = −54.24 overlap */
+    --cvready-program-mob-filter-overlap: -54px;
+    padding: var(--cvready-program-mob-toggle-align) 0 16px;
+  }
+
+  .cvready-program-video__inner {
+    gap: 0;
+    padding: 0 12px;
+    position: relative;
+  }
+
+  .cvready-program-video__card {
+    /* Figma `19055:13342` 270×418 */
+    width: 270px;
+    height: 418px;
+    border-radius: 16px;
+  }
+
+  .cvready-program-video__player {
+    width: 270px;
+    height: 418px;
+    object-position: center 28%;
+  }
+
+  .cvready-program-video__title {
+    top: 29px;
+    right: 10px;
+    width: 60px;
+    font-size: 30px;
+    text-shadow: 2px 1px 0 #000;
+    text-align: left;
+  }
+
+  .cvready-program-video__filter--overlay {
+    display: none;
+  }
+
+  .cvready-program-video__filter--below {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    margin-top: var(--cvready-program-mob-filter-overlap);
+  }
+}
+
+/* —— iPad interim (= mob plate + filter overlap) —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-video {
+    --cvready-program-mob-filter-overlap: -54px;
+    padding: 16px 40px 24px;
+  }
+
+  .cvready-program-video__inner {
+    gap: 0;
+    position: relative;
+  }
+
+  .cvready-program-video__card {
+    width: 270px;
+    height: 418px;
+    border-radius: 16px;
+  }
+
+  .cvready-program-video__player {
+    width: 270px;
+    height: 418px;
+    object-position: center 28%;
+  }
+
+  .cvready-program-video__title {
+    top: 29px;
+    right: 10px;
+    width: 60px;
+    font-size: 30px;
+    text-shadow: 2px 1px 0 #000;
+  }
+
+  .cvready-program-video__filter--overlay {
+    display: none;
+  }
+
+  .cvready-program-video__filter--below {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    margin-top: var(--cvready-program-mob-filter-overlap);
+  }
+}
+
+/* —— Desktop >1366 —— */
+@media (min-width: 1367px) {
+  .cvready-program-video {
+    padding: 24px 0 40px;
+  }
+
+  .cvready-program-video__inner {
+    width: 1322px;
+    max-width: 1322px;
+    gap: 0;
+  }
+
+  .cvready-program-video__card {
+    width: 1322px;
+    height: 533px;
+    border-radius: 19.2px;
+  }
+
+  .cvready-program-video__player {
+    width: 1322px;
+    height: 533px;
+    object-position: center 30%;
+  }
+
+  .cvready-program-video__title {
+    top: 15px;
+    right: 13px;
+    width: 111px;
+    font-size: 51.2px;
+    line-height: 1;
+    text-shadow: 4px 2px 0 #000;
+    text-align: left;
+  }
+
+  .cvready-program-video__title-line {
+    line-height: 1;
+  }
+
+  .cvready-program-video__filter--overlay {
+    display: block;
+    top: 391px;
+    bottom: auto;
+    width: fit-content;
+    max-width: calc(100% - 40px);
+  }
+
+  .cvready-program-video__filter--below {
+    display: none;
+  }
+}

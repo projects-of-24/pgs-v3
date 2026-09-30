@@ -25,8 +25,92 @@ function setOpen(element: HTMLElement | null, open: boolean) {
     element.style.display = open ? "flex" : "none";
   }
   if (element.classList.contains("drawer") || element.classList.contains("overlay") || element.classList.contains("premium-modal-overlay")) {
+    // Reserve scrollbar width before locking overflow so body/footer do not shift.
+    if (open) {
+      const pad = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+      document.documentElement.style.setProperty("--pgs-scrollbar-pad", `${pad}px`);
+    } else {
+      document.documentElement.style.setProperty("--pgs-scrollbar-pad", "0px");
+    }
     document.body.classList.toggle("overflow-hidden", open);
   }
+}
+
+/**
+ * React header drawer (#drawer.pgs-header-drawer) — mac-menu behaviour.
+ * Anchored under the bar, toggles, no page lock, closes on outside click / Escape.
+ * Hostinger DSIH #drawer (+ #overlay) keeps the legacy open/close path.
+ */
+function isHeaderPopoverDrawer(drawer: HTMLElement | null): drawer is HTMLElement {
+  return !!drawer && drawer.classList.contains("pgs-header-drawer");
+}
+
+function placeHeaderDrawer(root: HTMLElement) {
+  const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+  if (!isHeaderPopoverDrawer(drawer)) return;
+  const trigger = root.querySelector<HTMLElement>(".pgs-header-menu") ?? document.querySelector<HTMLElement>(".pgs-header-menu");
+  if (!trigger) return;
+  const menu = trigger.getBoundingClientRect();
+  // Logout card is top: calc(100% + 8px) on the avatar wrap. Match that top.
+  const auth = root.querySelector<HTMLElement>(".pgs-header-auth-wrap")
+    ?? document.querySelector<HTMLElement>(".pgs-header-auth-wrap");
+  const anchorBottom = auth ? auth.getBoundingClientRect().bottom : menu.bottom;
+  let top = anchorBottom + 8;
+  let right = document.documentElement.clientWidth - menu.right;
+  const apply = () => {
+    drawer.style.setProperty("--pgs-drawer-top", `${Math.round(top)}px`);
+    drawer.style.setProperty("--pgs-drawer-right", `${Math.round(right)}px`);
+  };
+  apply();
+  // html{zoom:0.9} puts `right`/`top` and the button rect in different pixel spaces.
+  for (let pass = 0; pass < 3; pass += 1) {
+    const box = drawer.getBoundingClientRect();
+    const dx = menu.right - box.right;
+    const dy = anchorBottom + 8 - box.top;
+    if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) break;
+    right -= dx;
+    top += dy;
+    apply();
+  }
+  drawer.style.setProperty("--pgs-drawer-max-h", `${Math.max(240, Math.round(window.innerHeight - anchorBottom - 8 - 12))}px`);
+}
+
+function setHeaderDrawerOpen(root: HTMLElement, open: boolean, returnFocus = false) {
+  const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+  if (!isHeaderPopoverDrawer(drawer)) return;
+  const trigger = (root.querySelector<HTMLElement>(".pgs-header-menu") ?? document.querySelector<HTMLElement>(".pgs-header-menu"));
+
+  if (open) placeHeaderDrawer(root);
+
+  drawer.classList.toggle("open", open);
+  drawer.classList.toggle("active", open);
+  drawer.classList.toggle("show", open);
+  trigger?.setAttribute("aria-expanded", String(open));
+  if (!open && returnFocus) trigger?.focus();
+}
+
+function wireHeaderDrawerPopover(root: HTMLElement, signal: AbortSignal) {
+  const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+  if (!isHeaderPopoverDrawer(drawer)) return;
+  const isOpen = () => drawer.classList.contains("open");
+
+  document.addEventListener("mousedown", (event) => {
+    if (!isOpen()) return;
+    const target = event.target as HTMLElement;
+    if (drawer.contains(target) || target.closest(".pgs-header-menu")) return;
+    setHeaderDrawerOpen(root, false);
+  }, { signal });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !isOpen()) return;
+    setHeaderDrawerOpen(root, false, true);
+  }, { signal });
+
+  const placeIfOpen = () => {
+    if (isOpen()) placeHeaderDrawer(root);
+  };
+  window.addEventListener("resize", placeIfOpen, { signal });
+  window.visualViewport?.addEventListener("resize", placeIfOpen, { signal });
 }
 
 function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
@@ -41,9 +125,14 @@ function wireRetainedSidebar(root: HTMLElement, signal: AbortSignal) {
     toggle.setAttribute("aria-controls", "sidebar");
     toggle.setAttribute("aria-expanded", String(open));
     toggle.classList.toggle("hidenone", open);
+    // Icon-font arrow flip for the string strip only. The React strip renders an
+    // inline SVG (<PgsIcon/>, V-1); adding `bi-*` classes to it would draw the
+    // font glyph on top of the SVG while icon.min.css is still loaded.
     const icon = toggle.querySelector("i");
-    icon?.classList.toggle("bi-arrow-right-square-fill", !open);
-    icon?.classList.toggle("bi-arrow-left-square-fill", open);
+    if (icon && !icon.classList.contains("pgs-icon")) {
+      icon.classList.toggle("bi-arrow-right-square-fill", !open);
+      icon.classList.toggle("bi-arrow-left-square-fill", open);
+    }
   };
 
   // Do not force-close on rewire. A later effect re-run (including after the
@@ -574,6 +663,7 @@ export function LegacyPage({ html, page, studentState="anonymous", children }: P
     const options = { signal: abort.signal };
     root.dataset.interactionsReady = "true";
     wireRetainedSidebar(root, abort.signal);
+    wireHeaderDrawerPopover(root, abort.signal);
 
     const popupWindow = window as Window & {
       showLoginRequiredPopup?: (event: Event) => void;
@@ -646,6 +736,11 @@ export function LegacyPage({ html, page, studentState="anonymous", children }: P
       ) {
         event.preventDefault();
         const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+        if (isHeaderPopoverDrawer(drawer)) {
+          // mac menu: same button opens and closes; no overlay, no scroll lock.
+          setHeaderDrawerOpen(root, !drawer.classList.contains("open"));
+          return;
+        }
         const overlay = (root.querySelector("#overlay") ?? document.querySelector("#overlay")) as HTMLElement | null;
         setOpen(drawer, true);
         setOpen(overlay, true);
@@ -654,6 +749,10 @@ export function LegacyPage({ html, page, studentState="anonymous", children }: P
 
       if (target.closest("#drawer .btn-toggle-mobile") || target.closest("#overlay")) {
         const drawer = (root.querySelector("#drawer") ?? document.querySelector("#drawer")) as HTMLElement | null;
+        if (isHeaderPopoverDrawer(drawer)) {
+          setHeaderDrawerOpen(root, false, true);
+          return;
+        }
         const overlay = (root.querySelector("#overlay") ?? document.querySelector("#overlay")) as HTMLElement | null;
         setOpen(drawer, false);
         setOpen(overlay, false);

@@ -1,0 +1,14 @@
+/* PASS 1 · 1:1 copy · UNLINKED · do not edit values; UI-pass changes come later
+   Source: public/assets/css/style.css lines 33264-33268 ("custom client updates" comment + html zoom)
+   Owner lock: html { zoom: 0.9 } STAYS ON. No x0.9 bake anywhere else.
+   Dependency: src/app/globals.css:1174 and :1216 counter-zoom with 1.111111 (= 1/0.9);
+   if this rule is ever removed or changed, those counter-zooms break.
+   Cascade position: in the source this rule sits AFTER P11 (style.css:29001-33263) and
+   BEFORE P12 (style.css:33269+). The split barrel imports it in that slot. No other rule in
+   style.css / responsive.css sets html zoom (grep 2026-09-25: only .skrollr-zoom,
+   .animation-zoom, .btn-zoom, mfp zoom-anim classes). */
+/*custom client updates */
+html 
+{
+zoom: 0.9;
+}
