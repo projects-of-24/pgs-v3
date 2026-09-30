@@ -18,8 +18,8 @@
 [data-legacy-page] #sidebar[data-pgs-sidebar="react"],
 .developer-student-shell #sidebar[data-pgs-sidebar="react"] {
   background: #bbc8ff;
-  border-radius: 16px;
   color: #000;
+  /* border-radius: from the 1:1 copy (10 ≤800, 16 ≥801) — same as the string panel (T-2) */
 }
 
 /* Dropdown card — Figma 19067:15187: white, 1px black, radius 8, Roboto Medium centered, 10px gaps */
@@ -106,14 +106,42 @@
     margin: 10px 0 10px 40px; /* under the label (icon 28 + gap) */
   }
 
-  /* Name flows like the string's "Welcome <br> Name" (no extra block spacing) */
-  [data-pgs-sidebar="react"] .pgs-sidebar__name {
-    display: inline;
+}
+
+/* Name flows like the string's "Welcome <br> Name" (no extra block spacing) — every band ≤1366 */
+[data-pgs-sidebar="react"] .pgs-sidebar__name {
+  display: inline;
+}
+
+/* ——— Wide iPad 801–1366 + desktop >1366: card pops out right of the row ———
+   T-2 (owner 2026-09-27): 801–1366 keeps the QC'd string-panel look (Hostinger 1:1 rows:
+   20px, padding 6, margin 10, welcome 48/48). Only the #exploreCountries card plumbing lives here. */
+@media (min-width: 801px) {
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active {
+    overflow: visible !important; /* card must escape the panel edge */
+  }
+
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active > .pgs-sidebar__list,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active > .pgs-sidebar__list {
+    overflow: visible !important;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__row {
+    position: relative;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__drop {
+    position: absolute;
+    left: calc(100% - 32px); /* Figma: card x 241 on a 273 row */
+    top: -2px;
+    width: 167px;
+    z-index: 2;
   }
 }
 
-/* ——— Wide iPad 801–1366 + desktop >1366: Figma v2 rows, card pops out right ——— */
-@media (min-width: 801px) {
+/* ——— Desktop >1366: Figma v2 rows + panel 373×750 ——— */
+@media (min-width: 1367px) {
   [data-legacy-page] #sidebar[data-pgs-sidebar="react"],
   .developer-student-shell #sidebar[data-pgs-sidebar="react"] {
     display: none;
@@ -123,16 +151,10 @@
   [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active,
   .developer-student-shell #sidebar[data-pgs-sidebar="react"].active {
     display: flex;
-    overflow: visible !important; /* card must escape the panel edge */
-  }
-
-  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active > .pgs-sidebar__list,
-  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active > .pgs-sidebar__list {
-    overflow: visible !important;
   }
 
   [data-pgs-sidebar="react"] .pgs-sidebar__head {
-    position: relative;
+    position: relative; /* #close_Btn anchors to the head (Figma); ≤1366 it anchors to the panel like the string */
   }
 
   [data-pgs-sidebar="react"] .pgs-sidebar__welcome {
@@ -208,14 +230,6 @@
     object-fit: contain;
   }
 
-  [data-pgs-sidebar="react"] .pgs-sidebar__drop {
-    position: absolute;
-    left: calc(100% - 32px); /* Figma: card x 241 on a 273 row */
-    top: -2px;
-    width: 167px;
-    z-index: 2;
-  }
-
   /* Bottom row — Figma: 28px icon, 8px gap, 20 Roboto, 25px between */
   [data-pgs-sidebar="react"] .pgs-sidebar__foot {
     display: flex;
@@ -241,13 +255,13 @@
   [data-pgs-sidebar="react"] .pgs-sidebar__foot-link img {
     width: 28px;
     height: 28px;
-    margin: 0;
+    /* Locked T-1 look: every foot icon carried .mb-10 (10% !important) on desktop; keep that
+       for all three now that the Login/Logout icon has no .mb-10 (string parity ≤1366). */
+    margin: 0 0 10% !important;
     object-fit: contain;
   }
-}
 
-/* ——— Desktop >1366: Figma v2 panel 373×750 ——— */
-@media (min-width: 1367px) {
+  /* Panel 373×750 */
   [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active,
   .developer-student-shell #sidebar[data-pgs-sidebar="react"].active {
     width: 373px !important;

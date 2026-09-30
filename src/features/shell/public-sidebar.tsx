@@ -124,7 +124,8 @@ export function PublicSidebar({ signedIn, name, loginHref = "/login", rows = SID
             className="text-black fs-20 pgs-sidebar__foot-link"
             data-login-required={link.loginRequired ? "true" : undefined}
           >
-            <img src={SIDEBAR_ICONS[link.icon]} className="d-block mb-10" alt="" data-no-retina="" />
+            {/* string parity (T-2): Profile / Saved List icons carry mb-10, the Login/Logout icon does not */}
+            <img src={SIDEBAR_ICONS[link.icon]} className={link.icon === "logout" ? "d-block" : "d-block mb-10"} alt="" data-no-retina="" />
             {link.label}
           </a>
         ))}

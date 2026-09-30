@@ -114,10 +114,6 @@ export function CvreadyProgramDiscover() {
     return items.filter((item) => itemHaystack(item).includes(q));
   }, [items, query]);
 
-  useEffect(() => {
-    setPage(0);
-  }, [query]);
-
   const pageCount = Math.max(1, Math.ceil(filtered.length / pageSize));
   const safePage = Math.min(page, pageCount - 1);
   const pageItems = filtered.slice(
@@ -192,7 +188,10 @@ export function CvreadyProgramDiscover() {
           autoComplete="off"
           placeholder={placeholder}
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setPage(0); // back to page 1 on every new search (was a useEffect on query)
+          }}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

@@ -21,9 +21,12 @@ export function GET() {
     return new Response("owned split barrel has no imports", { status: 500 });
   }
 
-  const parts = [
-    "/* OWN-LINK-H · /preview/header only · 1:1 split concatenated in barrel order · parked files excluded */"
-  ];
+  const parts: string[] = [];
+  // `@import url(...)` (Google Fonts: Bebas Neue, Roboto, Caveat…) is only honoured at the very
+  // top of a stylesheet. P1 carried them and used to be first; since P0 (vendor-used) sits before
+  // it, hoist every @import out of the files and emit them first (V-1 fix, 2026-09-27).
+  const hoisted: string[] = [];
+  const IMPORT_RE = /^\s*@import\s+url\([^)]*\)[^;\n]*;[ \t]*$/gm; // url() may contain ";" (Roboto axes)
   for (const file of files) {
     if (!OWNED_FILE.test(file) || file.includes("parked") || file.includes("/")) {
       return new Response(`refused import ${file}`, { status: 500 });
@@ -32,11 +35,21 @@ export function GET() {
     if (path.dirname(full) !== SPLIT_DIR) {
       return new Response(`refused import ${file}`, { status: 500 });
     }
+    const css = readFileSync(full, "utf8").replace(IMPORT_RE, (line) => {
+      hoisted.push(line.trim());
+      return "";
+    });
     parts.push(`/* === ${file} === */`);
-    parts.push(readFileSync(full, "utf8"));
+    parts.push(css);
   }
 
-  return new Response(parts.join("\n"), {
+  const out = [
+    ...hoisted,
+    "/* OWN-LINK-H · owned-split routes · 1:1 split concatenated in barrel order · parked files excluded */",
+    ...parts
+  ];
+
+  return new Response(out.join("\n"), {
     headers: {
       "content-type": "text/css; charset=utf-8",
       "cache-control": "no-store",

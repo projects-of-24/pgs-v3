@@ -42,7 +42,39 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Private repo without paid GitHub Code Security: code scanning cannot receive
+      # uploads, so we keep the results in the run instead (owner decision 2026-09-27).
       - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:javascript-typescript"
+          upload: never
+          output: codeql-results
+
+      - name: Save CodeQL report (downloadable from the run)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codeql-sarif
+          path: codeql-results/
+          if-no-files-found: warn
+
+      - name: Summarise findings and fail on errors
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(codeql-results/*.sarif)
+          if [ ${#files[@]} -eq 0 ]; then echo "No SARIF produced"; exit 1; fi
+          total=$(jq '[.runs[].results[]] | length' "${files[@]}" | awk '{s+=$1} END {print s+0}')
+          errors=$(jq '[.runs[] | (.tool.driver.rules // []) as $r | .results[] | select((.level // $r[.rule.index // .ruleIndex // -1].defaultConfiguration.level // "warning") == "error")] | length' "${files[@]}" | awk '{s+=$1} END {print s+0}')
+          {
+            echo "## CodeQL findings: $total (errors: $errors)"
+            echo ""
+            echo "| Level | Rule | File:line | Message |"
+            echo "|---|---|---|---|"
+            jq -r '.runs[] | (.tool.driver.rules // []) as $r | .results[] | "| \((.level // $r[.rule.index // .ruleIndex // -1].defaultConfiguration.level // "warning")) | \(.ruleId) | \(.locations[0].physicalLocation.artifactLocation.uri):\(.locations[0].physicalLocation.region.startLine) | \(.message.text | gsub("\n"; " ") | .[0:160]) |"' "${files[@]}"
+            echo ""
+            echo "Full report: download the **codeql-sarif** artifact from this run."
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "CodeQL: $total findings, $errors at error level"
+          if [ "$errors" -gt 0 ]; then echo "::error::CodeQL found $errors error-level issue(s) — see the run summary"; exit 1; fi

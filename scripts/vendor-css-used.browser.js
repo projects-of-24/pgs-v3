@@ -24,10 +24,10 @@
   const matches = (sel) => {
     for (const part of sel.split(/,(?![^(]*\))/)) {
       const p = part.trim(); if (!p) continue;
-      try { if (document.querySelector(p)) return true; } catch (e) { /* unsupported selector */ }
+      try { if (document.querySelector(p)) return true; } catch { /* unsupported selector */ }
       const s = strip(p).trim().replace(/[\s>+~]+$/, '');
       if (!s) return false;
-      try { if (document.querySelector(s)) return true; } catch (e) { /* ignore */ }
+      try { if (document.querySelector(s)) return true; } catch { /* ignore */ }
     }
     return false;
   };
