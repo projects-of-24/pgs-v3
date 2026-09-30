@@ -21,8 +21,16 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
    *   /preview/header  — chrome lab (OWN-LINK-H)
    *   /preview/about   — About H-R pass 2
    *   /about           — About LIVE cutover (2026-09-27, owner QC passed + locked)
+   *   /preview/finance — Finance H-R pass 2
+   *   /finance         — Finance LIVE cutover (2026-09-30)
    */
-  const OWNED_SPLIT_ROUTES = new Set(["/preview/header", "/preview/about", "/about"]);
+  const OWNED_SPLIT_ROUTES = new Set([
+    "/preview/header",
+    "/preview/about",
+    "/about",
+    "/preview/finance",
+    "/finance"
+  ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs and on H-R done routes (React chrome, same as the QC'd lab). */
   const skipHostingerJs = isPreviewLab || isOwnedSplitRoute;

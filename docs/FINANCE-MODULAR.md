@@ -10,8 +10,8 @@ Branch: `feat/finance-modular`
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (QC lab)** | `/preview/finance` | Same modular body + side-test banner. |
-| **Live** | `/finance` | **CUTOVER DONE** — modular React body, Hostinger-free. |
+| **Preview (QC lab)** | `/preview/finance` | Same modular body, React chrome, owned split. No side-test banner (removed 2026-09-09; never re-add). |
+| **Live** | `/finance` | **H-R DONE (2026-09-30)** — same tree as the lab (`<PublicHeader/>` · `<PublicStrip/>` · `FinancePreviewShell live` · `<PublicFooter/>`), owned split via `OWNED_SPLIT_ROUTES`, no Hostinger CSS/JS, no chrome strings. |
 | **CMS logos** | `/admin/content/modules/finance_partner_logos` | Swap partner logo images (W1). |
 
 Legacy Hostinger HTML (`src/legacy/generated/finance/*`) is **no longer served** by `/finance`. Keep files as archive until owner deletes.
