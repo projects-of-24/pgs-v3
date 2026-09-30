@@ -16,7 +16,7 @@ description: >-
 
 **Layout / edges / responsive:** always run [`pgs-scout-what-why-how`](../pgs-scout-what-why-how/SKILL.md) before CSS — scout live + preview, WHAT · WHY · HOW, then this propose block.
 
-**Chrome lock:** do not reopen React chrome remount (`PublicHeader` / drop `dangerouslySetInnerHTML`) during body gates. That pass is parked until after Events + Countries (see master workflow). Body work uses the existing shared chrome mount pattern.
+**Chrome:** body gates must not drive-by chrome. Header remount phase is **reopened 2026-09-25** — only via skill `pgs-header-chrome-phase` + `docs/HEADER-CHROME-PHASE.md`, after `GO AHEAD`, one gate. **Never call chrome “done” while pages still DSIH the header/footer string.** For each new chrome block: **Hostinger/legacy CSS reference → owned CSS pass → then UI** (do not invent floating-menu CSS from scratch).
 
 ## Rule (verbatim)
 
@@ -26,9 +26,10 @@ description: >-
 
 1. **Do not make your own assumptions.** If something is unclear (breakpoint, Hostinger parity, which surface, invent vs keep), ask. Do not invent a constraint the owner did not state.
 2. **Owner is implementing now.** Do **not** treat Hostinger / legacy freeze as a default blocker unless the owner says so for that task. Hostinger CSS is **reference only** for public chrome — port into `src/app/globals.css` (see `pgs-modular-public-chrome` / `docs/MODULAR-PUBLIC-FRONTEND.md`).
-3. **Explain the plan → wait for owner approval (`GO AHEAD` / yes) → then change code.** Never silently edit, “quick fix,” or ship CSS/JS/HTML before approval.
-4. **Content pass, then code.** On a position or layout correction: assess the named content relationship first (under which card, which edge, which band). No CSS in that pass. Code only after the owner confirms the assessment. One relationship per edit. See `pgs-master-workflow`.
-4. If you already started editing without approval: **revert immediately**, then propose.
+3. **Fable writes the architect plan. This agent implements it after `GO AHEAD`.** Model: `claude-fable-5-thinking-high`. Plan only — Fable does not edit files. A live QC nudge the owner already named stays a direct edit. Full path: `pgs-master-workflow` → Architect, then implement.
+4. **Explain that plan → wait for owner approval (`GO AHEAD` / yes) → then change code.** Never silently edit, “quick fix,” or ship CSS/JS/HTML before approval.
+5. **Content pass, then code.** On a position or layout correction: assess the named content relationship first (under which card, which edge, which band). No CSS in that pass. Code only after the owner confirms the assessment. One relationship per edit. See `pgs-master-workflow`.
+6. If you already started editing without approval: **revert immediately**, then propose.
 
 ## Required proposal format (every code change)
 
@@ -60,7 +61,7 @@ Owner edits in DevTools then asks to lock values. For **position / size / spacin
 1. Still show the **exact hard px** they scouted (per band if they gave bands).
 2. **Always** also suggest a better responsive option when one exists — e.g. `clamp(min, vw/%, max)`, `%` of parent, `min()` / `max()`, container-relative — with a one-line why (stops jump, fewer breakpoints, scales mid-band).
 3. Owner picks: hard px **or** the fluid formula. Do not silently replace their px with clamp.
-4. Modular chrome bands remain **>1366 / 601–1366 / ≤600**; ignore `hostingerPhoneMax` 767 for that chrome.
+4. Modular chrome bands are **>1366 / 801–1366 / 601–800 / ≤600** (middle two = iPad); ignore `hostingerPhoneMax` 767 for that chrome.
 
 Then **STOP**. Wait for owner approval.
 
