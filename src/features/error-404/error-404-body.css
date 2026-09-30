@@ -1,7 +1,7 @@
 /**
  * Error 404 body CSS.
- * Bands (owner lock): >1366 desk · 601–1366 iPad · ≤600 mob.
- * Gate 1 desk · gate 2 mob (Figma `1285:7640`). iPad deferred.
+ * Bands (owner 2026-09-30, HR-404-BODY): ≥801 desktop drawing · ≤800 mobile drawing.
+ * Gate 1 desk · gate 2 mob (Figma `1285:7640`).
  * NEVER black side-test banner.
  *
  * FIGMA ACCESSIBILITY ADAPTATION (mob)
@@ -127,8 +127,10 @@
   outline-offset: 3px;
 }
 
-/* —— Desktop >1366 (Figma desk 1440 · Group 18153:10870) —— */
-@media (min-width: 1367px) {
+/* —— Desktop ≥801 (Figma desk 1440 · Group 18153:10870) ——
+   HR-404-BODY (owner 2026-09-30): desktop drawing from 801 up (was >1366).
+   Fixed 724px drawing fits from 801 (890 CSS px at zoom .9). */
+@media (min-width: 801px) {
   .error-404-body__stage {
     padding: 72px 0 120px;
   }
@@ -181,30 +183,10 @@
   }
 }
 
-/* iPad 601–1366 — deferred (gate later). Keep readable interim. */
-@media (min-width: 601px) and (max-width: 1366px) {
-  .error-404-body__stage {
-    padding: 48px 40px 80px;
-  }
-
-  .error-404-body__composition {
-    max-width: 640px;
-  }
-
-  .error-404-body__heading {
-    font-size: 28px;
-    line-height: 1.25;
-  }
-
-  .error-404-body__line,
-  .error-404-body__cta {
-    font-size: 18px;
-    line-height: 1.4;
-  }
-}
-
-/* —— Mobile ≤600 (Figma 390 · Group 1285:7640) —— */
-@media (max-width: 600px) {
+/* —— Mobile ≤800 (Figma 390 · Group 1285:7640) ——
+   HR-404-BODY (owner 2026-09-30): mobile drawing up to 800 (was ≤600); temporary
+   iPad 601–1366 block removed. Switch at 800 = header's own switch (decision 33). */
+@media (max-width: 800px) {
   .error-404-body__stage {
     /* Figma inset ~50 on 390 — not 85% rail */
     padding: 28px 50px 56px;

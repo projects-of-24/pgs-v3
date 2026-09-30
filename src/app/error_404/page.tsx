@@ -1,7 +1,7 @@
 /**
- * Live `/error_404` — purified modular body (Hostinger-free cutover).
- * Same shell as `/preview/error-404` with `live`.
- * Hostinger `error404Html` is not served. Locked chrome CSS stays.
+ * Live `/error_404` — H-R DONE (decision 54, 2026-09-27).
+ * Same tree as `/preview/error-404` (via compose-error-404-page.tsx) with `live`:
+ * React chrome + owned split (layout.tsx OWNED_SPLIT_ROUTES); no Hostinger CSS/JS, no chrome strings.
  */
 import { composeError404Page } from "@/features/error-404/compose-error-404-page";
 import { cmsMetadata } from "@/lib/cms-metadata";

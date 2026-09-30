@@ -1,6 +1,6 @@
 /**
  * Error 404 body — desk `18153:10870` · mob `1285:7640`.
- * Gates: desk (>1366) · mob (≤600). iPad 601–1366 deferred.
+ * Bands (HR-404-BODY 2026-09-30): desktop drawing ≥801 · mobile drawing ≤800.
  */
 import Link from "next/link";
 import { error404Content } from "./content";

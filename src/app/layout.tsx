@@ -21,8 +21,18 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
    *   /preview/header  — chrome lab (OWN-LINK-H)
    *   /preview/about   — About H-R pass 2
    *   /about           — About LIVE cutover (2026-09-27, owner QC passed + locked)
+   *   /preview/error-404 — Error 404 H-R step 2 (HR-404-2, 2026-09-27; vendor scan: 0 new P0 rules)
+   *   /error_404       — Error 404 LIVE cutover (HR-404-3, 2026-09-27). The not-found boundary
+   *                      (any unknown URL) cannot be matched here: it keeps Hostinger CSS until
+   *                      the final flip removes this switch (OWNED-CHROME-UNLINKED.md exception).
    */
-  const OWNED_SPLIT_ROUTES = new Set(["/preview/header", "/preview/about", "/about"]);
+  const OWNED_SPLIT_ROUTES = new Set([
+    "/preview/header",
+    "/preview/about",
+    "/about",
+    "/preview/error-404",
+    "/error_404"
+  ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs and on H-R done routes (React chrome, same as the QC'd lab). */
   const skipHostingerJs = isPreviewLab || isOwnedSplitRoute;

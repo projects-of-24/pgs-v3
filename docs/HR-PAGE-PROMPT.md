@@ -7,7 +7,7 @@ One prompt for every page. No Fable plan per page: the About pilot (`docs/ABOUT-
 ## A. Paste this into the new chat (fill the four `<…>`)
 
 ```
-Read, in this order: the "pgs be live" project memory; the skill pgs-owner-lock; docs/HR-PAGE-PROMPT.md (this template); docs/ABOUT-HR-PILOT-PLAN.md (the worked example — its page-file code and measuring snippet are the reference). Then wait.
+Read, in this order: the "pgs be live" project memory; the skill pgs-owner-lock; docs/HR-PAGE-PROMPT.md (this template); the worked example = About as shipped: src/app/about/page.tsx (page tree), src/app/layout.tsx (OWNED_SPLIT_ROUTES + skipHostingerJs), src/features/about/about-preview-shell.css (gap pass); docs/ABOUT-HR-PILOT-PLAN.md is historical only (its portal code is obsolete). Then wait.
 
 PAGE: <live route, e.g. /finance>
 LAB:  <preview route, e.g. /preview/finance>
@@ -51,7 +51,7 @@ Start with the pre-flight in HR-PAGE-PROMPT.md §B, then say "ready for GO AHEAD
 DONE HR-<page>-<n> — <one line: what changed, preview or live>
 Preview: http://localhost:7100/<lab>   Ruler (read-only): http://localhost:7100/<route>   Chrome truth: http://localhost:7100/preview/header
 Measured 1500·1100·700·390: <table>   Expected deltas: <…>   Unexpected: none/<list>
-State sheet: all ✓ / <list>   typecheck ✓ lint ✓ (pass 3: test ✓ build ✓ e2e ✓ console ✓)
+State sheet: all ✓ / <list>   Page 200 · no error overlay · console clean (tests run on the PR, not locally)
 Decision needed: <none / …>
 Owner next: QC the preview link → GO AHEAD HR-<page>-<n+1>
 
@@ -95,7 +95,7 @@ About (pilot, plan file) → Explore → Finance → Scholarship → Premium Hom
    - **Gap pass (About 2026-09-27, option A):** one section gap per band, measured content to content: on screen **100 desk · 100 iPad · 72 mobile** (CSS 112 · 112 · 80, zoom .9). Implementation in the page shell CSS: token `--<page>-section-gap` per band; sections lose outer `padding-block`; `margin-top: var(gap)` on every section after the hero; hero top (univMeet gap) untouched. Then measure (snippet §H) and correct only pairs that miss: overhanging badges (add their overhang to that block's margin), empty reserved room at a block's bottom (trim it, scoped per band). Leave on purpose and report: toggled panels that reserve the taller panel's height (About online), chrome gaps (body → footer = footer's own margin).
    - **Leak check:** run snippet §H at 1500 · 1100 · 700 · 390. Structural tags (`section`, `header`, `footer`, `nav`, `article`) that still take a Hostinger element value → reset on the block's own class, all bands. Type leaks (Hostinger `h1–h6 { letter-spacing:-.5px }`, `p { margin-bottom:25px }`) → list only; they belong to the type pass.
    - **iPad hero card (About 2026-09-27):** owner cut the iPad hero card to **80% of its height** (681 → 545 CSS; width 406, text and spacing unchanged; photo 500 → 364). Tokens `--about-ipad-card-h: 545px` · `--about-ipad-media-h: 364px` in `about-hero.css` iPad block. Offer the same 80% cut on every page with the saved iPad hero card.
-   - **Per page = UI only (owner 2026-09-27).** Page by page: chrome import → CSS → body QC → cutover → commit + push. No test runs per page (typecheck · lint · vitest · build · e2e · visual-parity snapshots). Those run once, in the **final QA + security pass after every page is done**, before backend work. Each page ships as its own PR (`feat/hr-<page>` → `main`): GitHub CI (`.github/workflows/ci.yml`: lint · typecheck · vitest · RLS · secrets · audit · build · Playwright smoke), CodeQL (`codeql.yml`) and CodeRabbit (`.coderabbit.yaml`) review it; owner pastes red checks / findings back, fixes land on the same PR, owner merges, next page branches from `main`. Per-page Playwright tests may be written in parallel by another agent (tests only, from the finished page + its MODULAR map; no UI edits).
+   - **Per page = UI only (owner 2026-09-27).** Page by page: chrome import → CSS → body QC → cutover → commit + push. No test runs per page (typecheck · lint · vitest · build · e2e · visual-parity snapshots). Those run once, in the **final QA + security pass after every page is done**, before backend work. Each page ships as its own PR (`feat/hr-<page>` → `main`): GitHub CI (`.github/workflows/ci.yml`: lint · typecheck · vitest · RLS · secrets · audit · build · Playwright smoke), CodeQL (`codeql.yml`) and CodeRabbit (`.coderabbit.yaml`) review it; owner pastes red checks / findings back, fixes land on the same PR, owner merges, next page branches from `main`. **Wait for the PR to go green and merge before starting the next page** (owner 2026-09-27: one page → push → checks green → next). New per-page Playwright tests are a separate last pass after all pages: tests written from what each page is supposed to do (loads, key content, links, interactions, logged-out / logged-in states), from the page + its MODULAR map; no UI edits. The existing CI Playwright smoke keeps running on every PR.
 4. **Done** — no Hostinger CSS, no DSIH, no `legacy/pages` string builders, no portal/string-strip references left on the page → mark page DONE, then cut over: live route gets the same tree + allowlist (pass 3).
 
 ## H. Body QC snippets (paste in Chrome console on the preview route)
@@ -114,3 +114,23 @@ const r=secs.map(box);console.table(r.slice(1).map((x,i)=>({pair:r[i][0]+' > '+x
 const tag=/^(section|header|footer|article|nav|aside|h[1-6]|p|ul|ol|li|a|button|figure)$/,props=['padding-top','padding-bottom','margin-top','margin-bottom','font-size','line-height','letter-spacing'];const out=new Set();
 for(const e of document.querySelectorAll('[class*="-preview-shell"] *')){const cs=getComputedStyle(e);for(const [sel,m,st] of rules){if(!sel.split(',').map(s=>s.trim()).filter(s=>tag.test(s)).some(s=>e.matches(s)))continue;for(const p of props){const v=st.getPropertyValue(p);if(v&&!v.includes('var(')&&cs.getPropertyValue(p)===v)out.add(`${e.className.toString().split(' ')[0]} <${e.tagName.toLowerCase()}> ${p}:${v} [${sel.slice(0,30)}${m?' @'+m:''}]`)}}}console.log([...out].join('\n')||'no leaks')})()
 ```
+
+## I. Model routing + Sonnet guardrails (owner 2026-09-30)
+
+Per Anthropic's positioning (Sonnet 5.5 = well-scoped everyday tasks; Opus 5.5 = complex work needing judgment; Fable 5.1 = demanding reasoning): **Fable** plans/architecture · **Sonnet 5.5** runs the recipe pages (§A steps 1–4) · **Opus 5.5** takes anything off-recipe. Finance = first Sonnet trial.
+
+Paste this block under §A when the page chat runs on Sonnet:
+
+```
+SONNET GUARDRAILS — you are running a written recipe, not designing. Hard STOP (write "STOP — <reason>" and wait) when ANY of these happen:
+1. A change would touch a file other than: the page file(s) / composer, src/app/layout.tsx (OWNED_SPLIT_ROUTES only), the page family's own CSS (step 3, owner-named nudges only), docs.
+2. A measured delta is not the allowed one (step 1: stack moves by the header-height change; step 2: 0, 601–767 recorded).
+3. Anything the old string pipeline did that React chrome props don't carry (auth fallbacks, staff links, extra banners, side-test banner, page-specific strip data).
+4. An error, overlay, console error, failing check or test you did not cause in this step, or a fix that needs a second attempt.
+5. The owner's nudge is ambiguous (which band, CSS px vs "as seen", which element).
+6. git conflicts, branch confusion, or anything about merging.
+Never: edit LOCKED chrome files, the owned split, globals.css, Hostinger CSS, tests, CI files; run git commit/push; create artifacts; restyle anything not named.
+Every step ends with the §C report: numbers at 1500 · 1100 · 700 · 390, file links with line/selector, preview link, "Decision needed", then stop.
+```
+
+Judge the trial on: (1) no locked file touched, (2) every report has numbers + file links, (3) it STOPs instead of improvising. Any miss → implementation goes back to Opus.
