@@ -204,7 +204,8 @@
   letter-spacing: 0.5px;
 }
 
-@media (min-width: 1367px) {
+/* Owner nudge (iPad): 601-1366 non-hero blocks render as desktop. */
+@media (min-width: 601px) {
   .scholarship-intro {
     padding: 56px 0 48px;
   }

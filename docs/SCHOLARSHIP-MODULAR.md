@@ -10,8 +10,8 @@ Branch: `feat/finance-modular` (shared public modular lane until owner splits)
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (QC lab)** | `/preview/scholarship` | Locked chrome + modular body (no black banner). |
-| **Live** | `/scholarship` | **CUTOVER DONE** — modular React body, Hostinger-free. |
+| **Preview (QC lab)** | `/preview/scholarship` | Same modular body, React chrome, owned split. No black banner. |
+| **Live** | `/scholarship` | **H-R DONE (2026-10-01)** — same tree as the lab (`<PublicHeader/>` · `<PublicStrip/>` · `ScholarshipPreviewShell live` · `<PublicFooter/>`), owned split via `OWNED_SPLIT_ROUTES`, no Hostinger CSS/JS, no chrome strings. Login returns to `/scholarship`. |
 
 Legacy Hostinger HTML (`src/legacy/generated/scholarship/*`) kept on disk for rollback; **not** served by live.
 

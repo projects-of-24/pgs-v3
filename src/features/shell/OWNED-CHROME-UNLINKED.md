@@ -19,7 +19,7 @@
 |------|-----|
 | [`pgs-header-chrome-reset.css`](./pgs-header-chrome-reset.css) | H6a drawer fix via `legacy-header-breakpoints.css` (`reset on`) |
 | [`public-header.css`](./public-header.css) | React header recipes for `/preview/header` |
-| Hostinger `style.css` / `responsive.css` | Global landlord until page OWN-LINK. **Exception:** `/preview/header` (OWN-LINK-H), `/preview/about`, `/about`, `/preview/finance`, `/finance`, `/preview/error-404`, `/error_404` (H-R done; unknown-address 404 = `src/app/global-not-found.tsx`, owned CSS) load `/preview/owned-split` instead (list = `OWNED_SPLIT_ROUTES` in `src/app/layout.tsx`) |
+| Hostinger `style.css` / `responsive.css` | Global landlord until page OWN-LINK. **Exception:** `/preview/header` (OWN-LINK-H), `/preview/about`, `/about`, `/preview/finance`, `/finance`, `/preview/scholarship`, `/scholarship`, `/preview/error-404`, `/error_404` (H-R done; unknown-address 404 = `src/app/global-not-found.tsx`, owned CSS) load `/preview/owned-split` instead (list = `OWNED_SPLIT_ROUTES` in `src/app/layout.tsx`) |
 | `globals.css` PGS MODULAR PUBLIC CHROME | Strip/footer live recipes until owned pass replaces them |
 
 Detail: [`../owned-css/README.md`](../owned-css/README.md)

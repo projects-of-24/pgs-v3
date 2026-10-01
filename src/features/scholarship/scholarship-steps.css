@@ -298,10 +298,9 @@
 
 .scholarship-steps__find-actions {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 24px 40px;
+  gap: 0;
   width: 100%;
 }
 
@@ -329,26 +328,35 @@
   outline-offset: 2px;
 }
 
+/*
+ * Find note (owner screenshots 2026-10-01, Figma desk `17041:18804` / mob `331:3262`):
+ * CTA, then a row below it: arrow (tip up toward the CTA, tail curling right) and the note text to its right.
+ * Desktop (design px from the CTA's left edge): arrow starts 316 in and 23 under the CTA, note starts 400 in
+ * and 69 under the CTA. Arrow and note never overlap and nothing overlaps the line above.
+ */
 .scholarship-steps__find-note {
-  position: relative;
-  flex: 1 1 280px;
-  max-width: 336px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 26px;
+  margin: 23px 0 0 316px;
+  max-width: calc(100% - 316px);
   min-width: 0;
-  padding-top: 28px;
 }
 
 .scholarship-steps__find-arrow {
-  position: absolute;
-  left: -8px;
-  top: -36px;
-  width: 99px;
-  height: 99px;
+  flex: 0 0 auto;
+  display: block;
+  width: 58px;
+  height: 85px;
+  object-fit: contain;
+  transform: scaleX(-1);
   pointer-events: none;
-  transform: rotate(-20deg);
 }
 
 .scholarship-steps__find-disclaimer {
-  margin: 0;
+  margin: 46px 0 0;
+  max-width: 336px;
   /* Figma 12.8px → 14px readable floor */
   font-size: 14px;
   font-weight: 600;
@@ -357,7 +365,8 @@
   color: #000;
 }
 
-@media (min-width: 1367px) {
+/* Owner nudge (iPad): 601-1366 non-hero blocks render as desktop. */
+@media (min-width: 601px) {
   .scholarship-steps {
     padding: 56px 0 64px;
   }
@@ -508,9 +517,8 @@
   }
 
   .scholarship-steps__find-actions {
-    flex-direction: column;
     align-items: stretch;
-    gap: 28px;
+    gap: 0;
   }
 
   .scholarship-steps__find-cta {
@@ -520,20 +528,22 @@
     border-width: 1.2px;
   }
 
+  /* Mobile ref: arrow 8 in and 24 under the CTA, note 68 in and 52 under it (width 193, may run past the 232 block). */
   .scholarship-steps__find-note {
-    max-width: 193px;
-    margin-inline: auto;
-    padding-top: 36px;
+    gap: 12px;
+    margin: 24px 0 0 8px;
+    max-width: none;
+    width: 253px;
   }
 
   .scholarship-steps__find-arrow {
-    left: -4px;
-    top: -28px;
-    width: 79px;
-    height: 79px;
+    width: 48px;
+    height: 66px;
   }
 
   .scholarship-steps__find-disclaimer {
+    margin-top: 28px;
+    max-width: 193px;
     font-size: 14px;
     line-height: 1.35;
   }

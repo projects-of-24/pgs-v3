@@ -67,7 +67,7 @@
 
 .scholarship-scenarios__title {
   margin: 0;
-  max-width: 562px;
+  max-width: 520px; /* Figma breaks the heading after "STUDENT"; 562 let "SCENARIOS" onto line 1 */
   font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
   font-size: var(--sch-scen-title);
   font-weight: 400;
@@ -110,6 +110,15 @@
   height: var(--sch-scen-arrow);
   object-fit: contain;
   transform: scaleY(-1) rotate(4deg);
+}
+
+.scholarship-scenarios__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
 }
 
 .scholarship-scenarios__grid {
@@ -189,13 +198,58 @@
   line-height: var(--sch-scen-tip-lh);
 }
 
-@media (min-width: 1367px) {
+/* Owner nudge (iPad): 601-1366 non-hero blocks render as desktop. */
+@media (min-width: 601px) {
   .scholarship-scenarios {
     padding: 56px 0 64px;
   }
 
   .scholarship-scenarios__inner {
     gap: 32px;
+  }
+
+  .scholarship-scenarios__body {
+    gap: 32px;
+  }
+}
+
+/*
+ * Figma desktop `17041:18770`/`18779`/`18781` (owner screenshot 2026-10-01): the "top 6" note sits to the
+ * RIGHT of the cards, spanning the gap between the two rows, with the arrow under it pointing left at card 6.
+ * Offsets in design px from the grid: note 52 right of the grid, 313 below its top; arrow 35 right, 405 below.
+ * Needs about 272 free on the right, so only from 1180 up (iPad Air landscape and wider). Below that the
+ * note + arrow stay above the cards as before. Mobile has its own rule.
+ */
+@media (min-width: 1180px) {
+  .scholarship-scenarios__body {
+    width: max-content;
+    margin-inline: auto;
+    gap: 0;
+  }
+
+  .scholarship-scenarios__note-row {
+    position: absolute;
+    left: calc(100% + 35px);
+    top: 313px;
+    display: block;
+    width: 237px;
+    height: 170px;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .scholarship-scenarios__note {
+    margin-left: 17px;
+    max-width: 220px;
+  }
+
+  .scholarship-scenarios__arrow {
+    position: absolute;
+    left: 0;
+    top: 92px;
+    width: 76px;
+    height: 76px;
+    transform: scaleY(-1) rotate(200deg); /* owner: flipped vertically from the plain 200deg turn */
   }
 }
 
@@ -224,6 +278,11 @@
     max-width: var(--pgs-premium-mob-rail);
     margin-inline: auto;
     padding-inline: clamp(12px, 3vw, 20px);
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .scholarship-scenarios__body {
     gap: 20px;
     align-items: stretch;
   }
