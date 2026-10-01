@@ -7,6 +7,10 @@ import { ContentPreviewBanner } from "@/components/content-preview-banner";
 import { StaffPreviewBanner } from "@/components/staff-preview-banner";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { Error404PreviewShell } from "@/features/error-404/error-404-preview-shell";
+import { HEADER_NAV } from "@/features/shell/header-nav";
+import { PublicFooter } from "@/features/shell/public-footer";
+import { PublicHeader } from "@/features/shell/public-header";
+import { PublicStrip } from "@/features/shell/public-strip-react";
 import {
   applyUnivMeetToHeaderHtml,
   buildPublicStripHtml
@@ -41,13 +45,20 @@ export type ComposeError404Options = {
    * (Next.js `not-found` boundary), still decorate chrome like Hostinger did.
    */
   authenticatedActorFallback?: boolean;
+  /**
+   * H-R: mount <PublicHeader/> · <PublicStrip/> · body · <PublicFooter/>, no chrome strings.
+   * Used by /preview/error-404, live /error_404 and src/app/global-not-found.tsx (unknown addresses).
+   * `src/app/not-found.tsx` (staff/parent record-missing 404s) still uses the string chrome path.
+   */
+  reactChrome?: boolean;
 };
 
 export async function composeError404Page({
   live = false,
   page,
   previewPath,
-  authenticatedActorFallback = false
+  authenticatedActorFallback = false,
+  reactChrome = false
 }: ComposeError404Options) {
   const [state, univMeet] = await Promise.all([
     resolveStudentExperience(),
@@ -58,6 +69,44 @@ export async function composeError404Page({
     state && state.kind !== "anonymous"
       ? await studentExperienceAvatarUrl(state)
       : HELLO_ASPIRANT_DEFAULT_AVATAR;
+
+  if (reactChrome) {
+    const signed = state && state.kind !== "anonymous" ? state : null;
+    const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
+    const loginHref = previewPath
+      ? `/login?redirect=${encodeURIComponent(previewPath)}`
+      : HEADER_NAV.login.href;
+    return (
+      <>
+        <ContentPreviewBanner />
+        {signed && signed.preview ? (
+          <StaffPreviewBanner
+            actorName={signed.preview.actorName}
+            mode="student"
+            targetName={signed.preview.targetName}
+          />
+        ) : null}
+        <LegacyPage page={page} studentState={studentState}>
+          <PublicHeader
+            loginHref={loginHref}
+            avatarUrl={avatarUrl}
+            unreadCount={signed ? signed.unreadCount : 0}
+            signedIn={Boolean(signed)}
+            notifications={signed ? signed.notifications : []}
+            univMeet={univMeet}
+          />
+          <PublicStrip
+            univMeet={univMeet}
+            signedIn={Boolean(signed)}
+            name={signed ? signed.name : "User"}
+            loginHref={loginHref}
+          />
+          <Error404PreviewShell live={live} />
+          <PublicFooter />
+        </LegacyPage>
+      </>
+    );
+  }
 
   let topHtml = [
     applyUnivMeetToHeaderHtml(getPublicHeaderHtml(), univMeet),
