@@ -10,7 +10,7 @@ export const error404Content = {
   /** Visible CTA label inside [brackets] */
   homeCta: "Back to #PGS home",
   homeHref: "/" as const,
-  dinoSrc: "/assets/img/error-404/dino.svg",
+  dinoSrc: "/img/error-404/dino.svg",
   dinoAlt: "" as const
 } as const;
 
