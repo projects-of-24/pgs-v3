@@ -46,6 +46,11 @@
 }
 
 .scholarship-hero__headline {
+  /* Hero text must never split a word (body inherits word-break: break-word from the Hostinger reset,
+     which cut "SCHOLARSHIP" into "SCHOLARSHI / P" on narrow phones). */
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,7 +232,8 @@
   }
 }
 
-@media (max-width: 600px) {
+/* iPad (owner pass): 601-1366 = mobile hero (stacked), desktop hero only >1366. */
+@media (max-width: 1366px) {
   .scholarship-hero {
     padding: var(--pgs-premium-mob-hero-pad-top) 0 28px;
   }
@@ -253,7 +259,9 @@
 
   .scholarship-hero__title {
     font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
-    font-size: var(--pgs-premium-mob-title-size);
+    /* never wider than the column: "SCHOLARSHIP" is about 3.95 x the font size wide, so cap the size
+       at column width / 3.95 (keeps the word whole on every phone width, 38px max as before). */
+    font-size: min(var(--pgs-premium-mob-title-size), calc(var(--pgs-premium-mob-opening-w) / 3.95));
     font-weight: 400;
     line-height: 0.9;
     width: 100%;
@@ -367,5 +375,126 @@
     line-height: 1.35;
     max-width: 234px;
     margin-inline: auto;
+  }
+}
+
+/*
+ * iPad hero (owner pass, pgs-ipad-hero-body): today's mobile hero (measured at 390: title 38, opening 151,
+ * panel 290x450, media 357, brand 30) copied once and saved as its own sizes x 1.4 (plain px, no zoom /
+ * transform / calc on the phone values). After this, iPad does not follow the phone rules. Applies 601-1366;
+ * phone <=600 and desktop >1366 untouched. Text raised to the 20px iPad text gate where x 1.4 < 20.
+ * Not scaled: the 85% rail. Hero top handled by the shell margin (20 CSS below the closed toggle).
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .scholarship-hero {
+    padding: 16px 0 0;
+  }
+
+  .scholarship-hero__inner {
+    gap: 33.6px;                 /* 24 x 1.4 */
+  }
+
+  .scholarship-hero__headline {
+    gap: 16.8px;                 /* 12 x 1.4 */
+    /* owner (iPad only): the headline column is 60px wider than the hero card (card max 406 -> 466),
+       centered on the page, and everything inside it is center aligned. */
+    width: 466px;
+    max-width: 100%;
+    margin-inline: auto;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* owner: iPad hero text uses the DESKTOP type (same family, size, weight, line-height, spacing), not the x 1.4 phone type. */
+  .scholarship-hero__title {
+    font-family: inherit;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 41.6px;
+    text-transform: none;
+  }
+
+  .scholarship-hero__lead {
+    width: 350px;                /* owner (tried in DevTools): intro paragraph box 350 wide, centered, 3 lines */
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+  }
+
+  .scholarship-hero__subtitle--mobile {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+  }
+
+  .scholarship-hero__cta-block {
+    gap: 11.2px;                 /* 8 x 1.4 */
+  }
+
+  .scholarship-hero__title,
+  .scholarship-hero__lead,
+  .scholarship-hero__subtitle--mobile,
+  .scholarship-hero__cta-hint {
+    text-align: center;
+  }
+
+  .scholarship-hero__cta-block {
+    align-items: center;
+  }
+
+  .scholarship-hero__cta {
+    width: fit-content;          /* owner: keep the button its own size, centered */
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;             /* owner: desktop button type and size */
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.04px;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+
+  .scholarship-hero__cta-hint {
+    font-size: 14px;             /* owner: desktop size */
+    line-height: 1.35;
+  }
+
+  .scholarship-hero__panel-wrap {
+    gap: 11.2px;                 /* 8 x 1.4 */
+  }
+
+  .scholarship-hero__panel {
+    max-width: 406px;            /* 290 x 1.4 */
+    min-height: 630px;           /* 450 x 1.4 */
+    padding: 18.2px 15.4px 22.4px; /* 13 11 16 x 1.4 */
+    gap: 14px;                   /* 10 x 1.4 */
+  }
+
+  .scholarship-hero__media {
+    height: 499.8px;             /* 357 x 1.4 */
+  }
+
+  .scholarship-hero__panel-copy {
+    gap: 11.2px;                 /* 8 x 1.4 */
+    padding-inline: 5.6px;       /* 4 x 1.4 */
+  }
+
+  .scholarship-hero__panel-brand {
+    font-size: 42px;             /* 30 x 1.4 */
+    gap: 8.4px;                  /* 6 x 1.4 */
+  }
+
+  .scholarship-hero__panel-tag {
+    font-size: 20px;             /* 14 x 1.4 -> 20px gate */
+  }
+
+  .scholarship-hero__trust {
+    font-size: 20px;             /* 14 x 1.4 -> 20px gate */
+    max-width: 327.6px;          /* 234 x 1.4 */
   }
 }

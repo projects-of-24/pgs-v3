@@ -46,6 +46,51 @@
 @media (min-width: 1367px) {
   .scholarship-preview-shell__univ-gap {
     display: block;
-    height: var(--pgs-premium-desk-univ-gap);
+    /* Owner nudge (as About/Finance): desktop body starts 30 on screen below the bottom of #univMeet.
+       Fixed 86 CSS (= 77.4 on screen) holds 30 at 1400 / 1500 / 1920;
+       the shared fluid token would drift 4px between 1400 and 1500. Shared token untouched. */
+    height: 86px;
   }
+}
+
+/*
+ * Gap pass (same rule as About/Finance): one section rhythm per band, content to content.
+ * On screen 100 desktop · 100 iPad · 72 mobile (CSS 112 · 112 · 80 because html{zoom:.9}).
+ * Sections carry no outer spacing padding; the gap lives here only. Hero top untouched.
+ */
+.scholarship-preview-shell {
+  --scholarship-section-gap: 112px;
+}
+@media (min-width: 601px) and (max-width: 1366px) {
+  .scholarship-preview-shell { --scholarship-section-gap: 112px; }
+}
+@media (max-width: 600px) {
+  .scholarship-preview-shell { --scholarship-section-gap: 80px; }
+}
+
+.scholarship-preview-shell__body > section:not(.scholarship-hero) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.scholarship-preview-shell__body > .scholarship-hero {
+  padding-bottom: 0;
+}
+.scholarship-preview-shell__body > :not(.scholarship-preview-shell__univ-gap):not(.scholarship-hero) {
+  margin-top: var(--scholarship-section-gap);
+}
+
+/*
+ * Owner rule (iPad 601-1366 only): the hero starts 20 CSS (18 on screen) below the top of the closed
+ * #toggleBtn. Width fit as About/Finance (toggle top fixed, pull-up moves with the width); refit after measuring.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .scholarship-preview-shell {
+    margin-top: calc(-1 * var(--pgs-chrome-strip-pull) + 43.7px - 1.089vw);
+  }
+}
+
+/* Owner: the gap between the hero and the intro text is half the section gap (50 / 50 / 36 on screen),
+   every band. All other section gaps stay 100 / 100 / 72. */
+.scholarship-preview-shell .scholarship-preview-shell__body > .scholarship-intro {
+  margin-top: calc(var(--scholarship-section-gap) / 2);
 }

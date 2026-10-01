@@ -1,31 +1,23 @@
 /**
- * Live `/scholarship` — purified modular body (Hostinger-free cutover).
- * Same shell as `/preview/scholarship` with `live`.
- * Book / Find CTAs = DEFERRED to popup pass (visual-only).
+ * Live `/scholarship` — H-R cutover (2026-10-01).
+ * Same tree as `/preview/scholarship`: <PublicHeader/> · <PublicStrip/> · ScholarshipPreviewShell (live) · <PublicFooter/>.
+ * CSS = owned split (layout.tsx OWNED_SPLIT_ROUTES); no Hostinger style.css / responsive.css,
+ * no Hostinger main.js / vendors.min.js, no chrome HTML strings.
+ * Login sends the student back to /scholarship after signing in.
+ * Book / Find CTAs + pager = DEFERRED to popup pass (visual-only).
  */
 import { LegacyPage } from "@/components/legacy-page";
-import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { ScholarshipPreviewShell } from "@/features/scholarship/scholarship-preview-shell";
-import {
-  applyUnivMeetToHeaderHtml,
-  buildPublicStripHtml
-} from "@/features/shell/public-strip";
+import { PublicFooter } from "@/features/shell/public-footer";
+import { PublicHeader } from "@/features/shell/public-header";
+import { PublicStrip } from "@/features/shell/public-strip-react";
 import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
 import "@/features/shell/legacy-header-breakpoints.css";
-import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { cmsMetadata } from "@/lib/cms-metadata";
-import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
 import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
 } from "@/lib/student-experience";
-import {
-  applySharedHelloAspirant,
-  HELLO_ASPIRANT_DEFAULT_AVATAR
-} from "@/legacy/pages/hello-aspirant";
-import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
-import { getPublicHeaderHtml } from "@/legacy/pages/public-header";
-import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 
 export async function generateMetadata() {
   return cmsMetadata("scholarship");
@@ -38,47 +30,29 @@ export default async function ScholarshipPage() {
     resolveStudentExperience(),
     getPublishedUnivMeet()
   ]);
+  const signed = state && state.kind !== "anonymous" ? state : null;
   const studentState = state?.kind ?? "anonymous";
-  const helloAvatar =
-    state && state.kind !== "anonymous"
-      ? await studentExperienceAvatarUrl(state)
-      : HELLO_ASPIRANT_DEFAULT_AVATAR;
-
-  let topHtml = [
-    applyUnivMeetToHeaderHtml(getPublicHeaderHtml(), univMeet),
-    buildPublicStripHtml(univMeet)
-  ].join("");
-  topHtml = applySharedPublicSidebar(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "User"
-  });
-  topHtml = applySharedHelloAspirant(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "Aspirant",
-    avatarUrl: helloAvatar
-  });
-
-  let footerHtml = getPublicFooterHtml();
-
-  if (state && state.kind !== "anonymous") {
-    const shellFields = {
-      name: state.name,
-      unreadCount: state.unreadCount,
-      premium: state.kind === "authenticated_premium",
-      notifications: state.notifications,
-      notificationReadOnly: Boolean(state.preview)
-    };
-    topHtml = applyAuthenticatedShell(topHtml, shellFields);
-    topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
-    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
-  }
-
-  topHtml = applyPremiumBusinessRule(topHtml);
-  footerHtml = applyPremiumBusinessRule(footerHtml);
+  const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
+  const loginHref = `/login?redirect=${encodeURIComponent("/scholarship")}`;
 
   return (
     <LegacyPage page="scholarship" studentState={studentState}>
-      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
+      <PublicHeader
+        loginHref={loginHref}
+        avatarUrl={avatarUrl}
+        unreadCount={signed ? signed.unreadCount : 0}
+        signedIn={Boolean(signed)}
+        notifications={signed ? signed.notifications : []}
+        univMeet={univMeet}
+      />
+      <PublicStrip
+        univMeet={univMeet}
+        signedIn={Boolean(signed)}
+        name={signed ? signed.name : "User"}
+        loginHref={loginHref}
+      />
       <ScholarshipPreviewShell live />
-      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+      <PublicFooter />
     </LegacyPage>
   );
 }
