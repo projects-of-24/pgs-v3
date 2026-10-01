@@ -95,9 +95,14 @@
   }
 }
 
-@media (min-width: 1367px) {
+/* Owner nudge (iPad): 601-1366 strip = desktop (gaps, sizes, 120s, 32 above/below). */
+@media (min-width: 601px) {
   .finance-logos {
-    padding: 0 0 44px;
+    /* Owner nudge (desktop): 32 on screen above and below the strip, box to box.
+       CSS 35.56 = 32 on screen at html zoom .9. Above: hero card bottom -> strip
+       = hero padding-bottom 12 + 23.56. Below: strip -> funding title = 27.56 + funding padding-top 8. */
+    margin-top: 23.56px;
+    padding: 0 0 27.56px;
   }
 
   .finance-logos__viewport {
@@ -115,7 +120,15 @@
   }
 
   .finance-logos__track {
-    animation-duration: 40s;
+    /* Owner nudge (desktop): half the previous speed (40s -> 60s -> 120s). */
+    animation-duration: 120s;
+  }
+}
+
+/* 601-1366 uses the mobile hero (padding-bottom 28), so the strip's top margin is 35.56 - 28 = 7.56 (32 on screen). */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .finance-logos {
+    margin-top: 7.56px;
   }
 }
 
@@ -154,7 +167,9 @@
   }
 
   .finance-logos__track {
-    animation-duration: 28s;
+    /* Owner nudge: same scroll speed as desktop (22.7 px/s on screen = 120s over the desktop track).
+       Mobile track is 3324 px wide -> 1662 / 22.73 = 73s. */
+    animation-duration: 73s;
   }
 }
 
