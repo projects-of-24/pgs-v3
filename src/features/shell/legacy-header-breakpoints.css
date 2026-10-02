@@ -606,7 +606,7 @@ header.pgs-figma-header > .mobile-none {
     border-radius:50px;
     background:#cc0000;
     color:#fff;
-    font-size:10px;
+    font-size:14px;
     font-weight:700;
     display:flex;
     align-items:center;
@@ -730,7 +730,7 @@ header.pgs-figma-header > .mobile-none {
     border-radius: 10px;
     background: #f1ecff;
     color: #5b3fd1;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 15px;
     letter-spacing: .3px;

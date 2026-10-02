@@ -106,7 +106,7 @@
 }
 
 .about-usp__arrow + .about-usp__arrow {
-  margin-left: -23px;
+  margin-left: 0;
 }
 
 @media (max-width: 600px) {
@@ -158,6 +158,6 @@
   }
 
   .about-usp__arrow + .about-usp__arrow {
-    margin-left: -14px;
+    margin-left: 0;
   }
 }

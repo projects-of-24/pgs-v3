@@ -160,7 +160,7 @@
 
 .finance-funding__stat-label {
   margin: 0;
-  font-size: 12.8px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 19.2px;
   letter-spacing: 0.12px;
@@ -170,7 +170,7 @@
 .finance-funding__stat-sub {
   margin: 0;
   /* Figma 9.6px — a11y floor 12px */
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 0.4px;

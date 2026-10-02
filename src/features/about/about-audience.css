@@ -66,6 +66,9 @@
 }
 
 .about-audience__desk-arrow {
+  position: relative;
+  top: 10px;
+  left: -5px;
   display: block;
   width: 95px;
   max-width: 100%;
@@ -75,7 +78,7 @@
 }
 
 .about-audience__desk-note {
-  margin: 10px 0 0;
+  margin: 4px 0 0 -20px;
   width: 75px;
   color: #000;
   font-size: 14px;
@@ -247,8 +250,8 @@
 
   .about-audience__mob-arrow {
     position: absolute;
-    left: 26px;
-    top: 0;
+    left: 39px;
+    top: 7px;
     width: 53px;
     height: auto;
     object-fit: contain;
@@ -257,13 +260,12 @@
 
   .about-audience__mob-note {
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-20%);
+    left: 18px;
+    top: 41px;
     margin: 0;
     width: 75px;
     color: #000;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 1.15;
   }
@@ -326,5 +328,12 @@
     width: 100%;
     font-size: 14px;
     line-height: normal;
+  }
+}
+
+/* Figma desktop: note sits 58px left of the arrow, 57px below its top */
+@media (min-width: 1367px) {
+  .about-audience__desk-note {
+    margin: 4px 0 0 -58px;
   }
 }

@@ -500,13 +500,14 @@
   }
 
   .scholarship-steps__pager {
-    max-width: 44px;
+    max-width: 56px;
   }
 
   .scholarship-steps__page-label {
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.2;
     letter-spacing: 0.2px;
+    white-space: nowrap;
   }
 
   .scholarship-steps__find {

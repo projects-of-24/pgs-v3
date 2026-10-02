@@ -175,6 +175,7 @@
 }
 
 .about-hero__pgs-note {
+  pointer-events: none;
   margin: 0 0 48px;
   flex: 0 0 auto;
   width: min(185px, 18%);
@@ -355,8 +356,8 @@
   }
 
   .about-hero__arrow--mob {
-    right: -6px;
-    bottom: -36px;
+    right: -16px;
+    bottom: -54px;
     width: 61px;
   }
 
@@ -366,11 +367,11 @@
 
   .about-hero__pgs-note {
     position: absolute;
-    top: calc(100% + 56px);
-    right: -4px;
+    top: calc(100% + 86px);
+    right: -60px;
     bottom: auto;
     left: auto;
-    width: 149px;
+    width: 176px;
     margin: 0;
     padding: 0;
     font-size: 14px;
@@ -378,6 +379,20 @@
     line-height: 1.2;
     text-align: left;
     z-index: 2;
+  }
+}
+
+/* Narrow phones: the card gets closer to the screen edge, so the note steps in.
+   390+: -60 · 341–389: -46 · ≤340: -38 (keeps ~8px from the screen edge). */
+@media (max-width: 389px) {
+  .about-hero__pgs-note {
+    right: -46px;
+  }
+}
+
+@media (max-width: 340px) {
+  .about-hero__pgs-note {
+    right: -38px;
   }
 }
 
@@ -457,9 +472,9 @@
 
   .about-hero__panel-copy {
     position: static;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 11.2px;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 8px;
     max-width: none;
     padding-inline: 5.6px;
     padding-bottom: 0;
@@ -473,10 +488,10 @@
 
   .about-hero__panel-tag {
     position: static;
-    margin: 0;
+    margin: 0 0 3px;
     font-size: 19.6px;
-    line-height: 1.2;
-    white-space: normal;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .about-hero__arrow--desk {
@@ -485,8 +500,8 @@
 
   .about-hero__arrow--mob {
     display: block;
-    right: -8.4px;
-    bottom: -50.4px;
+    right: 8px;
+    bottom: -46px;
     width: 85.4px;
     height: auto;
     transform: rotate(-60deg);
@@ -503,11 +518,11 @@
   /* Saved note stack: under the card, beside the arrow. Not the phone sizes. */
   .about-hero__pgs-note {
     position: absolute;
-    top: calc(100% + 78.4px);
-    right: -5.6px;
+    top: calc(100% + 88.4px);
+    right: -80px;
     bottom: auto;
     left: auto;
-    width: 149px;
+    width: 176px;
     margin: 0;
     padding: 0;
     font-size: 14px;
@@ -515,5 +530,68 @@
     line-height: 1.2;
     text-align: left;
     z-index: 2;
+  }
+}
+
+/* Desktop >1366 — same idea as iPad/phone: arrow rises from below the card and
+   points up at "#PGS"; the note sits under the arrow. The trust line is held to two
+   lines so the arrow never crosses it. Arrow/note are pointer-events:none and sit
+   outside the card text, so they cannot block anything. */
+@media (min-width: 1367px) {
+  .about-hero__arrow--desk {
+    display: none;
+  }
+
+  .about-hero__arrow--mob {
+    display: block;
+    right: calc(21.8% - 58px);
+    bottom: -92px;
+    width: 100px;
+    height: auto;
+    transform: rotate(-60deg);
+    z-index: 3;
+  }
+
+  .about-hero__trust {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+
+  .about-hero__pgs-note {
+    position: absolute;
+    top: calc(100% + 124px);
+    left: auto;
+    right: calc(21.8% - 100px);
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+    z-index: 2;
+  }
+}
+
+/* iPad (601–1366): keep the trust line 15px+ clear of the arrow tail. */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .about-hero__trust {
+    box-sizing: border-box;
+    padding-right: 60px;
+  }
+}
+
+/* Phone: keep the trust line 15px+ clear of the arrow tail. */
+@media (max-width: 600px) {
+  .about-hero__trust {
+    box-sizing: border-box;
+    padding-right: 44px;
+  }
+}
+
+@media (max-width: 389px) {
+  .about-hero__arrow--mob {
+    right: -22px;
+    bottom: -58px;
   }
 }

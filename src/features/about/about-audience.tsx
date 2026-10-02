@@ -95,7 +95,7 @@ export function AboutAudience() {
                         aria-hidden="true"
                       />
                     ) : null}
-                    {i === 1 ? (
+                    {i === 0 ? (
                       <p className="about-audience__mob-note">{c.mobileNote}</p>
                     ) : null}
                   </div>
