@@ -1,7 +1,7 @@
 /**
  * #premiumPLAB lab-2 shell — copy of USMLE lab-2 with PLAB identity modules.
  * Gate 2a (2026-10-03): preview QC before live cutover.
- * QC lab: /preview/purpleplab-2 · Live flip = Gate 2b.
+ * QC lab: /preview/purpleplab-2 · Live: /purpleplab (Gate 2b cutover 2026-10-03).
  */
 import { PremiumPlabHero } from "../premium-plab/premium-plab-hero";
 import { PremiumPlabWhy } from "../premium-plab/premium-plab-why";

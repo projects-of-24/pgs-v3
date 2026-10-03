@@ -1,7 +1,7 @@
 /**
  * Preview QC — #premiumPLAB lab-2 (Hostinger-free, chrome-first).
  * Same tree as USMLE lab-2: <PublicHeader/> · <PublicStrip/> · PremiumPlab2Shell · <PublicFooter/>.
- * Gate 2a (2026-10-03). Live `/purpleplab` untouched until Gate 2b.
+ * Gate 2a (2026-10-03). Live `/purpleplab` = same tree (Gate 2b 2026-10-03).
  */
 import { LegacyPage } from "@/components/legacy-page";
 import { PremiumPlab2Shell } from "@/features/premium-plab-2/premium-plab-2-shell";
