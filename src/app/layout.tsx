@@ -26,6 +26,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
    *   /preview/error-404 — Error 404 H-R pass 2 (live /error_404 + unknown-URL 404 join at step 4)
    *   /error_404       — Error 404 LIVE cutover (2026-10-01); unknown URLs use src/app/global-not-found.tsx
    *   /purpleusmle     — USMLE lab-2 LIVE cutover (2026-10-03 Gate 1)
+   *   /preview/purpleplab-2 — PLAB lab-2 preview QC (2026-10-03 Gate 2a)
    */
   const OWNED_SPLIT_ROUTES = new Set([
     "/preview/header",
@@ -40,7 +41,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     "/preview/purpleusmle",
     "/preview/purpleusmle-2",
     /* USMLE lab-2 LIVE cutover (2026-10-03) — same tree as /preview/purpleusmle-2 */
-    "/purpleusmle"
+    "/purpleusmle",
+    /* PLAB lab-2 preview QC (2026-10-03 Gate 2a) — live flip = Gate 2b */
+    "/preview/purpleplab-2"
   ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs and on H-R done routes (React chrome, same as the QC'd lab). */

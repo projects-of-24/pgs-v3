@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { PREMIUM_PLAB_DASHBOARD_POINTS } from "./premium-plab-dashboard-points";
 
-export function PremiumPlabDashboardDesk() {
-  const [index, setIndex] = useState(0);
+type PremiumPlabDashboardDeskProps = {
+  index: number;
+  onIndexChange: (index: number) => void;
+};
+
+export function PremiumPlabDashboardDesk({ index, onIndexChange }: PremiumPlabDashboardDeskProps) {
   const fill = `${((index + 1) / PREMIUM_PLAB_DASHBOARD_POINTS.length) * 100}%`;
   const photo = PREMIUM_PLAB_DASHBOARD_POINTS[index].desk;
 
@@ -25,7 +28,7 @@ export function PremiumPlabDashboardDesk() {
                 type="button"
                 className="premium-plab-dashboard__point"
                 aria-pressed={selected}
-                onClick={() => setIndex(pointIndex)}
+                onClick={() => onIndexChange(pointIndex)}
               >
                 <span className="premium-plab-dashboard__icon">
                   <img className="premium-plab-dashboard__mark" src="/assets/img/premium-usmle/dashboard-mark.svg" alt="" width={38} height={38} />
