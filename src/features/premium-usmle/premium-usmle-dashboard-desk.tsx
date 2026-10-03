@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { PREMIUM_USMLE_DASHBOARD_POINTS } from "./premium-usmle-dashboard-points";
 
-export function PremiumUsmleDashboardDesk() {
-  const [index, setIndex] = useState(0);
+type PremiumUsmleDashboardDeskProps = {
+  index: number;
+  onIndexChange: (index: number) => void;
+};
+
+export function PremiumUsmleDashboardDesk({ index, onIndexChange }: PremiumUsmleDashboardDeskProps) {
   const fill = `${((index + 1) / PREMIUM_USMLE_DASHBOARD_POINTS.length) * 100}%`;
   const photo = PREMIUM_USMLE_DASHBOARD_POINTS[index].desk;
 
@@ -25,7 +28,7 @@ export function PremiumUsmleDashboardDesk() {
                 type="button"
                 className="premium-usmle-dashboard__point"
                 aria-pressed={selected}
-                onClick={() => setIndex(pointIndex)}
+                onClick={() => onIndexChange(pointIndex)}
               >
                 <span className="premium-usmle-dashboard__icon">
                   <img className="premium-usmle-dashboard__mark" src="/assets/img/premium-usmle/dashboard-mark.svg" alt="" width={38} height={38} />

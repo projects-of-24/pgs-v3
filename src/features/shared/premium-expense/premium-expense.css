@@ -167,7 +167,7 @@
 
   .premium-expense__title {
     width: 159px;
-    font-size: 20px;
+    font-size: 24px; /* owner DevTools phone QC 2026-10-03 */
     line-height: 1;
   }
 

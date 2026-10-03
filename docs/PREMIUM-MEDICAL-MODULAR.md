@@ -14,7 +14,7 @@ Branch: shared public modular lane until owner splits.
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview lab-2 (active)** | `/preview/purpleusmle-2` | **Gate 18 U20 conference** (2026-10-02). Figma frame `1352-8063`. iPad through U18 forms · U19 prep · U20 conference; join+offers still hidden. Desk/phone untouched. Next block only after owner GO AHEAD. |
+| **Preview lab-2 (active)** | `/preview/purpleusmle-2` | **NORTH STAR — all three bands QC passed** (2026-10-03). Desk + iPad + phone same content rearranged. Skill: `pgs-ipad-modular-body-pass`. Cutover next — do not rebuild from scratch. |
 | **Preview (lab-1, ignore)** | `/preview/purpleusmle` | Parked for lab-2. Do not use for new iPad QC. |
 | **Live** | `/purpleusmle` | **CUTOVER DONE**. Typo `/purpleusme` redirects here. CMS storage key stays `purpleusme`. Untouched until lab-2 cutover. |
 
@@ -43,9 +43,11 @@ Copy targets (not this gate): desktop `#premiumPLAB` `17055:15451` · `#premiumA
 
 iPad hero recall (`pgs-ipad-hero-body`): copy the phone card once, save as its own sizes, desktop body reused, 16px type floor. Do not build it on P0.
 
-Owner lock: phone, iPad, and desktop minimum text never below 16px. Token `--pgs-type-floor` on the USMLE shell. Headings stay larger. iPad hero card sizes stay frozen.
+Owner lock (2026-10-03): **Roboto** minimum **15–16px** (token `--pgs-type-floor` → 16 unless a named block uses 15). **Bebas** minimum **30px**. Chrome **locked**. Body clamp recipes from lab-2 are the default for next pages.
 
-**Later final-draft type pass — do not do it during fast section QC.** Minimum text only: 13px and 14px lift to 16px on all three bands. Text already at 16px stays. 20px and up is left alone unless a visual QC says it needs a correction. USMLE hero + Why already measure clean (nothing under 16 at 390 / 768 / 1440). That does not clear the rest of this page.
+**Later final-draft type pass — do not do it during fast section QC.** Lift sub-floor Roboto (13/14 → 16) and sub-30 Bebas when owner opens that pass. Do not invent sizes mid-QC.
+
+**Next iPad page:** body only → content-match QC (desk vs phone) → owner rearrange → Opus plan from north-star findings + Figma/Paper → execute reuse/adapt (not invent). Modular already: hero family · Highlights · #PGS picks.
 
 ---
 
@@ -86,7 +88,7 @@ Chrome = LOCKED. Do not rebuild.
 | 28 | FAQ | **U29** | **READY — owner QC** Desktop `17055:12897` and phone `433:4700`. No scrollbar. Contact strip not in this gate. |
 | 29 | Ready to get started? | **U30** | **READY — owner QC** Shared `outro-cta`. Desktop `17120:10437`. Phone `433:4710`. Hub and picks not in this gate. |
 | 30 | Support hub | **U31** | **READY — owner QC** Shared `support-hub`. Desktop `17056:21414`. Phone `433:4717`. Email is the locked spelling, one line. |
-| 31 | #Pgs picks | **U32** | **READY — owner QC** Shared `pgs-picks`. Desktop `17055:12930`. Phone `433:4740`. Courses from CMS `pgs_picks`. Drawn card until a course is ticked. Later switch replaces About and any other page that draws this row. Do not switch now. |
+| 31 | #Pgs picks | **U32** | **READY — owner QC** Shared `pgs-picks`. Desk title 48 · **iPad 36** · phone 24. iPad = mobile face · 2 cards · 85% · **link min-height 190** · **arrows 32** (owner DevTools 2026-10-03). Wheel + drag. Later switch — do not switch now. |
 | — | Frontend | **COMPLETE** | Visual body done. Hostinger did not have real destinations except Enroll. Those links wait for the backend pass, one control at a time. Not wired in this mark. |
 | — | Gap analysis | **GAP** | After Figma-to-code is done. Before LOCK. Do not fix spacing mid-build. Owner marked frontend complete before this pass. |
 | — | Motion | last | After visual lock |
@@ -104,7 +106,7 @@ Later switch only when the owner names the page. About and Rotation keep their o
 
 | Block | Folder | Later use |
 |---|---|---|
-| Highlights | `premium-highlights` | PLAB / AMC import this. Do not rebuild. |
+| Highlights | `premium-highlights` | PLAB / AMC import this. Do not rebuild. Title: desk 38.4 · iPad 36 · phone 24 (owner 2026-10-03). |
 | Expense request | `premium-expense` | PLAB / AMC import this. |
 | Enroll | `premium-enroll` | PLAB / AMC import this. |
 | Questions + meet | `premium-questions` | PLAB / AMC import this. |
@@ -259,7 +261,8 @@ Hostinger `/purpleusme` body, checked 2026-09-14 against `src/legacy/generated/p
 
 ## Preview
 
-- Lab: http://localhost:7100/preview/purpleusmle
+- Lab-2 (cutover QC — all bands): http://localhost:7100/preview/purpleusmle-2
+- Lab-1 (parked): http://localhost:7100/preview/purpleusmle
 - Live: http://localhost:7100/purpleusmle
 - PLAB live (same template): http://localhost:7100/purpleplab
 - AMC live (same template): http://localhost:7100/purpleamc
