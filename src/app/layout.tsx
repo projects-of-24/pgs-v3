@@ -28,6 +28,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
    *   /purpleusmle     — USMLE lab-2 LIVE cutover (2026-10-03 Gate 1)
    *   /preview/purpleplab-2 — PLAB lab-2 preview QC (2026-10-03 Gate 2a)
    *   /purpleplab      — PLAB lab-2 LIVE cutover (2026-10-03 Gate 2b)
+   *   /preview/purpleamc-2 — AMC lab-2 preview QC (2026-10-03 Gate 3a)
    */
   const OWNED_SPLIT_ROUTES = new Set([
     "/preview/header",
@@ -46,7 +47,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     /* PLAB lab-2 preview QC (2026-10-03 Gate 2a) */
     "/preview/purpleplab-2",
     /* PLAB lab-2 LIVE cutover (2026-10-03 Gate 2b) */
-    "/purpleplab"
+    "/purpleplab",
+    /* AMC lab-2 preview QC (2026-10-03 Gate 3a) — live flip = Gate 3b */
+    "/preview/purpleamc-2"
   ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs and on H-R done routes (React chrome, same as the QC'd lab). */

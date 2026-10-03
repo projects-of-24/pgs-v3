@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { PREMIUM_AMC_DASHBOARD_POINTS } from "./premium-amc-dashboard-points";
 
-export function PremiumAmcDashboardPhone() {
-  const [index, setIndex] = useState(0);
+type PremiumAmcDashboardPhoneProps = {
+  index: number;
+  onPrev: () => void;
+  onNext: () => void;
+};
+
+export function PremiumAmcDashboardPhone({ index, onPrev, onNext }: PremiumAmcDashboardPhoneProps) {
   const point = PREMIUM_AMC_DASHBOARD_POINTS[index];
   const fill = `${((index + 1) / PREMIUM_AMC_DASHBOARD_POINTS.length) * 100}%`;
   const last = PREMIUM_AMC_DASHBOARD_POINTS.length - 1;
@@ -38,7 +42,7 @@ export function PremiumAmcDashboardPhone() {
             className="premium-amc-dashboard__arrow"
             aria-label="Previous dashboard photo"
             disabled={index === 0}
-            onClick={() => setIndex((current) => Math.max(0, current - 1))}
+            onClick={onPrev}
           >
             <img src="/assets/img/premium-usmle/dashboard-arrow.svg" alt="" width={48} height={48} />
           </button>
@@ -47,7 +51,7 @@ export function PremiumAmcDashboardPhone() {
             className="premium-amc-dashboard__arrow premium-amc-dashboard__arrow--next"
             aria-label="Next dashboard photo"
             disabled={index === last}
-            onClick={() => setIndex((current) => Math.min(last, current + 1))}
+            onClick={onNext}
           >
             <img src="/assets/img/premium-usmle/dashboard-arrow.svg" alt="" width={48} height={48} />
           </button>
