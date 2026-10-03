@@ -14,8 +14,9 @@ Branch: shared public modular lane until owner splits.
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (QC lab)** | `/preview/purpleusmle` | **Frontend complete** (2026-09-14). Backend links are a later pass, one control at a time. |
-| **Live** | `/purpleusmle` | **CUTOVER DONE**. Typo `/purpleusme` redirects here. CMS storage key stays `purpleusme`. Hostinger HTML is not served. |
+| **Preview lab-2 (active)** | `/preview/purpleusmle-2` | **Gate 18 U20 conference** (2026-10-02). Figma frame `1352-8063`. iPad through U18 forms · U19 prep · U20 conference; join+offers still hidden. Desk/phone untouched. Next block only after owner GO AHEAD. |
+| **Preview (lab-1, ignore)** | `/preview/purpleusmle` | Parked for lab-2. Do not use for new iPad QC. |
+| **Live** | `/purpleusmle` | **CUTOVER DONE**. Typo `/purpleusme` redirects here. CMS storage key stays `purpleusme`. Untouched until lab-2 cutover. |
 
 PLAB `/purpleplab` and AMC `/purpleamc` use this template. Words wait for CMS.
 

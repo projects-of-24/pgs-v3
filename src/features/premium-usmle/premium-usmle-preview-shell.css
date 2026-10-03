@@ -8,6 +8,7 @@
  */
 
 @import "../premium-panel/premium-panel-lock.css";
+@import "./premium-usmle-ipad-body.css";
 
 .premium-usmle-preview-shell {
   /* Body floor on phone, iPad, and desktop. Headings stay larger. */
@@ -136,5 +137,708 @@
   .premium-usmle-preview-shell__univ-gap {
     display: block;
     height: var(--pgs-premium-desk-univ-gap);
+  }
+}
+
+/*
+ * Gap pass — desktop (>1366) and phone (<=600) only (owner 2026-10-02). iPad 601-1366 untouched until the iPad pass.
+ * One section rhythm, content to content: 100 on screen desktop, 72 on screen phone (html{zoom:.9}).
+ * Each margin below was measured so the visible content of one block ends exactly 100 / 72 above the next one
+ * (verified at 1400 / 1500 / 1920 and 390 / 360 / 320). Values are CSS px; on screen = x 0.9.
+ * Kept on purpose: the student quote overlapping the grey pathway panel on desktop (designed overhang).
+ * Hostinger `section { padding }` leak neutralised on student / know / kick so the gaps do not change at 1600.
+ */
+@media (min-width: 1367px) {
+  /* Hero starts 40 on screen below the bottom of #univMeet at every desktop width (fixed, own spacer; shared token untouched). */
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__univ-gap { height: 96.44px; }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-student { padding: 90px 0 0; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-know { padding-top: 0; padding-bottom: 0; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-kick { padding-top: 0; }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-why { margin-top: 23.33px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-comes { margin-top: 51.11px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-path { margin-top: 58.89px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-pathway { margin-top: 35.11px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-kick { margin-top: 76.67px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-know { margin-top: 111.33px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-guide { margin-top: 111px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-highlights { margin-top: 111.44px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-expense { margin-top: 111.44px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-dashboard { margin-top: 111.11px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-enroll { margin-top: 109.11px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-questions { margin-top: 149.67px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-faq { margin-top: 110.67px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .outro-cta { margin-top: 107px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .support-hub { margin-top: 110.89px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .pgs-picks { margin-top: 110.67px; }
+}
+
+@media (max-width: 600px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-student { padding: 50px 0 0; margin-top: -50px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-know { padding-top: 0; padding-bottom: 0; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-kick { padding-top: 0; }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-why { margin-top: 20px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-comes { margin-top: 32.22px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-path { margin-top: 40px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-pathway { margin-top: 48.22px; }
+  /* Owner 2026-10-02: kick line "(USMLE PATH)" sits half a gap (36 on screen) from the quote above and the black card below on phone. */
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-kick { margin-top: 12.22px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-know { margin-top: 40.33px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-guide { margin-top: 80px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-highlights { margin-top: 79.67px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-expense { margin-top: 80px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-dashboard { margin-top: 79.78px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-enroll { margin-top: 80px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-questions { margin-top: 166.67px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-faq { margin-top: 80.22px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .outro-cta { margin-top: 75.89px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .support-hub { margin-top: 79.78px; }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .pgs-picks { margin-top: 80.33px; }
+}
+
+/*
+ * iPad-C (owner 2026-10-02): iPad body = the approved phone layout at phone size (premium-usmle-ipad-body.css, generated at ref 440),
+ * centred, plus the Figma rearrangements below. Hero starts 18 on screen below the top of the closed #toggleBtn at every iPad width.
+ * Widths are CSS px (screen px / 0.9, html{zoom:.9}). Nothing may overflow the viewport.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell {
+    margin-top: calc(-1 * var(--pgs-chrome-strip-pull) + 6.68px - 1.088vw);
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > :not(.premium-usmle-preview-shell__univ-gap):not(.premium-usmle-hero) {
+    box-sizing: border-box;
+    width: min(415.56px, calc(100% - 32px));
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > :not(.premium-usmle-hero) *:not(img):not(picture):not(video) {
+    overflow-wrap: break-word;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > :not(.premium-usmle-hero) :is(p, h1, h2, h3, h4, h5, h6, span, li, a, button, blockquote) {
+    white-space: normal;
+  }
+}
+
+/*
+ * iPad-C pathway (owner 2026-10-02): grey track panel 740 screen (822.22px) with the Figma mosaic; the competition ticket hangs below the panel.
+ * Design size is 822.22px wide; below that the whole panel + mosaic scales down with zoom (--ipad-ps = panel width / 822.22).
+ * Coordinates are screen px / 0.9 (CSS px), relative to the panel's top-left.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-pathway.premium-usmle-pathway {
+    --ipad-ps: tan(atan2(100cqi, 822.22px));
+    container-type: inline-size;
+    position: relative;
+    width: min(822.22px, calc(100% - 32px));
+    margin-inline: auto;
+    padding: 0;
+    background: transparent;
+  }
+
+  /* spacer so the pathway box ends at the bottom of the hanging ticket (ticket bottom ~898 screen below panel top, panel 646) */
+  .premium-usmle-preview-shell .premium-usmle-pathway.premium-usmle-pathway::after {
+    content: "";
+    display: block;
+    position: static;
+    inset: auto;
+    z-index: auto;
+    width: auto;
+    height: calc(280px * var(--ipad-ps));
+    background: none;
+    border-radius: 0;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-pathway.premium-usmle-pathway .premium-usmle-pathway__sheet {
+    position: relative;
+    width: 822.22px;
+    /* Shortened with the mosaic pull-up (board top 327.78 → 234.71, delta 93.07). */
+    height: 624.71px;
+    zoom: var(--ipad-ps);
+    margin: 0;
+    padding: 0;
+    background: #f1f1f1;
+    border-radius: 12.8px;
+  }
+
+  /* folder tab: 281x60 screen, x+17, 30 above the panel (on the pathway so it sits behind the sheet) */
+  .premium-usmle-preview-shell .premium-usmle-pathway.premium-usmle-pathway::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: calc(-33.33px * var(--ipad-ps));
+    left: calc(18.89px * var(--ipad-ps));
+    width: calc(312.22px * var(--ipad-ps));
+    height: calc(66.67px * var(--ipad-ps));
+    border-radius: calc(14px * var(--ipad-ps));
+    background: #d9d9d9;
+  }
+
+  /* header centred, 329 screen wide */
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-track {
+    padding: 36px 0 0;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-track__inner {
+    width: 365.56px;
+    max-width: 365.56px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-track__title,
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-track__intro {
+    max-width: 365.56px;
+  }
+
+  /* mosaic: absolute cards at the Figma positions */
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: auto;
+    padding: 0;
+    pointer-events: none;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__inner {
+    position: static;
+    display: block;
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__board {
+    position: absolute;
+    left: 0;
+    /* Owner QC 2026-10-02: 20 CSS content-to-content from track intro bottom (was 327.78). */
+    top: 234.71px;
+    display: grid;
+    grid-template-columns: 122.22px 132.22px 12.22px 204.44px 11.11px 195.56px;
+    grid-template-rows: auto auto;
+    column-gap: 0;
+    row-gap: 10px;
+    align-items: start;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card {
+    position: relative;
+    pointer-events: auto;
+    margin: 0;
+    min-width: 0;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--profile { grid-column: 2; grid-row: 1 / span 2; width: 100%; min-height: 200px; }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--observe { grid-column: 4; grid-row: 1; width: 100%; margin-top: 2.22px; }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--clinical { grid-column: 4; grid-row: 2; width: 155.56px; margin-left: 46.67px; }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--time { grid-column: 6; grid-row: 1 / span 2; width: 100%; height: 173.33px; margin-top: 1.11px; display: flex; flex-direction: column; }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--time p { margin-top: auto; margin-left: auto; max-width: 120px; }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--observe > img { top: 14px; }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-needs__card--observe .premium-usmle-needs__pill { margin: 8px 8px 8px auto; width: 146px; max-width: none; }
+
+  /* competition ticket: 175 screen wide under the heart card, hangs below the panel; "#PGS" label right of it */
+  .premium-usmle-preview-shell .premium-usmle-pathway.premium-usmle-pathway .premium-usmle-compete {
+    position: absolute;
+    z-index: 3;
+    left: 482.22px;
+    /* Pulled up with mosaic (511.11 − 93.07). */
+    top: 418.04px;
+    zoom: var(--ipad-ps);
+    width: 194.44px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__stage {
+    width: 100%;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__copy {
+    width: 194.44px;
+    margin: 0;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__shape {
+    top: 0;
+    height: auto;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__dial {
+    width: 194.44px;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__ticket-phone {
+    height: 194.44px;
+    transform: translate(-104.7px, 104.7px) rotate(90deg);
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__shape::before {
+    left: 34.82px;
+  }
+  .premium-usmle-preview-shell .premium-usmle-pathway .premium-usmle-compete__mark {
+    top: 167.78px;
+    bottom: auto;
+    left: 253.33px;
+    width: auto;
+    height: auto;
+    transform: none;
+    justify-content: flex-start;
+    white-space: nowrap;
+  }
+}
+
+/* iPad-C block widths (CSS px = screen / 0.9, capped to the viewport minus 16px gutters). */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-why.premium-usmle-why { width: min(777.78px, calc(100% - 32px)); }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-path.premium-usmle-path { width: min(920px, calc(100% - 32px)); }
+
+  /* Owner QC 2026-10-02: path stack points in two columns on iPad (phone stays 1-col). */
+  .premium-usmle-preview-shell .premium-usmle-path__points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    row-gap: 8px;
+  }
+
+  /*
+   * Path stage 2-col (owner 2026-10-02): copy left, Study Abroad Pathway card right.
+   * Overrides phone stack from ipad-body. Desktop recipe, scoped to USMLE shell.
+   */
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__inner {
+    width: 100%;
+    max-width: 920px;
+    padding-inline: clamp(16px, 2vw, 24px);
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__stage {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__copy {
+    flex: 1 1 420px;
+    width: auto;
+    min-width: 0;
+    max-width: 440px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__card {
+    flex: 0 0 257px;
+    align-self: flex-start;
+    width: 257px;
+    max-width: none;
+    min-height: 447px;
+    padding: 48px 16px 28px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__card-title {
+    font-size: 51.2px;
+    line-height: 44px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__crossed,
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__chosen {
+    font-size: 20.8px;
+    line-height: 1.3;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-path .premium-usmle-path__note {
+    width: 86%;
+    margin: 20px auto 0;
+    padding: 14px 12px 16px;
+  }
+}
+
+/*
+ * iPad-C kick gaps (owner 2026-10-02): same half-gap rhythm as phone —
+ * 36 on screen (40 CSS) content-to-content quote → kick → black card.
+ * Zero the phone kick padding (78) that ipad-body copies in.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-kick {
+    padding-top: 0;
+    padding-inline: 16px;
+    margin-top: 12.22px;
+  }
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-know {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 40.33px;
+  }
+}
+
+/*
+ * iPad-C expense (owner 2026-10-02): 2-col at phone × 1.4 (Figma card 366),
+ * not full desktop stage. Grey card + doctor left, student photo right.
+ * Phone stack stays ≤600. Scoped to USMLE shell only.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-expense.premium-expense {
+    /* 366 + 20 gap + 235.2 student */
+    width: min(621.2px, calc(100% - 32px));
+    margin-top: 80px;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__stage {
+    display: grid;
+    grid-template-columns: 366px min(235.2px, calc(100% - 386px));
+    column-gap: 20px;
+    align-items: start;
+    width: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__card {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    padding: 40.6px 22.4px 100.8px;
+    overflow: visible;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__title,
+  .premium-usmle-preview-shell .premium-expense .premium-expense__cta,
+  .premium-usmle-preview-shell .premium-expense .premium-expense__note,
+  .premium-usmle-preview-shell .premium-expense .premium-expense__body {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__title {
+    width: 222.6px;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__cta {
+    display: inline-flex;
+    width: auto;
+    min-width: 165.2px;
+    margin-top: 16.8px;
+    padding: 11.2px 16.8px;
+    border-radius: 4.2px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__note {
+    width: 277.2px;
+    margin-top: 14px;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__body {
+    width: 254.8px;
+    margin-top: 16.8px;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__doctor {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+    top: auto;
+    left: auto;
+    justify-self: end;
+    align-self: auto;
+    width: 186.2px;
+    height: 306.6px;
+    margin: -84px 22.4px 0 0;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__doctor img {
+    top: -5%;
+    left: -103.43%;
+    width: 291.25%;
+    height: 106.19%;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__student {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-width: 235.2px;
+    height: 351.4px;
+    margin: 0;
+    border-radius: 8.4px;
+    transform: none;
+  }
+
+  .premium-usmle-preview-shell .premium-expense .premium-expense__student img {
+    top: -40.61%;
+    left: -19.95%;
+    width: 124.7%;
+    height: 181.21%;
+  }
+}
+
+/* iPad-C know: black card 660 screen wide, the phone stack (415.56px) centred inside it, grey panel 370 screen centred, Liberty tile top-right. */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-know.premium-usmle-know { width: min(733.33px, calc(100% - 32px)); }
+  .premium-usmle-preview-shell .premium-usmle-know .premium-usmle-know__card {
+    padding-left: calc((100% - 415.56px) / 2 + 31.17px);
+    padding-right: calc((100% - 415.56px) / 2 + 58.18px);
+    border-radius: 16px;
+  }
+  .premium-usmle-preview-shell .premium-usmle-know .premium-usmle-know__offer {
+    width: 411.11px;
+    margin-left: -28.95px;
+  }
+  .premium-usmle-preview-shell .premium-usmle-know .premium-usmle-know__offer-photo {
+    left: 3.8px;
+    top: -10.6px;
+  }
+}
+
+/*
+ * iPad-C highlights (owner + Figma 1352:8888):
+ * Copy column center-placed on the page; text left-aligned inside (phone recipe).
+ * Bottom: phone × 1.4 photo strip — ~3 frames fill the 805.56 rail at rest (Figma look),
+ * all 6 frames keep overflow so wheel/drag scroll still works (U24 scroll lock).
+ * Do not hide n+4. Do not overflow:visible. Do not flex-shrink photos to fit.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-highlights.premium-highlights {
+    width: min(805.56px, calc(100% - 32px));
+    margin-top: 80px;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__copy {
+    align-items: center;
+    width: min(246.4px, calc(100% - 48px));
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__title,
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__lead,
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__place,
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__note {
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__place {
+    justify-content: flex-start;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__note {
+    width: 100%;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__scroller {
+    display: block;
+    width: 100%;
+    margin-top: 33.6px;
+    padding-left: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__scroller.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__scroller::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__photos--phone {
+    display: flex;
+    gap: 17.78px;
+    width: max-content;
+    padding-right: 17.78px;
+    justify-content: flex-start;
+  }
+
+  /* 256.67 × 3 + 17.78 × 2 = 805.57 → three frames fill the rail; frames 4–6 scroll in. */
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__photos--phone .premium-highlights__photo {
+    flex: 0 0 256.67px;
+    width: 256.67px;
+    height: auto;
+    aspect-ratio: 231 / 430;
+    border-radius: 21px;
+  }
+
+  .premium-usmle-preview-shell .premium-highlights .premium-highlights__photos--phone .premium-highlights__photo img {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* iPad-C picks: the desktop picks block (title left, arrows, card strip) at full width; no phone rule applies at 601+. */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .pgs-picks.pgs-picks {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+/*
+ * iPad-C enroll (owner 2026-10-02): leave phone layout from ipad-body (360 panel, centered).
+ * Only gap + stop __access -135px bottom from pulling questions up.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-enroll.premium-enroll {
+    margin-top: 80px;
+  }
+
+  .premium-usmle-preview-shell .premium-enroll .premium-enroll__access {
+    margin-bottom: 0;
+  }
+}
+
+/*
+ * iPad-C questions (owner 2026-10-02): 2-col at phone × 1.4 (621.2 stage like expense),
+ * not full desktop 901px. Phone stack stays ≤600.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-questions.premium-questions {
+    width: min(621.2px, calc(100% - 32px));
+    margin-top: 80px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__copy {
+    flex: 1 1 340px;
+    width: auto;
+    min-width: 0;
+    max-width: 340px;
+    margin-top: 0;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__header {
+    display: block;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__title {
+    display: block;
+    width: 100%;
+    max-width: none;
+    font-size: 33.6px;
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__lead {
+    display: block;
+    width: 100%;
+    margin: 5.6px 0 0;
+    font-size: 21px;
+    line-height: 1.3;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__list {
+    gap: 15.4px;
+    margin-top: 22.4px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__item {
+    gap: 11.2px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__check {
+    flex-basis: 36.4px;
+    width: 36.4px;
+    height: 36.4px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__item-copy {
+    font-size: 21px;
+    line-height: 1.2;
+    letter-spacing: 0.35px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__meet {
+    flex: 0 1 261.2px;
+    width: min(261.2px, 42%);
+    min-width: 0;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__card {
+    width: 100%;
+    height: auto;
+    min-height: 392px;
+    padding: 33.6px 11.2px 0;
+    border-radius: 14px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__kicker {
+    gap: 14px;
+    font-size: 28.7px;
+    line-height: 1;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__card-title {
+    margin-top: 7px;
+    font-size: 35.84px;
+    line-height: 1;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__slot {
+    width: min(266px, 100%);
+    margin-top: 7px;
+    font-size: 21px;
+    line-height: 1.2;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__cta {
+    width: 257.6px;
+    max-width: 100%;
+    min-height: 37.8px;
+    margin-top: 14px;
+    padding: 5.6px 14px;
+    border-radius: 7px;
+    font-size: 21.56px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__photo {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(240px, 92%);
+    height: auto;
+    aspect-ratio: 273 / 253;
+    margin: 16.8px auto 0;
+    transform: none;
+    border-radius: 18.2px;
+  }
+
+  .premium-usmle-preview-shell .premium-questions .premium-questions__photo img {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }

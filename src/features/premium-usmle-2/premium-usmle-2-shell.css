@@ -1,0 +1,995 @@
+/**
+ * #premiumUSMLE lab-2 shell.
+ * NEVER add a black side-test banner (owner lock 2026-09-09).
+ * Do not import premium-usmle-preview-shell / ipad-body here.
+ *
+ * Pull-up from shared `premium-panel-lock.css` (tokens only — do not edit that file).
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.premium-usmle-2-shell {
+  --pgs-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: var(--pgs-premium-shell-pull);
+  position: relative;
+  z-index: 0;
+}
+
+.premium-usmle-2-shell *,
+.premium-usmle-2-shell *::before,
+.premium-usmle-2-shell *::after {
+  box-sizing: border-box;
+}
+
+.premium-usmle-2-shell__body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.premium-usmle-2-shell__univ-gap {
+  display: none;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Owner QC 2026-10-02: 30 CSS px under #univMeet → hero (desk). */
+@media (min-width: 1367px) {
+  .premium-usmle-2-shell__univ-gap {
+    display: block;
+    height: 30px;
+  }
+}
+
+/*
+ * Gaps (owner 2026-10-02, CSS px):
+ * Desk: #univMeet → hero = 30 (univ-gap spacer).
+ * All bands: hero → why = 60 content-to-content (zero hero pad-bottom + why pad-top).
+ * All bands: hero CTA column → mauve panel = 20 (inner gap).
+ */
+.premium-usmle-2-shell .premium-usmle-hero {
+  padding-bottom: 0;
+}
+
+.premium-usmle-2-shell .premium-usmle-hero__inner {
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .premium-usmle-2-shell .premium-usmle-hero__inner {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-2-shell .premium-usmle-hero__inner {
+    gap: 20px;
+  }
+}
+
+.premium-usmle-2-shell .premium-usmle-why {
+  margin-top: 60px;
+  padding-top: 0;
+}
+
+/*
+ * Path U4 (owner 2026-10-02 + Opus audit fix):
+ * Copy 440 + gap 30 + card 257 = 727 rail, centered.
+ * Phone stays stacked from path.css — no padding-bottom kill on phone.
+ */
+@media (min-width: 601px) {
+  .premium-usmle-2-shell .premium-usmle-path {
+    width: min(727px, calc(100% - 32px));
+    margin-inline: auto;
+    padding-bottom: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-path__inner {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-path__cue {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-path__stage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-path__copy {
+    flex: 0 1 440px;
+    width: auto;
+    min-width: 0;
+    max-width: 440px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-path__card {
+    flex: 0 0 257px;
+    width: 257px;
+  }
+}
+
+/*
+ * Pathway wrap — base first, then 601+ overrides (must win cascade).
+ */
+.premium-usmle-2-shell .premium-usmle-pathway {
+  position: relative;
+  width: min(901px, calc(100% - 48px));
+  margin: 100px auto 36px;
+  background: transparent;
+  border-radius: 12.8px;
+}
+
+.premium-usmle-2-shell .premium-usmle-pathway::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 206px;
+  left: 0;
+  border-radius: 12.8px;
+  background: #f1f1f1;
+  pointer-events: none;
+}
+
+.premium-usmle-2-shell .premium-usmle-pathway > * {
+  position: relative;
+  z-index: 1;
+}
+
+.premium-usmle-2-shell .premium-usmle-pathway::before {
+  content: "";
+  position: absolute;
+  top: -48px;
+  left: 17px;
+  z-index: -1;
+  width: 688px;
+  max-width: calc(100% - 34px);
+  height: 121px;
+  border-radius: 16px;
+  background: #d9d9d9;
+}
+
+.premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-track,
+.premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-needs,
+.premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-compete {
+  background: transparent;
+}
+
+.premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-track {
+  overflow: visible;
+  padding-top: 28px;
+}
+
+.premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-track__section {
+  display: none;
+}
+
+@media (min-width: 601px) {
+  .premium-usmle-2-shell .premium-usmle-pathway {
+    width: min(727px, calc(100% - 32px));
+    margin-top: 100px;
+    margin-inline: auto;
+  }
+
+  /* Folder tab in the 60px lip; scaled to 727 rail (688 × 727 / 901). */
+  .premium-usmle-2-shell .premium-usmle-pathway::before {
+    top: -48px;
+    left: 14px;
+    width: min(555px, calc(100% - 28px));
+    height: 98px;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-usmle-2-shell .premium-usmle-pathway {
+    width: 100%;
+    margin: 100px 0 28px;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-pathway::after {
+    display: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-pathway::before {
+    display: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-pathway__sheet {
+    width: calc(100% - 22px);
+    margin-inline: auto;
+    padding-bottom: 294px;
+    background: #f1f1f1;
+    border-radius: 6px;
+  }
+
+  /* Phone Figma hang: purple capsule sits up into the pathway sheet. */
+  .premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-compete {
+    margin-top: -480px;
+  }
+}
+
+/*
+ * Needs courses pill → compete purple = 20 CSS (owner 2026-10-02).
+ * Kill needs bottom pad + compete top pad/copy 53 so the visible gap is the 20 margin.
+ * Pull the compete photo further down under the quote.
+ */
+@media (min-width: 601px) {
+  .premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-needs {
+    padding-bottom: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-compete {
+    margin-top: 20px;
+    padding-top: 0;
+    padding-bottom: 36px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-pathway .premium-usmle-compete__copy {
+    margin-top: 0;
+  }
+}
+
+/*
+ * U8 iPad ≤980 (owner 2026-10-02): photo moves DOWN into the student block.
+ * Quote | photo one centered pair, 20 CSS gap, photo 311×389.
+ * Compete photo hidden so it is not double. Desk >980 / phone ≤600 untouched.
+ */
+@media (min-width: 601px) and (max-width: 980px) {
+  .premium-usmle-2-shell .premium-usmle-compete__photo-frame {
+    display: none;
+  }
+
+  /* Figma 1352-8228 is a Hug row: quote 310 (desk quote frame) + 20 + photo 311, centered. */
+  .premium-usmle-2-shell .premium-usmle-student {
+    display: grid;
+    grid-template-columns: minmax(0, 310px) 311px;
+    justify-content: center;
+    column-gap: 20px;
+    align-items: start;
+    width: min(727px, calc(100% - 48px));
+    margin: 20px auto 28px;
+    padding: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__quote {
+    width: auto;
+    max-width: none;
+    margin-left: 0;
+    column-gap: 6px;
+    padding-bottom: 4px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__mark {
+    font-size: 28px;
+    line-height: 0.8;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__mark--end {
+    bottom: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__desk {
+    display: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__phone {
+    display: block;
+    max-width: none;
+    padding-right: 12px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__photo {
+    display: block;
+    width: 311px;
+    height: 389px;
+    overflow: hidden;
+    border: 0.6px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    background: #f4e5e4;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-student__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/*
+ * U9 Kick — iPad only (owner 2026-10-02).
+ * Desk >1366 and phone ≤600 keep kick.css defaults. Do not touch them.
+ * Kill the 200px top pad; ~40 CSS under student (lab-1 iPad half-gap rhythm).
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-2-shell .premium-usmle-2-shell__body > .premium-usmle-kick {
+    padding-top: 0;
+    padding-inline: 16px;
+    margin-top: 12px;
+  }
+}
+
+/*
+ * U10 Know black-card header — iPad only (owner GO AHEAD 2026-10-02).
+ * Module already hides U11+ on 601–1366. Kill inherited section pad,
+ * sit on 727 rail, 40 CSS under kick. Narrow iPad: tighten card pad so header fits.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-2-shell .premium-usmle-2-shell__body > .premium-usmle-know {
+    width: min(727px, calc(100% - 32px));
+    margin-top: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .premium-usmle-2-shell .premium-usmle-know__card {
+    padding-inline: 24px;
+    gap: 24px;
+  }
+}
+
+/*
+ * U11–U20 know story — iPad only (owner: next 3 = U18–U20).
+ * Through conference. Join + offers/visa/CV still hidden.
+ * Desk >1366 / phone ≤600 untouched. Narrow iPad stacks.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-2-shell .premium-usmle-know__card {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+    column-gap: 20px;
+    row-gap: 20px;
+    align-items: start;
+    flex: 1 1 100%;
+    width: 100%;
+    margin-top: 24px;
+    overflow: visible;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__essay {
+    position: static;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: auto;
+    max-width: none;
+    margin: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__essay-lead {
+    margin: 0 0 14px;
+    color: #fff;
+    font-size: 19.2px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__essay-body {
+    margin: 0;
+    max-width: none;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__years {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-height: 108px;
+    margin: 0;
+    padding: 16px 12px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__years-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__years-copy {
+    position: relative;
+    margin: 0;
+    color: #ffc524;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__years-cursor {
+    position: relative;
+    display: block;
+    width: 19.2px;
+    height: 19.2px;
+    margin: 4px auto 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__window {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    margin: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__window-lead {
+    margin: 0;
+    color: #0abf8c;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__window-side {
+    width: 100%;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__window-example {
+    margin: 0 0 4px;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__window-list {
+    margin: 0;
+    padding: 0 0 0 18px;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.35;
+    list-style: disc;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__window-list li {
+    white-space: normal;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__steps {
+    position: static;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: start;
+    width: 436px;
+    max-width: 100%;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step:nth-child(1) {
+    flex: 0 0 132px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step:nth-child(2) {
+    flex: 0 0 127px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step:nth-child(3) {
+    flex: 0 0 155px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step-name {
+    margin: 0;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: #ffc524;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__step-lines li {
+    overflow-wrap: anywhere;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__residency {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    width: min(436px, 100%);
+    margin: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__residency-label {
+    margin: 0;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__residency-body {
+    margin: 0;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__match {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 5;
+    width: min(436px, 100%);
+    margin: -10px 0 0;
+    color: #ffc524;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08px;
+  }
+
+  /* U15–U18 — grey What you get: title · 2-col (network|checklist · forms|sessions). */
+  .premium-usmle-2-shell .premium-usmle-know__offer {
+    display: grid;
+    grid-template-columns: minmax(0, 452px) minmax(0, 370px);
+    column-gap: 7px;
+    justify-content: center;
+    align-items: start;
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 6;
+    width: calc(100% + 65px);
+    max-width: none;
+    margin: 70px 0 0 -65px;
+    padding: 56px 24px 36px;
+    background: #f1f1f1;
+    border: 1px solid #000;
+    border-radius: 16px;
+    min-height: 0;
+    z-index: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-title {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 599px;
+    margin: 0 auto;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 44px;
+    text-align: center;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-break {
+    display: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-photo {
+    display: block;
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 6;
+    justify-self: end;
+    align-self: start;
+    z-index: 1;
+    width: 110px;
+    height: 100px;
+    margin: 26px -65px 0 0;
+    overflow: hidden;
+    background: #bbc8ff;
+    border: 1px solid #b57cff;
+    border-radius: 12.8px;
+    pointer-events: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-photo img {
+    position: absolute;
+    left: -60px;
+    top: -10px;
+    width: 209px;
+    height: 118px;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-row {
+    display: contents;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__network {
+    grid-column: 1;
+    width: min(263px, 100%);
+    margin: 36px 0 0 auto;
+    color: #000;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__network-lead {
+    margin: 0 0 4px;
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 1.27;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__network-body {
+    margin: 0;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__checklist {
+    grid-column: 2;
+    width: 100%;
+    margin-top: 36px;
+    padding: 28px 23px 24px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__checklist-title {
+    width: 100%;
+    max-width: 324px;
+    margin: 0 auto 8px;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__checklist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 324px;
+    margin: 0 auto;
+    padding: 12px 0 0;
+    list-style: none;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__checklist-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #000;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__checklist-mark {
+    flex: 0 0 27px;
+    width: 27px;
+    height: 27px;
+    background: #0a8f68;
+    border-radius: 3px;
+  }
+
+  /* U18 — Forms card under network, left of checklist. */
+  .premium-usmle-2-shell .premium-usmle-know__forms {
+    display: block;
+    position: static;
+    grid-column: 1;
+    width: 100%;
+    margin: 16px 0 0;
+    padding: 28px 18px 24px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__forms-title {
+    width: 100%;
+    max-width: 400px;
+    margin: 0;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__forms-list {
+    width: min(280px, 100%);
+    margin: 16px 0 0 auto;
+    padding: 0 0 0 20px;
+    color: #000;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    list-style: disc;
+    text-transform: capitalize;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__forms-list li {
+    display: list-item;
+    list-style: disc;
+  }
+
+  /* U17 — sessions under checklist, right column. */
+  .premium-usmle-2-shell .premium-usmle-know__sessions {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    grid-column: 2;
+    width: 100%;
+    margin: 16px 0 0;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__sessions-icon {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__sessions-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__sessions-title {
+    margin: 0 0 4px;
+    color: #595959;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__cal {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2px 4px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__cal-day,
+  .premium-usmle-2-shell .premium-usmle-know__cal-date {
+    color: #4a5660;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__cal-date.is-booked {
+    color: #fff;
+    background: #c2410c;
+    border-radius: 50%;
+  }
+
+  /* U19 — Prep card under forms, left column. */
+  .premium-usmle-2-shell .premium-usmle-know__prep {
+    display: block;
+    position: static;
+    grid-column: 1;
+    width: 100%;
+    margin: 16px 0 0;
+    padding: 16px 21px 18px;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 12.8px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__prep-title {
+    margin: 0 0 10px;
+    color: #000;
+    font-family: Roboto, system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__prep-body {
+    margin: 0;
+    color: #000;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+  }
+
+  /* U20 — Conference bento under prep, left column. */
+  .premium-usmle-2-shell .premium-usmle-know__conference {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    grid-column: 1;
+    width: 100%;
+    min-height: 169px;
+    margin: 13px 0 0;
+    padding: 36px 16px 20px;
+    background: #bbc8ff;
+    border: 1px solid #5c5c5c;
+    border-radius: 12.8px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__conference-icon {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__conference-copy {
+    margin: 0;
+    color: #000;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__join,
+  .premium-usmle-2-shell .premium-usmle-know__offers {
+    display: none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .premium-usmle-2-shell .premium-usmle-know__story {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__essay,
+  .premium-usmle-2-shell .premium-usmle-know__years,
+  .premium-usmle-2-shell .premium-usmle-know__window,
+  .premium-usmle-2-shell .premium-usmle-know__steps,
+  .premium-usmle-2-shell .premium-usmle-know__residency,
+  .premium-usmle-2-shell .premium-usmle-know__match,
+  .premium-usmle-2-shell .premium-usmle-know__offer,
+  .premium-usmle-2-shell .premium-usmle-know__offer-photo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  /* Narrow: single column; no left pull. */
+  .premium-usmle-2-shell .premium-usmle-know__offer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 48px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-photo {
+    margin: -44px 0 0 auto;
+    justify-self: end;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__offer-row {
+    display: contents;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__network,
+  .premium-usmle-2-shell .premium-usmle-know__checklist,
+  .premium-usmle-2-shell .premium-usmle-know__forms,
+  .premium-usmle-2-shell .premium-usmle-know__prep,
+  .premium-usmle-2-shell .premium-usmle-know__conference,
+  .premium-usmle-2-shell .premium-usmle-know__sessions {
+    grid-column: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Order: title → network → checklist → sessions → forms → prep → conference */
+  .premium-usmle-2-shell .premium-usmle-know__offer-title {
+    order: 1;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__network {
+    order: 2;
+    margin-top: 36px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__checklist {
+    order: 3;
+    margin-top: 16px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__sessions {
+    order: 4;
+    margin-top: 16px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__forms {
+    order: 5;
+    margin-top: 16px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__prep {
+    order: 6;
+    margin-top: 16px;
+  }
+
+  .premium-usmle-2-shell .premium-usmle-know__conference {
+    order: 7;
+    margin-top: 13px;
+  }
+}

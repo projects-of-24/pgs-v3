@@ -90,7 +90,7 @@ No sitewide purge. Page-by-page in later UI pass. Prefer `clamp` for layout that
 
 - [ ] **Post-split QC order:** header → toggle → footer → univMeet → **then** pages (OWN-LINK). No page-body jump ahead.
 - [ ] Owned split stays off live pages. **OWN-LINK-H done:** `/preview/header` only, via `/preview/owned-split`. Next piece needs its own `GO AHEAD`
-- [ ] Chrome bands: >1366 desk · 801–1366 wide iPad (Figma 19072:15812, hamburger after login) · 601–800 compact iPad · ≤600 phone (Figma 19073:13319). Middle two = iPad. Never 767. One Fable plan across all four before building.
+- [ ] Chrome bands: >1366 desk · 801–1366 wide iPad (Figma 19072:15812, hamburger after login) · 601–800 compact iPad · ≤600 phone (Figma 19073:13319). Middle two = iPad. Never 767. One Opus plan across all four before building.
 - [ ] Do not invent join #PGS / contactCounsellor destinations — stubs until Figma pages exist
 - [ ] Do not invent floating-menu CSS; port proven dropslide first
 - [ ] **No marquee/announcement bar in H1–H-R** — deferred until after chrome rework; admin CRUD then

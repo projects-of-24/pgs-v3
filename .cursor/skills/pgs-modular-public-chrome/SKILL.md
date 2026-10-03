@@ -28,7 +28,7 @@ Owner doc: [`docs/MODULAR-PUBLIC-FRONTEND.md`](../../docs/MODULAR-PUBLIC-FRONTEN
 1. **Many pages** already use **React modular bodies** inside `LegacyPage` / shared chrome host; some routes still legacy HTML bodies.
 2. **Shared chrome mount today** = HTML string (`public-header.html` / footer) → **`dangerouslySetInnerHTML` (DSIH)**. That is the pain to retire in the header phase.
 3. **Active work (2026-09-25):** header chrome phase — see `pgs-header-chrome-phase`. Body work otherwise = page-scoped CSS only; do not drive-by chrome.
-4. **Bands (four):** `>1366` desktop · `801–1366` wide iPad (Figma `19072:15812`) · `601–800` compact iPad · `≤600` mobile — middle two reserved for iPad · **no 767** for modular chrome. Responsive asks: one Fable plan across all four (`pgs-master-workflow`). **iPad body = desktop body** where owner said so.
+4. **Bands (four):** `>1366` desktop · `801–1366` wide iPad (Figma `19072:15812`) · `601–800` compact iPad · `≤600` mobile — middle two reserved for iPad · **no 767** for modular chrome. Responsive asks: one Opus plan across all four (`pgs-master-workflow`). **iPad body = desktop body** where owner said so.
 5. **Workflow:** propose → `GO AHEAD` → one gate → owner Preview QC.
 
 ### Later (roadmap)

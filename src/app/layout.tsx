@@ -35,7 +35,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     "/preview/error-404",
     "/error_404",
     "/preview/scholarship",
-    "/scholarship"
+    "/scholarship",
+    "/preview/purpleusmle",
+    "/preview/purpleusmle-2"
   ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs and on H-R done routes (React chrome, same as the QC'd lab). */

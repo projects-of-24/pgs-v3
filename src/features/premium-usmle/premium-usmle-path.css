@@ -266,17 +266,3 @@
     padding: 10px 10px 12px;
   }
 }
-
-@media (min-width: 601px) and (max-width: 1366px) {
-  .premium-usmle-path__inner {
-    padding-inline: 24px;
-  }
-
-  .premium-usmle-path__stage {
-    flex-wrap: nowrap;
-  }
-
-  .premium-usmle-path__card {
-    flex-shrink: 0;
-  }
-}

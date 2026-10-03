@@ -41,7 +41,7 @@ LATER   Type floor — final-draft check only, not during fast section QC
         Skill: `pgs-ipad-hero-body` · do not sweep mid-page
 
 ALWAYS  CMS (junior) — leave alone unless owner reopens by name
-ALWAYS  Fable architect plan → owner GO AHEAD → this agent implements → gates → owner QC
+ALWAYS  Opus architect plan → owner GO AHEAD → Sonnet 5.5 or this agent implements → gates → owner QC
 ALWAYS  Content pass (assess, no code) → owner confirms the relationship → then code
 ```
 
@@ -78,10 +78,10 @@ One change for that relationship. Re-measure it. Stop for owner QC. Do not start
 2. Owner Figma / junior parked code (visual authority for bodies)
 3. Current V3 (schema, RLS, RPCs — security authority)
 3b. Layout/CSS: SCOUT live + preview → WHAT · WHY · HOW (`pgs-scout-what-why-how`) — no vibe CSS
-4. **Fable architect plan** (below) — plan only, no code
+4. **Opus architect plan** (below) — plan only, no code
 5. Propose that plan: WHAT · PLAN · BEFORE→AFTER · FILES · ELI5 · NOT IN THIS CHANGE
 6. STOP — wait for owner GO AHEAD (or GO AHEAD /route / GO AHEAD rung N)
-7. This agent implements the approved plan. Smallest correct diff only
+7. Sonnet 5.5 or this agent implements the approved plan. Smallest correct diff only
 8. Gate report (syntax + security + skips) + re-measure if layout
 9. Owner Preview / use QC
 ```
@@ -89,27 +89,27 @@ One change for that relationship. Re-measure it. Stop for owner QC. Do not start
 **Owner strengths:** product, Figma, SQL/Airtable sense, role “wrong key must fail” tests.  
 **Agent strengths:** Next wiring, RLS, migrations, async plumbing, CodeRabbit-ready diffs.
 
-## Architect, then implement (owner lock 2026-09-26)
+## Architect, then implement (owner lock 2026-10-02)
 
-**Skill path from now:** Fable plans. This agent implements. Do not skip the plan to save a turn.
+**Skill path from now:** Opus plans. Sonnet 5.5 or this agent implements. Do not skip the plan to save a turn.
 
 | Step | Who | Does |
 |---|---|---|
-| 1 | Fable `claude-fable-5-thinking-high` | Pre-build architect plan only. No file edits. |
+| 1 | Opus | Pre-build architect plan only. No file edits. |
 | 2 | Owner | `GO AHEAD` on that plan, or a correction |
-| 3 | This agent | Implement the approved plan. Targeted diff. Re-measure. |
+| 3 | Sonnet 5.5 or this agent | Implement the approved plan. Targeted diff. Re-measure. |
 
-**Responsive asks are one plan, not one pass per band (owner lock 2026-09-26).** When the owner asks about desktop, iPad, mobile, or any mix of them, Fable plans all four bands together in one pass. Four bands below. Fable says what each band shows, what carries over from the band above, and what differs, and why. The owner approves that one plan. Then this agent builds it in one go. Do not fix desktop, then iPad, then compact iPad, then phone in separate passes on the same component. The header took several passes because each band was done alone.
+**Responsive asks are one plan, not one pass per band (owner lock 2026-09-26).** When the owner asks about desktop, iPad, mobile, or any mix of them, Opus plans all four bands together in one pass. Four bands below. Opus says what each band shows, what carries over from the band above, and what differs, and why. The owner approves that one plan. Then Sonnet 5.5 or this agent builds it in one go. Do not fix desktop, then iPad, then compact iPad, then phone in separate passes on the same component. The header took several passes because each band was done alone.
 
-Fable plan for a responsive ask must include:
+Opus plan for a responsive ask must include:
 
 - One table: every piece (logo, labels, buttons, icons, menu, gaps) × four bands
 - What is shared across bands, and the one reason any band differs
 - Where each value lives (one rule per band, no leftover rule that jumps a size)
 - Which CSS files and media queries change
-- A measure list for the agent: 1500 · 1100 · 700 · 390 (and 360 for the narrowest phone)
+- A measure list for the implementer: 1500 · 1100 · 700 · 390 (and 360 for the narrowest phone)
 
-Fable is the architect because it plans these passes better. Proven on the owned-CSS split P1–P15 (1:1, zero fights on OWN-LINK-H). Use it for a new band, a new block, a CSS split, an audit, a multi-file pass, or a contract. A live QC nudge the owner already named (“this box is 30px”) stays a direct edit. Do not open a second Fable plan for that nudge.
+Opus is the architect. Use it for a new band, a new block, a CSS split, an audit, a multi-file pass, or a contract. A live QC nudge the owner already named (“this box is 30px”) stays a direct edit. Do not open a second Opus plan for that nudge.
 
 **No separate toy Node/Express mini-project.** Teaching happens inside real PGS rungs.
 
@@ -316,7 +316,7 @@ Fortune 100 codebases are not perfect either. **Sellable 10/10** = roles/docs/Op
 - [ ] Am I using **767** for modular chrome? → STOP (use 600 / 1366)  
 - [ ] Am I wiring parked junior body without `GO AHEAD /route`? → STOP  
 - [ ] Am I doing backend while owner asked for countries CSS? → STOP  
-- [ ] Did Fable write the architect plan before this build? → required, unless this is a named live QC nudge  
+- [ ] Did Opus write the architect plan before this build? → required, unless this is a named live QC nudge  
 - [ ] Did I propose and wait for GO AHEAD? → required  
 - [ ] Will DONE include gate report + ELI5?
 

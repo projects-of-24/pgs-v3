@@ -448,3 +448,68 @@
     line-height: 1.27;
   }
 }
+
+/*
+ * iPad hero from owner Figma 19156:13858 (2026-10-02): the phone hero "on steroids".
+ * Headline column = card width (406), centered on the card; title 26 (owner 2026-10-02); hero copy, CTA and hint at 16px; CTA is a compact centered pill;
+ * hint centered. Card keeps the saved 406 width and 499.8 photo; brand 42 / tag 20 as Figma.
+ * iPad only. Phone and desktop untouched.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-usmle-hero .premium-usmle-hero__headline {
+    width: min(406px, 100%);
+    max-width: 406px;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__title {
+    margin: 0;
+    font-size: 26px;
+    line-height: 27px;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__lead,
+  .premium-usmle-hero .premium-usmle-hero__subtitle {
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__cta-block {
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__cta {
+    width: auto;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 11px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__cta-hint {
+    max-width: 340px;
+    margin-inline: auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__panel {
+    min-height: 630px;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__panel-brand {
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .premium-usmle-hero .premium-usmle-hero__panel-tag {
+    font-size: 20px;
+  }
+}
