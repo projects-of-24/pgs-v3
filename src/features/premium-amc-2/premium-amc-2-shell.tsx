@@ -1,7 +1,7 @@
 /**
  * #premiumAMC lab-2 shell — copy of USMLE lab-2 with AMC identity modules.
  * Gate 3a (2026-10-03): preview QC before live cutover.
- * QC lab: /preview/purpleamc-2 · Live flip = Gate 3b.
+ * QC lab: /preview/purpleamc-2 · Live: /purpleamc (Gate 3b cutover 2026-10-03).
  */
 import { PremiumAmcHero } from "../premium-amc/premium-amc-hero";
 import { PremiumAmcWhy } from "../premium-amc/premium-amc-why";

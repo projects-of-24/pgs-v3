@@ -19,8 +19,8 @@ Branch: shared public modular lane until owner splits.
 | **Live** | `/purpleusmle` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 1). React chrome + `PremiumUsmle2Shell` + OWNED_SPLIT. Typo `/purpleusme` redirects here. CMS key `purpleusme`. |
 | **Preview PLAB lab-2** | `/preview/purpleplab-2` | Same tree as live after Gate 2b. |
 | **Live PLAB** | `/purpleplab` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 2b). React chrome + `PremiumPlab2Shell` + OWNED_SPLIT. |
-| **Preview AMC lab-2** | `/preview/purpleamc-2` | **Gate 3a** (2026-10-03). Lab-2 shell + AMC identity modules. Owner QC before live Gate 3b. |
-| **Live AMC** | `/purpleamc` | Lab-1 until Gate 3b. |
+| **Preview AMC lab-2** | `/preview/purpleamc-2` | Same tree as live after Gate 3b. |
+| **Live AMC** | `/purpleamc` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 3b). React chrome + `PremiumAmc2Shell` + OWNED_SPLIT. |
 
 PLAB `/purpleplab` and AMC `/purpleamc` use this template. Words wait for CMS.
 
@@ -97,7 +97,7 @@ Chrome = LOCKED. Do not rebuild.
 | — | Gap analysis | **GAP** | After Figma-to-code is done. Before LOCK. Do not fix spacing mid-build. Owner marked frontend complete before this pass. |
 | — | Motion | last | After visual lock |
 | — | CMS and backend pass | **later** | Same pass, not a side job. One control at a time. Includes: button destinations (Enroll was the only Hostinger link). Country select + this medical template + slug + live, tied to the full country list. USMLE, then PLAB, then AMC. Not built now. |
-| — | Live lab-2 cutover | **CUTOVER** | **USMLE DONE** Gate 1 · **PLAB DONE** Gate 2b · **AMC preview** Gate 3a. Live AMC = 3b. |
+| — | Live lab-2 cutover | **CUTOVER** | **DONE** — USMLE Gate 1 · PLAB Gate 2b · AMC Gate 3b (2026-10-03). |
 | — | Copy to PLAB / AMC | one page at a time | **DONE.** Same base template. Identity labels only. Leftover exam sentences stay for CMS. AMC track line was still "PLAB pathway" in Figma; the slot is "AMC pathway" so the page is not labeled PLAB. |
 
 ---
@@ -269,6 +269,6 @@ Hostinger `/purpleusme` body, checked 2026-09-14 against `src/legacy/generated/p
 - Live USMLE (lab-2 Gate 1): http://localhost:7100/purpleusmle
 - Lab-2 PLAB: http://localhost:7100/preview/purpleplab-2
 - Live PLAB (lab-2 Gate 2b): http://localhost:7100/purpleplab
-- Lab-2 AMC (Gate 3a QC): http://localhost:7100/preview/purpleamc-2
-- AMC live (lab-1 until Gate 3b): http://localhost:7100/purpleamc
+- Lab-2 AMC: http://localhost:7100/preview/purpleamc-2
+- Live AMC (lab-2 Gate 3b): http://localhost:7100/purpleamc
 - Lab-1 USMLE (parked): http://localhost:7100/preview/purpleusmle

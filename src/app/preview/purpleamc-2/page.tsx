@@ -1,7 +1,7 @@
 /**
  * Preview QC — #premiumAMC lab-2 (Hostinger-free, chrome-first).
  * Same tree as USMLE lab-2: <PublicHeader/> · <PublicStrip/> · PremiumAmc2Shell · <PublicFooter/>.
- * Gate 3a (2026-10-03). Live `/purpleamc` untouched until Gate 3b.
+ * Gate 3a (2026-10-03). Live `/purpleamc` = same tree (Gate 3b 2026-10-03).
  */
 import { LegacyPage } from "@/components/legacy-page";
 import { PremiumAmc2Shell } from "@/features/premium-amc-2/premium-amc-2-shell";
