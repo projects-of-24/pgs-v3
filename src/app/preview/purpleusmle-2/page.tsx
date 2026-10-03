@@ -2,7 +2,7 @@
  * Preview QC — #premiumUSMLE lab-2 (Hostinger-free, chrome-first).
  * Header = <PublicHeader/> · Strip = <PublicStrip/> · Body = PremiumUsmle2Shell
  * Footer = <PublicFooter/>. No chrome HTML strings. Owned split from day 1.
- * Old `/preview/purpleusmle` ignored for this rebuild. Live `/purpleusmle` untouched.
+ * Old `/preview/purpleusmle` ignored. Live `/purpleusmle` = same tree (Gate 1 2026-10-03).
  */
 import { LegacyPage } from "@/components/legacy-page";
 import { PremiumUsmle2Shell } from "@/features/premium-usmle-2/premium-usmle-2-shell";

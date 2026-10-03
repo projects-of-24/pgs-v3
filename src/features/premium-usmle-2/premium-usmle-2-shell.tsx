@@ -3,7 +3,7 @@
  * Gates: … · FAQ (U29) · Outro (U30) · Hub (U31) · Picks (U32)
  * Figma onwards: cas-v6 mobile frame 1352-8063. Next block only after owner GO AHEAD.
  * Bands: desk >1366 + phone ≤600 gap rhythm from lab-1; iPad 601–1366 = lab-2 QC.
- * Single cutover QC surface: /preview/purpleusmle-2
+ * QC lab: /preview/purpleusmle-2 · Live: /purpleusmle (Gate 1 cutover 2026-10-03).
  */
 import { PremiumUsmleHero } from "../premium-usmle/premium-usmle-hero";
 import { PremiumUsmleWhy } from "../premium-usmle/premium-usmle-why";
@@ -29,10 +29,12 @@ import { PgsPicks, type PgsPicksCard } from "../shared/pgs-picks/pgs-picks";
 import "./premium-usmle-2-shell.css";
 
 type PremiumUsmle2ShellProps = {
+  /** Live route — same body as lab-2; marks `data-cutover=LIVE`. */
+  live?: boolean;
   picks?: PgsPicksCard[];
 };
 
-export function PremiumUsmle2Shell({ picks = [] }: PremiumUsmle2ShellProps) {
+export function PremiumUsmle2Shell({ live = false, picks = [] }: PremiumUsmle2ShellProps) {
   return (
     <div
       className="premium-usmle-2-shell"
@@ -44,7 +46,7 @@ export function PremiumUsmle2Shell({ picks = [] }: PremiumUsmle2ShellProps) {
       data-figma-ipad-frame="1352:8063"
       data-shell-gate="g30"
       data-block-gate="u32"
-      data-cutover="preview"
+      data-cutover={live ? "LIVE" : "preview"}
     >
       <div className="premium-usmle-2-shell__body">
         <div className="premium-usmle-2-shell__univ-gap" aria-hidden="true" />

@@ -14,9 +14,9 @@ Branch: shared public modular lane until owner splits.
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview lab-2 (active)** | `/preview/purpleusmle-2` | **NORTH STAR — all three bands QC passed** (2026-10-03). Desk + iPad + phone same content rearranged. Skill: `pgs-ipad-modular-body-pass`. Cutover next — do not rebuild from scratch. |
+| **Preview lab-2 (north star)** | `/preview/purpleusmle-2` | **All three bands QC passed** (2026-10-03). Same tree as live after Gate 1. Skill: `pgs-ipad-modular-body-pass`. |
 | **Preview (lab-1, ignore)** | `/preview/purpleusmle` | Parked for lab-2. Do not use for new iPad QC. |
-| **Live** | `/purpleusmle` | **CUTOVER DONE**. Typo `/purpleusme` redirects here. CMS storage key stays `purpleusme`. Untouched until lab-2 cutover. |
+| **Live** | `/purpleusmle` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 1). React chrome + `PremiumUsmle2Shell` + OWNED_SPLIT. Typo `/purpleusme` redirects here. CMS key `purpleusme`. |
 
 PLAB `/purpleplab` and AMC `/purpleamc` use this template. Words wait for CMS.
 
@@ -93,7 +93,7 @@ Chrome = LOCKED. Do not rebuild.
 | — | Gap analysis | **GAP** | After Figma-to-code is done. Before LOCK. Do not fix spacing mid-build. Owner marked frontend complete before this pass. |
 | — | Motion | last | After visual lock |
 | — | CMS and backend pass | **later** | Same pass, not a side job. One control at a time. Includes: button destinations (Enroll was the only Hostinger link). Country select + this medical template + slug + live, tied to the full country list. USMLE, then PLAB, then AMC. Not built now. |
-| — | Live Hostinger-free cutover | **CUTOVER** | **DONE** for USMLE (`/purpleusmle`), PLAB (`/purpleplab`), and AMC (`/purpleamc`). |
+| — | Live lab-2 cutover | **CUTOVER** | **USMLE DONE** Gate 1 (2026-10-03). PLAB / AMC next (Gates 2–3). |
 | — | Copy to PLAB / AMC | one page at a time | **DONE.** Same base template. Identity labels only. Leftover exam sentences stay for CMS. AMC track line was still "PLAB pathway" in Figma; the slot is "AMC pathway" so the page is not labeled PLAB. |
 
 ---
@@ -261,8 +261,8 @@ Hostinger `/purpleusme` body, checked 2026-09-14 against `src/legacy/generated/p
 
 ## Preview
 
-- Lab-2 (cutover QC — all bands): http://localhost:7100/preview/purpleusmle-2
+- Lab-2 (north star): http://localhost:7100/preview/purpleusmle-2
+- Live USMLE (lab-2 Gate 1): http://localhost:7100/purpleusmle
 - Lab-1 (parked): http://localhost:7100/preview/purpleusmle
-- Live: http://localhost:7100/purpleusmle
-- PLAB live (same template): http://localhost:7100/purpleplab
-- AMC live (same template): http://localhost:7100/purpleamc
+- PLAB live (lab-1 until Gate 2): http://localhost:7100/purpleplab
+- AMC live (lab-1 until Gate 3): http://localhost:7100/purpleamc
