@@ -63,7 +63,7 @@
 [data-legacy-page] #toggleBtn.arrow-box,
 .developer-student-shell #toggleBtn.arrow-box {
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   pointer-events: auto;
   box-sizing: border-box;
   width: var(--pgs-toggle-w) !important;

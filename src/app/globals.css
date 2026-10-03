@@ -414,7 +414,8 @@ main[data-legacy-page] {
 [data-legacy-page] #toggleBtn.arrow-box,
 .developer-student-shell #toggleBtn.arrow-box {
   position: absolute;
-  z-index: 1;
+  /* Above pulled-up body shells (z-index 0) inside the strip stacking context */
+  z-index: 5;
   pointer-events: auto;
   box-sizing: border-box;
   width: 82px !important;

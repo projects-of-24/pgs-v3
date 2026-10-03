@@ -925,7 +925,12 @@ export function LegacyPage({ html, page, studentState="anonymous", children }: P
       delete popupWindow.showLoginRequiredPopup;
       delete root.dataset.interactionsReady;
     };
-  }, [page, router, studentState, children, html]);
+    /*
+     * Do not depend on `children` — every parent re-render makes a new children
+     * identity, aborts listeners, and rewires. Heavy lab-2 bodies (picks/dashboard)
+     * re-render often; that made hamburger / #toggleBtn feel dead.
+     */
+  }, [page, router, studentState, html]);
 
   if (children) {
     return (

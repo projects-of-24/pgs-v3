@@ -82,8 +82,13 @@ body.overflow-hidden {
     background: #fff !important;
     border: 1px solid #000 !important;
     box-shadow: 8px 8px 0 0 #000 !important;
-    /* Kill Hostinger transition:0.3s all (was sliding `right` + shoving page). Pop, no slide. */
-    transition: opacity 0.12s ease-out, visibility 0.12s ease-out !important;
+    /*
+     * Fade opacity only. Do NOT transition visibility — with open classes present
+     * the closed rule still matches, and a visibility transition can keep the
+     * drawer computed-hidden for the whole fade (hamburger looks dead).
+     * Owner QC 2026-10-03: medical lab-2 cutover pages.
+     */
+    transition: opacity 0.12s ease-out !important;
     transform: none !important;
     opacity: 0;
     visibility: hidden !important;
@@ -103,7 +108,7 @@ body.overflow-hidden {
   main[data-legacy-page] #drawer.pgs-header-drawer.active,
   main[data-legacy-page] #drawer.pgs-header-drawer.open,
   main[data-legacy-page] #drawer.pgs-header-drawer.show {
-    opacity: 1;
+    opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
     transform: none !important;
