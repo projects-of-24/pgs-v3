@@ -49,9 +49,11 @@ iPad hero recall (`pgs-ipad-hero-body`): copy the phone card once, save as its o
 
 Owner lock (2026-10-03): **Roboto** minimum **15–16px** (token `--pgs-type-floor` → 16 unless a named block uses 15). **Bebas** minimum **30px**. Chrome **locked**. Body clamp recipes from lab-2 are the default for next pages.
 
+**Chrome click QC (cutover 2026-10-03):** after OWNED_SPLIT, hamburger (≤1366) and `#toggleBtn` must open. Fixed in `pgs-header-chrome-reset` (no visibility transition) · `legacy-page` (no `children` rewire) · toggle `z-index: 5`. Skill: `pgs-ipad-modular-body-pass` / `pgs-ipad-paper-pass`.
+
 **Later final-draft type pass — do not do it during fast section QC.** Lift sub-floor Roboto (13/14 → 16) and sub-30 Bebas when owner opens that pass. Do not invent sizes mid-QC.
 
-**Next iPad page:** body only → content-match QC (desk vs phone) → owner rearrange → Opus plan from north-star findings + Figma/Paper → execute reuse/adapt (not invent). Modular already: hero family · Highlights · #PGS picks.
+**Next iPad page:** body only → content-match QC (desk vs phone) → owner rearrange → Opus plan from north-star findings + Figma/Paper → execute reuse/adapt (not invent). Modular already: hero family · Highlights · #PGS picks. First after OWNED_SPLIT: chrome click QC (hamburger + toggle).
 
 ---
 
@@ -110,7 +112,7 @@ Later switch only when the owner names the page. About and Rotation keep their o
 
 | Block | Folder | Later use |
 |---|---|---|
-| Highlights | `premium-highlights` | PLAB / AMC import this. Do not rebuild. Title: desk 38.4 · iPad 36 · phone 24 (owner 2026-10-03). |
+| Highlights | `premium-highlights` | PLAB / AMC import this. Do not rebuild. Title: desk 38.4 · iPad 36 · phone 24 (owner 2026-10-03). iPad photo frames **−20%** · **gap 8px** (owner 2026-10-03): 205.34 / aspect 231∶430. |
 | Expense request | `premium-expense` | PLAB / AMC import this. |
 | Enroll | `premium-enroll` | PLAB / AMC import this. |
 | Questions + meet | `premium-questions` | PLAB / AMC import this. |
@@ -240,6 +242,7 @@ Hostinger `/purpleusme` body, checked 2026-09-14 against `src/legacy/generated/p
 | 2026-09-13 | **U26 dashboard** | Next Figma frame after the expense card. Desktop photo and five points. Phone has the two drawn slides. Arrows switch them. No motion. |
 | 2026-09-13 | **U26 phone photos** | Phone frame stays. Same five labels as desktop. Arrows step one photo at a time and the line fills in fifths. Phone images are a separate set (`dashboard-m1`–`m5`). CMS can edit desk and phone photos independently later. Sixth attached photo not wired. No CMS editor in this gate. |
 | 2026-09-14 | **U26 phone arrows** | Phone arrow pair uses the Figma circle asset. Boxes are 48px with a −26px overlap so the circles sit like Figma `433:4590`. No empty box. |
+| 2026-10-03 | **U27 Enroll iPad desk** | Owner: replace phone-stack Enroll on USMLE / PLAB / AMC lab-2 with QC’d desk card from nonmedical (`1395:10868`). Panel `min(809px, 85%)` · 2-col included · access hang · Bebas ≥30 · Roboto 16. Compact 601–800 stacks columns. |
 | 2026-09-14 | **U27 enroll** | Next Figma frame after the dashboard. Shared enroll card under the dashboard. Gap 398px (dashboard end y=9306 to enroll y=9704). Copy kept, including `₹ 65,0000`. Enroll is a visual button. Questions not in this gate. |
 | 2026-09-14 | **U28 questions** | Desktop questions + meet pair under the enroll card. Gap 223px from the enroll panel bottom. Shared module. Copy kept. Schedule Now is a visual button. Green line `#009c70` → `#008660` (3.5:1 fails). Slot line 12.8→16. Phone hidden. FAQ not in this gate. |
 | 2026-09-14 | **U28 phone** | Phone stacks the pair. Title and green line sit side by side. Card is 41px under the list. Gap 150px from the enroll panel. Lead, list, and slot 14→15. Photo sits under the button. FAQ not in this gate. |

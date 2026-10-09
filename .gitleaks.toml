@@ -1,0 +1,29 @@
+# Gitleaks config for PGS V3 / Projects of 24 Quality Gate.
+# CI runs the OSS CLI (MIT). We do not use gitleaks/gitleaks-action here because
+# that Action requires a paid org license (GITLEAKS_LICENSE).
+title = "pgs-v3"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Binary/generated trees, known non-secret identifiers, and documented false positives"
+paths = [
+  '''(^|/)node_modules/''',
+  '''(^|/)\.next/''',
+  '''(^|/)playwright-report/''',
+  '''(^|/)test-results/''',
+  '''(^|/)\.pnpm-store/''',
+  '''(^|/)public/assets/''',
+  '''(^|/)src/legacy/generated/''',
+  '''(^|/)\.git/''',
+  '''pnpm-lock\.yaml$''',
+  '''package-lock\.json$''',
+  '''(^|/)docs/quality-gate/evidence/.*\.log$''',
+  # Public Figma file key constant (not an API credential)
+  '''src/features/purple-events/face-card/face-layouts\.ts$''',
+  # Fixture-only SQL suites (not production credentials)
+  '''^supabase/tests/''',
+  # Removed one-off import helper; historical JUNIOR_KEY was a catalog slug constant, not a live secret
+  '''scripts/import-junior-catalog\.mjs$'''
+]

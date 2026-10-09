@@ -26,9 +26,13 @@ insert into public.courses(title,slug,published) values('Phase7 published','phas
 insert into public.events(title,slug,published) values('Phase7 event','phase7-event',true);
 insert into public.catalog_tags(name,slug,tag_type,published) values('Phase7 tag','phase7-tag','topic',true);
 
+-- Strip publish grant as the table owner; authenticated cannot DELETE staff_role_permissions.
+reset role;
 delete from public.staff_role_permissions srp
 using public.staff_roles r, public.staff_permissions p
 where srp.role_id=r.id and srp.permission_id=p.id and r.key='admin' and p.key='catalog.publish';
+set local role authenticated;
+set local request.jwt.claims='{"sub":"71000000-0000-4000-8000-000000000001","role":"authenticated"}';
 
 select throws_ok($$update public.courses set title='mutated public' where slug='phase7-published'$$,'P0001','publish permission required','catalog.manage cannot edit published course content');
 select throws_ok($$insert into public.event_tags(event_id,tag_id) select e.id,t.id from public.events e join public.catalog_tags t on t.slug='phase7-tag' where e.slug='phase7-event'$$,'P0001','publish permission required','catalog.manage cannot tag a published event');

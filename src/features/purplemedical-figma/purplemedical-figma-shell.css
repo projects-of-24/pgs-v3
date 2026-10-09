@@ -1,0 +1,270 @@
+/**
+ * Purple Medical Figma iPad lab — B1.
+ * Artboard 1000×15821 · node 1352:8063.
+ *
+ * Order: Figma px → then min 15px floor · 85% rail.
+ * Type: one scale for iPad + desktop (601+). No separate iPad type band.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: lead 14px · sub/hint/trust 12px
+ * ISSUE: below readable floor
+ * PGS: max(15px, figma-size)
+ */
+
+.purplemedical-figma {
+  --pmfig-type-floor: 15px;
+  --pmfig-rail: 85%;
+  --pmfig-artboard: 1000;
+  /* Figma type tokens (desk = iPad) — floor applied at use */
+  --pmfig-title: 30px;
+  --pmfig-lead: 14px;
+  --pmfig-sub: 12px;
+  --pmfig-cta: 14px;
+  --pmfig-hint: 12px;
+  --pmfig-bebas: 30px;
+  --pmfig-tag: 14px;
+  --pmfig-trust: 12px;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: calc(-1 * var(--pgs-chrome-strip-pull, 0px));
+  position: relative;
+  z-index: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: var(--pmfig-type-floor);
+  color: #000;
+}
+
+.purplemedical-figma *,
+.purplemedical-figma *::before,
+.purplemedical-figma *::after {
+  box-sizing: border-box;
+}
+
+.purplemedical-figma__rail {
+  width: var(--pmfig-rail);
+  max-width: min(1000px, 85vw);
+  margin-inline: auto;
+  min-width: 0;
+  container-type: inline-size;
+  container-name: pmfig;
+}
+
+.purplemedical-figma__stage {
+  --pmfig-u: calc(100cqw / var(--pmfig-artboard));
+  position: relative;
+  width: 100%;
+  /* B1 ends ~ card y580 + 486 */
+  height: calc(1200 * var(--pmfig-u));
+  background: #fff;
+}
+
+/* ——— Hero 1352:8068 · y99 · w151 (Figma as drawn) ——— */
+.pmfig-hero {
+  position: absolute;
+  left: 50%;
+  top: calc(99 * var(--pmfig-u));
+  width: calc(151 * var(--pmfig-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 * var(--pmfig-u));
+}
+
+.pmfig-hero__copy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 * var(--pmfig-u));
+  min-width: 0;
+  color: #000;
+}
+
+.pmfig-hero__title {
+  margin: 0;
+  width: 100%;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-title));
+  line-height: 0.9;
+  color: #000;
+}
+
+.pmfig-hero__leads {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(8 * var(--pmfig-u));
+  min-width: 0;
+  letter-spacing: 0.2px;
+}
+
+.pmfig-hero__lead {
+  margin: 0;
+  width: 100%;
+  font-weight: 400;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-lead));
+  line-height: normal;
+  color: #000;
+}
+
+.pmfig-hero__sub {
+  margin: 0;
+  width: 100%;
+  font-weight: 400;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-sub));
+  line-height: normal;
+  color: #000;
+}
+
+.pmfig-hero__cta-wrap {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(8 * var(--pmfig-u));
+  min-width: 0;
+}
+
+.pmfig-hero__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: calc(6 * var(--pmfig-u)) calc(8 * var(--pmfig-u));
+  border: 0;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-cta));
+  line-height: normal;
+  letter-spacing: 0.04px;
+  cursor: pointer;
+}
+
+.pmfig-hero__cta:focus-visible {
+  outline: 2px solid #3929a6;
+  outline-offset: 3px;
+}
+
+.pmfig-hero__hint {
+  margin: 0;
+  width: 100%;
+  font-weight: 400;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-hint));
+  line-height: normal;
+  color: #000;
+}
+
+/* ——— Mauve card 1352:8078 / 8080 · y580 · 290×450 ——— */
+.pmfig-card {
+  position: absolute;
+  left: 50%;
+  top: calc(580 * var(--pmfig-u));
+  width: calc(290 * var(--pmfig-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(8 * var(--pmfig-u));
+}
+
+.pmfig-card__panel {
+  position: relative;
+  width: calc(290 * var(--pmfig-u));
+  height: calc(450 * var(--pmfig-u));
+  padding: calc(13 * var(--pmfig-u)) calc(11 * var(--pmfig-u));
+  border-radius: 16px;
+  background: #d1bbb9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pmfig-card__media {
+  width: 100%;
+  height: calc(357 * var(--pmfig-u));
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background: #d9d9d9;
+}
+
+.pmfig-card__img {
+  position: absolute;
+  width: calc(650.431 * var(--pmfig-u));
+  height: calc(982 * var(--pmfig-u));
+  left: calc(-106 * var(--pmfig-u));
+  top: calc(-307 * var(--pmfig-u));
+  max-width: none;
+  object-fit: cover;
+}
+
+.pmfig-card__brand {
+  position: absolute;
+  left: calc(15 * var(--pmfig-u));
+  top: calc(376 * var(--pmfig-u));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(6 * var(--pmfig-u));
+  padding-inline: calc(4 * var(--pmfig-u));
+}
+
+.pmfig-card__bebas {
+  margin: 0;
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-bebas));
+  line-height: normal;
+  color: #000;
+  white-space: nowrap;
+}
+
+.pmfig-card__tag {
+  margin: 0;
+  font-weight: 500;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-tag));
+  line-height: 36px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.pmfig-card__trust {
+  margin: 0;
+  width: calc(234 * var(--pmfig-u));
+  text-align: center;
+  font-weight: 400;
+  font-size: max(var(--pmfig-type-floor), var(--pmfig-trust));
+  line-height: normal;
+  color: rgb(0 0 0 / 65%);
+}
+
+/* iPad + desktop share the same type tokens (no 601–1366 override) */
+@media (min-width: 601px) {
+  .purplemedical-figma {
+    --pmfig-title: 30px;
+    --pmfig-lead: 14px;
+    --pmfig-sub: 12px;
+    --pmfig-cta: 14px;
+    --pmfig-hint: 12px;
+    --pmfig-bebas: 30px;
+    --pmfig-tag: 14px;
+    --pmfig-trust: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .purplemedical-figma * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

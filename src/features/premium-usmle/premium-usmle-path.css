@@ -224,8 +224,7 @@
   }
 
   .premium-usmle-path__arrow {
-    display: block;
-    flex: 0 0 auto;
+    display: none;
   }
 
   .premium-usmle-path__stage {

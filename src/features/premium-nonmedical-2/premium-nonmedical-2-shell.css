@@ -1,0 +1,2007 @@
+/**
+ * #premiumNonMedical lab-2 shell.
+ * Layout from Figma iPad `1390:9172`. Type from QC skill / USMLE lab-2 — not Figma px.
+ * Roboto floor 16 · Bebas ≥30. Desk >1366 / phone ≤600 keep module CSS.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.premium-nonmedical-2-shell {
+  --pgs-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: var(--pgs-premium-shell-pull);
+  position: relative;
+  z-index: 0;
+}
+
+.premium-nonmedical-2-shell *,
+.premium-nonmedical-2-shell *::before,
+.premium-nonmedical-2-shell *::after {
+  box-sizing: border-box;
+}
+
+.premium-nonmedical-2-shell__body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.premium-nonmedical-2-shell__univ-gap {
+  display: none;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+}
+
+@media (min-width: 1367px) {
+  .premium-nonmedical-2-shell__univ-gap {
+    display: block;
+    height: var(--pgs-premium-desk-univ-gap);
+  }
+}
+
+/*
+ * Block gap rhythm — owner lock 2026-10-03
+ * desk 100 · iPad 60 · phone 80
+ * Applied at file end (GAP LOCK) so it beats per-block recipes.
+ */
+
+/* B1 — CTA → mauve gap */
+.premium-nonmedical-2-shell .premium-nonmedical-hero {
+  padding-bottom: 0;
+}
+
+.premium-nonmedical-2-shell .premium-nonmedical-hero__inner {
+  gap: 20px;
+}
+
+/*
+ * B1 Hero iPad — layout Figma 1390:9172 · type = QC (USMLE lab-2).
+ * Opening 211.4 · card 406×630 · media 499.8 · phone tag.
+ * Title 26 · body/CTA/hint/trust 16 · brand Bebas 42 · tag 20.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-hero {
+    --nm-ipad-opening-w: 211.4px;
+    --nm-ipad-card-w: 406px;
+    --nm-ipad-card-h: 630px;
+    --nm-ipad-media-h: 499.8px;
+    padding: 53.2px 0 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__inner {
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 57.4px;
+    align-items: stretch;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__headline {
+    width: clamp(160px, 100%, var(--nm-ipad-opening-w));
+    max-width: var(--nm-ipad-opening-w);
+    margin-inline: auto;
+    align-items: stretch;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 27px;
+    text-align: left;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__lead,
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__subtitle {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+    color: #000;
+    text-align: left;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__cta-block {
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__cta {
+    width: 100%;
+    border-radius: 5.6px;
+    padding: 8px 11px;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    justify-content: flex-start;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__cta-hint {
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel-wrap {
+    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    gap: 11.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel {
+    width: clamp(240px, 100%, var(--nm-ipad-card-w));
+    max-width: var(--nm-ipad-card-w);
+    min-height: var(--nm-ipad-card-h);
+    margin-inline: auto;
+    padding: 18.2px 15.4px 22.4px;
+    gap: 14px;
+    border-radius: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__media {
+    width: 100%;
+    height: var(--nm-ipad-media-h);
+    border-radius: 11.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__img {
+    object-position: 46% 78%;
+    transform: scale(1.65);
+    transform-origin: 48% 70%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel-copy {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11.2px;
+    padding-inline: 5.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel-brand {
+    font-size: 42px;
+    line-height: 1;
+    gap: 8.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel-tag {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel-tag-desk {
+    display: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel-tag-phone {
+    display: block;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__trust {
+    max-width: 327.6px;
+    margin-inline: auto;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+  }
+}
+
+/* Compact 601–800 — layout fluid; title stays QC 26 */
+@media (min-width: 601px) and (max-width: 800px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__inner {
+    gap: 40px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__title {
+    font-size: 26px;
+    line-height: 27px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__panel {
+    min-height: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-hero__media {
+    height: auto;
+    aspect-ratio: 375.2 / 499.8;
+  }
+}
+
+/*
+ * B2 Why iPad — layout Figma 1390:10003 · type = QC.
+ * Title Bebas 38.4 · lead 17.6 · body 16.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-why {
+    padding: 60px 0 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-why__inner {
+    width: clamp(280px, 85%, 694px);
+    max-width: 694px;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 19.2px;
+    align-items: stretch;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-why__title {
+    max-width: none;
+    font-size: 38.4px;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-why__copy {
+    max-width: none;
+    gap: 11.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-why__lead {
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-why__para {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: normal;
+    letter-spacing: 0.2px;
+  }
+}
+
+/*
+ * B3 Comes iPad — layout Figma stack · type = QC.
+ * Title 20 · lead 16 · chip 22 · phone chip copy.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-comes {
+    padding: 48px 0 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__inner {
+    width: clamp(280px, 85%, 472px);
+    max-width: 472px;
+    margin-inline: auto;
+    padding-inline: 0;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__title,
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__lead {
+    max-width: none;
+    width: clamp(240px, 100%, 420px);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__lead {
+    margin-top: 16px;
+    font-size: var(--pgs-type-floor, 16px);
+    letter-spacing: 0.2px;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 22.4px;
+    width: 100%;
+    margin-top: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__poster {
+    width: clamp(240px, 100%, 352.8px);
+    height: auto;
+    aspect-ratio: 352.8 / 482.72;
+    border-radius: 12.8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__play {
+    width: 69.44px;
+    height: 69.44px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__chip-row {
+    align-self: stretch;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    gap: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__arrow {
+    width: 37px;
+    height: 37px;
+    margin-top: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__chip {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 22px;
+    line-height: 32px;
+    white-space: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__chip-line--desk {
+    display: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-comes__chip-line--phone {
+    display: block;
+  }
+}
+
+/*
+ * B4 Path iPad — layout Figma stack · type = QC.
+ * Cue/body/list/note 16 · headline 20 · recruiter 17.6 · card title 51.2 · mono 20.8.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-path {
+    padding: 40px 0 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__inner {
+    width: clamp(280px, 85%, 673px);
+    max-width: 673px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__cue {
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0 0 16px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.3;
+    gap: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__arrow {
+    display: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__stage {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 36px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__copy {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__headline {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__body {
+    margin-top: 26px;
+    font-size: var(--pgs-type-floor, 16px);
+    letter-spacing: 0.2px;
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__recruiter {
+    margin-top: 28px;
+    font-size: 17.6px;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__question {
+    margin-top: 8px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__stack {
+    margin-top: 28px;
+    margin-left: 0;
+    max-width: 344px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__stack-lead {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__points {
+    gap: 11.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__points li {
+    gap: 18.5px;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__swatch {
+    width: 22.176px;
+    height: 22.176px;
+    border-radius: 7.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__card {
+    flex: none;
+    align-self: center;
+    width: clamp(220px, 100%, 287.6px);
+    min-height: 500.9px;
+    padding: 70px 16px 28px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__card-title {
+    font-size: 51.2px;
+    line-height: 44px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__crossed,
+  .premium-nonmedical-2-shell .premium-nonmedical-path__chosen {
+    font-size: 20.8px;
+    line-height: 36px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__hands {
+    font-size: 19.2px;
+    line-height: 36px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__note {
+    width: 72%;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.25;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-path__mark {
+    font-size: var(--pgs-type-floor, 16px);
+  }
+}
+
+/*
+ * B5 Intro iPad — layout Figma `1390:10066` · type = QC (not Figma px).
+ * Panel 595.2 (+40px each side from Figma 515.2) · tab lip 393.4×84 · mosaic 2-col · student then quote.
+ * Brand/headline Bebas 38.4 · family 19.2 · ticking/news 17.6 · body/CTA/pill 16.
+ * FIGMA ACCESSIBILITY ADAPTATION — Figma brand 42/28 · headline 28 · body 19.6 ·
+ * calendar ~10.75 · pills 16.8. QC keeps desk floors (Bebas ≥30 · Roboto ≥16).
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-intro {
+    margin-top: 88px;
+    /* Lower photo + quote hang below grey; keep Explain clear. */
+    padding-bottom: 420px;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__panel {
+    width: min(595.2px, calc(100% - 32px));
+    max-width: 595.2px;
+    margin-inline: auto;
+    padding: 44.8px 40px 28px;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__panel::before {
+    top: -28px;
+    left: 14px;
+    width: min(393.4px, calc(100% - 28px));
+    height: 84px;
+    border-radius: 11.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__brand {
+    justify-content: center;
+    gap: 6.4px;
+    width: min(460.6px, calc(100% - 40px));
+    margin-inline: auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__brand-name {
+    font-size: 38.4px;
+    letter-spacing: 1.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__brand-family {
+    font-size: 19.2px;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__copy {
+    width: min(354.2px, calc(100% - 56px));
+    margin-top: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__headline {
+    width: 100%;
+    font-size: 38.4px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__ticking {
+    margin-top: 16.8px;
+    font-size: 17.6px;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__move {
+    margin-top: 11.2px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__news {
+    margin-top: 11.2px;
+    font-size: 17.6px;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-intro__cta {
+    width: min(355.6px, calc(100% - 56px));
+    margin-top: 16.8px;
+    padding: 10px 12px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+  }
+
+  /* Mosaic — Figma 2-col stagger (short|calendar · alerts|fast · note).
+   * Grey ends mid-student (Figma 1246); lower photo + quote hang on white below. */
+  .premium-nonmedical-2-shell .premium-nonmedical-needs {
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    /* ~266 into the 473 student stack sits on grey; rest hangs below. */
+    padding-bottom: 266px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__board {
+    display: flex;
+    align-items: flex-start;
+    gap: 9.7px;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+    grid-template-columns: none;
+    grid-template-areas: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__col--left {
+    flex: 0 0 166.656px;
+    max-width: 32.4%;
+    gap: 18px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__col--right {
+    flex: 1 1 auto;
+    gap: 9px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--short,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--calendar,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--alerts,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--fast {
+    width: 100%;
+    margin: 0;
+    justify-self: stretch;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--short {
+    min-height: 252px;
+    padding: 20px 12px;
+    border-radius: 14.3px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--calendar {
+    min-height: 0;
+    padding: 12px;
+    border-radius: 14.3px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--fast {
+    width: 76%;
+    min-height: 0;
+    margin: 0 0 0 8%;
+    padding: 12px 10px;
+    border-radius: 14.3px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--alerts {
+    width: 117%;
+    max-width: none;
+    min-height: 0;
+    padding: 14px 10px;
+    border-radius: 14.3px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__note,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__note h2,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__note p {
+    width: auto;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__note {
+    width: 87%;
+    margin: 8px 0 0 8%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__note h2,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__pill,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__sessions-head p,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar th,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar td,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar table {
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__note p {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__pill span:nth-child(2) {
+    font-size: 17.6px;
+    line-height: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar table {
+    border-collapse: separate;
+    border-spacing: 3px 1px;
+    table-layout: fixed;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar th {
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar th,
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__calendar td {
+    width: 14.28%;
+    padding: 0;
+  }
+
+  /* Student — Figma: photo right · quote below (not desk side-quote).
+   * Absolute under board so it does not become a 3rd flex column. */
+  .premium-nonmedical-2-shell .premium-nonmedical-student {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    height: auto;
+    margin: 28px 0 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__stack {
+    position: relative;
+    top: auto;
+    left: auto;
+    align-self: flex-end;
+    flex: 0 0 auto;
+    width: 316.7px;
+    height: 472.8px;
+    margin-right: 28px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__sheet {
+    width: 316px;
+    height: 288.5px;
+    border-radius: 37.6px 37.6px 18.8px 18.8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__sheet--green {
+    top: 48.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__sheet--gold {
+    top: 95.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__card {
+    top: 141.1px;
+    left: 0;
+    width: 316px;
+    height: 331.6px;
+    border-radius: 25.1px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__name {
+    left: 21px;
+    bottom: 36px;
+    width: 143px;
+    font-size: 32px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__role {
+    left: 21px;
+    bottom: 16px;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__place {
+    right: 15px;
+    bottom: 14px;
+    font-size: 38.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__quote {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(453.6px, calc(100% - 40px));
+    margin: 24px auto 0;
+    /* Quote stays below photo stack · on white under #f1f1f1 (Figma). */
+    color: #000;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__quote p {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__mark {
+    font-size: 38.4px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__mark--end {
+    display: none;
+  }
+}
+
+/* Narrow iPad — keep mosaic readable inside 515 rail */
+@media (min-width: 601px) and (max-width: 800px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__col--left {
+    flex: 0 0 32.4%;
+    max-width: 32.4%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-needs__card--fast {
+    width: 82%;
+    margin-left: 6%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-student__stack {
+    margin-right: 12px;
+  }
+}
+
+/*
+ * B6 Explain iPad — layout Figma black sheet `1390:9978` · stack like phone.
+ * Panel 646 (+100 from Figma 546). Kill module desk-scale transform.
+ * Type = QC floors. Title lead 28 · mark 44.8 · family Bebas 44.8 · body 16 · stats 22.4.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-explain {
+    container-type: normal;
+    margin-top: 72px;
+    padding: 0 0 48px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__stage {
+    width: min(646px, calc(100% - 32px));
+    max-width: 646px;
+    height: auto;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 36px 32px 48px;
+    overflow: visible;
+    border-radius: 11.2px;
+    transform: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__panel > * {
+    position: relative;
+    left: auto;
+    top: auto;
+    flex: 1 0 100%;
+    width: auto;
+    height: auto;
+    margin: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__title {
+    white-space: normal;
+    width: 100%;
+    color: #b57cff;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__title-lead,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__title-mark {
+    display: block;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__title-mark {
+    margin-top: 4px;
+    font-size: 44.8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__family {
+    margin-top: 22.4px;
+    color: #dd0801;
+    font-size: 44.8px;
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__answers {
+    margin-top: 36px;
+    width: 100%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__short,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__real {
+    gap: 12px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__short strong,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__real strong {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__short span,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__real span {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__real {
+    margin-top: 12px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__real span {
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__standout {
+    flex: 0 1 auto;
+    width: min(315px, 100%);
+    margin-top: 24px;
+    margin-left: auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__standout span:first-child,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__standout span:last-child {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__arrow {
+    flex: 0 0 130px;
+    width: 130px;
+    height: 130px;
+    margin: 20px 0 0 auto;
+    transform: rotate(-68.43deg);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point h3,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__card h3 {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--ai {
+    margin-top: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--ai p {
+    width: auto;
+    margin: 10px 0 0 42px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--path {
+    order: 1;
+    margin-top: 36px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--path h3,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__sub {
+    width: 100%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__sub {
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--path p:last-child {
+    width: auto;
+    margin: 12px 0 0 18px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__ai {
+    order: 2;
+    flex: 0 0 246px;
+    width: 246px;
+    height: auto;
+    min-height: 79px;
+    margin: 24px 0 0 auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__ai-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__ai p {
+    width: auto;
+    margin: 12px 10px 0;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__cursor {
+    margin: 4px 0 8px 80px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__stats {
+    order: 3;
+    flex: 0 0 auto;
+    width: auto;
+    gap: 16px;
+    margin: 16px 0 0 auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__stats strong {
+    font-size: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__stats span {
+    white-space: nowrap;
+    max-width: none;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__card {
+    order: 4;
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: minmax(180px, 251px) minmax(140px, 204px);
+    column-gap: 16px;
+    align-items: start;
+    width: fit-content;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    margin: 32px auto 0;
+    padding: 0;
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__card-shell {
+    display: block;
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    min-height: 263px;
+    border-radius: 9px;
+    background: #303030;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__card h3 {
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    z-index: 1;
+    width: calc(100% - 24px);
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__card::before {
+    content: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__card p {
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    max-width: none;
+    margin: 12px 0 0;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__uni {
+    position: absolute;
+    left: 114px;
+    top: 106px;
+    z-index: 1;
+    width: 55px;
+    height: 55px;
+    margin: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__join {
+    position: absolute;
+    left: 174px;
+    top: 110px;
+    z-index: 1;
+    width: 48px;
+    height: 140px;
+    margin: 0;
+    padding-bottom: 8px;
+    border-width: 3.4px;
+    border-radius: 9px;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--community {
+    order: 5;
+    margin-top: 36px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__point--community p {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__launchpad {
+    order: 6;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 28px auto 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__photo,
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__launch {
+    position: relative;
+    left: auto;
+    top: auto;
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__photo {
+    width: 169px;
+    height: 169px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-explain__launch {
+    width: min(299px, calc(100% - 185px));
+    min-height: 108px;
+    margin: 0;
+    padding: 10px 16px;
+    font-size: 19.2px;
+    line-height: 1.2;
+  }
+}
+
+/*
+ * B7 Guide iPad — layout Figma `1390:10315` · type = QC.
+ * Card 504 · badge green · phoneLine (Figma copy) · Bebas 33.6 · badge 16.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-guide {
+    width: min(504px, calc(100% - 32px));
+    max-width: 504px;
+    margin: 56px auto 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-guide__card {
+    min-height: 207px;
+    margin-top: 32px;
+    padding: 28px 35px;
+    border-radius: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-guide__desk {
+    display: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-guide__phone {
+    display: block;
+    margin: 0;
+    color: #000;
+    font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+    font-size: 33.6px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+    text-align: left;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-guide__badge {
+    top: 0;
+    right: -4px;
+    padding: 10px 12px;
+    border-width: 5px;
+    border-radius: 8px;
+    font-size: var(--pgs-type-floor, 16px);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+}
+
+/*
+ * B8 Dashboard iPad — import USMLE QC’d module.
+ * Same rules as `premium-usmle-2-shell` U26 (Figma `1393:10773` / USMLE twin).
+ * Bebas 36 · photo 85% · points 18 · wrap 3+2 · no phone/arrows.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-usmle-dashboard.premium-usmle-dashboard {
+    width: min(830px, calc(100% - 32px));
+    margin-top: 72px;
+    margin-inline: auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__title {
+    max-width: 545.28px;
+    margin: 0 auto 38.4px;
+    font-size: 36px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__photo {
+    display: block;
+    width: min(85%, 100%);
+    height: 358.4px;
+    margin-inline: auto;
+    border-radius: 15.36px;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__meter {
+    display: block;
+    width: min(85%, 742.4px);
+    height: 2px;
+    margin: 54.4px auto 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__points {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: 8px;
+    row-gap: 18px;
+    width: calc(161.92px * 3 + 8px * 2);
+    max-width: 100%;
+    margin: 20px auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__points li {
+    flex: 0 0 161.92px;
+    width: 161.92px;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__point {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10.24px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__point > span:last-child {
+    flex: 0 0 120.96px;
+    width: 120.96px;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__point[aria-pressed="true"] {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__icon {
+    flex: 0 0 28.16px;
+    width: 28.16px;
+    height: 28.16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__point[aria-pressed="true"] .premium-usmle-dashboard__icon {
+    flex-basis: 30.72px;
+    width: 30.72px;
+    height: 30.72px;
+  }
+
+  .premium-nonmedical-2-shell .premium-usmle-dashboard__phone {
+    display: none;
+  }
+}
+
+/*
+ * B9 Aim iPad — layout Figma `1390:10359` stacked panel · type = QC.
+ * Panel 532 · purple stroke · seats / CTA / visual stack.
+ * Headline 22 · body/closer 20 · CTA btn 20 · seats Bebas 40.32 · CTA lead 33.6.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-aim {
+    width: min(532px, calc(100% - 32px));
+    margin-top: 72px;
+    margin-inline: auto;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    aspect-ratio: auto;
+    min-height: 0;
+    padding: 48px 0 56px;
+    border-width: 1.4px;
+    border-radius: 11.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__copy {
+    position: static;
+    width: min(389.2px, calc(100% - 48px));
+    max-width: none;
+    gap: 22.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__headline {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__body,
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__closer {
+    font-size: 20px;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__seats {
+    position: static;
+    align-items: center;
+    justify-content: flex-end;
+    width: min(341.88px, calc(100% - 48px));
+    max-width: none;
+    height: 186.48px;
+    min-height: 186.48px;
+    padding: 26.88px 27.72px;
+    border-radius: 16.8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__seats-row {
+    flex: 0 0 auto;
+    align-items: flex-start;
+    gap: 5.88px;
+    width: 250.32px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__clock {
+    flex: 0 0 33.6px;
+    width: 33.6px;
+    height: 33.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__seats-label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 210.84px;
+    height: 137.76px;
+    min-height: 137.76px;
+    max-height: 137.76px;
+    padding: 8.4px;
+    border-radius: 8.4px;
+    font-size: 40.32px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__cta {
+    position: static;
+    align-items: center;
+    gap: 16.8px;
+    width: min(406px, calc(100% - 48px));
+    max-width: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__cta-lead {
+    font-size: 33.6px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__cta-btn {
+    padding: 11.2px;
+    border-radius: 11.2px;
+    font-size: 20px;
+    line-height: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__visual {
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    width: min(479.3px, calc(100% - 32px));
+    height: 300.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__green {
+    top: 0;
+    left: 28.5%;
+    width: 71.5%;
+    height: 100%;
+    border-radius: 13.44px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__photo {
+    top: 2.91%;
+    left: 21.9%;
+    width: 64.19%;
+    height: 97.09%;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-aim__arches {
+    top: 4.66%;
+    left: 0;
+    width: 16.15%;
+    height: 28.64%;
+  }
+}
+
+/*
+ * B10 Highlights iPad — shared module · Figma `1390:10392` copy + `1390:10384` photos.
+ * Same QC pattern as USMLE U24: copy above · phone strip scroll · no desk rail.
+ * Title Bebas 30 (Figma ~24) · lead/place/note 16 · frames 258.72×481.6 (−20%) · gap 8px.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-highlights.premium-highlights {
+    width: min(1015px, calc(100% - 32px));
+    margin-top: 72px;
+    margin-inline: auto;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__row {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    padding-right: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__copy {
+    align-items: flex-start;
+    width: min(246px, calc(100% - 48px));
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__title {
+    align-self: flex-start;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__lead,
+  .premium-nonmedical-2-shell .premium-highlights__place,
+  .premium-nonmedical-2-shell .premium-highlights__note {
+    align-self: flex-start;
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__place {
+    justify-content: flex-start;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__note {
+    width: 100%;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__photos--desk {
+    display: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__scroller {
+    display: block;
+    width: 100%;
+    margin-top: 33.6px;
+    /* More left inset so ~3 frames show first (like phone), rest scroll (owner 2026-10-03). */
+    padding-left: max(80px, calc(100% - (258.72px * 3 + 8px * 2) + 100px));
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__scroller.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__scroller::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__photos--phone {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+    padding-right: 8px;
+    justify-content: flex-start;
+  }
+
+  /* iPad frames −20% (owner 2026-10-03): was 323.4×602 → 258.72×481.6 */
+  .premium-nonmedical-2-shell .premium-highlights__photos--phone .premium-highlights__photo {
+    flex: 0 0 258.72px;
+    width: 258.72px;
+    height: 481.6px;
+    aspect-ratio: auto;
+    border-radius: 20.48px;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__photos--phone .premium-highlights__photo img {
+    left: 0;
+    top: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-highlights__photos--phone .premium-highlights__photo--1 img {
+    left: -97.32%;
+    top: -10.98%;
+    width: 236.88%;
+    height: 169.67%;
+  }
+}
+
+/*
+ * B11 Enroll iPad — shared card · Figma `1395:10868` (for desktop).
+ * Wide panel + black card + 2-col included + access hang.
+ * Type: Bebas title 51.2 · included 30 (Figma 28.8→floor) · Roboto body 16 (Figma ~11–13→floor).
+ * Replaces phone-stack `1390:10699` (owner: too big).
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-enroll.premium-enroll {
+    width: 100%;
+    margin-top: 80px;
+    padding-bottom: 120px;
+  }
+
+  /* Grey panel — Figma 1395:10881 · 809 · rail ≤85% */
+  .premium-nonmedical-2-shell .premium-enroll--card .premium-enroll__panel {
+    position: relative;
+    z-index: 1;
+    width: min(809px, 85%);
+    padding: 14px 24px 28px;
+    border-radius: 12.8px;
+    overflow: visible;
+  }
+
+  /* Black card — Figma 1395:10884 · 760×294 */
+  .premium-nonmedical-2-shell .premium-enroll__card {
+    width: min(760px, 100%);
+    min-height: 294px;
+    left: auto;
+    transform: none;
+    margin-inline: auto;
+    padding: 40px 24px;
+    gap: 18px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__card-copy {
+    width: min(448.8px, 100%);
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__card .premium-enroll__title {
+    max-width: none;
+    font-size: clamp(30px, 5vw, 51.2px);
+    line-height: 0.89;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__card .premium-enroll__lead {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__cta--learn {
+    width: auto;
+    min-width: 136px;
+    margin-top: 0;
+    padding: 8.8px 9.6px;
+    border-radius: 6.4px;
+    font-size: 19.2px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.08px;
+  }
+
+  /* What’s Included — 2-col desk · Figma 1395:10892 */
+  .premium-nonmedical-2-shell .premium-enroll__included {
+    width: min(732px, 100%);
+    margin-top: 27px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__included-title {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__included-lead {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20.8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__list--phone {
+    display: none;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__check {
+    flex-basis: 28.8px;
+    width: 28.8px;
+    height: 28.8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__item {
+    gap: 9.6px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__item-copy,
+  .premium-nonmedical-2-shell .premium-enroll__details {
+    font-size: 16px;
+    line-height: 1.35;
+    letter-spacing: 0.4px;
+  }
+
+  /* Access strip — Figma 1395:10869 · hang under panel */
+  .premium-nonmedical-2-shell .premium-enroll__access {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    top: 100%;
+    transform: translateY(-6px);
+    align-items: center;
+    width: min(574px, 90%);
+    margin: 0;
+    padding: 12px 16px;
+    gap: 9.6px;
+    border-radius: 16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__access-icon {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__access-copy--desk {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__access-copy--phone {
+    display: none;
+  }
+}
+
+/* Compact iPad — keep desk recipe fluid so ~750 does not crush */
+@media (min-width: 601px) and (max-width: 800px) {
+  .premium-nonmedical-2-shell .premium-enroll__card .premium-enroll__title {
+    font-size: clamp(30px, 6.5vw, 42px);
+  }
+
+  .premium-nonmedical-2-shell .premium-enroll__columns {
+    flex-direction: column;
+    gap: 9.6px;
+  }
+}
+
+/*
+ * B12 Questions iPad — shared PremiumQuestions · USMLE U28 QC recipe.
+ * Stacked column · title + green lead · meet card + photo hang.
+ * Desk >1366 / phone ≤600 untouched.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-questions.premium-questions {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__row {
+    flex-direction: column;
+    align-items: center;
+    gap: 39px;
+    width: min(360px, calc(100% - 30px));
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__copy {
+    flex: none;
+    width: min(304px, 100%);
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__title {
+    flex: 0 0 auto;
+    width: auto;
+    /* Fit "#purplePremium?" at Bebas 30 (~159px) — no "?" orphan line */
+    min-width: 160px;
+    max-width: 182px;
+    font-size: 30px;
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__lead {
+    flex: 1 1 138px;
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__list {
+    gap: 11px;
+    margin-top: 16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__item {
+    gap: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__check {
+    flex-basis: 26.2px;
+    width: 26.2px;
+    height: 26.2px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__item-copy {
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.35px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__meet {
+    flex: none;
+    width: min(360px, 100%);
+    min-height: 391px;
+    overflow: visible;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__card {
+    width: min(337px, 100%);
+    height: 360px;
+    padding: 24px 8px 0;
+    border-radius: 10px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__kicker {
+    gap: 10px;
+    font-size: 20.5px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__card-title {
+    margin-top: 5px;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__slot {
+    width: min(190px, 100%);
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__cta {
+    width: 184px;
+    min-height: 27px;
+    margin-top: 10px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__photo {
+    position: absolute;
+    top: 165px;
+    left: 50%;
+    width: min(273px, 80%);
+    height: 253px;
+    margin: 0;
+    transform: translateX(-50%);
+    border-radius: 13px;
+  }
+
+  .premium-nonmedical-2-shell .premium-questions__photo img {
+    position: absolute;
+    left: -42%;
+    top: -25%;
+    width: 189%;
+    height: 136%;
+    object-fit: cover;
+  }
+
+  /*
+   * B13 FAQ — import N15 · USMLE U29 iPad recipe on nonmedical classes.
+   * Centered title + five rows. Bebas title floor 30. Roboto 16.
+   * Desk >1366 / phone ≤600 untouched.
+   */
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-nonmedical-faq.premium-nonmedical-faq {
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__inner {
+    width: min(367px, calc(100% - 24px));
+    padding-left: 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__title {
+    font-size: 30px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__list {
+    gap: 6px;
+    width: min(338px, 100%);
+    margin: 16px auto 0;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__item {
+    border-radius: 16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__trigger {
+    min-height: 68px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__question {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__mark {
+    font-size: 27px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-faq__answer {
+    padding: 0 16px 16px;
+  }
+
+  /*
+   * B14 Outro — import N16 · USMLE U30 iPad recipe (phone rail).
+   * Floor 16. Desk >1366 / phone ≤600 untouched.
+   */
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-nonmedical-outro.premium-nonmedical-outro {
+    width: min(360px, calc(100% - 48px));
+    margin-top: 80px;
+    gap: 8px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-outro__eyebrow {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-outro__title {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-outro__body {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-outro__cta {
+    width: auto;
+    min-height: 48px;
+    margin-top: 0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  /*
+   * B15 Support hub — import N17 · USMLE U31 iPad recipe.
+   * Blurb on top · black brand · call/email. Floor 16.
+   */
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .premium-nonmedical-support-hub.premium-nonmedical-support-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: min(374px, calc(100% - 16px));
+    margin-top: 80px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__row {
+    display: contents;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__blurb {
+    order: -1;
+    flex: none;
+    width: min(330px, 100%);
+    font-size: 16px;
+    line-height: 1.28;
+    text-align: left;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__brand-col {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: min(351px, 100%);
+    padding: 19px 16px;
+    border-radius: 13px;
+    background: #000;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__brand {
+    padding: 0;
+    background: transparent;
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__label {
+    padding-left: 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.28;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__channels {
+    flex: none;
+    gap: 13px;
+    width: min(351px, 100%);
+    padding: 0 12px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__badge {
+    min-width: 85px;
+    font-size: 16px;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__link {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .premium-nonmedical-2-shell .premium-nonmedical-support-hub__link img {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+
+  /*
+   * B16 #PGS picks — shared module owns iPad layout. Page spacing only.
+   */
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > .pgs-picks.pgs-picks {
+    margin-top: 80px;
+  }
+}
+
+/*
+ * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * Last in file so it beats per-block margin-top recipes.
+ */
+@media (min-width: 1367px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > :not(.premium-nonmedical-2-shell__univ-gap):not(.premium-nonmedical-hero) {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > :not(.premium-nonmedical-2-shell__univ-gap):not(.premium-nonmedical-hero) {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-2-shell .premium-nonmedical-2-shell__body > :not(.premium-nonmedical-2-shell__univ-gap):not(.premium-nonmedical-hero) {
+    margin-top: 80px;
+  }
+}

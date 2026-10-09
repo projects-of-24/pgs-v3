@@ -18,6 +18,7 @@ import { PremiumHighlights } from "../shared/premium-highlights/premium-highligh
 import { PremiumExpense } from "../shared/premium-expense/premium-expense";
 import { PremiumAmcDashboard } from "../premium-amc/premium-amc-dashboard";
 import { PremiumEnroll } from "../shared/premium-enroll/premium-enroll";
+import { PREMIUM_ENROLL_CARD } from "../shared/premium-enroll/content";
 import { PremiumQuestions } from "../shared/premium-questions/premium-questions";
 import { PremiumFaq } from "../shared/premium-faq/premium-faq";
 import { OutroCta } from "../shared/outro-cta/outro-cta";
@@ -65,7 +66,7 @@ export function PremiumAmc2Shell({ live = false, picks = [] }: PremiumAmc2ShellP
         <PremiumHighlights />
         <PremiumExpense />
         <PremiumAmcDashboard />
-        <PremiumEnroll />
+        <PremiumEnroll content={PREMIUM_ENROLL_CARD} />
         <PremiumQuestions />
         <PremiumFaq />
         <OutroCta />

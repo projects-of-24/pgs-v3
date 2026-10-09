@@ -51,3 +51,24 @@
     height: var(--pgs-premium-desk-univ-gap);
   }
 }
+
+/*
+ * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ */
+@media (min-width: 1367px) {
+  .premium-nonmedical-preview-shell .premium-nonmedical-preview-shell__body > :not(.premium-nonmedical-preview-shell__univ-gap):not(.premium-nonmedical-hero) {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-nonmedical-preview-shell .premium-nonmedical-preview-shell__body > :not(.premium-nonmedical-preview-shell__univ-gap):not(.premium-nonmedical-hero) {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-nonmedical-preview-shell .premium-nonmedical-preview-shell__body > :not(.premium-nonmedical-preview-shell__univ-gap):not(.premium-nonmedical-hero) {
+    margin-top: 80px;
+  }
+}

@@ -22,7 +22,7 @@ export function PremiumQuestions() {
             <h2 className="premium-questions__title" id="premium-questions-title">
               {c.title[0]}
               <br />
-              {c.title[1]}
+              <span className="premium-questions__title-keep">{c.title[1]}</span>
             </h2>
             <p className="premium-questions__lead">{c.lead}</p>
           </div>

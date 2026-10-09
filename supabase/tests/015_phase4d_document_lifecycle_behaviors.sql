@@ -253,6 +253,7 @@ insert into phase4d_tap_output(tap) select results_eq(
   $$select count(*)::bigint from public.claim_abandoned_upload_sessions(25) where session_id='d4a40000-0000-4000-8000-000000000049'$$,
   array[0::bigint],'completed abandoned cleanup is not reclaimed'
 );
+reset role;
 insert into phase4d_tap_output(tap) select results_eq(
   $$select count(*)::bigint from public.notifications where student_id='d4100000-0000-4000-8000-000000000001' and event_type='document_status' and reference_id='d4950000-0000-4000-8000-000000000059'$$,
   array[1::bigint],'deletion request reuses canonical student notifications'

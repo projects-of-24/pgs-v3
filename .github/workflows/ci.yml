@@ -16,7 +16,27 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      # Full history so Gitleaks can scan commits (not only the tip tree).
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # OSS Gitleaks CLI (MIT). We intentionally avoid gitleaks/gitleaks-action
+      # because that Action requires GITLEAKS_LICENSE for GitHub Organizations.
+      - name: Gitleaks
+        env:
+          GITLEAKS_VERSION: "8.30.0"
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz gitleaks
+          ./gitleaks version
+          ./gitleaks detect \
+            --source . \
+            --config .gitleaks.toml \
+            --verbose \
+            --redact \
+            --exit-code=1
 
       - uses: pnpm/action-setup@v4
         with:
@@ -42,7 +62,8 @@ jobs:
       - name: RLS migration contract
         run: pnpm test:rls
 
-      - name: Secret scan
+      # Keep the existing high-confidence pattern scan in addition to Gitleaks.
+      - name: Secret scan (custom high-confidence)
         run: pnpm test:security
 
       - name: Dependency audit (high+)
@@ -76,8 +97,19 @@ jobs:
   e2e-smoke:
     name: Playwright smoke (desktop + mobile)
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     needs: build
+    # Preview Supabase + fixture passwords unlock authenticated @auth-regression.
+    # When unset, anonymous smoke/auth denials still run; fixture cases skip.
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      PGS_PREVIEW_FIXTURE_PASSWORD: ${{ secrets.PGS_PREVIEW_FIXTURE_PASSWORD }}
+      PGS_PREVIEW_STANDARD_PASSWORD: ${{ secrets.PGS_PREVIEW_STANDARD_PASSWORD }}
+      PGS_PREVIEW_PREMIUM_PASSWORD: ${{ secrets.PGS_PREVIEW_PREMIUM_PASSWORD }}
+      PGS_PREVIEW_MENTOR_PASSWORD: ${{ secrets.PGS_PREVIEW_MENTOR_PASSWORD }}
+      PGS_PREVIEW_SUPER_ADMIN_PASSWORD: ${{ secrets.PGS_PREVIEW_SUPER_ADMIN_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
 
@@ -96,6 +128,7 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install chromium --with-deps
 
+      # NEXT_PUBLIC_* must be present at build time for the e2e server session checks.
       - name: Build app for e2e
         env:
           PGS_ALLOW_LEGACY_ASSET_FETCH: "1"
@@ -103,6 +136,30 @@ jobs:
 
       - name: Run @smoke (desktop + mobile)
         run: pnpm test:e2e:smoke
+
+      - name: Prepare Playwright auth fixtures
+        id: auth_fixtures
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
+          PLAYWRIGHT_AUTH_STATE_DIR: ${{ github.workspace }}/.auth/phase36
+          PGS_PREVIEW_FIXTURE_ROLES: standard-student,premium-student,mentor,super-admin
+        run: bash scripts/ci-prepare-auth-fixtures.sh
+
+      # Anonymous denials always run. Fixture-backed roles run when the prepare
+      # step wrote PLAYWRIGHT_*_STORAGE_STATE into GITHUB_ENV.
+      - name: Run @auth-regression (desktop)
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
+        run: pnpm test:e2e:auth-regression
+
+      - name: Auth fixture status
+        if: always()
+        run: |
+          if [ "${{ steps.auth_fixtures.outputs.prepared }}" = "true" ]; then
+            echo "Auth fixtures were prepared for this run."
+          else
+            echo "Auth fixtures were not prepared — configure repo secrets listed in docs/quality-gate/ci-auth-fixtures.md"
+          fi
 
       - name: Upload Playwright report
         if: failure()

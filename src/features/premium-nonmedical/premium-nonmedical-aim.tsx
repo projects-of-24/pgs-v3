@@ -35,7 +35,11 @@ export function PremiumNonmedicalAim() {
         <aside className="premium-nonmedical-aim__seats" aria-label={c.seatsLabel}>
           <div className="premium-nonmedical-aim__seats-row">
             <img className="premium-nonmedical-aim__clock" src={c.clockSrc} alt="" width={32} height={32} />
-            <p className="premium-nonmedical-aim__seats-label">{c.seatsLabel}</p>
+            <p className="premium-nonmedical-aim__seats-label">
+              <span>We open</span>
+              <span>limited slots</span>
+              <span>each month</span>
+            </p>
           </div>
         </aside>
 

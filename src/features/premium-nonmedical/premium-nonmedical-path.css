@@ -241,8 +241,7 @@
   }
 
   .premium-nonmedical-path__arrow {
-    display: block;
-    flex: 0 0 auto;
+    display: none;
   }
 
   .premium-nonmedical-path__headline {

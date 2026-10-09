@@ -26,10 +26,28 @@ Living map: `docs/PREMIUM-MEDICAL-MODULAR.md`
 | Locked | Rule |
 |---|---|
 | Chrome | **LOCKED** — import only. Do not redesign chrome on body gates. |
+| Chrome click QC | After OWNED_SPLIT / cutover: **hamburger + #toggleBtn must open** (see below) |
 | Body clamp | Page body uses the clamp / rail recipes proven on this page |
 | Roboto (body / UI) | Minimum **15–16px** (`--pgs-type-floor` → 16 unless owner names 15 for a block) |
 | Bebas (display) | Minimum **30px** — do not ship Bebas titles under 30 |
 | Invent | **Never** invent layout/copy/components. Only what owner / Figma / Paper / this north star already proved |
+
+### Chrome click QC (owner 2026-10-03 — cutover finding)
+
+On every OWNED_SPLIT lab and live flip, before calling body QC done:
+
+| Control | Band | Must |
+|---|---|---|
+| Hamburger (`.pgs-header-menu`) | ≤1366 | Opens `#drawer.pgs-header-drawer` (visible, not invisible fade) |
+| Toggle box (`#toggleBtn`) | all bands | Opens `#sidebar.active` |
+
+**Do not break again:**
+
+1. `pgs-header-chrome-reset.css` — transition **opacity only**, never `visibility` (visibility transition kept the drawer computed-hidden while “open”).
+2. `legacy-page.tsx` — interaction `useEffect` must **not** depend on `children` (rewire thrash on heavy bodies kills clicks).
+3. `#toggleBtn` z-index above pulled-up body shells (`z-index: 5` in globals + `pgs-owned-strip.css`).
+
+Files: `src/features/shell/pgs-header-chrome-reset.css` · `src/components/legacy-page.tsx` · `src/app/globals.css` · `src/features/shell/pgs-owned-strip.css`
 
 ### Next iPad page — order (body only)
 
@@ -202,13 +220,14 @@ Wait for `GO AHEAD`.
 - No Hostinger CSS as implementation
 - No inventing layout — Figma / owner DevTools / Paper only
 - No desk/phone edits unless owner opens those bands
+- No OWNED_SPLIT cutover without chrome click QC (hamburger + `#toggleBtn`)
 
 ---
 
 ## After this page
 
-PLAB / AMC (and the next iPad body) copy the **same** shared modules + this compact/wide split + north-star type floors. Page shell only adjusts spacing and track-specific rearrange from owner Figma/Paper.
+Next iPad body copies the **same** shared modules + this compact/wide split + north-star type floors. Page shell only adjusts spacing and track-specific rearrange from owner Figma/Paper.
 
-**Cutover:** apply lab-2 body + OWNED_SPLIT + React chrome — do not redo the body QC from zero. Learn here → plan top→bottom → execute.
+**Cutover:** apply lab-2 body + OWNED_SPLIT + React chrome — do not redo the body QC from zero. Learn here → plan top→bottom → execute. After cutover: chrome click QC first.
 
 Do not redesign per track.

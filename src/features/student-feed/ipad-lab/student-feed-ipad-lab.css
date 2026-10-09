@@ -1,0 +1,299 @@
+/**
+ * iPad feed body lab — owned feature CSS (Paper/Figma absolute).
+ * Band QC: 601–1366. Routes use OWNED_SPLIT — not Hostinger sheets.
+ * Locked Family B desktop/mobile CSS untouched.
+ *
+ * Owner QC 2026-10-03:
+ * - block gap 80px · Top picks 424 fixed · identity from redesign · Notes 238×279
+ */
+
+.student-feed-ipad-lab {
+  --sfil-type-floor: 15px;
+  --sfil-side-clamp: clamp(16px, 5vw, 48px);
+  --sfil-block-gap: 80px;
+  --sfil-rail-max: 720px;
+  /* Figma 2:1624 / Paper right f — fixed card; header row inset 28 */
+  --sfil-top-picks-w: 424px;
+  --sfil-top-picks-inset: 28px;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: calc(-1 * var(--pgs-chrome-strip-pull, 0px));
+  position: relative;
+  z-index: 0;
+  font-size: var(--sfil-type-floor);
+}
+
+.student-feed-ipad-lab *,
+.student-feed-ipad-lab *::before,
+.student-feed-ipad-lab *::after {
+  box-sizing: border-box;
+}
+
+.student-feed-ipad-lab__badge {
+  margin: 0;
+  padding: 10px var(--sfil-side-clamp);
+  font-size: var(--sfil-type-floor);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #1a1a1a;
+  background: #fde877;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.student-feed-ipad-lab__body {
+  width: 100%;
+  max-width: var(--sfil-rail-max);
+  margin: 0 auto;
+  padding: 24px var(--sfil-side-clamp) 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--sfil-block-gap);
+  row-gap: var(--sfil-block-gap);
+}
+
+.student-feed-ipad-lab__block {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Outer wrappers only — do not strip card-internal pad (Notes 24px, etc.) */
+.student-feed-ipad-lab .student-feed-identity,
+.student-feed-ipad-lab .student-feed-premium-qd,
+.student-feed-ipad-lab .student-feed-premium-notes,
+.student-feed-ipad-lab .student-feed-top-picks,
+.student-feed-ipad-lab .student-feed-where-you-stand,
+.student-feed-ipad-lab .student-feed-comments,
+.student-feed-ipad-lab .student-feed-upcoming-events,
+.student-feed-ipad-lab .student-feed-mid-cluster__aspirant,
+.student-feed-ipad-lab .student-feed-mid-cluster__actions,
+.student-feed-ipad-lab .student-feed-aspirant,
+.student-feed-ipad-lab .student-feed-actions {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.student-feed-ipad-lab [data-block="aspirant-actions"] {
+  gap: 16px; /* within-block: aspirant pill → actions only */
+}
+
+.student-feed-ipad-lab [data-block="aspirant-actions"] .student-feed-mid-cluster__aspirant,
+.student-feed-ipad-lab [data-block="aspirant-actions"] .student-feed-mid-cluster__actions {
+  order: unset;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* —— Identity: absolute from iPad redesign (Paper stduent id) —— */
+.student-feed-ipad-lab .student-feed-identity__desktop {
+  display: none !important;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile {
+  display: flex !important;
+  width: 252px;
+  max-width: 252px; /* kill mobile max-width: 180px */
+  height: 378px;
+  padding: 19.6px 18.2px;
+  border-radius: 11.2px;
+  gap: 14px;
+  background: #f1f1f1;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile-inner {
+  width: 211.4px;
+  gap: 33.6px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile-top {
+  gap: 22.4px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile-row {
+  gap: 12.6px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__avatar-frame {
+  width: 47.6px;
+  height: 58.1px;
+  border-radius: 5.6px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__avatar {
+  left: -21.7px;
+  top: -7px;
+  width: 91px;
+  height: 91px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile-copy {
+  width: 151.2px;
+  gap: 4.2px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__name {
+  padding: 2.8px 16.8px;
+  font-size: 19.6px;
+  line-height: 16.8px;
+  letter-spacing: 0.35px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__meta {
+  font-size: 16.8px;
+  line-height: 22px;
+  letter-spacing: 0.07px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__titles {
+  width: 186px;
+  gap: 4.2px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__premium {
+  font-size: 33.6px;
+  line-height: 1;
+}
+
+/* Paper redesign 14/9.8 — bumped to type floor 15 (a11y) */
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__pathway {
+  font-size: var(--sfil-type-floor);
+  line-height: 11px;
+}
+
+.student-feed-ipad-lab .student-feed-identity__mobile .student-feed-identity__badge {
+  padding: 10.5px;
+  border-radius: 11.2px;
+  font-size: 33.6px;
+  line-height: 1;
+}
+
+/* —— Notes: Paper 📌 Note 10 (2VD-0) 238×279 · pad 24 · gap 8 —— */
+.student-feed-ipad-lab [data-block="notes"] .student-feed-premium-notes {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.student-feed-ipad-lab [data-block="notes"] .student-feed-notes {
+  width: 238px;
+  max-width: 238px;
+  height: 279px;
+  min-height: 279px;
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  background: #bbc8ff;
+}
+
+.student-feed-ipad-lab [data-block="notes"] .student-feed-notes__title {
+  margin: 0;
+  font: 600 17.6px/22.4px Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.student-feed-ipad-lab [data-block="notes"] .student-feed-notes__body {
+  margin: 0;
+  width: 190px;
+  /* Paper 14/19.2 — type floor 15 */
+  font: 400 var(--sfil-type-floor) / 19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.4px;
+}
+
+/* —— Top picks: fixed 424 open+closed (Paper right f / Figma 2:1624) —— */
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks {
+  width: auto;
+  justify-content: center;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks__card {
+  width: var(--sfil-top-picks-w);
+  max-width: var(--sfil-top-picks-w);
+  flex: none;
+  box-sizing: border-box;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks.is-collapsed .student-feed-top-picks__card {
+  height: 73px;
+  min-height: 73px;
+  overflow: hidden;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks.is-collapsed .student-feed-top-picks__header {
+  padding: 21px var(--sfil-top-picks-inset) 16px;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks.is-open .student-feed-top-picks__card {
+  width: var(--sfil-top-picks-w);
+  max-width: var(--sfil-top-picks-w);
+  height: auto;
+  min-height: 0;
+  max-height: 442px;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks.is-open .student-feed-top-picks__header {
+  padding: 16px var(--sfil-top-picks-inset) 12px;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks__list {
+  max-width: none;
+  width: 100%;
+  padding: 14px var(--sfil-top-picks-inset) 16px;
+  gap: 12px;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks__row {
+  width: 100%;
+  gap: 12px;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks__copy,
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks__row-title {
+  width: auto;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.student-feed-ipad-lab [data-block="top-picks"] .student-feed-top-picks__row-title {
+  font-size: var(--sfil-type-floor);
+  line-height: 1.25;
+}
+
+@media (max-width: 600px) {
+  .student-feed-ipad-lab {
+    --sfil-block-gap: 80px;
+    --sfil-side-clamp: clamp(12px, 4vw, 20px);
+  }
+}
+
+@media (min-width: 1367px) {
+  .student-feed-ipad-lab__badge::after {
+    content: " · resize ≤1366 to QC iPad band";
+    font-weight: 500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-feed-ipad-lab * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -36,6 +36,7 @@ No chrome HTML strings / DSIH. No font or chrome size inventing.
 - Page loads `/preview/owned-split` — **not** Hostinger `style.css` / `responsive.css`.
 - Body styling lives in **owned page CSS** under `src/features/<page>/`.
 - Do not edit Hostinger files to “win.”
+- **Immediately QC chrome clicks** (before body gates): hamburger opens drawer (≤1366) · `#toggleBtn` opens sidebar. If dead → check `pgs-ipad-modular-body-pass` “Chrome click QC” (visibility transition · LegacyPage `children` dep · toggle z-index). Do not start body QC on a broken chrome page.
 
 ### Pass C — Body from iPad reference (block-by-block)
 

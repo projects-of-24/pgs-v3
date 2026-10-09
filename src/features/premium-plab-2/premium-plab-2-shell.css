@@ -45,9 +45,9 @@
 }
 
 /*
- * Desk + phone gap rhythm — pulled from lab-1 preview-shell (owner QC 2026-10-02)
- * so `/preview/purpleusmle-2` is the single cutover QC surface for all bands.
- * iPad 601–1366 stays on lab-2 recipes below. Do not import ipad-body.
+ * Block gap rhythm — owner lock 2026-10-03: desk 100 · iPad 60 · phone 80.
+ * Per-block Figma gaps retired. Padding exceptions for student/know/kick stay.
+ * Final GAP LOCK at file end beats later iPad recipes.
  */
 @media (min-width: 1367px) {
   .premium-plab-2-shell__univ-gap {
@@ -67,76 +67,11 @@
   .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-kick {
     padding-top: 0;
   }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-why {
-    margin-top: 23.33px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-comes {
-    margin-top: 51.11px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-path {
-    margin-top: 58.89px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-pathway {
-    margin-top: 35.11px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-kick {
-    margin-top: 76.67px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-know {
-    margin-top: 111.33px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-guide {
-    margin-top: 111px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-highlights {
-    margin-top: 111.44px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-expense {
-    margin-top: 111.44px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-dashboard {
-    margin-top: 111.11px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-enroll {
-    margin-top: 109.11px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-questions {
-    margin-top: 149.67px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-faq {
-    margin-top: 110.67px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .outro-cta {
-    margin-top: 107px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .support-hub {
-    margin-top: 110.89px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .pgs-picks {
-    margin-top: 110.67px;
-  }
 }
 
 @media (max-width: 600px) {
   .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-student {
     padding: 50px 0 0;
-    margin-top: -50px;
   }
 
   .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-know {
@@ -147,75 +82,10 @@
   .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-kick {
     padding-top: 0;
   }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-why {
-    margin-top: 20px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-comes {
-    margin-top: 32.22px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-path {
-    margin-top: 40px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-pathway {
-    margin-top: 48.22px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-kick {
-    margin-top: 12.22px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-know {
-    margin-top: 40.33px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-guide {
-    margin-top: 80px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-highlights {
-    margin-top: 79.67px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-expense {
-    margin-top: 80px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-dashboard {
-    margin-top: 79.78px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-enroll {
-    margin-top: 80px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-questions {
-    margin-top: 166.67px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-faq {
-    margin-top: 80.22px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .outro-cta {
-    margin-top: 75.89px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .support-hub {
-    margin-top: 79.78px;
-  }
-
-  .premium-plab-2-shell .premium-plab-2-shell__body > .pgs-picks {
-    margin-top: 80.33px;
-  }
 }
 
 /*
  * Hero rhythm (all bands): zero hero pad-bottom; CTA → mauve = 20.
- * Why margin: desk/phone from gap pass above; iPad keeps 60 below.
  */
 .premium-plab-2-shell .premium-plab-hero {
   padding-bottom: 0;
@@ -1203,8 +1073,8 @@
     display: block;
     width: 100%;
     margin-top: 33.6px;
-    /* Same left start as phone — first frame inset, not flush (owner QC 2026-10-03). */
-    padding-left: clamp(24px, 8.7vw, 40px);
+    /* More left inset so ~3 frames show first (like phone), rest scroll (owner 2026-10-03). */
+    padding-left: max(80px, calc(100% - (205.34px * 3 + 8px * 2) + 100px));
     overflow-x: auto;
     overflow-y: hidden;
     overscroll-behavior-x: contain;
@@ -1227,19 +1097,19 @@
 
   .premium-plab-2-shell .premium-highlights__photos--phone {
     display: flex;
-    gap: 17.78px;
+    gap: 8px;
     width: max-content;
-    padding-right: 17.78px;
+    padding-right: 8px;
     justify-content: flex-start;
   }
 
-  /* 256.67 × 3 + 17.78 × 2 = 805.57 → three frames fill the rail; frames 4–6 scroll in. */
+  /* iPad frames −20% · gap 8px (owner 2026-10-03) */
   .premium-plab-2-shell .premium-highlights__photos--phone .premium-highlights__photo {
-    flex: 0 0 256.67px;
-    width: 256.67px;
+    flex: 0 0 205.34px;
+    width: 205.34px;
     height: auto;
     aspect-ratio: 231 / 430;
-    border-radius: 21px;
+    border-radius: 16.8px;
   }
 
   .premium-plab-2-shell .premium-highlights__photos--phone .premium-highlights__photo img {
@@ -1461,52 +1331,51 @@
   }
 
   /*
-   * U27 Enroll — Figma 1352:8888 (3 frames):
-   * 1) black Learn More card · 2) What’s Included · 3) access strip.
-   * Card variant. Desk >1366 / phone ≤600 untouched.
+   * U27 Enroll — ported from nonmedical QC (owner 2026-10-03).
+   * Figma `1395:10868` desk card · panel ≤85% · 2-col included · access hang.
+   * Replaces phone-stack `1352:8888`. Desk >1366 / phone ≤600 untouched.
    */
   .premium-plab-2-shell .premium-plab-2-shell__body > .premium-enroll.premium-enroll {
     width: 100%;
     margin-top: 80px;
-    /* Room for access strip hung under the panel (Figma 1352:8889). */
-    padding-bottom: 150px;
+    padding-bottom: 120px;
   }
 
-  /* Grey panel — Figma 1352:8900 · 360. Above access strip. */
+  /* Grey panel — Figma 1395:10881 · 809 · rail ≤85% */
   .premium-plab-2-shell .premium-enroll--card .premium-enroll__panel {
     position: relative;
     z-index: 1;
-    width: min(360px, calc(100% - 30px));
-    padding: 23px 16px 23px;
+    width: min(809px, 85%);
+    padding: 14px 24px 28px;
+    border-radius: 12.8px;
     overflow: visible;
   }
 
-  /* Frame 1 — black card + title/lead/CTA · 1352:8901 / 8902 */
+  /* Black card — Figma 1395:10884 · 760×294 */
   .premium-plab-2-shell .premium-enroll__card {
-    width: min(370px, calc(100% + 42px));
-    min-height: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-inline: 0;
-    padding: 36px 16px 28px;
-    gap: 16px;
+    width: min(760px, 100%);
+    min-height: 294px;
+    left: auto;
+    transform: none;
+    margin-inline: auto;
+    padding: 40px 24px;
+    gap: 18px;
   }
 
   .premium-plab-2-shell .premium-enroll__card-copy {
-    width: min(234px, 100%);
+    width: min(448.8px, 100%);
   }
 
   .premium-plab-2-shell .premium-enroll__card .premium-enroll__title {
     max-width: none;
-    font-size: 24px;
-    line-height: normal;
+    font-size: clamp(30px, 5vw, 51.2px);
+    line-height: 0.89;
   }
 
   .premium-plab-2-shell .premium-enroll__card .premium-enroll__lead {
     margin-top: 12px;
-    /* Figma 14 → floor 16 */
     font-size: 16px;
-    line-height: normal;
+    line-height: 1.35;
     letter-spacing: 0.4px;
   }
 
@@ -1516,36 +1385,37 @@
     margin-top: 0;
     padding: 8.8px 9.6px;
     border-radius: 6.4px;
-    font-size: 18px;
+    font-size: 19.2px;
     font-weight: 700;
     line-height: 16px;
     letter-spacing: 0.08px;
   }
 
-  /* Frame 2 — What’s Included · 1352:8908 */
+  /* What’s Included — 2-col desk · Figma 1395:10892 */
   .premium-plab-2-shell .premium-enroll__included {
-    width: min(327px, 100%);
-    margin-top: 28px;
+    width: min(732px, 100%);
+    margin-top: 27px;
   }
 
   .premium-plab-2-shell .premium-enroll__included-title {
-    font-size: 24px;
-    line-height: 45.6px;
+    font-size: 30px;
+    line-height: 1.2;
   }
 
   .premium-plab-2-shell .premium-enroll__included-lead {
     font-size: 16px;
-    line-height: normal;
+    line-height: 1.5;
   }
 
   .premium-plab-2-shell .premium-enroll__columns {
-    display: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20.8px;
   }
 
   .premium-plab-2-shell .premium-enroll__list--phone {
-    display: flex;
-    margin-top: 20.8px;
-    gap: 9.6px;
+    display: none;
   }
 
   .premium-plab-2-shell .premium-enroll__check {
@@ -1560,29 +1430,24 @@
 
   .premium-plab-2-shell .premium-enroll__item-copy,
   .premium-plab-2-shell .premium-enroll__details {
-    /* Figma 11.2 / 12.8 → floor 16 */
     font-size: 16px;
     line-height: 1.35;
     letter-spacing: 0.4px;
   }
 
-  /*
-   * Frame 3 — access strip · 1352:8889
-   * Sit on panel bottom edge (6px overlap), hang below — no f1f1f1 under D9.
-   */
+  /* Access strip — Figma 1395:10869 · hang under panel */
   .premium-plab-2-shell .premium-enroll__access {
     position: absolute;
-    /* Behind f1f1f1 panel face (owner 2026-10-03) */
     z-index: -1;
-    right: -16px;
+    right: 0;
     top: 100%;
     transform: translateY(-6px);
     align-items: center;
-    width: 85%;
+    width: min(574px, 90%);
     margin: 0;
-    padding: 12px 7px;
+    padding: 12px 16px;
     gap: 9.6px;
-    border-radius: 8px;
+    border-radius: 16px;
   }
 
   .premium-plab-2-shell .premium-enroll__access-icon {
@@ -1592,19 +1457,17 @@
   }
 
   .premium-plab-2-shell .premium-enroll__access-copy--desk {
-    display: none;
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
   }
 
   .premium-plab-2-shell .premium-enroll__access-copy--phone {
-    display: block;
-    flex: 1 1 auto;
-    width: auto;
-    min-width: 0;
-    /* Figma 12 → floor 16 */
-    font-size: 16px;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.2px;
+    display: none;
   }
 
   /*
@@ -1639,10 +1502,12 @@
   }
 
   .premium-plab-2-shell .premium-questions__title {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     width: auto;
-    max-width: 166px;
-    font-size: 24px;
+    /* Fit "#purplePremium?" at Bebas 30 (~159px) — no "?" orphan line */
+    min-width: 160px;
+    max-width: 182px;
+    font-size: 30px;
     line-height: 1.1;
     white-space: normal;
   }
@@ -1918,6 +1783,16 @@
  * Desk >1366 / phone ≤600 / wide iPad 801–1366 recipes untouched.
  */
 @media (min-width: 601px) and (max-width: 800px) {
+  /* U27 Enroll — compact: desk recipe fluid · stack cols */
+  .premium-plab-2-shell .premium-enroll__card .premium-enroll__title {
+    font-size: clamp(30px, 6.5vw, 42px);
+  }
+
+  .premium-plab-2-shell .premium-enroll__columns {
+    flex-direction: column;
+    gap: 9.6px;
+  }
+
   /* Comes — phone stage stack */
   .premium-plab-2-shell .premium-plab-comes__inner {
     width: min(560px, calc(100% - 32px));
@@ -2169,5 +2044,32 @@
   /* Guide — stay on rail */
   .premium-plab-2-shell .premium-plab-guide {
     width: min(727px, calc(100% - 32px));
+  }
+}
+
+/*
+ * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * Last in file so it beats per-block margin-top recipes.
+ * Student phone keeps pull-up after the uniform gap.
+ */
+@media (min-width: 1367px) {
+  .premium-plab-2-shell .premium-plab-2-shell__body > :not(.premium-plab-2-shell__univ-gap):not(.premium-plab-hero) {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-plab-2-shell .premium-plab-2-shell__body > :not(.premium-plab-2-shell__univ-gap):not(.premium-plab-hero) {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-plab-2-shell .premium-plab-2-shell__body > :not(.premium-plab-2-shell__univ-gap):not(.premium-plab-hero) {
+    margin-top: 80px;
+  }
+
+  .premium-plab-2-shell .premium-plab-2-shell__body > .premium-plab-student {
+    margin-top: -50px;
   }
 }

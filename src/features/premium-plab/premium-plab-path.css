@@ -224,8 +224,7 @@
   }
 
   .premium-plab-path__arrow {
-    display: block;
-    flex: 0 0 auto;
+    display: none;
   }
 
   .premium-plab-path__stage {

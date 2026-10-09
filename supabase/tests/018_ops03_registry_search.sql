@@ -1,10 +1,10 @@
 begin;
 create extension if not exists pgtap with schema extensions;
 set local search_path = public, extensions;
-select plan(28);
+select plan(29);
 
 select has_function('public', 'staff_student_registry', array['text', 'text', 'text', 'text', 'text', 'text', 'text', 'integer', 'integer']);
-select has_function('public', 'staff_registry_mentor_options');
+select has_function('public', 'staff_registry_mentor_options', array[]::text[]);
 select has_table('public', 'staff_registry_saved_views', 'private registry saved views exist');
 select is(
   has_function_privilege('anon', 'public.staff_student_registry(text,text,text,text,text,text,text,integer,integer)', 'EXECUTE'),
@@ -51,6 +51,10 @@ set local request.jwt.claims = '{"sub":"d0310000-0000-4000-8000-000000000010","r
 select lives_ok(
   $$select public.set_premium_entitlement('d0310000-0000-4000-8000-000000000001','grant','12_month','ops03 premium')$$,
   'admin grants canonical Premium'
+);
+select lives_ok(
+  $$select public.set_premium_entitlement('d0310000-0000-4000-8000-000000000002','grant','12_month','ops03 premium ada')$$,
+  'admin grants Premium before second mentor assignment'
 );
 select lives_ok(
   $$select public.set_mentor_assignment('d0310000-0000-4000-8000-000000000001','d0310000-0000-4000-8000-000000000011',true,'ops03 mentor')$$,
@@ -128,7 +132,7 @@ select results_eq(
   'allowlisted name sort is applied in SQL'
 );
 select isnt(
-  (select count(*) from public.staff_registry_mentor_options()),
+  (select count(*)::integer from public.staff_registry_mentor_options()),
   0,
   'Admin mentor options are populated from active mentors'
 );
@@ -165,6 +169,11 @@ select results_eq(
   'read-only joined and mentor filters are ignored'
 );
 
+reset role;
+-- RLS policies call this SECURITY DEFINER helper; EXECUTE is required for the policy check.
+grant usage on schema private to authenticated;
+grant execute on function private.can_use_staff_registry() to authenticated;
+set local role authenticated;
 set local request.jwt.claims = '{"sub":"d0310000-0000-4000-8000-000000000010","role":"authenticated"}';
 insert into public.staff_registry_saved_views(staff_user_id, name, query)
 values (

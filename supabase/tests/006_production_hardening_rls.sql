@@ -39,8 +39,8 @@ set local request.jwt.claims='{"sub":"72000000-0000-4000-8000-000000000002","rol
 select results_eq($$select count(*)::bigint from public.profiles where id='71000000-0000-4000-8000-000000000001'$$,array[0::bigint],'viewer cannot select another student full profile row');
 select results_eq($$select full_name from public.staff_student_directory(null,150) where id='71000000-0000-4000-8000-000000000001'$$,array['Hardening Student'::text],'viewer receives the minimized directory projection');
 
-set local role service_role;
-set local request.jwt.claims='{"role":"service_role"}';
+-- premium_plans is not granted to service_role; inspect catalog as the test owner.
+reset role;
 select results_eq($$select array_agg(duration_months order by duration_months) from public.premium_plans where is_active$$,$$select array[1,3,12,24]::integer[]$$,'approved Premium plan durations are configurable data');
 select has_function('public','set_premium_entitlement',array['uuid','text','text','text']);
 select hasnt_function('public','activate_premium_purchase',array['uuid','text','text','text']);
@@ -60,7 +60,8 @@ select results_eq($$update public.student_tasks set title='must not change',upda
 
 set local request.jwt.claims='{"sub":"75000000-0000-4000-8000-000000000005","role":"authenticated"}';
 select throws_ok($$select public.manage_staff_access('75000000-0000-4000-8000-000000000005','viewer',true,'active','','self attack')$$,'P0001','self role changes are forbidden','super admin cannot change their own role');
-set local role service_role;set local request.jwt.claims='{"role":"service_role"}';
+-- service_role has no table privilege on admin_audit_logs; prove append-only as the table owner.
+reset role;
 insert into public.admin_audit_logs(actor_id,action,domain,entity_type)
 values('75000000-0000-4000-8000-000000000005','immutability_fixture','audit','fixture');
 select throws_ok($$update public.admin_audit_logs set action='rewritten' where actor_id='75000000-0000-4000-8000-000000000005'$$,'P0001','audit history is append-only','audit rows are immutable');

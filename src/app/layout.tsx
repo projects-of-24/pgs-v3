@@ -30,6 +30,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
    *   /purpleplab      — PLAB lab-2 LIVE cutover (2026-10-03 Gate 2b)
    *   /preview/purpleamc-2 — AMC lab-2 preview QC (2026-10-03 Gate 3a)
    *   /purpleamc       — AMC lab-2 LIVE cutover (2026-10-03 Gate 3b)
+   *   /preview/purplenonmedical-2 — non-medical lab-2 chrome + OWNED_SPLIT (2026-10-03 N-G0)
+   *   /preview/purplemedical* — medical iPad labs (Paper / Figma / ipad)
+   *   /preview/student-feed-ipad-* — feed iPad A/B labs (Figma / Paper)
    */
   const OWNED_SPLIT_ROUTES = new Set([
     "/preview/header",
@@ -52,7 +55,16 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     /* AMC lab-2 preview QC (2026-10-03 Gate 3a) */
     "/preview/purpleamc-2",
     /* AMC lab-2 LIVE cutover (2026-10-03 Gate 3b) */
-    "/purpleamc"
+    "/purpleamc",
+    /* Non-medical lab-2 chrome + OWNED_SPLIT (2026-10-03 N-G0) — body iPad later */
+    "/preview/purplenonmedical-2",
+    /* Purple Medical iPad labs — React chrome + owned split */
+    "/preview/purplemedical",
+    "/preview/purplemedical-figma",
+    "/preview/purplemedical-paper",
+    /* Student feed iPad A/B labs — React chrome + owned split */
+    "/preview/student-feed-ipad-figma",
+    "/preview/student-feed-ipad-paper"
   ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs and on H-R done routes (React chrome, same as the QC'd lab). */

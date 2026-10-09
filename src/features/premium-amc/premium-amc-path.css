@@ -224,8 +224,7 @@
   }
 
   .premium-amc-path__arrow {
-    display: block;
-    flex: 0 0 auto;
+    display: none;
   }
 
   .premium-amc-path__stage {

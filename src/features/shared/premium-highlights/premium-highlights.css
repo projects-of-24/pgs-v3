@@ -169,6 +169,31 @@
   outline: none;
 }
 
+/*
+ * iPad 601–1366 — photo frames 80% of prior QC (owner 2026-10-03).
+ * Was 256.67 × (231/430) → 205.34. Gap between frames 8px.
+ * Desk >1366 / phone ≤600 untouched.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-highlights__scroller {
+    /* ~3 frames first + peek; rest scroll (owner 2026-10-03). */
+    padding-left: max(80px, calc(100% - (205.34px * 3 + 8px * 2) + 100px));
+  }
+
+  .premium-highlights__photos--phone {
+    gap: 8px;
+    padding-right: 8px;
+  }
+
+  .premium-highlights__photos--phone .premium-highlights__photo {
+    flex: 0 0 205.34px;
+    width: 205.34px;
+    height: auto;
+    aspect-ratio: 231 / 430;
+    border-radius: 16.8px;
+  }
+}
+
 @media (max-width: 600px) {
   .premium-highlights {
     margin-top: 103px;

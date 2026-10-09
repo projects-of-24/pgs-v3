@@ -42,7 +42,7 @@ export async function GET(req: Request) {
       if ((await k.boundingBox())?.height) await k.screenshot({ path: path.join(dir, `${out}-s${String(i).padStart(2, "0")}.png`) });
     }
     const sw = await page.evaluate(() => [document.documentElement.scrollWidth, window.innerWidth]);
-    const probe = await page.evaluate((q) => q ? q.split("|").map((sel) => Array.from(document.querySelectorAll(sel)).slice(0, 6).map((el) => { const r = el.getBoundingClientRect(); return [sel, Math.round((r.left) * 10) / 10, Math.round((r.top + window.scrollY) * 10) / 10, Math.round(r.right * 10) / 10, Math.round((r.bottom + window.scrollY) * 10) / 10]; })) : [], u.searchParams.get("probe"));
+    const probe = await page.evaluate((q: string | null) => q ? q.split("|").map((sel: string) => Array.from(document.querySelectorAll(sel)).slice(0, 6).map((el) => { const r = el.getBoundingClientRect(); return [sel, Math.round((r.left) * 10) / 10, Math.round((r.top + window.scrollY) * 10) / 10, Math.round(r.right * 10) / 10, Math.round((r.bottom + window.scrollY) * 10) / 10]; })) : [], u.searchParams.get("probe"));
     return Response.json({ ok: true, file, h, sw, rects, probe });
   } finally {
     await browser.close();
