@@ -60,11 +60,13 @@ test.describe("QG auth regression — anonymous (always on)", () => {
     await expect(page).toHaveURL(/\/login\?redirect=/);
   });
 
-  test("QG-AUTH-001: anonymous cannot open mentor workspace", {
+  test("QG-AUTH-001: anonymous cannot open legacy mentor surface (404)", {
     tag: "@auth-regression"
   }, async ({ page }) => {
-    await goto(page, "/mentor");
-    await expect(page).toHaveURL(/\/login\?redirect=/);
+    // Post-#16/#17: /mentor is removed (notFound), not a student-/login redirect.
+    // Staff enter via /studio/login · workspace. Same contract as legacy /cms.
+    const response = await page.goto("/mentor", { waitUntil: "domcontentloaded" });
+    expect(response?.status()).toBe(404);
   });
 
   test("QG-AUTH-001: anonymous Feed stays anonymous locked preview", {
