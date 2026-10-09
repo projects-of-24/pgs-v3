@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
-vi.mock("@/lib/supabase/server", () => ({
-  createSupabaseServerClient: async () => ({
+vi.mock("@/lib/staff-preview-server", () => ({
+  previewAwareSupabaseClient: async () => ({
     from: () => ({
       select: () => ({
         eq: () => ({

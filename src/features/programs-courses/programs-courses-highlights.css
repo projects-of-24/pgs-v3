@@ -27,7 +27,8 @@
     gap: 12px;
     width: 100%;
     max-width: 364px;
-    margin: 0 auto 40px;
+    /* Space under C3 Program Description before the highlights title */
+    margin: 32px auto 40px;
     padding: 0 13px;
   }
 
@@ -111,7 +112,8 @@
     gap: 40px;
     width: 1203px;
     max-width: calc(100% - 48px);
-    margin: 0 auto 48px;
+    /* Space under C3 Program Description before the highlights title (CMS long titles) */
+    margin: 40px auto 48px;
     padding: 0 24px;
   }
 

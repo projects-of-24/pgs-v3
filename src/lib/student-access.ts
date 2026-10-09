@@ -124,15 +124,8 @@ export async function canViewStudent(
     };
   }
 
-  if (preview && access === "manage") {
-    return {
-      allowed: false,
-      actor,
-      status: 403,
-      reasonCode: "workspace_permission_denied",
-      message: "Preview is read-only. Exit preview to make changes."
-    };
-  }
+  // VAS1-WRITE (docs/VAS1-WRITE-LOCK.md): preview cookie must never deny staff manage.
+  // Student-side mutations stay blocked in proxy (non-/api/staff paths).
 
   async function assignedTo(mentorId: string) {
     const supabase = await createSupabaseServerClient();

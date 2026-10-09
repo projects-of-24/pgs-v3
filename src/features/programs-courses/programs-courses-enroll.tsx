@@ -4,7 +4,7 @@
  * Mob plate `551:10579` · intro `551:10580` · breakdowns `551:10600`.
  * Owned CSS. Fixtures only. iPad deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-enroll.css";
 
 function BreakdownItem({
@@ -35,9 +35,11 @@ function BreakdownItem({
   );
 }
 
-export function ProgramsCoursesEnroll() {
-  const e = PROGRAMS_COURSES_FIXTURE.enroll;
-  const ctaIsLink = Boolean(e.ctaHref);
+type ProgramsCoursesEnrollProps = {
+  data: ProgramsCoursesView["enroll"];
+};
+
+export function ProgramsCoursesEnroll({ data: e }: ProgramsCoursesEnrollProps) {  const ctaIsLink = Boolean(e.ctaHref);
 
   return (
     <section

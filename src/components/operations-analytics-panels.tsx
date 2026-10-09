@@ -1,6 +1,24 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Building2,
+  CalendarDays,
+  CalendarRange,
+  CircleGauge,
+  FileStack,
+  Layers,
+  LayoutTemplate,
+  Monitor,
+  Sparkles,
+  Tag,
+  Target,
+  TriangleAlert,
+  UserCheck,
+  UserMinus,
+  UsersRound,
+  Zap
+} from "lucide-react";
 import { OperationsDistributionChart } from "@/components/operations-analytics-chart";
 import {
   ANALYTICS_PERIOD_LABELS,
@@ -10,108 +28,211 @@ import {
   type AnalyticsCountLink,
   type OperationsAnalyticsModel
 } from "@/lib/operations-analytics";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import styles from "./operations-analytics.module.css";
+
+type PanelTheme = "purple" | "blue" | "green" | "red" | "orange" | "pink" | "cyan";
+
+const themeClass: Record<PanelTheme, string> = {
+  purple: styles.themePurple,
+  blue: styles.themeBlue,
+  green: styles.themeGreen,
+  red: styles.themeRed,
+  orange: styles.themeOrange,
+  pink: styles.themePink,
+  cyan: styles.themeCyan
+};
+
+const chartFill: Record<"purple" | "blue", string> = {
+  purple: "#6b3fa0",
+  blue: "#2f5fcc"
+};
 
 function MetricLink({
   href,
   label,
   value,
-  detail
+  detail,
+  tint,
+  icon: Icon
 }: {
   href: string;
   label: string;
   value: number;
   detail?: string;
+  tint: string;
+  icon: typeof UsersRound;
 }) {
   return (
-    <Link href={href} className="ops-analytics-metric ops:no-underline">
-      <span className="ops:block ops:text-sm ops:font-semibold ops:text-foreground">{label}</span>
-      <strong className="ops:mt-1 ops:block ops:text-2xl ops:tracking-tight">{value}</strong>
-      {detail ? <span className="ops:mt-1 ops:block ops:text-sm ops:text-foreground">{detail}</span> : null}
-      <span className="ops:mt-2 ops:inline-flex ops:items-center ops:gap-1 ops:text-sm ops:font-semibold">
-        Open Registry <ArrowUpRight aria-hidden="true" className="ops:size-3.5" />
+    <li>
+      <Link href={href} className={styles.metricCard}>
+        <span className={`${styles.metricIcon} ${tint}`} aria-hidden="true">
+          <Icon />
+        </span>
+        <p className={styles.metricLabel}>{label}</p>
+        <p className={styles.metricValue}>{value}</p>
+        {detail ? <p className={styles.metricDetail}>{detail}</p> : null}
+        <span className={styles.metricOpen}>
+          Open Registry <ArrowUpRight aria-hidden="true" />
+        </span>
+      </Link>
+    </li>
+  );
+}
+
+function PanelHead({
+  title,
+  lead,
+  icon: Icon
+}: {
+  title: string;
+  lead?: string;
+  icon: typeof UsersRound;
+}) {
+  return (
+    <header className={styles.panelHead}>
+      <span className={styles.panelIcon} aria-hidden="true">
+        <Icon />
       </span>
-    </Link>
+      <div className={styles.panelHeadCopy}>
+        <h3 className={styles.panelTitle}>{title}</h3>
+        {lead ? <p className={styles.panelLead}>{lead}</p> : null}
+      </div>
+    </header>
+  );
+}
+
+function StageList({ items }: { items: AnalyticsCountLink[] }) {
+  const max = Math.max(...items.map((item) => item.count), 1);
+
+  return (
+    <ul className={styles.stageList}>
+      {items.map((item) => (
+        <li key={item.key}>
+          <Link href={item.href} className={styles.stageRow}>
+            <span className={styles.stageLabel}>{item.label}</span>
+            <span className={styles.stageTrack} aria-hidden="true">
+              <span className={styles.stageFill} style={{ width: `${Math.max(8, (item.count / max) * 100)}%` }} />
+            </span>
+            <span className={styles.stageValue}>
+              {item.count}
+              <ArrowUpRight aria-hidden="true" />
+            </span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
 function CountList({
   title,
   empty,
-  items
+  items,
+  lead,
+  theme,
+  icon,
+  variant = "rows"
 }: {
   title: string;
   empty: string;
   items: AnalyticsCountLink[];
+  lead?: string;
+  theme: PanelTheme;
+  icon: typeof UsersRound;
+  variant?: "rows" | "stages";
 }) {
   return (
-    <Card className="ops-system-card ops:h-full">
-      <CardHeader className="ops:p-5">
-        <CardTitle className="ops-system-card-title">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="ops:p-5 ops:pt-0">
-        {items.length ? (
-          <ul className="ops:m-0 ops:flex ops:flex-col ops:gap-2 ops:p-0 ops:list-none">
+    <article className={`${styles.panel} ${themeClass[theme]}`}>
+      <PanelHead title={title} lead={lead} icon={icon} />
+      {items.length ? (
+        variant === "stages" ? (
+          <StageList items={items} />
+        ) : (
+          <ul className={styles.rowList}>
             {items.map((item) => (
               <li key={item.key}>
-                <Link href={item.href} className="ops-system-compact-row ops:no-underline">
-                  <span className="ops:font-semibold ops:text-foreground">{item.label}</span>
-                  <span className="ops:flex ops:items-center ops:gap-2">
-                    <strong>{item.count}</strong>
-                    <ArrowUpRight aria-hidden="true" className="ops:size-3.5" />
+                <Link href={item.href} className={styles.rowLink}>
+                  <span className={styles.rowLabel}>{item.label}</span>
+                  <span className={styles.rowValue}>
+                    {item.count}
+                    <ArrowUpRight aria-hidden="true" />
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="ops:m-0 ops:text-sm ops:text-foreground">{empty}</p>
-        )}
-      </CardContent>
-    </Card>
+        )
+      ) : (
+        <div className={styles.emptyBox}>
+          <FileStack aria-hidden="true" />
+          <p className={styles.empty}>{empty}</p>
+        </div>
+      )}
+    </article>
   );
 }
 
 function CatalogCounts({
   title,
   block,
-  featuredLabel
+  featuredLabel,
+  theme,
+  icon
 }: {
   title: string;
   block: AnalyticsCatalogBlock;
   featuredLabel?: string;
+  theme: PanelTheme;
+  icon: typeof UsersRound;
 }) {
   return (
-    <Card className="ops-system-card">
-      <CardHeader className="ops:p-5">
-        <CardTitle className="ops-system-card-title">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="ops:grid ops:gap-2 ops:p-5 ops:pt-0">
-        <Link href={block.hrefPublished} className="ops-system-compact-row ops:no-underline">
-          <span>Published</span><strong>{block.published}</strong>
-        </Link>
-        <Link href={block.hrefDraft} className="ops-system-compact-row ops:no-underline">
-          <span>Draft</span><strong>{block.draft}</strong>
-        </Link>
-        {featuredLabel && block.hrefFeatured ? (
-          <Link href={block.hrefFeatured} className="ops-system-compact-row ops:no-underline">
-            <span>{featuredLabel}</span><strong>{block.featured ?? 0}</strong>
+    <article className={`${styles.panel} ${themeClass[theme]}`}>
+      <PanelHead title={title} icon={icon} />
+      <ul className={styles.rowList}>
+        <li>
+          <Link href={block.hrefPublished} className={styles.rowLink}>
+            <span className={styles.rowLabel}>Published</span>
+            <strong className={styles.countPill}>{block.published}</strong>
           </Link>
+        </li>
+        <li>
+          <Link href={block.hrefDraft} className={styles.rowLink}>
+            <span className={styles.rowLabel}>Draft</span>
+            <strong className={styles.countPill}>{block.draft}</strong>
+          </Link>
+        </li>
+        {featuredLabel && block.hrefFeatured ? (
+          <li>
+            <Link href={block.hrefFeatured} className={styles.rowLink}>
+              <span className={styles.rowLabel}>{featuredLabel}</span>
+              <strong className={styles.countPill}>{block.featured ?? 0}</strong>
+            </Link>
+          </li>
         ) : null}
         {block.hrefUpcoming ? (
-          <Link href={block.hrefUpcoming} className="ops-system-compact-row ops:no-underline">
-            <span>Upcoming</span><strong>{block.upcoming ?? 0}</strong>
-          </Link>
+          <li>
+            <Link href={block.hrefUpcoming} className={styles.rowLink}>
+              <span className={styles.rowLabel}>Upcoming</span>
+              <strong className={styles.countPill}>{block.upcoming ?? 0}</strong>
+            </Link>
+          </li>
         ) : null}
         {block.hrefPast ? (
-          <Link href={block.hrefPast} className="ops-system-compact-row ops:no-underline">
-            <span>Past</span><strong>{block.past ?? 0}</strong>
-          </Link>
+          <li>
+            <Link href={block.hrefPast} className={styles.rowLink}>
+              <span className={styles.rowLabel}>Past</span>
+              <strong className={styles.countPill}>{block.past ?? 0}</strong>
+            </Link>
+          </li>
         ) : null}
-      </CardContent>
-    </Card>
+      </ul>
+    </article>
   );
+}
+
+function handlerInitial(name: string): string {
+  const trimmed = name.trim();
+  return trimmed ? trimmed.charAt(0).toUpperCase() : "?";
 }
 
 export function OperationsAnalyticsView({ model }: { model: OperationsAnalyticsModel }) {
@@ -119,182 +240,271 @@ export function OperationsAnalyticsView({ model }: { model: OperationsAnalyticsM
   const joinedPeriod = model.period !== "current";
 
   return (
-    <section data-analytics-scope={model.scope} data-analytics-period={model.period} className="ops-analytics" aria-labelledby="ops-analytics-heading">
-      <div className="ops:flex ops:flex-col ops:gap-4 ops:lg:flex-row ops:lg:items-end ops:lg:justify-between">
-        <div>
-          <h2 id="ops-analytics-heading" className="ops:m-0 ops:text-xl">Analytics</h2>
-          <p className="ops:mt-1 ops:max-w-3xl ops:text-sm ops:text-foreground">{model.grain}</p>
+    <section
+      data-analytics-scope={model.scope}
+      data-analytics-period={model.period}
+      data-ops-analytics-pass="dash2"
+      className={styles.page}
+      aria-labelledby="ops-analytics-heading"
+    >
+      <div className={styles.header}>
+        <div className={styles.headerCopy}>
+          <h2 id="ops-analytics-heading" className={styles.title}>
+            Analytics
+          </h2>
+          <p className={styles.lead}>{model.grain}</p>
         </div>
-        <form className="ops:grid ops:gap-2 ops:sm:grid-cols-[minmax(12rem,16rem)_auto]" method="get" action="/ops">
-          <label className="ops:grid ops:gap-1 ops:text-sm ops:font-semibold ops:text-foreground">
+        <form className={styles.periodForm} method="get" action="/ops">
+          <label className={styles.periodLabel}>
             Time period
-            <select className="ops-system-control ops:h-10 ops:rounded-md ops:border ops:border-input ops:bg-card ops:px-3 ops:text-sm ops:outline-none ops:focus-visible:ring-2 ops:focus-visible:ring-ring" defaultValue={model.period} name="period">
+            <select className={styles.periodSelect} defaultValue={model.period} name="period">
               {Object.entries(ANALYTICS_PERIOD_LABELS).map(([value, label]) => (
-                <option key={value} value={value}>{label}</option>
+                <option key={value} value={value}>
+                  {label}
+                </option>
               ))}
             </select>
           </label>
-          <button className={cn(buttonVariants({ variant: "outline" }), "ops:h-10 ops:self-end")} type="submit">
+          <button className={styles.periodButton} type="submit">
             Apply period
           </button>
         </form>
       </div>
 
-      <div className="ops:grid ops:grid-cols-2 ops:gap-3 ops:xl:grid-cols-3">
-        <MetricLink href={model.students.hrefs.total} label={joinedPeriod ? "Students in period" : "Total students"} value={model.students.total} />
+      <ul className={styles.metricGrid}>
+        <MetricLink
+          href={model.students.hrefs.total}
+          label={joinedPeriod ? "Students in period" : "Total students"}
+          value={model.students.total}
+          tint={styles.tintBlue}
+          icon={UsersRound}
+        />
         <MetricLink
           href={model.students.hrefs.premium}
           label="Premium"
           value={model.students.premium}
           detail={`${analyticsShare(model.students.premium, total)} of this set`}
+          tint={styles.tintPurple}
+          icon={Sparkles}
         />
         <MetricLink
           href={model.students.hrefs.standard}
           label="Standard"
           value={model.students.standard}
           detail={`${analyticsShare(model.students.standard, total)} of this set`}
+          tint={styles.tintOrange}
+          icon={CircleGauge}
         />
         {model.scope === "organization" ? (
           <>
-            <MetricLink href={model.students.hrefs.assigned} label="Assigned" value={model.students.assigned} />
-            <MetricLink href={model.students.hrefs.unassigned} label="Unassigned" value={model.students.unassigned} />
+            <MetricLink
+              href={model.students.hrefs.assigned}
+              label="Assigned"
+              value={model.students.assigned}
+              tint={styles.tintGreen}
+              icon={UserCheck}
+            />
+            <MetricLink
+              href={model.students.hrefs.unassigned}
+              label="Unassigned"
+              value={model.students.unassigned}
+              detail="No active assignment"
+              tint={styles.tintPink}
+              icon={UserMinus}
+            />
             <MetricLink
               href={model.students.hrefs.premium_awaiting_mentor}
               label="Premium awaiting mentor"
               value={model.students.premiumAwaitingMentor}
+              tint={styles.tintOrange}
+              icon={TriangleAlert}
             />
           </>
         ) : null}
+      </ul>
+
+      <div className={styles.twoCol}>
+        <article className={`${styles.panel} ${styles.themePurple}`}>
+          <PanelHead
+            title="Stream distribution"
+            lead="Canonical Mini CRM stream. Empty stream is omitted."
+            icon={LayoutTemplate}
+          />
+          <OperationsDistributionChart
+            caption="Student counts by stream"
+            points={model.streams}
+            fill={chartFill.purple}
+          />
+        </article>
+        <article className={`${styles.panel} ${styles.themeBlue}`}>
+          <PanelHead title="Target year" lead="Canonical Mini CRM target year." icon={CalendarDays} />
+          <OperationsDistributionChart
+            caption="Student counts by target year"
+            points={model.targetYears}
+            fill={chartFill.blue}
+          />
+        </article>
       </div>
 
-      <div className="ops:grid ops:gap-4 ops:xl:grid-cols-2">
-        <Card className="ops-system-card">
-          <CardHeader className="ops:p-5">
-            <CardTitle className="ops-system-card-title">Stream distribution</CardTitle>
-            <p className="ops:m-0 ops:text-sm ops:text-foreground">Canonical Mini CRM stream. Empty stream is omitted.</p>
-          </CardHeader>
-          <CardContent className="ops:p-5 ops:pt-0">
-            <OperationsDistributionChart caption="Student counts by stream" points={model.streams} />
-          </CardContent>
-        </Card>
-        <Card className="ops-system-card">
-          <CardHeader className="ops:p-5">
-            <CardTitle className="ops-system-card-title">Target year</CardTitle>
-            <p className="ops:m-0 ops:text-sm ops:text-foreground">Canonical Mini CRM target year.</p>
-          </CardHeader>
-          <CardContent className="ops:p-5 ops:pt-0">
-            <OperationsDistributionChart caption="Student counts by target year" points={model.targetYears} />
-          </CardContent>
-        </Card>
+      <div className={styles.twoCol}>
+        <CountList
+          title="CRM stage (Students)"
+          empty="No CRM stages in this set."
+          items={model.stages}
+          theme="green"
+          icon={Layers}
+          variant="stages"
+        />
+        <CountList
+          title="Manual CRM tags"
+          empty="No manual tags in this set. Derived facts such as Premium are not tags."
+          items={model.tags}
+          theme="red"
+          icon={Tag}
+        />
       </div>
 
-      <div className="ops:grid ops:gap-4 ops:xl:grid-cols-2">
-        <CountList title="CRM stage" empty="No CRM stages in this set." items={model.stages} />
-        <CountList title="Manual CRM tags" empty="No manual tags in this set. Derived facts such as Premium are not tags." items={model.tags} />
-      </div>
-
-      <Card className="ops-system-card">
-        <CardHeader className="ops:p-5">
-          <CardTitle className="ops-system-card-title">Cohorts</CardTitle>
-          <p className="ops:m-0 ops:text-sm ops:text-foreground">
-            Stream + target year + current Premium state. Click a row to open the matching Registry filters.
-          </p>
-        </CardHeader>
-        <CardContent className="ops:p-5 ops:pt-0">
+      <div className={model.handlers.length || model.work ? styles.threeCol : styles.twoCol}>
+        <article className={`${styles.panel} ${styles.themeOrange}`}>
+          <PanelHead
+            title="Cohorts"
+            lead="Stream + target year + current Premium state. Click a row to open the matching Registry filters."
+            icon={UsersRound}
+          />
           {model.cohorts.length ? (
-            <ul className="ops:m-0 ops:flex ops:flex-col ops:gap-2 ops:p-0 ops:list-none">
+            <ul className={styles.rowList}>
               {model.cohorts.map((cohort) => (
                 <li key={`${cohort.stream}-${cohort.targetYear}-${cohort.plan}`}>
-                  <Link href={cohort.href} className="ops-system-compact-row ops:no-underline">
-                    <span className="ops:font-semibold ops:text-foreground">{cohort.label}</span>
-                    <span className="ops:flex ops:items-center ops:gap-2">
-                      <strong>{cohort.count}</strong>
-                      <ArrowUpRight aria-hidden="true" className="ops:size-3.5" />
+                  <Link href={cohort.href} className={styles.rowLink}>
+                    <span className={styles.rowLabel}>{cohort.label}</span>
+                    <span className={styles.rowValue}>
+                      <span className={styles.countPill}>{cohort.count}</span>
+                      <ArrowUpRight aria-hidden="true" />
                     </span>
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="ops:m-0 ops:text-sm ops:text-foreground">No stream + year cohorts yet.</p>
+            <div className={styles.emptyBox}>
+              <FileStack aria-hidden="true" />
+              <p className={styles.empty}>No stream + year cohorts yet.</p>
+            </div>
           )}
-        </CardContent>
-      </Card>
+        </article>
 
-      {model.handlers.length ? (
-        <Card className="ops-system-card">
-          <CardHeader className="ops:p-5">
-            <CardTitle className="ops-system-card-title">Handler workload</CardTitle>
-            <p className="ops:m-0 ops:text-sm ops:text-foreground">
-              Active assignments only. This is workload, not a staff ranking.
-            </p>
-          </CardHeader>
-          <CardContent className="ops:p-5 ops:pt-0">
-            <ul className="ops:m-0 ops:flex ops:flex-col ops:gap-2 ops:p-0 ops:list-none">
+        {model.handlers.length ? (
+            <article className={`${styles.panel} ${styles.themePurple}`}>
+            <PanelHead
+              title="Handler workload"
+              lead="Active assignments only. This is workload, not a staff ranking."
+              icon={Zap}
+            />
+            <ul className={styles.rowList}>
               {model.handlers.map((handler) => (
                 <li key={handler.id}>
-                  <Link href={handler.href} className="ops-system-compact-row ops:no-underline">
-                    <span>
-                      <strong className="ops:text-foreground">{handler.name}</strong>
-                      <span className="ops:block ops:text-sm">{handler.premium} Premium</span>
+                  <Link href={handler.href} className={styles.rowLink}>
+                    <span className={styles.handlerRow}>
+                      <span className={styles.handlerAvatar} aria-hidden="true">
+                        {handlerInitial(handler.name)}
+                      </span>
+                      <span>
+                        <span className={styles.rowLabel}>{handler.name}</span>
+                        <span className={styles.rowMeta}>{handler.premium} Premium</span>
+                      </span>
                     </span>
-                    <span className="ops:flex ops:items-center ops:gap-2">
-                      <strong>{handler.students}</strong>
-                      <ArrowUpRight aria-hidden="true" className="ops:size-3.5" />
+                    <span className={styles.rowValue}>
+                      <span className={styles.countPill}>{handler.students}</span>
+                      <ArrowUpRight aria-hidden="true" />
                     </span>
                   </Link>
                 </li>
               ))}
             </ul>
-          </CardContent>
-        </Card>
-      ) : null}
+          </article>
+        ) : null}
 
-      {model.work ? (
-        <Card className="ops-system-card">
-          <CardHeader className="ops:p-5">
-            <CardTitle className="ops-system-card-title">Staff targets</CardTitle>
-            <p className="ops:m-0 ops:text-sm ops:text-foreground">Canonical Staff Targets queue. Not a productivity score.</p>
-          </CardHeader>
-          <CardContent className="ops:grid ops:gap-2 ops:p-5 ops:pt-0 ops:sm:grid-cols-2">
-            <Link href={model.work.hrefOpen} className="ops-system-compact-row ops:no-underline"><span>Open</span><strong>{model.work.open}</strong></Link>
-            <Link href={model.work.hrefDueSoon} className="ops-system-compact-row ops:no-underline"><span>Due soon</span><strong>{model.work.dueSoon}</strong></Link>
-            <Link href={model.work.hrefOverdue} className="ops-system-compact-row ops:no-underline"><span>Overdue</span><strong>{model.work.overdue}</strong></Link>
-            <Link href={model.work.hrefCompleted} className="ops-system-compact-row ops:no-underline"><span>Completed recently</span><strong>{model.work.completedRecently}</strong></Link>
-          </CardContent>
-        </Card>
-      ) : null}
+        {model.work ? (
+          <article className={`${styles.panel} ${styles.themeGreen}`}>
+            <PanelHead
+              title="Staff targets"
+              lead="Canonical Staff Targets queue. Not a productivity score."
+              icon={Target}
+            />
+            <div className={styles.workGrid}>
+              <Link href={model.work.hrefOpen} className={styles.rowLink}>
+                <span className={styles.rowLabel}>Open</span>
+                <strong className={`${styles.countPill} ${styles.countPillOpen}`}>{model.work.open}</strong>
+              </Link>
+              <Link href={model.work.hrefDueSoon} className={styles.rowLink}>
+                <span className={styles.rowLabel}>Due soon</span>
+                <strong className={styles.countPlain}>{model.work.dueSoon}</strong>
+              </Link>
+              <Link href={model.work.hrefOverdue} className={styles.rowLink}>
+                <span className={styles.rowLabel}>Overdue</span>
+                <strong className={`${styles.countPill} ${styles.countPillWarn}`}>{model.work.overdue}</strong>
+              </Link>
+              <Link href={model.work.hrefCompleted} className={styles.rowLink}>
+                <span className={styles.rowLabel}>Completed recently</span>
+                <strong className={styles.countPlain}>{model.work.completedRecently}</strong>
+              </Link>
+            </div>
+          </article>
+        ) : null}
+      </div>
 
       {model.catalog ? (
-        <div className="ops:grid ops:gap-4">
-          <h3 className="ops:m-0 ops:text-lg">Catalog</h3>
-          <div className="ops:grid ops:gap-4 ops:md:grid-cols-2 ops:xl:grid-cols-4">
-            <CatalogCounts title="Courses" block={model.catalog.courses} featuredLabel="Featured / Top picks" />
-            <CatalogCounts title="Programs" block={model.catalog.programs} featuredLabel="Most Wanted" />
-            <CatalogCounts title="Events" block={model.catalog.events} />
-            <CatalogCounts title="Universities" block={model.catalog.universities} />
+        <section className={styles.section} aria-label="Catalog">
+          <h3 className={styles.sectionTitle}>Catalog</h3>
+          <div className={styles.catalogGrid}>
+            <CatalogCounts
+              title="Courses"
+              block={model.catalog.courses}
+              featuredLabel="Featured / Top picks"
+              theme="purple"
+              icon={BookOpen}
+            />
+            <CatalogCounts
+              title="Programs"
+              block={model.catalog.programs}
+              featuredLabel="Most Wanted"
+              theme="blue"
+              icon={FileStack}
+            />
+            <CatalogCounts title="Events" block={model.catalog.events} theme="green" icon={CalendarRange} />
+            <CatalogCounts title="Universities" block={model.catalog.universities} theme="pink" icon={Building2} />
           </div>
-        </div>
+        </section>
       ) : null}
 
       {model.pages ? (
-        <Card className="ops-system-card">
-          <CardHeader className="ops:p-5">
-            <CardTitle className="ops-system-card-title">CMS pages</CardTitle>
-            <p className="ops:m-0 ops:text-sm ops:text-foreground">Canonical page status. Page-view popularity is not available.</p>
-          </CardHeader>
-          <CardContent className="ops:grid ops:gap-2 ops:p-5 ops:pt-0">
-            <Link href={model.pages.href} className="ops-system-compact-row ops:no-underline"><span>Published</span><strong>{model.pages.published}</strong></Link>
-            <Link href={model.pages.href} className="ops-system-compact-row ops:no-underline"><span>Draft</span><strong>{model.pages.draft}</strong></Link>
-            <Link href={model.pages.href} className="ops-system-compact-row ops:no-underline"><span>Unpublished</span><strong>{model.pages.unpublished}</strong></Link>
-          </CardContent>
-        </Card>
+        <article className={`${styles.panel} ${styles.themeCyan}`}>
+          <PanelHead
+            title="CMS pages"
+            lead="Canonical page status. Page-view popularity is not available."
+            icon={Monitor}
+          />
+          <div className={styles.workGrid}>
+            <Link href={model.pages.href} className={styles.rowLink}>
+              <span className={styles.rowLabel}>Published</span>
+              <strong className={styles.countPill}>{model.pages.published}</strong>
+            </Link>
+            <Link href={model.pages.href} className={styles.rowLink}>
+              <span className={styles.rowLabel}>Draft</span>
+              <strong className={styles.countPill}>{model.pages.draft}</strong>
+            </Link>
+            <Link href={model.pages.href} className={styles.rowLink}>
+              <span className={styles.rowLabel}>Unpublished</span>
+              <strong className={styles.countPill}>{model.pages.unpublished}</strong>
+            </Link>
+          </div>
+        </article>
       ) : null}
 
       {model.period !== "current" ? (
-        <p className="ops:m-0 ops:text-sm ops:text-foreground">
-          <Link className="ops:font-semibold" href={analyticsPeriodQuery("current")}>Clear period filter</Link>
-          {" "}to return to current-state analytics.
+        <p className={styles.clearLink}>
+          <Link href={analyticsPeriodQuery("current")}>Clear period filter</Link> to return to current-state
+          analytics.
         </p>
       ) : null}
     </section>

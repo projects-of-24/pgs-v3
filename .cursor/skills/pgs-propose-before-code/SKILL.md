@@ -10,13 +10,19 @@ description: >-
 
 **Master workflow (frontend / backend / SaaS order, locks, gates):** [`pgs-master-workflow/SKILL.md`](../pgs-master-workflow/SKILL.md)
 
+**Ops/CMS/backend reference-first (Tier A):** [`pgs-reference-first-multi-agent/SKILL.md`](../pgs-reference-first-multi-agent/SKILL.md) — bank ID → multi-agent scout → expected output → `GO AHEAD`. Opus advisory on auth/RBAC/process. Living: [`docs/PGS-REFERENCE-FIRST-GATES.md`](../../docs/PGS-REFERENCE-FIRST-GATES.md).
+
 **Backend / API / DB wire gates:** [`pgs-backend-phase-wire/SKILL.md`](../pgs-backend-phase-wire/SKILL.md) — map first · one gate · day-1 security · living Kanban MD.
+
+**Every implementation preflight (DB · API · pages):** [`pgs-preflight-db-api-pages/SKILL.md`](../pgs-preflight-db-api-pages/SKILL.md) — show owner · wait approve · if DB missing say create it · **no YOLO**.
 
 **Events / courses templates:** [`docs/PURPLE-EVENTS-ARCHITECTURE.md`](../../docs/PURPLE-EVENTS-ARCHITECTURE.md) — block-by-block; fixtures now; Supabase rebuild later. E8 Upcoming: skill `pgs-upcoming-sessions`.
 
 **Layout / edges / responsive:** always run [`pgs-scout-what-why-how`](../pgs-scout-what-why-how/SKILL.md) before CSS — scout live + preview, WHAT · WHY · HOW, then this propose block.
 
-**Chrome:** body gates must not drive-by chrome. Header remount phase is **reopened 2026-09-25** — only via skill `pgs-header-chrome-phase` + `docs/HEADER-CHROME-PHASE.md`, after `GO AHEAD`, one gate. **Never call chrome “done” while pages still DSIH the header/footer string.** For each new chrome block: **Hostinger/legacy CSS reference → owned CSS pass → then UI** (do not invent floating-menu CSS from scratch).
+**Ops/CMS staff UI scout:** [`pgs-ops-backend-ui-scout`](../pgs-ops-backend-ui-scout/SKILL.md) — screenshot-first; owned CSS. **Owner lock 2026-10-01:** use **owner screenshot design language** for Ops UI until owner says otherwise (header ≥18px; screenshot blue brand; Studio login purple stays LOCKED). Living: [`docs/OPS-STAFF-DESIGN-LANGUAGE.md`](../../docs/OPS-STAFF-DESIGN-LANGUAGE.md).
+
+**Chrome:** body gates must not drive-by chrome. Header remount phase is **reopened 2026-09-25** — only via skill `pgs-header-chrome-phase` + `docs/HEADER-CHROME-PHASE.md`, after `GO AHEAD`, one gate. **Never call chrome “done” while pages still DSIH the header/footer string.** For each new chrome block: **Hostinger/legacy CSS reference → owned CSS pass → then UI** (do not invent floating-menu CSS from scratch). For **Ops/staff** chrome: owner screenshots beat Hostinger.
 
 ## Rule (verbatim)
 
@@ -34,6 +40,11 @@ description: >-
 ## Required proposal format (every code change)
 
 Before any file edit, return this block:
+
+### PREFLIGHT — DB · API · PAGES
+**Mandatory** — full template in [`pgs-preflight-db-api-pages`](../pgs-preflight-db-api-pages/SKILL.md).  
+If work needs DB and it does not exist: **`DB GAP — we need to create …`**. Do not YOLO.  
+CSS-only: still list `DB: N/A` · `API: N/A` · pages touched.
 
 ### WHAT I FOUND
 - Bug / gap in plain English (1–3 bullets). Evidence if useful (e.g. computed style).

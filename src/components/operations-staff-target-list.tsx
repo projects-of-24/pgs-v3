@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { OperationsTableFrame } from "@/components/operations-table-frame";
+import { X } from "lucide-react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle
+} from "@/components/ui/dialog";
 import {
   STAFF_TARGET_STATUSES,
   formatStaffTargetDueDate,
@@ -19,8 +26,6 @@ import {
 } from "@/lib/operations-staff-targets";
 import { staffRoleLabel } from "@/lib/operations-staff-access";
 
-const controlClass = "ops-system-control ops:h-9 ops:w-full ops:rounded-md ops:border ops:border-input ops:bg-card ops:px-2 ops:text-sm ops:outline-none ops:focus-visible:ring-2 ops:focus-visible:ring-ring";
-
 function StatusControl({
   target,
   onSaved
@@ -29,42 +34,58 @@ function StatusControl({
   onSaved: (message: string) => void;
 }) {
   const [status, setStatus] = useState<StaffTargetStatus>(target.status);
+  const [syncedStatus, setSyncedStatus] = useState<StaffTargetStatus>(target.status);
   const [pending, setPending] = useState(false);
 
+  if (target.status !== syncedStatus) {
+    setSyncedStatus(target.status);
+    setStatus(target.status);
+  }
+
   async function save() {
+    if (status === target.status || pending) return;
     setPending(true);
     const response = await fetch("/api/staff/targets", {
       method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ action: "status", id: target.id, status })
     });
-    const result = await response.json() as { message?: string };
+    const result = (await response.json()) as { message?: string };
     setPending(false);
     onSaved(response.ok ? "Target status updated." : result.message ?? "Unable to update target status.");
   }
 
   return (
-    <div className="ops:flex ops:min-w-40 ops:flex-col ops:gap-2">
-      <label className="ops:grid ops:gap-1">
-        <span className="ops:sr-only">Status for {target.title}</span>
+    <div className="ops-target1-action">
+      <label className="ops-target1-action-field">
+        <span className="ops-um-visually-hidden">Status for {target.title}</span>
         <select
-          className={controlClass}
+          className="ops-target1-control ops-target1-control--compact"
           value={status}
+          disabled={pending}
+          aria-label={`Status for ${target.title}`}
           onChange={(event) => setStatus(event.target.value as StaffTargetStatus)}
         >
           {STAFF_TARGET_STATUSES.map((option) => (
-            <option key={option} value={option}>{staffTargetStatusLabel(option)}</option>
+            <option key={option} value={option}>
+              {staffTargetStatusLabel(option)}
+            </option>
           ))}
         </select>
       </label>
-      <Button disabled={pending || status === target.status} onClick={() => void save()} size="sm" type="button" variant="outline">
+      <button
+        type="button"
+        className="ops-target1-update-status"
+        disabled={pending || status === target.status}
+        onClick={() => void save()}
+      >
         Update status
-      </Button>
+      </button>
     </div>
   );
 }
 
-function EditTargetForm({
+function EditTargetDialog({
   target,
   assignees,
   students,
@@ -78,6 +99,12 @@ function EditTargetForm({
   onClose: () => void;
 }) {
   const [pending, setPending] = useState(false);
+  const titleId = useId();
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    requestAnimationFrame(() => firstFieldRef.current?.focus());
+  }, []);
 
   async function save(form: HTMLFormElement) {
     setPending(true);
@@ -96,82 +123,133 @@ function EditTargetForm({
         due_date: data.get("due_date")
       })
     });
-    const result = await response.json() as { message?: string };
+    const result = (await response.json()) as { message?: string };
     setPending(false);
-    onSaved(response.ok ? "Target details updated." : result.message ?? "Unable to update target.");
+    if (!response.ok) {
+      onSaved(result.message ?? "Unable to update target.");
+      return;
+    }
+    onSaved("Target details updated.");
+    onClose();
   }
 
   return (
-    <section
-      aria-labelledby="edit-staff-target-heading"
-      className="ops:mt-5 ops:rounded-md ops:border ops:border-border ops:bg-muted/20 ops:p-4"
-      id="edit-staff-target-form"
-      tabIndex={-1}
+    <Dialog
+      open
+      onOpenChange={(open) => {
+        if (!open) onClose();
+      }}
     >
-      <div className="ops:flex ops:items-center ops:justify-between ops:gap-3">
-        <h3 className="ops:m-0 ops:text-base" id="edit-staff-target-heading">Edit {target.title}</h3>
-        <Button onClick={onClose} size="sm" type="button" variant="ghost">Close</Button>
-      </div>
-      <form
-        className="ops:mt-3 ops:grid ops:gap-3"
-        onSubmit={(event) => {
-          event.preventDefault();
-          void save(event.currentTarget);
-        }}
-      >
-        <label className="ops:grid ops:gap-1 ops:text-xs ops:font-medium">
-          Title
-          <input className={controlClass} name="title" required maxLength={160} defaultValue={target.title} />
-        </label>
-        <label className="ops:grid ops:gap-1 ops:text-xs ops:font-medium">
-          Assignee
-          <select className={controlClass} name="assigned_staff_id" defaultValue={target.assignedStaffId}>
-            {assignees.map((staff) => (
-              <option key={staff.id} value={staff.id}>{staff.name} · {staffRoleLabel(staff.role)}</option>
-            ))}
-          </select>
-        </label>
-        <label className="ops:grid ops:gap-1 ops:text-xs ops:font-medium">
-          Student
-          <select className={controlClass} name="student_id" defaultValue={target.studentId ?? ""}>
-            <option value="">No student</option>
-            {students.map((student) => (
-              <option key={student.id} value={student.id}>{student.name} · {student.pgsCode}</option>
-            ))}
-          </select>
-        </label>
-        <div className="ops:grid ops:grid-cols-2 ops:gap-3">
-          <label className="ops:grid ops:gap-1 ops:text-xs ops:font-medium">
-            Priority
-            <select className={controlClass} name="priority" defaultValue={target.priority}>
-              <option value="normal">Normal</option>
-              <option value="important">Important</option>
-              <option value="urgent">Urgent</option>
+      <DialogContent className="ops-target1-dialog" aria-describedby={`${titleId}-desc`}>
+        <DialogHeader className="ops-target1-dialog-header">
+          <DialogTitle id={titleId} className="ops-target1-dialog-title">
+            Edit {target.title}
+          </DialogTitle>
+          <DialogDescription id={`${titleId}-desc`} className="ops-um-visually-hidden">
+            Update title, assignee, student, priority, due date, and context for this staff target.
+          </DialogDescription>
+          <DialogClose className="ops-target1-dialog-close" aria-label="Close edit target dialog">
+            <X aria-hidden="true" />
+          </DialogClose>
+        </DialogHeader>
+
+        <form
+          className="ops-target1-dialog-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            void save(event.currentTarget);
+          }}
+        >
+          <label className="ops-target1-field">
+            <span>Title</span>
+            <input
+              ref={firstFieldRef}
+              className="ops-target1-control"
+              name="title"
+              required
+              maxLength={160}
+              defaultValue={target.title}
+            />
+          </label>
+          <label className="ops-target1-field">
+            <span>Assignee</span>
+            <select className="ops-target1-control" name="assigned_staff_id" defaultValue={target.assignedStaffId}>
+              {assignees.map((staff) => (
+                <option key={staff.id} value={staff.id}>
+                  {staff.name} · {staffRoleLabel(staff.role)}
+                </option>
+              ))}
             </select>
           </label>
-          <label className="ops:grid ops:gap-1 ops:text-xs ops:font-medium">
-            Due date
-            <input className={controlClass} name="due_date" type="date" defaultValue={staffTargetDueDateValue(target.dueAt)} />
+          <label className="ops-target1-field">
+            <span>Student</span>
+            <select className="ops-target1-control" name="student_id" defaultValue={target.studentId ?? ""}>
+              <option value="">No student</option>
+              {students.map((student) => (
+                <option key={student.id} value={student.id}>
+                  {student.name} · {student.pgsCode}
+                </option>
+              ))}
+            </select>
           </label>
-        </div>
-        <label className="ops:grid ops:gap-1 ops:text-xs ops:font-medium">
-          Context
-          <textarea className="ops-system-control ops:min-h-20 ops:rounded-md ops:border ops:border-input ops:bg-card ops:p-2 ops:text-sm" name="description" maxLength={4000} defaultValue={target.description} />
-        </label>
-        <Button disabled={pending} size="sm" type="submit">Save details</Button>
-      </form>
-    </section>
+          <div className="ops-target1-dialog-row">
+            <label className="ops-target1-field">
+              <span>Priority</span>
+              <select className="ops-target1-control" name="priority" defaultValue={target.priority}>
+                <option value="normal">Normal</option>
+                <option value="important">Important</option>
+                <option value="urgent">Urgent</option>
+              </select>
+            </label>
+            <label className="ops-target1-field">
+              <span>Due date</span>
+              <input
+                className="ops-target1-control"
+                name="due_date"
+                type="date"
+                defaultValue={staffTargetDueDateValue(target.dueAt)}
+              />
+            </label>
+          </div>
+          <label className="ops-target1-field">
+            <span>Context</span>
+            <input
+              className="ops-target1-control"
+              name="description"
+              maxLength={4000}
+              defaultValue={target.description}
+            />
+          </label>
+          <button className="ops-target1-primary" disabled={pending} type="submit">
+            Save details
+          </button>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 }
 
 function StudentLink({ target }: { target: StaffTarget }) {
   if (!target.studentId) return <span>Organization</span>;
   return (
-    <Link href={`/ops/students/${target.studentId}`} className="ops:font-semibold ops:text-accent-foreground ops:no-underline">
-      {target.studentName || "Student"}
-      {target.studentPgsCode ? <small className="ops:block ops:text-xs ops:font-normal ops:text-muted-foreground">{target.studentPgsCode}</small> : null}
+    <Link className="ops-target1-student" href={`/ops/students/${target.studentId}`}>
+      <strong>{target.studentName || "Student"}</strong>
+      {target.studentPgsCode ? <small>{target.studentPgsCode}</small> : null}
     </Link>
   );
+}
+
+function priorityClass(priority: string): string {
+  if (priority === "urgent") return "ops-target1-pill ops-target1-pill--urgent";
+  if (priority === "important") return "ops-target1-pill ops-target1-pill--important";
+  return "ops-target1-pill ops-target1-pill--normal";
+}
+
+function statusClass(status: string): string {
+  if (status === "completed") return "ops-target1-pill ops-target1-pill--done";
+  if (status === "cancelled") return "ops-target1-pill ops-target1-pill--cancelled";
+  if (status === "in_progress") return "ops-target1-pill ops-target1-pill--progress";
+  return "ops-target1-pill ops-target1-pill--pending";
 }
 
 export function OperationsStaffTargetList({
@@ -196,20 +274,21 @@ export function OperationsStaffTargetList({
     setMessage(next);
     if (next.endsWith("updated.")) router.refresh();
   };
-  const edit = (target: StaffTarget) => {
-    setEditingTarget(target);
-    requestAnimationFrame(() => document.getElementById("edit-staff-target-form")?.focus());
-  };
 
   if (!targets.length) {
-    return <p className="ops-system-empty-cell">No staff targets match this view.</p>;
+    return <p className="ops-target1-empty">No staff targets match this view.</p>;
   }
 
   return (
     <>
-      <p className="ops:m-0 ops:mb-3 ops:text-sm ops:text-muted-foreground" role="status" aria-live="polite">{message}</p>
-      <div className="ops-team-desktop">
-        <OperationsTableFrame ariaLabel="Staff targets" minimumWidth={980}>
+      {message ? (
+        <p className="ops-target1-status" role="status" aria-live="polite">
+          {message}
+        </p>
+      ) : null}
+
+      <div className="ops-target1-table-scroll" tabIndex={0} role="region" aria-label="Staff targets">
+        <table className="ops-target1-table">
           <thead>
             <tr>
               <th scope="col">What</th>
@@ -218,7 +297,7 @@ export function OperationsStaffTargetList({
               <th scope="col">Status</th>
               <th scope="col">Priority</th>
               <th scope="col">Due</th>
-              {canUpdateStatus ? <th scope="col">Action</th> : null}
+              {canUpdateStatus || canManageAll ? <th scope="col">Action</th> : null}
             </tr>
           </thead>
           <tbody>
@@ -228,60 +307,45 @@ export function OperationsStaffTargetList({
                 <tr key={target.id} data-staff-target={target.id}>
                   <td>
                     <strong>{target.title}</strong>
-                    {target.description ? <small className="ops:mt-1 ops:block ops:max-w-md ops:text-muted-foreground">{target.description}</small> : null}
+                    {target.description ? <small className="ops-target1-context">{target.description}</small> : null}
                     {canManageAll ? (
-                      <Button className="ops:mt-2" onClick={() => edit(target)} size="sm" type="button" variant="ghost">
-                        Edit details
-                      </Button>
+                      <button className="ops-target1-edit-link" type="button" onClick={() => setEditingTarget(target)}>
+                        Edit
+                      </button>
                     ) : null}
                   </td>
-                  <td><StudentLink target={target} /></td>
+                  <td>
+                    <StudentLink target={target} />
+                  </td>
                   {showAssignee ? (
                     <td>
-                      <Link href={`/ops/team/${target.assignedStaffId}`} className="ops:font-semibold ops:no-underline">
+                      <Link className="ops-target1-assignee" href={`/ops/team/${target.assignedStaffId}`}>
                         {target.assigneeName}
                       </Link>
-                      <small className="ops:block ops:text-xs ops:text-muted-foreground">{staffRoleLabel(target.assigneeRole)}</small>
                     </td>
                   ) : null}
-                  <td><span className="ops-system-badge">{staffTargetStatusLabel(target.status)}</span></td>
-                  <td><span className="ops-system-badge">{staffTargetPriorityLabel(target.priority)}</span></td>
+                  <td>
+                    <span className={statusClass(target.status)}>{staffTargetStatusLabel(target.status)}</span>
+                  </td>
+                  <td>
+                    <span className={priorityClass(target.priority)}>{staffTargetPriorityLabel(target.priority)}</span>
+                  </td>
                   <td>
                     <time dateTime={target.dueAt ?? undefined}>{formatStaffTargetDueDate(target.dueAt)}</time>
-                    {overdue ? <strong className="ops:mt-1 ops:block ops:text-xs ops:text-destructive">Overdue</strong> : null}
+                    {overdue ? <strong className="ops-target1-overdue">Overdue</strong> : null}
                   </td>
-                  {canUpdateStatus ? <td><StatusControl target={target} onSaved={saved} /></td> : null}
+                  {canUpdateStatus || canManageAll ? (
+                    <td>{canUpdateStatus ? <StatusControl target={target} onSaved={saved} /> : null}</td>
+                  ) : null}
                 </tr>
               );
             })}
           </tbody>
-        </OperationsTableFrame>
+        </table>
       </div>
-      <div className="ops-team-mobile">
-        <ul className="ops-registry-card-list">
-          {targets.map((target) => (
-            <li className="ops-registry-card" key={target.id} data-staff-target={target.id}>
-              <h3 className="ops:m-0 ops:text-base">{target.title}</h3>
-              {target.description ? <p className="ops:text-sm ops:text-muted-foreground">{target.description}</p> : null}
-              <dl className="ops-registry-card-fields">
-                <div><dt>Student</dt><dd><StudentLink target={target} /></dd></div>
-                {showAssignee ? <div><dt>Assignee</dt><dd>{target.assigneeName}</dd></div> : null}
-                <div><dt>Status</dt><dd>{staffTargetStatusLabel(target.status)}</dd></div>
-                <div><dt>Priority</dt><dd>{staffTargetPriorityLabel(target.priority)}</dd></div>
-                <div><dt>Due</dt><dd>{formatStaffTargetDueDate(target.dueAt)}{isStaffTargetOverdue(target) ? " · Overdue" : ""}</dd></div>
-              </dl>
-              {canUpdateStatus ? <StatusControl target={target} onSaved={saved} /> : null}
-              {canManageAll ? (
-                <Button onClick={() => edit(target)} size="sm" type="button" variant="ghost">
-                  Edit details
-                </Button>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </div>
+
       {canManageAll && editingTarget ? (
-        <EditTargetForm
+        <EditTargetDialog
           assignees={assignees}
           onClose={() => setEditingTarget(null)}
           onSaved={saved}

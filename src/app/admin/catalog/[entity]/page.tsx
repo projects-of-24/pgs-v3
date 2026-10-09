@@ -1,9 +1,11 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { AdminCatalogRelationships } from "@/components/admin-catalog-relationships";
 import { AdminCrudManager, type MediaOption, type RelationOptions, type TagOption } from "@/components/admin-crud-manager";
+import { AdminUniversitiesManager } from "@/components/admin-universities-manager";
+import { AdminCoursesManager } from "@/components/admin-courses-manager";
 import { AdminPageHeader } from "@/components/admin-page-header";
 import { getAdminEntity, type AdminRelation } from "@/lib/admin-registry";
-import { can, requireStaffPermission } from "@/lib/staff-auth";
+import { can, getStaffContext, StaffAuthorizationError } from "@/lib/staff-auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 type Option = { id: number; label: string };
@@ -24,7 +26,16 @@ const relationTables: Record<AdminRelation, { table: string; label: string }> = 
 };
 
 export default async function CatalogEntityPage({ params, searchParams }: { params: Promise<{ entity: string }>; searchParams: Promise<{ q?: string; state?: string; featured?: string; when?: string }> }) {
-  const context = await requireStaffPermission("catalog.read");
+  // A0 — expired/missing staff session → Studio login (no runtime error overlay).
+  const context = await getStaffContext();
+  if (!context) {
+    const { entity: key } = await params;
+    const opsPath = key === "courses" || key === "universities" ? `/ops/cms/${key}` : `/admin/catalog/${key}`;
+    redirect(`/studio/login?redirect=${encodeURIComponent(opsPath)}&surface=studio`);
+  }
+  if (!context.permissions.has("catalog.read")) {
+    throw new StaffAuthorizationError(403, "You do not have permission for this operation.");
+  }
   const { entity: key } = await params;
   const entity = getAdminEntity("catalog", key);
   if (!entity) notFound();
@@ -126,6 +137,38 @@ export default async function CatalogEntityPage({ params, searchParams }: { para
       entities: { [taggable[key]]: entityOptions },
       values: (tags ?? []).map((row) => ({ id: row.id, label: row.name }))
     };
+  }
+
+  if (key === "universities") {
+    return (
+      <AdminUniversitiesManager
+        entity={entity}
+        rows={displayRows}
+        canManage={can(context, "catalog.manage")}
+        canPublish={can(context, "catalog.publish")}
+        mediaAssets={mediaAssets}
+        relationOptions={relationOptions}
+        tagOptions={tagOptions}
+        initialQuery={typeof filters.q === "string" ? filters.q : ""}
+        initialState={typeof filters.state === "string" ? filters.state : ""}
+      />
+    );
+  }
+
+  if (key === "courses") {
+    return (
+      <AdminCoursesManager
+        entity={entity}
+        rows={displayRows}
+        canManage={can(context, "catalog.manage")}
+        canPublish={can(context, "catalog.publish")}
+        mediaAssets={mediaAssets}
+        relationOptions={relationOptions}
+        tagOptions={tagOptions}
+        initialQuery={typeof filters.q === "string" ? filters.q : ""}
+        initialState={typeof filters.state === "string" ? filters.state : ""}
+      />
+    );
   }
 
   return (

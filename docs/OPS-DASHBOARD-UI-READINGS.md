@@ -3,11 +3,33 @@
 Pilot for skill [`pgs-ops-backend-ui-scout`](../.cursor/skills/pgs-ops-backend-ui-scout/SKILL.md).  
 Parent method: [`pgs-scout-what-why-how`](../.cursor/skills/pgs-scout-what-why-how/SKILL.md).
 
-**Owner locks:** screenshot-first · no invent · **ignore shadcn / TanStack by default** · easiest = semantic HTML + owned Ops CSS + existing Supabase APIs · CMS = Payload reference later.
+## Ops header — **LOCKED** (owner QC 2026-10-01)
 
-**Reference gallery:** `/preview/ops-staff-plan/v2/`  
-**Current landing:** `/ops` → [`src/app/admin/page.tsx`](../src/app/admin/page.tsx)  
-**Shell:** [`src/components/admin-shell.tsx`](../src/components/admin-shell.tsx)
+Full lock: [`OPS-HEADER-LOCK.md`](./OPS-HEADER-LOCK.md). Backend park: [`OPS-BACKEND-UI-API-UPDATES.md`](./OPS-BACKEND-UI-API-UPDATES.md).
+
+| Rule | Detail |
+|---|---|
+| UI | Topbar C1 locked — do not restyle without new gate |
+| Backend | **Read-only from current** for header chrome; owner returns later (BE-H1…H4) |
+| Next | **C2 sidetab** |
+
+---
+
+## Studio login — **LOCKED** (owner QC 2026-10-01)
+
+Full lock doc: [`OPS-STUDIO-LOGIN-LOCK.md`](./OPS-STUDIO-LOGIN-LOCK.md). Post-login passes: [`OPS-POST-LOGIN-UI-PASSES.md`](./OPS-POST-LOGIN-UI-PASSES.md).
+
+| Rule | Detail |
+|---|---|
+| Student `/login` | **Students only** — staff accounts rejected (403 + signOut) |
+| Studio `/studio/login` | **SA / Admin / Mentor / Staff only** — students rejected **on Studio** (403 + signOut + form error) |
+| Existing student session on Studio | **Sign out**, stay on `/studio/login`, show error — **never** bounce to student frontend |
+| After Studio login | **Direct to `/ops`** — no intermediate page |
+| Unauthenticated `/ops` | Redirect `/studio/login?redirect=%2Fops` |
+| Legacy `?surface=operations` | Redirects to `/studio/login` |
+| Backend data (this gate) | **Read-only** — existing Auth/`staff_profiles` used only to verify staff vs student; no flush |
+
+Preview: [http://localhost:7000/studio/login](http://localhost:7000/studio/login)
 
 ---
 
@@ -18,68 +40,66 @@ Parent method: [`pgs-scout-what-why-how`](../.cursor/skills/pgs-scout-what-why-h
 | Source | Structure |
 |---|---|
 | **Screenshot / v2 dashboard** | Sidebar: Dashboard · Notifications · Activity · Operations (Students/Targets/Team) · CMS groups · Admin Panel. Header: search · bell · profile. Main: KPI cards · growth chart · recent notifications · upcoming events · latest activity · quick actions |
-| **Current `/ops`** | Shell: flat nav Scoreboard · Students · Targets · Team · Notifications · Activity (permission-filtered). Header: section title · Ask PGS · search · bell · actor menu. Main: Operations Scoreboard panels + optional analytics from real RPCs |
-| **Gap** | Screenshot has grouped Ops/CMS/Admin nav + richer dashboard chrome; current has flat Ops-only nav and scoreboard/analytics contracts (good for **real metrics**, not fake trends). Profile / User Management screens exist only as planning previews, not screenshot-parity UI |
+| **Current `/ops` after Pass 1** | Grouped shell: primary Scoreboard/Notifications/Activity · Operations (Students/Targets/Team with lock when no permission) · CMS Creating/Editing **Soon** deferred · Admin Panel (User Management / Permissions SA-only, Edit Profile). Header: search · bell · name+role · avatar menu (My Profile / Change Password / Logout). Main: unchanged scoreboard (Pass 2) |
+| **Gap remaining** | Main dashboard widgets vs screenshot (Pass 2). User Management / Permissions deep UI still `/ops/team` interim. CMS still deferred |
 
 ### WHY
 
-- Early Ops shell used internal shadcn-style primitives; owner QC prefers **screenshot look**, not default shadcn.
-- Scoreboard correctly prefers **real** `staff_operations_scoreboard` / analytics — reject painting fake % from mockups as truth.
-- CMS sidebar groups are **design intent**; Payload CMS not installed yet (`docs/OPS-CMS-DEPLOYMENT.md`).
-- TanStack Table not required for landing; lists elsewhere can stay native `<table>` until proven otherwise.
+- Early Ops shell used flat shadcn-ish nav; owner screenshots want **grouped** Ops / CMS / Admin.
+- CMS Payload not installed — show deferred “Soon”, do not invent CMS screens.
+- Scoreboard label kept (tests + same intent as screenshot “Dashboard”).
 
-### HOW (proposed — not implemented until GO AHEAD)
+### HOW — Pass 1 DONE (shell)
 
-1. **Pass 1 — shell readings** (this file): lock header/sidebar rhythm from screenshot; owned CSS, not shadcn theme restyle of the whole design system.
-2. **Pass 2 — dashboard main:** map screenshot blocks to **existing** scoreboard metrics only; mark CMS/events widgets DEFERRED if no contract.
-3. **Pass 3 — reuse shell** on Profile / User Management after dashboard UI CHECK PASS.
-4. **Stack:** Next.js + semantic HTML + Ops-scoped CSS modules/owned CSS. **No** new TanStack. **No** shadcn look-first. Payload only for `/cms` later.
+1. Grouped nav + locks + CMS deferred badges + Admin Panel — **DONE**  
+2. Brand → Purple Guide Study — **DONE**  
+3. Header profile chip + Zoho-like account menu — **DONE**  
+4. Owned CSS under `.ops-nav-*` — **DONE**  
+5. Pass 2 dashboard main — **waiting next GO AHEAD**
 
-### NOT IN THIS DOC PASS
+### NOT IN PASS 1
 
 - No Payload install  
-- No student frontend changes  
+- No dashboard main restyle  
 - No inventing KPI trends  
-- No full dashboard restyle until owner `GO AHEAD` for Pass 1/2  
+- No TanStack  
 
 ---
 
-## Shell readings to reuse on other Ops pages
+## Shell readings (Pass 1 — interim until chrome C4 LOCK)
 
-| Token / area | Current (code) | Screenshot target (learn) | Reuse? |
-|---|---|---|---|
-| Sidebar width | `ops:w-64` fixed left | Grouped sections + Admin Panel footer | Yes — keep width; ADAPT grouping later |
-| Brand | Purple Guide + Operations under logo | PGS Purple Guide Study | ADAPT label when shell pass approved |
-| Default nav | Scoreboard, Notifications, Activity always meaningful for staff | Same intent | ADOPT |
-| Gated nav | Students / Targets / Team via permissions | Lock icons until Super Admin enables | ADAPT permission UX to screenshot |
-| CMS group | Not present | Creating / Editing children | DEFERRED until CMS gate |
-| Admin Panel | Not present as group | User Management / Permissions / Edit Profile | ADAPT after dashboard pass |
-| Topbar height | `ops:h-[72px]` | Search + bell + named profile | Reuse 72px; ADAPT profile chip text |
-| Content pad | `ops:p-4 sm:p-6 lg:p-8` max `1440` | Card grid padding | Reuse max-width; tune pad in Pass 2 |
-| Tables | N/A on landing | User mgmt later | Prefer native `<table>` |
+| Token / area | Pass 1 reading | Status |
+|---|---|---|
+| Sidebar width | 240px / `ops:w-64` | Interim — restyle under C2 |
+| Brand | PGS · Purple Guide Study | Keep |
+| Nav groups | Scoreboard · Ops · CMS Soon · Admin | Keep IA; visual C1–C2 |
+| Topbar | search · bell · name+role · menu | Restyle C1 |
+| Marker | `data-ops-shell-pass="1"` | Becomes chrome LOCK marker at C4 |
 
-Update this table after each UI CHECK PASS.
+**Canon for chrome:** [`OPS-STAFF-DESIGN-LANGUAGE.md`](./OPS-STAFF-DESIGN-LANGUAGE.md) — chrome-first; Studio login untouched.
+
 
 ---
 
-## UI CHECK PASS — dashboard (status)
+## UI CHECK PASS — shell (Pass 1)
 
 | Band | Check | Pass? |
 |------|--------|-------|
-| Desktop ~1440 | Matches screenshot **structure** (named blocks) | **NOT RUN** — scout only; waiting `GO AHEAD` Pass 1 |
-| Narrow ops | Nav reachable | NOT RUN |
-| Data | No fake % | **PASS** (current scoreboard uses real contracts) |
-| A11y smoke | Shell has nav label / avatar name | PARTIAL (needs full pass after visual ADAPT) |
+| Desktop ~1440 | Grouped sidebar + header profile chip structure | **ENGINEERING** — owner Preview QC required |
+| Narrow ops | Menu button opens same grouped nav | **ENGINEERING** — owner Preview QC required |
+| Data | No fake % on shell | **PASS** |
+| A11y | Nav landmark; locked/deferred have sr-only text; account menu labeled | **PASS** (smoke) |
+| Automated a11y | NOT RUN this gate | NOT RUN |
+
+**Owner Preview:** open `/ops` logged in as Super Admin and as Mentor — confirm groups, locks, CMS Soon, Admin Panel visibility.
 
 ---
 
-## Next pages (after dashboard pass)
+## Next pages (after owner shell QC)
 
-1. My Profile (Zoho-style) — v2 `step-3-profile.jpg`  
-2. User Management + permissions — v2 `step-4-user-management.jpg`  
-3. Login surface polish — v2 `step-1-login.jpg` (staff-only harden = backend W1)
-
-Each page: reuse **shell readings** above; only re-scout **main** content.
+1. **Pass 2** — dashboard main (real metrics only)  
+2. My Profile screenshot parity  
+3. User Management + permissions tree (beyond `/ops/team` interim)  
 
 ---
 
@@ -87,4 +107,10 @@ Each page: reuse **shell readings** above; only re-scout **main** content.
 
 | Date | Change |
 |---|---|
-| 2026-09-30 | Initial scout + readings; skill `pgs-ops-backend-ui-scout` added; leftover skills restored |
+| 2026-09-30 | Initial scout + readings |
+| 2026-09-30 | **Pass 1 shell ADAPT** — grouped nav, locks, CMS deferred, profile chip/menu, owned CSS |
+| 2026-09-30 | **L1 Studio login** — `/studio/login` screenshot UI; staff-only; direct `/ops`; student `/login` reserved |
+| 2026-10-01 | **DASH1** — `/ops` scoreboard + analytics visual restyle (owner screenshots); drag pager kept; no fake % |
+| 2026-10-01 | **DASH1 LOCKED** (owner QC) — [`OPS-DASHBOARD-LOCK.md`](./OPS-DASHBOARD-LOCK.md) |
+
+**Owner Preview:** `/ops` Dashboard **LOCKED** — do not restyle without a new gate.

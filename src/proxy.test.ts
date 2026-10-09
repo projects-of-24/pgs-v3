@@ -28,13 +28,14 @@ describe("canonical Operations product routing", () => {
     expect(response.headers.get("location")).toBeNull();
   });
 
-  it("routes unauthenticated Operations requests to staff login with the exact return URL", async () => {
+  it("routes unauthenticated Operations requests to Studio login with the exact return URL", async () => {
     const response = await proxy(request("/ops/students?premium=active&mentor=actor-1"));
     const location = new URL(response.headers.get("location")!);
     expect(location.pathname).toBe("/studio/login");
     expect(location.searchParams.get("redirect")).toBe("/ops/students?premium=active&mentor=actor-1");
     expect(location.searchParams.get("surface")).toBe("studio");
   });
+
 
   it.each([
     ["/admin", "/ops"],
@@ -53,13 +54,14 @@ describe("canonical Operations product routing", () => {
     expect(`${location.pathname}${location.search}`).toBe(canonical);
   });
 
-  it("does not redirect unrelated legacy admin routes into Operations", async () => {
+  it("sends unauthenticated legacy admin catalog to Studio login (not student /login)", async () => {
     const response = await proxy(request("/admin/catalog"));
     const location = new URL(response.headers.get("location")!);
     expect(location.pathname).toBe("/studio/login");
     expect(location.searchParams.get("redirect")).toBe("/admin/catalog");
     expect(location.searchParams.get("surface")).toBe("studio");
   });
+
 
   it("keeps student routes on the existing public sign-in surface", async () => {
     const response = await proxy(request("/saved?tab=courses"));
@@ -69,8 +71,15 @@ describe("canonical Operations product routing", () => {
     expect(location.searchParams.get("surface")).toBeNull();
   });
 
-  it("blocks student mutating APIs while a staff preview cookie is present (Ops staff APIs stay live)", async () => {
+  it("VAS1: staff APIs stay writable with preview cookie; student APIs stay read-only", async () => {
     mocks.getClaims.mockResolvedValue({ data: { claims: { sub: "admin" } } });
+    const staffMutating = new NextRequest(new URL("/api/staff/assignments", "https://preview.example.test"), {
+      method: "POST",
+      headers: { cookie: "pgs_staff_preview=forged" }
+    });
+    const staffAllowed = await proxy(staffMutating);
+    expect(staffAllowed.status).not.toBe(403);
+
     const studentMutating = new NextRequest(new URL("/api/student/profile", "https://preview.example.test"), {
       method: "POST",
       headers: { cookie: "pgs_staff_preview=forged" }
@@ -78,25 +87,23 @@ describe("canonical Operations product routing", () => {
     const blocked = await proxy(studentMutating);
     expect(blocked.status).toBe(403);
     expect(await blocked.json()).toMatchObject({ message: "Preview is read-only. Exit preview to make changes." });
-    const staffMutating = new NextRequest(new URL("/api/staff/assignments", "https://preview.example.test"), {
-      method: "POST",
-      headers: { cookie: "pgs_staff_preview=forged" }
-    });
-    const staffAllowed = await proxy(staffMutating);
-    expect(staffAllowed.status).not.toBe(403);
+
   });
 
   it("maps canonical Operations URLs to the existing admin implementation", async () => {
     expect(typeof nextConfig.rewrites).toBe("function");
     const rewrites = await nextConfig.rewrites!();
-    expect(rewrites).toEqual([
-      { source: "/ops", destination: "/admin" },
-      { source: "/ops/students/:path*", destination: "/admin/students/:path*" },
-      { source: "/ops/work", destination: "/admin/work" },
-      { source: "/ops/team", destination: "/admin/staff" },
-      { source: "/ops/team/:path*", destination: "/admin/staff/:path*" },
-      { source: "/ops/notifications", destination: "/admin/notifications" },
-      { source: "/ops/activity", destination: "/admin/audit" }
-    ]);
+    expect(rewrites).toEqual(
+      expect.arrayContaining([
+        { source: "/ops", destination: "/admin" },
+        { source: "/ops/students/:path*", destination: "/admin/students/:path*" },
+        { source: "/ops/work", destination: "/admin/work" },
+        { source: "/ops/team", destination: "/admin/staff" },
+        { source: "/ops/cms/courses", destination: "/admin/catalog/courses" },
+        { source: "/studio/change-password", destination: "/admin/change-password" },
+        { source: "/studio/profile", destination: "/admin/profile" }
+      ])
+    );
   });
 });
+

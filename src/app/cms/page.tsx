@@ -1,2 +1,6 @@
-import { redirect } from "next/navigation";
-export default function CmsPage(){redirect("/admin/content/pages")}
+import { notFound } from "next/navigation";
+
+/** Legacy CMS shortcut — removed. Staff enter via /studio/login → Ops CMS. */
+export default function CmsPage() {
+  notFound();
+}

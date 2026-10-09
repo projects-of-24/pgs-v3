@@ -13,7 +13,7 @@ description: >-
 **Owner lock (Loopboard W1, 2026-09-07):** this is how backend jobs stay happy —
 flowchart → small gate → security from day 1 → living doc → live click QC → next gate.
 
-Companions: [`pgs-propose-before-code`](../pgs-propose-before-code/SKILL.md) · [`pgs-owner-teach-map`](../pgs-owner-teach-map/SKILL.md) · [`pgs-never-invent`](../pgs-never-invent/SKILL.md) · [`pgs-master-workflow`](../pgs-master-workflow/SKILL.md)
+Companions: [`pgs-propose-before-code`](../pgs-propose-before-code/SKILL.md) · [`pgs-preflight-db-api-pages`](../pgs-preflight-db-api-pages/SKILL.md) (DB · API · pages before code · no YOLO) · [`pgs-owner-teach-map`](../pgs-owner-teach-map/SKILL.md) · [`pgs-never-invent`](../pgs-never-invent/SKILL.md) · [`pgs-master-workflow`](../pgs-master-workflow/SKILL.md)
 
 ---
 
@@ -41,10 +41,11 @@ any backend job we do like this, only no assumptions, targeted building is what 
 
 1. **No assumptions.** If student vs staff, table, permission, or upload path is unclear → **STOP** and ask.
 2. **Propose → wait for `GO AHEAD` / `GO AHEAD W#` → then code.** Same as `pgs-propose-before-code`.
-3. **One gate only.** Never silently start W2 while finishing W1.
-4. **Targeted diff.** Touch only files required for this gate. No drive-by refactors.
-5. **Preview vs live:** say which URL changes. Prefer lab/fixtures until owner pulls live.
-6. **Do not invent** second domains, forever URLs, or duplicate tables when one truth exists.
+3. **PREFLIGHT first** ([`pgs-preflight-db-api-pages`](../pgs-preflight-db-api-pages/SKILL.md)): check DB · API · pages → show owner → approve. If DB needed and missing: **`DB GAP — we need to create …`**. Never ship writers against unapplied columns.
+4. **One gate only.** Never silently start W2 while finishing W1.
+5. **Targeted diff.** Touch only files required for this gate. No drive-by refactors.
+6. **Preview vs live:** say which URL changes. Prefer lab/fixtures until owner pulls live.
+7. **Do not invent** second domains, forever URLs, or duplicate tables when one truth exists.
 
 ---
 

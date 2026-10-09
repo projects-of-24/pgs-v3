@@ -73,12 +73,12 @@ ONE Auth identity (Supabase)
 
 | Item | Implementation |
 |---|---|
-| URL | `/login?redirect=%2Fops&surface=operations` |
-| UI | Custom Ops login (preview gallery: `/preview/ops-staff-plan/v2/step-1-login.jpg`) |
-| API | `POST /api/auth/login` → Supabase `signInWithPassword` |
-| After login | Staff context required; otherwise reject / send away from Ops |
-| Roles | `super_admin`, `admin`, `mentor`, `read_only_staff` |
-| CMS entry | Same staff session; sidebar CMS links only if `cms.*` (or equivalent) permission |
+| Student login URL | `/login` — **students only** |
+| Studio (staff) login URL | `/studio/login` — SA / Admin / Mentor / Staff only |
+| Studio UI | Screenshot split layout (`StudioLogin`) |
+| API | `POST /api/auth/login` with `surface: "studio"` or student default |
+| After Studio login | **Direct `/ops`** — no intermediate page |
+| Unauthenticated Ops | `/studio/login?redirect=%2Fops` |
 
 ### Flow
 

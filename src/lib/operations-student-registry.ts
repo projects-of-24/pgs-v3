@@ -8,7 +8,7 @@ import {
 
 export const PGS_CODE_PATTERN = /^PGS[0-9]{6}$/;
 export const PGS_JOIN_TIMEZONE = "Asia/Kolkata";
-export const REGISTRY_PAGE_SIZE = 25;
+export const REGISTRY_PAGE_SIZE = 10;
 export const REGISTRY_PAGE_SIZE_MAX = 50;
 export const REGISTRY_SAVED_VIEW_MAX = 20;
 export const REGISTRY_SAVED_VIEW_NAME_MAX = 40;
@@ -294,10 +294,11 @@ export function registryQueryString(
 
 export function registryHref(
   query: NormalizedRegistryQuery,
-  options?: { includePage?: boolean; includeView?: boolean }
+  options?: { includePage?: boolean; includeView?: boolean; basePath?: string }
 ): string {
+  const basePath = options?.basePath ?? "/ops/students";
   const search = registryQueryString(query, options);
-  return search ? `/ops/students?${search}` : "/ops/students";
+  return search ? `${basePath}?${search}` : basePath;
 }
 
 export function registryPremiumUnassignedQuery(): NormalizedRegistryQuery {

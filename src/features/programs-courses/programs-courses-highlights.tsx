@@ -8,12 +8,16 @@
  * ISSUE: near readable floor
  * PGS IMPLEMENTATION: keep Figma 14 for desk QC; floor sweep later
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-highlights.css";
 
-export function ProgramsCoursesHighlights() {
-  const { title, items, icon } = PROGRAMS_COURSES_FIXTURE.highlights;
+type ProgramsCoursesHighlightsProps = {
+  data: ProgramsCoursesView["highlights"];
+};
 
+export function ProgramsCoursesHighlights({
+  data: { title, items, icon }
+}: ProgramsCoursesHighlightsProps) {
   return (
     <section
       id="pc-c4"

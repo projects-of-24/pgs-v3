@@ -1,2 +1,6 @@
-import { redirect } from "next/navigation";
-export default async function MentorStudentPage({params}:{params:Promise<{studentId:string}>}){const {studentId}=await params;redirect(`/admin/students/${studentId}`)}
+import { notFound } from "next/navigation";
+
+/** Legacy mentor student shortcut — removed. Staff enter via /studio/login. */
+export default function MentorStudentPage() {
+  notFound();
+}

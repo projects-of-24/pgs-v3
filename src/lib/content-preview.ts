@@ -17,13 +17,37 @@ export type CatalogPreviewDraft = {
 
 export function catalogPreviewPath(entity: CatalogPreviewEntity, entityId: number, surface = "list"): string | null {
   if (entity === "events") return surface === "detail" ? `/purpleevents/session/${entityId}` : "/purpleevents";
-  if (entity === "courses") {
-    if (surface === "detail") return `/programsfull/program/${entityId}?type=course`;
-    if (surface === "featured") return "/cvreadyprogram";
-    return "/purpleboard";
-  }
+  // COURSE2c: courses Preview stays on Ops staff template — never public /purpleboard or /programsfull.
+  if (entity === "courses") return `/ops/cms/courses/preview/${entityId}`;
   if (entity === "programs") return surface === "detail" ? `/programsfull/program/${entityId}` : "/cvreadyprogram";
   return null;
+}
+
+/** Staff-only load of a catalog draft revision (COURSE2c Ops preview). */
+export async function getCatalogDraftRevision(
+  entity: CatalogPreviewEntity,
+  entityId: number,
+  revisionId: string
+): Promise<CatalogPreviewDraft | null> {
+  if (!/^[0-9a-f-]{36}$/i.test(revisionId) || !Number.isSafeInteger(entityId) || entityId <= 0) return null;
+  const staff = await getStaffContext();
+  if (!staff || !can(staff, "catalog.read")) return null;
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase
+    .from("catalog_draft_revisions")
+    .select("id,entity_type,entity_id,values,tag_ids")
+    .eq("id", revisionId)
+    .eq("entity_type", entity)
+    .eq("entity_id", entityId)
+    .maybeSingle();
+  if (!data || !data.values || typeof data.values !== "object" || Array.isArray(data.values)) return null;
+  return {
+    id: data.id,
+    entityType: data.entity_type as CatalogPreviewEntity,
+    entityId: Number(data.entity_id),
+    values: data.values as Record<string, unknown>,
+    tagIds: Array.isArray(data.tag_ids) ? data.tag_ids.map(Number).filter(Number.isSafeInteger) : []
+  };
 }
 
 export function encodeCatalogPreview(entity: CatalogPreviewEntity, entityId: number, revisionId: string): string {

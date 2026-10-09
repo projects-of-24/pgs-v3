@@ -1,11 +1,16 @@
 /**
  * Family B Pass 5 — Top picks.
- * Ports Family A `StudentFeedTopPicks` (fixture; CMS pathway tags = B1 later).
- * Position owned by preview-shell mid-band (same as locked feed).
+ * WS-FILL-3: live mentor assignments when `picks` provided; else fixture (preview labs).
  */
-import { StudentFeedTopPicks } from "../student-feed-top-picks";
+import { StudentFeedTopPicks, type StudentFeedTopPick } from "../student-feed-top-picks";
 
-export function StudentFeedPremiumTopPicks() {
+type Props = {
+  picks?: StudentFeedTopPick[];
+};
+
+export function StudentFeedPremiumTopPicks({ picks }: Props = {} as Props) {
+  // undefined = preview labs keep fixture; [] = live with no mentor assignments.
+  const useFixture = picks === undefined;
   return (
     <div
       data-pgs-module="student-feed-premium-top-picks"
@@ -13,9 +18,9 @@ export function StudentFeedPremiumTopPicks() {
       data-premium-pass="5-top-picks"
       data-figma-desktop="18375:10739"
       data-figma-mobile="206:5883"
-      data-cms="fixture-B1-pending"
+      data-cms={useFixture ? "fixture-B1-pending" : "ws-fill-3-assigned"}
     >
-      <StudentFeedTopPicks />
+      <StudentFeedTopPicks picks={useFixture ? undefined : picks} />
     </div>
   );
 }

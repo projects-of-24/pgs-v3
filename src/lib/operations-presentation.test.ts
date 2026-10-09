@@ -1,11 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { operationsInitials, operationsRoleLabel } from "@/lib/operations-presentation";
+import {
+  operationsFirstName,
+  operationsInitials,
+  operationsRoleLabel
+} from "@/lib/operations-presentation";
 
 describe("Operations presentation helpers", () => {
   it("builds two-letter initials from a display name", () => {
     expect(operationsInitials("Jane Mentor")).toBe("JM");
     expect(operationsInitials("Admin")).toBe("AD");
     expect(operationsInitials("")).toBe("PG");
+  });
+
+  it("shows first name only in header chrome", () => {
+    expect(operationsFirstName("Sandhiya Palani")).toBe("Sandhiya");
+    expect(operationsFirstName("Progress Lab Super Admin")).toBe("Progress");
+    expect(operationsFirstName("")).toBe("Staff");
   });
 
   it("labels the current staff actor without inventing a Premium role", () => {

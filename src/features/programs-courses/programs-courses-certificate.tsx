@@ -3,12 +3,16 @@
  * Desk frame `17072:11503` · C9a `17072:11504` · C9b `17072:11523`.
  * Mob `551:10515`. Owned CSS. Fixtures only. iPad 601–1366 deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-certificate.css";
 
-export function ProgramsCoursesCertificate() {
-  const c = PROGRAMS_COURSES_FIXTURE.certificate;
-  const m = c.mock;
+type ProgramsCoursesCertificateProps = {
+  data: ProgramsCoursesView["certificate"];
+};
+
+export function ProgramsCoursesCertificate({
+  data: c
+}: ProgramsCoursesCertificateProps) {  const m = c.mock;
 
   return (
     <section
@@ -81,15 +85,17 @@ export function ProgramsCoursesCertificate() {
               </div>
             </div>
             <div className="pc-certificate__footer" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="pc-certificate__seal"
-              src={m.seal}
-              alt=""
-              width={102}
-              height={122}
-              decoding="async"
-            />
+            {m.seal.trim() ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                className="pc-certificate__seal"
+                src={m.seal}
+                alt=""
+                width={102}
+                height={122}
+                decoding="async"
+              />
+            ) : null}
           </div>
         </div>
       </div>

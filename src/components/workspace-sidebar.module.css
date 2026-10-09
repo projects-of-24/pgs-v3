@@ -1,0 +1,138 @@
+.aside {
+  --ws-purple: #6b3fa0;
+  --ws-ink: #1f2430;
+  --ws-muted: #5b6575;
+  --ws-line: #e6e8ee;
+  --ws-soft: #f4f0fa;
+  --ws-brand-band: #efe7ff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+  min-height: 0;
+  padding: 0 12px 18px;
+  background: #fff;
+  color: var(--ws-ink);
+  border-right: 1px solid var(--ws-line);
+}
+
+/* WS-CHROME-FIX QC — Ops/Studio brand band in rail (not in header) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 72px;
+  margin: 0 -12px;
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid var(--ws-line);
+  background: var(--ws-brand-band);
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--ws-purple);
+  outline-offset: -2px;
+}
+
+.brandIcon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--ws-purple);
+  stroke-width: 2;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brandText strong {
+  font-size: 1.125rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ws-purple);
+}
+
+.brandText span {
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--ws-muted);
+}
+
+.nav {
+  display: grid;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-height: 0;
+  align-content: start;
+  padding-top: 8px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ws-ink);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.3;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.link svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  color: var(--ws-muted);
+}
+
+.link:hover,
+.link:focus-visible {
+  background: var(--ws-soft);
+  outline: none;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--ws-purple);
+  outline-offset: 1px;
+}
+
+/* OG Dashboard ref: solid purple active (white label/icon). */
+.linkActive {
+  background: var(--ws-purple);
+  color: #fff;
+}
+
+.linkActive svg {
+  color: #fff;
+}
+
+.linkActive:hover,
+.linkActive:focus-visible {
+  background: var(--ws-purple);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .aside {
+    max-width: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--ws-line);
+  }
+}

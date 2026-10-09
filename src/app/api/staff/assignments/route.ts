@@ -3,14 +3,12 @@ import { recordDeniedAuditEvent, recordFailedAuditEvent } from "@/lib/audit";
 import { assignmentPermissionDeniedMessage, assignmentRpcErrorResponse } from "@/lib/assignment-api";
 import { jsonError, readJsonObject, validUuid } from "@/lib/http";
 import { requireStaffPermission, StaffAuthorizationError } from "@/lib/staff-auth";
-import { assertStaffPreviewWritable, StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function POST(request: Request) {
   let targetStudent: string | undefined;
   try {
     await requireStaffPermission("mentor_assignments.manage");
-    await assertStaffPreviewWritable();
     const input = await readJsonObject(request);
     targetStudent = typeof input.student_id === "string" ? input.student_id : undefined;
     if (!validUuid(input.student_id) || !validUuid(input.mentor_id) || typeof input.active !== "boolean") {
@@ -47,9 +45,6 @@ export async function POST(request: Request) {
     }
     return NextResponse.json({ ok: true, assignment_id: data });
   } catch (error) {
-    if (error instanceof StaffPreviewReadOnlyError) {
-      return jsonError(error.message, error.status);
-    }
     if (error instanceof StaffAuthorizationError) {
       await recordDeniedAuditEvent(request, {
         eventType: "assignment.change.denied",

@@ -5,7 +5,7 @@
  */
 import "server-only";
 
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { previewAwareSupabaseClient } from "@/lib/staff-preview-server";
 
 export type FeedQuickDashboardMetrics = {
   uniApplied: string;
@@ -33,7 +33,7 @@ export async function loadFeedQuickDashboardMetrics(
 ): Promise<FeedQuickDashboardMetrics> {
   if (!studentId) return FEED_QUICK_DASHBOARD_EMPTY;
 
-  const supabase = await createSupabaseServerClient();
+  const supabase = await previewAwareSupabaseClient(studentId);
   const { data, error } = await supabase
     .from("premium_workspace_profiles")
     .select("universities_applied, offers_received, tuition_receipt_uploaded, visa_status")

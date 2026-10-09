@@ -12,8 +12,12 @@ import type { Metadata } from "next";
 import { LegacyPage } from "@/components/legacy-page";
 import { NoStudentContextPage } from "@/components/no-student-context-page";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
+import { StaffPreviewBanner } from "@/components/staff-preview-banner";
+import { loadFeedComments } from "@/features/student-feed/load-feed-comments";
 import { loadFeedNotesBody } from "@/features/student-feed/load-feed-notes";
 import { loadFeedQuickDashboardMetrics } from "@/features/student-feed/load-feed-quick-dashboard";
+import { loadFeedTopPicks } from "@/features/student-feed/load-feed-top-picks";
+import { loadFeedWhereYouStand } from "@/features/student-feed/load-feed-where-you-stand";
 import { listFeedUpcomingEvents } from "@/features/student-feed/list-feed-upcoming-events";
 import { StudentFeedPremiumShell } from "@/features/student-feed/premium/student-feed-premium-shell";
 import { StudentFeedPreviewShell } from "@/features/student-feed/student-feed-preview-shell";
@@ -43,6 +47,17 @@ function splitDisplayName(name: string): { firstName: string; lastName: string }
   if (parts.length === 0) return { firstName: "Student", lastName: "" };
   if (parts.length === 1) return { firstName: parts[0], lastName: "" };
   return { firstName: parts[0], lastName: parts.slice(1).join(" ") };
+}
+
+function PreviewBanner({ state }: { state: AuthenticatedStudentExperience }) {
+  if (!state.preview) return null;
+  return (
+    <StaffPreviewBanner
+      mode="student"
+      actorName={state.preview.actorName}
+      targetName={state.preview.targetName}
+    />
+  );
 }
 
 async function AnonymousModularFeed() {
@@ -105,6 +120,7 @@ async function StandardModularFeed({
 
   return (
     <LegacyPage page="student-dashboard" studentState={studentState}>
+      <PreviewBanner state={state} />
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
       <StudentFeedPreviewShell upcomingEvents={upcomingEvents} />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
@@ -123,10 +139,13 @@ async function PremiumModularFeed({
   const studentId = state.subject.id;
   const helloAvatar = await studentExperienceAvatarUrl(state);
   const { firstName, lastName } = splitDisplayName(state.name);
-  const [quickDashboard, notes, upcomingEvents] = await Promise.all([
+  const [quickDashboard, notes, upcomingEvents, topPicks, whereYouStand, comments] = await Promise.all([
     loadFeedQuickDashboardMetrics(studentId),
     loadFeedNotesBody(studentId),
-    listFeedUpcomingEvents()
+    listFeedUpcomingEvents(),
+    loadFeedTopPicks(studentId),
+    loadFeedWhereYouStand(studentId),
+    loadFeedComments(studentId, state.name)
   ]);
 
   let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
@@ -156,11 +175,16 @@ async function PremiumModularFeed({
 
   return (
     <LegacyPage page="student-dashboard" studentState={studentState}>
+      <PreviewBanner state={state} />
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
       <StudentFeedPremiumShell
         quickDashboard={quickDashboard}
         notesBody={notes.body}
         upcomingEvents={upcomingEvents}
+        topPicks={topPicks}
+        whereYouStand={whereYouStand}
+        comments={comments}
+        commentsReadOnly={Boolean(state.preview)}
         identity={{
           firstName,
           lastName,

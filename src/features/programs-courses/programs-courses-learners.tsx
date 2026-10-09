@@ -2,11 +2,17 @@
  * Courses template — C12 A word from Our learners.
  * Reuses shared LearnerWords (same Figma family as premium-home H6).
  * Desk `17072:11795` · Mob `551:10710`.
+ * COURSE2d-D4a: prop-driven from course.learners.
  */
 import { LearnerWords } from "../shared/learner-words/learner-words";
+import type { CoursesLearnersBody } from "./courses-cms-shared-defaults";
 import "./programs-courses-learners.css";
 
-export function ProgramsCoursesLearners() {
+type ProgramsCoursesLearnersProps = {
+  data: CoursesLearnersBody;
+};
+
+export function ProgramsCoursesLearners({ data }: ProgramsCoursesLearnersProps) {
   return (
     <section
       id="pc-c12"
@@ -17,7 +23,7 @@ export function ProgramsCoursesLearners() {
       data-figma-mobile="551:10710"
       aria-label="Learner testimonials"
     >
-      <LearnerWords />
+      <LearnerWords data={data} />
     </section>
   );
 }

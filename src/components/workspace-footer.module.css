@@ -1,0 +1,52 @@
+.footer {
+  --ws-purple: #6b3fa0;
+  --ws-ink: #1f2430;
+  --ws-muted: #5b6575;
+  --ws-line: #e6e8ee;
+  flex: 0 0 auto;
+  border-top: 1px solid var(--ws-line);
+  background: color-mix(in srgb, var(--ws-purple) 8%, #fff);
+  color: var(--ws-ink);
+  font-family: var(--font-operations, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  min-height: 64px;
+}
+
+.brand {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.brand strong {
+  color: var(--ws-purple);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand span {
+  color: var(--ws-muted);
+  font-weight: 650;
+}
+
+.meta {
+  margin: 0;
+  color: var(--ws-muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+}

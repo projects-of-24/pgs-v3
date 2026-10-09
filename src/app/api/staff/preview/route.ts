@@ -5,6 +5,8 @@ import { logServerError } from "@/lib/server-security";
 import { getStaffContext, StaffAuthorizationError } from "@/lib/staff-auth";
 import { isAssignableHandlerRole, isStaffPreviewMode, staffPreviewConfigured } from "@/lib/staff-preview";
 import {
+  canPreviewStudentTarget,
+  canStartMentorPreview,
   canUseStaffPreview,
   clearStaffPreviewCookie,
   writeStaffPreviewCookie
@@ -27,14 +29,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true, redirect: "/ops" });
     }
 
-    if (!canUseStaffPreview(context)) {
-      await recordDeniedAuditEvent(request, {
-        eventType: "staff_preview.denied",
-        sourceSubsystem: "staff",
-        metadata: { reason_code: "permission_denied", route: "/api/staff/preview" }
-      });
-      return jsonError("You do not have permission to use View as.", 403);
-    }
     if (!staffPreviewConfigured()) {
       logServerError("staff_preview_unconfigured", new Error("AUTH_FLOW_SECRET is missing or shorter than 32 characters."), {
         actor_id: context.user.id
@@ -50,9 +44,37 @@ export async function POST(request: Request) {
 
     const supabase = await createSupabaseServerClient();
     if (mode === "student") {
-      const { data } = await supabase.from("profiles").select("id").eq("id", targetId).maybeSingle();
-      if (!data) return jsonError("That student could not be previewed.", 404);
+      if (!canUseStaffPreview(context)) {
+        await recordDeniedAuditEvent(request, {
+          eventType: "staff_preview.denied",
+          sourceSubsystem: "staff",
+          metadata: { reason_code: "permission_denied", route: "/api/staff/preview", preview_mode: mode }
+        });
+        return jsonError("You do not have permission to use View as Student.", 403);
+      }
+      const scope = await canPreviewStudentTarget(context, targetId);
+      if (scope === "not_found") {
+        return jsonError("That student could not be previewed.", 404);
+      }
+      if (scope === "out_of_scope") {
+        await recordDeniedAuditEvent(request, {
+          eventType: "staff_preview.denied",
+          sourceSubsystem: "staff",
+          targetType: "student",
+          targetId,
+          metadata: { reason_code: "out_of_scope", route: "/api/staff/preview", preview_mode: mode }
+        });
+        return jsonError("You can only preview students assigned to you.", 403);
+      }
     } else {
+      if (!canStartMentorPreview(context)) {
+        await recordDeniedAuditEvent(request, {
+          eventType: "staff_preview.denied",
+          sourceSubsystem: "staff",
+          metadata: { reason_code: "permission_denied", route: "/api/staff/preview", preview_mode: mode }
+        });
+        return jsonError("You do not have permission to use View as Mentor.", 403);
+      }
       const { data } = await supabase
         .from("staff_profiles")
         .select("user_id,status,role")

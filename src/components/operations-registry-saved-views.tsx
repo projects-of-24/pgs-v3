@@ -1,38 +1,32 @@
 import {
-  REGISTRY_SAVED_VIEW_MAX,
-  REGISTRY_SAVED_VIEW_NAME_MAX,
   isRegistryPremiumUnassignedView,
   registryHref,
   registryPremiumUnassignedQuery,
-  registryQueriesEqual,
   registryQueryHasSearchOrFilters,
-  registrySavedQueryFromNormalized,
-  type NormalizedRegistryQuery,
-  type RegistrySavedView
+  type NormalizedRegistryQuery
 } from "@/lib/operations-student-registry";
 
-function HiddenQuery({ query }: { query: NormalizedRegistryQuery }) {
-  const saved = registrySavedQueryFromNormalized(query);
-  return (
-    <>
-      {Object.entries(saved).map(([key, value]) => (
-        <input key={key} name={key} type="hidden" value={value} />
-      ))}
-    </>
-  );
+function countLabel(base: string, count: number | null | undefined): string {
+  if (count === null || count === undefined) return base;
+  return `${base} (${count})`;
 }
 
+/** Built-in registry tabs only — Save / Reset / rename views removed (owner STU1 QC). */
 export function OperationsRegistrySavedViews({
   query,
-  views,
-  allowOrgFilters = false
+  allowOrgFilters = false,
+  counts
 }: {
   query: NormalizedRegistryQuery;
-  views: RegistrySavedView[];
+  /** Kept for call-site compatibility; custom saved views are not shown. */
+  views?: unknown;
   allowOrgFilters?: boolean;
+  counts?: {
+    all: number | null;
+    premium: number | null;
+    premiumUnassigned: number | null;
+  };
 }) {
-  const atLimit = views.length >= REGISTRY_SAVED_VIEW_MAX;
-  const active = query.view ? views.find((view) => view.id === query.view) : views.find((view) => registryQueriesEqual({ ...query, page: 1, view: null }, { ...view.query, page: 1, view: null }));
   const allHref = "/ops/students";
   const premiumHref = registryHref({
     ...query,
@@ -51,94 +45,38 @@ export function OperationsRegistrySavedViews({
     view: null
   });
   const premiumUnassignedHref = registryHref(registryPremiumUnassignedQuery());
-  const premiumOnly = query.plan === "premium"
-    && !query.q
-    && !query.mentor
-    && !query.studyLevel
-    && !query.stream
-    && !query.targetYear
-    && !query.stage
-    && !query.tag
-    && !query.completion
-    && !query.joined
-    && !query.sort
-    && !query.view;
+  const premiumOnly =
+    query.plan === "premium" &&
+    !query.q &&
+    !query.mentor &&
+    !query.studyLevel &&
+    !query.stream &&
+    !query.targetYear &&
+    !query.stage &&
+    !query.tag &&
+    !query.completion &&
+    !query.joined &&
+    !query.sort &&
+    !query.view;
 
   return (
     <div className="ops-registry-views">
       <nav aria-label="Registry views" className="ops-registry-view-tabs">
         <a aria-current={!registryQueryHasSearchOrFilters(query) && !query.view ? "page" : undefined} href={allHref}>
-          All Students
+          {countLabel("All Students", counts?.all)}
         </a>
         <a aria-current={premiumOnly ? "page" : undefined} href={premiumHref}>
-          Premium
+          {countLabel("Premium", counts?.premium)}
         </a>
         {allowOrgFilters ? (
-          <a aria-current={isRegistryPremiumUnassignedView(query) && !query.view ? "page" : undefined} href={premiumUnassignedHref}>
-            Premium Unassigned
-          </a>
-        ) : null}
-        {views.map((view) => (
           <a
-            aria-current={active?.id === view.id ? "page" : undefined}
-            href={registryHref({ ...view.query, page: 1, view: view.id }, { includeView: true })}
-            key={view.id}
+            aria-current={isRegistryPremiumUnassignedView(query) && !query.view ? "page" : undefined}
+            href={premiumUnassignedHref}
           >
-            {view.name}
+            {countLabel("Premium Unassigned", counts?.premiumUnassigned)}
           </a>
-        ))}
-      </nav>
-
-      <div className="ops-registry-view-actions">
-        {atLimit ? (
-          <p className="ops-registry-view-limit">You can save up to 20 private views.</p>
-        ) : (
-          <form action="/api/admin/registry-views" className="ops-registry-save-form" method="post">
-            <input name="intent" type="hidden" value="create" />
-            <HiddenQuery query={query} />
-            <label className="ops-registry-field" htmlFor="registry-save-view-name">
-              <span>Save view</span>
-              <input
-                autoComplete="off"
-                id="registry-save-view-name"
-                maxLength={REGISTRY_SAVED_VIEW_NAME_MAX}
-                name="name"
-                required
-                type="text"
-              />
-            </label>
-            <button className="ops-registry-save-button" type="submit">Save view</button>
-          </form>
-        )}
-
-        {active ? (
-          <div className="ops-registry-view-manage">
-            <form action="/api/admin/registry-views" className="ops-registry-save-form" method="post">
-              <input name="intent" type="hidden" value="rename" />
-              <input name="id" type="hidden" value={active.id} />
-              <HiddenQuery query={query} />
-              <label className="ops-registry-field" htmlFor="registry-rename-view-name">
-                <span>Rename view</span>
-                <input
-                  autoComplete="off"
-                  defaultValue={active.name}
-                  id="registry-rename-view-name"
-                  maxLength={REGISTRY_SAVED_VIEW_NAME_MAX}
-                  name="name"
-                  required
-                  type="text"
-                />
-              </label>
-              <button className="ops-registry-save-button" type="submit">Rename</button>
-            </form>
-            <form action="/api/admin/registry-views" method="post">
-              <input name="intent" type="hidden" value="delete" />
-              <input name="id" type="hidden" value={active.id} />
-              <button className="ops-registry-delete-button" type="submit">Delete {active.name}</button>
-            </form>
-          </div>
         ) : null}
-      </div>
+      </nav>
     </div>
   );
 }

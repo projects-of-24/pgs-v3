@@ -3,12 +3,16 @@
  * Desk `17072:11029` · Mob `551:10282` (stacked badge under CTA).
  * Owned CSS. Fixtures only. iPad 601–1366 deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-brochure.css";
 
-export function ProgramsCoursesBrochure() {
-  const b = PROGRAMS_COURSES_FIXTURE.brochure;
-  const hasUrl = Boolean(b.downloadUrl);
+type ProgramsCoursesBrochureProps = {
+  data: ProgramsCoursesView["brochure"];
+};
+
+export function ProgramsCoursesBrochure({
+  data: b
+}: ProgramsCoursesBrochureProps) {  const hasUrl = Boolean(b.downloadUrl);
 
   return (
     <section

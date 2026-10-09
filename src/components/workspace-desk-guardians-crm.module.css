@@ -1,0 +1,62 @@
+.root {
+  --ws-purple: #6b3fa0;
+  --ws-ink: #1f2430;
+  --ws-muted: #5b6575;
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.subTablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid color-mix(in srgb, var(--ws-purple) 22%, #e5e7eb);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--ws-purple) 6%, #fff);
+}
+
+.subTab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 6px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ws-muted);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 750;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.subTab:hover {
+  color: var(--ws-ink);
+  background: #fff;
+}
+
+.subTab:focus-visible {
+  outline: 2px solid var(--ws-purple);
+  outline-offset: 2px;
+}
+
+.subTabActive {
+  border-color: color-mix(in srgb, var(--ws-purple) 35%, #e5e7eb);
+  background: #fff;
+  color: var(--ws-purple);
+  box-shadow: 0 1px 2px rgba(31, 36, 48, 0.06);
+}
+
+.subPanel {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.subPanel[hidden] {
+  display: none;
+}

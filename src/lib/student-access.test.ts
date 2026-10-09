@@ -186,7 +186,7 @@ describe("student viewer access", () => {
     expect(mocks.assignmentMaybeSingle).not.toHaveBeenCalled();
   });
 
-  it("keeps privileged preview read-only even when the actor has global workspace manage", async () => {
+  it("VAS1: staff keep workspace manage while a student preview cookie is live", async () => {
     mocks.resolveActorContext.mockResolvedValue(staffActor(
       "admin",
       ["admin"],
@@ -202,8 +202,8 @@ describe("student viewer access", () => {
     });
 
     await expect(canViewStudent("student", "manage")).resolves.toMatchObject({
-      allowed: false,
-      reasonCode: "workspace_permission_denied"
+      allowed: true,
+      actor: { kind: "admin", studentId: "student" }
     });
   });
 

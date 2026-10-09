@@ -7,12 +7,18 @@ import { consumeRateLimit, logServerError } from "@/lib/server-security";
 export async function POST(request: Request) {
   try {
     const body = await readJsonObject(request);
+    const surface = body.surface === "studio" || body.surface === "operations" ? "studio" : "student";
     const oldPassword = typeof body.old_password === "string" ? body.old_password : "";
     const password = typeof body.password === "string" ? body.password : "";
     const confirmation = typeof body.cpassword === "string" ? body.cpassword : "";
     if (password.length < 8 || password.length > 72) return jsonError("Use a password between 8 and 72 characters.", 400);
     if (password !== confirmation) return jsonError("Passwords do not match.", 400);
     if (password === oldPassword) return jsonError("Choose a password that is different from your current password.",400);
+    if (surface === "studio") {
+      if (!/\d/.test(password) || !/[A-Z]/.test(password) || !/[^A-Za-z0-9]/.test(password)) {
+        return jsonError("Use a stronger password that meets every requirement.", 400);
+      }
+    }
     const supabase = await createSupabaseServerClient();
     const { data: userData } = await supabase.auth.getUser();
     const currentUser=userData.user;
@@ -25,7 +31,11 @@ export async function POST(request: Request) {
     const { error } = await supabase.auth.updateUser({ password });
     if (error) return jsonError(authErrorMessage(error.message), 400);
     await supabase.auth.signOut({ scope: "others" });
-    return NextResponse.json({ ok: true, redirect: "/student/profile", message: "Your password has been changed." });
+    return NextResponse.json({
+      ok: true,
+      redirect: surface === "studio" ? "/studio/change-password" : "/student/profile",
+      message: "Your password has been changed."
+    });
   } catch (error) {
     logServerError("auth_password_change_failed",error);
     return jsonError("Unable to change the password. Please try again.", 503);

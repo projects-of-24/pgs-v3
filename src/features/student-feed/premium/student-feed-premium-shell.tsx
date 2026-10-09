@@ -3,8 +3,11 @@
  * UI LOCKED (desktop + mobile). Live cutover on `/student/dashboard` Step 3.
  * Passes 1–8 complete. CMS/Ops + iPad + aesthetic pass deferred.
  */
+import type { FeedCommentsData } from "../load-feed-comments";
 import type { FeedQuickDashboardMetrics } from "../load-feed-quick-dashboard";
 import type { FeedUpcomingEvent } from "../feed-upcoming-event";
+import type { FeedWhereYouStandData } from "../load-feed-where-you-stand";
+import type { StudentFeedTopPick } from "../student-feed-top-picks";
 import "../student-feed-preview-shell.css";
 import { StudentFeedPremiumComments } from "./student-feed-premium-comments";
 import {
@@ -21,13 +24,24 @@ type Props = {
   notesBody?: string;
   upcomingEvents?: FeedUpcomingEvent[];
   identity?: StudentFeedPremiumIdentityProps;
+  /** WS-FILL-3 mentor-assigned picks; omit → fixture on preview. */
+  topPicks?: StudentFeedTopPick[];
+  /** WS-FILL-4 Where You Stand; omit → fixture on preview. */
+  whereYouStand?: FeedWhereYouStandData;
+  /** WS-COMMENTS-2 live comments; omit → fixture on preview. */
+  comments?: FeedCommentsData | null;
+  commentsReadOnly?: boolean;
 };
 
 export function StudentFeedPremiumShell({
   quickDashboard,
   notesBody,
   upcomingEvents,
-  identity
+  identity,
+  topPicks,
+  whereYouStand,
+  comments = null,
+  commentsReadOnly = false
 }: Props) {
   return (
     <div
@@ -42,6 +56,7 @@ export function StudentFeedPremiumShell({
       data-cutover="LIVE"
       data-deferred="cms-ops,ipad,aesthetic-pass"
       data-notes-cms="wired"
+      data-comments-cms={comments?.fromStore ? "wired-ws-comments-2" : "fixture-preview"}
     >
       <div className="student-feed-preview-shell__body">
         <StudentFeedPremiumIdentity {...identity} />
@@ -57,11 +72,15 @@ export function StudentFeedPremiumShell({
             />
           </div>
           <div className="student-feed-preview-shell__mid-band-picks">
-            <StudentFeedPremiumTopPicks />
+            <StudentFeedPremiumTopPicks picks={topPicks} />
           </div>
         </div>
-        <StudentFeedPremiumWhereYouStand />
-        <StudentFeedPremiumComments />
+        <StudentFeedPremiumWhereYouStand data={whereYouStand} />
+        <StudentFeedPremiumComments
+          live={comments}
+          readOnly={commentsReadOnly}
+          studentDisplayName={identity ? `${identity.firstName} ${identity.lastName}`.trim() : undefined}
+        />
         <StudentFeedPremiumUpcomingEvents events={upcomingEvents} />
       </div>
     </div>

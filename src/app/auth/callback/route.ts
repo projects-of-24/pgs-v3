@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { applicationOrigin, safeNext } from "@/lib/auth";
+import { applicationOrigin, safeStudentNext } from "@/lib/auth";
 import { createRecoveryGrant, hasOtpAuthenticationMethod, recoveryCookieName, recoveryCookieOptions } from "@/lib/auth-recovery";
 import { decideAutomaticStudentContextClaim, resolveActorContext } from "@/lib/actor-context";
 import {
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const origin=applicationOrigin(request.url);
   const code = url.searchParams.get("code");
-  const next = safeNext(url.searchParams.get("next"));
+  const next = safeStudentNext(url.searchParams.get("next"));
   const providedStudentIntent = requestCookie(request, studentOAuthIntentCookieName);
   const trustedStudentIntent = verifyStudentOAuthIntent(providedStudentIntent);
   if (code) {

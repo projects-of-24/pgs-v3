@@ -9,11 +9,14 @@
  * ISSUE: muted gray borderline AA; type below readable floor
  * PGS IMPLEMENTATION: muted #555 · body/meta ≥15px where practical
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesHeroData } from "./courses-template-view";
 import "./programs-courses-hero.css";
 
-export function ProgramsCoursesHero() {
-  const c = PROGRAMS_COURSES_FIXTURE;
+type ProgramsCoursesHeroProps = {
+  data: ProgramsCoursesHeroData;
+};
+
+export function ProgramsCoursesHero({ data: c }: ProgramsCoursesHeroProps) {
   const bookingHref = c.bookingUrl.trim();
 
   return (
@@ -30,31 +33,43 @@ export function ProgramsCoursesHero() {
         <div className="pc-hero__media-col">
           <div className="pc-hero__media">
             <div className="pc-hero__img-clip">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="pc-hero__img"
-                src={c.heroImage}
-                alt={c.heroImageAlt}
-                width={337}
-                height={512}
-              />
+              {c.heroImage.trim() ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className="pc-hero__img"
+                  src={c.heroImage}
+                  alt={c.heroImageAlt || c.titleLines.join(" ")}
+                  width={337}
+                  height={512}
+                />
+              ) : (
+                <div
+                  className="pc-hero__img pc-hero__img--empty"
+                  role="img"
+                  aria-label={c.heroImageAlt || "No course image uploaded yet"}
+                />
+              )}
             </div>
             <div className="pc-hero__media-badges">
               <div className="pc-hero__badge-stack">
-                <span className="pc-hero__filling">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    className="pc-hero__filling-icon"
-                    src={c.fillingIcon}
-                    alt=""
-                    width={13}
-                    height={16}
-                  />
-                  {c.fillingBadge}
-                </span>
-                <span className="pc-hero__mode pc-hero__mode--on-media">
-                  {c.modeLabel}
-                </span>
+                {c.fillingBadge.trim() ? (
+                  <span className="pc-hero__filling">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className="pc-hero__filling-icon"
+                      src={c.fillingIcon}
+                      alt=""
+                      width={13}
+                      height={16}
+                    />
+                    {c.fillingBadge}
+                  </span>
+                ) : null}
+                {c.modeLabel.trim() ? (
+                  <span className="pc-hero__mode pc-hero__mode--on-media">
+                    {c.modeLabel}
+                  </span>
+                ) : null}
               </div>
               <button
                 type="button"
@@ -66,24 +81,26 @@ export function ProgramsCoursesHero() {
               </button>
             </div>
             <div className="pc-hero__partner">
-              <div className="pc-hero__logo-plate">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  className="pc-hero__logo"
-                  src={c.partnerLogo}
-                  alt="Royal College of Surgeons of Edinburgh"
-                  width={149}
-                  height={61}
-                />
-              </div>
+              {c.partnerLogo.trim() ? (
+                <div className="pc-hero__logo-plate">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    className="pc-hero__logo"
+                    src={c.partnerLogo}
+                    alt={c.heroImageAlt || "Partner logo"}
+                    width={149}
+                    height={61}
+                  />
+                </div>
+              ) : null}
               <dl className="pc-hero__meta">
                 <div className="pc-hero__meta-item">
                   <dt>{c.typeLabel}</dt>
-                  <dd>{c.typeValue}</dd>
+                  <dd>{c.typeValue || "—"}</dd>
                 </div>
                 <div className="pc-hero__meta-item">
                   <dt>{c.durationLabel}</dt>
-                  <dd>{c.durationValue}</dd>
+                  <dd>{c.durationValue || "—"}</dd>
                 </div>
               </dl>
             </div>
@@ -91,9 +108,11 @@ export function ProgramsCoursesHero() {
         </div>
 
         <div className="pc-hero__top-row">
-          <span className="pc-hero__mode pc-hero__mode--desk">
-            {c.modeLabel}
-          </span>
+          {c.modeLabel.trim() ? (
+            <span className="pc-hero__mode pc-hero__mode--desk">{c.modeLabel}</span>
+          ) : (
+            <span className="pc-hero__mode pc-hero__mode--desk" aria-hidden="true" />
+          )}
           <button
             type="button"
             className="pc-hero__share pc-hero__share--desk"
@@ -165,10 +184,12 @@ export function ProgramsCoursesHero() {
             </button>
           )}
 
-          <p className="pc-hero__location">
-            <span aria-hidden="true">📍 </span>
-            {c.locationNote}
-          </p>
+          {c.locationNote.trim() ? (
+            <p className="pc-hero__location">
+              <span aria-hidden="true">📍 </span>
+              {c.locationNote}
+            </p>
+          ) : null}
         </div>
       </div>
     </section>

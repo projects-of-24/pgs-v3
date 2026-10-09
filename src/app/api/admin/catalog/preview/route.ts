@@ -24,8 +24,12 @@ export async function GET(request: Request) {
     if (!catalogPreviewEntities.includes(entity) || !Number.isSafeInteger(entityId) || entityId <= 0 || !validUuid(revision)) {
       throw new Error("Invalid catalog preview revision.");
     }
-    const destination = catalogPreviewPath(entity, entityId, surface);
+    let destination = catalogPreviewPath(entity, entityId, surface);
     if (!destination) throw new Error("This catalog type has no current public consumer to preview.");
+    // Courses Ops preview needs the revision on the URL (staff template, not public frontend).
+    if (entity === "courses") {
+      destination = `${destination}?revision=${encodeURIComponent(revision)}`;
+    }
     const supabase = await createSupabaseServerClient();
     const { data } = await supabase
       .from("catalog_draft_revisions")

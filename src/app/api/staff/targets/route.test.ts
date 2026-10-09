@@ -2,7 +2,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   requirePermission: vi.fn(),
-  assertWritable: vi.fn(),
   rpc: vi.fn(),
   denied: vi.fn(),
   failed: vi.fn()
@@ -23,22 +22,12 @@ vi.mock("@/lib/staff-auth", () => {
     StaffAuthorizationError
   };
 });
-vi.mock("@/lib/staff-preview-server", () => {
-  class StaffPreviewReadOnlyError extends Error {
-    readonly status = 403;
-  }
-  return {
-    assertStaffPreviewWritable: mocks.assertWritable,
-    StaffPreviewReadOnlyError
-  };
-});
 vi.mock("@/lib/supabase/server", () => ({
   createSupabaseServerClient: vi.fn(async () => ({ rpc: mocks.rpc }))
 }));
 
 import { PATCH, POST } from "@/app/api/staff/targets/route";
 import { StaffAuthorizationError } from "@/lib/staff-auth";
-import { StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 
 const targetId = "c4700000-0000-4000-8000-000000000001";
 const staffId = "c4700000-0000-4000-8000-000000000002";
@@ -56,7 +45,6 @@ describe("Staff Targets mutation boundary", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.requirePermission.mockResolvedValue({ user: { id: staffId } });
-    mocks.assertWritable.mockResolvedValue(undefined);
     mocks.rpc.mockResolvedValue({ data: targetId, error: null });
     mocks.denied.mockResolvedValue(true);
     mocks.failed.mockResolvedValue(true);
@@ -127,17 +115,6 @@ describe("Staff Targets mutation boundary", () => {
       title: "Should not create",
       priority: "normal",
       assigned_staff_id: staffId
-    }));
-    expect(response.status).toBe(403);
-    expect(mocks.rpc).not.toHaveBeenCalled();
-  });
-
-  it("blocks target mutations during staff preview", async () => {
-    mocks.assertWritable.mockRejectedValue(new StaffPreviewReadOnlyError("Preview is read-only."));
-    const response = await PATCH(request("PATCH", {
-      action: "status",
-      id: targetId,
-      status: "completed"
     }));
     expect(response.status).toBe(403);
     expect(mocks.rpc).not.toHaveBeenCalled();

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { applicationOrigin, safeNext } from "@/lib/auth";
+import { applicationOrigin, safeStudentNext } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   createStudentOAuthIntent,
@@ -9,7 +9,7 @@ import {
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const next = safeNext(url.searchParams.get("next"));
+  const next = safeStudentNext(url.searchParams.get("next"));
   const unavailableUrl = new URL("/login", url.origin);
   unavailableUrl.searchParams.set("error", "oauth_unavailable");
   unavailableUrl.searchParams.set("redirect", next);
