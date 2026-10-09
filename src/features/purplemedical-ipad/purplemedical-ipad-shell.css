@@ -1,0 +1,435 @@
+/**
+ * Purple Medical non yolo — Paper 2VH-0 absolute stage.
+ * Artboard 1000×15821. Unit --pmipad-u = 1 Paper px on the stage.
+ * FIGMA ACCESSIBILITY ADAPTATION: Paper 12px body → 15px floor (WCAG readable).
+ */
+
+.purplemedical-ipad {
+  --pmipad-type-floor: 15px;
+  --pmipad-rail: 85%;
+  --pmipad-artboard: 1000;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: calc(-1 * var(--pgs-chrome-strip-pull, 0px));
+  position: relative;
+  z-index: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: var(--pmipad-type-floor);
+  color: #000;
+}
+
+.purplemedical-ipad *,
+.purplemedical-ipad *::before,
+.purplemedical-ipad *::after {
+  box-sizing: border-box;
+}
+
+.purplemedical-ipad__rail {
+  width: var(--pmipad-rail);
+  max-width: min(1000px, 85vw);
+  margin-inline: auto;
+  min-width: 0;
+  container-type: inline-size;
+  container-name: pmipad;
+}
+
+.purplemedical-ipad__stage {
+  /* 1 Paper px = 1/1000 of stage width (cqw), so top/width share one unit */
+  --pmipad-u: calc(100cqw / var(--pmipad-artboard));
+  position: relative;
+  width: 100%;
+  /* Partial height while building; grows as blocks land */
+  height: calc(2100 * var(--pmipad-u));
+  background: #fff;
+}
+
+/* ——— Hero 2VK-0 · top 271 · w 331 ——— */
+.pmipad-hero {
+  position: absolute;
+  left: 50%;
+  top: calc(271 * var(--pmipad-u));
+  width: calc(331 * var(--pmipad-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(12 * var(--pmipad-u));
+}
+
+.pmipad-hero__copy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(14 * var(--pmipad-u));
+  min-width: 0;
+}
+
+.pmipad-hero__title {
+  margin: 0;
+  width: calc(230 * var(--pmipad-u));
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: max(var(--pmipad-type-floor), calc(30 * var(--pmipad-u)));
+  line-height: 0.9;
+  color: #000;
+}
+
+.pmipad-hero__leads {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(8 * var(--pmipad-u));
+  min-width: 0;
+}
+
+.pmipad-hero__lead {
+  margin: 0;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-hero__sub {
+  margin: 0;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(12 * var(--pmipad-u)));
+  line-height: calc(16 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-hero__cta-wrap {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(8 * var(--pmipad-u));
+  min-width: 0;
+}
+
+.pmipad-hero__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(162 * var(--pmipad-u));
+  padding: calc(6 * var(--pmipad-u)) calc(8 * var(--pmipad-u));
+  border: 0;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  letter-spacing: 0.04px;
+  cursor: pointer;
+}
+
+.pmipad-hero__cta:focus-visible {
+  outline: 2px solid #3929a6;
+  outline-offset: 3px;
+}
+
+.pmipad-hero__hint {
+  margin: 0;
+  align-self: stretch;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(12 * var(--pmipad-u)));
+  line-height: calc(16 * var(--pmipad-u));
+  color: #000;
+}
+
+/* ——— Mauve card 2VU/2VW · top 580 · 290×450 ——— */
+.pmipad-card {
+  position: absolute;
+  left: 50%;
+  top: calc(580 * var(--pmipad-u));
+  width: calc(290 * var(--pmipad-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(8 * var(--pmipad-u));
+}
+
+.pmipad-card__panel {
+  position: relative;
+  width: calc(290 * var(--pmipad-u));
+  height: calc(450 * var(--pmipad-u));
+  padding: calc(13 * var(--pmipad-u)) calc(11 * var(--pmipad-u));
+  border-radius: calc(16 * var(--pmipad-u));
+  background: #d1bbb9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pmipad-card__media {
+  width: 100%;
+  height: calc(357 * var(--pmipad-u));
+  border-radius: calc(8 * var(--pmipad-u));
+  overflow: hidden;
+  position: relative;
+  background: #d9d9d9;
+}
+
+.pmipad-card__img {
+  position: absolute;
+  width: calc(650 * var(--pmipad-u));
+  height: calc(982 * var(--pmipad-u));
+  left: calc(-106 * var(--pmipad-u));
+  top: calc(-307 * var(--pmipad-u));
+  max-width: none;
+  object-fit: cover;
+  filter: brightness(1.41);
+}
+
+.pmipad-card__brand {
+  position: absolute;
+  left: calc(15 * var(--pmipad-u));
+  top: calc(376 * var(--pmipad-u));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(6 * var(--pmipad-u));
+}
+
+.pmipad-card__bebas {
+  margin: 0;
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(30 * var(--pmipad-u)));
+  line-height: calc(36 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-card__tag {
+  margin: 0;
+  font-weight: 500;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(36 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-card__trust {
+  margin: 0;
+  width: calc(234 * var(--pmipad-u));
+  text-align: center;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(12 * var(--pmipad-u)));
+  line-height: calc(16 * var(--pmipad-u));
+  color: rgb(0 0 0 / 65%);
+}
+
+/* ——— Why 2W8-0 · top 1112 · w 700 ——— */
+.pmipad-why {
+  position: absolute;
+  left: 50%;
+  top: calc(1112 * var(--pmipad-u));
+  width: calc(700 * var(--pmipad-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(16 * var(--pmipad-u));
+}
+
+.pmipad-why__title {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-family: "Bebas Neue", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: max(20px, calc(24 * var(--pmipad-u)));
+  line-height: calc(30 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-why__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: calc(12 * var(--pmipad-u));
+}
+
+.pmipad-why__kicker {
+  margin: 0;
+  font-weight: 600;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-why__story {
+  margin: 0;
+  letter-spacing: 0.2px;
+  font-weight: 300;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-why__outside {
+  margin: 0;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-why__warn {
+  margin: 0;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+}
+
+/* ——— Comes 2WF-0 · top 1480 · w 300 ——— */
+.pmipad-comes {
+  position: absolute;
+  left: 50%;
+  top: calc(1480 * var(--pmipad-u));
+  width: calc(300 * var(--pmipad-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(16 * var(--pmipad-u));
+  text-align: center;
+}
+
+.pmipad-comes__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: max(var(--pmipad-type-floor), calc(20 * var(--pmipad-u)));
+  line-height: calc(24 * var(--pmipad-u));
+  color: #000;
+}
+
+.pmipad-comes__lead {
+  margin: 0;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+}
+
+/* ——— Video 2WI-0 · top 1588 ——— */
+.pmipad-video {
+  position: absolute;
+  left: 50%;
+  top: calc(1588 * var(--pmipad-u));
+  translate: -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(16 * var(--pmipad-u));
+}
+
+.pmipad-video__poster {
+  position: relative;
+  width: calc(252 * var(--pmipad-u));
+  height: calc(345 * var(--pmipad-u));
+  border-radius: calc(12.8 * var(--pmipad-u));
+  overflow: hidden;
+  background: #d9d9d9;
+}
+
+.pmipad-video__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pmipad-video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: calc(50 * var(--pmipad-u));
+  height: calc(50 * var(--pmipad-u));
+  border: calc(1.6 * var(--pmipad-u)) solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pmipad-video__play:focus-visible {
+  outline: 2px solid #3929a6;
+  outline-offset: 3px;
+}
+
+.pmipad-video__play-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-inline: auto;
+  border-style: solid;
+  border-width: calc(7 * var(--pmipad-u)) 0 calc(7 * var(--pmipad-u))
+    calc(12 * var(--pmipad-u));
+  border-color: transparent transparent transparent #fef7ff;
+}
+
+.pmipad-video__chip-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(6 * var(--pmipad-u));
+  width: calc(337 * var(--pmipad-u));
+}
+
+.pmipad-video__arrow {
+  font-size: calc(20 * var(--pmipad-u));
+  line-height: 1;
+  color: #000;
+  transform: rotate(90deg);
+}
+
+.pmipad-video__chip {
+  margin: 0;
+  padding: calc(8 * var(--pmipad-u));
+  border-radius: calc(6.4 * var(--pmipad-u));
+  background: #bbc8ff;
+  font-weight: 400;
+  font-size: max(var(--pmipad-type-floor), calc(14 * var(--pmipad-u)));
+  line-height: calc(18 * var(--pmipad-u));
+  color: #000;
+  width: calc(241 * var(--pmipad-u));
+}
+
+.pmipad-more {
+  position: absolute;
+  left: 50%;
+  top: calc(2050 * var(--pmipad-u));
+  translate: -50%;
+  margin: 0;
+  width: calc(400 * var(--pmipad-u));
+  text-align: center;
+  font-size: var(--pmipad-type-floor);
+  color: #444;
+  padding: 12px;
+  border: 1px dashed #ccc;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .purplemedical-ipad * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -16,7 +16,28 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      # Full history so Gitleaks can scan commits (not only the tip tree).
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # OSS Gitleaks CLI (MIT). We intentionally avoid gitleaks/gitleaks-action
+      # because that Action requires GITLEAKS_LICENSE for GitHub Organizations.
+      - name: Gitleaks
+        env:
+          GITLEAKS_VERSION: "8.30.0"
+        run: |
+          set -euo pipefail
+          # Install outside the workspace so the binary is not scanned by test:security.
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz -C "${RUNNER_TEMP}" gitleaks
+          "${RUNNER_TEMP}/gitleaks" version
+          "${RUNNER_TEMP}/gitleaks" detect \
+            --source . \
+            --config .gitleaks.toml \
+            --verbose \
+            --redact \
+            --exit-code=1
 
       - uses: pnpm/action-setup@v4
         with:
@@ -42,9 +63,11 @@ jobs:
       - name: RLS migration contract
         run: pnpm test:rls
 
-      - name: Secret scan
+      # Keep the existing high-confidence pattern scan in addition to Gitleaks.
+      - name: Secret scan (custom high-confidence)
         run: pnpm test:security
 
+      # --ignore-unfixable: braces GHSA-vfj7-8cjw-p6xm currently has no published >=3.0.4 on npm.
       - name: Dependency audit (high+)
         run: pnpm audit --audit-level=high --ignore-unfixable
 
@@ -76,8 +99,19 @@ jobs:
   e2e-smoke:
     name: Playwright smoke (desktop + mobile)
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     needs: build
+    # Preview Supabase + fixture passwords unlock authenticated @auth-regression.
+    # When unset, anonymous smoke/auth denials still run; fixture cases skip.
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      PGS_PREVIEW_FIXTURE_PASSWORD: ${{ secrets.PGS_PREVIEW_FIXTURE_PASSWORD }}
+      PGS_PREVIEW_STANDARD_PASSWORD: ${{ secrets.PGS_PREVIEW_STANDARD_PASSWORD }}
+      PGS_PREVIEW_PREMIUM_PASSWORD: ${{ secrets.PGS_PREVIEW_PREMIUM_PASSWORD }}
+      PGS_PREVIEW_MENTOR_PASSWORD: ${{ secrets.PGS_PREVIEW_MENTOR_PASSWORD }}
+      PGS_PREVIEW_SUPER_ADMIN_PASSWORD: ${{ secrets.PGS_PREVIEW_SUPER_ADMIN_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
 
@@ -96,13 +130,75 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install chromium --with-deps
 
+      # NEXT_PUBLIC_* must be present at build time for the e2e server session checks.
+      # Retry: Next Google-font loader can flake with "Cannot read properties of null"
+      # even under --webpack (same flake Production build usually survives).
       - name: Build app for e2e
         env:
           PGS_ALLOW_LEGACY_ASSET_FETCH: "1"
-        run: pnpm build
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            if pnpm build; then
+              exit 0
+            fi
+            echo "e2e build attempt ${attempt} failed; retrying…" >&2
+            sleep 5
+          done
+          exit 1
+
+      # One long-lived server for smoke + fixtures + auth-regression.
+      # PLAYWRIGHT_BASE_URL disables Playwright's own webServer so steps share this process.
+      - name: Start app for e2e
+        run: |
+          set -euo pipefail
+          ./node_modules/.bin/next start -p 7100 > /tmp/pgs-e2e-server.log 2>&1 &
+          echo $! > /tmp/pgs-e2e-server.pid
+          for _ in $(seq 1 90); do
+            if curl -sf "http://127.0.0.1:7100" >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "e2e server failed to become ready" >&2
+          cat /tmp/pgs-e2e-server.log >&2 || true
+          exit 1
 
       - name: Run @smoke (desktop + mobile)
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
         run: pnpm test:e2e:smoke
+
+      - name: Prepare Playwright auth fixtures
+        id: auth_fixtures
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
+          PLAYWRIGHT_AUTH_STATE_DIR: ${{ github.workspace }}/.auth/phase36
+          PGS_PREVIEW_FIXTURE_ROLES: standard-student,premium-student,mentor,super-admin
+        run: bash scripts/ci-prepare-auth-fixtures.sh
+
+      # Anonymous denials always run. Fixture-backed roles run when the prepare
+      # step wrote PLAYWRIGHT_*_STORAGE_STATE into GITHUB_ENV.
+      - name: Run @auth-regression (desktop)
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
+        run: pnpm test:e2e:auth-regression
+
+      - name: Stop e2e app
+        if: always()
+        run: |
+          if [ -f /tmp/pgs-e2e-server.pid ]; then
+            kill "$(cat /tmp/pgs-e2e-server.pid)" 2>/dev/null || true
+          fi
+
+      - name: Auth fixture status
+        if: always()
+        run: |
+          if [ "${{ steps.auth_fixtures.outputs.prepared }}" = "true" ]; then
+            echo "Auth fixtures were prepared for this run."
+          else
+            echo "Auth fixtures were not prepared — configure repo secrets listed in docs/quality-gate/ci-auth-fixtures.md"
+          fi
 
       - name: Upload Playwright report
         if: failure()

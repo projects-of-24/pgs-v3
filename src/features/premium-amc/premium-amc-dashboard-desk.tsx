@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { PREMIUM_AMC_DASHBOARD_POINTS } from "./premium-amc-dashboard-points";
 
-export function PremiumAmcDashboardDesk() {
-  const [index, setIndex] = useState(0);
+type PremiumAmcDashboardDeskProps = {
+  index: number;
+  onIndexChange: (index: number) => void;
+};
+
+export function PremiumAmcDashboardDesk({ index, onIndexChange }: PremiumAmcDashboardDeskProps) {
   const fill = `${((index + 1) / PREMIUM_AMC_DASHBOARD_POINTS.length) * 100}%`;
   const photo = PREMIUM_AMC_DASHBOARD_POINTS[index].desk;
 
@@ -25,7 +28,7 @@ export function PremiumAmcDashboardDesk() {
                 type="button"
                 className="premium-amc-dashboard__point"
                 aria-pressed={selected}
-                onClick={() => setIndex(pointIndex)}
+                onClick={() => onIndexChange(pointIndex)}
               >
                 <span className="premium-amc-dashboard__icon">
                   <img className="premium-amc-dashboard__mark" src="/assets/img/premium-usmle/dashboard-mark.svg" alt="" width={38} height={38} />

@@ -1,28 +1,19 @@
 /**
- * Preview QC — #premiumUSMLE modular body lab.
- * Locked chrome + empty body (P0 QC passed). No Hostinger page HTML.
- * Live `/purpleusmle` serves this same USMLE folder with `live`. Typo `/purpleusme` redirects there.
+ * Preview QC — #premiumUSMLE on React chrome (H-R pass, step 1), same tree as /preview/scholarship:
+ * Header = <PublicHeader/> · Strip = <PublicStrip/> · Body = PremiumUsmlePreviewShell (QC'd, untouched)
+ * Footer = <PublicFooter/>. No chrome HTML strings on this route.
+ * CSS = still Hostinger until step 2 (layout.tsx OWNED_SPLIT_ROUTES).
+ * Dropped with the strings (same as About/Finance): Hello Aspirant box, notificationReadOnly,
+ * business-rule wording rewrite. Live `/purpleusmle` is untouched until CUTOVER.
  */
 import { LegacyPage } from "@/components/legacy-page";
-import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { PremiumUsmlePreviewShell } from "@/features/premium-usmle/premium-usmle-preview-shell";
-import { getUsmleRotationPicksCourses } from "@/features/usmlerotation/get-usmle-rotation-picks-courses";
-import {
-  applyUnivMeetToHeaderHtml,
-  buildPublicStripHtml
-} from "@/features/shell/public-strip";
+import { PublicFooter } from "@/features/shell/public-footer";
+import { PublicHeader } from "@/features/shell/public-header";
+import { PublicStrip } from "@/features/shell/public-strip-react";
 import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
+import { getUsmleRotationPicksCourses } from "@/features/usmlerotation/get-usmle-rotation-picks-courses";
 import "@/features/shell/legacy-header-breakpoints.css";
-import { applyAuthenticatedShell } from "@/lib/account-shell";
-import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
-import { withPreviewLoginReturn } from "@/lib/preview-login-return";
-import {
-  applySharedHelloAspirant,
-  HELLO_ASPIRANT_DEFAULT_AVATAR
-} from "@/legacy/pages/hello-aspirant";
-import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
-import { getPublicHeaderHtml } from "@/legacy/pages/public-header";
-import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
@@ -36,49 +27,27 @@ export default async function PurpleUsmlePreviewPage() {
     getPublishedUnivMeet(),
     getUsmleRotationPicksCourses()
   ]);
+  const signed = state && state.kind !== "anonymous" ? state : null;
   const studentState = state?.kind ?? "anonymous";
-  const helloAvatar =
-    state && state.kind !== "anonymous"
-      ? await studentExperienceAvatarUrl(state)
-      : HELLO_ASPIRANT_DEFAULT_AVATAR;
-
-  const previewPath = "/preview/purpleusmle";
-
-  let topHtml = [
-    applyUnivMeetToHeaderHtml(getPublicHeaderHtml(), univMeet),
-    buildPublicStripHtml(univMeet)
-  ].join("");
-  topHtml = applySharedPublicSidebar(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "User"
-  });
-  topHtml = applySharedHelloAspirant(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "Aspirant",
-    avatarUrl: helloAvatar
-  });
-
-  let footerHtml = getPublicFooterHtml();
-
-  if (state && state.kind !== "anonymous") {
-    const shellFields = {
-      name: state.name,
-      unreadCount: state.unreadCount,
-      premium: state.kind === "authenticated_premium",
-      notifications: state.notifications,
-      notificationReadOnly: Boolean(state.preview)
-    };
-    topHtml = applyAuthenticatedShell(topHtml, shellFields);
-    topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
-    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
-  }
-
-  topHtml = applyPremiumBusinessRule(topHtml);
-  footerHtml = applyPremiumBusinessRule(footerHtml);
-  topHtml = withPreviewLoginReturn(topHtml, previewPath);
-  footerHtml = withPreviewLoginReturn(footerHtml, previewPath);
+  const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
+  const loginHref = `/login?redirect=${encodeURIComponent("/preview/purpleusmle")}`;
 
   return (
     <LegacyPage page="preview-purpleusmle" studentState={studentState}>
-      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
+      <PublicHeader
+        loginHref={loginHref}
+        avatarUrl={avatarUrl}
+        unreadCount={signed ? signed.unreadCount : 0}
+        signedIn={Boolean(signed)}
+        notifications={signed ? signed.notifications : []}
+        univMeet={univMeet}
+      />
+      <PublicStrip
+        univMeet={univMeet}
+        signedIn={Boolean(signed)}
+        name={signed ? signed.name : "User"}
+        loginHref={loginHref}
+      />
       <PremiumUsmlePreviewShell
         picks={picksCourses.map((row) => ({
           id: row.card.id,
@@ -90,7 +59,7 @@ export default async function PurpleUsmlePreviewPage() {
           imageAlt: row.card.imageAlt
         }))}
       />
-      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+      <PublicFooter />
     </LegacyPage>
   );
 }

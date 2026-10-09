@@ -1,12 +1,12 @@
 begin;
 create extension if not exists pgtap with schema extensions;
 set local search_path = public, extensions;
-select plan(51);
+select plan(53);
 -- OPS-09: Advisor 0029 flags these SECURITY DEFINER RPCs as executable by authenticated.
 -- Retain the internal staff.read / roles.manage guards unless OPS-09 rewrites that surface.
 
 select has_index('public','staff_role_assignments','staff_role_assignments_one_active_role_idx','one active role remains a database invariant');
-select has_function('public','staff_people_directory');
+select has_function('public','staff_people_directory', array[]::text[]);
 select has_function('public','staff_access_detail', array['uuid']);
 select has_function('public','lookup_staff_invite_identity', array['text']);
 select is(
@@ -36,11 +36,14 @@ insert into auth.users(
 ('00000000-0000-0000-0000-000000000000','d0410000-0000-4000-8000-000000000014','authenticated','authenticated','ops04-super-b@example.test','',now(),now(),'{}','{"pgs_context":"staff"}',now(),now()),
 ('00000000-0000-0000-0000-000000000000','d0410000-0000-4000-8000-000000000020','authenticated','authenticated','ops04-pending@example.test','',null,null,'{}','{"pgs_context":"staff"}',now(),now());
 
-insert into public.profiles(id, full_name, study_level)
-values
-  ('d0410000-0000-4000-8000-000000000001','OPS-04 Student','PG'),
-  ('d0410000-0000-4000-8000-000000000002','OPS-04 Assigned A','PG'),
-  ('d0410000-0000-4000-8000-000000000003','OPS-04 Assigned B','UG');
+-- auth.users with pgs_context=student already created profiles via trigger
+update public.profiles set full_name = v.full_name, study_level = v.study_level
+from (values
+  ('d0410000-0000-4000-8000-000000000001'::uuid,'OPS-04 Student','PG'),
+  ('d0410000-0000-4000-8000-000000000002'::uuid,'OPS-04 Assigned A','PG'),
+  ('d0410000-0000-4000-8000-000000000003'::uuid,'OPS-04 Assigned B','UG')
+) as v(id, full_name, study_level)
+where profiles.id = v.id;
 
 insert into public.staff_profiles(user_id, role, display_name, status) values
   ('d0410000-0000-4000-8000-000000000010','admin','OPS-04 Admin','active'),
@@ -61,6 +64,9 @@ where sp.user_id in (
   'd0410000-0000-4000-8000-000000000014',
   'd0410000-0000-4000-8000-000000000020'
 );
+
+-- Test-only: allow calling private.has_staff_permission in this rolled-back transaction.
+grant usage on schema private to authenticated;
 
 set local role authenticated;
 set local request.jwt.claims = '{"sub":"d0410000-0000-4000-8000-000000000012","role":"authenticated"}';
@@ -102,6 +108,14 @@ select throws_ok(
 );
 
 set local request.jwt.claims = '{"sub":"d0410000-0000-4000-8000-000000000013","role":"authenticated"}';
+select lives_ok(
+  $$select public.set_premium_entitlement('d0410000-0000-4000-8000-000000000002','grant','12_month','ops04 premium a')$$,
+  'super admin grants Premium before first mentor assignment'
+);
+select lives_ok(
+  $$select public.set_premium_entitlement('d0410000-0000-4000-8000-000000000003','grant','12_month','ops04 premium b')$$,
+  'super admin grants Premium before second mentor assignment'
+);
 select lives_ok(
   $$select public.set_mentor_assignment('d0410000-0000-4000-8000-000000000002','d0410000-0000-4000-8000-000000000011',true,'ops04 a')$$,
   'super admin assigns the first mentor student'
@@ -216,11 +230,13 @@ select results_eq(
   array['staff.role_changed'::text],
   'role change writes staff.role_changed'
 );
+-- After demoting the other Super Admin, the remaining Super cannot target self
+-- (self-change guard runs before the final-super-admin guard).
 select throws_ok(
   $$select public.manage_staff_access('d0410000-0000-4000-8000-000000000013','admin',true,'suspended','','last super')$$,
   'P0001',
-  'the final active super admin cannot be removed',
-  'final Super Admin cannot be suspended'
+  'self role changes are forbidden',
+  'final Super Admin cannot suspend themselves'
 );
 select lives_ok(
   $$select public.manage_staff_access('d0410000-0000-4000-8000-000000000014','mentor',false,'ended','','ops04 revoke')$$,
@@ -231,6 +247,7 @@ select results_eq(
   array['staff.access_revoked'::text],
   'revoke writes staff.access_revoked'
 );
+reset role;
 select results_eq(
   $$select count(*)::bigint from auth.users where id='d0410000-0000-4000-8000-000000000014'$$,
   array[1::bigint],

@@ -14,8 +14,13 @@ Branch: shared public modular lane until owner splits.
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (QC lab)** | `/preview/purpleusmle` | **Frontend complete** (2026-09-14). Backend links are a later pass, one control at a time. |
-| **Live** | `/purpleusmle` | **CUTOVER DONE**. Typo `/purpleusme` redirects here. CMS storage key stays `purpleusme`. Hostinger HTML is not served. |
+| **Preview lab-2 (north star)** | `/preview/purpleusmle-2` | **All three bands QC passed** (2026-10-03). Same tree as live after Gate 1. Skill: `pgs-ipad-modular-body-pass`. |
+| **Preview (lab-1, ignore)** | `/preview/purpleusmle` | Parked for lab-2. Do not use for new iPad QC. |
+| **Live** | `/purpleusmle` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 1). React chrome + `PremiumUsmle2Shell` + OWNED_SPLIT. Typo `/purpleusme` redirects here. CMS key `purpleusme`. |
+| **Preview PLAB lab-2** | `/preview/purpleplab-2` | Same tree as live after Gate 2b. |
+| **Live PLAB** | `/purpleplab` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 2b). React chrome + `PremiumPlab2Shell` + OWNED_SPLIT. |
+| **Preview AMC lab-2** | `/preview/purpleamc-2` | Same tree as live after Gate 3b. |
+| **Live AMC** | `/purpleamc` | **LAB-2 CUTOVER DONE** (2026-10-03 Gate 3b). React chrome + `PremiumAmc2Shell` + OWNED_SPLIT. |
 
 PLAB `/purpleplab` and AMC `/purpleamc` use this template. Words wait for CMS.
 
@@ -42,9 +47,13 @@ Copy targets (not this gate): desktop `#premiumPLAB` `17055:15451` · `#premiumA
 
 iPad hero recall (`pgs-ipad-hero-body`): copy the phone card once, save as its own sizes, desktop body reused, 16px type floor. Do not build it on P0.
 
-Owner lock: phone, iPad, and desktop minimum text never below 16px. Token `--pgs-type-floor` on the USMLE shell. Headings stay larger. iPad hero card sizes stay frozen.
+Owner lock (2026-10-03): **Roboto** minimum **15–16px** (token `--pgs-type-floor` → 16 unless a named block uses 15). **Bebas** minimum **30px**. Chrome **locked**. Body clamp recipes from lab-2 are the default for next pages.
 
-**Later final-draft type pass — do not do it during fast section QC.** Minimum text only: 13px and 14px lift to 16px on all three bands. Text already at 16px stays. 20px and up is left alone unless a visual QC says it needs a correction. USMLE hero + Why already measure clean (nothing under 16 at 390 / 768 / 1440). That does not clear the rest of this page.
+**Chrome click QC (cutover 2026-10-03):** after OWNED_SPLIT, hamburger (≤1366) and `#toggleBtn` must open. Fixed in `pgs-header-chrome-reset` (no visibility transition) · `legacy-page` (no `children` rewire) · toggle `z-index: 5`. Skill: `pgs-ipad-modular-body-pass` / `pgs-ipad-paper-pass`.
+
+**Later final-draft type pass — do not do it during fast section QC.** Lift sub-floor Roboto (13/14 → 16) and sub-30 Bebas when owner opens that pass. Do not invent sizes mid-QC.
+
+**Next iPad page:** body only → content-match QC (desk vs phone) → owner rearrange → Opus plan from north-star findings + Figma/Paper → execute reuse/adapt (not invent). Modular already: hero family · Highlights · #PGS picks. First after OWNED_SPLIT: chrome click QC (hamburger + toggle).
 
 ---
 
@@ -85,12 +94,12 @@ Chrome = LOCKED. Do not rebuild.
 | 28 | FAQ | **U29** | **READY — owner QC** Desktop `17055:12897` and phone `433:4700`. No scrollbar. Contact strip not in this gate. |
 | 29 | Ready to get started? | **U30** | **READY — owner QC** Shared `outro-cta`. Desktop `17120:10437`. Phone `433:4710`. Hub and picks not in this gate. |
 | 30 | Support hub | **U31** | **READY — owner QC** Shared `support-hub`. Desktop `17056:21414`. Phone `433:4717`. Email is the locked spelling, one line. |
-| 31 | #Pgs picks | **U32** | **READY — owner QC** Shared `pgs-picks`. Desktop `17055:12930`. Phone `433:4740`. Courses from CMS `pgs_picks`. Drawn card until a course is ticked. Later switch replaces About and any other page that draws this row. Do not switch now. |
+| 31 | #Pgs picks | **U32** | **READY — owner QC** Shared `pgs-picks`. Desk title 48 · **iPad 36** · phone 24. iPad = mobile face · 2 cards · 85% · **link min-height 190** · **arrows 32** (owner DevTools 2026-10-03). Wheel + drag. Later switch — do not switch now. |
 | — | Frontend | **COMPLETE** | Visual body done. Hostinger did not have real destinations except Enroll. Those links wait for the backend pass, one control at a time. Not wired in this mark. |
 | — | Gap analysis | **GAP** | After Figma-to-code is done. Before LOCK. Do not fix spacing mid-build. Owner marked frontend complete before this pass. |
 | — | Motion | last | After visual lock |
 | — | CMS and backend pass | **later** | Same pass, not a side job. One control at a time. Includes: button destinations (Enroll was the only Hostinger link). Country select + this medical template + slug + live, tied to the full country list. USMLE, then PLAB, then AMC. Not built now. |
-| — | Live Hostinger-free cutover | **CUTOVER** | **DONE** for USMLE (`/purpleusmle`), PLAB (`/purpleplab`), and AMC (`/purpleamc`). |
+| — | Live lab-2 cutover | **CUTOVER** | **DONE** — USMLE Gate 1 · PLAB Gate 2b · AMC Gate 3b (2026-10-03). |
 | — | Copy to PLAB / AMC | one page at a time | **DONE.** Same base template. Identity labels only. Leftover exam sentences stay for CMS. AMC track line was still "PLAB pathway" in Figma; the slot is "AMC pathway" so the page is not labeled PLAB. |
 
 ---
@@ -103,7 +112,7 @@ Later switch only when the owner names the page. About and Rotation keep their o
 
 | Block | Folder | Later use |
 |---|---|---|
-| Highlights | `premium-highlights` | PLAB / AMC import this. Do not rebuild. |
+| Highlights | `premium-highlights` | PLAB / AMC import this. Do not rebuild. Title: desk 38.4 · iPad 36 · phone 24 (owner 2026-10-03). iPad photo frames **−20%** · **gap 8px** (owner 2026-10-03): 205.34 / aspect 231∶430. |
 | Expense request | `premium-expense` | PLAB / AMC import this. |
 | Enroll | `premium-enroll` | PLAB / AMC import this. |
 | Questions + meet | `premium-questions` | PLAB / AMC import this. |
@@ -233,6 +242,7 @@ Hostinger `/purpleusme` body, checked 2026-09-14 against `src/legacy/generated/p
 | 2026-09-13 | **U26 dashboard** | Next Figma frame after the expense card. Desktop photo and five points. Phone has the two drawn slides. Arrows switch them. No motion. |
 | 2026-09-13 | **U26 phone photos** | Phone frame stays. Same five labels as desktop. Arrows step one photo at a time and the line fills in fifths. Phone images are a separate set (`dashboard-m1`–`m5`). CMS can edit desk and phone photos independently later. Sixth attached photo not wired. No CMS editor in this gate. |
 | 2026-09-14 | **U26 phone arrows** | Phone arrow pair uses the Figma circle asset. Boxes are 48px with a −26px overlap so the circles sit like Figma `433:4590`. No empty box. |
+| 2026-10-03 | **U27 Enroll iPad desk** | Owner: replace phone-stack Enroll on USMLE / PLAB / AMC lab-2 with QC’d desk card from nonmedical (`1395:10868`). Panel `min(809px, 85%)` · 2-col included · access hang · Bebas ≥30 · Roboto 16. Compact 601–800 stacks columns. |
 | 2026-09-14 | **U27 enroll** | Next Figma frame after the dashboard. Shared enroll card under the dashboard. Gap 398px (dashboard end y=9306 to enroll y=9704). Copy kept, including `₹ 65,0000`. Enroll is a visual button. Questions not in this gate. |
 | 2026-09-14 | **U28 questions** | Desktop questions + meet pair under the enroll card. Gap 223px from the enroll panel bottom. Shared module. Copy kept. Schedule Now is a visual button. Green line `#009c70` → `#008660` (3.5:1 fails). Slot line 12.8→16. Phone hidden. FAQ not in this gate. |
 | 2026-09-14 | **U28 phone** | Phone stacks the pair. Title and green line sit side by side. Card is 41px under the list. Gap 150px from the enroll panel. Lead, list, and slot 14→15. Photo sits under the button. FAQ not in this gate. |
@@ -258,7 +268,10 @@ Hostinger `/purpleusme` body, checked 2026-09-14 against `src/legacy/generated/p
 
 ## Preview
 
-- Lab: http://localhost:7100/preview/purpleusmle
-- Live: http://localhost:7100/purpleusmle
-- PLAB live (same template): http://localhost:7100/purpleplab
-- AMC live (same template): http://localhost:7100/purpleamc
+- Lab-2 USMLE (north star): http://localhost:7100/preview/purpleusmle-2
+- Live USMLE (lab-2 Gate 1): http://localhost:7100/purpleusmle
+- Lab-2 PLAB: http://localhost:7100/preview/purpleplab-2
+- Live PLAB (lab-2 Gate 2b): http://localhost:7100/purpleplab
+- Lab-2 AMC: http://localhost:7100/preview/purpleamc-2
+- Live AMC (lab-2 Gate 3b): http://localhost:7100/purpleamc
+- Lab-1 USMLE (parked): http://localhost:7100/preview/purpleusmle

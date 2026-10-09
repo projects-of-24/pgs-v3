@@ -135,7 +135,7 @@ $$;
 alter table public.profiles enable trigger profiles_assign_pgs_code;
 
 select results_eq(
-  $$select array_agg(pgs_code order by created_at, id) from public.profiles where id in ('d0210000-0000-4000-8000-000000000014','d0210000-0000-4000-8000-000000000015')$$,
+  $$select pgs_code from public.profiles where id in ('d0210000-0000-4000-8000-000000000014','d0210000-0000-4000-8000-000000000015') order by created_at, id$$,
   array['PGS251111','PGS251112']::text[],
   'backfill assigns codes by created_at ASC then id ASC'
 );

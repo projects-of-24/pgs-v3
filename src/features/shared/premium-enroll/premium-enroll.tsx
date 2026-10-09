@@ -12,29 +12,48 @@ type PremiumEnrollProps = {
 export function PremiumEnroll({ content = PREMIUM_ENROLL }: PremiumEnrollProps) {
   const c = content;
   const items = c.columns.flat();
+  const isCard = c.variant === "card";
 
   return (
-    <section className="premium-enroll" data-pgs-module="premium-enroll" data-block-gate="u27">
+    <section className={isCard ? "premium-enroll premium-enroll--card" : "premium-enroll"} data-pgs-module="premium-enroll" data-block-gate="u27">
       <div className="premium-enroll__panel">
-        <div className="premium-enroll__intro">
-          <h2 className="premium-enroll__title">
-            {c.title[0]}
-            <br />
-            {c.title[1]}
-          </h2>
-          <p className="premium-enroll__lead">{c.lead}</p>
-        </div>
-        <div className="premium-enroll__price">
-          <p className="premium-enroll__offer">
-            <span className="premium-enroll__offer-label">{c.offerLabel}</span>
-            <span className="premium-enroll__badge">{c.badge}</span>
-            <span className="premium-enroll__was">{c.was}</span>
-          </p>
-          <p className="premium-enroll__amount">{c.price}</p>
-          <button type="button" className="premium-enroll__cta">
-            {c.enroll}
-          </button>
-        </div>
+        {isCard ? (
+          <div className="premium-enroll__card">
+            <div className="premium-enroll__card-copy">
+              <h2 className="premium-enroll__title">
+                {c.title[0]}
+                <br />
+                {c.title[1]}
+              </h2>
+              <p className="premium-enroll__lead">{c.lead}</p>
+            </div>
+            <button type="button" className="premium-enroll__cta premium-enroll__cta--learn">
+              {c.learnMore}
+            </button>
+          </div>
+        ) : (
+          <>
+          <div className="premium-enroll__intro">
+            <h2 className="premium-enroll__title">
+              {c.title[0]}
+              <br />
+              {c.title[1]}
+            </h2>
+            <p className="premium-enroll__lead">{c.lead}</p>
+          </div>
+          <div className="premium-enroll__price">
+            <p className="premium-enroll__offer">
+              <span className="premium-enroll__offer-label">{c.offerLabel}</span>
+              <span className="premium-enroll__badge">{c.badge}</span>
+              <span className="premium-enroll__was">{c.was}</span>
+            </p>
+            <p className="premium-enroll__amount">{c.price}</p>
+            <button type="button" className="premium-enroll__cta">
+              {c.enroll}
+            </button>
+          </div>
+          </>
+        )}
         <div className="premium-enroll__included">
           <h3 className="premium-enroll__included-title">{c.includedTitle}</h3>
           <p className="premium-enroll__included-lead">{c.includedLead}</p>
@@ -65,7 +84,7 @@ export function PremiumEnroll({ content = PREMIUM_ENROLL }: PremiumEnrollProps) 
               <li key={item.label} className="premium-enroll__item">
                 <img className="premium-enroll__check" src={c.checkSrc} alt="" width={29} height={29} />
                 <span className="premium-enroll__item-copy">
-                  <span className="premium-enroll__item-label">{item.label}</span>
+                  <span className="premium-enroll__item-label">{item.phoneLabel ?? item.label}</span>
                   {item.details ? (
                     <span className="premium-enroll__details">
                       {item.details.map((line) => (

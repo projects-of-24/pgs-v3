@@ -1,31 +1,23 @@
 /**
- * Live `/purpleamc` — own Photoshop file at `src/features/premium-amc`.
- * Does not import the USMLE or PLAB folder. Hostinger `purpleAmcHtml` is not served.
+ * Live `/purpleamc` — lab-2 cutover (2026-10-03 Gate 3b).
+ * Same tree as `/preview/purpleamc-2`: <PublicHeader/> · <PublicStrip/> · PremiumAmc2Shell · <PublicFooter/>.
+ * CSS = owned split (layout.tsx OWNED_SPLIT_ROUTES); no Hostinger style.css / responsive.css,
+ * no Hostinger main.js / vendors.min.js, no chrome HTML strings.
+ * This page owns `src/features/premium-amc` + lab-2 shell. USMLE / PLAB do not import it.
  */
 import { LegacyPage } from "@/components/legacy-page";
-import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
-import { PremiumAmcPreviewShell } from "@/features/premium-amc/premium-amc-preview-shell";
-import { getUsmleRotationPicksCourses } from "@/features/usmlerotation/get-usmle-rotation-picks-courses";
-import {
-  applyUnivMeetToHeaderHtml,
-  buildPublicStripHtml
-} from "@/features/shell/public-strip";
+import { PremiumAmc2Shell } from "@/features/premium-amc-2/premium-amc-2-shell";
+import { PublicFooter } from "@/features/shell/public-footer";
+import { PublicHeader } from "@/features/shell/public-header";
+import { PublicStrip } from "@/features/shell/public-strip-react";
 import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
+import { getUsmleRotationPicksCourses } from "@/features/usmlerotation/get-usmle-rotation-picks-courses";
 import "@/features/shell/legacy-header-breakpoints.css";
-import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { cmsMetadata } from "@/lib/cms-metadata";
-import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
 import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
 } from "@/lib/student-experience";
-import {
-  applySharedHelloAspirant,
-  HELLO_ASPIRANT_DEFAULT_AVATAR
-} from "@/legacy/pages/hello-aspirant";
-import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
-import { getPublicHeaderHtml } from "@/legacy/pages/public-header";
-import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 
 export async function generateMetadata() {
   return cmsMetadata("purpleamc");
@@ -39,46 +31,28 @@ export default async function PurpleAmcPage() {
     getPublishedUnivMeet(),
     getUsmleRotationPicksCourses()
   ]);
+  const signed = state && state.kind !== "anonymous" ? state : null;
   const studentState = state?.kind ?? "anonymous";
-  const helloAvatar =
-    state && state.kind !== "anonymous"
-      ? await studentExperienceAvatarUrl(state)
-      : HELLO_ASPIRANT_DEFAULT_AVATAR;
-
-  let topHtml = [
-    applyUnivMeetToHeaderHtml(getPublicHeaderHtml(), univMeet),
-    buildPublicStripHtml(univMeet)
-  ].join("");
-  topHtml = applySharedPublicSidebar(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "User"
-  });
-  topHtml = applySharedHelloAspirant(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "Aspirant",
-    avatarUrl: helloAvatar
-  });
-
-  let footerHtml = getPublicFooterHtml();
-
-  if (state && state.kind !== "anonymous") {
-    const shellFields = {
-      name: state.name,
-      unreadCount: state.unreadCount,
-      premium: state.kind === "authenticated_premium",
-      notifications: state.notifications,
-      notificationReadOnly: Boolean(state.preview)
-    };
-    topHtml = applyAuthenticatedShell(topHtml, shellFields);
-    topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
-    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
-  }
-
-  topHtml = applyPremiumBusinessRule(topHtml);
-  footerHtml = applyPremiumBusinessRule(footerHtml);
+  const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
+  const loginHref = `/login?redirect=${encodeURIComponent("/purpleamc")}`;
 
   return (
     <LegacyPage page="purpleamc" studentState={studentState}>
-      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
-      <PremiumAmcPreviewShell
+      <PublicHeader
+        loginHref={loginHref}
+        avatarUrl={avatarUrl}
+        unreadCount={signed ? signed.unreadCount : 0}
+        signedIn={Boolean(signed)}
+        notifications={signed ? signed.notifications : []}
+        univMeet={univMeet}
+      />
+      <PublicStrip
+        univMeet={univMeet}
+        signedIn={Boolean(signed)}
+        name={signed ? signed.name : "User"}
+        loginHref={loginHref}
+      />
+      <PremiumAmc2Shell
         live
         picks={picksCourses.map((row) => ({
           id: row.card.id,
@@ -90,7 +64,7 @@ export default async function PurpleAmcPage() {
           imageAlt: row.card.imageAlt
         }))}
       />
-      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+      <PublicFooter />
     </LegacyPage>
   );
 }

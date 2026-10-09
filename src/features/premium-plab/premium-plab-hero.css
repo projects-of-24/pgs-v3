@@ -448,3 +448,67 @@
     line-height: 1.27;
   }
 }
+
+/*
+ * iPad hero from owner Figma 19156:13858 (ported from USMLE lab-2, Gate 2a 2026-10-03).
+ * Headline column = card width (406), centered on the card; title 26; copy/CTA/hint 16px.
+ * iPad only. Phone and desktop untouched.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .premium-plab-hero .premium-plab-hero__headline {
+    width: min(406px, 100%);
+    max-width: 406px;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .premium-plab-hero .premium-plab-hero__title {
+    margin: 0;
+    font-size: 26px;
+    line-height: 27px;
+  }
+
+  .premium-plab-hero .premium-plab-hero__lead,
+  .premium-plab-hero .premium-plab-hero__subtitle {
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+  }
+
+  .premium-plab-hero .premium-plab-hero__cta-block {
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .premium-plab-hero .premium-plab-hero__cta {
+    width: auto;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 11px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .premium-plab-hero .premium-plab-hero__cta-hint {
+    max-width: 340px;
+    margin-inline: auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .premium-plab-hero .premium-plab-hero__panel {
+    min-height: 630px;
+  }
+
+  .premium-plab-hero .premium-plab-hero__panel-brand {
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .premium-plab-hero .premium-plab-hero__panel-tag {
+    font-size: 20px;
+  }
+}

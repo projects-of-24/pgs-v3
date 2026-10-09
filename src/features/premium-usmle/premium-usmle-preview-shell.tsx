@@ -5,6 +5,7 @@
  * iPad hero is a saved copy of the phone card, not a live ×1.4.
  */
 import { PremiumEnroll } from "../shared/premium-enroll/premium-enroll";
+import { PREMIUM_ENROLL_CARD } from "../shared/premium-enroll/content";
 import { OutroCta } from "../shared/outro-cta/outro-cta";
 import { PgsPicks, type PgsPicksCard } from "../shared/pgs-picks/pgs-picks";
 import { SupportHub } from "../shared/support-hub/support-hub";
@@ -69,7 +70,7 @@ export function PremiumUsmlePreviewShell({
         <PremiumHighlights />
         <PremiumExpense />
         <PremiumUsmleDashboard />
-        <PremiumEnroll />
+        <PremiumEnroll content={PREMIUM_ENROLL_CARD} />
         <PremiumQuestions />
         <PremiumFaq />
         <OutroCta />

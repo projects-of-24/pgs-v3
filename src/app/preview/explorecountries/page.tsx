@@ -1,27 +1,16 @@
 /**
- * Preview QC — explore Countries modular body lab.
- * Locked chrome + modular body (no Hostinger page CSS).
- * Live `/explorecountries` = same shell with `live` (CUTOVER done).
+ * Preview QC — Explore Countries on React chrome (H-R pass 1), same tree as /preview/header:
+ * Header = <PublicHeader/> · Strip = <PublicStrip/> · Body = ExploreCountriesPreviewShell (QC'd, untouched)
+ * Footer = <PublicFooter/>. No chrome HTML strings on this route.
+ * OWNED_SPLIT = next gate (HR-explore-2). Live `/explorecountries` untouched until cutover.
  */
 import { LegacyPage } from "@/components/legacy-page";
-import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { ExploreCountriesPreviewShell } from "@/features/explore-countries/explore-countries-preview-shell";
-import {
-  applyUnivMeetToHeaderHtml,
-  buildPublicStripHtml
-} from "@/features/shell/public-strip";
+import { PublicFooter } from "@/features/shell/public-footer";
+import { PublicHeader } from "@/features/shell/public-header";
+import { PublicStrip } from "@/features/shell/public-strip-react";
 import { getPublishedUnivMeet } from "@/features/shell/univmeet-slots";
 import "@/features/shell/legacy-header-breakpoints.css";
-import { applyAuthenticatedShell } from "@/lib/account-shell";
-import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
-import { withPreviewLoginReturn } from "@/lib/preview-login-return";
-import {
-  applySharedHelloAspirant,
-  HELLO_ASPIRANT_DEFAULT_AVATAR
-} from "@/legacy/pages/hello-aspirant";
-import { getPublicFooterHtml } from "@/legacy/pages/public-footer";
-import { getPublicHeaderHtml } from "@/legacy/pages/public-header";
-import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 import {
   resolveStudentExperience,
   studentExperienceAvatarUrl
@@ -34,51 +23,29 @@ export default async function ExploreCountriesPreviewPage() {
     resolveStudentExperience(),
     getPublishedUnivMeet()
   ]);
+  const signed = state && state.kind !== "anonymous" ? state : null;
   const studentState = state?.kind ?? "anonymous";
-  const helloAvatar =
-    state && state.kind !== "anonymous"
-      ? await studentExperienceAvatarUrl(state)
-      : HELLO_ASPIRANT_DEFAULT_AVATAR;
-
-  const previewPath = "/preview/explorecountries";
-
-  let topHtml = [
-    applyUnivMeetToHeaderHtml(getPublicHeaderHtml(), univMeet),
-    buildPublicStripHtml(univMeet)
-  ].join("");
-  topHtml = applySharedPublicSidebar(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "User"
-  });
-  topHtml = applySharedHelloAspirant(topHtml, studentState, {
-    name: state && state.kind !== "anonymous" ? state.name : "Aspirant",
-    avatarUrl: helloAvatar
-  });
-
-  let footerHtml = getPublicFooterHtml();
-
-  if (state && state.kind !== "anonymous") {
-    const shellFields = {
-      name: state.name,
-      unreadCount: state.unreadCount,
-      premium: state.kind === "authenticated_premium",
-      notifications: state.notifications,
-      notificationReadOnly: Boolean(state.preview)
-    };
-    topHtml = applyAuthenticatedShell(topHtml, shellFields);
-    topHtml = applyStudentIdentity(topHtml, state, helloAvatar);
-    footerHtml = applyAuthenticatedShell(footerHtml, shellFields);
-  }
-
-  topHtml = applyPremiumBusinessRule(topHtml);
-  footerHtml = applyPremiumBusinessRule(footerHtml);
-  topHtml = withPreviewLoginReturn(topHtml, previewPath);
-  footerHtml = withPreviewLoginReturn(footerHtml, previewPath);
+  const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
+  const loginHref = `/login?redirect=${encodeURIComponent("/preview/explorecountries")}`;
 
   return (
     <LegacyPage page="preview-explorecountries" studentState={studentState}>
-      <div dangerouslySetInnerHTML={{ __html: topHtml }} />
+      <PublicHeader
+        loginHref={loginHref}
+        avatarUrl={avatarUrl}
+        unreadCount={signed ? signed.unreadCount : 0}
+        signedIn={Boolean(signed)}
+        notifications={signed ? signed.notifications : []}
+        univMeet={univMeet}
+      />
+      <PublicStrip
+        univMeet={univMeet}
+        signedIn={Boolean(signed)}
+        name={signed ? signed.name : "User"}
+        loginHref={loginHref}
+      />
       <ExploreCountriesPreviewShell />
-      <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
+      <PublicFooter />
     </LegacyPage>
   );
 }

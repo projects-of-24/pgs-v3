@@ -1,6 +1,6 @@
 # H-R per-page pass — universal prompt (owner lock 2026-09-27)
 
-One prompt for every page. No Fable plan per page: the About pilot (`docs/ABOUT-HR-PILOT-PLAN.md`) is the worked example; this file is the template. Model: **Opus** in a fresh chat per page.
+One prompt for every page. No Opus plan per page: the About pilot (`docs/ABOUT-HR-PILOT-PLAN.md`) is the worked example; this file is the template. Model: **Sonnet 5.5 or this agent** in a fresh chat per page.
 
 ---
 
@@ -37,7 +37,7 @@ Start with the pre-flight in HR-PAGE-PROMPT.md §B, then say "ready for GO AHEAD
 
 ---
 
-## B. Pre-flight (Opus does this before asking for GO AHEAD)
+## B. Pre-flight (Sonnet 5.5 / this agent does this before asking for GO AHEAD)
 
 1. `MAP` says the body is CUTOVER DONE (live = modular React body). If not, the page is not ready for H-R — say so and stop.
 2. Open the live page, the lab and `/preview/header` in the built-in browser; run the measuring snippet at 1500·1100·700·390; fill the BEFORE table (pilot plan §9.1 layout). Screenshots per band.
@@ -73,9 +73,9 @@ The table above is the standing map; the report keeps every row and adds the exa
 
 ## D. Owner nudges after a report
 
-- "This is 30px, make it 24" on a named piece = direct edit by Opus in the file the table names, then re-measure that piece only.
-- A nudge that needs a LOCKED chrome file or a QC'd body rule = Opus says so and waits; the owner may edit it in VS Code/DevTools and tell Opus the value to lock.
-- Owner edits in VS Code are fine; tell Opus which file so the next measurement starts from the new truth.
+- "This is 30px, make it 24" on a named piece = direct edit by Sonnet 5.5 / this agent in the file the table names, then re-measure that piece only.
+- A nudge that needs a LOCKED chrome file or a QC'd body rule = the implementer says so and waits; the owner may edit it in VS Code/DevTools and tell the implementer the value to lock.
+- Owner edits in VS Code are fine; tell the implementer which file so the next measurement starts from the new truth.
 
 ## E. Countries
 
@@ -89,7 +89,7 @@ About (pilot, plan file) → Explore → Finance → Scholarship → Premium Hom
 
 1. **Chrome import** — replace the string shell with the React shell exactly as `/preview/header` mounts it (`<PublicHeader/>` · `<PublicStrip/>` · body · `<PublicFooter/>`). Import only; no font/UI/size changes. Owner QCs.
 2. **CSS** — page route on `OWNED_SPLIT_ROUTES`. Import only. Owner QCs.
-3. **Body QC (owner-led)** — owner audits the body band by band and names low-level nudges (gaps, block sizes, iPad sizes). Opus edits only the named piece, scoped to the named band, in the page family's CSS; never shared tokens, chrome or the owned split. Known carry-overs to expect:
+3. **Body QC (owner-led)** — owner audits the body band by band and names low-level nudges (gaps, block sizes, iPad sizes). Sonnet 5.5 / this agent edits only the named piece, scoped to the named band, in the page family's CSS; never shared tokens, chrome or the owned split. Known carry-overs to expect:
    - **801–1366 (iPad):** React compact header shows at its proportional (larger) size while the body still renders at desktop size → iPad body sizes are an owner QC item per page.
    - **Hostinger element-selector leaks** into body tags (e.g. a `<footer>` inside a block inherits `footer { padding: 90/110px 0 }`) → reset on the block's own class, per band.
    - **Gap pass (About 2026-09-27, option A):** one section gap per band, measured content to content: on screen **100 desk · 100 iPad · 72 mobile** (CSS 112 · 112 · 80, zoom .9). Implementation in the page shell CSS: token `--<page>-section-gap` per band; sections lose outer `padding-block`; `margin-top: var(gap)` on every section after the hero; hero top (univMeet gap) untouched. Then measure (snippet §H) and correct only pairs that miss: overhanging badges (add their overhang to that block's margin), empty reserved room at a block's bottom (trim it, scoped per band). Leave on purpose and report: toggled panels that reserve the taller panel's height (About online), chrome gaps (body → footer = footer's own margin).

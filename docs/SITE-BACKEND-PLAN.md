@@ -1,5 +1,7 @@
 # Whole-site backend plan (planning only — no build yet)
 
+**Handover (ELI5, all domains):** [`BACKEND-HANDOVER.md`](./BACKEND-HANDOVER.md) — start a new backend / full-stack developer here.
+
 **Owner lock 2026-09-21:** No product code until every batch in this series has a rough plan and the owner decides how to build.
 
 Steal from certified V3 + Reference Bank. Do not invent second identity, Ops, CMS, or comment systems.

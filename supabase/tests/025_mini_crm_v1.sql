@@ -1,7 +1,7 @@
 begin;
 create extension if not exists pgtap with schema extensions;
 set local search_path = public, extensions;
-select plan(36);
+select plan(37);
 
 select has_column('public', 'profiles', 'crm_stream', 'canonical profiles store CRM stream');
 select has_column('public', 'profiles', 'crm_target_year', 'canonical profiles store CRM target year');
@@ -68,6 +68,10 @@ set local request.jwt.claims = '{"sub":"d2510000-0000-4000-8000-000000000010","r
 select lives_ok(
   $$select public.set_premium_entitlement('d2510000-0000-4000-8000-000000000001','grant','12_month','crm premium')$$,
   'admin grants canonical Premium'
+);
+select lives_ok(
+  $$select public.set_premium_entitlement('d2510000-0000-4000-8000-000000000003','grant','12_month','crm other premium')$$,
+  'admin grants Premium before assigning the other student'
 );
 select lives_ok(
   $$select public.set_mentor_assignment('d2510000-0000-4000-8000-000000000001','d2510000-0000-4000-8000-000000000011',true,'crm mentor')$$,
@@ -151,21 +155,23 @@ select throws_ok(
   'reserved tag',
   'staff cannot create a manual #Premium tag'
 );
+-- Tag table has no authenticated SELECT; capture id via SECURITY DEFINER create RPC.
+create temporary table batch_a_crm_tag(id uuid primary key);
 select lives_ok(
-  $$select public.create_student_crm_tag('USA Applicants')$$,
+  $$insert into batch_a_crm_tag(id) select public.create_student_crm_tag('USA Applicants')$$,
   'Admin can create a manual student tag'
 );
 select lives_ok(
   $$select public.attach_student_crm_tag(
     'd2510000-0000-4000-8000-000000000002',
-    (select id from public.student_crm_tags where slug = 'usa-applicants')
+    (select id from batch_a_crm_tag)
   )$$,
   'Admin can attach a manual tag'
 );
 select results_eq(
   $$select count(*)::bigint from public.staff_student_registry_v2(
     null,null,null,null,null,null,null,0,25,null,null,null,
-    (select id::text from public.student_crm_tags where slug = 'usa-applicants')
+    (select id::text from batch_a_crm_tag)
   ) where id = 'd2510000-0000-4000-8000-000000000002'$$,
   array[1::bigint],
   'Registry can filter by a manual student tag'
@@ -173,7 +179,7 @@ select results_eq(
 select results_eq(
   $$select count(*)::bigint from public.staff_student_registry_v2(
     null,null,null,null,null,null,null,0,25,null,null,null,
-    (select id::text from public.student_crm_tags where slug = 'usa-applicants')
+    (select id::text from batch_a_crm_tag)
   ) where id = 'd2510000-0000-4000-8000-000000000001'$$,
   array[0::bigint],
   'Tag filter does not include students without that manual tag'
@@ -232,7 +238,7 @@ select throws_ok(
 select throws_ok(
   $$select public.attach_student_crm_tag(
     'd2510000-0000-4000-8000-000000000001',
-    (select id from public.student_crm_tags where slug = 'usa-applicants')
+    (select id from batch_a_crm_tag)
   )$$,
   '42501',
   'not authorized',

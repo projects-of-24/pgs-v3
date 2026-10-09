@@ -196,6 +196,15 @@ Approximate **gap between block boxes** (Figma from frame Y/heights · lab = DOM
 
 Lab: http://localhost:7100/preview/explorecountries · Live: http://localhost:7100/explorecountries · Owner product PASS + spacing/iPad final QC still open.
 
+### H-R / iPad lane (2026-10-08)
+
+| Gate | Status |
+|---|---|
+| **HR-explore-1** chrome (preview) | **DONE** — React `PublicHeader` · `PublicStrip` · body · `PublicFooter`. Live still string chrome. |
+| **HR-explore-2** OWNED_SPLIT | Next |
+| iPad body QC | After chrome + owned split + owner Figma/Paper |
+| Live cutover (React chrome) | After body QC |
+
 | Gate | Engineering | Owner |
 |---|---|---|
 | P0 | Shell pull, no black banner, gate attrs | Pending |

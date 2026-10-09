@@ -54,15 +54,15 @@
 }
 
 /*
- * Gap pass (same rule as About/Finance): one section rhythm per band, content to content.
- * On screen 100 desktop · 100 iPad · 72 mobile (CSS 112 · 112 · 80 because html{zoom:.9}).
- * Sections carry no outer spacing padding; the gap lives here only. Hero top untouched.
+ * Gap pass — owner lock 2026-10-03: desk 100 · iPad 60 · phone 80 (CSS px).
+ * Same rhythm as About / Premium lab-2. Hero top untouched.
+ * Intro stays half the section gap (owner rule).
  */
 .scholarship-preview-shell {
-  --scholarship-section-gap: 112px;
+  --scholarship-section-gap: 100px;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .scholarship-preview-shell { --scholarship-section-gap: 112px; }
+  .scholarship-preview-shell { --scholarship-section-gap: 60px; }
 }
 @media (max-width: 600px) {
   .scholarship-preview-shell { --scholarship-section-gap: 80px; }
@@ -89,8 +89,8 @@
   }
 }
 
-/* Owner: the gap between the hero and the intro text is half the section gap (50 / 50 / 36 on screen),
-   every band. All other section gaps stay 100 / 100 / 72. */
+/* Owner: the gap between the hero and the intro text is half the section gap
+   (50 / 30 / 40), every band. All other section gaps stay 100 / 60 / 80. */
 .scholarship-preview-shell .scholarship-preview-shell__body > .scholarship-intro {
   margin-top: calc(var(--scholarship-section-gap) / 2);
 }

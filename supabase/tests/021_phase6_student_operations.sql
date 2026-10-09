@@ -4,9 +4,9 @@ set local search_path = public, extensions;
 select plan(17);
 
 select has_function('private', 'student_alert_word_count', array['text']);
-select has_function('private', 'enforce_student_alert_limits');
-select has_function('private', 'notify_student_operations_change');
-select has_function('private', 'notify_premium_workspace_change');
+select has_function('private', 'enforce_student_alert_limits', array[]::text[]);
+select has_function('private', 'notify_student_operations_change', array[]::text[]);
+select has_function('private', 'notify_premium_workspace_change', array[]::text[]);
 
 insert into auth.users(
   instance_id, id, aud, role, email, encrypted_password, email_confirmed_at, last_sign_in_at,
@@ -15,8 +15,10 @@ insert into auth.users(
 ('00000000-0000-0000-0000-000000000000','f0610000-0000-4000-8000-000000000001','authenticated','authenticated','phase6-student@example.test','',now(),now(),'{}','{"pgs_context":"student"}',now(),now()),
 ('00000000-0000-0000-0000-000000000000','f0610000-0000-4000-8000-000000000010','authenticated','authenticated','phase6-admin@example.test','',now(),now(),'{}','{"pgs_context":"staff"}',now(),now());
 
-insert into public.profiles(id, full_name, study_level)
-values ('f0610000-0000-4000-8000-000000000001','Phase 6 Student','PG');
+-- auth.users with pgs_context=student already created the profile via trigger
+update public.profiles
+set full_name = 'Phase 6 Student', study_level = 'PG'
+where id = 'f0610000-0000-4000-8000-000000000001';
 insert into public.staff_profiles(user_id, role, display_name, status)
 values ('f0610000-0000-4000-8000-000000000010','admin','Phase 6 Admin','active');
 insert into public.staff_role_assignments(staff_user_id, role_id, assigned_by)

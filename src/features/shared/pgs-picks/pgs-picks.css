@@ -1,6 +1,7 @@
 /**
- * Shared #Pgs picks. Desktop is the default. iPad reuses it.
- * Phone restates layout inside max-width 600. Do not edit those rules for desktop.
+ * Shared #Pgs picks. Desktop is the default.
+ * Title bands (owner 2026-10-03): desk 48 · iPad 601–1366 36 · phone ≤600 24.
+ * iPad: mobile face · 85% rail · two cards visible · wheel + drag (same as highlights).
  * Left inset is the title’s place on the 1728 frame (x 277), not a fixed margin on every width.
  * Cards run off the right edge. Arrows move them. No scrollbar lane.
  */
@@ -104,8 +105,22 @@
   padding: 0;
   overflow-x: auto;
   list-style: none;
-  scroll-snap-type: x mandatory;
+  /* No mandatory snap — free wheel/drag like premium-highlights. Arrows still step by card. */
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
+  cursor: grab;
+}
+
+/* Horizontal pan only on desk/iPad — phone cards are full-width; vertical scroll must win. */
+@media (min-width: 601px) {
+  .pgs-picks__track {
+    touch-action: pan-x;
+  }
+}
+
+.pgs-picks__track.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .pgs-picks__track::-webkit-scrollbar {
@@ -115,8 +130,6 @@
 .pgs-picks__card {
   flex: 0 0 528px;
   width: 528px;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .pgs-picks__link {
@@ -144,6 +157,8 @@
   object-fit: cover;
   object-position: center;
   background: #d9d9d9;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 .pgs-picks__copy {
@@ -186,6 +201,107 @@
 @media (prefers-reduced-motion: reduce) {
   .pgs-picks__track {
     scroll-behavior: auto;
+  }
+}
+
+/*
+ * iPad — owner DevTools lock 2026-10-03 → modular (every importer):
+ * Title 36 · 85% rail · mobile card face · two cards · link min-height 190 · arrows 32.
+ * Desk >1366 / phone ≤600 untouched.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .pgs-picks {
+    width: min(85%, calc(100% - 32px));
+    margin-inline: auto;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .pgs-picks__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .pgs-picks__title {
+    font-size: 36px;
+    white-space: normal;
+  }
+
+  .pgs-picks__rail {
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .pgs-picks__nav {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .pgs-picks__arrow,
+  .pgs-picks__arrow img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .pgs-picks__viewport {
+    container-type: inline-size;
+    flex: 1 1 auto;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .pgs-picks__track {
+    gap: 12px;
+  }
+
+  .pgs-picks__card {
+    flex: 0 0 calc((100cqi - 12px) / 2);
+    width: calc((100cqi - 12px) / 2);
+    min-width: 0;
+    max-width: none;
+  }
+
+  .pgs-picks__link {
+    min-height: 190px;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 12px;
+  }
+
+  .pgs-picks__photo {
+    flex-basis: 96px;
+    width: 96px;
+    height: 110px;
+    border-radius: 6px;
+  }
+
+  .pgs-picks__copy {
+    gap: 8px;
+    padding: 10px 2px;
+  }
+
+  .pgs-picks__cta {
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 1.15;
+    letter-spacing: 0.08px;
+    white-space: normal;
+  }
+
+  .pgs-picks__blurb--desk {
+    display: none;
+  }
+
+  .pgs-picks__blurb--phone {
+    display: block;
+    max-width: none;
+    font-size: 16px;
+    line-height: 1.25;
   }
 }
 

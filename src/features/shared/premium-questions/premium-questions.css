@@ -45,6 +45,11 @@
   letter-spacing: 0;
 }
 
+/* Keep "#purplePremium?" on one line — never orphan the "?" */
+.premium-questions__title-keep {
+  white-space: nowrap;
+}
+
 .premium-questions__lead {
   margin: 2px 0 0;
   /* Figma #009c70 is 3.5:1 on white. #008660 is the page’s already-used darker green. */

@@ -54,8 +54,11 @@ select is((select title from public.courses where slug='phase7a-private-course')
 select is((select published from public.courses where slug='phase7a-private-course'),true,'publish marks the live catalog row public');
 
 reset role;
-set local role anon;
-select is((select count(*)::integer from public.catalog_draft_revisions),0,'anonymous users cannot read catalog drafts');
+select is(
+  has_table_privilege('anon','public.catalog_draft_revisions','SELECT'),
+  false,
+  'anonymous users cannot read catalog drafts'
+);
 
 select * from finish();
 rollback;

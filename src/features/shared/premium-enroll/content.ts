@@ -48,6 +48,8 @@ export const PREMIUM_ENROLL = {
 } as const;
 
 export type PremiumEnrollContent = {
+  variant?: "price" | "card";
+  learnMore?: string;
   title: readonly [string, string];
   lead: string;
   offerLabel: string;
@@ -65,5 +67,27 @@ export type PremiumEnrollContent = {
     label: string;
     details?: readonly string[];
     note?: string;
+    phoneLabel?: string;
   }[])[];
+};
+
+/**
+ * USMLE alternative (owner Figma 2026-10-02): desktop `19157:13859`, phone `19153:13827`.
+ * One black card (title + lead + Learn More) replaces the white intro + price card. No price on this variant.
+ * PLAB / AMC keep the default fixture until their own pass. Learn More is visual only (backend pass wires it).
+ */
+export const PREMIUM_ENROLL_CARD: PremiumEnrollContent = {
+  ...PREMIUM_ENROLL,
+  variant: "card",
+  learnMore: "Learn More",
+  columns: [
+    [
+      PREMIUM_ENROLL.columns[0][0],
+      PREMIUM_ENROLL.columns[0][1],
+      PREMIUM_ENROLL.columns[0][2],
+      { ...PREMIUM_ENROLL.columns[0][3], phoneLabel: "Conference invites (yep, poster chances too)" },
+      PREMIUM_ENROLL.columns[0][4]
+    ],
+    PREMIUM_ENROLL.columns[1]
+  ]
 };

@@ -48,12 +48,12 @@ Repo: `/Users/24potatoes/Documents/GitHub/pgs-v3`. Read first: `.cursor/skills/p
 
 ## 8. Gate, model and PR discipline
 - Propose → `GO AHEAD <gate>` → one gate → measure → owner Preview QC → stop. Named QC nudge = direct edit.
-- Fable plans new bands, blocks, contracts, audits, CSS splits. Opus builds/nudges/docs. **The H-R per-page pass needs no Fable plan**: About is the worked example; `docs/HR-PAGE-PROMPT.md` is the universal prompt.
+- Opus plans new bands, blocks, contracts, audits, CSS splits. Sonnet 5.5 or this agent builds/nudges/docs. **The H-R per-page pass needs no Opus plan**: About is the worked example; `docs/HR-PAGE-PROMPT.md` is the universal prompt. State the model call at every block.
 - **One page = one branch = one PR** (`feat/hr-<page>` from `main`). Owner commits (author `project-mtfbwu <project.mtfbwu@gmail.com>`), pushes and opens the PR. GitHub checks it: CI `.github/workflows/ci.yml` (lint · typecheck · vitest · RLS · secret scan · audit · build · Playwright smoke), CodeQL `codeql.yml`, CodeRabbit `.coderabbit.yaml`. Owner pastes red checks / findings back; fixes land on the same PR; owner merges; next page branches from `main`.
 - **No local test runs per page.** Typecheck/lint/tests/snapshots are the PR's job; the full QA + security pass runs once after all pages, before backend work. Don't ask the owner to run them per page. Per-page Playwright tests may be written in parallel by another agent (tests only, no UI edits).
 - Claude's Mac-side shell cannot delete files, commit or push; a `git status` from it may leave a stale `.git/index.lock` — tell the owner to `rm -f .git/index.lock`.
 
-## 9. H-R per-page lifecycle (universal, one fresh Opus chat per page) — `docs/HR-PAGE-PROMPT.md` §A/§G
+## 9. H-R per-page lifecycle (universal, one fresh Sonnet 5.5 / implementer chat per page) — `docs/HR-PAGE-PROMPT.md` §A/§G
 - Pre-flight (§B): MAP says body CUTOVER DONE; BEFORE numbers at four bands on live + lab + `/preview/header`; grep body folder for `top-space-margin|top-space-padding|nav.navbar` (must be empty); previous PR merged.
 - **Step 1 CHROME** (preview): mount exactly what `/preview/header` mounts — `<PublicHeader/>` (signedIn · notifications · unreadCount · avatarUrl · univMeet) · `<PublicStrip/>` (`public-strip-react.tsx`) · body · `<PublicFooter/>`. Delete every chrome string builder and `dangerouslySetInnerHTML` from the page file. Allowed delta: stack moving by the header-height change (≤600 ≈ −13). Owner QC.
 - **Step 2 CSS** (preview): route on `OWNED_SPLIT_ROUTES` in `src/app/layout.tsx`. Expected delta 0 (601–767 recorded). Owner QC.

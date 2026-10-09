@@ -22,11 +22,14 @@ insert into auth.users(
 ('00000000-0000-0000-0000-000000000000','d0510000-0000-4000-8000-000000000016','authenticated','authenticated','ops05-suspended@example.test','',now(),now(),'{}','{"pgs_context":"staff"}',now(),now()),
 ('00000000-0000-0000-0000-000000000000','d0510000-0000-4000-8000-000000000017','authenticated','authenticated','ops05-ended@example.test','',now(),now(),'{}','{"pgs_context":"staff"}',now(),now());
 
-insert into public.profiles(id, full_name, study_level)
-values
-  ('d0510000-0000-4000-8000-000000000001','OPS-05 Premium','PG'),
-  ('d0510000-0000-4000-8000-000000000002','OPS-05 Standard','UG'),
-  ('d0510000-0000-4000-8000-000000000003','OPS-05 Second Premium','PG');
+-- auth.users with pgs_context=student already created profiles via trigger
+update public.profiles set full_name = v.full_name, study_level = v.study_level
+from (values
+  ('d0510000-0000-4000-8000-000000000001'::uuid,'OPS-05 Premium','PG'),
+  ('d0510000-0000-4000-8000-000000000002'::uuid,'OPS-05 Standard','UG'),
+  ('d0510000-0000-4000-8000-000000000003'::uuid,'OPS-05 Second Premium','PG')
+) as v(id, full_name, study_level)
+where profiles.id = v.id;
 
 insert into public.staff_profiles(user_id, role, display_name, status) values
   ('d0510000-0000-4000-8000-000000000010','super_admin','OPS-05 Super','active'),
@@ -177,7 +180,9 @@ select results_eq(
   'Premium loss still ends the active assignment'
 );
 select lives_ok(
-  $$update public.staff_profiles set status='suspended' where user_id='d0510000-0000-4000-8000-000000000012'$$,
+  $$select public.manage_staff_access(
+    'd0510000-0000-4000-8000-000000000012','mentor',true,'suspended','','ops05 suspend'
+  )$$,
   'staff suspension remains a canonical lifecycle write'
 );
 select results_eq(

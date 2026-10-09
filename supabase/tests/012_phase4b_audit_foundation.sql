@@ -141,8 +141,8 @@ select throws_ok(
   $$insert into public.audit_events(event_type,actor_kind,outcome,source_subsystem) values('forged.event','staff','succeeded','staff')$$,
   '42501',null,'student cannot forge a canonical staff audit event'
 );
+-- service_role has INSERT/SELECT only; prove append-only as the table owner.
 reset role;
-set local role service_role;
 select throws_ok(
   $$update public.audit_events set outcome='failed' where event_type='staff.invited'$$,
   'P0001','audit history is append-only','canonical audit UPDATE is blocked'
@@ -196,7 +196,9 @@ select results_eq(
 drop trigger phase4b_force_audit_failure on public.audit_events;
 select pass('canonical audit failure fixture removed');
 
-set local role service_role;
+-- De-identification is allowed by the append-only trigger but needs UPDATE privilege
+-- (service_role has insert/select only). Run as table owner in this rolled-back suite.
+reset role;
 select lives_ok(
   $$update public.audit_events set actor_user_id=null where event_type='staff.invited' and target_id='a4600000-0000-4000-8000-000000000006'$$,
   'approved identity de-identification remains possible'
@@ -205,6 +207,7 @@ select results_eq(
   $$select actor_user_id from public.audit_events where event_type='staff.invited' and target_id='a4600000-0000-4000-8000-000000000006'$$,
   array[null::uuid],'de-identification clears only canonical actor identity'
 );
+set local role service_role;
 select lives_ok(
   $$insert into public.audit_events(event_type,actor_user_id,actor_kind,target_type,target_id,outcome,source_subsystem,metadata,request_id) values('staff.access.denied','a4400000-0000-4000-8000-000000000004','staff','staff_user','a4600000-0000-4000-8000-000000000006','denied','staff','{"permission_required":"roles.manage","reason_code":"permission_denied"}','phase4b-test')$$,
   'trusted server infrastructure can append a denied event'

@@ -32,7 +32,7 @@ description: >-
 
 1. **Do not make your own assumptions.** If something is unclear (breakpoint, Hostinger parity, which surface, invent vs keep), ask. Do not invent a constraint the owner did not state.
 2. **Owner is implementing now.** Do **not** treat Hostinger / legacy freeze as a default blocker unless the owner says so for that task. Hostinger CSS is **reference only** for public chrome — port into `src/app/globals.css` (see `pgs-modular-public-chrome` / `docs/MODULAR-PUBLIC-FRONTEND.md`).
-3. **Fable writes the architect plan. This agent implements it after `GO AHEAD`.** Model: `claude-fable-5-thinking-high`. Plan only — Fable does not edit files. A live QC nudge the owner already named stays a direct edit. Full path: `pgs-master-workflow` → Architect, then implement.
+3. **Opus writes the architect plan. Sonnet 5.5 or this agent implements it after `GO AHEAD`.** Plan only — Opus does not edit files. A live QC nudge the owner already named stays a direct edit. Full path: `pgs-master-workflow` → Architect, then implement.
 4. **Explain that plan → wait for owner approval (`GO AHEAD` / yes) → then change code.** Never silently edit, “quick fix,” or ship CSS/JS/HTML before approval.
 5. **Content pass, then code.** On a position or layout correction: assess the named content relationship first (under which card, which edge, which band). No CSS in that pass. Code only after the owner confirms the assessment. One relationship per edit. See `pgs-master-workflow`.
 6. If you already started editing without approval: **revert immediately**, then propose.
