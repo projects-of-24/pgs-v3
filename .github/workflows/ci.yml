@@ -136,7 +136,26 @@ jobs:
           PGS_ALLOW_LEGACY_ASSET_FETCH: "1"
         run: pnpm build
 
+      # One long-lived server for smoke + fixtures + auth-regression.
+      # PLAYWRIGHT_BASE_URL disables Playwright's own webServer so steps share this process.
+      - name: Start app for e2e
+        run: |
+          set -euo pipefail
+          ./node_modules/.bin/next start -p 7100 > /tmp/pgs-e2e-server.log 2>&1 &
+          echo $! > /tmp/pgs-e2e-server.pid
+          for _ in $(seq 1 90); do
+            if curl -sf "http://127.0.0.1:7100" >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "e2e server failed to become ready" >&2
+          cat /tmp/pgs-e2e-server.log >&2 || true
+          exit 1
+
       - name: Run @smoke (desktop + mobile)
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
         run: pnpm test:e2e:smoke
 
       - name: Prepare Playwright auth fixtures
@@ -153,6 +172,13 @@ jobs:
         env:
           PLAYWRIGHT_BASE_URL: http://127.0.0.1:7100
         run: pnpm test:e2e:auth-regression
+
+      - name: Stop e2e app
+        if: always()
+        run: |
+          if [ -f /tmp/pgs-e2e-server.pid ]; then
+            kill "$(cat /tmp/pgs-e2e-server.pid)" 2>/dev/null || true
+          fi
 
       - name: Auth fixture status
         if: always()
