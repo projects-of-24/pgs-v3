@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 20
     steps:
       # Full history so Gitleaks can scan commits (not only the tip tree).
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -77,7 +77,7 @@ jobs:
     timeout-minutes: 20
     needs: quality
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v4
         with:
@@ -113,7 +113,7 @@ jobs:
       PGS_PREVIEW_MENTOR_PASSWORD: ${{ secrets.PGS_PREVIEW_MENTOR_PASSWORD }}
       PGS_PREVIEW_SUPER_ADMIN_PASSWORD: ${{ secrets.PGS_PREVIEW_SUPER_ADMIN_PASSWORD }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v4
         with:
