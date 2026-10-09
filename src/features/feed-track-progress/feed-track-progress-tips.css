@@ -63,6 +63,19 @@
   outline-offset: 4px;
 }
 
+.ftp-tips__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.ftp-tips__empty {
+  margin: 0;
+  max-width: 320px;
+  color: #000;
+  font: 400 14px / 1.4 Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+}
+
 .ftp-tips__arrow img {
   display: block;
   width: 100%;
@@ -182,6 +195,11 @@
 
   .ftp-tips__title {
     font-size: 38.4px;
+  }
+
+  .ftp-tips__empty {
+    max-width: 560px;
+    font-size: 19.2px;
   }
 
   .ftp-tips__carousel {

@@ -11,9 +11,17 @@ import type { Metadata } from "next";
 import { LegacyPage } from "@/components/legacy-page";
 import { NoStudentContextPage } from "@/components/no-student-context-page";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
+import { StaffPreviewBanner } from "@/components/staff-preview-banner";
 import { FeedTrackProgressPremiumShell } from "@/features/feed-track-progress/feed-track-progress-premium-shell";
 import { FeedTrackProgressPreviewShell } from "@/features/feed-track-progress/feed-track-progress-preview-shell";
 import { loadProgressAlerts } from "@/features/feed-track-progress/load-progress-alerts";
+import { loadProgressCounselorNotes } from "@/features/feed-track-progress/load-progress-counselor-notes";
+import { loadProgressDraftMeter } from "@/features/feed-track-progress/load-progress-draft-meter";
+import { loadProgressReviews } from "@/features/feed-track-progress/load-progress-reviews";
+import {
+  loadProgressResources,
+  loadProgressTips
+} from "@/features/feed-track-progress/load-progress-tips-resources";
 import "@/features/shell/legacy-header-breakpoints.css";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
@@ -35,6 +43,17 @@ import { applySharedPublicSidebar } from "@/legacy/pages/public-sidebar";
 
 export const metadata: Metadata = { title: "Track Your Progress" };
 export const dynamic = "force-dynamic";
+
+function PreviewBanner({ state }: { state: AuthenticatedStudentExperience }) {
+  if (!state.preview) return null;
+  return (
+    <StaffPreviewBanner
+      mode="student"
+      actorName={state.preview.actorName}
+      targetName={state.preview.targetName}
+    />
+  );
+}
 
 async function AnonymousFamilyA() {
   const studentState = "anonymous" as const;
@@ -94,6 +113,7 @@ async function StandardFamilyA({
 
   return (
     <LegacyPage page="progress" studentState={studentState}>
+      <PreviewBanner state={state} />
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
       <FeedTrackProgressPreviewShell />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
@@ -110,7 +130,16 @@ async function PremiumFamilyB({
 
   const studentState = "authenticated_premium" as const;
   const helloAvatar = await studentExperienceAvatarUrl(state);
-  const { items: alertItems } = await loadProgressAlerts(studentSubjectId(state));
+  const studentId = studentSubjectId(state);
+  const [{ items: alertItems }, meter, reviews, notes, tips, resources] =
+    await Promise.all([
+      loadProgressAlerts(studentId),
+      loadProgressDraftMeter(studentId),
+      loadProgressReviews(studentId),
+      loadProgressCounselorNotes(studentId),
+      loadProgressTips(),
+      loadProgressResources()
+    ]);
 
   let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
   topHtml = applySharedPublicSidebar(topHtml, studentState, {
@@ -139,8 +168,19 @@ async function PremiumFamilyB({
 
   return (
     <LegacyPage page="progress" studentState={studentState}>
+      <PreviewBanner state={state} />
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
-      <FeedTrackProgressPremiumShell alertItems={alertItems} />
+      <FeedTrackProgressPremiumShell
+        alertItems={alertItems}
+        meterRows={meter.rows}
+        meterCompleted={meter.completed}
+        reviewRows={reviews.rows}
+        reviewCompleted={reviews.completed}
+        noteRows={notes.rows}
+        noteWindowSize={notes.windowSize}
+        tipSlides={tips.wired ? tips.slides : undefined}
+        resourceItems={resources.wired ? resources.items : undefined}
+      />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
     </LegacyPage>
   );

@@ -1,6 +1,10 @@
 /**
  * Premium Track Your Progress preview — locked chrome + Family B body.
  * B1: Important Alerts ← `student_alerts` (active, ≤3).
+ * B2: #draftMeter ← `student_document_requirements`.
+ * B3: #reviewQueue ← `review_queue_items` (student_visible).
+ * B4: #counselorNotes ← `counselor_notes` (student_visible).
+ * B7c: Useful Tips ← `progress_tips` · Resource Drop ← `progress_resources`.
  * Live `/feed_track_progress` Premium uses the same Family B shell.
  * Figma: desktop `17041:12619` · mobile `206:8075`.
  */
@@ -8,6 +12,13 @@ import { LegacyPage } from "@/components/legacy-page";
 import { applyStudentIdentity } from "@/components/recovered-student-legacy-page";
 import { FeedTrackProgressPremiumShell } from "@/features/feed-track-progress/feed-track-progress-premium-shell";
 import { loadProgressAlerts } from "@/features/feed-track-progress/load-progress-alerts";
+import { loadProgressCounselorNotes } from "@/features/feed-track-progress/load-progress-counselor-notes";
+import { loadProgressDraftMeter } from "@/features/feed-track-progress/load-progress-draft-meter";
+import { loadProgressReviews } from "@/features/feed-track-progress/load-progress-reviews";
+import {
+  loadProgressResources,
+  loadProgressTips
+} from "@/features/feed-track-progress/load-progress-tips-resources";
 import "@/features/shell/legacy-header-breakpoints.css";
 import { applyAuthenticatedShell } from "@/lib/account-shell";
 import { applyPremiumBusinessRule } from "@/lib/premium-business-rule";
@@ -39,7 +50,15 @@ export default async function FeedTrackProgressPremiumPreviewPage() {
 
   const studentId =
     state && state.kind !== "anonymous" ? studentSubjectId(state) : null;
-  const { items: alertItems } = await loadProgressAlerts(studentId);
+  const [{ items: alertItems }, meter, reviews, notes, tips, resources] =
+    await Promise.all([
+      loadProgressAlerts(studentId),
+      loadProgressDraftMeter(studentId),
+      loadProgressReviews(studentId),
+      loadProgressCounselorNotes(studentId),
+      loadProgressTips(),
+      loadProgressResources()
+    ]);
 
   let topHtml = [getPublicHeaderHtml(), countriesUkStripHtml()].join("");
   topHtml = applySharedPublicSidebar(topHtml, studentState, {
@@ -76,7 +95,17 @@ export default async function FeedTrackProgressPremiumPreviewPage() {
   return (
     <LegacyPage page="preview-feed-track-progress-premium" studentState="authenticated_premium">
       <div dangerouslySetInnerHTML={{ __html: topHtml }} />
-      <FeedTrackProgressPremiumShell alertItems={alertItems} />
+      <FeedTrackProgressPremiumShell
+        alertItems={alertItems}
+        meterRows={meter.wired ? meter.rows : undefined}
+        meterCompleted={meter.wired ? meter.completed : undefined}
+        reviewRows={reviews.wired ? reviews.rows : undefined}
+        reviewCompleted={reviews.wired ? reviews.completed : undefined}
+        noteRows={notes.wired ? notes.rows : undefined}
+        noteWindowSize={notes.wired ? notes.windowSize : undefined}
+        tipSlides={tips.wired ? tips.slides : undefined}
+        resourceItems={resources.wired ? resources.items : undefined}
+      />
       <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
     </LegacyPage>
   );
