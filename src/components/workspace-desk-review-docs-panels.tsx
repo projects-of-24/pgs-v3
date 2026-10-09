@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { ClipboardList, FileText, FolderOpen, Pencil, Send, Trash2 } from "lucide-react";
 import { requestStaffWorkspace } from "@/components/staff-workspace-request";
 import type { DocumentRequirement, PremiumWorkspace } from "@/lib/premium-workspace";
@@ -79,9 +79,11 @@ export function StaffWorkspaceReviewsPanel({
   const { message, setMessage, save } = useWorkspaceSave(studentId);
   const [editingReviewId, setEditingReviewId] = useState<string | null>(null);
   const [rows, setRows] = useState<ReviewRow[]>(() => [...reviews]);
-  useEffect(() => {
+  const [syncedReviews, setSyncedReviews] = useState(reviews);
+  if (reviews !== syncedReviews) {
+    setSyncedReviews(reviews);
     setRows([...reviews]);
-  }, [reviews]);
+  }
   const completedReviews = rows.filter((item) => item.status === "completed").length;
 
   async function postReview(event: FormEvent<HTMLFormElement>) {

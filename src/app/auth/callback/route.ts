@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { applicationOrigin, safeNext, safeStudentNext } from "@/lib/auth";
+import { applicationOrigin, safeStudentNext } from "@/lib/auth";
 import { createRecoveryGrant, hasOtpAuthenticationMethod, recoveryCookieName, recoveryCookieOptions } from "@/lib/auth-recovery";
 import { decideAutomaticStudentContextClaim, resolveActorContext } from "@/lib/actor-context";
 import {

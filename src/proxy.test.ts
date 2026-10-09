@@ -59,6 +59,7 @@ describe("canonical Operations product routing", () => {
     const location = new URL(response.headers.get("location")!);
     expect(location.pathname).toBe("/studio/login");
     expect(location.searchParams.get("redirect")).toBe("/admin/catalog");
+    expect(location.searchParams.get("surface")).toBe("studio");
   });
 
 
@@ -91,8 +92,8 @@ describe("canonical Operations product routing", () => {
       method: "POST",
       headers: { cookie: "pgs_staff_preview=forged" }
     });
-    const allowed = await proxy(exit);
-    expect(allowed.status).not.toBe(403);
+    const staffAllowed = await proxy(staffMutating);
+    expect(staffAllowed.status).not.toBe(403);
   });
 
   it("maps canonical Operations URLs to the existing admin implementation", async () => {

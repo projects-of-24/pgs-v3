@@ -16,7 +16,9 @@ export function OpsProfileWebcamCapture({ open, onClose, onCapture }: OpsProfile
   const [error, setError] = useState("");
   const [starting, setStarting] = useState(false);
 
-  onCloseRef.current = onClose;
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
 
   useEffect(() => {
     if (!open) return;
@@ -67,6 +69,7 @@ export function OpsProfileWebcamCapture({ open, onClose, onCapture }: OpsProfile
     }
     document.addEventListener("keydown", onKeyDown);
 
+    const videoEl = videoRef.current;
     return () => {
       cancelled = true;
       document.removeEventListener("keydown", onKeyDown);
@@ -75,8 +78,7 @@ export function OpsProfileWebcamCapture({ open, onClose, onCapture }: OpsProfile
       if (stream) {
         for (const track of stream.getTracks()) track.stop();
       }
-      const video = videoRef.current;
-      if (video) video.srcObject = null;
+      if (videoEl) videoEl.srcObject = null;
     };
   }, [open]);
 

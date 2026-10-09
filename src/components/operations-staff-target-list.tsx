@@ -34,11 +34,13 @@ function StatusControl({
   onSaved: (message: string) => void;
 }) {
   const [status, setStatus] = useState<StaffTargetStatus>(target.status);
+  const [syncedStatus, setSyncedStatus] = useState<StaffTargetStatus>(target.status);
   const [pending, setPending] = useState(false);
 
-  useEffect(() => {
+  if (target.status !== syncedStatus) {
+    setSyncedStatus(target.status);
     setStatus(target.status);
-  }, [target.status]);
+  }
 
   async function save() {
     if (status === target.status || pending) return;

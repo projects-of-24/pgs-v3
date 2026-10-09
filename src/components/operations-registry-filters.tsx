@@ -12,7 +12,6 @@ import {
   REGISTRY_STUDY_LEVELS,
   omitRegistryFilter,
   registryHref,
-  registryQueryHasSearchOrFilters,
   type NormalizedRegistryQuery,
   type RegistryMentorOption
 } from "@/lib/operations-student-registry";

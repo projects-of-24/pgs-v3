@@ -21,7 +21,7 @@ function studioRedirect(requested: unknown): string {
 }
 
 /** Workspace home only — ignore client redirect; never bounce into Ops. */
-function workspaceRedirect(_requested: unknown): string {
+function workspaceRedirect(): string {
   return "/workspace";
 }
 
@@ -64,7 +64,7 @@ export async function POST(request: Request) {
         await supabase.auth.signOut();
         return jsonError("Students are not allowed to sign in to Workspace. Use the student login at /login.", 403);
       }
-      return NextResponse.json({ ok: true, redirect: workspaceRedirect(body.redirect) });
+      return NextResponse.json({ ok: true, redirect: workspaceRedirect() });
     }
 
     if (surface === "student") {

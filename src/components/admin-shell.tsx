@@ -193,6 +193,30 @@ function isActivePath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+
+function NavDisclosure({
+  title: disclosureTitle,
+  icon: DisclosureIcon,
+  children: disclosureChildren,
+  defaultOpen = true
+}: {
+  title: string;
+  icon: NavIcon;
+  children: ReactNode;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details className="ops-nav-disclosure" open={defaultOpen}>
+      <summary className="ops-nav-disclosure-summary">
+        <DisclosureIcon aria-hidden="true" className="ops-nav-icon" />
+        <span className="ops-nav-label">{disclosureTitle}</span>
+        <ChevronDown aria-hidden="true" className="ops-nav-disclosure-chevron" />
+      </summary>
+      <div className="ops-nav-disclosure-body">{disclosureChildren}</div>
+    </details>
+  );
+}
+
 export function AdminShell({
   children,
   displayName,
@@ -351,28 +375,6 @@ export function AdminShell({
     );
   }
 
-  function NavDisclosure({
-    title: disclosureTitle,
-    icon: DisclosureIcon,
-    children: disclosureChildren,
-    defaultOpen = true
-  }: {
-    title: string;
-    icon: NavIcon;
-    children: ReactNode;
-    defaultOpen?: boolean;
-  }) {
-    return (
-      <details className="ops-nav-disclosure" open={defaultOpen}>
-        <summary className="ops-nav-disclosure-summary">
-          <DisclosureIcon aria-hidden="true" className="ops-nav-icon" />
-          <span className="ops-nav-label">{disclosureTitle}</span>
-          <ChevronDown aria-hidden="true" className="ops-nav-disclosure-chevron" />
-        </summary>
-        <div className="ops-nav-disclosure-body">{disclosureChildren}</div>
-      </details>
-    );
-  }
 
   const navigation = (
     <nav aria-label="Operations navigation" className="ops-system-navigation">

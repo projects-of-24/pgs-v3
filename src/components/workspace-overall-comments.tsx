@@ -4,7 +4,7 @@
  */
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { OverallCommentRow } from "@/features/workspace-overall-comments/load-overall-comments";
 import styles from "./workspace-overall-comments.module.css";
 
@@ -19,6 +19,12 @@ export function WorkspaceOverallComments({
 }) {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
+  const [listResetKey, setListResetKey] = useState(() => `${query}::${liveRows.length}`);
+  const nextListResetKey = `${query}::${liveRows.length}`;
+  if (nextListResetKey !== listResetKey) {
+    setListResetKey(nextListResetKey);
+    setPage(1);
+  }
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -39,9 +45,6 @@ export function WorkspaceOverallComments({
   const start = totalCount ? startIndex + 1 : 0;
   const end = totalCount ? Math.min(startIndex + PAGE_SIZE, totalCount) : 0;
 
-  useEffect(() => {
-    setPage(1);
-  }, [query, liveRows]);
 
   const pageNumbers = useMemo(() => {
     const maxButtons = 5;

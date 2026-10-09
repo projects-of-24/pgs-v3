@@ -7,7 +7,7 @@
  * C1–C13 section fields (COURSE2d-D4).
  * C7 logo/photo use the same marketing-public upload picker as the course Image field.
  */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import type { MediaOption } from "@/components/admin-crud-manager";
 import { marketingMediaUrl } from "@/lib/media-url";
@@ -125,14 +125,12 @@ function MediaImagePicker({
   mediaAssets: MediaOption[];
   onChange: (next: { url: string; alt: string }) => void;
 }) {
-  const [assets, setAssets] = useState(() => mediaAssets.filter(isImageAsset));
-  useEffect(() => {
-    setAssets((prev) => {
-      const fromProps = mediaAssets.filter(isImageAsset);
-      const extras = prev.filter((asset) => !fromProps.some((item) => item.id === asset.id));
-      return [...fromProps, ...extras];
-    });
-  }, [mediaAssets]);
+  const [extraAssets, setExtraAssets] = useState<MediaOption[]>([]);
+  const fromProps = mediaAssets.filter(isImageAsset);
+  const assets = [
+    ...fromProps,
+    ...extraAssets.filter((asset) => !fromProps.some((item) => item.id === asset.id))
+  ];
 
   const matchedId = assets.find((asset) => marketingMediaUrl(asset) === url.trim())?.id ?? "";
   const selectValue = matchedId || (url.trim() ? KEEP_SAVED : "");
@@ -201,7 +199,7 @@ function MediaImagePicker({
                 mime_type: file.type || "image/jpeg",
                 bucket: "marketing-public"
               };
-              setAssets((prev) => (prev.some((item) => item.id === uploaded.id) ? prev : [...prev, uploaded]));
+              setExtraAssets((prev) => (prev.some((item) => item.id === uploaded.id) ? prev : [...prev, uploaded]));
               onChange({
                 url: marketingMediaUrl(uploaded),
                 alt: alt.trim() || defaultAlt

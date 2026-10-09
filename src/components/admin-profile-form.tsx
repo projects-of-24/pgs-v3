@@ -33,12 +33,14 @@ export function AdminProfileForm({
   const [webcamOpen, setWebcamOpen] = useState(false);
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(avatarUrl);
+  const [syncedAvatarUrl, setSyncedAvatarUrl] = useState(avatarUrl);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => {
+  if (avatarUrl !== syncedAvatarUrl) {
+    setSyncedAvatarUrl(avatarUrl);
     setPreviewUrl(avatarUrl);
-  }, [avatarUrl]);
+  }
 
   useEffect(() => {
     if (!pickerOpen) return;
