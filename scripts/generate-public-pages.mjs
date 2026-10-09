@@ -20,7 +20,7 @@ const pages = [
   ["countriesothers", "countriesOthersHtml"],
   ["countriesuk", "countriesUkHtml"],
   ["cvreadyprogram", "cvReadyProgramHtml"],
-  ["error-404", "error404Html"],
+  // error-404 retired — modular Figma body (2026-09-22); do not regenerate Hostinger HTML
   ["event-session", "eventSessionHtml"],
   ["explorecountries", "exploreCountriesHtml"],
   ["finance", "financeHtml"],
@@ -38,7 +38,7 @@ const pages = [
   ["simplehome", "simpleHomeHtml"],
   ["signup", "signupHtml"],
   ["studentresources", "studentResourcesHtml"],
-  ["unitieup", "uniTieUpHtml"],
+  // unitieup retired — modular Figma body (2026-09-22); do not regenerate Hostinger HTML
   ["usmlerotation", "usmleRotationHtml"],
   ["reset-password", "resetPasswordHtml"],
   ["change-password", "changePasswordHtml"]

@@ -1,0 +1,1771 @@
+/* PASS 7a · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 11677-16371 range, 11. Page title · 12. Layout · 13. Elements (accordion … background video))
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:11710 — no selector match in site (PASS 7a audit) */
+.page-title-double-large h1 {
+  font-size: 3.6rem;
+  line-height: 3.3rem;
+}
+
+/* parked from style.css:11715 — no selector match in site (PASS 7a audit) */
+.page-title-double-large h2 {
+  font-size: 17px;
+  line-height: 26px;
+}
+
+/* parked from style.css:11720 — no selector match in site (PASS 7a audit) */
+.page-title-extra-large h1 {
+  font-size: 3.3rem;
+  line-height: 3.3rem;
+}
+
+/* parked from style.css:11725 — no selector match in site (PASS 7a audit) */
+.page-title-extra-large h2 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+/* parked from style.css:11730 — no selector match in site (PASS 7a audit) */
+.page-title-large h1 {
+  font-size: 2.8rem;
+  line-height: 3rem;
+}
+
+/* parked from style.css:11735 — no selector match in site (PASS 7a audit) */
+.page-title-large h2 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* parked from style.css:11740 — no selector match in site (PASS 7a audit) */
+.page-title-medium h1 {
+  font-size: 2rem;
+  line-height: 2.2rem;
+}
+
+/* parked from style.css:11745 — no selector match in site (PASS 7a audit) */
+.page-title-medium h2 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* parked from style.css:11750 — no selector match in site (PASS 7a audit) */
+.page-title-small h1 {
+  font-size: 1.625rem;
+  line-height: 1.875rem;
+}
+
+/* parked from style.css:11755 — no selector match in site (PASS 7a audit) */
+.page-title-small h2 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* parked from style.css:11770 — no selector match in site (PASS 7a audit) */
+.page-title-button-style.page-title-button-style {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* parked from style.css:11775 — no selector match in site (PASS 7a audit) */
+.page-title-button-style h1 {
+  padding: 13px 30px;
+  display: inline-block;
+}
+
+/* parked from style.css:11780 — no selector match in site (PASS 7a audit) */
+.page-title-mini-version h1 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* parked from style.css:11786 — no selector match in site (PASS 7a audit) */
+.down-section {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* parked from style.css:11794 — no selector match in site (PASS 7a audit) */
+.down-section a {
+  display: inline-block;
+}
+
+/* parked from style.css:11798 — no selector match in site (PASS 7a audit) */
+.down-section.down-bottom {
+  bottom: 0;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+/* parked from style.css:11805 — no selector match in site (PASS 7a audit) */
+.down-section-line .section-line {
+  position: relative;
+}
+
+/* parked from style.css:11809 — no selector match in site (PASS 7a audit) */
+.down-section-line .section-line:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  height: 0;
+  width: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background-color: var(--base-color);
+}
+
+/* parked from style.css:11821 — no selector match in site (PASS 7a audit) */
+.down-section-line:hover .section-line:before {
+  height: 100%;
+}
+
+/* parked from style.css:11829 — no selector match in site (PASS 7a audit) */
+.sidebar-list li {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
+  line-height: 18px;
+}
+
+/* parked from style.css:11837 — no selector match in site (PASS 7a audit) */
+.sidebar-list li a {
+  display: inline-block;
+  text-align: left;
+}
+
+/* parked from style.css:11842 — no selector match in site (PASS 7a audit) */
+.sidebar-list li a:hover {
+  color: var(--base-color) !important;
+}
+
+/* parked from style.css:11846 — no selector match in site (PASS 7a audit) */
+.sidebar-list li .item-qty {
+  font-size: 14px;
+  position: absolute;
+  top: 1px;
+  right: 0;
+  text-align: right;
+}
+
+/* parked from style.css:11854 — no selector match in site (PASS 7a audit) */
+.sidebar-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:11858 — no selector match in site (PASS 7a audit) */
+.latest-post-sidebar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* parked from style.css:11864 — no selector match in site (PASS 7a audit) */
+.latest-post-sidebar li {
+  margin-bottom: 25px;
+}
+
+/* parked from style.css:11868 — no selector match in site (PASS 7a audit) */
+.latest-post-sidebar li figure {
+  height: 65px;
+  width: 80px;
+  margin: 0;
+}
+
+/* parked from style.css:11874 — no selector match in site (PASS 7a audit) */
+.latest-post-sidebar li .media-body {
+  line-height: normal;
+  padding-left: 30px;
+  position: relative;
+  top: -3px;
+}
+
+/* parked from style.css:11881 — no selector match in site (PASS 7a audit) */
+.latest-post-sidebar li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:11885 — no selector match in site (PASS 7a audit) */
+.popular-post-sidebar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* parked from style.css:11891 — no selector match in site (PASS 7a audit) */
+.popular-post-sidebar li {
+  margin-bottom: 25px;
+}
+
+/* parked from style.css:11895 — no selector match in site (PASS 7a audit) */
+.popular-post-sidebar li figure {
+  height: 100px;
+  width: 100px;
+  margin: 0;
+}
+
+/* parked from style.css:11901 — no selector match in site (PASS 7a audit) */
+.popular-post-sidebar li .media-body {
+  line-height: normal;
+  padding-left: 30px;
+  position: relative;
+}
+
+/* parked from style.css:11907 — no selector match in site (PASS 7a audit) */
+.popular-post-sidebar li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:11911 — no selector match in site (PASS 7a audit) */
+.category-list-sidebar {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* parked from style.css:11917 — no selector match in site (PASS 7a audit) */
+.category-list-sidebar li {
+  margin-bottom: 15px;
+}
+
+/* parked from style.css:11930 — no selector match in site (PASS 7a audit) */
+.category-list-sidebar li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:11941 — no selector match in site (PASS 7a audit) */
+.post-sidebar.blog-side-image li {
+  margin-bottom: 35px;
+  width: 100%;
+}
+
+/* parked from style.css:11946 — no selector match in site (PASS 7a audit) */
+.post-sidebar.blog-side-image li .blog-box .blog-image {
+  min-height: 1px;
+}
+
+/* parked from style.css:11950 — no selector match in site (PASS 7a audit) */
+.post-sidebar.blog-side-image li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:11954 — no selector match in site (PASS 7a audit) */
+.tag-cloud a {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 6px 10px 0;
+  padding: 7px 18px;
+  border-radius: 4px;
+  border: 1px solid var(--extra-medium-gray);
+}
+
+/* parked from style.css:12656 — no selector match in site (PASS 7a audit) */
+.blockquote-style-04 .blockquote-img img {
+  margin-top: -114px;
+}
+
+/* parked from style.css:12660 — no selector match in site (PASS 7a audit) */
+.blockquote-style-04 .blockquote-content {
+  padding: 5% 0 5% 26%;
+  margin-left: -8vw;
+  -webkit-border-radius: 50px 50px 125px 50px;
+  border-radius: 50px 50px 125px 50px;
+}
+
+/* parked from style.css:12668 — no selector match in site (PASS 7a audit) */
+@media only screen and (min-width: 1921px) {
+  .blockquote-style-04 .blockquote-content {
+    margin-left: -6vw;
+  }
+}
+
+/* parked from style.css:13873 — no selector match in site (PASS 7a audit) */
+.btn-gradient-purple-pink {
+  background-image: linear-gradient(to right, #8b14b1, #d53d6e, #8b14b1);
+  background-size: 200% auto;
+  color: var(--white);
+}
+
+/* parked from style.css:13879 — no selector match in site (PASS 7a audit) */
+.btn-gradient-fast-pink-light-yellow {
+  background-image: linear-gradient(to right, #f7567f, #ffba83, #f7567f);
+  background-size: 200% auto;
+  color: var(--white);
+}
+
+/* parked from style.css:13885 — no selector match in site (PASS 7a audit) */
+.btn-gradient-pink-orange {
+  background-image: linear-gradient(to right, #de347f, #ef5f43, #de347f);
+  background-size: 200% auto;
+  color: var(--white);
+}
+
+/* parked from style.css:13891 — no selector match in site (PASS 7a audit) */
+.btn-gradient-fast-blue-purple {
+  background-image: linear-gradient(to right, #2a46f4, #bf25ff, #2a46f4);
+  background-size: 200% auto;
+  color: var(--white);
+}
+
+/* parked from style.css:13897 — no selector match in site (PASS 7a audit) */
+.btn-gradient-light-pink-light-purple {
+  background-image: linear-gradient(to right, #ed579b, #bc63e8, #ed579b);
+  background-size: 200% auto;
+  color: var(--white);
+}
+
+/* parked from style.css:13903 — no selector match in site (PASS 7a audit) */
+.btn-gradient-sky-blue-pink {
+  background-image: linear-gradient(to right, #5758df, #f77991, #5758df);
+  background-size: 200% auto;
+  color: var(--white);
+}
+
+/* parked from style.css:13923 — no selector match in site (PASS 7a audit) */
+.categories-btn {
+  padding: 4px 12px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-left: 5px;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* parked from style.css:13936 — no selector match in site (PASS 7a audit) */
+.clients-style-01 .client-image:hover>img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}
+
+/* parked from style.css:13963 — no selector match in site (PASS 7a audit) */
+.clients-style-03 .client-box {
+  -webkit-transition: all 350ms cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 350ms cubic-bezier(0.12, 0, 0.39, 0);
+  will-change: transform;
+}
+
+/* parked from style.css:13969 — no selector match in site (PASS 7a audit) */
+.clients-style-03 .client-box:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:13975 — no selector match in site (PASS 7a audit) */
+.clients-style-04 .client-box:hover {
+  opacity: 0.5;
+}
+
+/* parked from style.css:13980 — no selector match in site (PASS 7a audit) */
+.clients-style-05 .client-box {
+  position: relative;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:13986 — no selector match in site (PASS 7a audit) */
+.clients-style-05 .client-box img {
+  z-index: 2;
+  position: relative;
+}
+
+/* parked from style.css:13991 — no selector match in site (PASS 7a audit) */
+.clients-style-05 .client-box:hover {
+  opacity: 0.5;
+  -webkit-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+/* parked from style.css:13998 — no selector match in site (PASS 7a audit) */
+.clients-style-06 .client-box {
+  -webkit-transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:14003 — no selector match in site (PASS 7a audit) */
+.clients-style-06 .client-box img {
+  max-width: inherit;
+}
+
+/* parked from style.css:14007 — no selector match in site (PASS 7a audit) */
+.clients-style-06:hover .client-box {
+  opacity: 0.4;
+}
+
+/* parked from style.css:14011 — no selector match in site (PASS 7a audit) */
+.clients-style-06:hover .client-box:hover {
+  opacity: 1;
+}
+
+/* parked from style.css:14016 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* parked from style.css:14024 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info .client-content {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  -webkit-transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow: hidden;
+}
+
+/* parked from style.css:14033 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info .client-content .client-link {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  left: 0;
+  right: 0;
+}
+
+/* parked from style.css:14043 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info:hover .client-content {
+  margin: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0;
+}
+
+/* parked from style.css:14050 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info:hover .client-content .client-icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* parked from style.css:14055 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info:hover .client-content .client-link {
+  opacity: 1;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+/* parked from style.css:14061 — no selector match in site (PASS 7a audit) */
+.clients-style-07 .client-box .client-info:hover .client-content .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:14067 — no selector match in site (PASS 7a audit) */
+.clients-style-08 .client-box {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+/* parked from style.css:14073 — no selector match in site (PASS 7a audit) */
+.clients-style-08 .client-box:hover {
+  opacity: 1;
+}
+
+/* parked from style.css:14078 — no selector match in site (PASS 7a audit) */
+.show-grid [class^=col-] {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+/* parked from style.css:14088 — no selector match in site (PASS 7a audit) */
+.select-style select {
+  background-image: url("../images/contact-form-down-arrow.jpg");
+  background-repeat: no-repeat;
+  background-position: top 25px right 30px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background-color: transparent;
+}
+
+/* parked from style.css:14097 — no selector match in site (PASS 7a audit) */
+.terms-condition-box label {
+  display: block;
+}
+
+/* parked from style.css:14101 — no selector match in site (PASS 7a audit) */
+.terms-condition-box input[type=checkbox] {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 4px;
+  left: 0;
+}
+
+/* parked from style.css:14153 — no selector match in site (PASS 7a audit) */
+.contact-form-style-01 input,
+.contact-form-style-01 textarea,
+.contact-form-style-01 select {
+  padding-left: 55px;
+}
+
+/* parked from style.css:14222 — no selector match in site (PASS 7a audit) */
+.contact-form-style-06 input,
+.contact-form-style-06 textarea {
+  color: var(--white);
+}
+
+/* parked from style.css:14227 — no selector match in site (PASS 7a audit) */
+.contact-form-style-06 input:focus,
+.contact-form-style-06 textarea:focus {
+  color: var(--white);
+}
+
+/* parked from style.css:14232 — no selector match in site (PASS 7a audit) */
+.contact-form-style-06 input::placeholder,
+.contact-form-style-06 textarea::placeholder {
+  color: var(--light-medium-gray);
+}
+
+/* parked from style.css:14237 — no selector match in site (PASS 7a audit) */
+.contact-form-style-06 .select-style select {
+  color: var(--light-medium-gray);
+  background-image: url("../images/contact-form-arrow-white.png");
+  background-position: top 25px right 20px;
+  padding-right: 45px;
+}
+
+/* parked from style.css:14244 — no selector match in site (PASS 7a audit) */
+.contact-form-style-06 .select-style select option {
+  color: var(--dark-gray);
+}
+
+/* parked from style.css:14249 — no selector match in site (PASS 7a audit) */
+.contact-form-style-07 input,
+.contact-form-style-07 textarea {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid;
+  background: transparent;
+}
+
+/* parked from style.css:14257 — no selector match in site (PASS 7a audit) */
+.contact-form-style-07 select {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid;
+}
+
+/* parked from style.css:14271 — no selector match in site (PASS 7a audit) */
+.contact-form-style-07 textarea {
+  resize: none;
+}
+
+/* parked from style.css:14584 — no selector match in site (PASS 7a audit) */
+.divider-style-01 .divider-shadow:after,
+.divider-style-01 .divider-shadow:before {
+  flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  content: "";
+  height: 10px;
+  margin-top: 7px;
+  box-shadow: 0 6px 10px -10px #8c8b8b inset;
+}
+
+/* parked from style.css:14595 — no selector match in site (PASS 7a audit) */
+.divider-style-01 .divider-border:after,
+.divider-style-01 .divider-border:before {
+  flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  content: "";
+  height: 10px;
+  margin-top: 7px;
+  border-top: 1px solid #E4E4E4;
+}
+
+/* parked from style.css:14607 — no selector match in site (PASS 7a audit) */
+.divider-style-02 .divider-dot {
+  position: relative;
+}
+
+/* parked from style.css:14611 — no selector match in site (PASS 7a audit) */
+.divider-style-02 .divider-dot span {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -13px;
+  width: 25px;
+  height: 25px;
+  box-shadow: inset 0 0 0 6px white;
+}
+
+/* parked from style.css:14623 — no selector match in site (PASS 7a audit) */
+.divider-style-02 .divider-dot:after {
+  top: 0;
+  content: "";
+  height: 100%;
+  width: 1px;
+  flex: 1 1 auto;
+  -webkit-box-flex: 1 1 1px;
+  -ms-flex: 1 1 1px;
+  border-left: 1px solid #E4E4E4;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+/* parked from style.css:14639 — no selector match in site (PASS 7a audit) */
+.divider-style-03.divider-style-03-01 {
+  border-top: 1px solid;
+  width: 100%;
+}
+
+/* parked from style.css:14644 — no selector match in site (PASS 7a audit) */
+.divider-style-03.divider-style-03-02 {
+  border-top: 1px dashed;
+}
+
+/* parked from style.css:14648 — no selector match in site (PASS 7a audit) */
+.divider-style-03.divider-style-03-03 {
+  border-top: 4px double;
+}
+
+/* parked from style.css:14652 — no selector match in site (PASS 7a audit) */
+.divider-style-03.divider-style-03-04 {
+  border-top: 2px dashed;
+}
+
+/* parked from style.css:14656 — no selector match in site (PASS 7a audit) */
+.divider-style-03.divider-style-03-05 {
+  border-top: 2px dotted;
+}
+
+/* parked from style.css:14661 — no selector match in site (PASS 7a audit) */
+.first-letter {
+  float: left;
+  font-size: 4.5rem;
+  line-height: 4.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 25px 0 0;
+}
+
+/* parked from style.css:14671 — no selector match in site (PASS 7a audit) */
+.first-letter-block {
+  font-size: 4.5rem;
+  line-height: 100px;
+  font-weight: 600;
+  width: 100px;
+  height: 100px;
+  margin: 8px 35px 0 0;
+}
+
+/* parked from style.css:14681 — no selector match in site (PASS 7a audit) */
+.first-letter-round {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 3.5rem;
+}
+
+/* parked from style.css:14688 — no selector match in site (PASS 7a audit) */
+.first-letter-big {
+  float: left;
+  font-size: 9rem;
+  line-height: 9rem;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+/* parked from style.css:14698 — no selector match in site (PASS 7a audit) */
+.first-letter-small {
+  font-size: 3.438rem;
+  line-height: 4rem;
+  font-weight: 600;
+  width: 65px;
+  height: 65px;
+  margin: 8px 30px 0 0;
+}
+
+/* parked from style.css:14708 — no selector match in site (PASS 7a audit) */
+.time-table {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row nowrap;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  -webkit-box-flex: 1;
+  flex: 1 0;
+}
+
+/* parked from style.css:14720 — no selector match in site (PASS 7a audit) */
+.time-table+.time-table .time-table-box {
+  border-top-width: 0 !important;
+}
+
+/* parked from style.css:14724 — no selector match in site (PASS 7a audit) */
+.time-table-box {
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  text-align: center;
+  flex-basis: 12.5%;
+  padding: 30px 10px;
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+/* parked from style.css:14741 — no selector match in site (PASS 7a audit) */
+.time-table-box .inner-box {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-flex: 1;
+  flex: 1 auto;
+  z-index: 9;
+}
+
+/* parked from style.css:14754 — no selector match in site (PASS 7a audit) */
+.time-table-box .inner-box>div {
+  line-height: initial;
+  margin-top: 7px;
+}
+
+/* parked from style.css:14759 — no selector match in site (PASS 7a audit) */
+.time-table-box+.time-table-box {
+  border-left-width: 0 !important;
+}
+
+/* parked from style.css:14763 — no selector match in site (PASS 7a audit) */
+.time-table-box+.time-table-box.name-box:before {
+  position: absolute;
+  content: "";
+  transition: opacity 0.3s;
+  opacity: 0;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--base-color);
+}
+
+/* parked from style.css:14776 — no selector match in site (PASS 7a audit) */
+.time-table-box+.time-table-box.name-box:hover .inner-box span,
+.time-table-box+.time-table-box.name-box:hover .inner-box div {
+  color: var(--white);
+}
+
+/* parked from style.css:14781 — no selector match in site (PASS 7a audit) */
+.time-table-box+.time-table-box.name-box:hover:before {
+  opacity: 1;
+}
+
+/* parked from style.css:14785 — no selector match in site (PASS 7a audit) */
+.time-table-box+.time-table-box.name-box:hover .hover-detail {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* parked from style.css:14795 — no selector match in site (PASS 7a audit) */
+.time-table-box .hover-detail {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  padding: 25px 30px;
+  border-radius: 6px;
+  width: 250px;
+  z-index: 111;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-box-shadow: 0 0 60px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.14);
+  -webkit-transition: 0.05s;
+  transition: 0.05s;
+}
+
+/* parked from style.css:14814 — no selector match in site (PASS 7a audit) */
+.time-table-box .hover-detail:after {
+  content: "";
+  top: -21px;
+  left: 50%;
+  height: 0;
+  width: 0;
+  z-index: 9;
+  margin-left: -14px;
+  position: absolute;
+  pointer-events: none;
+  border: solid transparent;
+  border-width: 11px;
+  border-bottom-color: var(--white);
+}
+
+/* parked from style.css:14829 — no selector match in site (PASS 7a audit) */
+.time-table-box .hover-detail.hover-detail-left {
+  left: auto;
+  right: 0;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+/* parked from style.css:14837 — no selector match in site (PASS 7a audit) */
+.time-table-box .hover-detail.hover-detail-left:after {
+  right: 60px;
+  left: auto;
+}
+
+/* parked from style.css:14842 — no selector match in site (PASS 7a audit) */
+.time-table-box .hover-detail.hover-detail-top {
+  top: auto;
+  bottom: 100%;
+}
+
+/* parked from style.css:14847 — no selector match in site (PASS 7a audit) */
+.time-table-box .hover-detail.hover-detail-top:after {
+  top: auto;
+  bottom: -21px;
+  border-top-color: var(--white);
+  border-bottom-color: transparent;
+}
+
+/* parked from style.css:14854 — no selector match in site (PASS 7a audit) */
+.name-box span {
+  line-height: 26px;
+  transition: 0.2s;
+}
+
+/* parked from style.css:14859 — no selector match in site (PASS 7a audit) */
+.name-box div {
+  line-height: 26px;
+  transition: 0.2s;
+}
+
+/* parked from style.css:14911 — no selector match in site (PASS 7a audit) */
+.image-mask {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+/* parked from style.css:14917 — no selector match in site (PASS 7a audit) */
+.fancy-text-box-style-01 {
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  overflow: hidden;
+}
+
+/* parked from style.css:14923 — no selector match in site (PASS 7a audit) */
+.fancy-text-box-style-01 .text-box-wrapper .text-box,
+.fancy-text-box-style-01 .text-box-wrapper .text-box-hover {
+  display: block;
+  width: 100%;
+  -webkit-transition: all 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:14931 — no selector match in site (PASS 7a audit) */
+.fancy-text-box-style-01 .text-box-wrapper .text-box-hover {
+  opacity: 0;
+  position: absolute;
+}
+
+/* parked from style.css:14936 — no selector match in site (PASS 7a audit) */
+.fancy-text-box-style-01 .text-box-wrapper:hover .text-box {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: all 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:14945 — no selector match in site (PASS 7a audit) */
+.fancy-text-box-style-01 .text-box-wrapper:hover .text-box-hover {
+  opacity: 1;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: all 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:14953 — no selector match in site (PASS 7a audit) */
+.fancy-text-box-style-01:last-child {
+  border-right: 0;
+}
+
+/* parked from style.css:15098 — no selector match in site (PASS 7a audit) */
+.gm-style .gm-style-iw-c {
+  padding: 0 !important;
+  border-radius: 0;
+  max-width: 230px !important;
+  -webkit-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* parked from style.css:15106 — no selector match in site (PASS 7a audit) */
+.gm-style .gm-style-iw-d {
+  overflow: auto !important;
+}
+
+/* parked from style.css:15110 — no selector match in site (PASS 7a audit) */
+.gm-style .gm-style-iw-t::after {
+  background: var(--dark-gray);
+  -webkit-box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* parked from style.css:15116 — no selector match in site (PASS 7a audit) */
+.gm-ui-hover-effect {
+  opacity: 0.8;
+  top: -2px !important;
+  right: 2px !important;
+  width: 25px !important;
+  display: none !important;
+  height: 25px !important;
+}
+
+/* parked from style.css:15125 — no selector match in site (PASS 7a audit) */
+.gm-ui-hover-effect img {
+  width: 17px !important;
+  height: 17px !important;
+  margin: 6px !important;
+}
+
+/* parked from style.css:15149 — no selector match in site (PASS 7a audit) */
+.gmnoprint .gm-style-mtc,
+.gmnoprint .gm-svpc {
+  display: none;
+}
+
+/* parked from style.css:15154 — no selector match in site (PASS 7a audit) */
+.gm-style a[title] {
+  display: none !important;
+}
+
+/* parked from style.css:15158 — no selector match in site (PASS 7a audit) */
+.gmnoprint .gm-style-cc,
+.gmnoprint.gm-style-cc,
+.gm-style-cc,
+.gmnoscreen {
+  display: none !important;
+}
+
+/* parked from style.css:15165 — no selector match in site (PASS 7a audit) */
+.gm-style .gm-style-iw-tc::after {
+  background: var(--dark-gray);
+}
+
+/* parked from style.css:15169 — no selector match in site (PASS 7a audit) */
+@media screen {
+
+  .gm-style .gmnoscreen,
+  .gmnoscreen {
+    display: none;
+  }
+}
+
+/* parked from style.css:15178 — no selector match in site (PASS 7a audit) */
+.text-highlight {
+  position: relative;
+  z-index: 1;
+}
+
+/* parked from style.css:15183 — no selector match in site (PASS 7a audit) */
+.text-highlight span {
+  display: inline-block;
+  left: -3px;
+  position: absolute;
+  z-index: -1;
+  width: calc(100% + 6px);
+}
+
+/* parked from style.css:15192 — no selector match in site (PASS 7a audit) */
+.separator-animation {
+  width: 0 !important;
+  -webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* parked from style.css:15476 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-03 * {
+  word-break: initial;
+}
+
+/* parked from style.css:15486 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-07 .hover-box:hover .feature-box-title {
+  left: -25%;
+}
+
+/* parked from style.css:15490 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-07 .hover-box:hover .feature-box-title.text-outline-color-dark-gray {
+  -webkit-text-stroke-color: var(--base-color);
+  opacity: 1;
+}
+
+/* parked from style.css:15495 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-07 .feature-box-title {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  word-break: normal;
+  width: 100%;
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:15552 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-11 {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+/* parked from style.css:15559 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-11 .text-box {
+  opacity: 1;
+}
+
+/* parked from style.css:15563 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-11 .text-box-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+/* parked from style.css:15572 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-11:hover {
+  -webkit-transform: translateY(-15px);
+  transform: translateY(-15px);
+}
+
+/* parked from style.css:15577 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-11:hover .text-box-hover {
+  opacity: 1;
+}
+
+/* parked from style.css:15581 — no selector match in site (PASS 7a audit) */
+.icon-with-text-style-11:hover .text-box {
+  opacity: 0;
+}
+
+/* parked from style.css:15688 — no selector match in site (PASS 7a audit) */
+.instafeed-grid {
+  list-style: none;
+  text-align: center;
+}
+
+/* parked from style.css:15693 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+  border-radius: 4px;
+}
+
+/* parked from style.css:15700 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure a .insta-icon {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background: rgba(35, 35, 35, 0.7);
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* parked from style.css:15713 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure a .insta-icon i {
+  margin-right: 5px;
+  margin-left: 5px;
+  position: relative;
+  display: block;
+  font-size: 26px;
+  color: var(--white);
+  top: 50%;
+  -webkit-transform: translateY(-50%) scale(1.5, 1.5);
+  transform: translateY(-50%) scale(1.5, 1.5);
+  -webkit-transition: all 200ms cubic-bezier(0.37, 0.8, 0.63, 1);
+  transition: all 200ms cubic-bezier(0.37, 0.8, 0.63, 1);
+}
+
+/* parked from style.css:15727 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure a .insta-video {
+  display: none;
+}
+
+/* parked from style.css:15731 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure a video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* parked from style.css:15737 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure a video[data-class=video] {
+  display: block;
+}
+
+/* parked from style.css:15741 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure a [data-class=video]+.insta-image {
+  display: none;
+}
+
+/* parked from style.css:15745 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure:hover a .insta-icon {
+  opacity: 1;
+}
+
+/* parked from style.css:15749 — no selector match in site (PASS 7a audit) */
+.instafeed-grid figure:hover a .insta-icon i {
+  -webkit-transform: translateY(-50%) scale(1, 1);
+  transform: translateY(-50%) scale(1, 1);
+}
+
+/* parked from style.css:15754 — no selector match in site (PASS 7a audit) */
+.instagram-follow-api .instagram-button {
+  z-index: 1;
+  white-space: nowrap;
+  padding: 12px 32px;
+  box-shadow: 0 0 35px rgba(23, 23, 23, 0.4);
+}
+
+/* parked from style.css:15762 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-01 figure {
+  -webkit-transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:15773 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-01 figure figcaption {
+  position: absolute;
+  bottom: 0;
+}
+
+/* parked from style.css:15778 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-01 figure:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+/* parked from style.css:15783 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-01 figure:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:15795 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-01 figure:hover .box-overlay {
+  opacity: 0.5;
+}
+
+/* parked from style.css:15822 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-03 figure {
+  position: relative;
+}
+
+/* parked from style.css:15826 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-03 figure img {
+  -webkit-transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:15831 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-03 figure figcaption {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* parked from style.css:15838 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-03 figure:hover img {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+}
+
+/* parked from style.css:15844 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure {
+  -webkit-transition: all 700ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 700ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:15849 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure * {
+  -webkit-transition: all 700ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 700ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:15854 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure figcaption {
+  position: absolute;
+  bottom: 0;
+}
+
+/* parked from style.css:15859 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure figcaption .features-content {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(20px);
+  transform: translateY(20px);
+  -webkit-transition: all 500ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 500ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:15873 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure figcaption .features-content .box-overlay {
+  height: 0%;
+  -webkit-transition: all 400ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 400ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:15879 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure figcaption .box-button {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  bottom: 0;
+  -webkit-transition: all 500ms cubic-bezier(0.5, 1, 0.89, 1);
+  transition: all 500ms cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+/* parked from style.css:15888 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+/* parked from style.css:15893 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure:hover figcaption .features-content {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* parked from style.css:15900 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure:hover figcaption .box-overlay {
+  height: 100%;
+}
+
+/* parked from style.css:15904 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-04 figure:hover figcaption .box-button {
+  opacity: 0;
+  visibility: hidden;
+  position: relative;
+  bottom: -70px;
+}
+
+/* parked from style.css:15912 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-05 figure img {
+  -webkit-transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+  transition: all 700ms cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+/* parked from style.css:15926 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-05 figure figcaption .content-arrow {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  top: 50%;
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+}
+
+/* parked from style.css:15935 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-05 figure:hover img {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+}
+
+/* parked from style.css:15940 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-05 figure:hover figcaption img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:15945 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-05 figure:hover figcaption .content-arrow {
+  opacity: 1;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* parked from style.css:15968 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06 {
+  position: relative;
+  overflow: hidden;
+}
+
+/* parked from style.css:15973 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06 .banners-icon {
+  z-index: 9;
+  -webkit-transition: 350ms cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 350ms cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:15979 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06 img {
+  -webkit-transition: 1s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 1s cubic-bezier(0.12, 0, 0.39, 0);
+  width: 100%;
+}
+
+/* parked from style.css:15985 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06 .interactive-banners-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  transform: translateY(calc(100% - 155px));
+  -webkit-transition: 550ms cubic-bezier(0.12, 0, 0.1, 0);
+  transition: 550ms cubic-bezier(0.12, 0, 0.1, 0);
+}
+
+/* parked from style.css:15996 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06 .interactive-banners-content .interactive-banners-content-text {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 350ms cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 350ms cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16003 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06 .box-overlay {
+  height: 25%;
+  bottom: 0;
+  top: auto;
+  visibility: visible;
+  opacity: 0;
+  -webkit-transition: 350ms cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 350ms cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16013 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06:hover img {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+  -webkit-transition: 3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16020 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06:hover .icon-hover-base-color {
+  color: var(--base-color) !important;
+}
+
+/* parked from style.css:16024 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06:hover .interactive-banners-content {
+  transform: translateY(0);
+}
+
+/* parked from style.css:16028 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06:hover .interactive-banners-content .interactive-banners-content-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:16033 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-06:hover .box-overlay {
+  height: 100%;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* parked from style.css:16040 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure {
+  position: relative;
+  overflow: hidden;
+}
+
+/* parked from style.css:16045 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure>img {
+  -webkit-transition: 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.6s cubic-bezier(0.12, 0, 0.39, 0);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:16052 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure .overlay-bg {
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16057 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* parked from style.css:16066 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure .hover-hide-content {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+/* parked from style.css:16075 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure .hover-show-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 50px;
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* parked from style.css:16086 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure:hover>img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:16091 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure:hover .overlay-bg {
+  opacity: 0.7;
+}
+
+/* parked from style.css:16095 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure:hover .hover-hide-content {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+/* parked from style.css:16102 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-07 figure:hover .hover-show-content {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* parked from style.css:16110 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-08 figure:hover img {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+
+/* parked from style.css:16117 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-08 figure:hover .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:16122 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-08 figure:hover figcaption .circle-box {
+  background-color: var(--white) !important;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1.5);
+  transition: all 500ms cubic-bezier(0.61, 1, 0.88, 1.5);
+}
+
+/* parked from style.css:16131 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 img {
+  -webkit-transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* parked from style.css:16136 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content {
+  position: absolute;
+  top: 0;
+}
+
+/* parked from style.css:16141 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content .content-title {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  opacity: 0.6;
+  visibility: visible;
+  will-change: transform;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16155 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content .content-title-hover {
+  position: absolute;
+  width: auto;
+  left: 0;
+  bottom: 0;
+  visibility: hidden;
+  will-change: transform;
+  -webkit-transform: translateY(20px);
+  transform: translateY(20px);
+  -webkit-transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.4s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16168 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content .content-arrow {
+  will-change: transform;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  top: 50%;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -webkit-transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: all 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* parked from style.css:16188 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content .hover-label-icon i {
+  opacity: 0;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  -webkit-transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+  transition: 0.3s cubic-bezier(0.12, 0, 0.39, 0);
+}
+
+/* parked from style.css:16197 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content:hover .content-arrow {
+  opacity: 1;
+  -webkit-transform: translateY(-42%);
+  transform: translateY(-42%);
+}
+
+/* parked from style.css:16203 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content:hover .content-title {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+
+/* parked from style.css:16210 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content:hover .content-title-hover {
+  visibility: visible;
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+}
+
+/* parked from style.css:16216 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content:hover .box-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* parked from style.css:16226 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09 .image-content:hover .hover-label-icon i {
+  opacity: 1;
+  top: 0;
+}
+
+/* parked from style.css:16231 — no selector match in site (PASS 7a audit) */
+.interactive-banner-style-09:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* parked from style.css:16237 — no selector match in site (PASS 7a audit) */
+.list-style-01 {
+  list-style: none;
+}
+
+/* parked from style.css:16241 — no selector match in site (PASS 7a audit) */
+.list-style-01 li {
+  border-bottom: 1px solid;
+}
+
+/* parked from style.css:16245 — no selector match in site (PASS 7a audit) */
+.list-style-01 li:last-child {
+  border-bottom: 0px;
+}
+
+/* parked from style.css:16250 — no selector match in site (PASS 7a audit) */
+.list-style-02 {
+  list-style: none;
+}
+
+/* parked from style.css:16254 — no selector match in site (PASS 7a audit) */
+.list-style-02 li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+/* parked from style.css:16267 — no selector match in site (PASS 7a audit) */
+.list-style-02 li:last-child {
+  margin-bottom: 0;
+}
+
+/* parked from style.css:16271 — no selector match in site (PASS 7a audit) */
+.list-style-02 li i {
+  line-height: 32px;
+}
+
+/* parked from style.css:16276 — no selector match in site (PASS 7a audit) */
+.list-style-03 {
+  counter-reset: li;
+  list-style-type: none;
+}
+
+/* parked from style.css:16281 — no selector match in site (PASS 7a audit) */
+.list-style-03 li {
+  position: relative;
+  padding: 0 0 0 38px;
+  margin: 0 0 9px 0;
+}
+
+/* parked from style.css:16287 — no selector match in site (PASS 7a audit) */
+.list-style-03 li:before {
+  content: counter(li, decimal-leading-zero) ".";
+  counter-increment: li;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+
+/* parked from style.css:16296 — no selector match in site (PASS 7a audit) */
+.list-style-04 {
+  padding-left: 16px;
+}
+
+/* parked from style.css:16300 — no selector match in site (PASS 7a audit) */
+.list-style-04 li {
+  margin: 0 0 10px;
+  list-style: disc;
+}
+
+/* parked from style.css:16306 — no selector match in site (PASS 7a audit) */
+.list-style-05 {
+  padding: 0;
+  margin: 0;
+}
+
+/* parked from style.css:16311 — no selector match in site (PASS 7a audit) */
+.list-style-05 li {
+  margin: 0;
+  display: inline-block;
+}
+
+/* parked from style.css:16316 — no selector match in site (PASS 7a audit) */
+.list-style-05 li:before {
+  border-radius: 100%;
+  content: "";
+  background-color: var(--medium-gray);
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 15px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* parked from style.css:16329 — no selector match in site (PASS 7a audit) */
+.list-style-05 li:first-child:before {
+  display: none;
+}
+
+/* parked from style.css:16334 — no selector match in site (PASS 7a audit) */
+.html-video {
+  background-color: #000;
+  left: 0%;
+  position: absolute;
+  top: 50%;
+  z-index: -3;
+  object-fit: cover;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* parked from style.css:16346 — no selector match in site (PASS 7a audit) */
+.bg-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* parked from style.css:16357 — no selector match in site (PASS 7a audit) */
+.bg-video-wrapper iframe {
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,6 +1,15 @@
-import { PublicLegacyPage } from "@/components/public-legacy-page";
-import { error404Html } from "@/legacy/generated/error-404";
+/**
+ * Next.js not-found boundary — same modular 404 body as `/error_404`.
+ * Hostinger `error404Html` is not served after cutover.
+ */
+import { composeError404Page } from "@/features/error-404/compose-error-404-page";
 
-export default function NotFoundPage() {
-  return <PublicLegacyPage slug="error-404" html={error404Html} authenticatedActorFallback />;
+export const dynamic = "force-dynamic";
+
+export default async function NotFoundPage() {
+  return composeError404Page({
+    live: true,
+    page: "error-404",
+    authenticatedActorFallback: true
+  });
 }

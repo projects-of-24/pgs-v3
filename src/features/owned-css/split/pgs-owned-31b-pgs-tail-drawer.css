@@ -1,0 +1,73 @@
+/* PASS 14b · 1:1 copy · UNLINKED · do not edit values
+   Source: public/assets/css/style.css lines 40015-40112 (PGS-D tail, after the 767px mobile block that closes at 39912)
+   Contents: .overlay / .drawer mobile drawer, .menu-list, .copyrght, .custom-width-pad
+   Method (owner lock 2026-09-25): rules copied verbatim, same numbers, original order, html{zoom:0.9} kept (split/pgs-owned-00-zoom.css).
+   Media queries in this range copied VERBATIM (360 / 320 / 600 / 756px) — owner to decide 756px separately (site bands ≤600 / 601–1366 / >1366).
+   Dead rules (no selector token anywhere in site) → parked/pgs-owned-parked-31.css with source lines; cut points marked below.
+   Live routes do NOT import this file; only split/pgs-owned-split.css does, and nothing imports that yet (OWN-LINK later). */
+
+
+
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40019-40028) */
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -280px;
+      width: 280px;
+      height: 100%;
+      background: white;
+      box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .drawer.active {
+      right: 0;
+    }
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40064-40069) */
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40071-40074) */
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40083-40085) */
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40087-40089) */
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40091-40096) */
+
+    /* parked → parked/pgs-owned-parked-31.css (style.css:40098-40101) */
+
+
+.copyrght a
+{
+      margin-bottom: 35px;  
+}
+
+/* parked → parked/pgs-owned-parked-31.css (style.css:40109-40112) */

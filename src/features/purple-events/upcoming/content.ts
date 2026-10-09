@@ -38,6 +38,7 @@ const BASE = {
     "More sessions coming up for Medical & STEM aspirants — reach out to our counsellors.",
   shareIcon: "/assets/img/purple-events/share.svg",
   shareLabel: "Share this event",
+  /** Same filled heart as `FACE_SHARED` — visual only (save deferred B*). */
   heartIcon: "/assets/img/purple-events/face/cvready/heart-filled.svg"
 } as const;
 

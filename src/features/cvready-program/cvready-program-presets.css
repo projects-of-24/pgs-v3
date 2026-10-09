@@ -1,0 +1,190 @@
+/**
+ * CV Ready Program pre-selected groups — CR3.
+ * Desk: panel 736.8×216.8 #f1f1f1 · chips inset 42 / 18.4 · pad 14.4 / 19.2
+ *       row gap 23.2 · chip gap 19.2 · # 14.4×19.2 · label 19.2 Roboto Medium.
+ * Mob:  panel 370×170 @ x10 · chips 341 @ x25 · gap 13.824
+ *       # 10.368×13.824 · label Figma 14 → floor 16.
+ * Bands: >1366 desk · 601–1366 interim · ≤600 mob.
+ */
+
+.cvready-program-presets {
+  --cvready-program-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.cvready-program-presets *,
+.cvready-program-presets *::before,
+.cvready-program-presets *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-presets__panel {
+  background: #f1f1f1;
+  width: 100%;
+}
+
+.cvready-program-presets__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cvready-program-presets__item {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.cvready-program-presets__button {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.cvready-program-presets__button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+
+.cvready-program-presets__hash {
+  display: block;
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+
+.cvready-program-presets__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  /* Same border on every chip so selecting does not shift the layout */
+  border: 1.5px solid #000;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.cvready-program-presets__button--selected .cvready-program-presets__chip {
+  background: #fff;
+  color: #000;
+}
+
+/* —— Mobile ≤600 —— */
+@media (max-width: 600px) {
+  .cvready-program-presets {
+    padding: 0 10px 24px;
+  }
+
+  .cvready-program-presets__panel {
+    max-width: 370px;
+    padding: 20px 15px;
+  }
+
+  .cvready-program-presets__list {
+    gap: 13.824px;
+  }
+
+  .cvready-program-presets__button {
+    gap: 2.88px;
+  }
+
+  .cvready-program-presets__hash {
+    width: 10.368px;
+    height: 13.824px;
+  }
+
+  .cvready-program-presets__chip {
+    /* Figma cap 144 is at 14px; at the 16px floor it clips longer labels */
+    padding: 4.608px 9.216px;
+    font-size: var(--cvready-program-type-floor);
+    line-height: 1.2;
+    letter-spacing: 0.288px;
+  }
+}
+
+/* —— iPad interim —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-presets {
+    padding: 0 40px 40px;
+  }
+
+  .cvready-program-presets__panel {
+    max-width: 736.8px;
+    padding: 18px 20px;
+  }
+
+  .cvready-program-presets__list {
+    gap: 16px 16px;
+  }
+
+  .cvready-program-presets__button {
+    gap: 3.2px;
+  }
+
+  .cvready-program-presets__hash {
+    width: 12px;
+    height: 16px;
+  }
+
+  .cvready-program-presets__chip {
+    padding: 5.6px 11px;
+    font-size: 17px;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* —— Desktop >1366 —— */
+@media (min-width: 1367px) {
+  .cvready-program-presets {
+    padding: 0 0 40px;
+  }
+
+  .cvready-program-presets__panel {
+    width: 736.8px;
+    max-width: 736.8px;
+    min-height: 216.8px;
+    /* Chips frame inset 42px left, 18.4px top; frame pad 14.4 / 19.2 */
+    padding: 37.6px 42px 18.4px 56.4px;
+  }
+
+  .cvready-program-presets__list {
+    /* Figma row 1 = 623.8; small slack so font rounding does not wrap it */
+    width: 626px;
+    gap: 23.2px 19.2px;
+  }
+
+  .cvready-program-presets__button {
+    gap: 3.2px;
+  }
+
+  .cvready-program-presets__hash {
+    width: 14.4px;
+    height: 19.2px;
+  }
+
+  .cvready-program-presets__chip {
+    max-width: 200px;
+    padding: 6.4px 12.8px;
+    font-size: 19.2px;
+    line-height: 19.2px;
+    letter-spacing: 0.5px;
+  }
+}

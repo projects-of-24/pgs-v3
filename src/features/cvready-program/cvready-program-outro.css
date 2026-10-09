@@ -1,0 +1,24 @@
+/**
+ * CV Ready OutroCta wrap — CR11.
+ * Shared `.outro-cta` owns the Figma chrome; this only spaces the block in the page.
+ */
+
+.cvready-program-outro {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.cvready-program-outro .outro-cta {
+  /* Shared default margin-top 87 is for other pages; keep snug under howto. */
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 1367px) {
+  .cvready-program-outro .outro-cta {
+    margin-top: 32px;
+    margin-bottom: 56px;
+  }
+}

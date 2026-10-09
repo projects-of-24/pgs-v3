@@ -1,0 +1,404 @@
+/**
+ * CV Ready Discover — CR6d.
+ * Pair 10 `program_compact_sm_desk` only · UT-style pager.
+ * Mob: 2 cols × 3 rows · Desk: 4 cols × 2 rows · arrows under, centered.
+ * Bands: >1366 desk · 601–1366 interim (= mob page) · ≤600 mob.
+ */
+
+.cvready-program-discover {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvready-program-discover *,
+.cvready-program-discover *::before,
+.cvready-program-discover *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-discover__title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  text-align: center;
+}
+
+.cvready-program-discover__title-lead {
+  color: #000;
+}
+
+.cvready-program-discover__title-badge {
+  background: #906afe;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cvready-program-discover__search {
+  display: flex;
+  align-items: center;
+  background: #ece6f0;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.cvready-program-discover__search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cvready-program-discover__menu-icon,
+.cvready-program-discover__search-icon {
+  display: block;
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+
+.cvready-program-discover__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: #1c1b1f;
+  outline: none;
+}
+
+.cvready-program-discover__search-input::placeholder {
+  color: #49454f;
+  opacity: 1;
+}
+
+.cvready-program-discover__search:focus-within {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.cvready-program-discover__empty {
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #1c1b1f;
+  text-align: center;
+}
+
+.cvready-program-discover__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.cvready-program-discover__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  justify-items: center;
+  align-content: start;
+  align-items: start;
+  width: auto;
+  max-width: 100%;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+}
+
+.cvready-program-discover__cell {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  z-index: 0;
+}
+
+.cvready-program-discover .program-compact-face__band-note {
+  display: none !important;
+}
+
+.cvready-program-discover__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-top: 4px;
+}
+
+.cvready-program-discover__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.cvready-program-discover__arrow:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.cvready-program-discover__arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.cvready-program-discover__arrow img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* —— Mobile ≤600 — 2×3 —— */
+@media (max-width: 600px) {
+  .cvready-program-discover {
+    padding: 8px 0 40px;
+    gap: 12px;
+  }
+
+  .cvready-program-discover__title {
+    gap: 4.8px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .cvready-program-discover__title-badge {
+    padding: 0 3.2px;
+    font-size: 20px;
+    line-height: 17.6px;
+    letter-spacing: 0.8px;
+  }
+
+  .cvready-program-discover__search {
+    width: 249px;
+    max-width: 249px;
+    height: 45px;
+    padding: 0 8px 0 12px;
+    gap: 8px;
+  }
+
+  .cvready-program-discover__menu-icon {
+    display: none;
+  }
+
+  .cvready-program-discover__search-input {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .cvready-program-discover__search-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cvready-program-discover__stack {
+    gap: 16px;
+    max-width: 100%;
+  }
+
+  .cvready-program-discover__grid {
+    grid-template-columns: repeat(2, max-content);
+    gap: 12px 8px;
+    max-width: 100%;
+    /*
+     * Pair 10 mob = Pair 6 full (~205) — dense fit for ≤390 Cursor panes.
+     * Zoom the FACE (not the cell). Zoom-on-cell in Cursor/Electron
+     * mis-sizes layout boxes so the right column clips under
+     * overflow-x: clip on the preview shell.
+     * 0.82 keeps 2×(205×z)+8 inside 390 with chrome inset (~38px).
+     */
+    --cvready-discover-face-zoom: 0.82;
+    /* 2×3 plate — Pair 6 min 312 × zoom · 3 rows + 2 gaps · no page jump */
+    height: calc(312px * var(--cvready-discover-face-zoom) * 3 + 12px * 2);
+    min-height: calc(312px * var(--cvready-discover-face-zoom) * 3 + 12px * 2);
+  }
+
+  .cvready-program-discover__cell {
+    zoom: unset;
+    max-width: 100%;
+  }
+
+  .cvready-program-discover__cell .program-compact-face {
+    zoom: var(--cvready-discover-face-zoom);
+  }
+
+  @supports not (zoom: 1) {
+    .cvready-program-discover__cell {
+      width: calc(205.2px * var(--cvready-discover-face-zoom));
+      overflow: hidden;
+    }
+
+    .cvready-program-discover__cell .program-compact-face {
+      zoom: unset;
+      transform: scale(var(--cvready-discover-face-zoom));
+      transform-origin: top left;
+    }
+  }
+
+  .cvready-program-discover__nav {
+    width: 80.8px;
+    height: 38.4px;
+  }
+
+  .cvready-program-discover__arrow {
+    width: 38.4px;
+    height: 38.4px;
+  }
+}
+
+/* —— iPad interim (= mob page 2×3) —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-discover {
+    padding: 24px 40px 48px;
+    gap: 20px;
+  }
+
+  .cvready-program-discover__title {
+    gap: 8px;
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .cvready-program-discover__title-badge {
+    padding: 0 6px;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: 1.2px;
+  }
+
+  .cvready-program-discover__search {
+    width: 480px;
+    max-width: 100%;
+    height: 44.8px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .cvready-program-discover__menu-icon,
+  .cvready-program-discover__search-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cvready-program-discover__search-input {
+    font-size: 16px;
+  }
+
+  .cvready-program-discover__grid {
+    grid-template-columns: repeat(2, max-content);
+    gap: 16px 20px;
+    /* Interim = mob page size 2×3 · lock plate height */
+    height: calc(312px * 3 + 16px * 2);
+    min-height: calc(312px * 3 + 16px * 2);
+  }
+
+  .cvready-program-discover__nav {
+    width: 101px;
+    height: 48px;
+  }
+
+  .cvready-program-discover__arrow {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* —— Desktop >1366 — 4×2 · equal cells @ Pair 10 desk (243.456) —— */
+@media (min-width: 1367px) {
+  .cvready-program-discover {
+    padding: 0 0 56px;
+    gap: 24px;
+  }
+
+  .cvready-program-discover__title {
+    gap: 12px;
+    font-size: 25.6px;
+    line-height: 32px;
+  }
+
+  .cvready-program-discover__title-badge {
+    padding: 0 8px;
+    font-size: 36px;
+    line-height: 35.2px;
+    letter-spacing: 1.6px;
+  }
+
+  .cvready-program-discover__search {
+    width: 576px;
+    max-width: 576px;
+    height: 44.8px;
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .cvready-program-discover__menu-icon,
+  .cvready-program-discover__search-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cvready-program-discover__search-input {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .cvready-program-discover__grid {
+    /* Pair 10 desk = Pair 9 shell @ 80% → 243.456 · uniform 20px gap */
+    grid-template-columns: repeat(4, 243.456px);
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-items: center;
+    /* 4×2 · Pair 10 fixed 474 · lock plate — short last page must not collapse */
+    height: calc(474px * 2 + 20px);
+    min-height: calc(474px * 2 + 20px);
+  }
+
+  .cvready-program-discover__cell {
+    width: 243.456px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cvready-program-discover__nav {
+    width: 101px;
+    height: 48px;
+  }
+
+  .cvready-program-discover__arrow {
+    width: 48px;
+    height: 48px;
+  }
+}

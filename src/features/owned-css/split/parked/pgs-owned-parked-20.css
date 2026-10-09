@@ -1,0 +1,62 @@
+/* PASS 9 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 24340-25703 range, PGS patches A: topbar/navbar, dashboard cards, PGS footer, misc desk)
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:24614 — no selector match in site (PASS 9 audit) */
+.mt-150 {
+  margin-top: 150px;
+  display: block;
+}
+
+/* parked from style.css:24861 — no selector match in site (PASS 9 audit) */
+.ht-82 {
+  height: 82% !important;
+}
+
+/* parked from style.css:24865 — no selector match in site (PASS 9 audit) */
+.w-47 {
+  width: 47.5% !important;
+}
+
+/* parked from style.css:25073 — no selector match in site (PASS 9 audit) */
+.fixed-img-gallery {
+    height: 223px;
+    border-radius: 20px;
+    width: 242px;
+    overflow: hidden;
+}
+
+/* parked from style.css:25207 — no selector match in site (PASS 9 audit) */
+.card-line-gradiant {
+    border: 3px solid;
+    border-image-source: linear-gradient(90deg, #9747FF 0%, #F756FF 50%, #0ABF8C 100%);
+    border-image-slice: 1;
+    border-radius: 10px;
+    padding: 29px 44px;
+    margin-bottom: 30px;
+}
+
+/* parked from style.css:25216 — no selector match in site (PASS 9 audit) */
+.cm-button-1
+{
+        height: 28px;
+    line-height: 12px;
+    padding-bottom: 5px;
+}
+
+/* parked from style.css:25288 — no selector match in site (PASS 9 audit) */
+.text-captlize {
+  text-transform: capitalize;
+}
+
+/* parked from style.css:25292 — no selector match in site (PASS 9 audit) */
+.lh-43 {
+  line-height: 43px;
+}
+
+/* parked from style.css:25313 — no selector match in site (PASS 9 audit) */
+.pl-6-pt-4 {
+  padding: 6% 4% !important;
+}

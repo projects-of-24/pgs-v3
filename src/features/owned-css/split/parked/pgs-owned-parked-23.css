@@ -1,0 +1,79 @@
+/* PASS 12 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 33269-33419 range, PGS custom client updates (after html zoom, before the 767px block))
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:33287 — no selector match in site (PASS 12 audit) */
+.tag-comment-cv
+{
+    display:inline-block;background:black;padding: 1px 10px;border-radius: 6px;font-size: 16px;color:white;line-height: 22px;font-weight: 600;
+}
+
+/* parked from style.css:33304 — no selector match in site (PASS 12 audit) */
+.flot-tag-incampus
+{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #B57CFF;
+    color: #fff;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    height: 16px;
+    line-height: 8px;
+}
+
+/* parked from style.css:33323 — no selector match in site (PASS 12 audit) */
+.text-limit-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 27px;
+  max-height: 81px; /* 27 × 3 */
+    height: 60px !important;
+}
+
+/* parked from style.css:33332 — no selector match in site (PASS 12 audit) */
+.text-limit-5{
+display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 91px;
+    height: 104px !important;
+}
+
+/* parked from style.css:33341 — no selector match in site (PASS 12 audit) */
+.text-limit-03 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 93px;
+    height: 109px !important;
+}
+
+/* parked from style.css:33349 — no selector match in site (PASS 12 audit) */
+.text-limit-small-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* parked from style.css:33366 — no selector match in site (PASS 12 audit) */
+.fav-text{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #B57CFF;
+    color: #fff;
+    padding: 0px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    line-height: 19px;
+    padding-right: 26px;
+}

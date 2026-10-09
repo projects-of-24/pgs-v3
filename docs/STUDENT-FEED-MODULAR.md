@@ -85,6 +85,7 @@ Figma QC refs: `public/previews/student-feed-qc/`
 | Align | Tops with closed `#toggleBtn`; shell chrome-style pull; no QC banner |
 | Deferred | Full mobile card **1.2×** resize (not CSS scale) — owner may reopen |
 | Anonymous | **IN QC** — `/preview/student-feed-anonymous` · placebo: Aspirant / @futureAchiever / id:1111 / Skill Mindset / Yet to Unlock · avatar `identity-avatar-anonymous.jpg` (shrug square crop; same path as `HELLO_ASPIRANT_DEFAULT_AVATAR` for modular anonymous pages) |
+| Profile data | **PARKED** — pic / id / stream / year / etc. sync from Student Profile hub later ([`PGS-STUDENT-PROFILE.md`](./PGS-STUDENT-PROFILE.md) · skill `pgs-student-profile`). **Do not redesign this card chrome** for a Facebook look; hub page is separate. |
 
 ### Entitlement label
 

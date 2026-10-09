@@ -1,0 +1,54 @@
+/**
+ * CV Ready Program shell base (P0).
+ * NEVER add a black side-test banner (owner lock 2026-09-09).
+ * Chrome is LOCKED. Body empty until the next block gate.
+ *
+ * Pull-up + desktop univMeet gap from shared `premium-panel-lock.css`.
+ * Bands: >1366 desk · 601–1366 iPad · ≤600 mob.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.cvready-program-preview-shell {
+  --pgs-type-floor: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: var(--pgs-premium-shell-pull);
+  position: relative;
+  z-index: 0;
+}
+
+.cvready-program-preview-shell *,
+.cvready-program-preview-shell *::before,
+.cvready-program-preview-shell *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-preview-shell__body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 120px;
+}
+
+.cvready-program-preview-shell__univ-gap {
+  display: none;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+}
+
+@media (min-width: 1367px) {
+  .cvready-program-preview-shell__univ-gap {
+    display: block;
+    height: var(--pgs-premium-desk-univ-gap);
+  }
+}

@@ -1,0 +1,51 @@
+/**
+ * Header preview lab stage.
+ * Sits in normal flow under locked chrome so the header stays fully visible.
+ * No pull-up, no dark banner. Bands stay >1366 / 601–1366 / ≤600.
+ */
+
+.header-preview-shell {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  color: #231f20;
+  position: relative;
+  z-index: 0;
+}
+
+.header-preview-shell *,
+.header-preview-shell *::before,
+.header-preview-shell *::after {
+  box-sizing: border-box;
+}
+
+.header-preview-shell__stage {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.header-preview-shell__title {
+  margin: 0 0 12px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #231f20;
+}
+
+.header-preview-shell__note,
+.header-preview-shell__state {
+  margin: 0 0 12px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #231f20;
+}
+
+.header-preview-shell__state {
+  margin-bottom: 0;
+}

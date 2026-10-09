@@ -1,0 +1,195 @@
+/* PASS 14 parked rules · 1:1 copies moved out of the live tail files · NEVER imported
+   Source: public/assets/css/style.css 39913-40823. Each rule below has no class/id token anywhere in the site
+   (src/**, scripts/**, public/assets/js, re-joined legacy HTML). Restoring one = move it back to its cut point.
+   Rules that lived inside a media query are wrapped in the same query here so the cascade context is preserved. */
+
+/* parked from style.css:39962-39964 — no selector match in site (PASS 14 audit) */
+.c-lh-30{
+    line-height : 30px !important;
+}
+
+/* parked from style.css:39966-39972 — no selector match in site (PASS 14 audit) */
+#typewriter {
+    border-right: 4px solid #009C70;
+    padding-right: 5px;
+    animation: blink 0.7s infinite;
+    display: inline-block;
+    line-height: 35px;
+    }
+
+/* parked from style.css:39974-39978 — no selector match in site (PASS 14 audit) */
+@keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+}
+
+/* parked from style.css:40019-40028 — no selector match in site (PASS 14 audit) */
+    .menu-btn {
+      padding: 12px 18px;
+      background: #111827;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin: 20px;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+/* parked from style.css:40064-40069 — no selector match in site (PASS 14 audit) */
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+/* parked from style.css:40071-40074 — no selector match in site (PASS 14 audit) */
+    .drawer-header h2 {
+      font-size: 22px;
+      color: #111827;
+    }
+
+/* parked from style.css:40083-40085 — no selector match in site (PASS 14 audit) */
+    .menu-list {
+      list-style: none;
+    }
+
+/* parked from style.css:40087-40089 — no selector match in site (PASS 14 audit) */
+    .menu-list li {
+      margin-bottom: 18px;
+    }
+
+/* parked from style.css:40091-40096 — no selector match in site (PASS 14 audit) */
+    .menu-list a {
+      text-decoration: none;
+      color: #374151;
+      font-size: 18px;
+      transition: 0.2s;
+    }
+
+/* parked from style.css:40098-40101 — no selector match in site (PASS 14 audit) */
+    .menu-list a:hover {
+      color: #2563eb;
+      padding-left: 5px;
+    }
+
+/* parked from style.css:40109-40112 — no selector match in site (PASS 14 audit) */
+.custom-width-pad
+{
+     text-align: center !important;   
+}
+
+/* parked from style.css:40117-40124 — no selector match in site (PASS 14 audit) */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(10,10,30,0.75);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.35s ease;
+  }
+
+/* parked from style.css:40212-40218 — no selector match in site (PASS 14 audit) */
+  .arrow-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: flex-end;
+    margin-right: 30px;
+  }
+
+/* parked from style.css:40220-40223 — no selector match in site (PASS 14 audit) */
+  .arrow-text svg {
+    width: 40px; margin-top: 2px;
+    opacity: 0.85;
+  }
+
+/* parked from style.css:40225-40230 — no selector match in site (PASS 14 audit) */
+  .arrow-text span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+/* parked from style.css:40232-40237 — no selector match in site (PASS 14 audit) */
+  .fist-emoji {
+    font-size: 72px;
+    line-height: 1;
+    filter: drop-shadow(0 8px 20px rgba(245,166,35,0.35));
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+/* parked from style.css:40356-40361 — no selector match in site (PASS 14 audit) */
+  .toggle-track {
+    position: absolute; inset: 0;
+    background: #d1d5db;
+    border-radius: 12px;
+    transition: background 0.25s;
+  }
+
+/* parked from style.css:40363-40371 — no selector match in site (PASS 14 audit) */
+  .toggle-thumb {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 18px; height: 18px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.25s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+/* parked from style.css:40377-40381 — no selector match in site (PASS 14 audit) */
+  .select-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+/* parked from style.css:40383-40397 — no selector match in site (PASS 14 audit) */
+  .study-select {
+    flex: 1;
+    background: var(--gold);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    letter-spacing: 0.3px;
+  }
+
+/* parked from style.css:40399-40407 — no selector match in site (PASS 14 audit) */
+  .select-icon {
+    width: 40px; height: 40px;
+    background: #2656d6;
+    border-radius: 0 8px 8px 0;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+/* parked from style.css:40542-40545 — no selector match in site (PASS 14 audit) */
+.ht-full-pgs-modal
+{
+    padding: 150px 30px 100px;
+}
+
+@media (max-width: 600px) {
+/* parked from style.css:40468-40468 — no selector match in site (PASS 14 audit) */
+    .fist-emoji { font-size: 56px; }
+}
+
+@media (max-width: 756px) {
+/* parked from style.css:40630-40633 — no selector match in site (PASS 14 audit) */
+              .ht-full-pgs-modal
+        {
+            padding: 0
+        }
+}

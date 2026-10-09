@@ -1,0 +1,28 @@
+/**
+ * PGS OWNED CSS — main workshop barrel (UNLINKED from live pages)
+ * =============================================================================
+ * Gate: OWNED-CSS-LAB (owner 2026-09-25)
+ *
+ * This file is the **main CSS**: it lists / imports every conversion block as it
+ * exists. Live routes do NOT import this until OWN-LINK after QC.
+ *
+ * Lab: /preview/owned-css — empty shell; ?block= mounts one fixture for QC.
+ * The lab page imports THIS barrel so all finished block CSS is present; the
+ * stage only shows the active block.
+ *
+ * Method (owner lock): 1:1 copy of Hostinger rules, same numbers, html{zoom:0.9}
+ * kept on. No ×0.9 bake. Split passes live in split/ (see split/pgs-owned-split.css).
+ * DO NOT edit public/assets/css/style.css.
+ *
+ * Add a block: create blocks/pgs-owned-<id>.css → @import here → register in
+ * owned-css-blocks.ts → fixture in owned-css-lab.
+ */
+
+/* ——— Chrome (workshop drafts; also live as separate files until OWN-LINK) ——— */
+@import "../shell/pgs-header-chrome-reset.css";
+@import "../shell/pgs-owned-strip.css";
+@import "../shell/pgs-owned-footer.css";
+@import "../shell/public-header.css";
+
+/* ——— Body / page blocks ——— */
+/* @import "./blocks/pgs-owned-example.css"; */

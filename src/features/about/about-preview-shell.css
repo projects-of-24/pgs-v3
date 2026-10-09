@@ -47,6 +47,50 @@
 @media (min-width: 1367px) {
   .about-preview-shell__univ-gap {
     display: block;
-    height: var(--pgs-premium-desk-univ-gap);
+    /* Owner nudge 2026-09-27: About desk body (hero and down) +30px below #univMeet.
+       Shared token untouched (premium pages use it); +30 is About-only. */
+    height: calc(var(--pgs-premium-desk-univ-gap) + 30px);
   }
+}
+
+/*
+ * Gap pass (owner 2026-09-27): one section rhythm per band, measured content to content.
+ * Values = option A (the rhythm already QC'd in founder → faq): on screen 100 · 100 · 72
+ * (CSS 112 · 112 · 80 because html{zoom:.9}). Change the three numbers to retune.
+ * Sections carry no outer spacing padding; the gap lives here only. Hero top (univMeet gap) untouched.
+ */
+.about-preview-shell {
+  --about-section-gap: 112px;
+}
+@media (min-width: 601px) and (max-width: 1366px) {
+  .about-preview-shell { --about-section-gap: 112px; }
+}
+@media (max-width: 600px) {
+  .about-preview-shell { --about-section-gap: 80px; }
+}
+
+.about-preview-shell__body > section:not(.about-hero) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.about-preview-shell__body > .about-hero {
+  padding-bottom: 0;
+}
+.about-preview-shell__body > :not(.about-preview-shell__univ-gap):not(.about-hero) {
+  margin-top: var(--about-section-gap);
+}
+
+/* Gap pass corrections so every pair measures the band gap (content to content). */
+/* USP badge overhangs its panel by 22px (desk + iPad): add that room above the block. */
+@media (min-width: 601px) {
+  .about-preview-shell .about-preview-shell__body > .about-usp {
+    margin-top: calc(var(--about-section-gap) + 22px);
+  }
+}
+/* Hero bottom: trim the empty room under the #PGS note (note is absolute from the panel, so it does not move). */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .about-preview-shell .about-hero__panel-wrap { padding-bottom: 64px; } /* was 123.2px */
+}
+@media (max-width: 600px) {
+  .about-preview-shell .about-hero__panel-wrap { padding-bottom: 60px; } /* was 88px */
 }

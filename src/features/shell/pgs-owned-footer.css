@@ -1,0 +1,652 @@
+/**
+ * PGS OWNED FOOTER — single CSS link for shared public footer (OWN-F)
+ * =============================================================================
+ * Gate: OWN-F (owner 2026-09-25). Contract: OWN-0 · sisters OWN-H / OWN-T.
+ *
+ * HOW TO LINK
+ *   import "@/features/shell/pgs-owned-footer.css";
+ * Also via: pgs-owned-header.css · legacy-header-breakpoints.css · public-footer.tsx
+ *
+ * Sources (reference only — do not edit Hostinger):
+ *   - public/assets/css/style.css `.footer` / `.footer-bg` / `.btn-join` / `.yellow-bg`
+ *   - src/app/globals.css PGS MODULAR PUBLIC CHROME (footer bands)
+ *
+ * ZOOM BAKE (workshop drafts — file UNLINKED until OWN-LINK)
+ * When later linked with React gated header zoom:1, multiply EVERY px length × 0.9:
+ *   font-size · width · height · margin · padding · gap · top/right/left/bottom (px)
+ *   · border-radius · border-width (px)
+ * Do NOT multiply: unitless line-height (1.4), %, vw/vh, flex ratios (35%/63%).
+ *
+ * DO NOT edit public/assets/css/style.css.
+ */
+
+/* ——— Hostinger paint (desk base) ——— */
+[data-legacy-page] .footer-bg,
+[data-legacy-page] .footer-bg > .footer {
+  background-color: rgba(21, 0, 53, 1) !important;
+}
+
+[data-legacy-page] .footer-bg > .footer {
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  position: relative;
+}
+
+[data-legacy-page] .footer-bg > .footer .card-bg-pruple {
+  background-color: #c1f177;
+  border-radius: 10px;
+  padding: 10px;
+  color: #000;
+}
+
+[data-legacy-page] .footer-bg > .footer .btn-join {
+  background: #150035 !important;
+  border-radius: 20px;
+  color: #fff !important;
+  text-transform: capitalize !important;
+  font-weight: 300 !important;
+  padding: 5px 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+[data-legacy-page] .footer-bg > .footer .yellow-bg {
+  background: #ffc524;
+  display: inline-block;
+  padding: 2px;
+  color: #000;
+  font-weight: 500;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+[data-legacy-page] .footer-bg > .footer a {
+  text-decoration: none !important;
+}
+
+[data-legacy-page] .footer-bg > .copyrght {
+  background: #000;
+  display: flex;
+  align-items: center;
+}
+
+/*
+ * Shared public footer — mobile ≤600 (LOCKED QC — do not share with iPad)
+ */
+@media (max-width: 600px) {
+  [data-legacy-page] .footer-bg > .footer .fs-14 {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .fs-20,
+  [data-legacy-page] .footer-bg > .footer div.fs-20 {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 > .d-flex.fs-20 {
+    gap: 6px !important;
+    margin: 4px !important;
+    padding: 2px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .fs-20 img {
+    width: 18px !important;
+    height: auto !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .social-flex {
+    max-width: 55%;
+    width: auto !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 {
+    padding-left: 22px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .yellow-bg {
+    padding: 4px !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content {
+    position: absolute !important;
+    top: 64% !important;
+    bottom: auto !important;
+    right: 20px !important;
+    left: auto !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content a {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 6px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .btn-join {
+    font-size: 16px !important;
+    white-space: normal !important;
+    line-height: 1.15 !important;
+    width: auto !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .pgs-join-br {
+    display: inline !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .flot-img img {
+    width: 180px !important;
+    height: 180px !important;
+    margin-top: 12px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght {
+    padding-top: 46px !important;
+    padding-bottom: 30px !important;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .container,
+  [data-legacy-page] .footer-bg > .copyrght .row,
+  [data-legacy-page] .footer-bg > .copyrght [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center > .d-flex {
+    display: contents !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght h4.w-20 {
+    width: auto !important;
+    flex: 0 0 auto;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .fs-24 {
+    font-size: 14px !important;
+    line-height: 100% !important;
+    flex: 0 1 auto;
+    max-width: 36%;
+  }
+}
+
+@media (min-width: 601px) {
+  [data-legacy-page] .footer-bg > .footer .pgs-join-br {
+    display: none !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .flot-img {
+    position: absolute !important;
+    top: -116px !important;
+    right: 0 !important;
+    width: 180px !important;
+    text-align: end !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .flot-img img {
+    width: 180px !important;
+    height: 180px !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* iPad 601–1366 */
+@media (min-width: 601px) and (max-width: 1366px) {
+  [data-legacy-page] .footer-bg > .footer .container.pt-5.pb-8 {
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .row {
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-2 {
+    flex: 0 0 35% !important;
+    max-width: 35% !important;
+    width: 35% !important;
+    order: -1 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-3 {
+    flex: 0 0 63% !important;
+    max-width: 63% !important;
+    width: 63% !important;
+    order: -1 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    order: 0 !important;
+    padding-left: 22px !important;
+    padding-right: clamp(12px, 3vw, 28px) !important;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 > .yellow-bg {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-5 > .d-flex:not(.social-flex) {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .social-flex {
+    flex: 0 1 auto !important;
+    max-width: none !important;
+    width: auto !important;
+    min-width: 0;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    flex: 0 0 auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: clamp(16px, 4vw, 48px) !important;
+    align-self: center;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght {
+    padding-top: 46px !important;
+    padding-bottom: 30px !important;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .container,
+  [data-legacy-page] .footer-bg > .copyrght .row,
+  [data-legacy-page] .footer-bg > .copyrght [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .d-flex.justify-content-center > .d-flex {
+    display: contents !important;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght h4.w-20 {
+    width: auto !important;
+    flex: 0 0 auto;
+  }
+
+  [data-legacy-page] .footer-bg > .copyrght .fs-24 {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+    flex: 0 1 auto;
+    max-width: 36%;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .col-lg-3 .fs-14 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .fs-20,
+  [data-legacy-page] .footer-bg > .footer div.fs-20 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .terms-content a {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 6px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .btn-join {
+    font-size: 16px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Desktop >1366 */
+@media (min-width: 1367px) {
+  [data-legacy-page] .footer-bg > .footer .col-lg-3 .fs-14 {
+    font-size: 18px !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .container.pt-5.pb-8 {
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .btn-join {
+    padding: 5px 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .yellow-bg {
+    padding: 2px;
+    font-size: 20px;
+    border-radius: 4px;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .card-bg-pruple {
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  [data-legacy-page] .footer-bg > .footer .w-210px {
+    width: 210px;
+  }
+}
+
+/* =============================================================================
+ * FULL ×0.9 BAKE — gated React header pages (OWN-H zoom:1)
+ * All px lengths; skip unitless line-height and % layout.
+ * ============================================================================= */
+@media (max-width: 600px) {
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .fs-14 {
+    font-size: 13px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .fs-20,
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    div.fs-20 {
+    font-size: 14px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .col-lg-5
+    > .d-flex.fs-20 {
+    gap: 5px !important;
+    margin: 4px !important;
+    padding: 2px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .fs-20
+    img {
+    width: 16px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .col-lg-5 {
+    padding-left: 20px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .yellow-bg {
+    padding: 4px !important;
+    font-size: 14px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .terms-content {
+    right: 18px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .terms-content
+    a {
+    font-size: 14px !important;
+    margin-bottom: 5px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .btn-join {
+    font-size: 14px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .flot-img
+    img {
+    width: 162px !important;
+    height: 162px !important;
+    margin-top: 11px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .copyrght {
+    padding-top: 41px !important;
+    padding-bottom: 27px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .copyrght
+    .fs-24 {
+    font-size: 13px !important;
+  }
+}
+
+@media (min-width: 601px) {
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .flot-img {
+    top: -104px !important;
+    width: 162px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .flot-img
+    img {
+    width: 162px !important;
+    height: 162px !important;
+    margin-top: 11px !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .col-lg-5 {
+    padding-left: 20px !important;
+    padding-right: clamp(11px, 3vw, 25px) !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .terms-content {
+    margin-left: clamp(14px, 4vw, 43px) !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .copyrght {
+    padding-top: 41px !important;
+    padding-bottom: 27px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .copyrght
+    .fs-24 {
+    font-size: 22px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .col-lg-3
+    .fs-14 {
+    font-size: 16px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .fs-20,
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    div.fs-20 {
+    font-size: 18px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .terms-content
+    a {
+    font-size: 18px !important;
+    margin-bottom: 5px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .btn-join {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 1367px) {
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .col-lg-3
+    .fs-14 {
+    font-size: 16px !important;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .btn-join {
+    padding: 5px 14px;
+    margin-top: 18px;
+    margin-bottom: 9px;
+    border-radius: 18px;
+    font-size: 14px;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .yellow-bg {
+    padding: 2px;
+    font-size: 18px;
+    border-radius: 4px;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .card-bg-pruple {
+    border-radius: 9px;
+    padding: 9px;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer
+    .w-210px {
+    width: 189px;
+  }
+
+  html:has(header.pgs-figma-header[data-pgs-header-gate])
+    [data-legacy-page]
+    .footer-bg
+    > .footer {
+    border-top-right-radius: 27px;
+    border-top-left-radius: 27px;
+  }
+}

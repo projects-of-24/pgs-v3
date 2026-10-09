@@ -391,8 +391,11 @@
 @media (min-width: 601px) and (max-width: 1366px) {
   .about-hero {
     --about-ipad-card-w: 406px;
-    --about-ipad-card-h: 630px;
-    --about-ipad-media-h: 499.8px;
+    /* Owner nudge 2026-09-27: iPad card 80% of its height (681 → 545 CSS).
+       Width, text and spacing unchanged; the photo takes the cut (500 → 364).
+       Was: card-h 630px · media-h 499.8px. */
+    --about-ipad-card-h: 545px;
+    --about-ipad-media-h: 364px;
     --about-ipad-opening-w: 211.4px;
     padding: 53.2px 0 39.2px;
   }

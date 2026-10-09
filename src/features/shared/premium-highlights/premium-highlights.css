@@ -1,5 +1,7 @@
 /**
- * Shared highlights. Desktop copy stays put. Only the photo row scrolls.
+ * Shared highlights. Desktop copy stays put. Photo rail scrolls.
+ * Interaction (owner lock UT4 2026-09-22 — applies to every importer):
+ *   desk + phone: wheel/trackpad pan · pointer drag · no focus ring · no scrollbar
  * The row starts 157px in from the black card's left (Figma x 526 vs card x 369).
  * Phone copy is centered, then a sideways photo strip. iPad reuses the desktop row.
  */
@@ -94,6 +96,21 @@
   min-width: 0;
   padding-right: 24px;
   overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.premium-highlights__photos--desk.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.premium-highlights__photos--desk::-webkit-scrollbar {
+  display: none;
 }
 
 .premium-highlights__photos--phone,
@@ -116,6 +133,9 @@
   position: absolute;
   display: block;
   max-width: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Figma crop boxes, not object-fit guesses. */
@@ -140,10 +160,13 @@
   height: 135.67%;
 }
 
+.premium-highlights__photos--desk:focus,
+.premium-highlights__scroller:focus,
 .premium-highlights__photos--desk:focus-visible,
-.premium-highlights__scroller:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 3px;
+.premium-highlights__scroller:focus-visible,
+.premium-highlights__photos--desk.is-dragging,
+.premium-highlights__scroller.is-dragging {
+  outline: none;
 }
 
 @media (max-width: 600px) {
@@ -192,6 +215,23 @@
     margin-top: 24px;
     padding-left: clamp(24px, 8.7vw, 40px);
     overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .premium-highlights__scroller.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .premium-highlights__scroller::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .premium-highlights__photos--phone {

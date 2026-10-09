@@ -2,7 +2,7 @@
  * Finance hero — owned CSS.
  * Desktop Figma: card ~289×426, title + bullets to the right.
  * Mobile ≤600: card then title/bullets stacked.
- * iPad 601–1366 deferred.
+ * iPad (owner nudge 2026-09-30): 601–1366 = mobile hero (stacked), desktop hero only >1366.
  */
 
 .finance-hero {
@@ -172,7 +172,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1366px) {
   .finance-hero {
     padding: 16px 0 28px;
   }
@@ -247,5 +247,75 @@
     flex-basis: 24px;
     width: 24px;
     height: 24px;
+  }
+}
+
+/*
+ * iPad hero (owner 2026-09-30, pgs-ipad-hero-body): today's mobile hero copied once and saved
+ * as its own sizes x 1.4 (plain px, no zoom / transform / calc on the phone values). After this,
+ * iPad does not follow the phone rules. Applies 601-1366; phone <=600 and desktop >1366 untouched.
+ * Scaled: card, photo, type, line-heights, CTA, check icons, and the gaps inside card / copy.
+ * Not scaled: hero outer padding (16 / 28) and the 85% rail, so the strip spacing stays 32 on screen.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .finance-hero__inner {
+    gap: 39.2px;                 /* 28 x 1.4 */
+  }
+
+  .finance-hero__card {
+    width: 277.2px;              /* 198 x 1.4 */
+    gap: 14px;                   /* 10 x 1.4 */
+    padding-bottom: 22.4px;      /* 16 x 1.4 */
+    border-radius: 22.4px;       /* 16 x 1.4 */
+    margin-inline: auto;         /* card centered in the rail */
+  }
+
+  .finance-hero__card-media {
+    height: 228.2px;             /* 163 x 1.4 */
+    border-radius: 22.4px 22.4px 0 0;
+  }
+
+  .finance-hero__card-lead {
+    font-size: 20px;             /* 14 x 1.4 = 19.6, raised to the 20px iPad text gate */
+    line-height: 25.2px;         /* 18 x 1.4 */
+  }
+
+  .finance-hero__cta {
+    font-size: 20px;             /* 14 x 1.4 = 19.6, raised to the 20px iPad text gate */
+    padding: 8.4px 14px;         /* 6 10 x 1.4 */
+    border-radius: 11.2px;       /* 8 x 1.4 */
+  }
+
+  .finance-hero__copy {
+    gap: 39.2px;                 /* owner 2026-09-30: title -> checklist = card -> title (inner gap 39.2) */
+  }
+
+  .finance-hero__title {
+    font-size: 26px;             /* owner 2026-09-30: iPad hero title 26 (was 24 x 1.4 = 33.6) */
+  }
+
+  /* Owner 2026-09-30: on iPad the hero checklist follows the funding checklist
+     (.finance-funding__check*): 16 / 19.2, letter-spacing .5, 29 icons, 10 gaps. Long lines wrap to two. */
+  .finance-hero__bullets {
+    gap: 10px;
+    /* Owner 2026-09-30: the hero checklist sits in the same column as the checklist in the body
+       under the logo strip (.finance-funding__inner: 640 wide, padding-inline clamp(16px,2vw,24px)).
+       Both are centered on the page, so same width = same left edge. */
+    width: 100%;
+    max-width: calc(640px - 2 * clamp(16px, 2vw, 24px));
+    margin-inline: auto;
+  }
+
+  .finance-hero__bullet {
+    font-size: 16px;
+    line-height: 19.2px;
+    letter-spacing: 0.5px;
+    gap: 10px;
+  }
+
+  .finance-hero__check {
+    flex-basis: 29px;
+    width: 29px;
+    height: 29px;
   }
 }

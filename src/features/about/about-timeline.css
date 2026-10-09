@@ -296,6 +296,13 @@
   margin: 0;
 }
 
+/* Leak reset (owner 2026-09-27): the foot is a <footer> tag, so it inherited the 1:1
+   Hostinger `footer { padding }` (110/90 desk · 75 iPad · 50 mobile). All bands. */
+.about-preview-shell .about-timeline__foot {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 /* —— Mobile ≤600: same Gantt board, horizontal scroll (Figma `517:5786`) —— */
 @media (max-width: 600px) {
   .about-timeline {

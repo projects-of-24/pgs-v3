@@ -1,0 +1,287 @@
+/**
+ * PGS OWNED — open toggle box (#sidebar) T-1 (owner GO AHEAD 2026-09-27)
+ * Figma: `left-closed update v2` 19072:16102 · dropdown `v1` 19067:15187.
+ * Scoped to [data-pgs-sidebar="react"]; the string sidebar on live pages is
+ * untouched. Band positions (top/left/width) stay in globals.css / owned strip.
+ *
+ * QC LOCK (owner 2026-09-27): ≤800 (compact iPad + mobile) keeps the QC'd
+ * string-panel look — heading margin, 22px rows, 43px row pitch, 34px foot gap
+ * all come from the existing globals / owned-strip rules and are NOT restyled
+ * here. This file only ADDS the #exploreCountries accordion on those bands.
+ * The Figma v2 look (rows 20, gap 24, Bebas welcome block) applies ≥801 only.
+ *
+ * Dropdown text: 18px CSS = 16px on screen under html{zoom:.9} (owner asked
+ * for 16 as seen), every band.
+ */
+
+/* ——— Panel paint (all bands) ——— */
+[data-legacy-page] #sidebar[data-pgs-sidebar="react"],
+.developer-student-shell #sidebar[data-pgs-sidebar="react"] {
+  background: #bbc8ff;
+  color: #000;
+  /* border-radius: from the 1:1 copy (10 ≤800, 16 ≥801) — same as the string panel (T-2) */
+}
+
+/* Dropdown card — Figma 19067:15187: white, 1px black, radius 8, Roboto Medium centered, 10px gaps */
+[data-pgs-sidebar="react"] .pgs-sidebar__drop {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+[data-pgs-sidebar="react"] .pgs-sidebar__drop[hidden] {
+  display: none;
+}
+
+[data-pgs-sidebar="react"] .pgs-sidebar__drop li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[data-legacy-page] #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-link,
+.developer-student-shell #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-link {
+  display: block;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 18px !important; /* 16 on screen */
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  max-width: 150px; /* "FULL COUNTRY" / "LIST" on two lines */
+  gap: 0;
+}
+
+[data-pgs-sidebar="react"] .pgs-sidebar__drop-link:hover,
+[data-pgs-sidebar="react"] .pgs-sidebar__drop-link:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Interaction states of the #exploreCountries row (owner 2026-09-27).
+   1:1 copy gives every sidebar link `.sidebar-box ul li a:hover { opacity:.6 }` — fine for rows
+   that navigate, wrong for a row that stays put (pointer/tap leaves it dimmed). This row only:
+   rest 1 · hover 1 (underline on ≥801 from .pgs-sidebar__link:hover) · open = aria-expanded true. */
+[data-legacy-page] #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:hover,
+.developer-student-shell #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:hover,
+[data-legacy-page] #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:active,
+.developer-student-shell #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__drop-toggle:active {
+  opacity: 1;
+}
+
+[data-pgs-sidebar="react"] .pgs-sidebar__drop-glyph {
+  font-size: 16px;
+  line-height: 1;
+  color: #000;
+}
+
+/* Scrolling list: scrollbar hidden, scroll works (owner lock, same as the drawer) */
+[data-pgs-sidebar="react"] .pgs-sidebar__list {
+  scrollbar-width: none;
+}
+
+[data-pgs-sidebar="react"] .pgs-sidebar__list::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* ——— Compact iPad 601–800 + mobile ≤600: QC'd panel + accordion under the row ——— */
+@media (max-width: 800px) {
+  [data-pgs-sidebar="react"] .pgs-sidebar__drop {
+    position: static;
+    width: 172px; /* owner DevTools 2026-09-27: 172.22px CSS = 155 on screen */
+    margin: 10px 0 10px 40px; /* under the label (icon 28 + gap) */
+  }
+
+}
+
+/* Name flows like the string's "Welcome <br> Name" (no extra block spacing) — every band ≤1366 */
+[data-pgs-sidebar="react"] .pgs-sidebar__name {
+  display: inline;
+}
+
+/* ——— Wide iPad 801–1366 + desktop >1366: card pops out right of the row ———
+   T-2 (owner 2026-09-27): 801–1366 keeps the QC'd string-panel look (Hostinger 1:1 rows:
+   20px, padding 6, margin 10, welcome 48/48). Only the #exploreCountries card plumbing lives here. */
+@media (min-width: 801px) {
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active {
+    overflow: visible !important; /* card must escape the panel edge */
+  }
+
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active > .pgs-sidebar__list,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active > .pgs-sidebar__list {
+    overflow: visible !important;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__row {
+    position: relative;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__drop {
+    position: absolute;
+    left: calc(100% - 32px); /* Figma: card x 241 on a 273 row */
+    top: -2px;
+    width: 167px;
+    z-index: 2;
+  }
+}
+
+/* ——— Desktop >1366: Figma v2 rows + panel 373×750 ——— */
+@media (min-width: 1367px) {
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"],
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"] {
+    display: none;
+    flex-direction: column;
+  }
+
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active {
+    display: flex;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__head {
+    position: relative; /* #close_Btn anchors to the head (Figma); ≤1366 it anchors to the panel like the string */
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__welcome {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 28px;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__name {
+    display: block;
+    margin-top: 17px;
+    line-height: 40px;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__row {
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__link,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"] .pgs-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    color: #000;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__link:hover,
+  [data-pgs-sidebar="react"] .pgs-sidebar__link:focus-visible {
+    color: #000;
+    text-decoration: underline;
+    outline: none;
+  }
+
+  [data-pgs-sidebar="react"] .fit-icon-sidebar {
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  [data-pgs-sidebar="react"] .fit-icon-sidebar img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  /* Bottom row — Figma: 28px icon, 8px gap, 20 Roboto, 25px between */
+  [data-pgs-sidebar="react"] .pgs-sidebar__foot {
+    display: flex;
+    justify-content: flex-start;
+    gap: 25px;
+    margin-top: auto;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__foot-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #000;
+    text-decoration: none;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__foot-link img {
+    width: 28px;
+    height: 28px;
+    /* Locked T-1 look: every foot icon carried .mb-10 (10% !important) on desktop; keep that
+       for all three now that the Login/Logout icon has no .mb-10 (string parity ≤1366). */
+    margin: 0 0 10% !important;
+    object-fit: contain;
+  }
+
+  /* Panel 373×750 */
+  [data-legacy-page] #sidebar[data-pgs-sidebar="react"].active,
+  .developer-student-shell #sidebar[data-pgs-sidebar="react"].active {
+    width: 373px !important;
+    /* Figma 750 tall (owner 747→750). Older shell rule caps at 100dvh-245 and clipped the
+       last row; cap at the viewport minus the 40px top origin + breathing room instead. */
+    min-height: min(750px, calc(100dvh - 120px)) !important;
+    max-height: calc(100dvh - 120px) !important;
+    padding: 56px 30px 34px 39px !important;
+    box-sizing: border-box;
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__welcome {
+    margin-left: -17px; /* Figma: welcome x 22, rows x 39 */
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__list {
+    margin-top: 38px; /* Figma: welcome bottom 141 → rows 179 */
+  }
+
+  [data-pgs-sidebar="react"] .pgs-sidebar__foot {
+    margin-left: 6px; /* Figma: foot x 45 */
+  }
+}

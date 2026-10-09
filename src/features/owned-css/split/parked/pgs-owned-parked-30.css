@@ -1,0 +1,540 @@
+/* PASS 13 · parked rules · NEVER imported
+   Source: public/assets/css/style.css lines 33421-39911 (inside the mobile block @media (max-width: 767px), lines 33420-39912)
+   Wrapper 767→600 by owner decision 2026-09-26 (same as the live 30a-30x files); rules verbatim.
+   Dead = EXACT class token appears nowhere in src, scripts, public/assets/js (main, vendors, pgs-*), public HTML,
+   or the re-joined legacy HTML chunks (all 41 src/legacy/generated folders, chunks concatenated before matching).
+   Kept verbatim so live + parked == source for the verifier. */
+@media (max-width: 600px) {
+    /* parked from style.css:33434 — no selector match in site (PASS 13 audit) */
+    .mobile-grid-3
+    {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    /* parked from style.css:33442 — no selector match in site (PASS 13 audit) */
+    .mobile-grid-4
+    {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    /* parked from style.css:33909 — no selector match in site (PASS 13 audit) */
+.mobile-fs-21{
+    font-size : 21px !important;
+}
+
+    /* parked from style.css:33915 — no selector match in site (PASS 13 audit) */
+.mobile-fs-23{
+    font-size : 23px !important;
+}
+
+    /* parked from style.css:33924 — no selector match in site (PASS 13 audit) */
+.mobile-fs-26{
+    font-size : 26px !important;
+}
+
+    /* parked from style.css:33927 — no selector match in site (PASS 13 audit) */
+.mobile-fs-27{
+    font-size : 27px !important;
+}
+
+    /* parked from style.css:33933 — no selector match in site (PASS 13 audit) */
+.mobile-fs-29{
+    font-size : 29px !important;
+}
+
+    /* parked from style.css:33948 — no selector match in site (PASS 13 audit) */
+.mobile-fs-17{
+    font-size : 17px !important;
+}
+
+    /* parked from style.css:34303 — no selector match in site (PASS 13 audit) */
+.mobile-lh-19{
+    line-height : 19px !important;
+}
+
+    /* parked from style.css:34309 — no selector match in site (PASS 13 audit) */
+.mobile-lh-17{
+    line-height : 17px !important;
+}
+
+    /* parked from style.css:34321 — no selector match in site (PASS 13 audit) */
+.mobile-lh-13{
+    line-height : 13px !important;
+}
+
+    /* parked from style.css:34351 — no selector match in site (PASS 13 audit) */
+.mobile-lg-1{
+    
+}
+
+    /* parked from style.css:34406 — no selector match in site (PASS 13 audit) */
+.mobile-fw-700
+{
+    font-weight : 700 !important;
+}
+
+    /* parked from style.css:34419 — no selector match in site (PASS 13 audit) */
+.mobile-fw-400
+{
+    font-weight : 400 !important;
+}
+
+    /* parked from style.css:34423 — no selector match in site (PASS 13 audit) */
+.mobile-fw-300
+{
+    font-weight : 300 !important;
+}
+
+    /* parked from style.css:34435 — no selector match in site (PASS 13 audit) */
+.mobile-text-left
+{
+    text-align : left !important;
+}
+
+    /* parked from style.css:34934 — no selector match in site (PASS 13 audit) */
+.mobile-h-full
+{
+    height : 100% !important;
+}
+
+    /* parked from style.css:35046 — no selector match in site (PASS 13 audit) */
+.mobil-flex
+{
+    margin-top: 10px !important;
+    margin-bottom: -5px !important;
+}
+
+    /* parked from style.css:35175 — no selector match in site (PASS 13 audit) */
+.cardbox-tag {
+        height: 22px !important;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: black;
+        color: white;
+        padding: 0px 3px !important;
+        border-radius: 2px !important;
+        font-size: 12px !important;
+        font-weight: 700;
+        line-height: 20px;
+    }
+
+    /* parked from style.css:35189 — no selector match in site (PASS 13 audit) */
+.cardbox-tag img {
+    width: 10px !important;
+    margin-top: -3px !important;
+    height: 7px !important;
+}
+
+    /* parked from style.css:35195 — no selector match in site (PASS 13 audit) */
+.cardbox-middle h3 {
+    font-size: 12.5px !important;
+    line-height: 14px !important;
+}
+
+    /* parked from style.css:35199 — no selector match in site (PASS 13 audit) */
+.cardbox-highlight {
+    font-size: 12px;
+    padding: 1px 5px;
+     line-height: 14px !important;
+}
+
+    /* parked from style.css:35204 — no selector match in site (PASS 13 audit) */
+.cardbox-highlight span {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+    /* parked from style.css:35220 — no selector match in site (PASS 13 audit) */
+.cardbox-middle {
+    padding: 8px;
+}
+
+    /* parked from style.css:35235 — no selector match in site (PASS 13 audit) */
+.cardbox-tags span {
+    background: black;
+    color: white;
+    font-size: 10px;
+    padding: 2px 2px;
+    margin-right: 2px;
+    letter-spacing: 0.5px;
+    border-radius: 4px !important;
+    margin-top: 0px !important;
+    display: inline-block;
+    line-height: 17px;
+}
+
+    /* parked from style.css:35248 — no selector match in site (PASS 13 audit) */
+.cardbox-tags
+{
+  display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;  
+}
+
+    /* parked from style.css:35258 — no selector match in site (PASS 13 audit) */
+.cardbox-right
+{
+        padding: 5px 2px !important;
+}
+
+    /* parked from style.css:35263 — no selector match in site (PASS 13 audit) */
+.btn-saved {
+    background: transparent !important;
+    border-radius: 19px;
+    text-align: center;
+    color: #EB0801;
+    font-size: 15px;
+    padding: 2px 5px;
+    padding-left: 5px;
+    margin: 0 0 0 auto;
+    display: block;
+    line-height: 0;
+}
+
+    /* parked from style.css:35279 — no selector match in site (PASS 13 audit) */
+.custom-width-pad {
+    width: auto !important;
+    padding: 1px 4px !important;
+    margin-top: 7px !important;
+    font-size: 9px !important;
+    white-space: nowrap;
+    line-height: 18px !important;
+    border-radius: 4px !important;
+}
+
+    /* parked from style.css:35289 — no selector match in site (PASS 13 audit) */
+.green-bg-box h4 {
+    font-size: 12.5px;
+    line-height: 12px;
+}
+
+    /* parked from style.css:35299 — no selector match in site (PASS 13 audit) */
+.w-108px h5 {
+    width: 100% !important;
+    font-size: 10px !important;
+    border-radius: 0px !important;
+}
+
+    /* parked from style.css:35313 — no selector match in site (PASS 13 audit) */
+.green-bg-box {
+        background-color: #C3FFA9;
+        border: 1px solid #00000033;
+        border-radius: 24px;
+        overflow: hidden;
+        padding: 20px 14px;
+        transform: scale(0.8);
+        margin-left: 11px;
+        margin-bottom: -7px;
+        margin-top: -14px;
+}
+
+    /* parked from style.css:35326 — no selector match in site (PASS 13 audit) */
+.btn-download {
+        background: #0ABF8C !important;
+        border-radius: 8px;
+        text-align: center;
+        color: white;
+        font-size: 13px;
+        padding: 2px 4px;
+        padding-left: 5px;
+        margin: 0 0 0 auto;
+        display: block;
+        width: 29px;
+        height: 28px;
+        margin-top: -4px;
+        margin-bottom: 6px;
+        margin-right: 8px;
+}
+
+    /* parked from style.css:35353 — no selector match in site (PASS 13 audit) */
+.mobile-box-1 .w-304px {
+    width: 48% !important;
+}
+
+    /* parked from style.css:35357 — no selector match in site (PASS 13 audit) */
+.mobile-box-1
+{
+    flex-wrap : wrap;
+            margin-bottom: 15px !important;
+}
+
+    /* parked from style.css:35442 — no selector match in site (PASS 13 audit) */
+.sop-close-date {
+    background: white;
+    border: 0.5px solid #B57CFF;
+    padding: 5px 5px;
+    font-size: 12px;
+    color: black;
+    line-height: 1.0;
+    text-align: start;
+}
+
+    /* parked from style.css:35467 — no selector match in site (PASS 13 audit) */
+.w-304px {
+    width: 48% !important;
+}
+
+    /* parked from style.css:35471 — no selector match in site (PASS 13 audit) */
+.no-logo {
+    border-radius: 16px;
+    display: inline-block;
+    background-color: #009C70;
+    color: white;
+    font-size: 12.8px !important;
+    padding: 11px 10px !important;
+    margin: 6px 6px;
+    margin-bottom: 7px !important;
+    line-height: 19px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.012px;
+}
+
+    /* parked from style.css:35501 — no selector match in site (PASS 13 audit) */
+.mobile-flex-direction
+{
+    flex-direction: column;
+    align-items: self-start !important;
+    margin-bottom: 27px !important;
+}
+
+    /* parked from style.css:35542 — no selector match in site (PASS 13 audit) */
+.sinup-process
+{
+    padding: 0px 25px !important;
+}
+
+    /* parked from style.css:35576 — no selector match in site (PASS 13 audit) */
+.mobile-p-1
+{
+    font-size: 13px;
+    line-height: 16px !important;
+}
+
+    /* parked from style.css:35595 — no selector match in site (PASS 13 audit) */
+.margin-left-mobile
+{
+    flex-wrap: wrap;
+    gap: 0px !important;
+    margin-left: 20px;
+}
+
+    /* parked from style.css:35607 — no selector match in site (PASS 13 audit) */
+.mobile-w-100
+{
+    width : 60% !important;
+}
+
+    /* parked from style.css:36249 — no selector match in site (PASS 13 audit) */
+.mobile-pt-1
+{
+ padding-top: 1%;
+}
+
+    /* parked from style.css:36632 — no selector match in site (PASS 13 audit) */
+.mobile-pt-20{
+    padding-top : 20% !important;
+}
+
+    /* parked from style.css:36668 — no selector match in site (PASS 13 audit) */
+.closed-box-status .closed-box {
+    color: #EB0801;
+    font-family: 'Bebas Neue';
+    background: #D9D9D9;
+    height: 200px;
+    width: 73%;
+    margin: auto;
+    font-size: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+
+    /* Gradient Border */
+    background-image:
+        linear-gradient(#D9D9D9, #D9D9D9),
+        linear-gradient(90deg, #9747FF 0%, #F756FF 50%, #0ABF8C 100%);
+
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+    /* parked from style.css:36694 — no selector match in site (PASS 13 audit) */
+.closed-status {
+    filter: grayscale(0);
+}
+
+    /* parked from style.css:36796 — no selector match in site (PASS 13 audit) */
+.mobile-w-80px
+{
+    width : 80px;
+}
+
+    /* parked from style.css:36880 — no selector match in site (PASS 13 audit) */
+.flot-tag-incampus {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #B57CFF;
+    color: #fff;
+    padding: 2px 3px;
+    font-size: 9px;
+    border-radius: 2px;
+    height: 13px;
+    line-height: 8px;
+}
+
+    /* parked from style.css:36897 — no selector match in site (PASS 13 audit) */
+.tag-comment-cv {
+    display: inline-block;
+    background: black;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: white;
+    line-height: 14px;
+    font-weight: 600;
+}
+
+    /* parked from style.css:36908 — no selector match in site (PASS 13 audit) */
+.yellow-box-mobile i {
+        font-size: 18px !important;
+}
+
+    /* parked from style.css:36920 — no selector match in site (PASS 13 audit) */
+.mobile-gap-5
+{
+    gap : 5px !important;
+}
+
+    /* parked from style.css:36968 — no selector match in site (PASS 13 audit) */
+.explor-pb-10
+{
+     padding: 15px 0px 10px 0px;
+}
+
+    /* parked from style.css:36978 — no selector match in site (PASS 13 audit) */
+.mobile-justify-start
+{
+    justify-content : start  !important;
+}
+
+    /* parked from style.css:38133 — no selector match in site (PASS 13 audit) */
+    .mobile-w-49 {
+        width: 49% !important;
+    }
+
+    /* parked from style.css:38750 — no selector match in site (PASS 13 audit) */
+.mobile-fs-48{
+            line-height: 50px;
+    font-size : 48px !important;
+}
+
+    /* parked from style.css:38759 — no selector match in site (PASS 13 audit) */
+.mobile-p-2s {
+  padding: 0.3rem !important;
+}
+
+    /* parked from style.css:38864 — no selector match in site (PASS 13 audit) */
+.mobile-newslatter img{
+    width: 45px !important;
+}
+
+    /* parked from style.css:38871 — no selector match in site (PASS 13 audit) */
+    .mobile-newslatter button img {
+        width: 26px !important;
+    }
+
+    /* parked from style.css:39132 — no selector match in site (PASS 13 audit) */
+.mobil-m-img img{
+        width: 25px !important;
+}
+
+    /* parked from style.css:39176 — no selector match in site (PASS 13 audit) */
+.gap-mobile-7
+{
+    gap: 7px !important;
+    margin: 0 auto 5px 0 !important;
+}
+
+    /* parked from style.css:39280 — no selector match in site (PASS 13 audit) */
+.text-aligment-flot
+{
+        position: absolute;
+    top: 36%;
+    left: auto;
+    right: 42px;
+    display: flex;
+    gap: 14px;
+    background: white;
+    border-radius: 1px;
+    padding: 0px 11px;
+    height: 52px;
+}
+
+    /* parked from style.css:39691 — no selector match in site (PASS 13 audit) */
+ .content-404::after
+ {
+     font-size: 190px !important;
+ }
+
+    /* parked from style.css:39713 — no selector match in site (PASS 13 audit) */
+ .text-limit-small-3
+ {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 80px;
+    height: 41px !important;
+ }
+
+    /* parked from style.css:39726 — no selector match in site (PASS 13 audit) */
+.m-pb-20{
+    padding: 15px 0px 0px 0px !important;
+}
+
+    /* parked from style.css:39742 — no selector match in site (PASS 13 audit) */
+.text-limit-03 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 93px;
+    height: 57px !important;
+}
+
+    /* parked from style.css:39751 — no selector match in site (PASS 13 audit) */
+.sop-close-date 
+{
+    width: 70px !important;  
+}
+
+    /* parked from style.css:39767 — no selector match in site (PASS 13 audit) */
+.m-justify-start{
+    justify-content : start !important;
+}
+
+    /* parked from style.css:39770 — no selector match in site (PASS 13 audit) */
+.btn-download
+{
+         margin-bottom: 8px !important;
+        margin-top: 8px !important;
+}
+
+    /* parked from style.css:39780 — no selector match in site (PASS 13 audit) */
+.arrow-box-m
+{
+    z-index: 1000 !important;
+    margin: 9px auto 0px 0px !important;
+    position: relative;
+}
+}

@@ -1,0 +1,28 @@
+/**
+ * UT4 #higlights — wraps shared PremiumHighlights for Uni Tie-up spacing only.
+ * Scroll / drag / focus ring = shared modular (do not re-implement here).
+ */
+
+.uni-tieup-hl {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: visible;
+}
+
+.uni-tieup-hl .premium-highlights {
+  margin-top: 48px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 1367px) {
+  .uni-tieup-hl .premium-highlights {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .uni-tieup-hl .premium-highlights {
+    margin-top: 40px;
+  }
+}

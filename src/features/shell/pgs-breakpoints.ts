@@ -17,6 +17,12 @@ export const PGS_BREAKPOINTS = {
    * Owner QC 2026-09-03: raised from 1205 → 1366 (desktop row wraps ~1356).
    */
   headerMobileMax: 1366,
+  /**
+   * Four bands (owner lock 2026-09-26): >1366 desktop · 801–1366 wide iPad ·
+   * 601–800 compact iPad · ≤600 mobile. The middle two are iPad.
+   * Wide iPad header (Figma 19072:15812): logo · #feed · join #PGS · bell · login · hamburger.
+   */
+  headerIpadWideMin: 801,
   /** Above this + at/under headerMobileMax → larger logo sizing band (tablet). */
   headerDesktopLogoMin: 981,
   /** Country hero Hostinger-mobile rules through tablet; mobile logo sizing. */
@@ -36,6 +42,8 @@ export type PgsBreakpointName = keyof typeof PGS_BREAKPOINTS;
 /** Media-query helpers for TS / tests / docs (not for CSS-in-JS unless needed). */
 export const PGS_MEDIA = {
   headerMobile: `(max-width: ${PGS_BREAKPOINTS.headerMobileMax}px)`,
+  headerIpadWide: `(min-width: ${PGS_BREAKPOINTS.headerIpadWideMin}px) and (max-width: ${PGS_BREAKPOINTS.headerMobileMax}px)`,
+  headerIpadCompact: `(min-width: ${PGS_BREAKPOINTS.headerCompactMax + 1}px) and (max-width: ${PGS_BREAKPOINTS.headerIpadWideMin - 1}px)`,
   headerDesktopLogoOnMobileHeader: `(min-width: ${PGS_BREAKPOINTS.headerDesktopLogoMin}px) and (max-width: ${PGS_BREAKPOINTS.headerMobileMax}px)`,
   headerCompact: `(max-width: ${PGS_BREAKPOINTS.headerCompactMax}px)`,
   mobileHandover: `(max-width: ${PGS_BREAKPOINTS.mobileHandoverMax}px)`,

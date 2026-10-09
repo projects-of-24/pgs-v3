@@ -237,7 +237,8 @@
   outline-offset: 2px;
 }
 
-@media (min-width: 1367px) {
+/* Owner nudge (iPad): 601-1366 non-hero blocks render as desktop. */
+@media (min-width: 601px) {
   .scholarship-batch {
     padding: 56px 0 64px;
   }

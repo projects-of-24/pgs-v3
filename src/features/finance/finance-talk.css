@@ -81,7 +81,8 @@
   outline-offset: 3px;
 }
 
-@media (min-width: 1367px) {
+/* Owner nudge (iPad): 601-1366 non-hero blocks render as desktop. */
+@media (min-width: 601px) {
   .finance-talk__inner {
     max-width: 640px;
   }

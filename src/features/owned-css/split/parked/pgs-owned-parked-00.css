@@ -1,0 +1,26 @@
+/* PASS 1 · parked rules · NEVER imported
+   Source: public/assets/css/style.css (lines 1-228 range)
+   Dead = class name(s) appear nowhere in src/**, scripts/**, public/assets/js/*.js.
+   Kept verbatim so live + parked == source for the verifier. */
+
+/* parked from style.css:57 — no selector match in site (PASS 1 audit) */
+.bg-dark-red {
+  background-color: #D2093C;
+}
+
+/* parked from style.css:68 — no selector match in site (PASS 1 audit) */
+.primary-font {
+  font-family: var(--primary-font) !important;
+}
+
+/* parked from style.css:99 — no selector match in site (PASS 1 audit) */
+section.big-section {
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+/* parked from style.css:104 — no selector match in site (PASS 1 audit) */
+section.extra-big-section {
+  padding-top: 160px;
+  padding-bottom: 160px;
+}

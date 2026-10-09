@@ -1,0 +1,338 @@
+# Header / shared chrome — next phase (living)
+
+Owner conversation lock **2026-09-25**. Agents: read this + skill `pgs-header-chrome-phase` before any chrome edit. **No code until owner `GO AHEAD`.**
+
+Companion skills: `pgs-modular-public-chrome` · `pgs-propose-before-code` · `pgs-never-invent` · `pgs-master-workflow` · `figma-modular-own-css`.
+
+---
+
+## Plain English — what we are doing (read this first)
+
+### What went wrong last time (owner pain)
+
+1. Work was called “done.”
+2. Owner looked in the code and still saw **DSIH** (`dangerouslySetInnerHTML`) mounting the header as a **big HTML string**.
+3. That meant the real mount path was still the **old string chrome**, even if React files or href tweaks existed on the side.
+4. So “done” was **not** “header is a real React component every page uses.”
+
+### What “done” means this time (definition of done)
+
+| Done means | Not done |
+|---|---|
+| Shared header (and footer when in scope) is a **React component** with **owned CSS** | Only editing `public-header.html` and still injecting it with DSIH |
+| Pages **mount** `<PublicHeader />` / `<PublicFooter />` (or one shared frame) | React files exist but **nothing imports them** — still DSIH |
+| Nav matches owner Figma IA | Quiet reuse of old Hostinger nav labels |
+| Safe-area: notch pushes **header → strip/toggle → body → footer** together | Only header padded; hero start line looks wrong |
+| Lab QC at `/preview/header`, then sitewide wire | “Looks fine in one file” with live pages still on string chrome |
+
+**DSIH** = React’s `dangerouslySetInnerHTML` — paste a raw HTML string into the page. Fine for some legacy bodies short-term; **not** the end state for shared chrome.
+
+**Hostinger CSS** (`style.css` / `responsive.css`) stays in `layout.tsx` as global landlord until a page opts out. Dropping chrome DSIH ≠ unlinking Hostinger. **Unlink = page-by-page during that page’s final UI audit** (OWN-* gates) — never one-shot sitewide delete.
+
+### CSS strategy (owner 2026-09-25 → H1c → H6a-CSS → OWN-0) — how we proceed
+
+**Streamlined order (locked):** **Hostinger/legacy reference → CSS pass (owned file) → then UI.** Do not invent bar/dropdown CSS from scratch. Do not build markup before the CSS recipe for that block exists.
+
+**Two different jobs — do not mix:**
+
+| Track | What | When |
+|---|---|---|
+| **A — Own CSS via Hostinger port** (H gates) | Read proven Hostinger / `legacy-header-breakpoints` → **`pgs-header-*` + `public-header.css`**. Figma = visual authority; Hostinger = implementation reference. Never Hostinger class names on React chrome. | **H1c** → H2+ → H-R |
+| **B — OWNED MODULAR CHROME CSS + page unlink** (OWN-*) | New owned CSS for shared chrome pieces (header → toggle/strip → footer), then per-page body UI flush. **Unlink Hostinger page by page** as owner does that page’s **final UI audit**. Same shape as React body modular. | After H6a-CSS; **OWN-0 locked**; next **OWN-H** |
+
+**Answer in plain English:**
+
+- **Yes — own CSS**, ported from Hostinger/legacy (don’t invent).
+- **CSS pass first**, then UI.
+- **No** sitewide Hostinger delete mid H2–H7.
+- **Unlink page by page** during final UI audit (not one breaker pull for the whole site).
+
+#### Zoom bake contract (OWN-0 — locked 2026-09-25 · tightened OWN-F)
+
+Hostinger sets `html { zoom: 0.9 }` in `public/assets/css/style.css`. That is why the live site looks “correct” and a raw port looks zoomed out.
+
+| Token / rule | Value |
+|---|---|
+| **Hostinger zoom factor** | `0.9` (`--pgs-hostinger-zoom: 0.9`) |
+| **Port formula** | `owned_px = design_css_px × 0.9` |
+| **Must bake (all of these)** | `font-size` · `width` · `height` · `margin*` · `padding*` · `gap` · `top/right/left/bottom` (when px) · `border-radius` · `border-width` (px) |
+| **Do not bake** | Unitless `line-height` (e.g. `1.4`) · `%` flex columns · `vw`/`vh` mid terms in `clamp` |
+| **Do not** | Set `html { zoom: 1 }` without baking **all** px lengths above |
+
+Incomplete bake (fonts only) = visual drift. OWN-F + OWN-H retightened to full box/spacing bake.
+
+#### OWN-* gates (chrome CSS cutover + page unlink)
+
+| Gate | Piece | Job | Status |
+|---|---|---|---|
+| **OWN-0** | Contract | Zoom bake + OWN order in docs/skills; **no visual CSS** | **Done** |
+| **OWN-H** | Header + drawer | Single link [`pgs-owned-header.css`](../src/features/shell/pgs-owned-header.css): reset + recipes + `zoom:1` on gated React header + baked ×0.9 tokens. Lab: `/preview/header`. | **Done** (lab); more pages at H-R |
+| **OWN-T** | Toggle / strip | Single link [`pgs-owned-strip.css`](../src/features/shell/pgs-owned-strip.css): `#toggleBtn`, strip, univMeet, body pull, sidebar origin. Wired via owned-header + legacy-header-breakpoints + `public-strip.ts`. Bake when OWN-H zoom:1. | **Done** |
+| **OWN-F** | Footer | Superseded by decision 27: footer CSS = 1:1 owned split (`20-pgs-chrome-desk`, `30a-pgs-mobile`, `43-resp-elements-footer`). **Owner QC PASSED 2026-09-27** on `/preview/header`: computed-style diff vs Hostinger = 0 of 61 elements at 1500 and 390. Compact iPad 601–800 mentor-card overlap fixed (globals `.card-bg-pruple.w-210px { width:auto }`, same recipe as ≤600). `pgs-owned-footer.css` bake draft = stale, to park. React `<PublicFooter/>` mount = H-R scope. | **Done (CSS)** |
+| **OWN-UNLINK** | Workshop | Stop importing OWN-H/T/F barrels on runtime paths. Files stay for block-by-block pass. H6a reset stays linked (`reset on`). Index: [`OWNED-CHROME-UNLINKED.md`](../src/features/shell/OWNED-CHROME-UNLINKED.md). | **Done** |
+| **OWN-T** | Toggle / strip | Port `#toggleBtn` / strip → owned CSS; link with chrome pages | After OWN-H QC |
+| **OWN-F** | Footer | Port → owned footer CSS | After OWN-T QC |
+| **OWN-BODY** | Page bodies | Per-page UI flush (`pgs-page-ui-flush.css` pattern) **+ unlink Hostinger for that page** during owner final UI audit | After chrome pieces owned |
+| **OWN-CLEAR** | Residual | Unlink Crafto leftovers sitewide only after enough pages opted out; keep Bootstrap/icons until deliberate swap | Last |
+
+**H6a-CSS (2026-09-25):** stop override wars. Authority files:
+
+| File | Job |
+|---|---|
+| [`src/features/shell/pgs-owned-header.css`](../src/features/shell/pgs-owned-header.css) | **OWN-H single link** — imports reset + owned-strip + **owned-footer** + public-header; kills zoom on gated React header; **full** ×0.9 bake |
+| [`src/features/shell/pgs-owned-strip.css`](../src/features/shell/pgs-owned-strip.css) | **OWN-T single link** — `#toggleBtn` + strip + univMeet + body pull + sidebar origin; bake with OWN-H |
+| [`src/features/shell/pgs-owned-footer.css`](../src/features/shell/pgs-owned-footer.css) | **OWN-F single link** — shared footer; full ×0.9 bake (not fonts only) |
+| [`src/features/shell/pgs-header-chrome-reset.css`](../src/features/shell/pgs-header-chrome-reset.css) | Header bar equal inset + `#drawer` recipe; kills Hostinger `.drawer` / scroll jump |
+| [`src/features/shell/public-header.css`](../src/features/shell/public-header.css) | Visual recipes (`pgs-header-*`) |
+| [`src/features/shell/pgs-page-ui-flush.css`](../src/features/shell/pgs-page-ui-flush.css) | **Copy/template** for per-page body UI flush (import or copy into `src/features/<page>/`) |
+
+**Link owned header:** `import "@/features/shell/pgs-owned-header.css"` (via `PublicHeader`).  
+**Link owned strip:** `import "@/features/shell/pgs-owned-strip.css"` (also via owned-header + `legacy-header-breakpoints` + `public-strip.ts`). Legacy DSIH pages still get reset via `legacy-header-breakpoints.css` `@import` until H-R.
+
+**H1 polish / H1c:** `#me` / `#studyAbroad` / login / drops = owned `pgs-header-*` only (no Hostinger `btn` / `btn-trapsparent` / `btn-login` / `btn-toggle-mobile`).
+
+---
+
+## Site status (finish-line frame)
+
+- Public modular work is **~90% done**.
+- Remaining: **UI check / draft**, **header chrome rebuild**, **missing link destination pages**, then fluid polish **page-by-page**.
+- Most missing header destinations are **program-family** pages → reuse existing **program base template**, then link.
+- Pages **without** a template yet (e.g. **join #PGS**, **contactCounsellor**) → owner shares Figma → build modular like other pages → then swap stub hrefs.
+- **Responsive** = prefer `clamp` / fluid over hard `px` for layout that must work on 16″ Mac, 27″/32″ desk, **and** Windows laptops (often look “zoomed out” when everything is hard px tuned to one monitor).
+
+---
+
+## DSIH / mount audit (chrome)
+
+| Layer | Today | This phase |
+|---|---|---|
+| Shared header/footer markup | `public-header.html` / `public-footer.html` | Become React `PublicHeader` / `PublicFooter` (same visual job) |
+| Mount on ~40 modular pages | String build → **DSIH** | React mount → **drop chrome DSIH** |
+| Modular chrome CSS | `globals.css` **PGS MODULAR PUBLIC CHROME** + `legacy-header-breakpoints.css` | Reopen for this phase; keep bands; add safe-area cascade |
+| Page bodies | Many already React modular | Out of scope except shell pull token if safe-area changes |
+| Hostinger CSS still in layout | Reference debt | **Not** this gate’s delete |
+
+---
+
+## Design intent (owner 2026-09-25 — corrected)
+
+**Not a brand-new header.** Same old PGS header chrome (logo, pill bar, bell, login/avatar). Updated with **more nav labels + dropdowns**, a **new notification dropdown UI** (text list that did not exist before), and a **login → profile pic → Logout** flow.
+
+### Figma frames (same component, interaction versions)
+
+File: [all-pages-v6](https://www.figma.com/design/7WFrAbx3cvXReZxtTiQ76r/all-pages-v6?node-id=0-1)
+
+| Node | Name | Use for |
+|---|---|---|
+| **`19075:13853`** | logged in **default** — desktop | Closed bar: avatar, no menus open |
+| **`19073:13328`** | logged in **expanded** — desktop | Nav dropdowns open + avatar **Logout** menu |
+| **`19070:15287`** | logged out + **two blocks expanded** — desktop | **Login** button; `#me` “Upcoming” list + **notification** panel (Clear All + rows with text) |
+| **`19072:15812`** | header **ipad** | Compact: logo, `#feed`, bell, login, hamburger |
+| **`19073:13319`** | header **mobile** | Logo, `#feed`, bell, login, menu |
+
+Build **one** React header; open/closed states from these three desk versions. iPad/mob from their frames (iPad ≈ mobile header pattern).
+
+### Behavior map (source of truth)
+
+| Control | Behavior | Links now |
+|---|---|---|
+| **Logo** | Home — **no change** | Existing home |
+| **`#feed`** | Same as today — **no behavior change** | `/student/dashboard` |
+| **`#purplePremium`** | Dropdown | OVERVIEW → `/purplepremiumhome`; STEM/MBA → `/purplenonmedical`; USMLE → `/purpleusmle`; AMC → `/purpleamc`; **Short Term Abroad** → stub (owner builds later). **PLAB not in Figma menu** |
+| **`#cvReadyPrograms`** | Dropdown | **Admin/CMS-managed list** (add / change / remove program or page links — e.g. later PhD). FE now: shell + known starters (**explorePrograms** → `/cvreadyprogram`; **freeMasterClass** stub). Live edit + **audit logs** = backend later |
+| **`#cvForMedical`** | Dropdown (USMLE Rotation **moved here**) | **Admin/CMS-managed list** (add / remove programs). FE now: shell + starters (**USMLERotation** → `/usmlerotation`; Surgery Week stub). Live edit + **audit logs** = backend later |
+| **`#me`** | **Dropdown only — not a page link** | Lists **courses/events admin selects** for “me tab” in **backend/CMS**. FE: dropdown shell + fixtures now; **CMS wire = later gate** |
+| **`#studyAbroad`** | Dropdown | **contactCounsellor** + **admissionToolKit** — stubs; owner links when pages exist |
+| **`join #PGS`** | CTA | Stub until owner Figma page |
+| **Bell** | Opens **notification dropdown** (new UI with text rows; was missing before) | Panel UI now; full notifications domain can stay existing route / later |
+| **Logged out** | **Login** button (updated UI) | Existing login |
+| **Logged in** | Profile **photo** from student profile; click → **Logout** only | Logout action |
+
+---
+
+## Nav → route / data map (H0)
+
+| Label | Type | Now | Later |
+|---|---|---|---|
+| Logo | link | home | — |
+| `#feed` | link | `/student/dashboard` | unchanged |
+| Premium → OVERVIEW / STEM / USMLE / AMC | links | built routes | — |
+| Premium → Short Term Abroad | stub | placeholder | owner page |
+| CV Ready → explorePrograms | link (starter) | `/cvreadyprogram` | Admin may change/replace via CMS |
+| CV Ready → freeMasterClass / Semester / HARVARD / future (e.g. PhD) | CMS rows | stubs / fixtures | Admin add/change/remove + **audit logs** |
+| CV Medical → USMLERotation | link (starter) | `/usmlerotation` | Admin may change/replace via CMS |
+| CV Medical → Surgery Week… / future programs | CMS rows | stubs / fixtures | Admin add/change/remove + **audit logs** |
+| `#me` items | **CMS list** | fixture “Upcoming” rows in UI | Ops/CMS pick courses/events + **audit logs** |
+| studyAbroad → both items | stubs | placeholders | owner pages |
+| join #PGS | stub | placeholder | owner page |
+| Notifications | dropdown UI | Figma panel + fixtures / wire if feed exists | full inbox domain |
+| Login / avatar / Logout | auth UI | login · profile image · logout | — |
+
+**Do not** treat `#me` as `/student/profile`. Profile photo lives on the **login/avatar control**, not under `#me`.
+
+**Open:** PLAB — drop from Premium menu to match Figma (route page can stay).
+
+---
+
+## Safe-area / Dynamic Island (correct framing)
+
+- Phone notch / Dynamic Island → sticky header gets `padding-top: var(--pgs-safe-top)`.
+- **Everything rides the same push:** header → strip → closed `#toggleBtn` → body → footer.
+- Proposed token: `--pgs-safe-top: max(24px, env(safe-area-inset-top))` + `viewport-fit=cover`. **Open:** confirm 24px floor.
+
+### Body pull (aesthetic — not “toggle chasing”)
+
+Closed `#toggleBtn` **height** is a **visual ruler**. Shells use negative `margin-top` (e.g. `--pgs-premium-shell-pull` / `.minus-5`) so the **hero composition start** lines up beside that chrome — for aesthetics.
+
+`position` / `z-index` on the pill = paint/layer. Pull = where the page art begins.
+
+If safe-area pads the header, shell pull math must include the same token so the **hero start line** stays correct.
+
+Who still uses the pull: almost all modular preview shells (About, Premium family, CV Ready, Uni Tieup, Events, Finance, Feed, Error 404, …) + country `minus-5` sections.
+
+---
+
+## iPad strategy (owner)
+
+- **Header on iPad (601–1366) = mobile header** (Figma ipad frame is already compact)
+- **Body on iPad = desktop body** (content stays fluid/responsive)
+- Matches finish-line thinking; avoid inventing a third header unless Figma demands it
+
+---
+
+## Hard `px` vs fluid (UI pass later)
+
+- Sitewide hard-`px` purge = **no**. ~259 feature CSS files have hard `px`; many are fine (1px borders, 16px type floor, locked Figma controls).
+- **Page-by-page** during UI check: if it looks zoomed-out on Windows laptop / narrow desk, fluidize **layout & type that should breathe** with `clamp`.
+- New Figma pages: prefer clamp from day one.
+- Densest folders to watch in QC: purple-events (face cards), usmlerotation, premium-*, programs-courses, student-feed, cvready, about, scholarship.
+
+---
+
+## Accidental WIP (park / rewrite)
+
+Started before this IA audit — **do not treat as finished**:
+
+- `src/features/shell/header-nav.ts` (wrong: treated `#me` as profile link)
+- `src/features/shell/public-header.tsx` / `public-footer.tsx` / `public-strip.css`
+- Partial href edits in `src/legacy/pages/public-header.html`
+
+**Open:** keep and rewrite vs delete and start clean on `GO AHEAD`.
+
+Lab already exists: `/preview/header` (`header-preview-shell.tsx`).
+
+---
+
+## Gates — phase by phase (not all at once)
+
+Each gate: propose → `GO AHEAD` → implement → `/preview/header` QC → stop.
+
+| Gate | What | Not in this gate |
+|---|---|---|
+| **H0** | This map locked; open decisions answered | Code |
+| **H1** | Desk default bar labels | — |
+| **H1b** | **Desk bar UI pass** — Figma closed bar; **no hamburger on desk**; no dropdowns | Menus |
+| **H1c** | **Desk CSS pass** — Hostinger/Figma → owned tokens + `.pgs-header-drop*` recipe; **no new UI** | Dropdown markup |
+| **H2** | Dropdowns — **one-by-one UI** mounting owned drop recipe (**Premium done** in lab) | All menus at once |
+| **H2a** | Premium fixed-panel experiment — abandoned | — |
+| **H3** | **`#me` dropdown shell** — Figma “Upcoming” UI + **fixtures** (**lab**) | Live CMS/backend picks + audit |
+| **H4** | **Notification dropdown** UI (text rows, Clear All per Figma) — fixtures (**lab**) | Full notifications product rebuild |
+| **H5** | **Login / avatar / Logout** — logged-out Login; logged-in profile pic → Logout (**lab**) | — |
+| **H6** | **iPad + mobile** headers from Figma; iPad = mobile header pattern | — |
+| **H6a** | **iPad compact bar + hamburger drawer extras** (Figma `19094:13341` — join / studyAbroad / accordions / `#me` Upcoming; keep 18px labels; smaller chrome) — **lab** | Mobile polish (H6b) |
+| **H6a-CSS** | **Owned chrome CSS authority** — `pgs-header-chrome-reset.css` beats Hostinger `.drawer` / scroll-lock fights; equal 40px bar inset; drawer translateX only. Sister template `pgs-page-ui-flush.css` for page UI flush. Hostinger `style.css` stays linked. | Full site-clear (later) |
+| **OWN-0** | **Zoom bake + OWN-* contract** (docs/skills only; no visual CSS) | — |
+| **OWN-H** | **`pgs-owned-header.css`** single link; zoom kill + ×0.9 bake on gated React header (lab `/preview/header`) | Toggle/footer; more pages at H-R |
+| **OWN-T** | **`pgs-owned-strip.css`** — toggle + strip + univMeet; bake with OWN-H | Footer OWN-F |
+| **OWN-F** | **`pgs-owned-footer.css`** — footer; **full** ×0.9 bake (margin/pad/w/h/gap/radius + font) | OWN-BODY |
+| **OWN-T** / **OWN-F** | Toggle/strip then footer owned CSS | Body flush |
+| **OWN-BODY** | Per-page UI flush **+ unlink Hostinger for that page** (owner final UI audit) | Sitewide residual clear |
+| **OWN-CLEAR** | Residual Hostinger unlink after enough pages opted out | — |
+| **SR-1** | **Search results card (lab, fixtures).** Figma `search bar UI` **19075:13657** (mobile frame, built first). React `search-results.tsx` + owned `pgs-search-results.css`; drawer mount in `PublicHeader` (`labSearchResults`), desktop via `search-results-strip-portal.tsx` into the DSIH strip until H-R. Lab `/preview/header?search=1`. One UI on all bands: card = field width, 4px below, title + faint type label. Type = PGS scale not Figma (floor 16 · desktop title 18). Desktop card `min-width: 320px`, right edge on the field. **Built 2026-09-27 — owner Preview QC.** | Live fetch · keyboard · legacy JS swap (SR-2) · page/service index (SR-3) |
+| **SR-2a** | **Typing → results (lab index, backend shape).** `search-contract.ts` mirrors `src/lib/public-search.ts` (`{id,type,label,url}`, + `page`/`service` for SR-3). `search-index.ts` = fake rows with `search_document` stand-in, same limits as backend (min 2 chars, 8 rows), rank label-prefix > label-contains > document. `use-search-results.ts` = WAI-ARIA combobox (arrow/Enter/Esc/outside click). Drawer = `drawer-search.tsx` (React); strip = portal listening to the DSIH input until H-R. **Built 2026-09-27.** FLUSH at SR-2b: every fake row = a case the backend must answer. | Fetch (SR-2b) |
+| **SR-2b** | Swap `searchIndex()` for `fetch('/Search/autocomplete')` (debounce 200ms, abort stale), retire legacy `pgs-autocomplete.js` binding on owned inputs | SR-3 |
+| **SR-3** | Curated `page` / `service` index in `public-search.ts` (public routes + labels) so results match the Figma types | Admin-managed tags/context (Track B) |
+| **T-1** | **Open toggle box (#sidebar) as React, lab.** Figma `left-closed update v2` **19072:16102** + dropdown `v1` **19067:15187**. `public-sidebar.tsx` (keeps `#sidebar` / `#close_Btn` / band hooks so legacy-page.tsx + globals positioning are untouched), `sidebar-nav.ts` (rows + countries, CMS-shape), owned `pgs-sidebar.css`. Rows: #exploreCountries ▸ · #datesDeadlines · Track Your Progress · #purpleBoard · Upload Your Docs · #purpleFinance Hub · #purpleScholarship (CV-Ready removed, "Hub" dropped — owner). Foot: Profile · Saved List · Logout (Login when signed out; Profile/Saved gate to login until owner's new Figma page). Bands: >1366 Figma panel 373×750, card pops right; 801–1366 desktop behaviour; ≤800 mobile behaviour, card = accordion under the row (owner-approved derivation). Icons = Hostinger set (same glyphs); swap `SIDEBAR_ICONS` when owner exports Figma SVGs (figma.com blocked from Claude's shells). Lab mounts via slot portal; live pages keep the string until H-R. **Owner QC PASSED 2026-09-27 — LOCKED.** | Closed pill · string sidebar on live · H-R |
+| **H7** | **Safe-area** cascade (header → strip → body pull token → footer). **Preview done 2026-09-27:** `viewportFit: cover` on `/preview/header` page only; pull literal unified to `--pgs-chrome-strip-pull` (same value). Measured 390/700/1100/1500: stack moves together, zero visual delta. **H7-LIVE** = promote viewport export to root layout (named gate). | Root layout |
+| **H-R** | Mount React chrome on modular pages; **drop chrome DSIH** | Hostinger CSS delete (use OWN-* unlink instead) |
+| **Later — CMS nav** | Admin manage **`#cvReadyPrograms`**, **`#cvForMedical`**, **`#me`** (add/change/remove program/page/event links) with **audit logs** (`audit_events`) | Not in H1–H-R |
+| **Later — Marquee** | Top **announcement bar / marquee** (legacy `marquee_tbl` → `site_notices`): admin **add / edit / enable / disable / remove** promo lines that scroll above the header. **Only after H-R chrome rework is done** — not inside H1–H7 | Do not build during current header gates |
+| **Later** | Stub destination pages (join #PGS, contactCounsellor, freeMasterClass, Short Term Abroad, …) | — |
+
+**Definition of done for the chrome rebuild:** H-R complete (no chrome DSIH) + H1–H7 QC’d. CMS nav lists (`#me` / CV menus) finish in a later backend gate without reopening “is chrome done?”
+
+---
+
+## Owner decisions log
+
+| # | Topic | Status |
+|---|---|---|
+| 1 | Old header chrome + more links/dropdowns (not full redesign) | **Locked** |
+| 2 | Three desk interaction frames + ipad + mobile nodes above | **Locked** |
+| 3 | `#me` = CMS courses/events dropdown, **not** profile page | **Locked** |
+| 4 | Notification dropdown = new text UI | **Locked** |
+| 5 | Login → profile pic → Logout | **Locked** |
+| 6 | contactCounsellor, admissionToolKit, join #PGS, Short Term Abroad, freeMasterClass = later | **Locked** |
+| 7 | explorePrograms + USMLERotation = **starters**; both CV menus + `#me` = **CMS admin lists** (add/change/remove) + **audit logs** later | **Locked** |
+| 8 | `#feed` + logo unchanged | **Locked** |
+| 9 | Phase-by-phase gates H1→H-R | **Locked** |
+| 10 | iPad: mobile header + desktop body | **Locked** |
+| 11 | Fluid/clamp; page-by-page px in UI pass | **Locked** |
+| 12 | Safe-area pushes whole stack; body pull = aesthetic ruler | **Locked** |
+| 13 | PLAB remove from Premium menu | **Resolved** — lab menu is OVERVIEW · Short Term Abroad · STEM/MBA · USMLE · AMC (no PLAB); route `/purpleplab` stays |
+| 14 | Safe-area floor 24px | **Locked** (H7, 2026-09-27 — was already applied in globals `--pgs-safe-top`) |
+| 15 | WIP files keep+rewrite vs delete | **Open** |
+| 16 | Header: Hostinger ref → **CSS pass** → then UI (no invent-from-scratch CSS) | **Locked** (H1c) |
+| 17 | Top **marquee / announcement bar** — admin add/remove later; **after chrome H-R** | **Locked** (deferred) |
+| 18 | H6a iPad first: compact bar + drawer extras from `19094:13341`; keep font sizes; style smaller than Figma board | **Locked** |
+| 19 | H6a-CSS: owned header+drawer CSS is authority on gated/legacy pages; Hostinger stays linked; `pgs-page-ui-flush.css` copy for page UI flush | **Locked** |
+| 20 | **OWN-0:** owned modular chrome CSS; **unlink Hostinger page-by-page** during final UI audit; zoom bake `owned = Hostinger_px × 0.9` | **Locked** |
+| 21 | **OWN-H:** link `pgs-owned-header.css`; gated React header pages `zoom:1` + baked tokens (20→18, etc.); lab `/preview/header` | **Locked** |
+| 22 | **OWN-T:** link `pgs-owned-strip.css`; `#toggleBtn` + strip + univMeet owned; bake when OWN-H zoom:1 | **Locked** |
+| 23 | **OWN-F:** link `pgs-owned-footer.css`; zoom bake = **all px lengths** (not fonts only); unitless line-height / % untouched | **Locked** (file built) |
+| 24 | **OWN-UNLINK:** do not import OWN barrels until block QC + OWN-LINK; build unlinked → pass → link page-by-page; H6a reset stays on | **Locked** |
+| 25 | **OWNED-CSS-LAB:** main barrel `pgs-owned-css.css` + generic empty `/preview/owned-css` (`?block=`); not page-specific | **Locked** |
+| 26 | **BAKE-H1:** desk bar ×0.9 in `blocks/pgs-owned-bake-h1-desk.css`; lab `?block=header` + real PublicHeader fixture | **Retired** (row 27) |
+| 27 | **A + B / SPLIT:** ship on current CSS; owned CSS = **1:1 copy** of Hostinger `style.css` + `responsive.css`, same numbers, `html{zoom:0.9}` kept on (owned file). **No ×0.9 bake** — supersedes rows 20–23 bake rule. 15 split passes in `src/features/owned-css/split/` (plan in owned-css README). Dead + broken rules → `split/parked/` with comments. vendors/icon stay linked. Breakpoint moves in UI pass only. | **Locked** |
+| 28 | **P13 mobile band:** owned copy of style.css 767px mobile block wrapped at `max-width: 600px` (owner: ditch Hostinger 767; bands ≤600 / 601–1366 / >1366). Rules verbatim. Known UI change: 601–767px now gets iPad/desk rules. Nested inner queries untouched (listed in README). | **Locked** |
+| 29 | **P15 responsive.css:** 767→600; 575/991/1199/others verbatim; broken tail parked unimported; 4 live files 40–43. | **Locked** |
+| 30 | **P1–P5 SORT:** Fable audit found 27 fully-shadowed + ~53 over-kept utilities; **Option B** — leave as-is until OWN-LINK (no park/move). 0 wrongly parked. | **Locked** |
+| 31 | **OWN-LINK QC order:** chrome **header → toggle → footer → univMeet → then pages one by one**. Split P1–P15 complete, unlinked. No ×0.9 bake. Skills: `pgs-header-chrome-phase`, `pgs-modular-public-chrome`. | **Locked** |
+| 32 | **OWN-LINK-H:** `/preview/header` only loads `/preview/owned-split` (concatenated split barrel) **instead of** Hostinger `style.css` + `responsive.css`. Vendors + icon stay. Live pages and other labs stay on Hostinger. | **Done** (lab) |
+| 33 | **Header iPad split:** `801–1366` = Figma `19072:15812` (logo · `#feed` · join #PGS · bell · login · hamburger). `601–800` compact bar (join #PGS in the menu, not on the bar). | **Locked** |
+| 34 | **Desktop + iPad header QC (2026-09-26):** `>1366` full bar, no hamburger, outer margin 40/40. `601–1366` bar fills the width (no zoom `100vw` right gap), inset 40/40. Hamburger stays in the bar. Menu is one recipe on both iPad bands: fixed 340px, opens under the avatar like the logout card, right edge on the hamburger, stroke + notification shadow `8px 8px 0 #000`, `#me` and `#studyAbroad` open. Only join #PGS differs (on the bar and out of the menu at `801–1366`; in the menu and off the bar at `601–800`). | **Locked** |
+| 35 | **Four breakpoints:** above 1366 desktop · `801–1366` wide iPad · `601–800` compact iPad · 600 and below mobile. Middle two reserved for iPad. Numbers in `pgs-breakpoints.ts`. Responsive asks = one Fable plan across all four bands, then one build. | **Locked** |
+| 36 | **Header + all dropdowns visually locked.** Saber stroke try failed owner QC 2026-09-26 and was removed. Resting borders and hard shadows stay. | **Locked** |
+| 37 | **#univMeet + search owned CSS (gate 1):** keep current look. Strip uses `.pgs-univmeet` / `.pgs-search` (`pgs-univmeet-search.css`). Drawer search uses the same owned input class. `search-box` + `search-control` stay as autocomplete hooks only. No visual invent. Search results list deferred. **Verified 2026-09-27** on lab vs Hostinger: toggle + univMeet + search = 0 diff at 1500 / 1100; 1 hidden-element line-height diff at 700 (`h5.pgs-univmeet__label` 30.8 vs 26.4, page-strip copy is display-hidden ≤1366, known 767→600 consequence, decision 28); 390 = 0 style diff, drawer shows univMeet chips + search. | **Locked (lab)** |
+| 43 | **Type scale lock (2026-09-27):** Figma = visual reference only; font sizes follow the PGS scale per band (floor `--pgs-type-floor` 16px on every band; header-label size 18 on desktop titles). Applied first on SR-1. | **Locked** |
+| 54 | **Finance H-R DONE + LIVE (2026-09-30):** `/finance` and `/preview/finance` on the lab tree (`<PublicHeader/>` · `<PublicStrip/>` · `FinancePreviewShell` · `<PublicFooter/>`), owned split via `OWNED_SPLIT_ROUTES`, `skipHostingerJs` drops `vendors.min.js` + `main.js`. No chrome HTML strings. Dropped with the strings (About precedent): `notificationReadOnly`, `applyPremiumBusinessRule` wording rewrite, `applyStudentIdentity`, Hello Aspirant box. Body nudges (owner, per band): desktop hero 30 below `#univMeet`, logo strip 120s + 32/32; mobile strip same px/s (73s); iPad 601–1366 = mobile hero ×1.4 (20px text gate, checklist = funding checklist + same column, title 26, hero 20 below toggle top), blocks below hero on desktop rules from 601. Gap pass, leak check and iPad 80% card not run. 601–767 recorded (decision 28). | **Preview QC** |
+| 55 | **Error 404 H-R DONE + LIVE (2026-10-01):** `/error_404` and `/preview/error-404` on the lab tree (`<PublicHeader/>` · `<PublicStrip/>` · `Error404PreviewShell` · `<PublicFooter/>`, via `composeError404Page({ reactChrome: true })`), owned split. **Unknown addresses** (e.g. `/abcxyz`) use new `src/app/global-not-found.tsx` (Next 16 `experimental.globalNotFound`, flag in `next.config.ts`): own `<html>`, owned CSS only, same chrome + body, real 404 status, robots noindex, title "Page not found | #PGS". `/error_404` itself: robots noindex,nofollow, status 200 (deliberate page). Staff/parent record-missing 404s (`notFound()` in admin/portal) still use `src/app/not-found.tsx` (string chrome, staff fallback) until the studio subdomain exists. Staff fallback dropped from the public 404 (frontend is student-only). Dino moved `public/assets/img/error-404/` → `public/img/error-404/` (copy; old file stays until final cleanup). Measured identical to preview at 1500 and 390; 601–767 = decision 28 effect (heading one line, page taller). |
+| 56 | **Scholarship H-R DONE + LIVE (2026-10-01):** `/scholarship` and `/preview/scholarship` on the lab tree (`<PublicHeader/>` · `<PublicStrip/>` · `ScholarshipPreviewShell` · `<PublicFooter/>`), owned split via `OWNED_SPLIT_ROUTES`, Hostinger CSS/JS dropped, no chrome strings. Login returns to the page (`/login?redirect=%2Fscholarship`, live and lab). Dropped with the strings (About precedent): `notificationReadOnly`, `applyPremiumBusinessRule` rewrite, `applyStudentIdentity`, Hello Aspirant box. Body: gap pass 100/100/72 on screen between nine blocks (hero → intro gap halved: 50/50/36) (steps cards · student story · Find CTA split into their own sections); desktop hero 30 below `#univMeet` (fixed 86 CSS spacer); iPad 601–1366 = mobile hero ×1.4 then owner type pass (desktop type sizes, text centered, column = hero card + 60, intro paragraph 350 wide, hero 18 below toggle), lower blocks on desktop rules from 601; "top 6" note + arrow beside the cards from 1180 up (arrow flipped); Find block arrow left of note; hero title never splits a word (word-break reset + size capped to column). Vendor A/B at 1500/700/390 = []. Book/Find CTAs + pager visual only (popup pass). 601–767 recorded (decision 28). | **LOCKED** |
+| 52 | **About H-R DONE + LIVE (2026-09-27):** `/about` and `/preview/about` on the lab tree (`<PublicHeader/>` · `<PublicStrip/>` · `AboutPreviewShell` · `<PublicFooter/>`), owned split via `OWNED_SPLIT_ROUTES`, Hostinger `vendors.min.js` + `main.js` skipped on H-R done routes (`skipHostingerJs`, same as the QC'd lab). No chrome HTML strings, no `legacy/pages` builders on the route. Body QC: gap pass (100·100·72 on screen), timeline `<footer>` leak reset, desktop +30 below univMeet, iPad hero card 80% height. Owner QC passed; **About LOCKED**. Still global on every route (lab too): `vendors.min.css`, `icon.min.css`, `jquery.js`, `pgs-autocomplete.js`. | **Locked** |
+| 53 | **V-1 (2026-09-27): vendor unlink on owned-split routes.** `layout.tsx` now loads **zero** `/assets/css|js` files on `OWNED_SPLIT_ROUTES` (`/preview/header`, `/preview/about`, `/about`): (1) `pgs-autocomplete.js` off — it was binding to every `input.search-control`, i.e. double-binding the React search fields; (2) icons → inline SVG `pgs-icon.tsx` (outlines pulled 1:1 from the shipped Bootstrap Icons font; `<i>` wrapper keeps `#toggleBtn.arrow-box i` etc. valid; rect diff 0 at 1500/700/390) → `icon.min.css` off; (3) **P0 `pgs-owned-000-vendor-used.css`** = the 101 of 3011 `vendors.min.css` rules the chrome + About DOM actually match, extracted from the live sheet in original order (`scripts/vendor-css-used.browser.js`), first in the barrel; in-page A/B computed-style diff vendors on→off = 0 on lab + About at 1500/700/390 → `vendors.min.css` off; (4) `jquery.js` off (legacy-page.tsx guards its two uses; vendors.min.js/main.js already skipped there). **Per H-R page:** run `__pgsVendorScan()` on the page's states/bands while it still loads vendors, `__pgsVendorEmit()` → merge into P0, `__pgsVendorAB()` = [] on the owned-split route. Decision: no "rename Bootstrap classes" gate — a trimmed copy we own is the end state; live string routes keep all four files until their own H-R pass; final flip = delete the switch + `public/assets` + `src/legacy` when every route is on the list. | **Preview QC** |
+| 52 | **Glass sticky header (owner 2026-09-27).** Sticky fixed on desktop/iPad: `body{overflow-x:hidden}` (1:1 Hostinger) made body a scroll container above 767; `pgs-header-chrome-reset.css` sets `overflow-x: clip` on `html`+`body` for legacy pages. Then Gemini-app look: header shell transparent, pill (>600) = `--pgs-header-glass` #ebf7ff @80% + `--pgs-header-blur` blur(16px) saturate(150%); ≤600 the rounded header is the glass surface, white @80% (owner), `padding-top: env(safe-area-inset-top) + 8px` so top gap = bottom gap (20px) and the bar clears the notch/island. Tokens in `globals.css` sticky block ~line 336. | **Preview QC** |
+| 51 | **S-R (2026-09-27): strip row as React.** `public-strip-react.tsx` (`<PublicStrip/>`): overlay + login popup + toggle pill + `<PublicSidebar/>` inline + univMeet chips + search field with results inline; Hello Aspirant avatar box removed for good; both lab portals deprecated (kept only until `/preview/about` switches). Diff vs string strip: 0 at 1500/1100/700; 390 = only the owner's toggle icon 9→12px. Toggle open/close, countries dropdown, search verified. **Lab is now 100% React chrome + owned split — no chrome DSIH, no Hostinger CSS.** `public-strip.ts` string stays for live pages until H-R. | **Preview QC** |
+| 50 | **Bell logic (owner 2026-09-27):** logged out → bell only, no badge, click inert. Logged in, 0 notifications → bell only. Logged in, N → badge = unread, dropdown = REAL rows from `state.notifications` (title · relative time · destination_path). Lab fake login → Figma fixtures only. `NotificationNavDrop` props `signedIn / notifications / labFixtures`; `PublicHeader` passes them. Verified on lab: loggedOut badge hidden + panel stays closed; fake login 4 fixtures. | **Locked** |
+| 49 | **F-R (2026-09-27):** React `<PublicFooter/>` mounted on `/preview/header` in place of the string footer (`"use client"` added for its click handlers; string footer carried no login/name tokens so no props needed). Computed-style diff vs the string footer: 0 of 61 at 1500 and 390. Lab chrome now React for header · drawer · sidebar · search · footer; only the strip (`public-strip.ts`) is still a string. | **Preview QC** |
+| 48 | **ALL CHROME LOCKED on lab (2026-09-27):** header · footer · toggle/univMeet/search · search results card · open toggle box (mobile/compact accordion card width 172px per owner DevTools). Next = H-R: import React chrome + owned split page by page, drop chrome DSIH, unlink Hostinger per page, audit each. Ultimate goal: no Hostinger DSIH anywhere, one uniform React stack. | **Locked** |
+| 47 | **Toggle box LOCKED (2026-09-27):** owner QC passed after nudges (≤800 keeps QC'd string spacing + accordion only; dropdown 18px CSS = 16 on screen; toggle in capture phase). Chrome set on lab complete: header · footer · toggle/univMeet/search · search results · open toggle box. | **Locked** |
+| 46 | **T-1 built:** React #sidebar on lab, four bands measured (desk 336 on screen = 373×0.9, 675 tall = 750×0.9, card pops out 150 wide; 1100 pops right; 700/390 accordion; list scrollbar hidden). Owner decisions: mobile accordion OK; CV-Ready out, Scholarship no "Hub"; signed-out shows Login. New destination pages (Home, #datesDeadlines, profile, saved…) = separate pass after UI pass. | **Preview QC** |
+| 45 | **Fake context rule (owner 2026-09-27):** when a backend context exists, use it; when it doesn't, ask, then build fake rows in the exact backend contract shape (field names, limits, ranking) so the backend gate flushes fakes for real data without touching the UI. Applied on SR-2a (`search-contract.ts` / `search-index.ts`). | **Locked** |
+| 44 | **SR-1 built:** search results card on lab, fixtures, four bands measured (card = field width 255 in drawer at 390/700/1100; desktop 288 on screen = 320×0.9, right edge on field). | **Preview QC** |
+| 42 | **H-R audit note (2026-09-27):** at ≤600 the React header on the lab is 12px shorter than the legacy string header on live pages (`#toggleBtn` top 89 vs 101). Expected once pages flip to React; audit body start per page during H-R. | **Note** |
+| 41 | **Header lab verified (2026-09-27):** `/preview/header` on owned split measured at 1500 · 1100 · 700 · 390. Desktop full bar, all 7 labels + join #PGS, 36px (=40×0.9) outer inset, no horizontal overflow. 801–1366: logo · #feed · join #PGS · bell · avatar · hamburger. 601–800: join #PGS off the bar, in the menu. ≤600 mobile bar 7px inset. Menus carry the locked IA (Premium 5 · CV Ready 4 · CV Medical 2 · studyAbroad 2 stubs). Header = **done on lab**; remaining = H-R mount on pages + H7-LIVE. | **Locked** |
+| 40 | **Footer CSS pass DONE (2026-09-27):** owned-split footer zero-diff vs Hostinger desk + mob; compact iPad 601–800 overlap fixed with mobile card recipe; wide iPad unchanged (210px card). Owner QC passed on lab. | **Locked** |
+| 39 | **H7 preview (2026-09-27):** safe-area cascade verified on lab (token bump 24→80 moved bar/toggle/body/footer by the same amount); body pull stays strip-tied, no safe-top bake. Viewport-fit only on lab until H7-LIVE. | **Preview QC** |
+| 38 | **Search field restyle reverted (2026-09-27).** Owner: locked search bar UI must stay. Figma `search bar UI` is the results card when search happens — not a field restyle. | **Reverted** |
+
+---
+
+## Anti-regression checklist (before calling chrome “done”)
+
+- [ ] Owner can open a live modular page source/DOM and see **React header**, not only a giant `__html` string for chrome
+- [ ] Grep: chrome mount path no longer `dangerouslySetInnerHTML` for header/footer (bodies may still differ)
+- [ ] `/preview/header` matches Figma desk default + one expanded state
+- [ ] `#me` is a dropdown shell, not a profile href
+- [ ] Notch/safe-area: header, strip, body start, footer move together
+- [ ] Stubs labeled; no fake links for join #PGS / studyAbroad pages / Short Term Abroad

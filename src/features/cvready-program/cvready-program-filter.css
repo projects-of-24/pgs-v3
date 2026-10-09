@@ -1,0 +1,329 @@
+/**
+ * CV Ready Program filter / sort — CR2.
+ * Desk Frame `17046:10430` 560×90.4 @ x584 · chips Figma 11.2/12.8 → floor 16.
+ * Hint: opening `19050:12043` desk · `19055:12562` mob · arrow Group 49 down to presets.
+ * Mob Frame `19055:12561` 212×197. Bands: >1366 desk · 601–1366 interim · ≤600 mob.
+ */
+
+.cvready-program-filter {
+  /*
+   * FIGMA ACCESSIBILITY ADAPTATION (owner 2026-09-24)
+   * ORIGINAL Figma chips ~10.75–12.8 · prior PGS floor 16
+   * OWNER: Filter/Sort labels + chips → 14px (closer to Figma density)
+   */
+  --cvready-program-type-floor: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: #fff;
+  color: #000;
+  font-family: Roboto, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvready-program-filter *,
+.cvready-program-filter *::before,
+.cvready-program-filter *::after {
+  box-sizing: border-box;
+}
+
+.cvready-program-filter__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cvready-program-filter__row {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.cvready-program-filter__label {
+  margin: 0;
+  flex: 0 0 auto;
+  padding: 8px;
+  border-radius: 12.8px;
+  font-weight: 400;
+  color: #000;
+  line-height: 25.6px;
+  white-space: nowrap;
+}
+
+.cvready-program-filter__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 0;
+}
+
+.cvready-program-filter__chip {
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  appearance: none;
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: var(--cvready-program-type-floor);
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  padding: 8px 6.4px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+.cvready-program-filter__chip:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.cvready-program-filter__chip--selected {
+  background: #000;
+  color: #fff;
+  letter-spacing: 0.15px;
+  padding: 8px;
+}
+
+.cvready-program-filter__hint {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.cvready-program-filter__arrow {
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.cvready-program-filter__hint-text {
+  margin: 0;
+  font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+  font-weight: 400;
+  color: #000;
+  text-align: left;
+}
+
+/* Desk overlay on video — white card hugs chips (no stretch bleed) */
+.cvready-program-filter--overlay {
+  width: fit-content;
+  max-width: 100%;
+  padding: 16px 20px;
+  gap: 6.4px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.cvready-program-filter--overlay .cvready-program-filter__controls {
+  width: fit-content;
+  max-width: 100%;
+  gap: 6.4px;
+  align-items: center;
+}
+
+.cvready-program-filter--overlay .cvready-program-filter__row {
+  width: fit-content;
+  max-width: 100%;
+  gap: 8px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.cvready-program-filter--overlay .cvready-program-filter__label {
+  font-size: var(--cvready-program-type-floor);
+  line-height: 25.6px;
+}
+
+.cvready-program-filter--overlay .cvready-program-filter__chips {
+  flex: 0 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+/*
+ * Mob below-video — Filter | Sort side-by-side · card + chips hug contents
+ * (not fill a fixed column). Figma `19055:13357` · ≤2-col wrap on Filter only.
+ * Type floor 14 (owner).
+ */
+.cvready-program-filter--below {
+  width: fit-content;
+  max-width: 100%;
+  padding: 7.68px 11.52px;
+  gap: 0;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 15.36px;
+}
+
+.cvready-program-filter--below .cvready-program-filter__controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  gap: 7.68px;
+}
+
+.cvready-program-filter--below .cvready-program-filter__row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: none;
+  gap: 0;
+}
+
+.cvready-program-filter--below .cvready-program-filter__label {
+  padding: 7.68px;
+  font-size: var(--cvready-program-type-floor);
+  line-height: 1.5;
+}
+
+.cvready-program-filter--below .cvready-program-filter__chips {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+  /*
+   * Dual-column Filter rail. Figma 140.16 at ~11px type;
+   * at owner 14px floor, #nursing+#science need ~143 → 144.
+   * Chips themselves still hug (width: fit-content).
+   */
+  width: 144px;
+  max-width: 144px;
+  gap: 4px;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+/* Sort: hug longest chip; wrap shorter (#all+#events) into that width */
+.cvready-program-filter--below .cvready-program-filter__row:last-child .cvready-program-filter__chips {
+  width: min-content;
+  max-width: none;
+}
+
+.cvready-program-filter--below .cvready-program-filter__chip {
+  flex: 0 0 auto;
+  width: fit-content;
+  max-width: none;
+  padding: 7.68px 6.144px;
+  border-radius: 15.36px;
+}
+
+.cvready-program-filter--below .cvready-program-filter__chip--selected {
+  padding: 7.68px;
+}
+
+/* —— Mobile ≤600 —— Figma `19055:12561` 212×197 · text then arrow down */
+@media (max-width: 600px) {
+  .cvready-program-filter--standalone {
+    padding: 8px 0 24px;
+    gap: 0;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__hint {
+    width: 212px;
+    max-width: 212px;
+    min-height: 197px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__hint-text {
+    width: 139px;
+    max-width: 139px;
+    margin: 52px 0 0 auto;
+    font-size: 24px;
+    line-height: normal;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__arrow {
+    width: 82px;
+    height: 82px;
+    margin-top: 8px;
+    margin-left: -8px;
+    /* Point down toward presets (Figma −135°) */
+    transform: rotate(-135deg);
+    transform-origin: center;
+  }
+}
+
+/* —— iPad interim —— */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .cvready-program-filter--standalone {
+    padding: 24px 40px 40px;
+    gap: 0;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__hint {
+    max-width: 36rem;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__arrow {
+    width: 64px;
+    height: 64px;
+    transform: rotate(-135deg);
+    transform-origin: center;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__hint-text {
+    font-size: 28px;
+    line-height: normal;
+  }
+}
+
+/* —— Desktop >1366 —— Figma text `19050:12043` · arrow Group `19050:12045` below */
+@media (min-width: 1367px) {
+  /*
+   * CR-OPEN: chips live on the video overlay.
+   * Standalone = hint under title/body → presets below.
+   */
+  .cvready-program-filter--standalone {
+    padding: 0 0 40px;
+    gap: 0;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__hint {
+    width: 504px;
+    max-width: 504px;
+    margin-left: 48px;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__hint-text {
+    width: 428px;
+    max-width: 428px;
+    margin: 0;
+    font-size: 36px;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .cvready-program-filter--standalone .cvready-program-filter__arrow {
+    width: 82.3px;
+    height: 82.3px;
+    margin-left: -8px;
+    /* Desk Group 49 points down toward presets */
+    transform: none;
+  }
+}
