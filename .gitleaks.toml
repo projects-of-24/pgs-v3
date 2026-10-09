@@ -22,6 +22,9 @@ paths = [
   '''(^|/)docs/quality-gate/evidence/.*\.log$''',
   # Public Figma file key constant (not an API credential)
   '''src/features/purple-events/face-card/face-layouts\.ts$''',
+  # pgTAP fixtures only (placeholder phone/citizenship strings). History scan still
+  # hits these commits; path allowlist is required — do not treat as live secrets.
+  '''^supabase/tests/''',
   # Removed one-off import helper; historical JUNIOR_KEY was a catalog slug constant, not a live secret
   '''scripts/import-junior-catalog\.mjs$'''
 ]
