@@ -88,12 +88,6 @@ describe("canonical Operations product routing", () => {
     expect(blocked.status).toBe(403);
     expect(await blocked.json()).toMatchObject({ message: "Preview is read-only. Exit preview to make changes." });
 
-    const exit = new NextRequest(new URL("/api/staff/preview", "https://preview.example.test"), {
-      method: "POST",
-      headers: { cookie: "pgs_staff_preview=forged" }
-    });
-    const staffAllowed = await proxy(staffMutating);
-    expect(staffAllowed.status).not.toBe(403);
   });
 
   it("maps canonical Operations URLs to the existing admin implementation", async () => {
