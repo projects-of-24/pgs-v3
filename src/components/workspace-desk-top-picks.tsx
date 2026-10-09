@@ -36,7 +36,6 @@ export function WorkspaceDeskTopPicks({ studentId, canManage }: Props) {
   const [loadError, setLoadError] = useState("");
 
   const load = useCallback(async () => {
-    setLoadError("");
     const response = await fetch(`/api/staff/students/${studentId}/workspace/top-picks`, {
       method: "GET",
       headers: { accept: "application/json" }
@@ -52,13 +51,38 @@ export function WorkspaceDeskTopPicks({ studentId, canManage }: Props) {
       setCatalog([]);
       return;
     }
+    setLoadError("");
     setPicks(result.picks ?? []);
     setCatalog(result.catalog ?? []);
   }, [studentId]);
 
   useEffect(() => {
-    void load();
-  }, [load]);
+    let cancelled = false;
+    void (async () => {
+      const response = await fetch(`/api/staff/students/${studentId}/workspace/top-picks`, {
+        method: "GET",
+        headers: { accept: "application/json" }
+      });
+      const result = (await response.json()) as {
+        message?: string;
+        picks?: PickRow[];
+        catalog?: CatalogRow[];
+      };
+      if (cancelled) return;
+      if (!response.ok) {
+        setLoadError(result.message ?? "Unable to load Top picks.");
+        setPicks([]);
+        setCatalog([]);
+        return;
+      }
+      setLoadError("");
+      setPicks(result.picks ?? []);
+      setCatalog(result.catalog ?? []);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [studentId]);
 
   const assignedIds = useMemo(() => new Set(picks.map((pick) => pick.course_id)), [picks]);
 
@@ -227,7 +251,7 @@ export function WorkspaceDeskTopPicks({ studentId, canManage }: Props) {
               {open && catalog.length > 0 ? (
                 <ul id={listId} className={styles.courseSuggest} role="listbox">
                   {filtered.length === 0 ? (
-                    <li className={styles.courseSuggestEmpty} role="option" aria-disabled="true">
+                    <li className={styles.courseSuggestEmpty} role="option" aria-selected="false" aria-disabled="true">
                       No matches
                     </li>
                   ) : (
