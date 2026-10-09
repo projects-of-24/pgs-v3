@@ -31,9 +31,9 @@ describe("canonical Operations product routing", () => {
   it("routes unauthenticated Operations requests to staff login with the exact return URL", async () => {
     const response = await proxy(request("/ops/students?premium=active&mentor=actor-1"));
     const location = new URL(response.headers.get("location")!);
-    expect(location.pathname).toBe("/login");
+    expect(location.pathname).toBe("/studio/login");
     expect(location.searchParams.get("redirect")).toBe("/ops/students?premium=active&mentor=actor-1");
-    expect(location.searchParams.get("surface")).toBe("operations");
+    expect(location.searchParams.get("surface")).toBe("studio");
   });
 
   it.each([
@@ -56,8 +56,9 @@ describe("canonical Operations product routing", () => {
   it("does not redirect unrelated legacy admin routes into Operations", async () => {
     const response = await proxy(request("/admin/catalog"));
     const location = new URL(response.headers.get("location")!);
-    expect(location.pathname).toBe("/login");
+    expect(location.pathname).toBe("/studio/login");
     expect(location.searchParams.get("redirect")).toBe("/admin/catalog");
+    expect(location.searchParams.get("surface")).toBe("studio");
   });
 
   it("keeps student routes on the existing public sign-in surface", async () => {
@@ -68,21 +69,21 @@ describe("canonical Operations product routing", () => {
     expect(location.searchParams.get("surface")).toBeNull();
   });
 
-  it("blocks mutating APIs while a staff preview cookie is present", async () => {
+  it("blocks student mutating APIs while a staff preview cookie is present (Ops staff APIs stay live)", async () => {
     mocks.getClaims.mockResolvedValue({ data: { claims: { sub: "admin" } } });
-    const mutating = new NextRequest(new URL("/api/staff/assignments", "https://preview.example.test"), {
+    const studentMutating = new NextRequest(new URL("/api/student/profile", "https://preview.example.test"), {
       method: "POST",
       headers: { cookie: "pgs_staff_preview=forged" }
     });
-    const blocked = await proxy(mutating);
+    const blocked = await proxy(studentMutating);
     expect(blocked.status).toBe(403);
     expect(await blocked.json()).toMatchObject({ message: "Preview is read-only. Exit preview to make changes." });
-    const exit = new NextRequest(new URL("/api/staff/preview", "https://preview.example.test"), {
+    const staffMutating = new NextRequest(new URL("/api/staff/assignments", "https://preview.example.test"), {
       method: "POST",
       headers: { cookie: "pgs_staff_preview=forged" }
     });
-    const allowed = await proxy(exit);
-    expect(allowed.status).not.toBe(403);
+    const staffAllowed = await proxy(staffMutating);
+    expect(staffAllowed.status).not.toBe(403);
   });
 
   it("maps canonical Operations URLs to the existing admin implementation", async () => {
