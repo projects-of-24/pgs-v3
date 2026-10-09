@@ -109,7 +109,13 @@
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   cursor: grab;
-  touch-action: pan-x;
+}
+
+/* Horizontal pan only on desk/iPad — phone cards are full-width; vertical scroll must win. */
+@media (min-width: 601px) {
+  .pgs-picks__track {
+    touch-action: pan-x;
+  }
 }
 
 .pgs-picks__track.is-dragging {

@@ -6,7 +6,7 @@ import { PaperUsmleIpadBody } from "./paper-usmle-ipad-body";
 
 export function PurplemedicalPaperShell() {
   return (
-    <main
+    <div
       className="purplemedical-paper"
       data-pgs-module="purplemedical-paper"
       data-paper-node="2VH-0"
@@ -17,6 +17,6 @@ export function PurplemedicalPaperShell() {
           <PaperUsmleIpadBody />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

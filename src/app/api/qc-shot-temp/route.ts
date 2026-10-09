@@ -8,6 +8,10 @@ export async function GET(req: Request) {
   if (process.env.NODE_ENV !== "development") return new Response("not found", { status: 404 });
   const u = new URL(req.url);
   const target = u.searchParams.get("path") || "/preview/purpleusmle";
+  // Dev-only helper: stay on local same-origin paths (no open redirect / SSRF).
+  if (!target.startsWith("/") || target.startsWith("//") || target.includes("://")) {
+    return new Response("bad path", { status: 400 });
+  }
   const w = Number(u.searchParams.get("w") || 1000);
   const out = (u.searchParams.get("out") || "shot").replace(/[^a-z0-9_-]/gi, "");
   const dir = path.join(process.cwd(), ".qc-shots");

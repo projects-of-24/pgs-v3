@@ -26,8 +26,8 @@ Auth/RLS map: `docs/pgs-v3-audit/05-auth-permissions-rls-viewer-map.md`
 | ID | Risk | Severity | Status | Evidence |
 |---|---|---|---|---|
 | QG-RISK-01 | Failing CI not enforced as merge blocker | critical | open | Verified 2026-10-08: no classic branch protection; ruleset `24304872` (`1`) only `DELETION` + `NON_FAST_FORWARD`; **no required status checks**. Org plan free/private. See [ci-pipeline.md](./ci-pipeline.md#verification-log-2026-10-08) |
-| QG-RISK-02 | Runtime RLS (pgTAP) not green / not in CI | critical | mitigated-unverified in CI | Local **PASS** 27/27 after batch B (2026-10-09). Still absent from CI. Evidence: [evidence/pgtap-batch-b-2026-10-09.md](./evidence/pgtap-batch-b-2026-10-09.md) |
-| QG-RISK-03 | Static RLS mistaken for runtime proof | high | open | Documented anti-pattern; runtime evidence now exists and shows FAIL — static CI green is insufficient |
+| QG-RISK-02 | Runtime RLS (pgTAP) not scheduled in CI | critical | mitigated-unverified in CI | Local **PASS** 27/27 after batch B (2026-10-09). Open gap is **CI/runtime job**, not local failure. Evidence: [evidence/pgtap-batch-b-2026-10-09.md](./evidence/pgtap-batch-b-2026-10-09.md) |
+| QG-RISK-03 | Static RLS mistaken for runtime proof | high | open | Documented anti-pattern; local runtime is green, but static `pnpm test:rls` alone is not enough without a CI pgTAP job |
 | QG-RISK-04 | Authenticated Playwright role matrix incomplete in CI | medium | mitigated-unverified | CI generates storage states when preview secrets exist (`ci-prepare-auth-fixtures.sh`). Until owner adds secrets, fixture cases still skip. |
 | QG-RISK-05 | Secret scan gaps | medium | mitigated-unverified | Custom scan kept; **OSS Gitleaks now in CI** (2026-10-08). Still not a substitute for never committing secrets. Confirm green on first PR after merge. |
 | QG-RISK-06 | Dependency update monitoring | medium | mitigated-unverified | `.github/dependabot.yml` added; enable Dependabot in GitHub org/repo settings if not already |

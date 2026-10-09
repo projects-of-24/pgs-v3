@@ -107,10 +107,10 @@ Status date: Phase 0 documentation (2026-10-08 audit). Re-verify after CI or sui
 | Item | Notes |
 |---|---|
 | Confirmed branch protection / required status checks | Must be verified in GitHub UI/API (roadmap #1) |
-| Runtime pgTAP green + CI/scheduled job | Local executed (FAIL); CI still missing — fix suites before wiring CI |
+| Runtime pgTAP in CI / scheduled job | Local **27/27 PASS** (batch B); CI job still missing |
 | Live (non-mocked) HTTP IDOR against staging | Still missing — mocked CI matrix added in roadmap #3 |
-| Dependabot (or Renovate) | Roadmap #4 |
-| Blocking CI Gitleaks Action | Custom scan exists; broader scanner not a CI job — roadmap #4 |
+| Dependabot org enablement | `.github/dependabot.yml` present (roadmap #4); confirm org/repo Dependabot is on |
+| Blocking CI Gitleaks | OSS Gitleaks CLI + custom high-confidence scan in CI (roadmap #4) |
 | Vitest coverage report / thresholds | Not configured |
 | Payment webhook abuse suite | Product webhook secret expected; automated duplicate/signature suite not first-class |
 | Cloudflare R2 media suite | **N/A** — PGS uses Supabase Storage |

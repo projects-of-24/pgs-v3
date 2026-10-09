@@ -15,9 +15,9 @@ Related: [role-permission-matrix.md](./role-permission-matrix.md) · [security-t
 |---|---|
 | Model design | **Sound** — permission keys + DB grants + `mentor_assignments` + Premium entitlement |
 | App enforcement pattern | **Generally strong** — `requireStaffPermission` / `requireStudentViewer` before mutations |
-| DB RLS | **Implemented; runtime suite not green** — triaged 2026-10-09 (mostly test/fixture drift; one audit-event logic defect) |
+| DB RLS | **Implemented; local runtime green** — batch B **27/27 PASS** (2026-10-09); **not yet in CI** |
 | Automated proof | **Partial** — Vitest/API mocks + anonymous Playwright; fixture role e2e needs CI secrets |
-| Top residual risks | Permission drift DB↔TS; coarse `overview.read` page entry; pgTAP still FAIL until approved fixes |
+| Top residual risks | Permission drift DB↔TS; coarse `overview.read` page entry; pgTAP not scheduled in CI |
 
 ---
 
@@ -146,7 +146,7 @@ Cross-role negatives covered in Vitest: `src/app/api/api-cross-role-security.tes
 
 | ID | Finding | Evidence | Status |
 |---|---|---|---|
-| RBAC-01 | Runtime RLS/RBAC pgTAP **not green** | Batch B: **27/27 PASS** (713 asserts). Evidence: [evidence/pgtap-batch-b-2026-10-09.md](./evidence/pgtap-batch-b-2026-10-09.md) | **Closed locally** — still not in CI |
+| RBAC-01 | Runtime RLS/RBAC pgTAP **green locally, missing from CI** | Batch B: **27/27 PASS** (713 asserts). Evidence: [evidence/pgtap-batch-b-2026-10-09.md](./evidence/pgtap-batch-b-2026-10-09.md) | **Closed locally** — CI runtime still open |
 | RBAC-02 | Permission truth can drift (DB grants vs TS allowlist vs seed intent) | SEC-07 pattern; no CI job comparing DB bundle to matrix | Open |
 | RBAC-03 | Authenticated cross-role **browser** proof incomplete in CI until fixture secrets set | `@auth-regression` fixture cases skip without secrets | Wiring done; owner secrets pending |
 
@@ -177,7 +177,7 @@ Cross-role negatives covered in Vitest: `src/app/api/api-cross-role-security.tes
 | Vitest `api-cross-role-security.test.ts` | Premium/assign/roles/share/workspace/AI denials | Mocked boundaries |
 | Vitest document security | Clean gate + peer deny | Mocked |
 | Playwright `@auth-regression` | Anonymous denials in CI | Role cases need fixtures |
-| pgTAP `supabase/tests/*` | Intended actor isolation | **Overall FAIL** locally (triaged 2026-10-09) |
+| pgTAP `supabase/tests/*` | Intended actor isolation | **27/27 PASS** locally (batch B); not in CI |
 | Static `pnpm test:rls` | Migration text contains policies | Not runtime |
 
 ---

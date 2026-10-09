@@ -22,8 +22,7 @@ paths = [
   '''(^|/)docs/quality-gate/evidence/.*\.log$''',
   # Public Figma file key constant (not an API credential)
   '''src/features/purple-events/face-card/face-layouts\.ts$''',
-  # Fixture-only SQL suites (not production credentials)
-  '''^supabase/tests/''',
   # Removed one-off import helper; historical JUNIOR_KEY was a catalog slug constant, not a live secret
   '''scripts/import-junior-catalog\.mjs$'''
 ]
+

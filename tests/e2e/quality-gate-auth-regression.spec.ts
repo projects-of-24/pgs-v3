@@ -85,7 +85,7 @@ test.describe("QG auth regression — standard student fixture", () => {
   }, async ({ page }) => {
     await skipIfStudentFixtureInvalid(page, "authenticated_standard");
     await goto(page, "/ops");
-    if (/\/login(\?|$)/.test(page.url())) return;
+    await expect(page, "fixture session must not bounce to login").not.toHaveURL(/\/login(\?|$)/);
     await expect(page.getByRole("link", { name: "Scoreboard" })).toHaveCount(0);
   });
 
@@ -114,7 +114,7 @@ test.describe("QG auth regression — Premium student fixture", () => {
   }, async ({ page }) => {
     await skipIfStudentFixtureInvalid(page, "authenticated_premium");
     await goto(page, "/admin/staff");
-    if (/\/login(\?|$)/.test(page.url())) return;
+    await expect(page, "fixture session must not bounce to login").not.toHaveURL(/\/login(\?|$)/);
     await expect(page.getByRole("button", { name: /Invite/i })).toHaveCount(0);
     await expect(page.locator("body")).not.toContainText(/Invite staff/i);
   });

@@ -39,14 +39,32 @@ fi
 
 pnpm fixtures:auth-states
 
+# Only export paths that exist — partial fixture runs must not point Playwright at missing files.
+declare -a prepared_roles=()
 if [[ -n "${GITHUB_ENV:-}" ]]; then
-  {
-    echo "PLAYWRIGHT_STANDARD_STUDENT_STORAGE_STATE=${AUTH_DIR}/standard-student.json"
-    echo "PLAYWRIGHT_PREMIUM_STUDENT_STORAGE_STATE=${AUTH_DIR}/premium-student.json"
-    echo "PLAYWRIGHT_MENTOR_STORAGE_STATE=${AUTH_DIR}/mentor.json"
-    echo "PLAYWRIGHT_SUPER_ADMIN_STORAGE_STATE=${AUTH_DIR}/super-admin.json"
-  } >> "${GITHUB_ENV}"
+  if [[ -f "${AUTH_DIR}/standard-student.json" ]]; then
+    echo "PLAYWRIGHT_STANDARD_STUDENT_STORAGE_STATE=${AUTH_DIR}/standard-student.json" >> "${GITHUB_ENV}"
+    prepared_roles+=("standard-student")
+  fi
+  if [[ -f "${AUTH_DIR}/premium-student.json" ]]; then
+    echo "PLAYWRIGHT_PREMIUM_STUDENT_STORAGE_STATE=${AUTH_DIR}/premium-student.json" >> "${GITHUB_ENV}"
+    prepared_roles+=("premium-student")
+  fi
+  if [[ -f "${AUTH_DIR}/mentor.json" ]]; then
+    echo "PLAYWRIGHT_MENTOR_STORAGE_STATE=${AUTH_DIR}/mentor.json" >> "${GITHUB_ENV}"
+    prepared_roles+=("mentor")
+  fi
+  if [[ -f "${AUTH_DIR}/super-admin.json" ]]; then
+    echo "PLAYWRIGHT_SUPER_ADMIN_STORAGE_STATE=${AUTH_DIR}/super-admin.json" >> "${GITHUB_ENV}"
+    prepared_roles+=("super-admin")
+  fi
+fi
+
+if [[ ${#prepared_roles[@]} -eq 0 ]]; then
+  echo "Auth fixtures produced no storage-state files under ${AUTH_DIR}."
+  write_output prepared false
+  exit 0
 fi
 
 write_output prepared true
-echo "Auth fixtures prepared under ${AUTH_DIR} for roles: ${PGS_PREVIEW_FIXTURE_ROLES}"
+echo "Auth fixtures prepared under ${AUTH_DIR} for roles: ${prepared_roles[*]}"

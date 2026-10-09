@@ -27,6 +27,7 @@ export default async function StudentFeedIpadPaperPreviewPage() {
     getPublishedUnivMeet()
   ]);
   const signed = state && state.kind !== "anonymous" ? state : null;
+  const studentState = state?.kind ?? "anonymous";
   const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
   const loginHref = `/login?redirect=${encodeURIComponent("/preview/student-feed-ipad-paper")}`;
 
@@ -40,7 +41,7 @@ export default async function StudentFeedIpadPaperPreviewPage() {
   return (
     <LegacyPage
       page="preview-student-feed-ipad-paper"
-      studentState="authenticated_premium"
+      studentState={studentState}
     >
       <PublicHeader
         loginHref={loginHref}

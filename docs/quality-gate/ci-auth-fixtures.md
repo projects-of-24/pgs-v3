@@ -10,7 +10,7 @@ Repo → **Settings → Secrets and variables → Actions → New repository sec
 
 | Secret name | Purpose |
 |---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Preview / lab Supabase project URL (**not** production unless you intentionally accept that risk) |
+| `NEXT_PUBLIC_SUPABASE_URL` | Isolated **preview / lab** Supabase project URL only — never production (see release-checklist) |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Publishable (or anon) key for that project |
 | `PGS_PREVIEW_FIXTURE_PASSWORD` | Shared 16+ char password for fixture accounts (see emails below) |
 

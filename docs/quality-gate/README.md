@@ -170,7 +170,7 @@ Schema and initial catalog: [security-test-cases.md](./security-test-cases.md).
 - [ ] Owner review of this folder
 - [x] Roadmap #1 verification recorded (gap: no required status checks)
 - [ ] Owner applies GitHub required checks (UI / plan) — still open under QG-RISK-01
-- [x] Roadmap #2 runtime pgTAP executed on isolated local DB (overall FAIL; see evidence/)
+- [x] Roadmap #2 runtime pgTAP executed on isolated local DB (**27/27 PASS** after batch B; see evidence/)
 - [x] Roadmap #3 cross-role API matrix added and Vitest-verified (13/13)
 - [x] Roadmap #4 Gitleaks CI + Dependabot config
 - [x] Roadmap #5 `@auth-regression` Playwright + CI step
