@@ -63,7 +63,7 @@ export default async function StaffAccessPage({
       </section>
       <OperationsStaffAccessDetail
         canManage={can(context, "roles.manage")}
-        canPreviewMentor={canStartStaffPreview(context, null) && (detail.role_key === "mentor" || detail.role_key === "admin" || detail.role_key === "super_admin") && detail.status === "active" && !detail.invite_pending}
+        canPreviewMentor={canStartStaffPreview(context) && (detail.role_key === "mentor" || detail.role_key === "admin" || detail.role_key === "super_admin") && detail.status === "active" && !detail.invite_pending}
         detail={detail}
         email={email}
         history={history}

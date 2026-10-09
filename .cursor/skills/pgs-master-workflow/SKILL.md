@@ -338,6 +338,8 @@ Fortune 100 codebases are not perfect either. **Sellable 10/10** = roles/docs/Op
 | `pgs-header-chrome-phase` | Header reopen 2026-09-25 · React mount · no chrome DSIH · Figma IA · [`docs/HEADER-CHROME-PHASE.md`](../../docs/HEADER-CHROME-PHASE.md) |
 | `pgs-no-touch-unapproved-ui` | Approved / locked surfaces |
 | `pgs-never-invent` | No invented UX |
+| `pgs-scout-what-why-how` | Frontend/public layout WHAT·WHY·HOW |
+| `pgs-ops-backend-ui-scout` | Ops/CMS screenshot UI scout; ignore shadcn/TanStack default; dashboard readings first |
 | `pgs-cms-action-buttons` | `.btn-custom` never restyle |
 | `.cursor/rules/pgs-v3-domain-contracts.mdc` | One-truth architecture |
 | `.cursor/rules/pgs-v3-product-recovery.mdc` | Four-source gate |
