@@ -28,10 +28,11 @@ jobs:
           GITLEAKS_VERSION: "8.30.0"
         run: |
           set -euo pipefail
+          # Install outside the workspace so the binary is not scanned by test:security.
           curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
-            | tar -xz gitleaks
-          ./gitleaks version
-          ./gitleaks detect \
+            | tar -xz -C "${RUNNER_TEMP}" gitleaks
+          "${RUNNER_TEMP}/gitleaks" version
+          "${RUNNER_TEMP}/gitleaks" detect \
             --source . \
             --config .gitleaks.toml \
             --verbose \
