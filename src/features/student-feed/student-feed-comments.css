@@ -98,6 +98,14 @@
   letter-spacing: 0.5px;
 }
 
+.student-feed-comments__status-msg {
+  margin: 8px 0 0;
+  color: #5b6575;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 /* —— Card + forlocked —— */
 .student-feed-comments__card-wrap {
   position: relative;

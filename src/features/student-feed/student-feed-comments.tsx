@@ -3,14 +3,14 @@
  * Desktop Figma `18796:11932` (+ intro/status `17961:10947`).
  * Mobile Figma `1029:7535` (+ intro/status `206:6175`).
  * Locked: forlocked + controls off.
- * Unlocked: expand-as-type (max 300) · B/I/strike · emoji picker ·
- * Sort (Top picks pattern): Newest / Oldest / Today / This week ·
- * fixed list scroll (hidden bar). Times are placebo until B6.
+ * Unlocked Premium live (WS-COMMENTS-2): `workspace_comments` via props + POST `/api/premium/comments`.
+ * Preview / locked: fixtures.
  */
 "use client";
 
 import Image from "next/image";
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import type { FeedCommentsData } from "./load-feed-comments";
 import "./student-feed-comments.css";
 
 const LOCK_SRC = "/assets/img/lock.png";
@@ -137,8 +137,42 @@ const FIXTURE_THREADS: FeedComment[] = [
 
 const LOCKED_THREADS = FIXTURE_THREADS.slice(0, 2);
 
+function formatRelativeTime(iso: string, nowMs: number): string {
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return "";
+  const delta = Math.max(0, nowMs - t);
+  const mins = Math.floor(delta / 60_000);
+  if (mins < 1) return "Just now";
+  if (mins < 60) return `${mins} min ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 7) return `${days}d ago`;
+  return new Date(t).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  });
+}
+
+function mapLiveComments(live: FeedCommentsData, nowMs: number): FeedComment[] {
+  return live.comments.map((row) => ({
+    id: row.id,
+    author: row.authorName,
+    avatarSrc: row.isStudent ? AVATAR_STUDENT : AVATAR_STAFF,
+    body: row.body,
+    time: formatRelativeTime(row.createdAt, nowMs),
+    createdAt: row.createdAt
+  }));
+}
+
 export type StudentFeedCommentsProps = {
   premiumActive?: boolean;
+  /** WS-COMMENTS-2 live store; omit → fixtures (preview / locked). */
+  live?: FeedCommentsData | null;
+  /** Staff View as Student — no student POST. */
+  readOnly?: boolean;
+  studentDisplayName?: string;
 };
 
 function plainLength(el: HTMLElement): number {
@@ -151,8 +185,15 @@ function truncateEditor(el: HTMLElement, max: number) {
   }
 }
 
-export function StudentFeedComments({ premiumActive = false }: StudentFeedCommentsProps) {
+export function StudentFeedComments({
+  premiumActive = false,
+  live = null,
+  readOnly = false,
+  studentDisplayName
+}: StudentFeedCommentsProps) {
   const unlocked = Boolean(premiumActive);
+  const fromStore = Boolean(live?.fromStore);
+  const canPost = unlocked && !readOnly;
   const editorId = useId();
   const menuId = useId();
   const editorRef = useRef<HTMLDivElement>(null);
@@ -166,14 +207,22 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
   const [sortMenuOpen, setSortMenuOpen] = useState(false);
   const [charCount, setCharCount] = useState(0);
   const [emojiOpen, setEmojiOpen] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState("");
+  const [clockMs] = useState(() => (fromStore ? Date.now() : COMMENTS_PREVIEW_NOW_MS));
 
-  const catalog = unlocked ? FIXTURE_THREADS : LOCKED_THREADS;
+  const composerName = studentDisplayName?.trim() || live?.studentName?.trim() || "John Doe";
+
+  const catalog = useMemo(() => {
+    if (!unlocked) return LOCKED_THREADS;
+    if (fromStore && live) return mapLiveComments(live, clockMs);
+    return FIXTURE_THREADS;
+  }, [unlocked, fromStore, live, clockMs]);
 
   const threads = useMemo(() => {
-    const merged = [...posted, ...catalog];
-    // Same fixed clock as fixtures — wall clock would break Today/This week QC + SSR.
-    const todayStart = startOfUtcDay(COMMENTS_PREVIEW_NOW_MS);
-    const weekStart = startOfUtcWeekMonday(COMMENTS_PREVIEW_NOW_MS);
+    const merged = fromStore ? [...catalog] : [...posted, ...catalog];
+    const todayStart = startOfUtcDay(clockMs);
+    const weekStart = startOfUtcWeekMonday(clockMs);
     const filtered = merged.filter((item) => {
       const t = Date.parse(item.createdAt);
       if (Number.isNaN(t)) return false;
@@ -186,7 +235,7 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
       const delta = Date.parse(a.createdAt) - Date.parse(b.createdAt);
       return newestFirst ? -delta : delta;
     });
-  }, [posted, catalog, sortMode]);
+  }, [posted, catalog, sortMode, fromStore, clockMs]);
 
   const emptyFilterCopy =
     sortMode === "today"
@@ -220,10 +269,10 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
   }, []);
 
   useEffect(() => {
-    if (!unlocked) return;
+    if (!canPost) return;
     peakEditorHeightRef.current = EDITOR_MIN_HEIGHT_PX;
     syncEditorHeight();
-  }, [unlocked, syncEditorHeight]);
+  }, [canPost, syncEditorHeight]);
 
   useEffect(() => {
     if (!emojiOpen && !sortMenuOpen) return;
@@ -270,14 +319,14 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
   }
 
   function applyFormat(command: "bold" | "italic" | "strikeThrough") {
-    if (!unlocked) return;
+    if (!canPost) return;
     focusEditor();
     document.execCommand(command, false);
     syncEditorHeight();
   }
 
   function insertEmoji(emoji: string) {
-    if (!unlocked) return;
+    if (!canPost) return;
     focusEditor();
     const el = editorRef.current;
     if (!el) return;
@@ -288,27 +337,51 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
   }
 
   function toggleEmojiPicker() {
-    if (!unlocked) return;
+    if (!canPost) return;
     setEmojiOpen((open) => !open);
   }
 
-  function submitComment() {
-    if (!unlocked) return;
+  async function submitComment() {
+    if (!canPost || busy) return;
     const el = editorRef.current;
     if (!el) return;
-    const body = (el.innerText || "").trim();
+    const body = (el.innerText || "").trim().slice(0, COMMENT_MAX);
     if (!body) return;
+
+    if (fromStore) {
+      setBusy(true);
+      setStatus("Posting…");
+      try {
+        const response = await fetch("/api/premium/comments", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ body, parent_id: null })
+        });
+        const result = (await response.json()) as { message?: string };
+        if (!response.ok) {
+          setStatus(result.message ?? "Unable to add comment.");
+          setBusy(false);
+          return;
+        }
+        window.location.reload();
+        return;
+      } catch {
+        setStatus("Unable to add comment.");
+        setBusy(false);
+        return;
+      }
+    }
+
     const next: FeedComment = {
       id: `local-${Date.now()}`,
-      author: "John Doe",
+      author: composerName,
       avatarSrc: AVATAR_STUDENT,
-      body: body.slice(0, COMMENT_MAX),
+      body,
       time: "Just now",
       createdAt: new Date().toISOString()
     };
     setPosted((prev) => [next, ...prev]);
     el.innerHTML = "";
-    // After post: keep the expanded box height as default (owner).
     syncEditorHeight();
   }
 
@@ -316,6 +389,7 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
     <section
       className={`student-feed-comments${unlocked ? " is-unlocked" : " is-locked"}`}
       data-pgs-module="student-feed-comments"
+      data-comments-source={fromStore ? "workspace_comments" : "fixture"}
       data-figma-desktop="18796:11932"
       data-figma-mobile="1029:7535"
       data-comments-times="placebo-until-B6"
@@ -434,13 +508,13 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                 className="student-feed-comments__avatar"
                 unoptimized
               />
-              <span className="student-feed-comments__author-name">John Doe</span>
+              <span className="student-feed-comments__author-name">{composerName}</span>
             </div>
             <div className="student-feed-comments__field" ref={fieldRef}>
               <label className="visually-hidden" htmlFor={editorId}>
                 Type your comment here
               </label>
-              {unlocked ? (
+              {canPost ? (
                 <div
                   id={editorId}
                   ref={editorRef}
@@ -465,13 +539,13 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                   aria-disabled="true"
                 />
               )}
-              <div className="student-feed-comments__toolbar" aria-hidden={!unlocked}>
+              <div className="student-feed-comments__toolbar" aria-hidden={!canPost}>
                 <div className="student-feed-comments__tools" role="group" aria-label="Formatting">
                   <button
                     type="button"
                     className="student-feed-comments__tool is-b"
-                    disabled={!unlocked}
-                    tabIndex={unlocked ? 0 : -1}
+                    disabled={!canPost}
+                    tabIndex={canPost ? 0 : -1}
                     aria-label="Bold selected text"
                     onClick={() => applyFormat("bold")}
                   >
@@ -480,8 +554,8 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                   <button
                     type="button"
                     className="student-feed-comments__tool is-i"
-                    disabled={!unlocked}
-                    tabIndex={unlocked ? 0 : -1}
+                    disabled={!canPost}
+                    tabIndex={canPost ? 0 : -1}
                     aria-label="Italic selected text"
                     onClick={() => applyFormat("italic")}
                   >
@@ -490,8 +564,8 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                   <button
                     type="button"
                     className="student-feed-comments__tool is-s"
-                    disabled={!unlocked}
-                    tabIndex={unlocked ? 0 : -1}
+                    disabled={!canPost}
+                    tabIndex={canPost ? 0 : -1}
                     aria-label="Strikethrough selected text"
                     onClick={() => applyFormat("strikeThrough")}
                   >
@@ -501,8 +575,8 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                     <button
                       type="button"
                       className="student-feed-comments__smile-btn"
-                      disabled={!unlocked}
-                      tabIndex={unlocked ? 0 : -1}
+                      disabled={!canPost}
+                      tabIndex={canPost ? 0 : -1}
                       aria-label="Choose emoji"
                       aria-expanded={emojiOpen}
                       aria-controls={emojiOpen ? `${editorId}-emoji-picker` : undefined}
@@ -542,30 +616,42 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                   </div>
                 </div>
                 <span className="student-feed-comments__count" aria-live="polite">
-                  {unlocked ? `${charCount}/${COMMENT_MAX}` : null}
+                  {canPost ? `${charCount}/${COMMENT_MAX}` : null}
                 </span>
                 <button
                   type="button"
                   className="student-feed-comments__submit"
-                  disabled={!unlocked}
-                  tabIndex={unlocked ? 0 : -1}
-                  onClick={submitComment}
+                  disabled={!canPost || busy || charCount === 0}
+                  tabIndex={canPost ? 0 : -1}
+                  onClick={() => void submitComment()}
                 >
-                  Comment
+                  {busy ? "Posting…" : "Comment"}
                 </button>
               </div>
+              {status ? (
+                <p className="student-feed-comments__status-msg" role="status">
+                  {status}
+                </p>
+              ) : null}
+              {readOnly && fromStore ? (
+                <p className="student-feed-comments__status-msg" role="status">
+                  Preview is read-only. Exit View as Student to post as the student.
+                </p>
+              ) : null}
             </div>
           </div>
 
           <ul
             ref={listRef}
             className={`student-feed-comments__list${unlocked ? " is-scrollable" : ""}`}
-            data-placebo-times="true"
+            data-placebo-times={fromStore ? "false" : "true"}
             data-sort={sortMode}
           >
-            {threads.length === 0 && emptyFilterCopy ? (
+            {threads.length === 0 ? (
               <li className="student-feed-comments__item student-feed-comments__item--empty">
-                <p className="student-feed-comments__empty">{emptyFilterCopy}</p>
+                <p className="student-feed-comments__empty">
+                  {emptyFilterCopy ?? (fromStore ? "No comments yet. Be the first to comment!" : "No comments yet.")}
+                </p>
               </li>
             ) : (
               threads.map((thread) => (
@@ -583,7 +669,7 @@ export function StudentFeedComments({ premiumActive = false }: StudentFeedCommen
                   </div>
                   <p className="student-feed-comments__body">{thread.body}</p>
                   <p className="student-feed-comments__time">
-                    <time dateTime={thread.createdAt} data-placebo="true">
+                    <time dateTime={thread.createdAt} data-placebo={fromStore ? "false" : "true"}>
                       {thread.time}
                     </time>
                   </p>

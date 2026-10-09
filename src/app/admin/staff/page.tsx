@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { OperationsPageHeader } from "@/components/operations-page-header";
+import { Plus } from "lucide-react";
 import { OperationsStaffDirectory } from "@/components/operations-staff-directory";
 import { loadStaffPeopleDirectory } from "@/lib/operations-staff-access-server";
 import { can, requireStaffPermission } from "@/lib/staff-auth";
@@ -12,29 +12,30 @@ export default async function StaffPage() {
   const canManage = can(context, "roles.manage");
 
   return (
-    <div className="ops:flex ops:flex-col ops:gap-6">
-      <OperationsPageHeader
-        actions={
-          <div className="ops:flex ops:flex-wrap ops:gap-3">
-            <Link href="/ops/work">Open staff targets</Link>
+    <div className="ops-team1-page" data-ops-team-pass="team1">
+      <header className="ops-team1-page-header">
+        <div className="ops-team1-page-heading">
+          <div>
+            <p className="ops-team1-eyebrow">Team</p>
+            <h1>People &amp; Access</h1>
+            <p>
+              {canManage
+                ? "Invite staff, inspect effective access, and change roles. Assignment actions live in Student Registry."
+                : "Inspect staff identities, assigned-student workload, and effective access. Role changes require Super Admin."}
+            </p>
+          </div>
+          <div className="ops-team1-actions">
             {canManage ? (
-              <Link className="ops-system-primary-action" href="/ops/team/invite">
+              <Link className="ops-team1-btn ops-team1-btn--primary" href="/ops/team/invite">
+                <Plus aria-hidden="true" />
                 Invite staff
               </Link>
             ) : null}
           </div>
-        }
-        description={
-          canManage
-            ? "Invite staff, inspect effective access, and change roles. Assignment actions live in Student Registry."
-            : "Inspect staff identities, assigned-student workload, and effective access. Role changes require Super Admin."
-        }
-        eyebrow="Team"
-        title="People & Access"
-      />
-      <section aria-label="People and access directory" className="ops-system-data-panel">
-        <OperationsStaffDirectory canManage={canManage} rows={rows} />
-      </section>
+        </div>
+      </header>
+
+      <OperationsStaffDirectory canManage={canManage} rows={rows} />
     </div>
   );
 }

@@ -35,7 +35,7 @@
   .pc-apply {
     display: flex;
     justify-content: center;
-    padding: 0 16px 40px;
+    padding: 32px 16px 40px;
   }
 
   .pc-apply__frame {
@@ -238,7 +238,8 @@
   .pc-apply {
     display: flex;
     justify-content: center;
-    padding: 0 24px 48px;
+    /* Top gap after C7 · side inset so chips/options are not flush to the frame edge */
+    padding: 48px 64px 48px;
   }
 
   .pc-apply__frame {

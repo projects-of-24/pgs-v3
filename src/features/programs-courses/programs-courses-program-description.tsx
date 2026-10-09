@@ -3,12 +3,16 @@
  * Desk `17072:10678` · Mob `551:10175`.
  * Owned CSS. Fixtures only. iPad 601–1366 deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-program-description.css";
 
-export function ProgramsCoursesProgramDescription() {
-  const c = PROGRAMS_COURSES_FIXTURE.programDescription;
+type ProgramsCoursesProgramDescriptionProps = {
+  data: ProgramsCoursesView["programDescription"];
+};
 
+export function ProgramsCoursesProgramDescription({
+  data: c
+}: ProgramsCoursesProgramDescriptionProps) {
   return (
     <section
       id="pc-c3"

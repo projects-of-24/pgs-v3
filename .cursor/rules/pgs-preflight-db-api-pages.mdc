@@ -1,0 +1,18 @@
+---
+description: Every PGS implementation — preflight DB · API · pages; owner approves; no YOLO if DB missing
+alwaysApply: true
+---
+
+# PGS preflight — DB · API · pages (no YOLO)
+
+Owner lock 2026-10-08. Full skill: `.cursor/skills/pgs-preflight-db-api-pages/SKILL.md`
+
+## Every implementation
+
+Before code: show **DB** · **API calls** · **pages affected** → wait for owner approval → then proceed.
+
+- If the work needs DB and it does not exist: say **`DB GAP — we need to create …`**. Do not YOLO.
+- If migration exists in repo but is not applied on the connected env: say **DB NOT APPLIED** — do not treat UI as done.
+- CSS-only: still list `DB: N/A` · `API: N/A` · pages.
+
+Companions: `pgs-propose-before-code` · `pgs-backend-phase-wire`.

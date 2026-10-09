@@ -8,6 +8,36 @@ export function safeNext(value: string | null | undefined, fallback = "/student/
   return value;
 }
 
+/** Staff / Studio / Workspace / legacy mentor-cms doors — never a student post-login destination. */
+export function isStaffDoorPath(pathname: string): boolean {
+  const path = pathname.split("?")[0]?.split("#")[0] || pathname;
+  return (
+    path === "/ops"
+    || path.startsWith("/ops/")
+    || path === "/admin"
+    || path.startsWith("/admin/")
+    || path === "/cms"
+    || path.startsWith("/cms/")
+    || path === "/mentor"
+    || path.startsWith("/mentor/")
+    || path === "/studio"
+    || path.startsWith("/studio/")
+    || path === "/workspace"
+    || path.startsWith("/workspace/")
+    || path === "/sanity"
+    || path.startsWith("/sanity/")
+  );
+}
+
+/** Student frontend redirects only — strips Ops/CMS/Studio/legacy staff doors. */
+export function safeStudentNext(
+  value: string | null | undefined,
+  fallback = "/student/dashboard"
+): string {
+  const next = safeNext(value, fallback);
+  return isStaffDoorPath(next) ? fallback : next;
+}
+
 export function applicationOrigin(requestUrl: string): string {
   const requestOrigin = new URL(requestUrl).origin;
   const configured = process.env.NEXT_PUBLIC_SITE_URL;

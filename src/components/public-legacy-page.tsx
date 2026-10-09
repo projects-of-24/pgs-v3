@@ -54,13 +54,13 @@ export async function PublicLegacyPage<TSlug extends PublicContentSlug>({ slug, 
   } else if (!state && authenticatedActorFallback) {
     const actor=await resolveActorContext();
     if(actor.authenticated){
-      const operationsHref=actor.staff?"/ops":"/";
+      // No Ops bridges from public/student chrome — home only.
       rendered=applyAuthenticatedShell(rendered,{
         name:actor.staff?.displayName||actor.user.email||"Signed-in account",
         unreadCount:0,
-        accountHref:operationsHref,
-        profileHref:operationsHref,
-        savedHref:actor.staff?"/ops/students":"/"
+        accountHref:"/",
+        profileHref:"/",
+        savedHref:"/"
       });
     }
   }

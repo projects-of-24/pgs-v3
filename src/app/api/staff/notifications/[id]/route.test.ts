@@ -2,7 +2,6 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   requirePermission: vi.fn(),
-  assertWritable: vi.fn(),
   rpc: vi.fn()
 }));
 
@@ -17,21 +16,11 @@ vi.mock("@/lib/staff-auth", () => {
     StaffAuthorizationError
   };
 });
-vi.mock("@/lib/staff-preview-server", () => {
-  class StaffPreviewReadOnlyError extends Error {
-    readonly status = 403;
-  }
-  return {
-    assertStaffPreviewWritable: mocks.assertWritable,
-    StaffPreviewReadOnlyError
-  };
-});
 vi.mock("@/lib/supabase/server", () => ({
   createSupabaseServerClient: vi.fn(async () => ({ rpc: mocks.rpc }))
 }));
 
 import { PATCH } from "@/app/api/staff/notifications/[id]/route";
-import { StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 
 const notificationId = "c4800000-0000-4000-8000-000000000001";
 
@@ -47,7 +36,6 @@ describe("Operations notification mutation boundary", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.requirePermission.mockResolvedValue({});
-    mocks.assertWritable.mockResolvedValue(undefined);
     mocks.rpc.mockResolvedValue({ data: "/ops/work?target=c4700000-0000-4000-8000-000000000001", error: null });
   });
 
@@ -73,12 +61,5 @@ describe("Operations notification mutation boundary", () => {
     mocks.rpc.mockResolvedValue({ data: null, error: { code: "42501", message: "not authorized" } });
     const response = await PATCH(request("read"), { params: Promise.resolve({ id: notificationId }) });
     expect(response.status).toBe(403);
-  });
-
-  it("blocks mutation during staff preview", async () => {
-    mocks.assertWritable.mockRejectedValue(new StaffPreviewReadOnlyError("Preview is read-only."));
-    const response = await PATCH(request("read"), { params: Promise.resolve({ id: notificationId }) });
-    expect(response.status).toBe(403);
-    expect(mocks.rpc).not.toHaveBeenCalled();
   });
 });

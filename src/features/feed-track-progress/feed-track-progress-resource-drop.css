@@ -59,11 +59,39 @@
   border-top: 0.512px solid #000;
 }
 
+.ftp-drop__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.12px;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ftp-drop__link:hover .ftp-drop__label,
+.ftp-drop__link:focus-visible .ftp-drop__label {
+  text-decoration: underline;
+}
+
+.ftp-drop__link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+}
+
 .ftp-drop__label {
   flex: 0 0 auto;
   width: 162.3px;
   color: #000;
   font: 400 14px / 20.48px Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.ftp-drop__empty {
+  margin: 0;
+  max-width: 280px;
+  color: #000;
+  font: 400 14px / 1.4 Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
 }
 
 .ftp-drop__badge {
@@ -112,10 +140,20 @@
     border-top-width: 0.8px;
   }
 
+  .ftp-drop__link {
+    gap: 8px;
+  }
+
   .ftp-drop__label {
     width: 253.6px;
     font-size: 25.6px;
     line-height: 32px;
+  }
+
+  .ftp-drop__empty {
+    max-width: 373px;
+    font-size: 19.2px;
+    text-align: left;
   }
 
   .ftp-drop__badge {

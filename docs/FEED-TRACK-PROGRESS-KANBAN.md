@@ -88,9 +88,9 @@ Ops StaffWorkspacePanels
 | Modular block | Fixture today | Wire to | Gate | Status |
 |---|---|---|---|---|
 | Important Alerts | Family A fixtures only | `student_alerts` | **B1** | **done** (Family B live+preview) |
-| #draftMeter | `FEED_TRACK_PROGRESS_DRAFT_METER` | `student_document_requirements` | **B2** | **next** |
-| #reviewQueue | fixtures | `review_queue_items` | **B3** | **DEFERRED — wrong wiring (owner); ignore** |
-| #counselorNotes | fixtures | `counselor_notes` | **B4** | queued |
+| #draftMeter | fixtures (Family A) | `student_document_requirements` | **B2** | **done** (Family B live+preview · approved count) |
+| #reviewQueue | fixtures (Family A) | `review_queue_items` | **B3** | **done** (Family B live+preview · student_visible) |
+| #counselorNotes | fixtures (Family A) | `counselor_notes` | **B4** | **done** (Family B live+preview · student_visible) |
 | Pathway chips | fixtures | `premium_workspace_profiles.pathway_label` | **B5** | queued |
 | Board stand-in | Figma columns | Loopboard | **B6** | queued |
 | Useful Tips | W0 carousel | CMS contract TBD | **B7+** | queued |
@@ -184,9 +184,9 @@ Update this section after **every** backend gate. Later you re-read this for QC 
 | **B0** | This living map | **done** | No code |
 | **B1** | Alerts → Family B (preview + live) | **done** | Subject scope; View-as admin when target matches; ≤3; honest empty |
 | **B-live** | Live Hostinger-free doorman | **done** | A vs B separate shells |
-| **B2** | draftMeter ← requirements | **queued — next** | See proposal below |
-| **B3** | reviewQueue | **DEFERRED** | Owner 2026-09-08: ignore for now — **wrong wiring**; revisit later. Do not implement. |
-| **B4** | counselorNotes | queued | `student_visible`; ≠ feed notes; arrows currently decorative only |
+| **B2** | draftMeter ← requirements | **done** | [`FTP-B2-DRAFT-METER-LOCK.md`](./FTP-B2-DRAFT-METER-LOCK.md) |
+| **B3** | reviewQueue ← review_queue_items | **done** | [`FTP-B3-REVIEW-QUEUE-LOCK.md`](./FTP-B3-REVIEW-QUEUE-LOCK.md) |
+| **B4** | counselorNotes ← counselor_notes | **done** | [`FTP-B4-COUNSELOR-NOTES-LOCK.md`](./FTP-B4-COUNSELOR-NOTES-LOCK.md) · `student_visible`; ≠ feed notes |
 | **B5** | Pathway | queued | Confirm fields |
 | **B6** | Loopboard swap | queued | LOOPBOARD-KANBAN |
 | **B7+** | Tips / Resource Drop | queued | **No invent** |
@@ -276,3 +276,5 @@ Reviews · notes · tips CMS · Family A DB wire · inventing requirement types
 | 2026-09-08 | Kanban expanded: QC WHAT·WHY·HOW log + B2 proposal |
 | 2026-09-08 | **B3** marked DEFERRED — owner: reviewQueue wrong wiring; ignore for now |
 | 2026-09-08 | **N1** #counselorNotes: 8 fixtures · arrow window of 4 (UI only; B4 DB later) |
+| 2026-10-08 | **B3** #reviewQueue ← `review_queue_items` (student_visible) — WIRED |
+| 2026-10-08 | **B4** #counselorNotes ← `counselor_notes` (student_visible) — WIRED · [`FTP-B4-COUNSELOR-NOTES-LOCK.md`](./FTP-B4-COUNSELOR-NOTES-LOCK.md) |

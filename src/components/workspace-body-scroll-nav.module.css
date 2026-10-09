@@ -1,0 +1,122 @@
+.wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroller {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.nav {
+  position: absolute;
+  top: 16px;
+  right: max(16px, 4%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px;
+  width: max-content;
+  border: 1px solid #e6e8ee;
+  border-radius: 12px;
+  background: #fff;
+  touch-action: none;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.navDragging {
+  cursor: grabbing;
+  z-index: 40;
+}
+
+.drag {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #5b6575;
+  cursor: grab;
+  touch-action: none;
+}
+
+.drag:active {
+  cursor: grabbing;
+}
+
+.drag svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #111;
+  border-radius: 10px;
+  background: #fff;
+  color: #1f2430;
+  cursor: pointer;
+  transition:
+    box-shadow 120ms ease,
+    transform 120ms ease,
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.btn:hover:not(:disabled) {
+  background: #eef3fb;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #cbb6ef;
+  outline-offset: 2px;
+}
+
+.btn:active:not(:disabled) {
+  box-shadow: 8px 8px 0 0 #000;
+  transform: translate(-1px, -1px);
+}
+
+.btn:disabled {
+  border-color: #c9d0da;
+  color: #9aa8b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

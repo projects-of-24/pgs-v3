@@ -3,6 +3,8 @@
  * Desk Figma `# programs full` `17071:15293` · Mob `#programs full` `551:9015`.
  * C1 fills hero. Later gates add fields. No DB.
  */
+import { defaultCoursesFaq, defaultCoursesLearners } from "./courses-cms-shared-defaults";
+
 export type ProgramsCoursesDateParts = {
   day: string;
   month: string;
@@ -154,6 +156,15 @@ export type ProgramsCoursesFixture = {
       seal: string;
     };
   };
+  /** C10 — #higlights photo strip (shared PremiumHighlights shape; up to 7 photos) */
+  higlights: {
+    title: string;
+    lead: string[];
+    place: string;
+    pinSrc: string;
+    note: string;
+    photos: { src: string; alt: string; crop: 1 | 2 | 3 }[];
+  };
   /** C11 — Enrollment Fee · frame `17072:11555` · C11a `17072:11558` · C11b `17072:11577` */
   enroll: {
     title: string;
@@ -175,6 +186,37 @@ export type ProgramsCoursesFixture = {
     housingApprox: string;
     paymentTitle: string;
     paymentBody: string;
+  };
+  /** C12 — A word from Our learners */
+  learners: {
+    lead: string;
+    badge: string;
+    bodyBefore: string;
+    bodyBoldPgs: string;
+    bodyMid: string;
+    bodyBold3x: string;
+    bodyAnd: string;
+    bodyBoldSkills: string;
+    bodyAfter: string;
+    photoSrc: string;
+    photoAlt: string;
+    quoteSrc: string;
+    quoteMob: string;
+    cards: { quoteDesk: string }[];
+    bio: { name: string; role: string; location: string };
+  };
+  /** C13 — FAQ */
+  faq: {
+    heading: string;
+    plusIconSrc: string;
+    minusIconSrc: string;
+    defaultTabId: string;
+    defaultOpenIndex: number;
+    tabs: {
+      id: string;
+      label: string;
+      items: { question: string; answer: string }[];
+    }[];
   };
 };
 
@@ -417,6 +459,55 @@ export const PROGRAMS_COURSES_FIXTURE: ProgramsCoursesFixture = {
       seal: "/assets/img/programs-courses/cert-seal.svg"
     }
   },
+  higlights: {
+    title: "#higlights",
+    lead: [
+      "Students, in action",
+      "presenting their posters",
+      "at an international medical",
+      "conference."
+    ],
+    place: "Washington, D.C.",
+    pinSrc: "/assets/img/premium-highlights/pin-place.svg",
+    note: "Our NETWORK students* had a great time presenting their posters at an international medical conference—meeting med students from the U.S. and future doctors from around the world. It was solid exposure, good conversations, and yep, definitely a strong addition to their resume.",
+    photos: [
+      {
+        src: "/assets/img/premium-highlights/highlight-hallway.jpg",
+        alt: "Students talking beside poster boards at a medical conference",
+        crop: 1
+      },
+      {
+        src: "/assets/img/premium-highlights/highlight-posters.jpg",
+        alt: "Two students looking at research posters",
+        crop: 2
+      },
+      {
+        src: "/assets/img/premium-highlights/highlight-presenter.jpg",
+        alt: "A student presenting a research poster",
+        crop: 3
+      },
+      {
+        src: "/assets/img/premium-highlights/highlight-hallway.jpg",
+        alt: "",
+        crop: 1
+      },
+      {
+        src: "/assets/img/premium-highlights/highlight-posters.jpg",
+        alt: "",
+        crop: 2
+      },
+      {
+        src: "/assets/img/premium-highlights/highlight-presenter.jpg",
+        alt: "",
+        crop: 3
+      },
+      {
+        src: "/assets/img/premium-highlights/highlight-hallway.jpg",
+        alt: "",
+        crop: 1
+      }
+    ]
+  },
   enroll: {
     title: "Enrollment Fee",
     subtitle: "Surgery Week at RCSEd, Scotland",
@@ -451,5 +542,7 @@ export const PROGRAMS_COURSES_FIXTURE: ProgramsCoursesFixture = {
     housingApprox: "*approx",
     paymentTitle: "Payment Methods",
     paymentBody: "Pay via Credit/Debit Card, UPI, or Bank Transfer"
-  }
+  },
+  learners: defaultCoursesLearners(),
+  faq: defaultCoursesFaq()
 };

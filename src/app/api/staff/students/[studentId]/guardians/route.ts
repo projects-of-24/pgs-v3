@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { jsonError, readJsonObject, validUuid } from "@/lib/http";
 import { requireStaffPermission, StaffAuthorizationError } from "@/lib/staff-auth";
-import { assertStaffPreviewWritable, StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 import { staffInviteGuardian, staffRevokeGuardian, staffListStudentGuardians } from "@/lib/guardian-portal-server";
 import { GUARDIAN_RELATIONSHIP_LABELS, type GuardianRelationshipLabel } from "@/lib/guardian-portal";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -36,7 +35,6 @@ export async function POST(
   const { studentId } = await params;
   try {
     await requireStaffPermission("student_workspace.manage_all");
-    await assertStaffPreviewWritable();
     if (!validUuid(studentId)) return jsonError("Invalid student.", 400);
 
     const input = await readJsonObject(request);
@@ -78,7 +76,6 @@ export async function POST(
     return jsonError("Unknown intent.", 400);
   } catch (error) {
     if (error instanceof StaffAuthorizationError) return jsonError(error.message, error.status);
-    if (error instanceof StaffPreviewReadOnlyError) return jsonError(error.message, 403);
     logServerError("guardian_action_failed", error);
     return jsonError("Guardian action failed.", 500);
   }

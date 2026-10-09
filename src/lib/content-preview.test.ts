@@ -11,9 +11,9 @@ describe("Phase 7A real-page preview routing", () => {
   it("uses existing public list and explicit detail routes", () => {
     expect(catalogPreviewPath("events", 12)).toBe("/purpleevents");
     expect(catalogPreviewPath("events", 12, "detail")).toBe("/purpleevents/session/12");
-    expect(catalogPreviewPath("courses", 8)).toBe("/purpleboard");
-    expect(catalogPreviewPath("courses", 8, "featured")).toBe("/cvreadyprogram");
-    expect(catalogPreviewPath("courses", 8, "detail")).toBe("/programsfull/program/8?type=course");
+    expect(catalogPreviewPath("courses", 8)).toBe("/ops/cms/courses/preview/8");
+    expect(catalogPreviewPath("courses", 8, "featured")).toBe("/ops/cms/courses/preview/8");
+    expect(catalogPreviewPath("courses", 8, "detail")).toBe("/ops/cms/courses/preview/8");
     expect(catalogPreviewPath("programs", 8, "detail")).toBe("/programsfull/program/8");
     expect(catalogPreviewPath("universities", 8)).toBeNull();
   });

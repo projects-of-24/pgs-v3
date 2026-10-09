@@ -3,7 +3,6 @@ import { recordDeniedAuditEvent } from "@/lib/audit";
 import { jsonError, readJsonObject, validUuid } from "@/lib/http";
 import { isCrmStage, isCrmStream, parseCrmTargetYear } from "@/lib/operations-student-crm";
 import { requireStaffPermission, StaffAuthorizationError } from "@/lib/staff-auth";
-import { assertStaffPreviewWritable, StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -49,7 +48,6 @@ export async function POST(
   const { studentId } = await params;
   try {
     await requireStaffPermission("overview.read");
-    await assertStaffPreviewWritable();
     if (!validUuid(studentId)) return jsonError("Invalid student.", 400);
     const input = await readJsonObject(request);
     const supabase = await createSupabaseServerClient();
@@ -90,7 +88,6 @@ export async function POST(
     }
     return NextResponse.json({ ok: true });
   } catch (error) {
-    if (error instanceof StaffPreviewReadOnlyError) return jsonError(error.message, error.status);
     if (error instanceof StaffAuthorizationError) {
       await auditDenied(request, studentId, "overview.read");
       return jsonError(error.message, error.status);

@@ -1,0 +1,330 @@
+.header {
+  --ws-purple: #6b3fa0;
+  --ws-ink: #1f2430;
+  --ws-muted: #5b6575;
+  --ws-line: #e6e8ee;
+  --ws-surface: #ffffff;
+  --ws-tint: #f7f4fb;
+  --ws-header-type: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--ws-line);
+  background: var(--ws-surface);
+  color: var(--ws-ink);
+  font-family: var(--font-operations, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36rem) minmax(0, 1fr);
+  gap: 16px 20px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 16px 28px 12px 24px;
+  min-height: 72px;
+}
+
+.leftSlot {
+  min-width: 0;
+}
+
+.centerSlot {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Fake search field — opens Ops Search popup (student → Open Desk) */
+.searchTrigger {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 36rem;
+  min-height: 44px;
+  margin: 0;
+  padding: 0.65rem 1rem 0.65rem 1rem;
+  border: 1px solid var(--ws-line);
+  border-radius: 10px;
+  background: var(--ws-tint);
+  color: #8a93a3;
+  font: inherit;
+  font-size: var(--ws-header-type);
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+}
+
+.searchTrigger svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #8a93a3;
+  stroke-width: 2;
+}
+
+.searchTrigger:hover {
+  border-color: color-mix(in srgb, var(--ws-purple) 35%, var(--ws-line));
+  background: #fff;
+}
+
+.searchTrigger:focus-visible {
+  outline: 2px solid #cbb6ef;
+  outline-offset: 1px;
+  border-color: var(--ws-purple);
+  background: #fff;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.bell {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ws-ink);
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.bell svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2;
+}
+
+.profileWrap {
+  position: relative;
+}
+
+.profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.profile:hover .profileText strong {
+  color: var(--ws-purple);
+}
+
+.profile:focus-visible {
+  outline: 3px solid #cbb6ef;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Ops topbar avatar frame — larger than pill circle */
+.avatar {
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  width: 40px !important;
+  height: 49px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  background: #f1f1f1 !important;
+  box-shadow: 0 1px 4px 0 rgba(26, 15, 1, 0.12);
+}
+
+.avatarImage,
+.avatar img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 10px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.avatarFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--ws-purple);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.profileText {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  max-width: 220px;
+  text-align: left;
+}
+
+.profileText strong {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ws-header-type);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--ws-ink);
+}
+
+.profileText span {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ws-header-type);
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--ws-muted);
+}
+
+.chevron {
+  display: none;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--ws-muted);
+  stroke-width: 2;
+}
+
+@media (min-width: 900px) {
+  .profileText {
+    display: flex;
+  }
+
+  .chevron {
+    display: block;
+  }
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 50;
+  min-width: 14rem;
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+.menuLabel {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+}
+
+.menuName {
+  font-size: var(--ws-header-type);
+  font-weight: 800;
+  color: var(--ws-ink);
+}
+
+.menuRole {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ws-muted);
+}
+
+.menuSep {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--ws-line);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ws-ink);
+  font: inherit;
+  font-size: var(--ws-header-type);
+  font-weight: 650;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--ws-muted);
+}
+
+.menuItem:hover,
+.menuItem:focus-visible {
+  background: #f4f0fa;
+  outline: none;
+}
+
+.menuLogout {
+  color: #9b1c1c;
+}
+
+.menuLogout svg {
+  color: #9b1c1c;
+}
+
+.menuError {
+  margin: 4px 10px 6px;
+  color: #9b1c1c;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    padding: 12px 16px;
+  }
+
+  .leftSlot {
+    display: none;
+  }
+
+  .centerSlot {
+    order: 1;
+  }
+
+  .actions {
+    order: 2;
+    justify-content: space-between;
+  }
+}

@@ -30,8 +30,16 @@ const exactLegacyRoutes: Record<string, string> = {
 
 // Feed, progress, and document routes intentionally expose anonymous locked frames;
 // the underlying resources remain independently protected by server Auth/RLS.
-const protectedPaths = ["/student", "/saved", "/notifications", "/singup", "/change_password", "/dashboard", "/mentor", "/admin", "/ops", "/cms", "/portal"];
+// Legacy /mentor and /cms are gone (404) — not auth-gated into student /login.
+const protectedPaths = ["/student", "/saved", "/notifications", "/singup", "/change_password", "/dashboard", "/admin", "/ops", "/portal", "/studio/change-password", "/studio/profile", "/workspace"];
 const anonymousPreviewPaths = new Set(["/student/dashboard", "/dashboard"]);
+/** Staff login / recovery doors — never force-auth redirect (session gate lives on the page). */
+const staffLoginPaths = new Set([
+  "/studio/login",
+  "/studio/forgot-password",
+  "/workspace/login",
+  "/workspace/forgot-password"
+]);
 
 function isOperationsPath(pathname: string): boolean {
   return pathname === "/ops" || pathname.startsWith("/ops/");
@@ -48,6 +56,9 @@ function canonicalOperationsPath(pathname: string): string | null {
   }
   if (pathname === "/admin/notifications") return "/ops/notifications";
   if (pathname === "/admin/audit") return "/ops/activity";
+  if (pathname === "/admin/users" || pathname.startsWith("/admin/users/")) {
+    return pathname.replace(/^\/admin\/users/, "/ops/admin/users");
+  }
   return null;
 }
 
@@ -91,9 +102,10 @@ export async function proxy(request: NextRequest) {
   const destination = legacyDestination(request);
   if (destination) return NextResponse.redirect(destination, 308);
 
+  // VAS1-WRITE: preview cookie must not freeze /api/staff/* (Desk/Ops). Block only student surfaces.
   if (request.nextUrl.pathname.startsWith("/api/") && !["GET","HEAD","OPTIONS"].includes(request.method)
     && request.cookies.get("pgs_staff_preview")?.value
-    && request.nextUrl.pathname !== "/api/staff/preview"
+    && !request.nextUrl.pathname.startsWith("/api/staff/")
     && !request.nextUrl.pathname.startsWith("/api/auth/")
     ) {
     return NextResponse.json({ ok: false, message: "Preview is read-only. Exit preview to make changes." }, { status: 403 });
@@ -136,8 +148,10 @@ export async function proxy(request: NextRequest) {
     const { data } = await supabase.auth.getClaims();
     authenticated = Boolean(data?.claims?.sub);
   }
+  const pathnameLower = request.nextUrl.pathname.toLowerCase();
   if (!authenticated
-    && !anonymousPreviewPaths.has(request.nextUrl.pathname.toLowerCase())
+    && !anonymousPreviewPaths.has(pathnameLower)
+    && !staffLoginPaths.has(pathnameLower)
     && protectedPaths.some((path) => request.nextUrl.pathname === path || request.nextUrl.pathname.startsWith(`${path}/`))) {
     const login = request.nextUrl.clone(); login.pathname = "/login";
     const redirectPath = request.nextUrl.pathname + request.nextUrl.search;
@@ -147,8 +161,17 @@ export async function proxy(request: NextRequest) {
       isOperationsPath(request.nextUrl.pathname)
       || request.nextUrl.pathname === "/admin"
       || request.nextUrl.pathname.startsWith("/admin/")
+      || request.nextUrl.pathname === "/studio/change-password"
+      || request.nextUrl.pathname === "/studio/profile"
     ) {
-      login.searchParams.set("surface", "operations");
+      login.pathname = "/studio/login";
+      login.searchParams.set("surface", "studio");
+    } else if (
+      request.nextUrl.pathname === "/workspace"
+      || request.nextUrl.pathname.startsWith("/workspace/")
+    ) {
+      login.pathname = "/workspace/login";
+      login.searchParams.set("surface", "workspace");
     } else if (
       request.nextUrl.pathname === "/portal"
       || request.nextUrl.pathname.startsWith("/portal/")

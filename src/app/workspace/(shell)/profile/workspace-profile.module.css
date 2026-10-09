@@ -1,0 +1,93 @@
+/* Staff Profile — larger card + Studio 18px type floor (WS-CHROME-FIX QC). */
+.page {
+  position: static !important;
+  inset: auto !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  background: #fff !important;
+  padding: 28px 28px 40px !important;
+}
+
+.inner {
+  max-width: 56rem;
+  margin: 0;
+  width: 100%;
+}
+
+.page :global(.ops-profile-page-header h1) {
+  font-size: clamp(1.85rem, 2.4vw, 2.25rem) !important;
+  line-height: 1.2 !important;
+}
+
+.page :global(.ops-profile-page-header p) {
+  font-size: 1.125rem !important;
+  line-height: 1.5 !important;
+  max-width: 42rem !important;
+}
+
+.page :global(.ops-profile-breadcrumb) {
+  font-size: 1rem !important;
+}
+
+.page :global(.ops-profile-form.ops-card) {
+  width: min(100%, 40rem) !important;
+  max-width: 100% !important;
+  padding: 32px 36px 28px !important;
+  gap: 28px !important;
+}
+
+.page :global(.ops-profile-hero) {
+  gap: 22px !important;
+}
+
+.page :global(.ops-profile-avatar-wrap),
+.page :global(.ops-profile-avatar-frame) {
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.page :global(.ops-profile-avatar-fallback) {
+  font-size: 40px !important;
+}
+
+.page :global(.ops-profile-avatar-meta strong) {
+  font-size: 1.35rem !important;
+  line-height: 1.3 !important;
+}
+
+.page :global(.ops-profile-avatar-meta span) {
+  font-size: 1.05rem !important;
+  line-height: 1.4 !important;
+}
+
+.page :global(.ops-profile-pill) {
+  font-size: 0.95rem !important;
+  min-height: 28px !important;
+  padding: 4px 12px !important;
+}
+
+.page :global(.ops-profile-label) {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+.page :global(.ops-profile-field-hint),
+.page :global(.ops-profile-status) {
+  font-size: 1rem !important;
+  line-height: 1.45 !important;
+}
+
+.page :global(.ops-profile-field input),
+.page :global(.ops-profile-actions button[type="submit"]) {
+  min-height: 48px !important;
+  font-size: 1.125rem !important;
+}
+
+.page :global(.ops-profile-actions button[type="submit"]) {
+  font-weight: 750 !important;
+  padding-inline: 20px !important;
+}

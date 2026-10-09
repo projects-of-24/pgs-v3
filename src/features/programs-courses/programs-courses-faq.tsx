@@ -3,9 +3,7 @@
 /**
  * Courses FAQ — C13.
  * Desktop `17072:11640` · Mobile `551:9580`.
- * Figma-visible Programme Details copy only.
- * Learning / Refund tabs empty (no invent). Q2 answer empty (closed in Figma).
- * Desk Q2 used (not mob scholarship paste).
+ * COURSE2d-D4b: prop-driven from course.faq (CMS editable).
  *
  * FIGMA ACCESSIBILITY ADAPTATION
  * ORIGINAL: inactive tab / answer #666; mob answer 12px
@@ -14,20 +12,46 @@
  */
 import { useId, useState } from "react";
 import { COURSES_FAQ } from "./programs-courses-faq-content";
+import type { CoursesFaqBody } from "./courses-cms-shared-defaults";
 import "./programs-courses-faq.css";
 
-export function ProgramsCoursesFaq() {
-  const baseId = useId();
-  const [tabId, setTabId] = useState<string>(COURSES_FAQ.defaultTabId);
-  const [openIndex, setOpenIndex] = useState<number>(COURSES_FAQ.defaultOpenIndex);
+type ProgramsCoursesFaqProps = {
+  data?: CoursesFaqBody;
+};
 
-  const activeTab =
-    COURSES_FAQ.tabs.find((t) => t.id === tabId) ?? COURSES_FAQ.tabs[0];
+export function ProgramsCoursesFaq({ data }: ProgramsCoursesFaqProps = {}) {
+  const faq = data ?? {
+    heading: COURSES_FAQ.heading,
+    plusIconSrc: COURSES_FAQ.plusIconSrc,
+    minusIconSrc: COURSES_FAQ.minusIconSrc,
+    defaultTabId: COURSES_FAQ.defaultTabId,
+    defaultOpenIndex: COURSES_FAQ.defaultOpenIndex,
+    tabs: COURSES_FAQ.tabs.map((tab) => ({
+      id: tab.id,
+      label: tab.label,
+      items: tab.items.map((item) => ({ question: item.question, answer: item.answer }))
+    }))
+  };
+  const baseId = useId();
+  const [tabId, setTabId] = useState<string>(faq.defaultTabId || faq.tabs[0]?.id || "");
+  const [openIndex, setOpenIndex] = useState<number>(faq.defaultOpenIndex);
+
+  const activeTab = faq.tabs.find((t) => t.id === tabId) ?? faq.tabs[0];
 
   function selectTab(nextId: string) {
     setTabId(nextId);
-    setOpenIndex(
-      nextId === COURSES_FAQ.defaultTabId ? COURSES_FAQ.defaultOpenIndex : -1
+    setOpenIndex(nextId === faq.defaultTabId ? faq.defaultOpenIndex : -1);
+  }
+
+  if (!activeTab) {
+    return (
+      <section id="pc-c13" className="pc-faq" aria-labelledby="pc-c13-heading">
+        <div className="pc-faq__inner">
+          <h2 id="pc-c13-heading" className="pc-faq__heading">
+            {faq.heading}
+          </h2>
+        </div>
+      </section>
     );
   }
 
@@ -43,7 +67,7 @@ export function ProgramsCoursesFaq() {
     >
       <div className="pc-faq__inner">
         <h2 id="pc-c13-heading" className="pc-faq__heading">
-          {COURSES_FAQ.heading}
+          {faq.heading}
         </h2>
 
         <div className="pc-faq__layout">
@@ -53,7 +77,7 @@ export function ProgramsCoursesFaq() {
             aria-label="Course FAQ topics"
             aria-orientation="vertical"
           >
-            {COURSES_FAQ.tabs.map((tab) => {
+            {faq.tabs.map((tab) => {
               const selected = tab.id === activeTab.id;
               const tabBtnId = `${baseId}-tab-${tab.id}`;
               const panelId = `${baseId}-panel-${tab.id}`;
@@ -70,35 +94,27 @@ export function ProgramsCoursesFaq() {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => selectTab(tab.id)}
                   onKeyDown={(e) => {
-                    const tabs = COURSES_FAQ.tabs;
+                    const tabs = faq.tabs;
                     const i = tabs.findIndex((t) => t.id === tab.id);
                     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
                       e.preventDefault();
                       const next = tabs[(i + 1) % tabs.length];
                       selectTab(next.id);
-                      document
-                        .getElementById(`${baseId}-tab-${next.id}`)
-                        ?.focus();
+                      document.getElementById(`${baseId}-tab-${next.id}`)?.focus();
                     } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
                       e.preventDefault();
                       const prev = tabs[(i - 1 + tabs.length) % tabs.length];
                       selectTab(prev.id);
-                      document
-                        .getElementById(`${baseId}-tab-${prev.id}`)
-                        ?.focus();
+                      document.getElementById(`${baseId}-tab-${prev.id}`)?.focus();
                     } else if (e.key === "Home") {
                       e.preventDefault();
                       selectTab(tabs[0].id);
-                      document
-                        .getElementById(`${baseId}-tab-${tabs[0].id}`)
-                        ?.focus();
+                      document.getElementById(`${baseId}-tab-${tabs[0].id}`)?.focus();
                     } else if (e.key === "End") {
                       e.preventDefault();
                       const last = tabs[tabs.length - 1];
                       selectTab(last.id);
-                      document
-                        .getElementById(`${baseId}-tab-${last.id}`)
-                        ?.focus();
+                      document.getElementById(`${baseId}-tab-${last.id}`)?.focus();
                     }
                   }}
                 >
@@ -123,10 +139,7 @@ export function ProgramsCoursesFaq() {
                   const hasAnswer = item.answer.trim().length > 0;
 
                   return (
-                    <div
-                      key={item.question}
-                      className={`pc-faq__item${open ? " is-open" : ""}`}
-                    >
+                    <div key={`${item.question}-${index}`} className={`pc-faq__item${open ? " is-open" : ""}`}>
                       <h3 className="pc-faq__item-heading">
                         <button
                           type="button"
@@ -136,17 +149,11 @@ export function ProgramsCoursesFaq() {
                           aria-controls={regionId}
                           onClick={() => setOpenIndex(open ? -1 : index)}
                         >
-                          <span className="pc-faq__question">
-                            {item.question}
-                          </span>
+                          <span className="pc-faq__question">{item.question}</span>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             className="pc-faq__icon"
-                            src={
-                              open
-                                ? COURSES_FAQ.minusIconSrc
-                                : COURSES_FAQ.plusIconSrc
-                            }
+                            src={open ? faq.minusIconSrc : faq.plusIconSrc}
                             alt=""
                             width={14}
                             height={14}
@@ -160,9 +167,7 @@ export function ProgramsCoursesFaq() {
                         aria-hidden={!open}
                         className={`pc-faq__answer-wrap${open ? " is-open" : ""}`}
                       >
-                        {hasAnswer ? (
-                          <p className="pc-faq__answer">{item.answer}</p>
-                        ) : null}
+                        {hasAnswer ? <p className="pc-faq__answer">{item.answer}</p> : null}
                       </div>
                     </div>
                   );

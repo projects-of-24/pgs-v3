@@ -59,7 +59,7 @@ export function OperationsJoinTrendChart({
               }}
               formatter={(value) => [Number(value), "Students joined"]}
             />
-            <Bar dataKey="count" fill="var(--operations-primary)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="count" fill="#6b3fa0" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

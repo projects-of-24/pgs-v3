@@ -476,17 +476,19 @@
 
 .student-feed-wys__task-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 6.4px;
   margin: 0;
   width: 256px;
-  padding: 1.6px 12.8px;
+  max-width: 100%;
+  padding: 6.4px 12.8px;
   border: 0.8px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background: #fff;
+  box-sizing: border-box;
 }
 
 .student-feed-wys__task-row.has-badge {
-  gap: 6.4px;
   padding-inline: 6.4px;
 }
 
@@ -495,6 +497,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2px;
   padding: 0 3.2px;
   border-radius: 3.2px;
   background: #eb0801;
@@ -506,15 +509,12 @@
 }
 
 .student-feed-wys__task-text {
+  flex: 1 1 auto;
+  min-width: 0;
   color: #000;
-  font: 700 12.8px / normal Roboto, "Helvetica Neue", Arial, sans-serif;
-  max-width: 234.4px;
-}
-
-.student-feed-wys__task-row.has-badge .student-feed-wys__task-text {
-  max-width: none;
-  white-space: nowrap;
-  line-height: 25.6px;
+  font: 700 12.8px / 1.35 Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 /*
@@ -838,14 +838,18 @@
     max-width: 256px;
   }
 
-  .student-feed-wys__task-row.has-badge .student-feed-wys__task-text {
-    white-space: normal;
-  }
-
   .student-feed-wys__task-text {
-    max-width: none;
     font-size: 12px;
   }
+}
+
+.student-feed-wys__empty {
+  margin: 0;
+  padding: 8px 0;
+  color: #5b6575;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 @media (prefers-reduced-motion: reduce) {

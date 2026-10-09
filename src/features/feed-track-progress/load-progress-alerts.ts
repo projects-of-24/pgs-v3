@@ -5,9 +5,7 @@
  */
 import "server-only";
 
-import { getActiveStudentPreviewTargetId } from "@/lib/staff-preview-server";
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { previewAwareSupabaseClient } from "@/lib/staff-preview-server";
 
 export type ProgressAlertsLoad = {
   items: string[];
@@ -26,11 +24,7 @@ export async function loadProgressAlerts(
     return { items: [], wired: false };
   }
 
-  const previewTarget = await getActiveStudentPreviewTargetId();
-  const previewing = previewTarget === studentId;
-  const client = previewing
-    ? createSupabaseAdminClient()
-    : await createSupabaseServerClient();
+  const client = await previewAwareSupabaseClient(studentId);
 
   const { data, error } = await client
     .from("student_alerts")

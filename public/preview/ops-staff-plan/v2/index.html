@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PGS Staff UI — Planning Previews v2</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --ink: #152033;
+      --muted: #5b6b7c;
+      --line: #d7e0ea;
+      --accent: #6b3fa0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 1.25rem;
+    }
+    header h1 { margin: 0; font-size: 1.15rem; }
+    header p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    nav a:hover { border-color: var(--accent); color: var(--accent); }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(21, 32, 51, 0.04);
+    }
+    section header {
+      position: static;
+      background: transparent;
+      border: 0;
+      padding: 1rem 1.1rem 0.75rem;
+    }
+    section h2 { margin: 0; font-size: 1rem; }
+    section p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-top: 1px solid var(--line);
+      background: #eef3f8;
+    }
+    footer {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      padding: 0 1.25rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PGS Staff UI — Planning Previews v2</h1>
+    <p>Visual plan only from owner mockups. No product code in this pass.</p>
+    <nav aria-label="Preview steps">
+      <a href="#step-1">1 Login</a>
+      <a href="#step-2">2 Dashboard</a>
+      <a href="#step-3">3 Profile</a>
+      <a href="#step-4">4 User management</a>
+      <a href="#c3-overflow">C3 overflow</a>
+      <a href="../">v1 gallery</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="step-1">
+      <header>
+        <h2>Step 1 — Login</h2>
+        <p>Staff-only gate · students blocked · email + password</p>
+      </header>
+      <img src="./step-1-login.jpg" alt="Step 1 staff login planning preview" />
+    </section>
+
+    <section id="step-2">
+      <header>
+        <h2>Step 2 — Dashboard</h2>
+        <p>Ops + CMS sidebar design intent · KPI overview</p>
+      </header>
+      <img src="./step-2-dashboard.jpg" alt="Step 2 dashboard planning preview" />
+    </section>
+
+    <section id="step-3">
+      <header>
+        <h2>Step 3 — My Profile</h2>
+        <p>Zoho-style profile · emails · mobile numbers</p>
+      </header>
+      <img src="./step-3-profile.jpg" alt="Step 3 my profile planning preview" />
+    </section>
+
+    <section id="step-4">
+      <header>
+        <h2>Step 4 — User Management</h2>
+        <p>Super Admin users list · permission tree</p>
+      </header>
+      <img src="./step-4-user-management.jpg" alt="Step 4 user management planning preview" />
+    </section>
+
+    <section id="c3-overflow">
+      <header>
+        <h2>C3 — Body overflow / card footers</h2>
+        <p>No shell footer · nested main scroll · table pager + form actions · section tabs allowed</p>
+      </header>
+      <img src="./c3-overflow-owner-ref.jpg" alt="C3 owner reference for body overflow and card footers" />
+    </section>
+  </main>
+
+  <footer>
+    Planning assets under <code>/preview/ops-staff-plan/v2/</code>. Implementation needs a separate owner GO AHEAD.
+  </footer>
+</body>
+</html>

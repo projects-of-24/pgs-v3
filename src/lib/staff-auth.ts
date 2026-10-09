@@ -18,11 +18,18 @@ export type StaffContext = {
   user: User;
   displayName: string;
   status: string;
+  avatarPath: string | null;
   roles: StaffRoleKey[];
   permissions: Set<StaffPermission>;
 };
 
-type StaffProfileRow = { display_name: string | null; status: string };
+type StaffProfileRow = { display_name: string | null; status: string; avatar_path?: string | null };
+
+function staffAvatarPathFromUser(user: User, profilePath?: string | null): string | null {
+  if (typeof profilePath === "string" && profilePath.trim()) return profilePath.trim();
+  const meta = user.user_metadata?.pgs_staff_avatar_path;
+  return typeof meta === "string" && meta.trim() ? meta.trim() : null;
+}
 type Relation<T> = T | T[] | null;
 type StaffAssignmentRow = {
   staff_roles: Relation<{
@@ -67,6 +74,7 @@ export function buildStaffContext(
     user,
     displayName: profile.display_name || user.email || "Staff",
     status: profile.status,
+    avatarPath: profile.avatar_path?.trim() || null,
     roles: [...roles],
     permissions
   };
@@ -78,14 +86,36 @@ export class StaffAuthorizationError extends Error {
 
 export async function getStaffContextForUser(user: User): Promise<StaffContext | null> {
   const supabase = await createSupabaseServerClient();
-  const { data: profile } = await supabase.from("staff_profiles").select("display_name,status").eq("user_id", user.id).maybeSingle();
-  if (!profile || profile.status !== "active") return null;
+  // Auth/login must not depend on optional avatar columns (migration may lag).
+  const { data: profile, error: profileError } = await supabase
+    .from("staff_profiles")
+    .select("display_name,status")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  if (profileError || !profile || profile.status !== "active") return null;
+
+  let avatarPath: string | null = null;
+  const avatarLookup = await supabase
+    .from("staff_profiles")
+    .select("avatar_path")
+    .eq("user_id", user.id)
+    .maybeSingle();
+  if (!avatarLookup.error) {
+    const path = avatarLookup.data?.avatar_path;
+    avatarPath = typeof path === "string" && path.trim() ? path.trim() : null;
+  }
+  avatarPath = staffAvatarPathFromUser(user, avatarPath);
+
   const { data: assignments } = await supabase
     .from("staff_role_assignments")
     .select("staff_roles(key,staff_role_permissions(staff_permissions(key)))")
     .eq("staff_user_id", user.id)
     .is("revoked_at", null);
-  return buildStaffContext(user, profile, (assignments ?? []) as unknown as StaffAssignmentRow[]);
+  return buildStaffContext(
+    user,
+    { ...profile, avatar_path: avatarPath },
+    (assignments ?? []) as unknown as StaffAssignmentRow[]
+  );
 }
 
 export async function getStaffContext(): Promise<StaffContext | null> {

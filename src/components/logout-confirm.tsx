@@ -6,10 +6,12 @@ import { signOutAndNavigate } from "@/lib/logout-navigation";
 
 export function LogoutConfirm({
   homeHref,
-  homeLabel
+  homeLabel,
+  surface
 }: {
   homeHref: string;
   homeLabel: string;
+  surface?: "studio" | "student";
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -17,7 +19,7 @@ export function LogoutConfirm({
     setBusy(true);
     setError("");
     try {
-      await signOutAndNavigate();
+      await signOutAndNavigate(fetch, window.location, surface);
     } catch {
       setBusy(false);
       setError("Unable to log out. Please try again.");
@@ -30,7 +32,7 @@ export function LogoutConfirm({
         <h1>Log out?</h1>
         <p>You can securely end this browser session now.</p>
         <button className="btn btn-purple" onClick={logout} disabled={busy}>{busy ? "Logging out…" : "Logout"}</button>
-        {error ? <p role="status">{error}</p> : null}
+        {error ? <p role="alert">{error}</p> : null}
         <Link href={homeHref}>{homeLabel}</Link>
       </section>
     </main>

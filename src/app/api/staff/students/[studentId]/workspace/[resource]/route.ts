@@ -3,6 +3,7 @@ import { recordDeniedAuditEvent, recordFailedAuditEvent } from "@/lib/audit";
 import { STUDENT_DOCUMENT_BUCKET } from "@/lib/document-access";
 import { jsonError, readJsonObject, validUuid } from "@/lib/http";
 import { cleanWorkspaceText, requirePremiumActor, WorkspaceAccessError } from "@/lib/premium-workspace";
+import { sanitizeFeedNotesBody } from "@/lib/sanitize-feed-notes";
 import { assertStudentAlertText, studentOperationsMutationError } from "@/lib/student-operations";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -52,7 +53,7 @@ export async function POST(request: Request, route: Context) {
     if (resource === "comments") values = { ...common, author_id: actor.user.id, body: cleanWorkspaceText(input.body, 4000), visibility: input.visibility === "staff_only" ? "staff_only" : "student_visible", parent_id: input.parent_id ? id(input.parent_id) : null };
     else if (resource === "tasks") values = { ...common, column_id: id(input.column_id), title: cleanWorkspaceText(input.title, 255), details: typeof input.details === "string" ? input.details.trim().slice(0, 6000) : "", sort_order:order(input.sort_order), due_at:optionalDate(input.due_at), assigned_to: typeof input.assigned_to === "string" ? id(input.assigned_to) : null, created_by: actor.user.id, updated_by: actor.user.id };
     else if (resource === "alerts") values = { ...common, alert_text: assertStudentAlertText(input.alert_text), severity: ["info", "important", "urgent"].includes(String(input.severity)) ? input.severity : "important", sort_order:order(input.sort_order), created_by: actor.user.id, updated_by: actor.user.id };
-    else if (resource === "reviews") values = { ...common, title: cleanWorkspaceText(input.title, 255), details: typeof input.details === "string" ? input.details.trim().slice(0, 4000) : "", status: "queued", student_visible: input.student_visible !== false, sort_order:order(input.sort_order), created_by: actor.user.id, updated_by: actor.user.id };
+    else if (resource === "reviews") values = { ...common, title: cleanWorkspaceText(input.title, 255), details: typeof input.details === "string" ? input.details.trim().slice(0, 4000) : "", status: ["queued","in_review","changes_requested","completed"].includes(String(input.status)) ? input.status : "queued", student_visible: input.student_visible !== false, sort_order:order(input.sort_order), created_by: actor.user.id, updated_by: actor.user.id };
     else if (resource === "notes") values = { ...common, author_id: actor.user.id, body: cleanWorkspaceText(input.body, 6000), visibility: input.visibility === "student_visible" ? "student_visible" : "staff_only" };
     else if (resource === "requirements") values = { ...common, document_type: cleanWorkspaceText(input.document_type, 160), requirement_kind: ["required", "additional", "requested"].includes(String(input.requirement_kind)) ? input.requirement_kind : "additional", instructions: typeof input.instructions === "string" ? input.instructions.trim().slice(0, 2000) : "", sort_order:order(input.sort_order), requested_by: actor.user.id };
     else if (resource === "universities") {const universityId=Number(input.university_id);if(!Number.isSafeInteger(universityId)||universityId<=0)throw new Error("Invalid university.");values = { ...common, university_id:universityId, stage: ["selected","shortlisted","application_started","applied","offer_received","finalized","declined"].includes(String(input.stage)) ? input.stage : "selected", sort_order:order(input.sort_order), created_by: actor.user.id, updated_by: actor.user.id };}
@@ -75,25 +76,45 @@ export async function PATCH(request: Request, route: Context) {
     const { actor, resource, table } = await context(Promise.resolve(routeParams));
     const input = await readJsonObject(request);
     if (resource === "profile") {
-      const values = {
-        pathway_label: typeof input.pathway_label === "string" ? input.pathway_label.trim().slice(0, 120) : "",
-        intake_label: typeof input.intake_label === "string" ? input.intake_label.trim().slice(0, 120) : "",
-        universities_applied: count(input.universities_applied),
-        offers_received: count(input.offers_received),
-        visa_status: typeof input.visa_status === "string" ? input.visa_status.trim().slice(0, 120) : "",
-        tuition_receipt_uploaded: input.tuition_receipt_uploaded == null ? null : input.tuition_receipt_uploaded === true,
-        onboarding_percentage: percentage(input.onboarding_percentage),
-        onboarding_checklist: checklist(input.onboarding_checklist),
-        feedback_session_title: typeof input.feedback_session_title === "string" ? input.feedback_session_title.trim().slice(0, 180) : "",
-        feedback_session_items: checklist(input.feedback_session_items),
-        documents_tracker: tracker(input.documents_tracker),
-        currently_working_on: textList(input.currently_working_on),
-        future_tasks: textList(input.future_tasks),
-        updated_by: actor.user.id
-      };
+      // Partial update: Quick Dashboard and Mentor Notes each send only their fields.
+      const values: Record<string, unknown> = { updated_by: actor.user.id };
+      const has = (key: string) => Object.prototype.hasOwnProperty.call(input, key);
+      if (has("pathway_label")) values.pathway_label = typeof input.pathway_label === "string" ? input.pathway_label.trim().slice(0, 120) : "";
+      if (has("intake_label")) values.intake_label = typeof input.intake_label === "string" ? input.intake_label.trim().slice(0, 120) : "";
+      if (has("universities_applied")) values.universities_applied = count(input.universities_applied);
+      if (has("offers_received")) values.offers_received = count(input.offers_received);
+      if (has("visa_status")) values.visa_status = typeof input.visa_status === "string" ? input.visa_status.trim().slice(0, 120) : "";
+      if (has("tuition_receipt_uploaded")) {
+        values.tuition_receipt_uploaded = input.tuition_receipt_uploaded == null ? null : input.tuition_receipt_uploaded === true;
+      }
+      if (has("onboarding_percentage")) values.onboarding_percentage = percentage(input.onboarding_percentage);
+      if (has("onboarding_checklist")) values.onboarding_checklist = checklist(input.onboarding_checklist);
+      if (has("feedback_session_title")) {
+        values.feedback_session_title = typeof input.feedback_session_title === "string" ? input.feedback_session_title.trim().slice(0, 180) : "";
+      }
+      if (has("feedback_session_items")) values.feedback_session_items = checklist(input.feedback_session_items);
+      if (has("documents_tracker")) values.documents_tracker = tracker(input.documents_tracker);
+      if (has("currently_working_on")) values.currently_working_on = textList(input.currently_working_on);
+      if (has("future_tasks")) values.future_tasks = textList(input.future_tasks);
+      // WS-FILL-2 — only touch notes_html when the client sends it (avoid wiping on Quick Dashboard save).
+      if (has("notes_html")) values.notes_html = sanitizeFeedNotesBody(input.notes_html);
+      if (Object.keys(values).length <= 1) return jsonError("No dashboard fields supplied.", 400);
       const supabase = await createSupabaseServerClient();
       const { error } = await supabase.from(table).update(values).eq("student_id", actor.studentId);
-      if (error) return jsonError("Unable to update dashboard details.", 400);
+      if (error) {
+        const detail = `${error.message ?? ""} ${error.details ?? ""}`.toLowerCase();
+        if (detail.includes("notes_html") || detail.includes("schema cache")) {
+          return jsonError(
+            "Mentor Notes column is missing in the database. Apply migration 20261008120000_ws_fill2_feed_notes_html.sql, then retry.",
+            503
+          );
+        }
+        logServerError("premium_workspace_profile_update_failed", error, {
+          student_id: actor.studentId,
+          fields: Object.keys(values).join(",")
+        });
+        return jsonError("Unable to update dashboard details.", 400);
+      }
       return NextResponse.json({ ok: true });
     }
     const recordId = id(input.id);
@@ -117,6 +138,7 @@ export async function PATCH(request: Request, route: Context) {
       values.updated_by = actor.user.id;
     } else if (resource === "reviews") {
       if (typeof input.title === "string") values.title = cleanWorkspaceText(input.title, 255);
+      if (typeof input.details === "string") values.details = input.details.trim().slice(0, 4000);
       if (["queued","in_review","changes_requested","completed"].includes(String(input.status))) values.status = input.status;
       if (typeof input.student_visible === "boolean") values.student_visible = input.student_visible;
       if(input.sort_order!==undefined)values.sort_order=order(input.sort_order);
@@ -191,9 +213,24 @@ export async function DELETE(request: Request, route: Context) {
       return NextResponse.json({ ok: true });
     }
     const supabase = await createSupabaseServerClient();
-    const {data,error}=await supabase.from(table).delete().eq("id",id(input.id)).eq("student_id",actor.studentId).select("id").maybeSingle();
-    if(error)return writeError(error,"Unable to delete the workspace item.");
-    if(!data)return jsonError("Workspace item not found.",404);
+    const recordId = id(input.id);
+    const { data, error } = await supabase
+      .from(table)
+      .delete()
+      .eq("id", recordId)
+      .eq("student_id", actor.studentId)
+      .select("id")
+      .maybeSingle();
+    if (error) return writeError(error, "Unable to delete the workspace item.");
+    if (!data) {
+      // Common when RLS blocks DELETE (e.g. comments before delete policy applied).
+      return jsonError(
+        resource === "comments"
+          ? "Unable to delete this comment. Apply migration 20261008170000_ws_comments_delete_rls if delete still fails."
+          : "Workspace item not found.",
+        404
+      );
+    }
     return NextResponse.json({ ok: true });
   } catch (error) {
     if (error instanceof WorkspaceAccessError) return jsonError(error.message, error.status);

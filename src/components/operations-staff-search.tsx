@@ -14,10 +14,26 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { buttonVariants } from "@/components/ui/button";
-import { STAFF_SEARCH_MIN_LENGTH, type StaffSearchResponse } from "@/lib/operations-search";
+import {
+  rewriteStaffSearchHrefForWorkspace,
+  STAFF_SEARCH_MIN_LENGTH,
+  type StaffSearchResponse
+} from "@/lib/operations-search";
 import { cn } from "@/lib/utils";
 
-export function OperationsStaffSearch() {
+type Props = {
+  /** Ops keeps /ops/students; Workspace opens Desk. */
+  surface?: "ops" | "workspace";
+  /** Optional trigger class (Workspace header). */
+  triggerClassName?: string;
+  placeholder?: string;
+};
+
+export function OperationsStaffSearch({
+  surface = "ops",
+  triggerClassName,
+  placeholder = "Search users, courses, events, students, etc..."
+}: Props) {
   const inputId = useId();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -52,7 +68,7 @@ export function OperationsStaffSearch() {
           cache: "no-store"
         });
         if (!response.ok) throw new Error("search failed");
-        const payload = await response.json() as StaffSearchResponse;
+        const payload = (await response.json()) as StaffSearchResponse;
         setResult({ query: payload.query ?? trimmed, groups: payload.groups ?? [] });
         setStatus("ready");
       } catch (error) {
@@ -73,20 +89,30 @@ export function OperationsStaffSearch() {
     ? null
     : "Type at least two characters. Search does not parse natural-language filters.";
 
+  function resultHref(href: string) {
+    return surface === "workspace" ? rewriteStaffSearchHrefForWorkspace(href) : href;
+  }
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         aria-keyshortcuts="Meta+K Control+K"
-        aria-label="Search Purple Guide"
-        className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "ops-system-topbar-search")}
+        aria-label="Search staff and authorized records"
+        className={triggerClassName ?? "ops-system-topbar-search"}
       >
-        <Search aria-hidden="true" className="ops:size-4" />
+        <Search aria-hidden="true" />
+        <span className={triggerClassName ? undefined : "ops-system-topbar-search-label"}>
+          {placeholder}
+        </span>
+        {triggerClassName ? null : <kbd className="ops-system-topbar-search-kbd">⌘K</kbd>}
       </DialogTrigger>
       <DialogContent className="ops-search-dialog ops:max-w-xl" aria-describedby={`${inputId}-help`}>
         <DialogHeader>
           <DialogTitle>Search Purple Guide</DialogTitle>
           <DialogDescription id={`${inputId}-help`} className="ops:text-foreground">
-            Students, catalog, CMS pages, staff, and work you are already authorized to see.
+            {surface === "workspace"
+              ? "Click a student to open their Desk. Catalog and other results stay on authorized Ops/CMS pages."
+              : "Students, catalog, CMS pages, staff, and work you are already authorized to see."}
           </DialogDescription>
         </DialogHeader>
         <label className="ops:grid ops:gap-1 ops:text-sm ops:font-semibold ops:text-foreground" htmlFor={inputId}>
@@ -101,9 +127,19 @@ export function OperationsStaffSearch() {
           />
         </label>
         {hint ? <p className="ops:m-0 ops:text-sm ops:text-foreground">{hint}</p> : null}
-        {searching && status === "loading" ? <p className="ops:m-0 ops:text-sm ops:text-foreground" role="status">Searching…</p> : null}
-        {searching && status === "error" ? <p className="ops:m-0 ops:text-sm ops:text-foreground" role="alert">Search could not be completed.</p> : null}
-        {empty ? <p className="ops:m-0 ops:text-sm ops:text-foreground">No authorized results for “{visible.query}”.</p> : null}
+        {searching && status === "loading" ? (
+          <p className="ops:m-0 ops:text-sm ops:text-foreground" role="status">
+            Searching…
+          </p>
+        ) : null}
+        {searching && status === "error" ? (
+          <p className="ops:m-0 ops:text-sm ops:text-foreground" role="alert">
+            Search could not be completed.
+          </p>
+        ) : null}
+        {empty ? (
+          <p className="ops:m-0 ops:text-sm ops:text-foreground">No authorized results for “{visible.query}”.</p>
+        ) : null}
         {visible.groups.length ? (
           <div className="ops-search-groups">
             {visible.groups.map((group) => (
@@ -112,9 +148,13 @@ export function OperationsStaffSearch() {
                 <ul>
                   {group.results.map((item) => (
                     <li key={`${group.domain}-${item.id}`}>
-                      <Link href={item.href} onClick={() => setOpen(false)}>
+                      <Link href={resultHref(item.href)} onClick={() => setOpen(false)}>
                         <strong>{item.label}</strong>
-                        <span>{item.description}</span>
+                        <span>
+                          {group.domain === "students" && surface === "workspace"
+                            ? "Open Desk"
+                            : item.description}
+                        </span>
                       </Link>
                     </li>
                   ))}

@@ -19,6 +19,10 @@ import {
   type StaffPreviewMode
 } from "@/lib/staff-preview";
 
+/**
+ * @deprecated VAS1-WRITE — do not throw this from `/api/staff/*` or desk manage.
+ * Student-surface read-only is enforced in `proxy.ts` (non-staff mutating APIs only).
+ */
 export class StaffPreviewReadOnlyError extends Error {
   readonly status = 403 as const;
   constructor(message = "Preview is read-only. Exit preview to make changes.") {
@@ -35,15 +39,70 @@ export type StaffPreviewContext = {
   targetRole: StaffRoleKey | null;
 };
 
-export function canUseStaffPreview(context: Pick<StaffContext, "roles">): boolean {
+/**
+ * View as Student capability (FEED-VAS).
+ * Admin/SA: any student. Mentor (or assigned-scope permission): assigned students only (checked separately).
+ * View as Mentor stays Admin/SA — see `canStartMentorPreview`.
+ */
+export function canUseStaffPreview(
+  context: Pick<StaffContext, "roles" | "permissions">
+): boolean {
+  if (context.roles.includes("admin") || context.roles.includes("super_admin")) return true;
+  if (context.roles.includes("mentor")) return true;
+  return (
+    context.permissions.has("student_workspace.read_all")
+    || context.permissions.has("student_workspace.read")
+  );
+}
+
+/** View as Mentor (impersonate another mentor in Ops) — Admin/SA only. */
+export function canStartMentorPreview(
+  context: Pick<StaffContext, "roles">
+): boolean {
   return context.roles.includes("admin") || context.roles.includes("super_admin");
 }
 
 export function canStartStaffPreview(
-  context: Pick<StaffContext, "roles">,
-  preview: StaffPreviewContext | null
+  context: Pick<StaffContext, "roles" | "permissions">
 ): boolean {
-  return canUseStaffPreview(context) && !preview;
+  // VAS1: View as Student opens a new tab; Ops must keep actions while the preview cookie is live.
+  // Preview cookie is intentionally not part of this gate.
+  return canUseStaffPreview(context);
+}
+
+export type StudentPreviewScopeResult = "ok" | "out_of_scope" | "not_found";
+
+/**
+ * Record-scope for View as Student: org-wide (`read_all` / Admin/SA) or active `mentor_assignments`.
+ * Does not require Premium — preview shows Family A or B as the student actually sees.
+ */
+export async function canPreviewStudentTarget(
+  actor: StaffContext,
+  studentId: string
+): Promise<StudentPreviewScopeResult> {
+  if (!canUseStaffPreview(actor)) return "out_of_scope";
+
+  const supabase = await createSupabaseServerClient();
+  const { data: profile } = await supabase.from("profiles").select("id").eq("id", studentId).maybeSingle();
+  if (!profile) return "not_found";
+
+  if (
+    actor.roles.includes("admin")
+    || actor.roles.includes("super_admin")
+    || can(actor, "student_workspace.read_all")
+  ) {
+    return "ok";
+  }
+
+  const { data: assignment } = await supabase
+    .from("mentor_assignments")
+    .select("id,status")
+    .eq("student_id", studentId)
+    .eq("mentor_id", actor.user.id)
+    .eq("status", "active")
+    .maybeSingle();
+
+  return assignment ? "ok" : "out_of_scope";
 }
 
 export { isAssignableHandlerRole };
@@ -56,10 +115,14 @@ export async function getStaffPreviewContext(actor?: StaffContext | null): Promi
   const claims = verifyStaffPreviewToken(await readStaffPreviewCookie());
   if (!claims) return null;
   if (!actor) return null;
-  if (actor.user.id !== claims.actorId || !canUseStaffPreview(actor)) return null;
+  if (actor.user.id !== claims.actorId) return null;
 
   const supabase = await createSupabaseServerClient();
   if (claims.mode === "student") {
+    if (!canUseStaffPreview(actor)) return null;
+    // FEED-VAS: revoke mid-session if assignment ends or mentor loses scope.
+    const scope = await canPreviewStudentTarget(actor, claims.targetId);
+    if (scope !== "ok") return null;
     const { data } = await supabase.from("profiles").select("id,full_name").eq("id", claims.targetId).maybeSingle();
     if (!data) return null;
     return {
@@ -71,6 +134,9 @@ export async function getStaffPreviewContext(actor?: StaffContext | null): Promi
       targetRole: null
     };
   }
+
+  // View as Mentor: Admin/SA only.
+  if (!canStartMentorPreview(actor)) return null;
 
   const { data } = await supabase
     .from("staff_profiles")
@@ -88,10 +154,13 @@ export async function getStaffPreviewContext(actor?: StaffContext | null): Promi
   };
 }
 
+/**
+ * VAS1-WRITE: no-op. View as Student cookie must never freeze Ops/Workspace staff writes.
+ * Student mutations stay blocked in `proxy.ts` outside `/api/staff/` and `/api/auth/`.
+ * Kept so old call sites fail closed toward writable (not frozen) if reintroduced briefly.
+ */
 export async function assertStaffPreviewWritable(): Promise<void> {
-  if (verifyStaffPreviewToken(await readStaffPreviewCookie())) {
-    throw new StaffPreviewReadOnlyError();
-  }
+  return;
 }
 
 export async function writeStaffPreviewCookie(mode: StaffPreviewMode, actorId: string, targetId: string) {
@@ -109,7 +178,19 @@ export async function getActiveStudentPreviewTargetId(): Promise<string | null> 
   if (!claims || claims.mode !== "student") return null;
   const context = await getStaffContext();
   if (!context || context.user.id !== claims.actorId || !canUseStaffPreview(context)) return null;
+  const scope = await canPreviewStudentTarget(context, claims.targetId);
+  if (scope !== "ok") return null;
   return claims.targetId;
+}
+
+/**
+ * Prefer admin client while View as Student is active for this student
+ * (staff session RLS alone is not enough for subject reads).
+ */
+export async function previewAwareSupabaseClient(studentId: string) {
+  const previewTarget = await getActiveStudentPreviewTargetId();
+  if (previewTarget === studentId) return createSupabaseAdminClient();
+  return createSupabaseServerClient();
 }
 
 export async function loadPreviewStudentProfile(studentId: string) {
@@ -177,8 +258,9 @@ export function mentorPreviewBlocksPath(pathname: string): boolean {
   );
 }
 
-export function canAssignStudents(context: StaffContext, preview: StaffPreviewContext | null): boolean {
-  return can(context, "mentor_assignments.manage") && !preview;
+export function canAssignStudents(context: StaffContext): boolean {
+  // VAS1: do not hide Assign/Change mentor on Ops when a student preview cookie is active.
+  return can(context, "mentor_assignments.manage");
 }
 
 export async function redirectMentorPreviewAwayFromPrivilegedPages() {

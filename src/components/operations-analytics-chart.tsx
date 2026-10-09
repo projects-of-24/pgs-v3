@@ -5,14 +5,18 @@ import type { AnalyticsCountLink } from "@/lib/operations-analytics";
 
 export function OperationsDistributionChart({
   caption,
-  points
+  points,
+  fill
 }: {
   caption: string;
   points: AnalyticsCountLink[];
+  fill?: string;
 }) {
   if (!points.length) {
     return <p className="ops:m-0 ops:text-sm ops:text-foreground">No values in this distribution yet.</p>;
   }
+
+  const barFill = fill ?? "var(--operations-primary)";
 
   return (
     <figure className="ops:m-0">
@@ -49,14 +53,27 @@ export function OperationsDistributionChart({
               }}
               formatter={(value) => [Number(value), "Students"]}
             />
-            <Bar dataKey="count" fill="var(--operations-primary)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="count" fill={barFill} radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
       <ul className="ops:mt-3 ops:m-0 ops:grid ops:grid-cols-2 ops:gap-x-4 ops:gap-y-2 ops:p-0 ops:text-sm ops:list-none">
         {points.map((point) => (
           <li key={point.key} className="ops:flex ops:justify-between ops:gap-2">
-            <span>{point.label}</span>
+            <span className="ops:inline-flex ops:items-center ops:gap-2">
+              <span
+                aria-hidden="true"
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: 999,
+                  background: barFill,
+                  display: "inline-block",
+                  flexShrink: 0
+                }}
+              />
+              {point.label}
+            </span>
             <strong>{point.count}</strong>
           </li>
         ))}

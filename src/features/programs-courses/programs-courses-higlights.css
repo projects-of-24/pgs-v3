@@ -1,6 +1,7 @@
 /**
- * C10 #higlights — wraps shared PremiumHighlights for Courses spacing only.
- * Scroll / drag / focus ring = shared modular (do not re-implement here).
+ * C10 #higlights — wraps shared PremiumHighlights for Courses spacing.
+ * Desk photo strip is horizontal-scroll (Figma): up to 7 photos; ~4 fit on screen.
+ * Scrollbar stays visible so Ops/CMS QC can reach every uploaded slot (COURSE2d-D3).
  */
 
 .pc-hl {
@@ -13,6 +14,39 @@
 .pc-hl .premium-highlights {
   margin-top: 48px;
   margin-bottom: 0;
+}
+
+.pc-hl .premium-highlights__photos--desk,
+.pc-hl .premium-highlights__scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #222 #e8e8e8;
+}
+
+.pc-hl .premium-highlights__photos--desk::-webkit-scrollbar,
+.pc-hl .premium-highlights__scroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.pc-hl .premium-highlights__photos--desk::-webkit-scrollbar-thumb,
+.pc-hl .premium-highlights__scroller::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+
+.pc-hl .premium-highlights__photos--desk::-webkit-scrollbar-track,
+.pc-hl .premium-highlights__scroller::-webkit-scrollbar-track {
+  background: #e8e8e8;
+}
+
+.pc-hl__scroll-hint {
+  margin: 8px 0 0;
+  padding: 0 24px;
+  max-width: calc(100% - max(24px, calc(50% - 338px)));
+  margin-left: max(24px, calc(50% - 338px));
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #555;
 }
 
 @media (min-width: 1367px) {

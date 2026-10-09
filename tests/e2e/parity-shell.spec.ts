@@ -107,8 +107,8 @@ test("USA destination keeps its complex tabbed content", { tag: "@smoke" }, asyn
   await expect(panel).not.toContainText("Language You’ll Study In");
 });
 
-test("legacy CMS entry merges into the protected typed operations editor", async ({ page }) => {
-  await goto(page, "/cms");
-  await expect(page).toHaveURL(/\/login\?redirect=%2Fcms/);
+test("legacy CMS entry is removed (404) — staff use /studio/login", async ({ page }) => {
+  const response = await page.goto("/cms", { waitUntil: "domcontentloaded" });
+  expect(response?.status()).toBe(404);
   await expect(page.locator(".ops-app")).toHaveCount(0);
 });

@@ -1,0 +1,286 @@
+.root {
+  --ws-purple: #6b3fa0;
+  --ws-ink: #1f2430;
+  --ws-muted: #5b6575;
+  --ws-line: #e6e8ee;
+  --ws-soft: #f7f4fb;
+  --ws-shadow: 0 1px 2px rgba(31, 36, 48, 0.04), 0 8px 24px rgba(31, 36, 48, 0.045);
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  height: 100%;
+  padding: 24px 20px 16px;
+  color: var(--ws-ink);
+  font-family: var(--font-operations, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+  font-size: 18px;
+  overflow: hidden;
+}
+
+.header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--ws-purple);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.6rem, 2.2vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ws-purple);
+}
+
+.lead {
+  margin: 0;
+  max-width: 46rem;
+  color: var(--ws-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.lead strong {
+  color: var(--ws-ink);
+  font-weight: 700;
+}
+
+.fixtureBadge {
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #f0d9a8;
+  border-radius: 10px;
+  background: #fff8eb;
+  color: #7a4e00;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.status {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--ws-muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.tabs {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--ws-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ws-ink);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.tabActive {
+  border-color: var(--ws-purple);
+  background: var(--ws-purple);
+  color: #fff;
+}
+
+.tab:focus-visible {
+  outline: 2px solid #cbb6ef;
+  outline-offset: 2px;
+}
+
+.panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--ws-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--ws-shadow);
+  overflow: hidden;
+}
+
+.panelBar {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.panelLead {
+  margin: 0;
+  color: var(--ws-muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.cardList {
+  flex: 1 1 auto;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.card {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--ws-line);
+  border-radius: 12px;
+  background: var(--ws-soft);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardHead strong {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.card label {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  color: var(--ws-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.card input,
+.card textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--ws-line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ws-ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.card textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.card input:focus,
+.card textarea:focus {
+  outline: 2px solid #cbb6ef;
+  outline-offset: 1px;
+  border-color: var(--ws-purple);
+}
+
+.actions {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background: var(--ws-purple);
+  color: #fff;
+}
+
+.btnSecondary {
+  border: 1px solid var(--ws-line);
+  background: #fff;
+  color: var(--ws-ink);
+}
+
+.btnPrimary:focus-visible,
+.btnSecondary:focus-visible,
+.iconDanger:focus-visible {
+  outline: 2px solid #cbb6ef;
+  outline-offset: 2px;
+}
+
+.btnPrimary svg,
+.btnSecondary svg,
+.iconDanger svg {
+  width: 16px;
+  height: 16px;
+}
+
+.iconDanger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #912018;
+  cursor: pointer;
+}
+
+.iconDanger:hover {
+  background: #fde8e8;
+}
+
+.iconDanger:disabled,
+.btnPrimary:disabled,
+.btnSecondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.emptyCard {
+  margin: 0;
+  padding: 20px 14px;
+  border: 1px dashed var(--ws-line);
+  border-radius: 12px;
+  color: var(--ws-muted);
+  font-size: 1rem;
+  font-weight: 650;
+}

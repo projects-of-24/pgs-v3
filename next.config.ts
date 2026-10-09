@@ -15,7 +15,21 @@ const nextConfig: NextConfig = {
       { source: "/ops/team", destination: "/admin/staff" },
       { source: "/ops/team/:path*", destination: "/admin/staff/:path*" },
       { source: "/ops/notifications", destination: "/admin/notifications" },
-      { source: "/ops/activity", destination: "/admin/audit" }
+      { source: "/ops/activity", destination: "/admin/audit" },
+      { source: "/ops/admin-panel", destination: "/admin/stubs/admin-panel" },
+      { source: "/ops/admin/permissions", destination: "/admin/stubs/permissions" },
+      { source: "/ops/overall-comments", destination: "/admin/stubs/overall-comments" },
+      { source: "/ops/loopboard", destination: "/admin/stubs/loopboard" },
+      { source: "/ops/admin/users", destination: "/admin/users" },
+      { source: "/ops/admin/users/:path*", destination: "/admin/users/:path*" },
+      { source: "/ops/cms/courses/preview/:id", destination: "/admin/catalog/courses/preview/:id" },
+      { source: "/ops/cms/courses", destination: "/admin/catalog/courses" },
+      { source: "/ops/cms/universities", destination: "/admin/catalog/universities" },
+      { source: "/ops/cms/webinar", destination: "/admin/stubs/webinar" },
+      { source: "/ops/cms/testimonial", destination: "/admin/content/modules/testimonials" },
+      { source: "/ops/cms/media", destination: "/admin/media" },
+      { source: "/studio/change-password", destination: "/admin/change-password" },
+      { source: "/studio/profile", destination: "/admin/profile" }
     ];
   },
   async headers() {
@@ -29,13 +43,13 @@ const nextConfig: NextConfig = {
       "object-src 'none'",
       "frame-ancestors 'none'",
       "form-action 'self'",
-      `script-src 'self' 'unsafe-inline'${devScriptSrc}`,
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com",
+      `script-src 'self' 'unsafe-inline' https://core.sanity-cdn.com https://*.sanity-cdn.com${devScriptSrc}`,
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://core.sanity-cdn.com",
       "font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com",
       "img-src 'self' data: blob: https:",
       "media-src 'self' blob: https:",
-      `connect-src 'self' https://*.supabase.co wss://*.supabase.co${supabaseOrigin?` ${supabaseOrigin} ${supabaseOrigin.replace(/^http/,"ws")}`:""}${devConnectSrc}`,
-      "frame-src 'self' https://www.google.com https://maps.google.com",
+      `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.api.sanity.io https://*.apicdn.sanity.io https://*.sanity.io https://sanity-cdn.com https://*.sanity-cdn.com https://core.sanity-cdn.com wss://*.api.sanity.io wss://*.sanity.io${supabaseOrigin?` ${supabaseOrigin} ${supabaseOrigin.replace(/^http/,"ws")}`:""}${devConnectSrc}`,
+      "frame-src 'self' https://www.google.com https://maps.google.com https://*.sanity.io",
       "worker-src 'self' blob:",
       ...(process.env.NODE_ENV === "production" ? ["upgrade-insecure-requests"] : [])
     ].join("; ");
@@ -48,11 +62,37 @@ const nextConfig: NextConfig = {
       { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
       ...(process.env.NODE_ENV === "production" ? [{ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" }] : [])
     ];
+    // Embedded Sanity Studio needs live listen / presence (SSE + WebSocket). Site-wide CSP blocks it.
+    // Apply a Studio-only policy so Ops / student routes keep the strict CSP above.
+    const sanityStudioCsp = [
+      "default-src 'self' 'unsafe-inline' data: blob: https:",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "form-action 'self'",
+      `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://core.sanity-cdn.com https://*.sanity-cdn.com https://*.sanity.io${devScriptSrc}`,
+      "style-src 'self' 'unsafe-inline' https: data:",
+      "font-src 'self' data: https:",
+      "img-src 'self' data: blob: https:",
+      "media-src 'self' blob: https:",
+      `connect-src 'self' https: wss: blob:${devConnectSrc}`,
+      "frame-src 'self' https:",
+      "worker-src 'self' blob:",
+      ...(process.env.NODE_ENV === "production" ? ["upgrade-insecure-requests"] : [])
+    ].join("; ");
+    const sanityStudioHeaders = [
+      { key: "Content-Security-Policy", value: sanityStudioCsp },
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" }
+    ];
     const privateHeaders = [{ key: "Cache-Control", value: "private, no-cache, no-store, must-revalidate, max-age=0" }];
-    return [{
-      source: "/:path*",
-      headers: securityHeaders
-    }, ...["/api/auth/:path*", "/api/student/:path*", "/api/premium/:path*", "/api/staff/:path*", "/api/admin/:path*", "/auth/:path*", "/student/:path*", "/mentor/:path*", "/admin/:path*", "/ops", "/ops/:path*", "/cms", "/dashboard", "/feed_track_progress", "/upload_your_doc", "/saved", "/notifications", "/singup", "/change_password"].map((source) => ({ source, headers: privateHeaders }))];
+    return [
+      { source: "/sanity", headers: sanityStudioHeaders },
+      { source: "/sanity/:path*", headers: sanityStudioHeaders },
+      // Do not stack strict CSP on /sanity (two CSP headers = broken Studio live sync).
+      { source: "/((?!sanity).*)", headers: securityHeaders },
+      ...["/api/auth/:path*", "/api/student/:path*", "/api/premium/:path*", "/api/staff/:path*", "/api/admin/:path*", "/auth/:path*", "/student/:path*", "/mentor/:path*", "/admin/:path*", "/ops", "/ops/:path*", "/cms", "/dashboard", "/feed_track_progress", "/upload_your_doc", "/saved", "/notifications", "/singup", "/change_password", "/studio/change-password", "/studio/profile"].map((source) => ({ source, headers: privateHeaders }))
+    ];
   }
 };
 

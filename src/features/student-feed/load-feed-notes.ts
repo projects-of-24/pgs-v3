@@ -5,7 +5,7 @@
 import "server-only";
 
 import { sanitizeFeedNotesBody } from "@/lib/sanitize-feed-notes";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { previewAwareSupabaseClient } from "@/lib/staff-preview-server";
 import { STUDENT_FEED_NOTES_BODY } from "./feed-notes-default";
 
 export type FeedNotesBody = {
@@ -22,7 +22,7 @@ export async function loadFeedNotesBody(
     return { body: STUDENT_FEED_NOTES_BODY, isDefault: true };
   }
 
-  const supabase = await createSupabaseServerClient();
+  const supabase = await previewAwareSupabaseClient(studentId);
   const { data, error } = await supabase
     .from("premium_workspace_profiles")
     .select("notes_html")

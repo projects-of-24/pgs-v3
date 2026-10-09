@@ -5,6 +5,12 @@ export function operationsRoleLabel(roles: string[]): string {
   return "Read-only Staff";
 }
 
+/** Header chrome shows first name only — full display name stays in the account menu. */
+export function operationsFirstName(name: string): string {
+  const first = name.trim().split(/\s+/).filter(Boolean)[0];
+  return first || "Staff";
+}
+
 export function operationsInitials(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (!parts.length) return "PG";

@@ -3,13 +3,16 @@
  * Desk `17072:10893` · Mob `551:9103` (different check copy).
  * Owned CSS. Fixtures only. iPad 601–1366 deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesChecksData } from "./courses-template-view";
 import "./programs-courses-checks.css";
 
-export function ProgramsCoursesChecks() {
-  const desk = PROGRAMS_COURSES_FIXTURE.checks;
-  const mob = PROGRAMS_COURSES_FIXTURE.checksMobile ?? desk;
+type ProgramsCoursesChecksProps = {
+  data: ProgramsCoursesChecksData;
+};
 
+export function ProgramsCoursesChecks({
+  data: { desk, mob }
+}: ProgramsCoursesChecksProps) {
   return (
     <section
       id="pc-c5"

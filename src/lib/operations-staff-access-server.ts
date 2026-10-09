@@ -60,6 +60,23 @@ export async function loadStaffAuthEmail(context: StaffContext, userId: string):
   return data.user?.email ?? null;
 }
 
+/** UM1: enrich directory rows with Auth emails for Super Admin manage UI only. */
+export async function loadStaffDirectoryEmails(
+  context: StaffContext,
+  userIds: string[]
+): Promise<Record<string, string>> {
+  if (!can(context, "roles.manage") || !userIds.length) return {};
+  const admin = createSupabaseAdminClient();
+  const entries = await Promise.all(
+    userIds.map(async (userId) => {
+      const { data, error } = await admin.auth.admin.getUserById(userId);
+      if (error || !data.user?.email) return null;
+      return [userId, data.user.email] as const;
+    })
+  );
+  return Object.fromEntries(entries.filter((entry): entry is readonly [string, string] => Boolean(entry)));
+}
+
 export async function loadStaffAccessHistory(context: StaffContext, userId: string) {
   if (!can(context, "audit.read")) return [];
   const supabase = await createSupabaseServerClient();
@@ -83,4 +100,20 @@ export async function requireStaffAccessDetail(userId: string) {
   const detail = await loadStaffAccessDetail(userId);
   if (!detail) notFound();
   return detail;
+}
+
+/** UM2b: sidetab menu grants for one staff user. Empty = role-default menus (no custom filter). */
+export async function loadStaffNavGrants(userId: string): Promise<string[]> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase.rpc("staff_nav_grants_list", { target_user: userId });
+  if (error) {
+    // Soft-fail when migration is not applied yet (PGRST202 / missing function).
+    const message = `${error.message ?? ""} ${error.code ?? ""} ${error.details ?? ""}`;
+    if (/staff_nav_grants_list|PGRST202|does not exist|schema cache|Could not find the function/i.test(message)) {
+      return [];
+    }
+    throw error;
+  }
+  if (!Array.isArray(data)) return [];
+  return data.filter((key): key is string => typeof key === "string");
 }

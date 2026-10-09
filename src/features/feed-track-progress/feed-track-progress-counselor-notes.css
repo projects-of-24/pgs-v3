@@ -55,6 +55,15 @@
   text-align: center;
 }
 
+.ftp-notes__empty {
+  margin: 12px 0 0;
+  padding: 8px 10px;
+  color: var(--ftp-ink);
+  font: 500 12px / 1.35 Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  opacity: 0.85;
+}
+
 .ftp-notes__viewport {
   overflow: hidden;
   width: 100%;
@@ -240,6 +249,14 @@
     font: 400 16px / 19.2px Roboto, "Helvetica Neue", Arial, sans-serif;
     letter-spacing: 0.4px;
     text-align: left;
+  }
+
+  .ftp-notes__empty {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+    margin: 0;
+    padding: 0;
   }
 
   .ftp-notes__viewport {
