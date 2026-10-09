@@ -17,7 +17,7 @@
     "predev": "pnpm assets:verify",
     "dev": "next dev -p 7100",
     "prebuild": "node scripts/ensure-legacy-assets.mjs",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
