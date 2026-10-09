@@ -1,0 +1,347 @@
+/**
+ * Calendar session — Pair 7 desk+mob · no scale · calendar surface only · LOCKED
+ * ≤600 mob open `4:305` · closed `4:364` · ~206×160 · pair `4:375`
+ * >1367 desk open `4:377` · closed `4:387` · ~309×240 · pair `4:376`
+ * 601–1366 iPad deferred
+ */
+
+.calendar-session-face {
+  box-sizing: border-box;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  width: 100%;
+  max-width: 100%;
+}
+
+.calendar-session-face *,
+.calendar-session-face *::before,
+.calendar-session-face *::after {
+  box-sizing: border-box;
+}
+
+.calendar-session-face__sr-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.calendar-session-face p {
+  margin: 0;
+}
+
+.calendar-session-face__desk,
+.calendar-session-face__mob {
+  display: none;
+}
+
+.calendar-session-face__band-note {
+  display: block;
+  max-width: 28rem;
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #4a4a4a;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #22272e;
+}
+
+/* ——— Mob ≤600 — Figma 4:305 / 4:364 · ~206×160 ——— */
+@media (max-width: 600px) {
+  .calendar-session-face {
+    width: 205.8px;
+    max-width: 100%;
+  }
+
+  .calendar-session-face__band-note {
+    display: none;
+  }
+
+  .calendar-session-face__mob {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex-shrink: 0;
+    width: 205.8px;
+    min-width: 205.8px;
+    height: 160px;
+    padding: 12.8px;
+    border: 0.8px solid rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 3.2px 4.8px;
+    border-radius: 4px;
+    background: #000;
+    color: #b57cff;
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+    letter-spacing: 0;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__title-line {
+    display: block;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4.8px;
+    border-radius: 4px;
+    background: #000;
+    color: #b57cff;
+    font-size: 17.6px;
+    font-weight: 600;
+    line-height: 22.4px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__blurb {
+    width: 100%;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__blurb-line {
+    display: block;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__mode {
+    width: 100%;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.2px;
+  }
+
+  .calendar-session-face__mob .calendar-session-face__mode-label,
+  .calendar-session-face__mob .calendar-session-face__mode-value {
+    font: inherit;
+  }
+
+  /* Mob closed — Figma 4:364 · wash full · plate 4:327 */
+  .calendar-session-face[data-face-status="closed"]
+    .calendar-session-face__mob
+    .calendar-session-face__wash {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+    mix-blend-mode: hue;
+    pointer-events: none;
+  }
+
+  .calendar-session-face[data-face-status="closed"]
+    .calendar-session-face__mob
+    .calendar-session-face__closed {
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 0.5px);
+    z-index: 4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 92px;
+    height: 57px;
+    border: 0.8px solid #9747ff;
+    border-radius: 8px;
+    background: #c3ffa9;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .calendar-session-face[data-face-status="closed"]
+    .calendar-session-face__mob
+    .calendar-session-face__closed-text {
+    margin: 0;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+/* ——— Desk >1367 — Figma 4:377 / 4:387 · ~309×240 ——— */
+@media (min-width: 1367px) {
+  .calendar-session-face {
+    width: 308.7px;
+    max-width: none;
+  }
+
+  .calendar-session-face__band-note {
+    display: none;
+  }
+
+  .calendar-session-face__desk {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    flex-shrink: 0;
+    width: 308.7px;
+    min-width: 308.7px;
+    height: 240px;
+    padding: 19.2px;
+    border: 1.2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 4.8px 7.2px;
+    border-radius: 6px;
+    background: #000;
+    color: #b57cff;
+    font-size: 26.4px;
+    font-weight: 600;
+    line-height: 33.6px;
+    letter-spacing: 0;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__title-line {
+    display: block;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7.2px;
+    border-radius: 6px;
+    background: #000;
+    color: #b57cff;
+    font-size: 26.4px;
+    font-weight: 600;
+    line-height: 33.6px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__blurb {
+    width: 100%;
+    color: #000;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__blurb-line {
+    display: block;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__mode {
+    width: 100%;
+    color: #000;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.3px;
+  }
+
+  .calendar-session-face__desk .calendar-session-face__mode-label,
+  .calendar-session-face__desk .calendar-session-face__mode-value {
+    font: inherit;
+  }
+
+  /* Desk closed — Figma 4:387 · wash full card · plate 4:398 */
+  .calendar-session-face[data-face-status="closed"]
+    .calendar-session-face__desk
+    .calendar-session-face__wash {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+    mix-blend-mode: hue;
+    pointer-events: none;
+  }
+
+  .calendar-session-face[data-face-status="closed"]
+    .calendar-session-face__desk
+    .calendar-session-face__closed {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 138px;
+    height: 85.5px;
+    border: 1.2px solid #9747ff;
+    border-radius: 12px;
+    background: #c3ffa9;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .calendar-session-face[data-face-status="closed"]
+    .calendar-session-face__desk
+    .calendar-session-face__closed-text {
+    margin: 0;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    text-align: center;
+    white-space: nowrap;
+  }
+}

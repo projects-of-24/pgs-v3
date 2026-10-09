@@ -1,0 +1,866 @@
+/**
+ * Program compact — Pair 6 desk+mob · no transform scale · no drop shadow
+ * ≤600 mob: Figma ~171×260 → **1.2×** (~205.2 × min-height 312) · height hugs
+ * >1367 desk: ~304×461 min · height hugs · pair `1:2148`
+ * 601–1366 iPad deferred
+ *
+ * Owner QC 2026-09-22: title wrap to edge-gap · footer flow hug · mob ×1.2 sizes
+ */
+
+.program-compact-face {
+  box-sizing: border-box;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #000;
+  width: 100%;
+  max-width: 100%;
+}
+
+.program-compact-face *,
+.program-compact-face *::before,
+.program-compact-face *::after {
+  box-sizing: border-box;
+}
+
+.program-compact-face__sr-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.program-compact-face p {
+  margin: 0;
+}
+
+.program-compact-face__desk,
+.program-compact-face__mob {
+  display: none;
+}
+
+.program-compact-face__band-note {
+  display: block;
+  max-width: 28rem;
+  margin: 0;
+  padding: 16px;
+  border: 1px dashed #4a4a4a;
+  background: #fafafa;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #22272e;
+}
+
+/* ——— Mob ≤600 — Figma 1:3032 / 1:2992 · sizes ×1.2 ——— */
+@media (max-width: 600px) {
+  .program-compact-face {
+    width: 205.2px;
+    max-width: 100%;
+  }
+
+  .program-compact-face__band-note {
+    display: none;
+  }
+
+  .program-compact-face__mob {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 205.2px;
+    min-width: 205.2px;
+    min-height: 312px;
+    height: auto;
+    padding-bottom: 8.64px;
+    border: 0.547px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10.944px;
+    overflow: hidden;
+    background: #f1f1f1;
+  }
+
+  .program-compact-face__mob .program-compact-face__media {
+    position: relative;
+    flex: 0 0 auto;
+    width: calc(100% - 14.856px);
+    height: 103.74px;
+    margin: 8.568px 7.428px 0;
+    overflow: hidden;
+    border-radius: 5.472px;
+  }
+
+  .program-compact-face__mob .program-compact-face__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center 40%;
+    pointer-events: none;
+  }
+
+  .program-compact-face__mob .program-compact-face__spots {
+    position: absolute;
+    top: 10.944px;
+    left: 4.38px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5.472px;
+    padding: 2.189px 2.736px;
+    background: #000;
+    color: #fff;
+    font-size: 13.68px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.274px;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__mob .program-compact-face__spots img {
+    display: block;
+    width: 8.4px;
+    height: 9.6px;
+    object-fit: contain;
+  }
+
+  .program-compact-face__mob .program-compact-face__start {
+    position: absolute;
+    top: 30px;
+    left: 4.38px;
+    z-index: 3;
+    display: inline-flex;
+    line-height: 1;
+  }
+
+  .program-compact-face__mob .program-compact-face__start-label {
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 0 2.189px;
+    background: #b57cff;
+    color: #000;
+    font-size: 13.68px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.219px;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__mob .program-compact-face__heart {
+    position: absolute;
+    top: 3.288px;
+    right: 4.8px;
+    left: auto;
+    z-index: 2;
+    width: 17.51px;
+    height: 17.51px;
+    pointer-events: none;
+  }
+
+  .program-compact-face__mob .program-compact-face__heart img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .program-compact-face__mob .program-compact-face__copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: calc(100% - 14.856px);
+    max-width: calc(100% - 14.856px);
+    margin: 7.2px 7.428px 0;
+  }
+
+  .program-compact-face__mob .program-compact-face__title {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 2.189px;
+    background: #000;
+    color: #fff;
+    font-size: 15.048px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .program-compact-face__mob .program-compact-face__title-line {
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .program-compact-face__mob .program-compact-face__blurb {
+    width: 100%;
+    max-width: 100%;
+    padding: 3.283px 2.736px;
+    background: #ffc524;
+    color: #000;
+    font-size: 13.68px;
+    font-weight: 400;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .program-compact-face__mob .program-compact-face__footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: calc(100% - 14.856px);
+    max-width: calc(100% - 14.856px);
+    margin: 8.4px 7.428px 0;
+  }
+
+  .program-compact-face__mob .program-compact-face__tags {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5.472px;
+    row-gap: 4px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 100%;
+  }
+
+  .program-compact-face__mob .program-compact-face__tags li {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .program-compact-face__mob .program-compact-face__pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5.472px;
+    border-radius: 4.56px;
+    background: #000;
+    color: #fff;
+    font-size: 11.4px;
+    font-weight: 500;
+    line-height: 10.944px;
+    letter-spacing: 0.055px;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__mob .program-compact-face__meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .program-compact-face__mob .program-compact-face__cta {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.283px 6.566px;
+    border-radius: 5.472px;
+    background: #b57cff;
+    color: #fff;
+    font-size: 11.4px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.137px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__mob .program-compact-face__cta:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 2px;
+  }
+
+  .program-compact-face__mob .program-compact-face__cta[aria-disabled="true"] {
+    pointer-events: none;
+  }
+
+  .program-compact-face__mob .program-compact-face__closes {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.094px 1.642px;
+    border: 0.274px solid #b57cff;
+    background: #fff;
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+
+  .program-compact-face__mob .program-compact-face__closes-label,
+  .program-compact-face__mob .program-compact-face__closes-value {
+    font-size: 13.68px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.219px;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .program-compact-face[data-face-status="closed"]
+    .program-compact-face__mob
+    .program-compact-face__wash {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+    mix-blend-mode: saturation;
+    pointer-events: none;
+  }
+
+  .program-compact-face[data-face-status="closed"]
+    .program-compact-face__mob
+    .program-compact-face__closed {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 162px;
+    height: 127.2px;
+    padding: 12px;
+    border: 0.96px solid #9747ff;
+    border-radius: 9.6px;
+    background: #c3ffa9;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .program-compact-face[data-face-status="closed"]
+    .program-compact-face__mob
+    .program-compact-face__closed-text {
+    margin: 0;
+    width: 135.36px;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 23.04px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    text-align: center;
+  }
+}
+
+/* ——— Desk >1367 — Figma 1:2150 / 1:2151 · height hugs ——— */
+@media (min-width: 1367px) {
+  .program-compact-face {
+    width: 304.32px;
+    max-width: none;
+  }
+
+  .program-compact-face__band-note {
+    display: none;
+  }
+
+  .program-compact-face__desk {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 304.32px;
+    min-width: 304.32px;
+    /* Covers ~5 title lines + 2 tag rows (fixture/listing QC) */
+    min-height: 560px;
+    height: auto;
+    padding-bottom: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f1f1f1;
+  }
+
+  .program-compact-face__desk .program-compact-face__media {
+    position: relative;
+    flex: 0 0 auto;
+    width: calc(100% - 28px);
+    height: 190px;
+    margin: 15px 14px 0;
+    overflow: hidden;
+    border-radius: 9.6px;
+  }
+
+  .program-compact-face__desk .program-compact-face__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center 40%;
+    pointer-events: none;
+  }
+
+  .program-compact-face__desk .program-compact-face__spots {
+    position: absolute;
+    top: 20px;
+    left: 8px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 4px 5px;
+    background: #000;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__desk .program-compact-face__spots img {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+
+  .program-compact-face__desk .program-compact-face__start {
+    position: absolute;
+    top: 48px;
+    left: 8px;
+    z-index: 3;
+  }
+
+  .program-compact-face__desk .program-compact-face__start-label {
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 0 4px;
+    background: #b57cff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__desk .program-compact-face__heart {
+    position: absolute;
+    top: 6px;
+    right: 9px;
+    left: auto;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+  }
+
+  .program-compact-face__desk .program-compact-face__heart img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .program-compact-face__desk .program-compact-face__copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: calc(100% - 28px);
+    max-width: calc(100% - 28px);
+    margin: 15px 14px 0;
+    /* Fixed title+blurb band so tags start at the same Y on every card */
+    min-height: 200px;
+    flex: 0 0 auto;
+  }
+
+  .program-compact-face__desk .program-compact-face__title {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 4px;
+    background: #000;
+    color: #fff;
+    font-size: 26.4px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .program-compact-face__desk .program-compact-face__title-line {
+    display: block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .program-compact-face__desk .program-compact-face__blurb {
+    width: 100%;
+    max-width: 100%;
+    padding: 4px;
+    background: #ffc524;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+    overflow-wrap: anywhere;
+  }
+
+  .program-compact-face__desk .program-compact-face__footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: calc(100% - 28px);
+    max-width: calc(100% - 28px);
+    margin: 16px 14px 0;
+    /* Fills rest of card; tags stay at top of this band (fixed start) */
+    flex: 1 1 auto;
+  }
+
+  .program-compact-face__desk .program-compact-face__tags {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    column-gap: 10px;
+    row-gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 100%;
+    /* Reserve 2 tag rows so CTA start stays stable when tags wrap */
+    min-height: 86px;
+    flex: 0 0 auto;
+  }
+
+  .program-compact-face__desk .program-compact-face__tags li {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .program-compact-face__desk .program-compact-face__pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 19.2px;
+    background: #000;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__desk .program-compact-face__meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    /* Pin Learn More / Closes On to card bottom; tags stay fixed above */
+    margin-top: auto;
+  }
+
+  .program-compact-face__desk .program-compact-face__cta {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 9.6px;
+    background: #b57cff;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.25px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .program-compact-face__desk .program-compact-face__cta:focus-visible {
+    outline: 2px solid #b57cff;
+    outline-offset: 2px;
+  }
+
+  .program-compact-face__desk .program-compact-face__cta[aria-disabled="true"] {
+    pointer-events: none;
+  }
+
+  .program-compact-face__desk .program-compact-face__closes {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 41px;
+    padding: 2px 3px;
+    border: 0.5px solid #b57cff;
+    background: #fff;
+    flex: 0 0 auto;
+  }
+
+  .program-compact-face__desk .program-compact-face__closes-label,
+  .program-compact-face__desk .program-compact-face__closes-value {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #000;
+    white-space: nowrap;
+  }
+
+  .program-compact-face[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__wash {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+    mix-blend-mode: saturation;
+    pointer-events: none;
+  }
+
+  .program-compact-face[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__closed {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 135.2px;
+    height: 197.6px;
+    padding: 70px 10px;
+    border: 0.8px solid #9747ff;
+    border-radius: 8px;
+    background: #c3ffa9;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .program-compact-face[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__closed-text {
+    margin: 0;
+    width: 112.8px;
+    font-family: "Bebas Neue", BebasNeue, Impact, sans-serif;
+    font-size: 19.2px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #eb0801;
+    text-align: center;
+  }
+}
+
+/*
+ * Pair 9 — program_compact_sm · desk+mob @ 80% shell (fixed title band)
+ * Pair 10 — program_compact_sm_desk · desk @ 80% · **fixed** height 474 · mob = Pair 6 full
+ * font-size on body type: Pair 9/10 follow Pair 6; closed plate type scales with shell.
+ */
+@media (max-width: 600px) {
+  .program-compact-face--sm {
+    width: 164.16px; /* 205.2 × 0.8 */
+    max-width: 100%;
+  }
+
+  .program-compact-face--sm .program-compact-face__mob {
+    width: 164.16px;
+    min-width: 164.16px;
+    min-height: 249.6px; /* 312 × 0.8 */
+    border-radius: 12.8px; /* 16 × 0.8 approx mob radius if any */
+  }
+
+  .program-compact-face--sm .program-compact-face__mob .program-compact-face__media {
+    width: calc(100% - 11.885px); /* 14.856 × 0.8 */
+    height: 82.992px; /* 103.74 × 0.8 */
+    margin: 6.72px 5.942px 0; /* 8.4 / 7.428 × 0.8 */
+    border-radius: 6.144px;
+  }
+
+  .program-compact-face--sm .program-compact-face__mob .program-compact-face__heart {
+    width: 14.008px; /* 17.51 × 0.8 */
+    height: 14.008px;
+  }
+
+  .program-compact-face--sm .program-compact-face__mob .program-compact-face__copy,
+  .program-compact-face--sm .program-compact-face__mob .program-compact-face__footer {
+    width: calc(100% - 11.885px);
+    max-width: calc(100% - 11.885px);
+    margin-left: 5.942px;
+    margin-right: 5.942px;
+  }
+
+  /* Closed plate @ 80% of Pair 6 mob (was missing from sm shell pass) */
+  .program-compact-face--sm[data-face-status="closed"]
+    .program-compact-face__mob
+    .program-compact-face__closed {
+    width: 129.6px; /* 162 × 0.8 */
+    height: 101.76px; /* 127.2 × 0.8 */
+    padding: 9.6px; /* 12 × 0.8 */
+    border-width: 0.768px; /* 0.96 × 0.8 */
+    border-radius: 7.68px; /* 9.6 × 0.8 */
+  }
+
+  .program-compact-face--sm[data-face-status="closed"]
+    .program-compact-face__mob
+    .program-compact-face__closed-text {
+    width: 108.288px; /* 135.36 × 0.8 */
+    font-size: 18.432px; /* 23.04 × 0.8 · still ≥14 */
+  }
+}
+
+@media (min-width: 1367px) {
+  .program-compact-face--sm,
+  .program-compact-face--sm-desk {
+    width: 243.456px; /* 304.32 × 0.8 */
+    max-width: none;
+  }
+
+  .program-compact-face--sm .program-compact-face__desk {
+    width: 243.456px;
+    min-width: 243.456px;
+    /*
+     * Type stays full Pair 6 size in smaller shell — needs more than 80% of
+     * Pair 6 min-height so 5-line titles + 2 tag rows don’t blow past short cards.
+     */
+    min-height: 520px;
+    padding-bottom: 11.2px; /* 14 × 0.8 */
+    border-radius: 16px; /* 20 × 0.8 */
+  }
+
+  /* Pair 10 desk — fixed plate (no grow → Discover grid no height jump) */
+  .program-compact-face--sm-desk .program-compact-face__desk {
+    width: 243.456px;
+    min-width: 243.456px;
+    height: 474px;
+    min-height: 474px;
+    max-height: 474px;
+    padding-bottom: 11.2px; /* 14 × 0.8 */
+    border-radius: 16px; /* 20 × 0.8 */
+    overflow: hidden;
+  }
+
+  .program-compact-face--sm .program-compact-face__desk .program-compact-face__media,
+  .program-compact-face--sm-desk .program-compact-face__desk .program-compact-face__media {
+    width: calc(100% - 22.4px); /* 28 × 0.8 */
+    height: 152px; /* 190 × 0.8 */
+    margin: 12px 11.2px 0; /* 15 / 14 × 0.8 */
+    border-radius: 7.68px; /* 9.6 × 0.8 */
+  }
+
+  .program-compact-face--sm .program-compact-face__desk .program-compact-face__heart,
+  .program-compact-face--sm-desk .program-compact-face__desk .program-compact-face__heart {
+    width: 25.6px; /* 32 × 0.8 */
+    height: 25.6px;
+    top: 4.8px;
+    right: 7.2px;
+  }
+
+  .program-compact-face--sm .program-compact-face__desk .program-compact-face__copy {
+    width: calc(100% - 22.4px);
+    max-width: calc(100% - 22.4px);
+    margin: 12px 11.2px 0;
+    /* Same type size as Pair 6 — keep title band tall enough for 5 lines */
+    min-height: 200px;
+  }
+
+  .program-compact-face--sm-desk .program-compact-face__desk .program-compact-face__copy {
+    width: calc(100% - 22.4px);
+    max-width: calc(100% - 22.4px);
+    margin: 12px 11.2px 0;
+    min-height: 0; /* hug title + yellow · no dead band above tags */
+  }
+
+  .program-compact-face--sm .program-compact-face__desk .program-compact-face__footer {
+    width: calc(100% - 22.4px);
+    max-width: calc(100% - 22.4px);
+    margin: 12.8px 11.2px 0;
+    gap: 8px; /* 10 × 0.8 */
+    flex: 1 1 auto;
+  }
+
+  .program-compact-face--sm-desk .program-compact-face__desk .program-compact-face__footer {
+    width: calc(100% - 22.4px);
+    max-width: calc(100% - 22.4px);
+    margin: 12.8px 11.2px 0;
+    gap: 8px; /* 10 × 0.8 */
+    /* Under default height: leftover sits tags→CTA, not yellow→tags */
+    flex: 1 1 auto;
+  }
+
+  .program-compact-face--sm .program-compact-face__desk .program-compact-face__tags {
+    min-height: 86px; /* 2 tag rows · type full size */
+  }
+
+  .program-compact-face--sm-desk .program-compact-face__desk .program-compact-face__tags {
+    min-height: 0; /* hug tag rows · no reserved empty second row */
+  }
+
+  /* Closed plate @ 80% of Pair 6 desk */
+  .program-compact-face--sm[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__closed,
+  .program-compact-face--sm-desk[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__closed {
+    width: 108.16px; /* 135.2 × 0.8 */
+    height: 158.08px; /* 197.6 × 0.8 */
+    padding: 56px 8px; /* 70 / 10 × 0.8 */
+    border-width: 0.64px; /* 0.8 × 0.8 */
+    border-radius: 6.4px; /* 8 × 0.8 */
+  }
+
+  .program-compact-face--sm[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__closed-text,
+  .program-compact-face--sm-desk[data-face-status="closed"]
+    .program-compact-face__desk
+    .program-compact-face__closed-text {
+    width: 90.24px; /* 112.8 × 0.8 */
+    font-size: 15.36px; /* 19.2 × 0.8 · still ≥14 */
+  }
+}
