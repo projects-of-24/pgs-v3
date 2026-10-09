@@ -181,8 +181,8 @@ export default async function StudentsPage({
           views={savedViews}
         />
         <OperationsStudentRegistry
-          canManageAssignments={canAssignStudents(context, preview)}
-          canPreviewStudent={canStartStaffPreview(context, preview)}
+          canManageAssignments={canAssignStudents(context)}
+          canPreviewStudent={canStartStaffPreview(context)}
           previewConfigured={staffPreviewConfigured()}
           previewOrgWide={
             context.roles.includes("admin")
