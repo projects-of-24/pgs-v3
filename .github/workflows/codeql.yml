@@ -30,7 +30,7 @@ jobs:
           languages: javascript-typescript
           config-file: ./.github/codeql/codeql-config.yml
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           version: 11.16.0
 
