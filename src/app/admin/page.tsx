@@ -1,4 +1,3 @@
-import { OperationsPageHeader } from "@/components/operations-page-header";
 import { OperationsAnalyticsView } from "@/components/operations-analytics-panels";
 import { OperationsScoreboardView } from "@/components/operations-scoreboard-panels";
 import { loadOperationsAnalytics } from "@/lib/operations-analytics-server";
@@ -21,9 +20,8 @@ export default async function AdminOverview({
   ]);
 
   return (
-    <div data-scoreboard-scope={model.scope} className="ops:flex ops:flex-col ops:gap-6">
-      <OperationsPageHeader eyebrow="Scoreboard" title={model.title} description={model.description} />
-      <OperationsScoreboardView model={model} />
+    <div data-scoreboard-scope={model.scope}>
+      <OperationsScoreboardView model={model} displayName={context.displayName} />
       {analytics ? <OperationsAnalyticsView model={analytics} /> : null}
     </div>
   );

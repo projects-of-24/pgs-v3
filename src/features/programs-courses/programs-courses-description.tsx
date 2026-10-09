@@ -4,14 +4,17 @@
  * Next mob band after this = Program Description card `551:10175` (not C2).
  * Owned CSS. Fixtures only. iPad 601–1366 deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
 import type { ProgramsCoursesDescColumn } from "./content";
+import type { ProgramsCoursesDescriptionData } from "./courses-template-view";
 import "./programs-courses-description.css";
 
-export function ProgramsCoursesDescription() {
-  const desk = PROGRAMS_COURSES_FIXTURE.description;
-  const mob = PROGRAMS_COURSES_FIXTURE.descriptionMobile ?? desk;
+type ProgramsCoursesDescriptionProps = {
+  data: ProgramsCoursesDescriptionData;
+};
 
+export function ProgramsCoursesDescription({
+  data: { desk, mob }
+}: ProgramsCoursesDescriptionProps) {
   return (
     <section
       id="pc-c2"

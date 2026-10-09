@@ -59,6 +59,18 @@ export function encodeCatalogSearchHref(entity: "courses" | "events" | "programs
   return `/admin/catalog/${entity}?q=${encodeURIComponent(title)}`;
 }
 
+/** Workspace chrome: student results open Desk, not Ops CRM. */
+export function rewriteStaffSearchHrefForWorkspace(href: string): string {
+  if (href.startsWith("/ops/students/")) {
+    return `/workspace/students/${href.slice("/ops/students/".length)}`;
+  }
+  if (href.startsWith("/ops/students?")) {
+    return `/workspace/students?${href.slice("/ops/students?".length)}`;
+  }
+  if (href === "/ops/students") return "/workspace/students";
+  return href;
+}
+
 export function emptyStaffSearch(query = ""): StaffSearchResponse {
   return { query, groups: [] };
 }

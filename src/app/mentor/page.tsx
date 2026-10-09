@@ -1,2 +1,6 @@
-import { redirect } from "next/navigation";
-export default function MentorPage(){redirect("/admin/students")}
+import { notFound } from "next/navigation";
+
+/** Legacy mentor home — removed. Staff enter via /studio/login. */
+export default function MentorPage() {
+  notFound();
+}

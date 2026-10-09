@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { OperationsStaffAccessSummary } from "@/components/operations-staff-access-summary";
+import { Mail, Send, Shield, UserRound } from "lucide-react";
 import { OperationsStaffConfirmDialog } from "@/components/operations-staff-confirm-dialog";
 import {
   existingStudentStaffGrantCopy,
@@ -12,14 +10,10 @@ import {
   isStaffRoleKey,
   isValidStaffEmail,
   normalizeStaffEmail,
-  staffAccessPreview,
   staffRoleLabel,
   type StaffDirectoryRole,
   type StaffInviteIdentity
 } from "@/lib/operations-staff-access";
-
-const fieldClass = "ops-team-field";
-const controlClass = "ops-system-control ops:h-10 ops:w-full ops:border ops:border-input ops:bg-card ops:px-3 ops:text-sm ops:outline-none ops:focus-visible:ring-2 ops:focus-visible:ring-ring";
 
 export function OperationsStaffInviteForm() {
   const router = useRouter();
@@ -31,10 +25,8 @@ export function OperationsStaffInviteForm() {
   const [pending, setPending] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
 
-  const preview = staffAccessPreview(role);
-  const studentWarning = identity?.has_student_profile && !identity.has_staff_profile
-    ? existingStudentStaffGrantCopy()
-    : null;
+  const studentWarning =
+    identity?.has_student_profile && !identity.has_staff_profile ? existingStudentStaffGrantCopy() : null;
 
   async function resolveIdentity() {
     setMessage("");
@@ -47,7 +39,11 @@ export function OperationsStaffInviteForm() {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ action: "resolve", email: normalizeStaffEmail(email) })
     });
-    const result = await response.json() as { ok?: boolean; identity?: StaffInviteIdentity | null; message?: string };
+    const result = (await response.json()) as {
+      ok?: boolean;
+      identity?: StaffInviteIdentity | null;
+      message?: string;
+    };
     if (!response.ok) {
       setMessage(result.message ?? "Unable to check this email.");
       return "error";
@@ -69,7 +65,13 @@ export function OperationsStaffInviteForm() {
         role
       })
     });
-    const result = await response.json() as { ok?: boolean; user_id?: string; code?: string; message?: string; resent?: boolean };
+    const result = (await response.json()) as {
+      ok?: boolean;
+      user_id?: string;
+      code?: string;
+      message?: string;
+      resent?: boolean;
+    };
     setPending(false);
     if (response.status === 409 && result.user_id) {
       setMessage("This person already has staff access.");
@@ -81,7 +83,7 @@ export function OperationsStaffInviteForm() {
       return;
     }
     if (result.user_id) {
-      router.push(`/ops/team/${result.user_id}`);
+      router.push("/ops/team");
       router.refresh();
       return;
     }
@@ -92,7 +94,7 @@ export function OperationsStaffInviteForm() {
 
   return (
     <form
-      className="ops-team-form"
+      className="ops-invite1-form"
       onSubmit={(event) => {
         event.preventDefault();
         void (async () => {
@@ -114,35 +116,58 @@ export function OperationsStaffInviteForm() {
         })();
       }}
     >
-      <label className={fieldClass}>
-        <span>Email</span>
-        <Input
+      <label className="ops-invite1-field">
+        <span className="ops-invite1-field-head">
+          <span className="ops-invite1-field-icon ops-invite1-field-icon--email" aria-hidden="true">
+            <Mail />
+          </span>
+          <span>Email</span>
+        </span>
+        <input
           autoComplete="off"
+          className="ops-invite1-control"
           name="email"
-          onBlur={() => { void resolveIdentity(); }}
+          onBlur={() => {
+            void resolveIdentity();
+          }}
           onChange={(event) => {
             setEmail(event.target.value);
             setIdentity(undefined);
           }}
+          placeholder="Enter email address"
           required
           type="email"
           value={email}
         />
       </label>
-      <label className={fieldClass}>
-        <span>Display name</span>
-        <Input
+
+      <label className="ops-invite1-field">
+        <span className="ops-invite1-field-head">
+          <span className="ops-invite1-field-icon ops-invite1-field-icon--name" aria-hidden="true">
+            <UserRound />
+          </span>
+          <span>Display name</span>
+        </span>
+        <input
+          className="ops-invite1-control"
           maxLength={255}
           name="display_name"
           onChange={(event) => setDisplayName(event.target.value)}
+          placeholder="Enter display name"
           required
           value={displayName}
         />
       </label>
-      <label className={fieldClass}>
-        <span>Role</span>
+
+      <label className="ops-invite1-field">
+        <span className="ops-invite1-field-head">
+          <span className="ops-invite1-field-icon ops-invite1-field-icon--role" aria-hidden="true">
+            <Shield />
+          </span>
+          <span>Role</span>
+        </span>
         <select
-          className={controlClass}
+          className="ops-invite1-control"
           name="role"
           onChange={(event) => {
             const next = event.target.value;
@@ -158,24 +183,43 @@ export function OperationsStaffInviteForm() {
       </label>
 
       {identity?.has_staff_profile && identity.staff_status === "active" && !identity.invite_pending ? (
-        <p className="ops-team-warning" role="status">
+        <p className="ops-invite1-warning" role="status">
           This email already has staff access. Open Manage for {staffRoleLabel(identity.staff_role ?? role)}.
         </p>
       ) : null}
       {identity?.invite_pending ? (
-        <p className="ops-team-warning" role="status">A pending invitation already exists for this email. Invitation resend will be enabled before launch.</p>
+        <p className="ops-invite1-warning" role="status">
+          A pending invitation already exists for this email. Invitation resend will be enabled before launch.
+        </p>
       ) : null}
-      {identity?.has_staff_profile && (identity.staff_status === "suspended" || identity.staff_status === "ended") ? (
-        <p className="ops-team-warning" role="status">This email already has a staff identity. Sending will reuse the same login and restore access.</p>
+      {identity?.has_staff_profile &&
+      (identity.staff_status === "suspended" || identity.staff_status === "ended") ? (
+        <p className="ops-invite1-warning" role="status">
+          This email already has a staff identity. Sending will reuse the same login and restore access.
+        </p>
       ) : null}
-      {studentWarning ? <p className="ops-team-warning" role="status">{studentWarning}</p> : null}
+      {studentWarning ? (
+        <p className="ops-invite1-warning" role="status">
+          {studentWarning}
+        </p>
+      ) : null}
 
-      <OperationsStaffAccessSummary access={preview} heading="Effective access summary" />
-      {message ? <p className="ops-team-status" role="status">{message}</p> : null}
-      <Button disabled={pending || Boolean(identity?.invite_pending)} type="submit">Review and send invitation</Button>
+      {message ? (
+        <p className="ops-invite1-status" role="status">
+          {message}
+        </p>
+      ) : null}
+
+      <button
+        className="ops-invite1-submit"
+        disabled={pending || Boolean(identity?.invite_pending)}
+        type="submit"
+      >
+        <Send aria-hidden="true" />
+        Review and send invitation
+      </button>
 
       <OperationsStaffConfirmDialog
-        afterAccess={preview}
         confirmLabel="Send invitation"
         currentEmail={normalizeStaffEmail(email)}
         description="Review the access this invitation will grant, then confirm."
@@ -191,6 +235,7 @@ export function OperationsStaffInviteForm() {
         previousRole={identity?.staff_role ?? null}
         requireEmail={isPrivilegeBroadening(identity?.staff_role ?? null, role)}
         title="Confirm staff invitation"
+        variant="confirm1"
       />
     </form>
   );

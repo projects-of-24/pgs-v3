@@ -58,9 +58,15 @@ test.describe("Batch 2 authentication boundary", () => {
   });
 
   test("Premium student and mentor routes enforce the server Auth boundary", async ({ page }) => {
-    for (const route of ["/dashboard", "/mentor", "/mentor/access", "/mentor/students/10000000-0000-4000-8000-000000000001", "/admin", "/admin/catalog", "/admin/content/pages", "/admin/staff", "/admin/audit"]) {
+    await goto(page, "/dashboard");
+    await expect(page).toHaveURL(/\/login\?redirect=/);
+    for (const route of ["/mentor", "/mentor/access", "/mentor/students/10000000-0000-4000-8000-000000000001", "/cms"]) {
+      const response = await page.goto(route, { waitUntil: "domcontentloaded" });
+      expect(response?.status()).toBe(404);
+    }
+    for (const route of ["/admin", "/admin/catalog", "/admin/content/pages", "/admin/staff", "/admin/audit"]) {
       await goto(page, route);
-      await expect(page).toHaveURL(/\/login\?redirect=/);
+      await expect(page).toHaveURL(/\/studio\/login\?redirect=/);
     }
     await goto(page,"/feed_track_progress");
     await expect(page.locator('[data-legacy-page="progress-locked"]')).toHaveAttribute("data-student-state","anonymous");

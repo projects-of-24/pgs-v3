@@ -12,13 +12,23 @@ description: >-
 **Parent method:** [`pgs-scout-what-why-how`](../pgs-scout-what-why-how/SKILL.md) (WHAT · WHY · HOW · GO AHEAD · re-measure).  
 **Companions:** [`pgs-never-invent`](../pgs-never-invent/SKILL.md) · [`pgs-backend-phase-wire`](../pgs-backend-phase-wire/SKILL.md) · [`pgs-propose-before-code`](../pgs-propose-before-code/SKILL.md) · [`pgs-admin-ops`](../pgs-admin-ops/SKILL.md)
 
-**Owner locks (2026-09-30):**
+**Owner locks (2026-09-30 + 2026-10-01):**
 
 1. Steal like an artist — **screenshots / approved references first**. Do not invent Ops UI.
 2. Frontend scout skill was public/CSS-oriented; **this skill applies the same discipline to staff backend pages**.
 3. Owner **QC failed on shadcn look** — do **not** default to shadcn/TanStack for Ops UI.
 4. CMS = Payload as **reference**; adapt / fork / migrate patterns into PGS needs — not dump whole Payload as Ops.
 5. **Pilot page = Operations dashboard landing (`/ops`)**. Pass UI check → record readings → reuse on next Ops pages.
+6. **Post-login UI = desktop-first, one pass at a time** — see [`docs/OPS-POST-LOGIN-UI-PASSES.md`](../../docs/OPS-POST-LOGIN-UI-PASSES.md). Studio login is **LOCKED** — [`docs/OPS-STUDIO-LOGIN-LOCK.md`](../../docs/OPS-STUDIO-LOGIN-LOCK.md).
+7. **New references discovered during scout** → append to living MD / skill notes (do not invent substitute frameworks outside Reference Bank).
+8. **Screenshot design language LOCKED (2026-10-01)** — until owner says otherwise, Ops/staff chrome + body UI follows **owner screenshots** (not invented purple SaaS). Details: [`docs/OPS-STAFF-DESIGN-LANGUAGE.md`](../../docs/OPS-STAFF-DESIGN-LANGUAGE.md).
+   - Header type floor **18px min**
+   - Brand = grad-cap + PGS + “Purple Guide Study” in screenshot **blue**
+   - Studio login stays purple LOCKED
+   - Matching features alone is FAIL — must match type, color, spacing, borders
+   - Do **not** re-ask purple vs screenshot blue for Ops chrome
+9. **Ops header chrome LOCKED (2026-10-01)** — [`docs/OPS-HEADER-LOCK.md`](../../docs/OPS-HEADER-LOCK.md). Do not restyle topbar without a new gate. Deferred header backend/API → [`docs/OPS-BACKEND-UI-API-UPDATES.md`](../../docs/OPS-BACKEND-UI-API-UPDATES.md).
+10. **Ops sidetab chrome LOCKED (2026-10-01)** — [`docs/OPS-SIDETAB-LOCK.md`](../../docs/OPS-SIDETAB-LOCK.md). Primary QC actor = Super Admin fixture.
 
 ---
 
@@ -98,11 +108,14 @@ description: >-
 **Reference gallery:** `/preview/ops-staff-plan/v2/` (login · dashboard · profile · user management)  
 **Living readings:** [`docs/OPS-DASHBOARD-UI-READINGS.md`](../../docs/OPS-DASHBOARD-UI-READINGS.md)
 
-Pilot order:
+Pilot order (shell **DONE** Pass 1):
 
-1. Shell chrome (header + sidebar groups) — readings shared by all Ops pages  
-2. Dashboard main (KPI row, notifications, activity, quick actions) — **real metrics only**  
-3. Then unlock next page (profile → user management → …) using the same shell readings  
+1. ~~Shell chrome~~ — **LOCKED readings** — reuse on every Ops page  
+2. **Track A — Scoreboard** `/ops` — passes A1–A4 in [`OPS-POST-LOGIN-UI-PASSES.md`](../../docs/OPS-POST-LOGIN-UI-PASSES.md) · Bank **RB-03**  
+3. **Track B — User Management** — passes B1–B5 · Banks **RB-01** + **RB-02** · owner screenshot 2026-10-01  
+4. My Profile, then deeper permissions wire gates  
+
+**Desktop first:** ship and QC one pass on ~1440px before tablet/mobile. **No** combining table + permissions panel + API in one pass.
 
 Do **not** paint CMS Payload UI into Ops until CMS gate; sidebar CMS links may stay deferred.
 

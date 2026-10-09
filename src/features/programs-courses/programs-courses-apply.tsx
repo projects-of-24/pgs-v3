@@ -3,12 +3,14 @@
  * Desk `17072:11084` · Mob `551:10566` (stacked Option 1 · down arrows).
  * Owned CSS. Fixtures only. iPad deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-apply.css";
 
-export function ProgramsCoursesApply() {
-  const a = PROGRAMS_COURSES_FIXTURE.apply;
+type ProgramsCoursesApplyProps = {
+  data: ProgramsCoursesView["apply"];
+};
 
+export function ProgramsCoursesApply({ data: a }: ProgramsCoursesApplyProps) {
   return (
     <section
       id="pc-c8"

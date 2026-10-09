@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogOut, ShieldCheck, UserRoundX } from "lucide-react";
+import { OpsStudioLogoutButton } from "@/components/ops-studio-logout-button";
 import { resolveActorContext } from "@/lib/actor-context";
 
 export async function NoStudentContextPage() {
@@ -30,19 +31,13 @@ export async function NoStudentContextPage() {
           {email && email !== name ? <> ({email})</> : null}. Student pages require a linked student profile.
         </p>
         <div className="no-student-context-actions">
-          {actor.authenticated && actor.staff ? (
-            <Link className="no-student-context-primary" href="/ops">
-              Open Operations
-            </Link>
-          ) : (
-            <Link className="no-student-context-primary" href="/">
-              Back to PGS home
-            </Link>
-          )}
-          <Link className="no-student-context-secondary" href="/logout?next=/ops">
+          <Link className="no-student-context-primary" href="/">
+            Back to PGS home
+          </Link>
+          <OpsStudioLogoutButton className="no-student-context-secondary" busyLabel="Signing out…">
             <LogOut aria-hidden="true" />
             Sign out
-          </Link>
+          </OpsStudioLogoutButton>
         </div>
       </section>
     </main>

@@ -44,21 +44,22 @@ describe("authenticated legacy shell", () => {
     expect(locked).not.toContain("href=");
   });
 
-  it("shows a signed-in staff identity on error pages without linking back into student routes", () => {
+  it("shows a signed-in identity on error pages without Ops or student-dashboard bridges", () => {
     const html = '<a href="/Login" class="btn btn-login">Login</a><a href="#"><img src="/assets/img/profile-icon.png">Profile</a><a href="#"><img src="/assets/img/heart-icon.png">Saved List</a><a href="/Login"><img src="/assets/img/logout.png">Login</a>';
     const rendered = applyAuthenticatedShell(html, {
       name: "Ops Admin",
       unreadCount: 0,
-      accountHref: "/ops",
-      profileHref: "/ops",
-      savedHref: "/ops/students"
+      accountHref: "/",
+      profileHref: "/",
+      savedHref: "/"
     });
-    expect(rendered).toContain('href="/ops" class="btn btn-login pgs-auth-account"');
-    expect(rendered).toContain('href="/ops/students"');
+    expect(rendered).toContain('href="/" class="btn btn-login pgs-auth-account"');
     expect(rendered).toContain('href="/logout"');
     expect(rendered).toContain("Logout");
+    expect(rendered).not.toContain('href="/ops');
     expect(rendered).not.toContain('href="/student/dashboard"');
   });
+
 
   it("injects the live legacy notification dropdown contract", () => {
     const html = '<button class="header-notification-wrapper"><span class="header-notification-badge"></span></button><div class="site-notification-menu">No notifications yet.</div>';

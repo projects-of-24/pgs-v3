@@ -3,12 +3,16 @@
  * Desk `17072:11083` (C7a–e). Mob group `551:10567` (C7a–e complete).
  * Owned CSS. Fixtures only. iPad deferred.
  */
-import { PROGRAMS_COURSES_FIXTURE } from "./content";
+import type { ProgramsCoursesView } from "./courses-template-view";
 import "./programs-courses-awarding.css";
 
-export function ProgramsCoursesAwarding() {
-  const a = PROGRAMS_COURSES_FIXTURE.awarding;
+type ProgramsCoursesAwardingProps = {
+  data: ProgramsCoursesView["awarding"];
+};
 
+export function ProgramsCoursesAwarding({
+  data: a
+}: ProgramsCoursesAwardingProps) {
   return (
     <section
       id="pc-c7"
@@ -37,36 +41,54 @@ export function ProgramsCoursesAwarding() {
 
         <div className="pc-award__media">
           <div className="pc-award__logo-chip">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="pc-award__logo-img"
-              src={a.logo}
-              alt={a.logoAlt}
-              width={274}
-              height={112}
-              decoding="async"
-            />
+            {a.logo.trim() ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                className="pc-award__logo-img"
+                src={a.logo}
+                alt={a.logoAlt || "Awarding body logo"}
+                width={274}
+                height={112}
+                decoding="async"
+              />
+            ) : (
+              <div
+                className="pc-award__logo-img pc-award__logo-img--empty"
+                role="img"
+                aria-label={a.logoAlt || "No awarding logo yet — set Logo URL in C7"}
+              />
+            )}
             <span className="pc-award__logo-corner" aria-hidden="true" />
           </div>
           <div className="pc-award__photo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="pc-award__photo-img pc-award__photo-img--desk"
-              src={a.photo}
-              alt={a.photoAlt}
-              width={481}
-              height={503}
-              decoding="async"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="pc-award__photo-img pc-award__photo-img--mob"
-              src={a.photoMobile ?? a.photo}
-              alt={a.photoAlt}
-              width={288}
-              height={425}
-              decoding="async"
-            />
+            {a.photo.trim() ? (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className="pc-award__photo-img pc-award__photo-img--desk"
+                  src={a.photo}
+                  alt={a.photoAlt || "Awarding body"}
+                  width={481}
+                  height={503}
+                  decoding="async"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className="pc-award__photo-img pc-award__photo-img--mob"
+                  src={a.photoMobile ?? a.photo}
+                  alt={a.photoAlt || "Awarding body"}
+                  width={288}
+                  height={425}
+                  decoding="async"
+                />
+              </>
+            ) : (
+              <div
+                className="pc-award__photo-img pc-award__photo-img--empty"
+                role="img"
+                aria-label={a.photoAlt || "No awarding photo yet — set Photo URL in C7"}
+              />
+            )}
           </div>
         </div>
 

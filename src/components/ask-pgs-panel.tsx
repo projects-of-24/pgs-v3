@@ -143,21 +143,19 @@ export function AskPgsPanel({ studentId }: Props) {
         <button
           type="button"
           aria-label="Open Ask PGS AI assistant"
-          className={cn(
-            buttonVariants({ variant: "ghost", size: "icon" }),
-            "ops-ask-pgs-trigger"
-          )}
+          className="ops-ask-pgs-trigger"
         >
-          <Bot aria-hidden="true" className="ops:size-4" />
+          <Bot aria-hidden="true" />
         </button>
       </SheetTrigger>
       <SheetContent
         side="right"
+        showCloseButton={false}
         className="ops:flex ops:h-dvh ops:w-[min(28rem,95vw)] ops:flex-col ops:border-l ops:bg-card ops:p-0 ops:overflow-hidden"
         aria-label="Ask PGS AI panel"
       >
         <SheetHeader className="ops:border-b ops:border-border ops:px-4 ops:py-4">
-          <div className="ops:flex ops:items-center ops:justify-between">
+          <div className="ops:flex ops:items-center ops:justify-between ops:gap-3">
             <div className="ops:flex ops:items-center ops:gap-2">
               <Bot aria-hidden="true" className="ops:size-4 ops:text-muted-foreground" />
               <SheetTitle className="ops:text-sm ops:font-semibold">Ask PGS</SheetTitle>
@@ -166,9 +164,9 @@ export function AskPgsPanel({ studentId }: Props) {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close Ask PGS panel"
-              className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "ops:size-7")}
+              className="ops-ask-pgs-close"
             >
-              <X aria-hidden="true" className="ops:size-4" />
+              <X aria-hidden="true" />
             </button>
           </div>
           <SheetDescription className="ops:text-xs ops:text-muted-foreground">

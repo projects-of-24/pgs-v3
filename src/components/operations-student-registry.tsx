@@ -48,21 +48,28 @@ function StatusBadge({
   tone
 }: {
   label: string;
-  tone: "accent" | "default";
+  tone: "accent" | "default" | "success" | "danger" | "muted";
 }) {
-  return (
-    <span className={tone === "accent" ? "ops-system-badge is-accent" : "ops-system-badge"}>
-      {label}
-    </span>
-  );
+  return <span className={`ops-stu-badge ops-stu-badge--${tone}`}>{label}</span>;
 }
 
 function OpenCell({ row }: { row: StudentRegistryRow }) {
   return (
-    <Link className="ops:font-medium ops:text-accent-foreground ops:no-underline" href={`/ops/students/${row.id}`}>
+    <Link className="ops-stu-open" href={`/ops/students/${row.id}`}>
       {row.canOpenWorkspace ? "Open workspace" : "Open student"}
     </Link>
   );
+}
+
+function rowAllowsStudentPreview(
+  row: Pick<StudentRegistryRow, "mentorId">,
+  canPreviewStudent: boolean,
+  previewOrgWide: boolean,
+  previewActorId: string | null
+): boolean {
+  if (!canPreviewStudent) return false;
+  if (previewOrgWide) return true;
+  return Boolean(previewActorId && row.mentorId === previewActorId);
 }
 
 function TableCell({
@@ -72,6 +79,8 @@ function TableCell({
   canManage,
   canPreviewStudent,
   previewConfigured,
+  previewOrgWide,
+  previewActorId,
   linkName
 }: {
   row: StudentRegistryRow;
@@ -80,31 +89,37 @@ function TableCell({
   canManage: boolean;
   canPreviewStudent: boolean;
   previewConfigured: boolean;
+  previewOrgWide: boolean;
+  previewActorId: string | null;
   linkName: boolean;
 }) {
+  if (column === "pgsCode") {
+    return linkName ? (
+      <Link className="ops-registry-pgs-code" href={`/ops/students/${row.id}`}>
+        {row.pgsCode}
+      </Link>
+    ) : (
+      <span className="ops-registry-pgs-code">{row.pgsCode}</span>
+    );
+  }
   if (column === "student") {
-    if (linkName) {
-      return (
-        <Link className="ops-registry-student-name ops:no-underline" href={`/ops/students/${row.id}`}>
-          {row.fullName}
-        </Link>
-      );
-    }
-    return (
+    return linkName ? (
+      <Link className="ops-registry-student-name" href={`/ops/students/${row.id}`}>
+        {row.fullName}
+      </Link>
+    ) : (
       <strong className="ops-registry-student-name">{row.fullName}</strong>
     );
   }
-  if (column === "pgsCode") {
-    return <code className="ops-registry-pgs-code">{row.pgsCode}</code>;
-  }
   if (column === "plan") {
-    return <StatusBadge label={row.plan} tone={registryPlanTone(row.plan)} />;
+    return <StatusBadge label={row.plan} tone={registryPlanTone(row.plan) === "accent" ? "accent" : "muted"} />;
   }
   if (column === "stage") {
-    return <StatusBadge label={crmStageLabel(row.stage)} tone="default" />;
+    const label = crmStageLabel(row.stage);
+    return <StatusBadge label={label} tone={label.toLowerCase() === "active" ? "success" : "muted"} />;
   }
   if (column === "completion") {
-    return <StatusBadge label={row.completion} tone="default" />;
+    return <StatusBadge label={row.completion} tone={row.completion === "Complete" ? "success" : "danger"} />;
   }
   if (column === "open") {
     return <OpenCell row={row} />;
@@ -113,7 +128,7 @@ function TableCell({
     return (
       <OperationsRegistryAssignmentActions
         canManage={canManage}
-        canPreviewStudent={canPreviewStudent}
+        canPreviewStudent={rowAllowsStudentPreview(row, canPreviewStudent, previewOrgWide, previewActorId)}
         previewConfigured={previewConfigured}
         handlers={handlers}
         row={{
@@ -137,6 +152,12 @@ function resultSummary(result: StudentRegistryResult): string {
   return `Showing ${start}–${end} of ${result.totalCount} students`;
 }
 
+function pageWindow(current: number, total: number): number[] {
+  if (total <= 7) return Array.from({ length: total }, (_, index) => index + 1);
+  const start = Math.max(1, Math.min(current - 2, total - 4));
+  return Array.from({ length: 5 }, (_, index) => start + index).filter((page) => page <= total);
+}
+
 export function OperationsStudentRegistry({
   result,
   query,
@@ -147,7 +168,9 @@ export function OperationsStudentRegistry({
   handlers = [],
   canManageAssignments = false,
   canPreviewStudent = false,
-  previewConfigured = true
+  previewConfigured = true,
+  previewOrgWide = false,
+  previewActorId = null
 }: {
   result: StudentRegistryResult;
   query: NormalizedRegistryQuery;
@@ -159,6 +182,8 @@ export function OperationsStudentRegistry({
   canManageAssignments?: boolean;
   canPreviewStudent?: boolean;
   previewConfigured?: boolean;
+  previewOrgWide?: boolean;
+  previewActorId?: string | null;
 }) {
   const showActions = canManageAssignments || canPreviewStudent;
   const columns = registryVisibleColumns({ showMentor, showOpen, showJoined, showActions });
@@ -172,24 +197,31 @@ export function OperationsStudentRegistry({
     mentorScoped
   });
   const emptyCopy = empty ? registryEmptyCopy(empty, query) : null;
+  const pages = pageWindow(result.page, pageCount);
+  const start = result.totalCount ? (result.page - 1) * result.pageSize + 1 : 0;
+  const end = Math.min(result.page * result.pageSize, result.totalCount);
 
   return (
-    <>
-      <p className="ops-registry-status" aria-live="polite">
-        {emptyCopy ?? resultSummary(result)}
-      </p>
+    <div className="ops-stu-registry">
+      <div className="ops-stu-registry-toolbar">
+        <p className="ops-registry-status" aria-live="polite">
+          {emptyCopy ?? resultSummary(result)}
+        </p>
+      </div>
       {canPreviewStudent && !previewConfigured ? (
         <p id="student-preview-unavailable" className="ops-team-warning" role="status">
           View as Student is not configured on this deployment.
         </p>
       ) : null}
-      <div className="ops-registry-desktop">
+      <div className="ops-registry-desktop ops-stu-table-wrap">
         <OperationsTableFrame minimumWidth={1120} ariaLabel="Scrollable student registry">
           <caption className="ops:sr-only">Authorized student registry</caption>
           <thead>
             <tr>
               {columns.map((column) => (
-                <th key={column} scope="col">{COLUMN_LABELS[column]}</th>
+                <th key={column} scope="col">
+                  {COLUMN_LABELS[column]}
+                </th>
               ))}
             </tr>
           </thead>
@@ -205,6 +237,8 @@ export function OperationsStudentRegistry({
                       canManage={canManageAssignments}
                       canPreviewStudent={canPreviewStudent}
                       previewConfigured={previewConfigured}
+                      previewOrgWide={previewOrgWide}
+                      previewActorId={previewActorId}
                       linkName={showOpen}
                     />
                   </td>
@@ -230,18 +264,23 @@ export function OperationsStudentRegistry({
                 <article className="ops-registry-card" aria-labelledby={`registry-student-${row.id}`}>
                   {showOpen ? (
                     <h2 className="ops-registry-student-name" id={`registry-student-${row.id}`}>
-                      <Link className="ops:no-underline" href={`/ops/students/${row.id}`}>{row.fullName}</Link>
+                      <Link className="ops:no-underline" href={`/ops/students/${row.id}`}>
+                        {row.fullName}
+                      </Link>
                     </h2>
                   ) : (
-                    <h2 className="ops-registry-student-name" id={`registry-student-${row.id}`}>{row.fullName}</h2>
+                    <h2 className="ops-registry-student-name" id={`registry-student-${row.id}`}>
+                      {row.fullName}
+                    </h2>
                   )}
                   <dl className="ops-registry-card-fields">
-                    {columns.filter((column) => column !== "student" && column !== "open" && column !== "actions").map((column) => (
-                      <div key={column}>
-                        <dt>{COLUMN_LABELS[column]}</dt>
-                        <dd>
-                          {column === "plan" || column === "completion" || column === "stage" || column === "pgsCode"
-                            ? (
+                    {columns
+                      .filter((column) => column !== "student" && column !== "open" && column !== "actions")
+                      .map((column) => (
+                        <div key={column}>
+                          <dt>{COLUMN_LABELS[column]}</dt>
+                          <dd>
+                            {column === "plan" || column === "completion" || column === "stage" || column === "pgsCode" ? (
                               <TableCell
                                 row={row}
                                 column={column}
@@ -249,13 +288,16 @@ export function OperationsStudentRegistry({
                                 canManage={canManageAssignments}
                                 canPreviewStudent={canPreviewStudent}
                                 previewConfigured={previewConfigured}
+                                previewOrgWide={previewOrgWide}
+                                previewActorId={previewActorId}
                                 linkName={showOpen}
                               />
-                            )
-                            : cellValue(row, column)}
-                        </dd>
-                      </div>
-                    ))}
+                            ) : (
+                              cellValue(row, column)
+                            )}
+                          </dd>
+                        </div>
+                      ))}
                   </dl>
                   {showOpen ? (
                     <p className="ops-registry-card-open">
@@ -265,7 +307,12 @@ export function OperationsStudentRegistry({
                   {showActions ? (
                     <OperationsRegistryAssignmentActions
                       canManage={canManageAssignments}
-                      canPreviewStudent={canPreviewStudent}
+                      canPreviewStudent={rowAllowsStudentPreview(
+                        row,
+                        canPreviewStudent,
+                        previewOrgWide,
+                        previewActorId
+                      )}
                       previewConfigured={previewConfigured}
                       handlers={handlers}
                       row={{
@@ -286,21 +333,58 @@ export function OperationsStudentRegistry({
         )}
       </div>
 
-      <nav className="ops-registry-pagination" aria-label="Student registry pagination">
-        {previousPage ? (
-          <Link href={registryHref({ ...query, page: previousPage }, { includePage: true, includeView: true })}>Previous page</Link>
-        ) : (
-          <span aria-disabled="true">Previous page</span>
-        )}
+      <nav className="ops-stu-pagination" aria-label="Student registry pagination">
         <p>
-          Page {result.page} of {pageCount}
+          {result.totalCount
+            ? `${start}–${end} of ${result.totalCount}`
+            : "0 students"}{" "}
+          · {result.pageSize} per page
         </p>
-        {nextPage ? (
-          <Link href={registryHref({ ...query, page: nextPage }, { includePage: true, includeView: true })}>Next page</Link>
-        ) : (
-          <span aria-disabled="true">Next page</span>
-        )}
+        <div className="ops-stu-pagination-controls">
+          {previousPage ? (
+            <Link
+              className="ops-stu-page-btn"
+              href={registryHref({ ...query, page: previousPage }, { includePage: true, includeView: true })}
+              aria-label="Previous page"
+            >
+              ‹
+            </Link>
+          ) : (
+            <span className="ops-stu-page-btn" aria-disabled="true">
+              ‹
+            </span>
+          )}
+          {pages.map((page) =>
+            page === result.page ? (
+              <span key={page} className="ops-stu-page-btn ops-stu-page-btn--active" aria-current="page">
+                {page}
+              </span>
+            ) : (
+              <Link
+                key={page}
+                className="ops-stu-page-btn"
+                href={registryHref({ ...query, page }, { includePage: true, includeView: true })}
+                aria-label={`Page ${page}`}
+              >
+                {page}
+              </Link>
+            )
+          )}
+          {nextPage ? (
+            <Link
+              className="ops-stu-page-btn"
+              href={registryHref({ ...query, page: nextPage }, { includePage: true, includeView: true })}
+              aria-label="Next page"
+            >
+              ›
+            </Link>
+          ) : (
+            <span className="ops-stu-page-btn" aria-disabled="true">
+              ›
+            </span>
+          )}
+        </div>
       </nav>
-    </>
+    </div>
   );
 }

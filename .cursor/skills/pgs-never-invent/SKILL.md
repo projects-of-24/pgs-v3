@@ -33,6 +33,7 @@ description: >-
 - Do **not** invent a new login system, CMS framework, schema, or “helper universe” because V3 felt incomplete
 - Do **not** ignore junior’s finished editors and rebuild a flat V3 template “from first principles”
 - Do **not** invent SaaS copies from Reference Bank as product UI
+- For **Ops/staff post-login UI**: do **not** invent chrome looks — follow **owner screenshots** / [`OPS-STAFF-DESIGN-LANGUAGE.md`](../../docs/OPS-STAFF-DESIGN-LANGUAGE.md) until owner says otherwise (header ≥18px; screenshot blue brand; Studio login purple stays LOCKED)
 - Invent / greenfield **only** after owner explicitly says so (`GO AHEAD`, `you may invent…`)
 
 ## Port formula

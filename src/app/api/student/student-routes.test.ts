@@ -13,6 +13,9 @@ vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: async () =
   auth: { getUser, signInWithPassword, signUp, signOut, resetPasswordForEmail, updateUser }, from
 }) }));
 vi.mock("@/lib/server-security",()=>({consumeRateLimit:vi.fn().mockResolvedValue({allowed:true,configured:true}),logServerError:vi.fn()}));
+vi.mock("@/lib/staff-auth", () => ({
+  getStaffContextForUser: vi.fn().mockResolvedValue(null)
+}));
 
 import { POST as login } from "@/app/api/auth/login/route";
 import { POST as register } from "@/app/api/auth/register/route";
@@ -28,16 +31,101 @@ describe("auth and normal student route contracts", () => {
   beforeEach(() => { vi.clearAllMocks(); getUser.mockResolvedValue({ data: { user: { id: "student-a", email: "a@example.test" } } }); });
 
   it("logs in and preserves a safe redirect", async () => {
-    signInWithPassword.mockResolvedValue({ error: null });
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "student-a", email: "a@example.test" } }, error: null });
     const response = await login(jsonRequest("http://localhost/api/auth/login", { email: "A@example.test", password: "correct", redirect: "/saved" }));
     expect(response.status).toBe(200); expect(await response.json()).toMatchObject({ redirect: "/saved" });
     expect(signInWithPassword).toHaveBeenCalledWith({ email: "a@example.test", password: "correct" });
   });
 
   it("returns a generic wrong-password response", async () => {
-    signInWithPassword.mockResolvedValue({ error: { message: "Invalid login credentials" } });
+    signInWithPassword.mockResolvedValue({ data: { user: null }, error: { message: "Invalid login credentials" } });
     const response = await login(jsonRequest("http://localhost/api/auth/login", { email: "a@example.test", password: "wrong" }));
     expect(response.status).toBe(401); expect((await response.json()).message).toBe("Invalid email or password.");
+  });
+
+  it("rejects student accounts on Studio login", async () => {
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "student-a", email: "a@example.test" } }, error: null });
+    const response = await login(jsonRequest("http://localhost/api/auth/login", { email: "a@example.test", password: "correct", surface: "studio", redirect: "/ops" }));
+    expect(response.status).toBe(403);
+    expect((await response.json()).message).toMatch(/Students are not allowed/i);
+    expect(signOut).toHaveBeenCalled();
+  });
+
+  it("rejects student accounts on Workspace login", async () => {
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "student-a", email: "a@example.test" } }, error: null });
+    const response = await login(
+      jsonRequest("http://localhost/api/auth/login", {
+        email: "a@example.test",
+        password: "correct",
+        surface: "workspace",
+        redirect: "/ops"
+      })
+    );
+    expect(response.status).toBe(403);
+    expect((await response.json()).message).toMatch(/Students are not allowed/i);
+    expect(signOut).toHaveBeenCalled();
+  });
+
+  it("rejects staff accounts on student login", async () => {
+    const { getStaffContextForUser } = await import("@/lib/staff-auth");
+    vi.mocked(getStaffContextForUser).mockResolvedValueOnce({
+      user: { id: "sa-1", email: "sa@example.test" },
+      displayName: "SA",
+      status: "active",
+      roles: ["super_admin"],
+      permissions: new Set(["staff.read"])
+    } as never);
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "sa-1", email: "sa@example.test" } }, error: null });
+    const response = await login(jsonRequest("http://localhost/api/auth/login", { email: "sa@example.test", password: "correct", surface: "student", redirect: "/student/dashboard" }));
+    expect(response.status).toBe(403);
+    expect((await response.json()).message).toMatch(/can't sign in here/i);
+    expect(signOut).toHaveBeenCalled();
+  });
+
+  it("student login strips Ops redirects", async () => {
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "student-a", email: "a@example.test" } }, error: null });
+    const { getStaffContextForUser } = await import("@/lib/staff-auth");
+    vi.mocked(getStaffContextForUser).mockResolvedValueOnce(null);
+    const response = await login(jsonRequest("http://localhost/api/auth/login", { email: "a@example.test", password: "correct", surface: "student", redirect: "/ops/students" }));
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ redirect: "/student/dashboard" });
+  });
+
+  it("sends staff Studio login to /ops", async () => {
+    const { getStaffContextForUser } = await import("@/lib/staff-auth");
+    vi.mocked(getStaffContextForUser).mockResolvedValueOnce({
+      user: { id: "sa-1", email: "sa@example.test" },
+      displayName: "SA",
+      status: "active",
+      roles: ["super_admin"],
+      permissions: new Set(["staff.read"])
+    } as never);
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "sa-1", email: "sa@example.test" } }, error: null });
+    const response = await login(jsonRequest("http://localhost/api/auth/login", { email: "sa@example.test", password: "correct", surface: "studio", redirect: "/ops" }));
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ ok: true, redirect: "/ops" });
+  });
+
+  it("sends staff Workspace login to /workspace (never /ops)", async () => {
+    const { getStaffContextForUser } = await import("@/lib/staff-auth");
+    vi.mocked(getStaffContextForUser).mockResolvedValueOnce({
+      user: { id: "sa-1", email: "sa@example.test" },
+      displayName: "SA",
+      status: "active",
+      roles: ["super_admin"],
+      permissions: new Set(["staff.read"])
+    } as never);
+    signInWithPassword.mockResolvedValue({ data: { user: { id: "sa-1", email: "sa@example.test" } }, error: null });
+    const response = await login(
+      jsonRequest("http://localhost/api/auth/login", {
+        email: "sa@example.test",
+        password: "correct",
+        surface: "workspace",
+        redirect: "/ops"
+      })
+    );
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ ok: true, redirect: "/workspace" });
   });
 
   it("uses Supabase signup with an email-verification callback", async () => {
@@ -52,7 +140,25 @@ describe("auth and normal student route contracts", () => {
     resetPasswordForEmail.mockResolvedValue({ error: null }); signOut.mockResolvedValue({ error: null });
     const reset = await forgot(jsonRequest("http://localhost/api/auth/forgot-password", { email: "a@example.test" }));
     expect(reset.status).toBe(200); expect(resetPasswordForEmail.mock.calls[0][1].redirectTo).toContain("/auth/callback?next=/reset_password");
-    expect((await logout(new Request("http://localhost/api/auth/logout", { method: "POST" }))).status).toBe(200);
+    const loggedOut = await logout(new Request("http://localhost/api/auth/logout", { method: "POST" }));
+    expect(loggedOut.status).toBe(200);
+    expect(await loggedOut.json()).toMatchObject({ ok: true, redirect: "/" });
+  });
+
+  it("logs staff out to Studio login when surface is studio", async () => {
+    signOut.mockResolvedValue({ error: null });
+    const response = await logout(jsonRequest("http://localhost/api/auth/logout", { surface: "studio" }));
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ ok: true, redirect: "/studio/login" });
+    expect(signOut).toHaveBeenCalled();
+  });
+
+  it("logs staff out to Workspace login when surface is workspace", async () => {
+    signOut.mockResolvedValue({ error: null });
+    const response = await logout(jsonRequest("http://localhost/api/auth/logout", { surface: "workspace" }));
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ ok: true, redirect: "/workspace/login" });
+    expect(signOut).toHaveBeenCalled();
   });
 
   it("derives profile ownership from the authenticated session", async () => {

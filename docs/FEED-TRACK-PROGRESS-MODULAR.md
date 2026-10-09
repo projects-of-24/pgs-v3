@@ -151,4 +151,5 @@ Source: `src/features/feed-track-progress/feed-track-progress-premium-shell.tsx`
 | 2026-09-08 | **B1** Premium preview Alerts ← `student_alerts` (honest empty; live untouched) |
 | 2026-09-08 | **B-live** `/feed_track_progress` Hostinger-free · Family A (anon+standard) · Family B (Premium) · skill `pgs-student-family-doorman` |
 | 2026-09-08 | **N1** #counselorNotes 8 fixtures · arrow window of 4 (click step; B4 DB later) |
+| 2026-10-08 | **B4** #counselorNotes ← `counselor_notes` (student_visible) · Family B live+preview · [`FTP-B4-COUNSELOR-NOTES-LOCK.md`](./FTP-B4-COUNSELOR-NOTES-LOCK.md) |
 | 2026-09-08 | **N1b** count = hidden **below** only · label `notes` (not pending) |

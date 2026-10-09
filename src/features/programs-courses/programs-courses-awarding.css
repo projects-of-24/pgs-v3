@@ -108,6 +108,10 @@
     object-fit: contain;
   }
 
+  .pc-award__logo-img--empty {
+    background: #f3f0f8;
+  }
+
   .pc-award__logo-corner {
     position: absolute;
     left: -2.76px;
@@ -135,6 +139,10 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .pc-award__photo-img--empty {
+    background: #ffe1e1;
   }
 
   .pc-award__photo-img--desk {
@@ -421,6 +429,10 @@
     object-fit: contain;
   }
 
+  .pc-award__logo-img--empty {
+    background: #f3f0f8;
+  }
+
   /* Purple corner 17072:11049 — 9.6 · left -3.2 · top -4.8 */
   .pc-award__logo-corner {
     position: absolute;
@@ -452,6 +464,10 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .pc-award__photo-img--empty {
+    background: #ffe1e1;
   }
 
   .pc-award__photo-img--desk {

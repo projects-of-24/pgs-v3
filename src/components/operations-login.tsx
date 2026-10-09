@@ -19,7 +19,8 @@ export function OperationsLogin({ redirectPath, guardianSurface = false }: { red
       body: JSON.stringify({
         email: form.get("email"),
         password: form.get("password"),
-        redirect: redirectPath
+        redirect: redirectPath,
+        surface: guardianSurface ? "guardian" : "studio"
       })
     });
     const result = await response.json() as { message?: string; redirect?: string };

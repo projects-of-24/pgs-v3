@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { jsonError, readJsonObject, validUuid } from "@/lib/http";
 import { requireStaffPermission, StaffAuthorizationError } from "@/lib/staff-auth";
-import { assertStaffPreviewWritable, StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 type Context = { params: Promise<{ id: string }> };
@@ -9,7 +8,6 @@ type Context = { params: Promise<{ id: string }> };
 export async function PATCH(request: Request, context: Context) {
   try {
     await requireStaffPermission("overview.read");
-    await assertStaffPreviewWritable();
     const { id } = await context.params;
     if (!validUuid(id)) return jsonError("Invalid notification.", 400);
     const input = await readJsonObject(request);
@@ -28,7 +26,6 @@ export async function PATCH(request: Request, context: Context) {
     }
     return NextResponse.json({ ok: true, destination: data });
   } catch (error) {
-    if (error instanceof StaffPreviewReadOnlyError) return jsonError(error.message, error.status);
     if (error instanceof StaffAuthorizationError) return jsonError(error.message, error.status);
     return jsonError("Unable to update the notification.", 400);
   }

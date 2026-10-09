@@ -26,16 +26,17 @@ for (const [label, envName] of [
     test("shows only the recipient inbox with accessible filters and no UUID leakage", async ({ page }, testInfo) => {
       await page.goto("/ops/notifications");
       await skipIfOperationsFixtureInvalid(page);
-      await expect(page.getByRole("heading", { level: 1, name: "Staff notifications" })).toBeVisible();
-      await expect(page.getByRole("heading", { level: 2, name: "Inbox" })).toBeVisible();
-      await expect(page.getByLabel("View")).toBeVisible();
-      await expect(page.getByRole("option", { name: "Recent" })).toBeAttached();
-      await expect(page.getByRole("option", { name: "Unread" })).toBeAttached();
+      await expect(page.getByRole("heading", { level: 1, name: "Notifications" })).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Notification filters" })).toBeVisible();
+      await expect(page.getByRole("link", { name: /All/i })).toBeVisible();
+      await expect(page.getByRole("link", { name: /Unread/i })).toBeVisible();
+      await expect(page.getByRole("link", { name: /Read/i })).toBeVisible();
+      await expect(page.getByLabel("Search notifications")).toBeVisible();
+      await expect(page.getByLabel("Sort notifications")).toHaveCount(0);
       await expect(page.locator("main").innerText()).resolves.not.toMatch(uuidText);
       await expect(page.getByRole("button", { name: "Delete" })).toHaveCount(0);
-      await page.getByLabel("View").focus();
-      await page.keyboard.press("Tab");
-      await expect(page.getByRole("button", { name: "Apply" })).toBeFocused();
+      await expect(page.getByRole("checkbox")).toHaveCount(0);
+      await page.getByLabel("Search notifications").focus();
 
       if (testInfo.project.name === "mobile") {
         await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
@@ -57,12 +58,15 @@ for (const [label, envName] of [
     test("keeps canonical activity human-readable and accessible", async ({ page }, testInfo) => {
       await page.goto("/ops/activity");
       await skipIfOperationsFixtureInvalid(page);
-      await expect(page.getByRole("heading", { level: 1, name: "Operations activity" })).toBeVisible();
+      await expect(page.getByRole("heading", { level: 1, name: "Activity" })).toBeVisible();
       await expect(page.getByLabel("Activity domain")).toBeVisible();
+      await expect(page.getByLabel("Search activity")).toBeVisible();
+      await expect(page.getByRole("button", { name: "Filter" })).toBeVisible();
+      await expect(page.getByRole("region", { name: "Activity summary" })).toBeVisible();
       await expect(page.locator("main").innerText()).resolves.not.toMatch(uuidText);
       await page.getByLabel("Activity domain").focus();
       await page.keyboard.press("Tab");
-      await expect(page.getByRole("button", { name: "Filter activity" })).toBeFocused();
+      await expect(page.getByLabel("From date")).toBeFocused();
 
       if (testInfo.project.name === "mobile") {
         await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });

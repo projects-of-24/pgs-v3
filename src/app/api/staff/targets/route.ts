@@ -7,7 +7,6 @@ import {
   staffTargetDueAtFromDate
 } from "@/lib/operations-staff-targets";
 import { requireStaffPermission, StaffAuthorizationError } from "@/lib/staff-auth";
-import { assertStaffPreviewWritable, StaffPreviewReadOnlyError } from "@/lib/staff-preview-server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 function text(value: unknown, maximum: number, required = false): string {
@@ -56,7 +55,6 @@ async function auditDenied(request: Request, targetId: string | undefined, permi
 export async function POST(request: Request) {
   try {
     await requireStaffPermission("staff_targets.manage_all");
-    await assertStaffPreviewWritable();
     const input = await readJsonObject(request);
     if (!validUuid(input.assigned_staff_id) || !isStaffTargetPriority(input.priority)) {
       return jsonError("Choose an eligible assignee and priority.", 400);
@@ -85,7 +83,6 @@ export async function POST(request: Request) {
     }
     return NextResponse.json({ ok: true, target_id: data });
   } catch (error) {
-    if (error instanceof StaffPreviewReadOnlyError) return jsonError(error.message, error.status);
     if (error instanceof StaffAuthorizationError) {
       await auditDenied(request, undefined, "staff_targets.manage_all");
       return jsonError(error.message, error.status);
@@ -103,7 +100,6 @@ export async function POST(request: Request) {
 export async function PATCH(request: Request) {
   let targetId: string | undefined;
   try {
-    await assertStaffPreviewWritable();
     const input = await readJsonObject(request);
     targetId = validUuid(input.id) ? input.id : undefined;
     if (!targetId) return jsonError("Choose a valid target.", 400);
@@ -145,7 +141,6 @@ export async function PATCH(request: Request) {
     }
     return NextResponse.json({ ok: true, target_id: targetId });
   } catch (error) {
-    if (error instanceof StaffPreviewReadOnlyError) return jsonError(error.message, error.status);
     if (error instanceof StaffAuthorizationError) {
       await auditDenied(request, targetId, "staff_targets.manage");
       return jsonError(error.message, error.status);

@@ -1,98 +1,244 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Activity,
   Bell,
   BriefcaseBusiness,
-  Gauge,
+  ChevronDown,
+  Columns3,
+  Crown,
+  FileImage,
+  FileText,
+  FolderKanban,
   GraduationCap,
-  LogOut,
-  Menu,
+  Home,
+  Lock,
+  MessagesSquare,
+  School,
   ShieldCheck,
-  UsersRound
+  UserRound,
+  UsersRound,
+  Video
 } from "lucide-react";
-import { AskPgsPanel } from "@/components/ask-pgs-panel";
+import { OpsProductMain } from "@/components/ops-product-main";
 import { OperationsActorMenu } from "@/components/operations-actor-menu";
 import { OperationsStaffSearch } from "@/components/operations-staff-search";
-import { StaffPreviewBanner } from "@/components/staff-preview-banner";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger
-} from "@/components/ui/sheet";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { canViewOperationsScoreboard } from "@/lib/operations-authorization";
 import { operationsRoboto } from "@/lib/operations-font";
-import { operationsInitials, operationsRoleLabel } from "@/lib/operations-presentation";
+import { operationsRoleLabel } from "@/lib/operations-presentation";
+import { UM2_HREF_TO_NAV_KEY } from "@/lib/operations-user-permissions-tree";
 import { cn } from "@/lib/utils";
 import type { StaffPermission, StaffRoleKey } from "@/lib/staff-auth";
 
-type Item = {
+type NavIcon = typeof Home;
+
+type LiveNavItem = {
+  kind: "live";
   href: string;
   label: string;
   permission: StaffPermission;
-  icon: typeof Gauge;
+  icon: NavIcon;
   scoreboard?: boolean;
+  superAdminOnly?: boolean;
+  stub?: boolean;
+  group: "primary" | "operations" | "admin";
+  adminTone?: "panel" | "users" | "default";
 };
 
-const items: Item[] = [
-  { href: "/ops", label: "Scoreboard", permission: "overview.read", icon: Gauge, scoreboard: true },
-  { href: "/ops/students", label: "Students", permission: "overview.read", icon: GraduationCap },
-  { href: "/ops/work", label: "Targets", permission: "overview.read", icon: BriefcaseBusiness },
-  { href: "/ops/team", label: "Team", permission: "staff.read", icon: UsersRound },
-  { href: "/ops/notifications", label: "Notifications", permission: "overview.read", icon: Bell },
-  { href: "/ops/activity", label: "Activity", permission: "audit.read", icon: Activity }
+type CmsNavItem = {
+  kind: "cms";
+  id: string;
+  label: string;
+  icon: NavIcon;
+  group: "cms-creating" | "cms-editing";
+  href: string;
+  stub?: boolean;
+  permission: StaffPermission;
+};
+
+const liveItems: LiveNavItem[] = [
+  /* WS-CHROME-1 primary IA — ChatGPT workspace mocks + keep Ops tools */
+  { kind: "live", href: "/ops", label: "Dashboard", permission: "overview.read", icon: Home, scoreboard: true, group: "primary" },
+  { kind: "live", href: "/ops/students", label: "Students", permission: "overview.read", icon: UsersRound, group: "primary" },
+  {
+    kind: "live",
+    href: "/ops/overall-comments",
+    label: "Overall Comments",
+    permission: "overview.read",
+    icon: MessagesSquare,
+    stub: true,
+    group: "primary"
+  },
+  {
+    kind: "live",
+    href: "/ops/loopboard",
+    label: "Loopboard",
+    permission: "overview.read",
+    icon: Columns3,
+    stub: true,
+    group: "primary"
+  },
+  { kind: "live", href: "/ops/notifications", label: "Notifications", permission: "overview.read", icon: Bell, group: "primary" },
+  { kind: "live", href: "/ops/activity", label: "Activity", permission: "audit.read", icon: Activity, group: "primary" },
+  { kind: "live", href: "/ops/work", label: "Targets", permission: "overview.read", icon: BriefcaseBusiness, group: "operations" },
+  { kind: "live", href: "/ops/team", label: "Team", permission: "staff.read", icon: UsersRound, group: "operations" },
+  {
+    kind: "live",
+    href: "/ops/admin-panel",
+    label: "Admin Panel",
+    permission: "overview.read",
+    icon: Crown,
+    superAdminOnly: true,
+    group: "admin",
+    adminTone: "panel"
+  },
+  {
+    kind: "live",
+    href: "/ops/admin/users",
+    label: "User Management",
+    permission: "roles.manage",
+    icon: UsersRound,
+    superAdminOnly: true,
+    group: "admin",
+    adminTone: "users"
+  },
+  {
+    kind: "live",
+    href: "/studio/profile",
+    label: "Edit Profile",
+    permission: "overview.read",
+    icon: UserRound,
+    group: "admin"
+  }
+];
+
+const cmsItems: CmsNavItem[] = [
+  {
+    kind: "cms",
+    id: "courses",
+    label: "Courses",
+    icon: FolderKanban,
+    group: "cms-creating",
+    href: "/ops/cms/courses",
+    permission: "catalog.read"
+  },
+  {
+    kind: "cms",
+    id: "webinar",
+    label: "Webinar",
+    icon: Video,
+    group: "cms-creating",
+    href: "/ops/cms/webinar",
+    stub: true,
+    permission: "catalog.read"
+  },
+  {
+    kind: "cms",
+    id: "universities",
+    label: "Universities",
+    icon: School,
+    group: "cms-creating",
+    href: "/ops/cms/universities",
+    permission: "catalog.read"
+  },
+  {
+    kind: "cms",
+    id: "testimonial",
+    label: "Testimonial",
+    icon: FileText,
+    group: "cms-editing",
+    href: "/ops/cms/testimonial",
+    permission: "content.read"
+  },
+  {
+    kind: "cms",
+    id: "media",
+    label: "Pic / Video",
+    icon: FileImage,
+    group: "cms-editing",
+    href: "/ops/cms/media",
+    permission: "media.read"
+  }
 ];
 
 const sectionTitles: Record<string, string> = {
-  "/ops": "Operations Scoreboard",
+  "/ops": "Dashboard",
   "/ops/students": "Students",
+  "/ops/overall-comments": "Overall Comments",
+  "/ops/loopboard": "Loopboard",
   "/ops/work": "Staff Targets",
   "/ops/team": "Team",
   "/ops/team/invite": "Invite staff",
+  "/ops/admin/users": "User Management",
   "/ops/notifications": "Notifications",
-  "/ops/activity": "Activity"
+  "/ops/activity": "Activity",
+  "/ops/admin-panel": "Admin Panel",
+  "/admin/access": "Access",
+  "/ops/cms/courses": "Courses",
+  "/ops/cms/webinar": "Webinar",
+  "/ops/cms/universities": "Universities",
+  "/ops/cms/testimonial": "Testimonial",
+  "/ops/cms/media": "Pic / Video",
+  "/admin/profile": "Staff profile",
+  "/studio/profile": "Staff profile",
+  "/admin/change-password": "Change Password",
+  "/studio/change-password": "Change Password"
 };
+
+function isActivePath(pathname: string, href: string) {
+  if (href === "/ops") return pathname === "/ops" || pathname === "/admin";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function AdminShell({
   children,
   displayName,
+  avatarUrl = null,
   roles,
   permissions,
+  navGrants = [],
   notificationUnreadCount = 0,
   preview = null
 }: {
   children: React.ReactNode;
   displayName: string;
+  avatarUrl?: string | null;
   roles: StaffRoleKey[];
   permissions: StaffPermission[];
+  /** Empty = role-default menus (no custom filter). Non-empty = only these nav keys. */
+  navGrants?: string[];
   notificationUnreadCount?: number;
   preview?: { mode: "student" | "mentor"; targetName: string; actorName: string } | null;
 }) {
   const pathname = usePathname();
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const isOperationsProduct = pathname === "/ops" || pathname.startsWith("/ops/");
+  const isOperationsProduct =
+    pathname === "/ops" ||
+    pathname.startsWith("/ops/") ||
+    pathname === "/admin/audit" ||
+    pathname === "/admin/notifications" ||
+    pathname === "/admin/profile" ||
+    pathname === "/studio/profile" ||
+    pathname === "/admin/change-password" ||
+    pathname === "/studio/change-password" ||
+    pathname === "/admin/access" ||
+    pathname.startsWith("/admin/students");
   const allowed = new Set(permissions);
+  const navGrantSet = navGrants.length ? new Set(navGrants) : null;
   const canViewScoreboard = canViewOperationsScoreboard({ roles, permissions: allowed });
   const mentorPreview = preview?.mode === "mentor";
-  const visibleItems = items.filter((item) => {
-    if (!allowed.has(item.permission) || (item.scoreboard && !canViewScoreboard)) return false;
-    if (mentorPreview && (item.href === "/ops/team" || item.href === "/ops/activity")) return false;
-    return true;
-  });
-  const title = pathname.startsWith("/ops/team/") && pathname !== "/ops/team/invite"
-    ? "Staff access"
-    : (sectionTitles[pathname] ?? "Operations");
+  const isSuperAdmin = roles.includes("super_admin");
+  const title =
+    pathname.startsWith("/ops/team/") && pathname !== "/ops/team/invite"
+      ? "Staff access"
+      : pathname.includes("/permissions") && pathname.startsWith("/ops/admin/users/")
+        ? "Edit Permissions"
+      : (sectionTitles[pathname] ?? "Operations");
   const currentRole = operationsRoleLabel(roles);
+  const onTeamPath = pathname === "/ops/team" || pathname.startsWith("/ops/team/");
+  const onUserManagementPath = pathname === "/ops/admin/users" || pathname.startsWith("/ops/admin/users/");
 
   useEffect(() => {
     if (!isOperationsProduct) return;
@@ -103,134 +249,247 @@ export function AdminShell({
     };
   }, [isOperationsProduct]);
 
+  function navGrantAllows(href: string): boolean {
+    if (!navGrantSet) return true;
+    const key = UM2_HREF_TO_NAV_KEY[href];
+    if (!key) return true; // Admin Panel / Profile etc. stay permission-gated only
+    return navGrantSet.has(key);
+  }
+
+  function canOpenLive(item: LiveNavItem) {
+    if (item.superAdminOnly && !isSuperAdmin) return false;
+    if (!allowed.has(item.permission)) return false;
+    if (!navGrantAllows(item.href)) return false;
+    if (item.scoreboard && !canViewScoreboard) return false;
+    if (mentorPreview && item.href === "/ops/team") return false;
+    return true;
+  }
+
+  function renderLiveLink(item: LiveNavItem, options?: { forceShowLocked?: boolean }) {
+    const open = canOpenLive(item);
+    const Icon = item.icon;
+    let showActive = open && isActivePath(pathname, item.href);
+    if (item.label === "User Management") {
+      showActive = open && onUserManagementPath && isSuperAdmin;
+    } else if (item.label === "Team") {
+      showActive = open && onTeamPath;
+    }
+
+    // SA-only admin items: hide completely for other roles (no lock placeholders)
+    if (item.superAdminOnly && !isSuperAdmin) return null;
+
+    if (!open && !options?.forceShowLocked) return null;
+    if (!open && options?.forceShowLocked) {
+      return (
+        <span
+          key={`${item.group}-${item.label}`}
+          className="ops-nav-link ops-nav-link--locked"
+          aria-disabled="true"
+          title="Permission required"
+        >
+          <Icon aria-hidden="true" className="ops-nav-icon" />
+          <span className="ops-nav-label">{item.label}</span>
+          <Lock aria-hidden="true" className="ops-nav-lock" />
+          <span className="ops:sr-only">Locked — permission required</span>
+        </span>
+      );
+    }
+
+    return (
+      <Link
+        key={`${item.group}-${item.label}-${item.href}`}
+        href={item.href}
+        aria-current={showActive ? "page" : undefined}
+        className={cn(
+          "ops-nav-link",
+          showActive && "ops-nav-link--active",
+          item.adminTone === "panel" && "ops-nav-link--admin-panel",
+          item.adminTone === "users" && "ops-nav-link--admin-users",
+          showActive && item.adminTone === "panel" && "ops-nav-link--admin-panel-active"
+        )}
+      >
+        <Icon aria-hidden="true" className="ops-nav-icon" />
+        <span className="ops-nav-label">{item.label}</span>
+        {item.stub ? <span className="ops-nav-badge">Stub</span> : null}
+      </Link>
+    );
+  }
+
+  function renderCmsLink(item: CmsNavItem) {
+    const open = allowed.has(item.permission) && navGrantAllows(item.href);
+    const Icon = item.icon;
+    if (!open) {
+      // Custom menu grants hide items; permission-only miss shows lock when grants unused.
+      if (navGrantSet && allowed.has(item.permission) && !navGrantAllows(item.href)) {
+        return null;
+      }
+      return (
+        <span
+          key={item.id}
+          className="ops-nav-link ops-nav-link--locked"
+          aria-disabled="true"
+          title="Permission required"
+        >
+          <Icon aria-hidden="true" className="ops-nav-icon" />
+          <span className="ops-nav-label">{item.label}</span>
+          <Lock aria-hidden="true" className="ops-nav-lock" />
+        </span>
+      );
+    }
+    const active = isActivePath(pathname, item.href);
+    return (
+      <Link
+        key={item.id}
+        href={item.href}
+        aria-current={active ? "page" : undefined}
+        className={cn("ops-nav-link", active && "ops-nav-link--active")}
+      >
+        <Icon aria-hidden="true" className="ops-nav-icon" />
+        <span className="ops-nav-label">{item.label}</span>
+        {item.stub ? <span className="ops-nav-badge">Stub</span> : null}
+      </Link>
+    );
+  }
+
+  function NavDisclosure({
+    title: disclosureTitle,
+    icon: DisclosureIcon,
+    children: disclosureChildren,
+    defaultOpen = true
+  }: {
+    title: string;
+    icon: NavIcon;
+    children: ReactNode;
+    defaultOpen?: boolean;
+  }) {
+    return (
+      <details className="ops-nav-disclosure" open={defaultOpen}>
+        <summary className="ops-nav-disclosure-summary">
+          <DisclosureIcon aria-hidden="true" className="ops-nav-icon" />
+          <span className="ops-nav-label">{disclosureTitle}</span>
+          <ChevronDown aria-hidden="true" className="ops-nav-disclosure-chevron" />
+        </summary>
+        <div className="ops-nav-disclosure-body">{disclosureChildren}</div>
+      </details>
+    );
+  }
+
   const navigation = (
-    <nav aria-label="Operations navigation" className="ops-system-navigation ops:flex ops:flex-col ops:gap-1">
-      {visibleItems.map((item) => {
-        const Icon = item.icon;
-        const active = pathname === item.href || (item.href !== "/ops" && pathname.startsWith(`${item.href}/`));
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            aria-current={active ? "page" : undefined}
-            onClick={() => setMobileNavOpen(false)}
-            className={cn(
-              "ops:flex ops:min-w-fit ops:items-center ops:gap-3 ops:rounded-lg ops:px-3 ops:py-2.5 ops:text-sm ops:font-medium ops:text-muted-foreground ops:transition-colors ops:hover:bg-secondary ops:hover:text-foreground",
-              active && "ops:bg-accent ops:text-accent-foreground"
+    <nav aria-label="Operations navigation" className="ops-system-navigation">
+      <div className="ops-nav-group">
+        <div className="ops-nav-group-list">
+          {liveItems
+            .filter((item) => item.group === "primary")
+            .map((item) => renderLiveLink(item))}
+        </div>
+      </div>
+
+      <div className="ops-nav-group">
+        <NavDisclosure title="Operations" icon={ShieldCheck} defaultOpen>
+          {liveItems
+            .filter((item) => item.group === "operations")
+            .map((item) => renderLiveLink(item, { forceShowLocked: true }))}
+        </NavDisclosure>
+      </div>
+
+      <div className="ops-nav-group">
+        <NavDisclosure title="CMS" icon={BriefcaseBusiness} defaultOpen>
+          <NavDisclosure title="Creating" icon={FolderKanban} defaultOpen>
+            {cmsItems.filter((item) => item.group === "cms-creating").map(renderCmsLink)}
+          </NavDisclosure>
+          <NavDisclosure title="Editing" icon={FileText} defaultOpen>
+            {cmsItems.filter((item) => item.group === "cms-editing").map(renderCmsLink)}
+          </NavDisclosure>
+        </NavDisclosure>
+      </div>
+
+      <div className="ops-nav-group ops-nav-group--admin">
+        <div className="ops-nav-group-list">
+          {liveItems
+            .filter((item) => item.group === "admin")
+            .map((item) =>
+              renderLiveLink(item, {
+                // Edit Profile may show locked if permission missing; SA-only items hide above
+                forceShowLocked: !item.superAdminOnly
+              })
             )}
-          >
-            <Icon aria-hidden="true" className="ops:size-4" />
-            {item.label}
-          </Link>
-        );
-      })}
+        </div>
+      </div>
     </nav>
   );
 
   return (
-    <TooltipProvider>
-      <div
-        data-operations-shell
-        data-operations-product={isOperationsProduct ? "true" : undefined}
-        className={cn(
-          "operations-root ops:min-h-screen ops:bg-background ops:text-foreground",
-          isOperationsProduct && operationsRoboto.variable
-        )}
-      >
-        <aside className="ops-system-sidebar ops:fixed ops:inset-y-0 ops:left-0 ops:z-30 ops:hidden ops:w-64 ops:flex-col ops:border-r ops:border-border ops:bg-card ops:px-4 ops:py-5 ops:lg:flex">
-          <Link href="/ops" className="ops-system-brand ops:flex ops:items-center ops:gap-3 ops:px-2 ops:no-underline">
-            <span className="ops:flex ops:size-9 ops:items-center ops:justify-center ops:rounded-lg ops:bg-primary ops:text-sm ops:font-bold ops:text-primary-foreground">P</span>
-            <span className="ops:flex ops:flex-col">
-              <strong className="ops:text-sm ops:tracking-tight">Purple Guide</strong>
-              <span className="ops:text-xs ops:text-muted-foreground">Operations</span>
-            </span>
-          </Link>
-          <div className="ops:mt-8 ops:flex-1">{navigation}</div>
-          <Separator className="ops:mb-4" />
-          <div className="ops-system-user">
-            <div className="ops:flex ops:items-center ops:gap-3 ops:px-2">
-              <Avatar size="lg">
-                <AvatarFallback className="ops:bg-accent ops:text-xs ops:font-bold ops:text-accent-foreground">
-                  {operationsInitials(displayName)}
-                </AvatarFallback>
-              </Avatar>
-              <span className="ops:min-w-0 ops:flex-1">
-                <strong className="ops:block ops:truncate ops:text-sm">{displayName}</strong>
-                <span className="ops:block ops:truncate ops:text-xs ops:text-muted-foreground">{currentRole}</span>
-              </span>
-              <Link href="/logout?next=/ops" aria-label="Sign out" className="ops:text-muted-foreground ops:hover:text-foreground">
-                <LogOut aria-hidden="true" className="ops:size-4" />
-              </Link>
-            </div>
+    <div
+      data-operations-shell
+      data-operations-product={isOperationsProduct ? "true" : undefined}
+      data-ops-shell-pass="1"
+      data-ops-chrome-pass="c3-fix"
+      className={cn(
+        "operations-root ops:bg-background ops:text-foreground",
+        !isOperationsProduct && "ops:min-h-screen",
+        isOperationsProduct && operationsRoboto.variable
+      )}
+    >
+      <aside className="ops-system-sidebar ops:fixed ops:inset-y-0 ops:left-0 ops:z-30 ops:hidden ops:w-64 ops:flex-col ops:border-r ops:border-border ops:bg-card ops:px-4 ops:py-5 ops:lg:flex">
+        <Link href="/ops" className="ops-system-brand ops:no-underline">
+          <GraduationCap aria-hidden="true" className="ops-system-brand-icon" />
+          <span className="ops-system-brand-text">
+            <strong>PGS</strong>
+            <span>Purple Guide Study</span>
+          </span>
+        </Link>
+        <div className="ops:mt-4 ops:flex-1 ops:overflow-y-auto">{navigation}</div>
+      </aside>
+
+      <div className="ops-system-content ops:min-w-0 ops:lg:pl-64">
+        <header className="ops-system-topbar">
+          <div className="ops-system-topbar-left">
+            {isOperationsProduct ? (
+              <p className="ops-system-current-section">{title}</p>
+            ) : (
+              <h1 className="ops:m-0 ops:truncate ops:text-base ops:font-semibold ops:tracking-tight">{title}</h1>
+            )}
           </div>
-        </aside>
 
-        <div className="ops-system-content ops:min-w-0 ops:lg:pl-64">
-          <header className="ops-system-topbar ops:sticky ops:top-0 ops:z-20 ops:flex ops:h-[72px] ops:items-center ops:justify-between ops:border-b ops:border-border ops:bg-card ops:px-4 ops:sm:px-6">
-            <div className="ops:flex ops:min-w-0 ops:flex-col ops:justify-center">
-              <p className="ops-system-context ops:m-0 ops:flex ops:items-center ops:gap-1.5 ops:text-xs ops:font-semibold ops:uppercase ops:tracking-[0.08em] ops:text-muted-foreground">
-                <ShieldCheck aria-hidden="true" className="ops:size-3.5" />
-                Internal operations
-              </p>
-              <div className="ops:flex ops:min-w-0 ops:items-center ops:gap-3">
-                <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
-                  <SheetTrigger
-                    aria-label="Open operations navigation"
-                    className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "ops-system-topbar-menu ops:lg:hidden")}
-                  >
-                    <Menu aria-hidden="true" className="ops:size-4" />
-                  </SheetTrigger>
-                  <SheetContent side="left" className="ops:w-[min(20rem,90vw)] ops:border-r ops:bg-card ops:p-0 ops:shadow-none">
-                    <SheetHeader className="ops:border-b ops:border-border ops:px-4 ops:py-5">
-                      <SheetTitle className="ops-system-nav-sheet-title">Purple Guide</SheetTitle>
-                      <SheetDescription className="ops-system-nav-sheet-description">Operations</SheetDescription>
-                    </SheetHeader>
-                    <div className="ops:px-3 ops:py-4">{navigation}</div>
-                  </SheetContent>
-                </Sheet>
-                {isOperationsProduct ? (
-                  <p className="ops-system-current-section ops:m-0 ops:truncate ops:tracking-tight">{title}</p>
-                ) : (
-                  <h1 className="ops:m-0 ops:truncate ops:text-base ops:font-semibold ops:tracking-tight">{title}</h1>
-                )}
-              </div>
-            </div>
-            <div className="ops:flex ops:items-center ops:gap-2">
-              {allowed.has("overview.read") ? <AskPgsPanel /> : null}
-              {allowed.has("overview.read") ? <OperationsStaffSearch /> : null}
-              {allowed.has("overview.read") ? (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/ops/notifications"
-                      aria-label={`Open notifications${notificationUnreadCount ? `, ${notificationUnreadCount} unread` : ""}`}
-                      className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "ops-system-topbar-notify ops:relative")}
-                    >
-                      <Bell aria-hidden="true" className="ops:size-4" />
-                      {notificationUnreadCount ? (
-                        <span className="ops:absolute ops:-right-1 ops:-top-1 ops:flex ops:min-h-4 ops:min-w-4 ops:items-center ops:justify-center ops:rounded-full ops:bg-destructive ops:px-1 ops:text-[10px] ops:font-bold ops:leading-4 ops:text-destructive-foreground">
-                          {notificationUnreadCount > 99 ? "99+" : notificationUnreadCount}
-                        </span>
-                      ) : null}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Notifications</TooltipContent>
-                </Tooltip>
-              ) : null}
-              <OperationsActorMenu displayName={displayName} roleLabel={currentRole} />
-            </div>
-          </header>
+          <div className="ops-system-topbar-center">
+            {allowed.has("overview.read") ? <OperationsStaffSearch /> : null}
+          </div>
 
-          <main className="ops-system-main ops:mx-auto ops:w-full ops:max-w-[1440px] ops:p-4 ops:sm:p-6 ops:lg:p-8">
-            {preview ? (
-              <div className="ops:mb-4">
-                <StaffPreviewBanner actorName={preview.actorName} mode={preview.mode} targetName={preview.targetName} />
-              </div>
+          <div className="ops-system-topbar-right">
+            {allowed.has("overview.read") ? (
+              <Link
+                href="/ops/notifications"
+                aria-label={`Open notifications${notificationUnreadCount ? `, ${notificationUnreadCount} unread` : ""}`}
+                className="ops-system-topbar-notify ops:relative"
+              >
+                <Bell aria-hidden="true" />
+                {notificationUnreadCount ? (
+                  <span className="ops-system-topbar-notify-badge" aria-hidden="true">
+                    {notificationUnreadCount > 99 ? "99+" : notificationUnreadCount}
+                  </span>
+                ) : null}
+              </Link>
             ) : null}
-            {children}
+            <OperationsActorMenu displayName={displayName} roleLabel={currentRole} avatarUrl={avatarUrl} />
+          </div>
+        </header>
+
+        {isOperationsProduct ? (
+          <OpsProductMain>{children}</OpsProductMain>
+        ) : (
+          <main
+            className={cn(
+              "ops-system-main",
+              "ops:mx-auto ops:w-full ops:max-w-[1440px] ops:p-4 ops:sm:p-6 ops:lg:p-8"
+            )}
+          >
+            <div className="ops-system-body">{children}</div>
           </main>
-        </div>
+        )}
+        {isOperationsProduct ? (
+          <footer className="ops-system-footer-rail" aria-label="Operations shell footer" />
+        ) : null}
       </div>
-    </TooltipProvider>
+    </div>
   );
 }

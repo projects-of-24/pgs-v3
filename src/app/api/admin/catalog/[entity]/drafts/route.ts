@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminApiError, recordIdentifier } from "@/lib/admin-api";
 import { getAdminEntity, sanitizeAdminValues } from "@/lib/admin-registry";
+import { parseCoursesDetailInput } from "@/features/programs-courses/courses-detail-validation";
 import { catalogPreviewPath, type CatalogPreviewEntity } from "@/lib/content-preview";
 import { readJsonObject, validUuid } from "@/lib/http";
 import { requireStaffPermission } from "@/lib/staff-auth";
@@ -40,6 +41,7 @@ export async function POST(request: Request, { params }: Context) {
 
     if (action === "save-draft") {
       const context = await requireStaffPermission("catalog.manage");
+      const courseDetail = key === "courses" ? parseCoursesDetailInput(input) : {};
       let entityId: string | number;
       let values: Record<string, unknown>;
       if (input.id == null) {
@@ -58,7 +60,15 @@ export async function POST(request: Request, { params }: Context) {
           sanitizeAdminValues(entity, { ...(live as Record<string, unknown>), ...input }, true)
         );
         delete values.published;
+        if (key === "courses") {
+          // Carry live COURSE2b columns (when present) so previews keep the stored body; input overrides below.
+          for (const column of ["detail_template", "detail_body", "booking_url"]) {
+            const existing = (live as Record<string, unknown>)[column];
+            if (existing !== undefined && !(column in input)) values[column] = existing;
+          }
+        }
       }
+      Object.assign(values, courseDetail);
       const tags = tagIds(input.tag_ids);
       const { data: draft, error } = await supabase
         .from("catalog_draft_revisions")

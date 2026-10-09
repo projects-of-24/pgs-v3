@@ -1,0 +1,14 @@
+/* WS-CHROME-FIX QC — no outward browser scroll; body fills viewport like Ops. */
+html.workspace-session {
+  height: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+html.workspace-session body {
+  margin: 0;
+  height: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
+  background: #f7f4fb;
+}

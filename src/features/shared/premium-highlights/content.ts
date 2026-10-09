@@ -1,11 +1,25 @@
 /**
- * Shared highlights block. Lives under `src/features/shared/`. Pages import this.
- * Do not copy the component. Do not rebuild scroll/drag in page wrappers.
+ * Shared highlights block. Lives under `src/features/shared/`. Pages import this. Do not copy the component.
  * Desktop `17055:12784` · phone `433:5182`. Spelling stays `#higlights`.
- * Rail interaction (wheel + drag, no focus ring) lives in `premium-highlights.tsx`.
- * PLAB / AMC / Events / Courses / Uni Tie-up import this module.
+ * PLAB / AMC import this module at their copy gate. Do not invent their copy here.
+ * Courses CMS (COURSE2d-D3) may pass a prop-shaped copy of this data with up to 7 photos.
  */
-export const PREMIUM_HIGHLIGHTS = {
+export type PremiumHighlightsPhoto = {
+  src: string;
+  alt: string;
+  crop: 1 | 2 | 3;
+};
+
+export type PremiumHighlightsData = {
+  title: string;
+  lead: string[];
+  place: string;
+  pinSrc: string;
+  note: string;
+  photos: PremiumHighlightsPhoto[];
+};
+
+export const PREMIUM_HIGHLIGHTS: PremiumHighlightsData = {
   title: "#higlights",
   lead: [
     "Students, in action",
@@ -46,6 +60,11 @@ export const PREMIUM_HIGHLIGHTS = {
       src: "/assets/img/premium-highlights/highlight-presenter.jpg",
       alt: "",
       crop: 3
+    },
+    {
+      src: "/assets/img/premium-highlights/highlight-hallway.jpg",
+      alt: "",
+      crop: 1
     }
   ]
-} as const;
+};

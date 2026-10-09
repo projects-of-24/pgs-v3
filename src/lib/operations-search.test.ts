@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   encodeCatalogSearchHref,
   isBlockedStaffSearchQuery,
+  rewriteStaffSearchHrefForWorkspace,
   sanitizeStaffSearchQuery,
   staffSearchRank
 } from "@/lib/operations-search";
@@ -24,6 +25,18 @@ describe("Cross-product staff search", () => {
   it("opens catalog management destinations rather than a duplicate detail page", () => {
     expect(encodeCatalogSearchHref("events", "Residency Webinar")).toBe(
       "/admin/catalog/events?q=Residency%20Webinar"
+    );
+  });
+
+  it("rewrites Ops student hrefs to Workspace Desk", () => {
+    expect(rewriteStaffSearchHrefForWorkspace("/ops/students/abc-123")).toBe(
+      "/workspace/students/abc-123"
+    );
+    expect(rewriteStaffSearchHrefForWorkspace("/ops/students?q=PGS261119")).toBe(
+      "/workspace/students?q=PGS261119"
+    );
+    expect(rewriteStaffSearchHrefForWorkspace("/admin/catalog/courses?q=x")).toBe(
+      "/admin/catalog/courses?q=x"
     );
   });
 });

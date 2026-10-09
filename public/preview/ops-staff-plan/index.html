@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PGS Staff System — Planning Previews</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --ink: #152033;
+      --muted: #5b6b7c;
+      --line: #d7e0ea;
+      --accent: #2f6fed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 1.25rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+    header p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    nav a:hover { border-color: var(--accent); color: var(--accent); }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+      display: grid;
+      gap: 1.25rem;
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(21, 32, 51, 0.04);
+    }
+    section header {
+      position: static;
+      background: transparent;
+      border: 0;
+      padding: 1rem 1.1rem 0.75rem;
+    }
+    section h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+    section p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-top: 1px solid var(--line);
+      background: #eef3f8;
+    }
+    footer {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      padding: 0 1.25rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PGS Staff System — Planning Previews</h1>
+    <p>Visual plan only. No product code yet. Open each step, then approve implementation with <strong>GO AHEAD W1</strong>.</p>
+    <nav aria-label="Preview steps">
+      <a href="#step-1">1 Login</a>
+      <a href="#step-2">2 Ops shell</a>
+      <a href="#step-3">3 Scoreboard</a>
+      <a href="#step-4">4 Profile</a>
+      <a href="#step-5">5 Admin panel</a>
+      <a href="#step-6">6 Access flow</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="step-1">
+      <header>
+        <h2>Step 1 — Login gate</h2>
+        <p><code>/login?redirect=/ops&amp;surface=operations</code> · staff only · students blocked</p>
+      </header>
+      <img src="./step-1-login.jpg" alt="Step 1 login gate planning preview" />
+    </section>
+
+    <section id="step-2">
+      <header>
+        <h2>Step 2 — Operations shell</h2>
+        <p>Header canvas · locked Students/Targets/Team · CMS deferred · Admin Panel Super Admin only</p>
+      </header>
+      <img src="./step-2-ops-shell.jpg" alt="Step 2 operations shell planning preview" />
+    </section>
+
+    <section id="step-3">
+      <header>
+        <h2>Step 3 — Scoreboard</h2>
+        <p>Real metrics only · notifications + activity · no fake sparklines</p>
+      </header>
+      <img src="./step-3-scoreboard.jpg" alt="Step 3 scoreboard planning preview" />
+    </section>
+
+    <section id="step-4">
+      <header>
+        <h2>Step 4 — Profile (Zoho style)</h2>
+        <p>Avatar menu · edit display name · auth email read-only</p>
+      </header>
+      <img src="./step-4-profile.jpg" alt="Step 4 profile planning preview" />
+    </section>
+
+    <section id="step-5">
+      <header>
+        <h2>Step 5 — Admin Panel</h2>
+        <p>Users except Super Admin · role permission toggles · Students/Targets/Team grantable</p>
+      </header>
+      <img src="./step-5-admin-panel.jpg" alt="Step 5 admin panel planning preview" />
+    </section>
+
+    <section id="step-6">
+      <header>
+        <h2>Step 6 — Access flow</h2>
+        <p>Login → Supabase Auth → staff role → permissions → visible navigation</p>
+      </header>
+      <img src="./step-6-access-flow.jpg" alt="Step 6 access flow planning preview" />
+    </section>
+  </main>
+
+  <footer>
+    Planning assets under <code>/preview/ops-staff-plan/</code>. Implementation starts only after owner <code>GO AHEAD W1</code>.
+  </footer>
+</body>
+</html>
