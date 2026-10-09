@@ -131,10 +131,21 @@ jobs:
         run: pnpm exec playwright install chromium --with-deps
 
       # NEXT_PUBLIC_* must be present at build time for the e2e server session checks.
+      # Retry: Next Google-font loader can flake with "Cannot read properties of null"
+      # even under --webpack (same flake Production build usually survives).
       - name: Build app for e2e
         env:
           PGS_ALLOW_LEGACY_ASSET_FETCH: "1"
-        run: pnpm build
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            if pnpm build; then
+              exit 0
+            fi
+            echo "e2e build attempt ${attempt} failed; retrying…" >&2
+            sleep 5
+          done
+          exit 1
 
       # One long-lived server for smoke + fixtures + auth-regression.
       # PLAYWRIGHT_BASE_URL disables Playwright's own webServer so steps share this process.
