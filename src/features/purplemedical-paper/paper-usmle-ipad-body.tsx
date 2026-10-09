@@ -77,7 +77,7 @@ export function PaperUsmleIpadBody() {
                 Looks great from the outside.
               </div>
               <div className="w-175 self-stretch min-w-0 tracking-[0.2px] font-['Roboto-Regular','Roboto',system-ui,sans-serif] text-black text-sm/4.5">
-                But here’s the part no one warns you about— Many can lose years figuring it out the wrong way. One misstep, one rushed choice or poorly researched decision, endless job applications, not building your CV enough to stand out, remember you are competing from people all over the world for limited number of positions available... and suddenly you're stuck. No offer. No progress. Just time you’ll never get back.
+                But here’s the part no one warns you about— Many can lose years figuring it out the wrong way. One misstep, one rushed choice or poorly researched decision, endless job applications, not building your CV enough to stand out, remember you are competing from people all over the world for limited number of positions available... and suddenly you&apos;re stuck. No offer. No progress. Just time you’ll never get back.
               </div>
             </div>
           </div>
@@ -620,7 +620,7 @@ export function PaperUsmleIpadBody() {
           <div className="left-[50%] top-3223 flex flex-col items-center gap-1 absolute" style={{ translate: '-50%' }}>
             <div className="flex flex-col items-center py-1.5 gap-2">
               <div className="w-21 content-center tracking-[1px] uppercase font-['Roboto-Bold','Roboto',system-ui,sans-serif] font-bold text-[#6A5ED9] text-xs/2.5">
-                Let's Go
+                Let&apos;s Go
               </div>
               <div className="w-21.5 content-center font-['Roboto-Medium','Roboto',system-ui,sans-serif] font-medium text-[#27272A] text-base/5">
                 Ready to get started?
@@ -786,7 +786,7 @@ export function PaperUsmleIpadBody() {
                     — we’ll send it straight to your inbox.
                   </div>
                   <div className="w-[182.4px] tracking-[0.2px] font-['Roboto-Regular','Roboto',system-ui,sans-serif] text-black text-sm/4.5">
-                    Whether you're just getting started or planning ahead for all three steps, knowing the costs involved can help you make better decisions. From registration fees and travel expenses to prep materials and clinical rotations — we’ve mapped out the full journey. Just drop a request and get a clear picture of what to expect, without surprises.
+                    Whether you&apos;re just getting started or planning ahead for all three steps, knowing the costs involved can help you make better decisions. From registration fees and travel expenses to prep materials and clinical rotations — we’ve mapped out the full journey. Just drop a request and get a clear picture of what to expect, without surprises.
                   </div>
                 </div>
                 <div className="left-9.5 top-7.25 text-[20px] leading-[100%] w-max absolute whitespace-pre font-['Bebas_Neue',system-ui,sans-serif] text-black">
@@ -1092,7 +1092,7 @@ export function PaperUsmleIpadBody() {
                 Residency or Fellowship:
               </div>
               <div className="w-79.75 self-stretch min-w-0 tracking-[0.08px] whitespace-pre-wrap font-['Roboto-SemiBold','Roboto',system-ui,sans-serif] font-semibold text-white text-sm/4.5">
-                Whether you stop at residency or chase a specialty<br />you're part of the system.
+                Whether you stop at residency or chase a specialty<br />you&apos;re part of the system.
               </div>
             </div>
             <div className="w-79.75 self-stretch min-w-0 tracking-[0.08px] font-['Roboto-SemiBold','Roboto',system-ui,sans-serif] font-semibold text-[#FFC524] text-sm/4.5">

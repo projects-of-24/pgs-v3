@@ -130,7 +130,6 @@ function parseRules(inner, file) {
   return rules;
 }
 
-const scopeName = scope.replace(/^\./, "");
 function isShellSelector(sel) {
   sel = sel.trim();
   return sel === scope || sel.endsWith(`${scope}__body`) || sel.endsWith(`${scope}__univ-gap`) || sel.includes(`${scope}__body >`);

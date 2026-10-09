@@ -27,7 +27,6 @@ export default async function StudentFeedIpadFigmaPreviewPage() {
     getPublishedUnivMeet()
   ]);
   const signed = state && state.kind !== "anonymous" ? state : null;
-  const studentState = state?.kind ?? "anonymous";
   const avatarUrl = signed ? await studentExperienceAvatarUrl(signed) : null;
   const loginHref = `/login?redirect=${encodeURIComponent("/preview/student-feed-ipad-figma")}`;
 
