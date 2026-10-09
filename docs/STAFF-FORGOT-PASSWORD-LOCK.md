@@ -31,3 +31,6 @@
 - `src/app/workspace/forgot-password/page.tsx`  
 - `src/components/studio-login.tsx` (forgot hrefs)  
 - `src/proxy.ts` (public staff forgot doors)  
+
+<!-- ci retrigger 2026-10-09T18:43:07.6234316+05:30 -->
+
