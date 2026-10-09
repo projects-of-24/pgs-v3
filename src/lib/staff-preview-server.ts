@@ -57,17 +57,16 @@ export function canUseStaffPreview(
 
 /** View as Mentor (impersonate another mentor in Ops) — Admin/SA only. */
 export function canStartMentorPreview(
-  context: Pick<StaffContext, "roles">,
-  _preview?: StaffPreviewContext | null
+  context: Pick<StaffContext, "roles">
 ): boolean {
   return context.roles.includes("admin") || context.roles.includes("super_admin");
 }
 
 export function canStartStaffPreview(
-  context: Pick<StaffContext, "roles" | "permissions">,
-  _preview?: StaffPreviewContext | null
+  context: Pick<StaffContext, "roles" | "permissions">
 ): boolean {
   // VAS1: View as Student opens a new tab; Ops must keep actions while the preview cookie is live.
+  // Preview cookie is intentionally not part of this gate.
   return canUseStaffPreview(context);
 }
 
@@ -259,7 +258,7 @@ export function mentorPreviewBlocksPath(pathname: string): boolean {
   );
 }
 
-export function canAssignStudents(context: StaffContext, _preview?: StaffPreviewContext | null): boolean {
+export function canAssignStudents(context: StaffContext): boolean {
   // VAS1: do not hide Assign/Change mentor on Ops when a student preview cookie is active.
   return can(context, "mentor_assignments.manage");
 }
