@@ -107,3 +107,42 @@ describe("canonical Operations product routing", () => {
   });
 });
 
+describe("staff subdomain host map (W1)", () => {
+  it("sends anonymous studio root to Studio login", async () => {
+    const response = await proxy(new NextRequest("https://studio.purpleguide.study/"));
+    const location = new URL(response.headers.get("location")!);
+    expect(location.pathname).toBe("/studio/login");
+    expect(location.searchParams.get("surface")).toBe("studio");
+  });
+
+  it("sends anonymous workspace root to Workspace login", async () => {
+    const response = await proxy(new NextRequest("https://workspace.purpleguide.study/"));
+    const location = new URL(response.headers.get("location")!);
+    expect(location.pathname).toBe("/workspace/login");
+    expect(location.searchParams.get("surface")).toBe("workspace");
+  });
+
+  it("sends authenticated studio root to Ops", async () => {
+    process.env.NEXT_PUBLIC_SUPABASE_URL = "https://example.supabase.co";
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = "test-anon";
+    mocks.getClaims.mockResolvedValue({ data: { claims: { sub: "staff-1" } } });
+    const response = await proxy(new NextRequest("https://studio.purpleguide.study/"));
+    const location = new URL(response.headers.get("location")!);
+    expect(location.pathname).toBe("/ops");
+  });
+
+  it("sends authenticated workspace root to Workspace home", async () => {
+    process.env.NEXT_PUBLIC_SUPABASE_URL = "https://example.supabase.co";
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = "test-anon";
+    mocks.getClaims.mockResolvedValue({ data: { claims: { sub: "staff-1" } } });
+    const response = await proxy(new NextRequest("https://workspace.purpleguide.study/"));
+    const location = new URL(response.headers.get("location")!);
+    expect(location.pathname).toBe("/workspace");
+  });
+
+  it("does not remap public www root", async () => {
+    const response = await proxy(new NextRequest("https://www.purpleguide.study/"));
+    expect(response.headers.get("location")).toBeNull();
+  });
+});
+

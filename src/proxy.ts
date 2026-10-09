@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { authCookieDomain, resolveStaffHost, staffHostRootPath } from "@/lib/staff-hosts";
 
 const legacyControllers: Record<string, string> = {
   about: "/about", change_password: "/change_password", contact: "/contact",
@@ -130,6 +131,7 @@ export async function proxy(request: NextRequest) {
   let response = NextResponse.next({
     request: { headers: requestHeaders }
   });
+  const cookieDomain = authCookieDomain(request.nextUrl.hostname);
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   let authenticated = false;
@@ -141,13 +143,30 @@ export async function proxy(request: NextRequest) {
         response = NextResponse.next({
           request: { headers: requestHeaders }
         });
-        values.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+        values.forEach(({ name, value, options }) => {
+          response.cookies.set(
+            name,
+            value,
+            cookieDomain ? { ...options, domain: cookieDomain } : options
+          );
+        });
         Object.entries(headers).forEach(([name, value]) => response.headers.set(name, value));
       }
     } });
     const { data } = await supabase.auth.getClaims();
     authenticated = Boolean(data?.claims?.sub);
   }
+
+  // W1 staff subdomain roots → existing login / product home (no new landing UI).
+  const staffHost = resolveStaffHost(request.nextUrl.hostname);
+  if (staffHost && request.nextUrl.pathname === "/") {
+    const door = request.nextUrl.clone();
+    door.search = "";
+    door.pathname = staffHostRootPath(staffHost, authenticated);
+    if (!authenticated) door.searchParams.set("surface", staffHost);
+    return NextResponse.redirect(door);
+  }
+
   const pathnameLower = request.nextUrl.pathname.toLowerCase();
   if (!authenticated
     && !anonymousPreviewPaths.has(pathnameLower)
