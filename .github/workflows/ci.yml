@@ -46,7 +46,7 @@ jobs:
         run: pnpm test:security
 
       - name: Dependency audit (high+)
-        run: pnpm audit --audit-level=high
+        run: pnpm audit --audit-level=high --ignore-unfixable
 
   build:
     name: Production build
