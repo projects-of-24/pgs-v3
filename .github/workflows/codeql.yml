@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript
           config-file: ./.github/codeql/codeql-config.yml
@@ -45,7 +45,7 @@ jobs:
       # Private repo without paid GitHub Code Security: code scanning cannot receive
       # uploads, so we keep the results in the run instead (owner decision 2026-09-27).
       - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           category: "/language:javascript-typescript"
           upload: never
