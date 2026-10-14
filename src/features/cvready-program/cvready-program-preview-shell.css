@@ -54,18 +54,56 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
- * First block = video (above hero on this page).
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80.
+ * Desk (HR type+gap 2026-10-11): video = hero → next 60; title/filter/presets = tight block; later 80.
+ * iPad/phone keep prior opening stack until their gap pass.
  */
 .cvready-program-preview-shell {
-  --cr-section-gap: 100px;
+  --cr-hero-gap: 60px;
+  --cr-section-gap: 80px;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .cvready-program-preview-shell { --cr-section-gap: 60px; }
+  .cvready-program-preview-shell { --cr-hero-gap: 60px;
+  --cr-section-gap: 80px; }
 }
 @media (max-width: 600px) {
-  .cvready-program-preview-shell { --cr-section-gap: 80px; }
+  .cvready-program-preview-shell { --cr-hero-gap: 60px; --cr-section-gap: 80px; }
 }
 .cvready-program-preview-shell__body > :not(.cvready-program-preview-shell__univ-gap):not(.cvready-program-video) {
   margin-top: var(--cr-section-gap);
+}
+/* iPad/phone: title block still treated as hero for the next sibling */
+.cvready-program-preview-shell .cvready-program-preview-shell__body > .cvready-program-hero + * {
+  margin-top: var(--cr-hero-gap);
+}
+
+@media (min-width: 1367px) {
+  /* Kill pad+margin stack on seams (content-to-content) */
+  .cvready-program-preview-shell__body
+    > :not(.cvready-program-preview-shell__univ-gap):not(.cvready-program-video) {
+    padding-block: 0;
+  }
+  .cvready-program-preview-shell .cvready-program-video {
+    padding-bottom: 0;
+  }
+
+  /* Video = hero → title 60 */
+  .cvready-program-preview-shell
+    .cvready-program-preview-shell__body
+    > .cvready-program-video
+    + * {
+    margin-top: var(--cr-hero-gap);
+  }
+
+  /* Opening tight: title → filter → presets (arrow points at presets) */
+  .cvready-program-preview-shell
+    .cvready-program-preview-shell__body
+    > .cvready-program-hero
+    + .cvready-program-filter,
+  .cvready-program-preview-shell
+    .cvready-program-preview-shell__body
+    > .cvready-program-filter
+    + .cvready-program-presets {
+    margin-top: 0;
+  }
 }

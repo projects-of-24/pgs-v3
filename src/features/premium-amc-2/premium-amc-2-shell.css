@@ -45,7 +45,7 @@
 }
 
 /*
- * Block gap rhythm — owner lock 2026-10-03: desk 100 · iPad 60 · phone 80.
+ * Block gap rhythm — owner lock 2026-10-03: desk  60 · iPad 60 · phone 80.
  * Per-block Figma gaps retired. Padding exceptions for student/know/kick stay.
  * Final GAP LOCK at file end beats later iPad recipes.
  */
@@ -2048,18 +2048,26 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
  * Last in file so it beats per-block margin-top recipes.
  * Student phone keeps pull-up after the uniform gap.
  */
 @media (min-width: 1367px) {
   .premium-amc-2-shell .premium-amc-2-shell__body > :not(.premium-amc-2-shell__univ-gap):not(.premium-amc-hero) {
-    margin-top: 100px;
+    margin-top: 80px;
+  }
+
+  .premium-amc-2-shell .premium-amc-2-shell__body > .premium-amc-hero + *:not(.premium-amc-2-shell__univ-gap) {
+    margin-top: 60px;
   }
 }
 
 @media (min-width: 601px) and (max-width: 1366px) {
   .premium-amc-2-shell .premium-amc-2-shell__body > :not(.premium-amc-2-shell__univ-gap):not(.premium-amc-hero) {
+    margin-top: 80px;
+  }
+
+  .premium-amc-2-shell .premium-amc-2-shell__body > .premium-amc-hero + *:not(.premium-amc-2-shell__univ-gap) {
     margin-top: 60px;
   }
 }
@@ -2071,5 +2079,9 @@
 
   .premium-amc-2-shell .premium-amc-2-shell__body > .premium-amc-student {
     margin-top: -50px;
+  }
+
+  .premium-amc-2-shell .premium-amc-2-shell__body > .premium-amc-hero + *:not(.premium-amc-2-shell__univ-gap) {
+    margin-top: 60px;
   }
 }

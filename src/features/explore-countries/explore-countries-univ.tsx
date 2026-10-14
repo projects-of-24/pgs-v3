@@ -24,6 +24,7 @@ export function ExploreCountriesUniv() {
       data-block-gate="e4"
       data-figma-desktop="17056:19761"
       data-figma-mobile="473:4836"
+      data-figma-ipad="22:2166"
       aria-labelledby="explore-countries-univ-title"
     >
       <div className="explore-countries-univ__panel">

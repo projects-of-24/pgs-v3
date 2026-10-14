@@ -140,16 +140,24 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
  */
 @media (min-width: 1367px) {
   .premium-plab-preview-shell .premium-plab-preview-shell__body > :not(.premium-plab-preview-shell__univ-gap):not(.premium-plab-hero) {
-    margin-top: 100px;
+    margin-top: 80px;
+  }
+
+  .premium-plab-preview-shell .premium-plab-preview-shell__body > .premium-plab-hero + *:not(.premium-plab-preview-shell__univ-gap) {
+    margin-top: 60px;
   }
 }
 
 @media (min-width: 601px) and (max-width: 1366px) {
   .premium-plab-preview-shell .premium-plab-preview-shell__body > :not(.premium-plab-preview-shell__univ-gap):not(.premium-plab-hero) {
+    margin-top: 80px;
+  }
+
+  .premium-plab-preview-shell .premium-plab-preview-shell__body > .premium-plab-hero + *:not(.premium-plab-preview-shell__univ-gap) {
     margin-top: 60px;
   }
 }
@@ -161,5 +169,9 @@
 
   .premium-plab-preview-shell .premium-plab-preview-shell__body > .premium-plab-student {
     margin-top: -50px;
+  }
+
+  .premium-plab-preview-shell .premium-plab-preview-shell__body > .premium-plab-hero + *:not(.premium-plab-preview-shell__univ-gap) {
+    margin-top: 60px;
   }
 }

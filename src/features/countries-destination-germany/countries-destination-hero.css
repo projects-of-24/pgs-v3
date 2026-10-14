@@ -1,0 +1,329 @@
+/* pgs-country-scoped */
+/**
+ * Country destination hero — C1 owned CSS.
+ * iPad Figma `26:2456` (photo 294×499.8 · copy 340.2 · CTA #009c70).
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: lead/subtitle ~19.6px · CTA ~22.4px
+ * ISSUE: conflict with type floor / control readability
+ * PGS IMPLEMENTATION: lead/subtitle/CTA → `--pgs-type-floor` (16px). Title stays ~34 (display).
+ */
+
+:where([data-country="germany"]) .countries-destination-hero {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  overflow-x: clip;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-hero *,
+:where([data-country="germany"]) .countries-destination-hero *::before,
+:where([data-country="germany"]) .countries-destination-hero *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 16px 16px 0;
+  gap: 20px; /* owner QC: photo → title total */
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__media-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px; /* owner QC: badges → photo */
+  width: min(294px, 100%);
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__badges {
+  position: static;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px; /* owner QC: flag → diploma */
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__flag {
+  display: block;
+  width: 39px;
+  height: 20.5px;
+  object-fit: cover;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__badge {
+  display: block;
+  width: 52.4px;
+  height: 35px;
+  border-radius: 5.4px;
+  object-fit: cover;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 294 / 499.8;
+  border-radius: 11.2px;
+  overflow: hidden;
+  background: #f1f1f1;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__photo-img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Default / iPad — portrait asset (QC’d modular iPad) */
+:where([data-country="germany"]) .countries-destination-hero__photo-img--mobile {
+  display: block;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: min(340px, 100%);
+  gap: 22.4px;
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__title {
+  margin: 0;
+  color: #000;
+  font-size: 34px; /* Figma 33.6 — display, above floor */
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: left;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__lead,
+:where([data-country="germany"]) .countries-destination-hero__subtitle {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__lead {
+  letter-spacing: 0;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__subtitle {
+  letter-spacing: 0.4px;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 8px 13.4px;
+  border: 0;
+  border-radius: 11.2px;
+  background: #009c70;
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap; /* one line — same as iPad */
+  cursor: pointer;
+  height: auto;
+  width: max-content;
+  max-width: 100%;
+}
+
+:where([data-country="germany"]) .countries-destination-hero__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+  color: #fff; /* beat global a:hover --base-color */
+}
+
+/*
+ * Filled CTA label lock (DS): global `a:hover { color: var(--base-color) }`
+ * paints mint on green → text vanishes. Keep white like desk resting state.
+ */
+:where([data-country="germany"]) .countries-destination-hero__cta:hover,
+:where([data-country="germany"]) .countries-destination-hero__cta:active {
+  color: #fff;
+  filter: brightness(0.95);
+}
+
+/*
+ * BD2 desk — layout from QC’d `country-hero-figma-usa.css` (>1366).
+ * Landscape banner 303 · badge sizes · full sleeve width. Type stays DS.
+ */
+@media (min-width: 1367px) {
+  :where([data-country="germany"]) .countries-destination-hero__inner {
+    max-width: 100%;
+    align-items: stretch;
+    padding: 0;
+    gap: 28px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__media-wrap {
+    width: 100%;
+    gap: 19px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__badges {
+    gap: 4.8px;
+    margin-right: clamp(0px, 13%, 180px);
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__flag {
+    width: 46.4px;
+    height: 24.433px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__badge {
+    width: 62.4px;
+    height: 41.6px;
+    border-radius: 6.4px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__photo {
+    aspect-ratio: auto;
+    height: 303px;
+    border-radius: 12.8px;
+    background: #000;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__photo-img--desktop {
+    display: block;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__photo-img--mobile {
+    display: none;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__copy {
+    width: min(560px, 100%);
+  }
+}
+
+/* iPad 601–1366 — QC’d modular portrait · do not pull country-hero iPad tokens */
+@media (min-width: 601px) and (max-width: 1366px) {
+  :where([data-country="germany"]) .countries-destination-hero {
+    padding: 16px 0 0;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__inner {
+    padding-inline: 0;
+  }
+}
+
+/*
+ * BD2 phone — Figma one column (photo + copy same width, page-centered):
+ *   photo `505:6802` x90 w210
+ *   copy  `503:5072` x90 w208 → use 210 to match image
+ * Text left-aligned inside copy. CTA nowrap. Type = DS (body 16; title 24).
+ * Phone pull: −77 was flag = #toggleBtn top; owner QC +20 down (iPad-style air).
+ * → −57 @390. Shell phone margin-top: 0.
+ */
+@media (max-width: 600px) {
+  :where([data-country="germany"]) .countries-destination-hero {
+    margin-top: -57px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__inner {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    align-items: center; /* photo + copy share centered 210 column */
+    padding: 0;
+    gap: 16px; /* Figma photo bottom → copy top ~17 */
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__media-wrap {
+    width: min(210px, 100%);
+    gap: 9px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__badges {
+    gap: 2.88px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__flag {
+    width: 27.84px;
+    height: 14.66px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__badge {
+    width: 37.44px;
+    height: 24.96px;
+    border-radius: 3.84px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__photo {
+    aspect-ratio: 210 / 357;
+    border-radius: 8px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__photo-img--desktop {
+    display: none;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__photo-img--mobile {
+    display: block;
+    object-position: center top;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__copy {
+    width: min(210px, 100%); /* Figma 503:5072 ≈ photo width · page-centered */
+    gap: 16px; /* Figma headline internal · CTA sibling ~19 */
+    align-items: flex-start; /* left stack inside copy only */
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__title {
+    font-size: 24px; /* Figma 505:6812 · display ≥ floor */
+    line-height: 1.15;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__text {
+    gap: 6.4px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-hero__cta {
+    margin-top: 3px; /* 16 + 3 ≈ Figma 19 headline → CTA */
+    padding: 4.8px 9.6px;
+    border-radius: 8px;
+    white-space: nowrap;
+    width: max-content;
+    max-width: 100%;
+    line-height: 1.4;
+  }
+}

@@ -1,0 +1,207 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Study Cost envelope + Premium CTA — CS4 owned CSS.
+ * iPad Figma `29:4895` (envelope) · `29:4907` (portrait) · `29:4910` (JOIN).
+ *
+ * Envelope = same mobile Subtract ticket (bite on long edge) · CSS rotate(90deg).
+ * Asset: cost-envelope-subtract.svg (Figma Subtract). Pattern mirrors
+ * premium-usmle-compete phone ticket — layout sizes from iPad Figma only.
+ *
+ * TYPE LOCK (PGS-PUBLIC-DESIGN-SYSTEM): Roboto → `--pgs-type-floor` (16).
+ * Reject Figma 19.7 / 16.8 / 19.6. Bebas #PGS / JOIN → ≥30.
+ */
+
+:where([data-country="aus"]) .countries-destination-cost-cta {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta *,
+:where([data-country="aus"]) .countries-destination-cost-cta *::before,
+:where([data-country="aus"]) .countries-destination-cost-cta *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: min(var(--cd-rail-choose, 410.2px), calc(100% - 32px));
+  margin: 0 auto;
+  height: auto;
+}
+
+/* --- Purple envelope = mobile Subtract ticket, rotated for iPad --- */
+/* Figma `29:4895`: 245.28 × 582.4 · Subtract 565.376 × 245.28 · rotate 90 */
+
+:where([data-country="aus"]) .countries-destination-cost-cta__envelope {
+  position: relative;
+  width: min(245.28px, 100%);
+  min-height: 582.4px;
+  margin: 0;
+  padding: 29.4px 15.4px 88px;
+  overflow: visible;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__shape {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__mark-plate {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 0;
+  width: 174.72px;
+  height: 155.904px;
+  margin: 0;
+  border-radius: 17.92px;
+  background: #d9e0ff;
+  transform: translateX(-50%);
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__ticket {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  /* Horizontal Subtract; rotate upright like mobile compete phone ticket */
+  width: 565.376px;
+  height: 245.28px;
+  max-width: none;
+  left: 50%;
+  top: calc(565.376px / 2);
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__mark {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  z-index: 2;
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__words {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 11.6px;
+  width: min(214.2px, 100%);
+  margin: 0 auto;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__headline {
+  margin: 0;
+  padding: 0 9px;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__body {
+  margin: 0;
+  padding: 0 9px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  height: auto;
+}
+
+/* --- Portrait --- */
+
+:where([data-country="aus"]) .countries-destination-cost-cta__portrait {
+  width: min(248px, 100%);
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #f4e5e4;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 248 / 245;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* --- JOIN #purplePremium --- */
+
+:where([data-country="aus"]) .countries-destination-cost-cta__premium {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: min(375px, 100%);
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__join {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-weight: 400;
+  line-height: 1.05;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__join-line,
+:where([data-country="aus"]) .countries-destination-cost-cta__brand-line {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  text-transform: none;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__join-line {
+  font-size: 56px;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__brand-line {
+  font-size: 56px;
+}
+
+:where([data-country="aus"]) .countries-destination-cost-cta__support {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  height: auto;
+}

@@ -54,17 +54,19 @@
 }
 
 /*
- * Gap pass — owner lock 2026-10-03: desk 100 · iPad 60 · phone 80 (CSS px).
+ * Gap pass — owner lock 2026-10-10: hero→next 60 · rest 80 (all bands).
  * Sections carry no outer spacing padding; the gap lives here only. Hero top (univMeet gap) untouched.
  */
 .about-preview-shell {
-  --about-section-gap: 100px;
+  --about-hero-gap: 60px;
+  --about-section-gap: 80px;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .about-preview-shell { --about-section-gap: 60px; }
+  .about-preview-shell { --about-hero-gap: 60px;
+  --about-section-gap: 80px; }
 }
 @media (max-width: 600px) {
-  .about-preview-shell { --about-section-gap: 80px; }
+  .about-preview-shell { --about-hero-gap: 60px; --about-section-gap: 80px; }
 }
 
 .about-preview-shell__body > section:not(.about-hero) {
@@ -76,6 +78,10 @@
 }
 .about-preview-shell__body > :not(.about-preview-shell__univ-gap):not(.about-hero) {
   margin-top: var(--about-section-gap);
+}
+/* Specificity must beat :not():not() or hero seam stays section-gap */
+.about-preview-shell .about-preview-shell__body > .about-hero + * {
+  margin-top: var(--about-hero-gap);
 }
 
 /* Gap pass corrections so every pair measures the band gap (content to content). */

@@ -54,18 +54,24 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
  * First block = intro (above hero on this page).
  */
 .uni-tieup-preview-shell {
-  --ut-section-gap: 100px;
+  --ut-hero-gap: 60px;
+  --ut-section-gap: 80px;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .uni-tieup-preview-shell { --ut-section-gap: 60px; }
+  .uni-tieup-preview-shell { --ut-hero-gap: 60px;
+  --ut-section-gap: 80px; }
 }
 @media (max-width: 600px) {
-  .uni-tieup-preview-shell { --ut-section-gap: 80px; }
+  .uni-tieup-preview-shell { --ut-hero-gap: 60px; --ut-section-gap: 80px; }
 }
 .uni-tieup-preview-shell__body > :not(.uni-tieup-preview-shell__univ-gap):not(.uni-tieup-intro) {
   margin-top: var(--ut-section-gap);
+}
+/* Specificity must beat :not():not() or hero seam stays section-gap */
+.uni-tieup-preview-shell .uni-tieup-preview-shell__body > .uni-tieup-hero + * {
+  margin-top: var(--ut-hero-gap);
 }

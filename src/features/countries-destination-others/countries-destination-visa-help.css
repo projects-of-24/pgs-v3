@@ -1,0 +1,90 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — How #PGS Helps — V6 CSS pass.
+ * Mobile `.helper-box-new` + `.btn-custom` → iPad Figma `30:5257`.
+ *
+ * TYPE LOCK: Roboto → `--pgs-type-floor` (16). Reject Figma 19.6 / 22.4.
+ * Title 30 Medium. CTA `#0abf8c`. height: auto.
+ */
+
+:where([data-country="others"]) .countries-destination-visa-help {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22.4px;
+  width: min(302.4px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="others"]) .countries-destination-visa-help *,
+:where([data-country="others"]) .countries-destination-visa-help *::before,
+:where([data-country="others"]) .countries-destination-visa-help *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="others"]) .countries-destination-visa-help__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16.8px;
+  width: 100%;
+  height: auto;
+}
+
+:where([data-country="others"]) .countries-destination-visa-help__title {
+  margin: 0;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.56px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="others"]) .countries-destination-visa-help__body {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.14px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="others"]) .countries-destination-visa-help__cta {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 11.2px 14px;
+  border: none;
+  border-radius: 5.6px;
+  background: #0abf8c;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.14px;
+  text-align: left;
+  text-decoration: none;
+  height: auto;
+}
+
+:where([data-country="others"]) .countries-destination-visa-help__cta:hover,
+:where([data-country="others"]) .countries-destination-visa-help__cta:active {
+  color: rgba(0, 0, 0, 0.9); /* beat global a:hover --base-color */
+  filter: brightness(0.97);
+}
+
+:where([data-country="others"]) .countries-destination-visa-help__cta:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+  color: rgba(0, 0, 0, 0.9);
+}

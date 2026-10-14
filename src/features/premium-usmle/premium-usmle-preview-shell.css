@@ -844,18 +844,26 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
  * Last in file so it beats the older per-block gap pass above.
  * Student phone keeps pull-up after the uniform gap.
  */
 @media (min-width: 1367px) {
   .premium-usmle-preview-shell .premium-usmle-preview-shell__body > :not(.premium-usmle-preview-shell__univ-gap):not(.premium-usmle-hero) {
-    margin-top: 100px;
+    margin-top: 80px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-hero + *:not(.premium-usmle-preview-shell__univ-gap) {
+    margin-top: 60px;
   }
 }
 
 @media (min-width: 601px) and (max-width: 1366px) {
   .premium-usmle-preview-shell .premium-usmle-preview-shell__body > :not(.premium-usmle-preview-shell__univ-gap):not(.premium-usmle-hero) {
+    margin-top: 80px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-hero + *:not(.premium-usmle-preview-shell__univ-gap) {
     margin-top: 60px;
   }
 }
@@ -867,5 +875,9 @@
 
   .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-student {
     margin-top: -50px;
+  }
+
+  .premium-usmle-preview-shell .premium-usmle-preview-shell__body > .premium-usmle-hero + *:not(.premium-usmle-preview-shell__univ-gap) {
+    margin-top: 60px;
   }
 }

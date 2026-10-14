@@ -956,8 +956,11 @@ flex: 0 0 auto;
         border-radius: 8px;
   }
 
-  .btn-custom:hover {
+  .btn-custom:hover,
+  .btn-custom:focus-visible,
+  .btn-custom:active {
     background-color: #009c70;
+    color: #fff; /* beat global a:hover --base-color · DS filled CTA lock */
   }
 
   .usa-section {

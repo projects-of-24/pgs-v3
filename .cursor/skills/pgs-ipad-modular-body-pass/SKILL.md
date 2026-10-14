@@ -15,7 +15,11 @@ description: >-
 
 **IGNORE** `pgs-ipad-hero-body` phone×1.4 for these bodies. Use `pgs-ipad-paper-pass` for chrome + owned-split setup; **this skill** for the body QC loop.
 
-Living map: `docs/PREMIUM-MEDICAL-MODULAR.md`
+Living map: `docs/PREMIUM-MEDICAL-MODULAR.md`  
+**Carry sheet (all formulas + Track A status):** [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md)  
+**Gap LOCK:** [`docs/FRONTEND-GAP-ANALYSIS.md`](../../docs/FRONTEND-GAP-ANALYSIS.md) — hero→next **60** · rest **80** (all bands); do not invent per-page rhythm.
+
+**HEIGHT AUTO (owner 2026-10-10):** every body segment / hero / stage → **`height: auto` only**. Never invent a fixed stage height that reserves white under the last content (hang = in-flow + `overflow: visible`). Protocol: [`docs/PREMIUM-MEDICAL-MODULAR.md`](../../docs/PREMIUM-MEDICAL-MODULAR.md).
 
 ---
 
@@ -28,9 +32,10 @@ Living map: `docs/PREMIUM-MEDICAL-MODULAR.md`
 | Chrome | **LOCKED** — import only. Do not redesign chrome on body gates. |
 | Chrome click QC | After OWNED_SPLIT / cutover: **hamburger + #toggleBtn must open** (see below) |
 | Body clamp | Page body uses the clamp / rail recipes proven on this page |
-| Roboto (body / UI) | Minimum **15–16px** (`--pgs-type-floor` → 16 unless owner names 15 for a block) |
-| Bebas (display) | Minimum **30px** — do not ship Bebas titles under 30 |
+| Roboto (body / UI) | **Ours:** `--pgs-type-floor` → 16 (unless owner names 15). Figma = layout only — never ship Figma Roboto px (19.6 etc.) |
+| Bebas (display) | **Ours:** ≥**30px** — do not ship Bebas under 30; Figma display px do not override |
 | Invent | **Never** invent layout/copy/components. Only what owner / Figma / Paper / this north star already proved |
+| Block height | **`height: auto` only** on every segment — no fixed stage air under content |
 
 ### Chrome click QC (owner 2026-10-03 — cutover finding)
 
@@ -155,7 +160,7 @@ Spoiling QC’d blocks costs a day. Skipping them costs a minute.
 |---|---|---|
 | Horizontal rail drag + wheel | Highlights, Picks | Same bind pattern; suppress link click after drag; no mandatory scroll-snap fighting drag |
 | Carousel arrows | Picks | Still step by card; drag is free pan |
-| Type floor | All bands | Roboto **15–16px** min · Bebas **30px** min · token `--pgs-type-floor` |
+| Type floor | All bands | Roboto **16** (`--pgs-type-floor`) · Bebas **≥30** · **Figma = design only; type sizes = ours** |
 
 ---
 

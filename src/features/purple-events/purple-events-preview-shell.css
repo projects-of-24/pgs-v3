@@ -51,18 +51,24 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
  * First block = invite (no separate hero class on this template).
  */
 .purple-events-preview-shell {
-  --pe-section-gap: 100px;
+  --pe-hero-gap: 60px;
+  --pe-section-gap: 80px;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .purple-events-preview-shell { --pe-section-gap: 60px; }
+  .purple-events-preview-shell { --pe-hero-gap: 60px;
+  --pe-section-gap: 80px; }
 }
 @media (max-width: 600px) {
-  .purple-events-preview-shell { --pe-section-gap: 80px; }
+  .purple-events-preview-shell { --pe-hero-gap: 60px; --pe-section-gap: 80px; }
 }
 .purple-events-preview-shell__body > :not(.purple-events-preview-shell__univ-gap):not(.pe-invite) {
   margin-top: var(--pe-section-gap);
+}
+/* Specificity must beat :not():not() or hero seam stays section-gap */
+.purple-events-preview-shell .purple-events-preview-shell__body > .purple-events-hero + * {
+  margin-top: var(--pe-hero-gap);
 }

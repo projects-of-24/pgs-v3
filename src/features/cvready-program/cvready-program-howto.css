@@ -361,7 +361,7 @@
   }
 }
 
-/* —— Desktop >1366 —— */
+/* —— Desktop >1367 —— */
 @media (min-width: 1367px) {
   .cvready-program-howto {
     padding: 0 0 56px;
@@ -424,7 +424,7 @@
   }
 
   .cvready-program-howto__tip-title {
-    font-size: 19.2px;
+    font-size: var(--cvready-program-type-floor, var(--pgs-type-floor, 16px));
     line-height: 31.2px;
   }
 

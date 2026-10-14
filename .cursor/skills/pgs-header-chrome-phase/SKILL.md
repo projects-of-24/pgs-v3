@@ -9,7 +9,8 @@ description: >-
 
 # PGS — header / chrome phase (reopened)
 
-**Living doc (findings + map + gates):** [`docs/HEADER-CHROME-PHASE.md`](../../docs/HEADER-CHROME-PHASE.md)
+**Living doc (findings + map + gates):** [`docs/HEADER-CHROME-PHASE.md`](../../docs/HEADER-CHROME-PHASE.md)  
+**Formulas + remaining H-R pages:** [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md)
 
 **Master:** `pgs-master-workflow` · **Chrome DNA:** `pgs-modular-public-chrome` · **Propose:** `pgs-propose-before-code` · **Own CSS:** `figma-modular-own-css`
 

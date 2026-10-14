@@ -34,6 +34,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
    *   /preview/purplenonmedical-2 — non-medical lab-2 chrome + OWNED_SPLIT (2026-10-03 N-G0)
    *   /preview/purplemedical* — medical iPad labs (Paper / Figma / ipad)
    *   /preview/student-feed-ipad-* — feed iPad A/B labs (Figma / Paper)
+   *   /preview/explorecountries — Explore H-R pass 2 (2026-10-10 HR-explore-2)
+   *   /explorecountries — Explore LIVE chrome cutover (2026-10-10)
+   *   /preview/countries — Country destination LOCKED narrow (Figma 26:2456 · 2026-10-10)
+   *   /preview/countries-2 — Country destination wide rails (Figma 27:2999 · 2026-10-10)
+   *   /preview/cvreadyprogram — CV Ready H-R pass 2 OWNED_SPLIT (2026-10-11)
    */
   const OWNED_SPLIT_ROUTES = new Set([
     "/preview/header",
@@ -65,7 +70,26 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     "/preview/purplemedical-paper",
     /* Student feed iPad A/B labs — React chrome + owned split */
     "/preview/student-feed-ipad-figma",
-    "/preview/student-feed-ipad-paper"
+    "/preview/student-feed-ipad-paper",
+    /* Explore Countries H-R pass 2 + LIVE chrome cutover (2026-10-10) */
+    "/preview/explorecountries",
+    "/explorecountries",
+    /* Country destination — LOCKED narrow + wide clamp lab (2026-10-10) */
+    "/preview/countries",
+    "/preview/countries-2",
+    /* Country destination LIVE cutover (2026-10-10) — same template as /preview/countries-2 */
+    "/countriesusa",
+    "/countriesuk",
+    "/countriesaus",
+    "/countriescanada",
+    "/countrieseurope",
+    "/countriesfrance",
+    "/countriesgermany",
+    "/countriesmauritius",
+    "/countriesnz",
+    "/countriesothers",
+    /* CV Ready H-R pass 2 (2026-10-11) — preview only; live joins at HR-cvready-3 */
+    "/preview/cvreadyprogram"
   ]);
   const isOwnedSplitRoute = OWNED_SPLIT_ROUTES.has(pathname);
   /** Hostinger vendors.min.js + main.js: skipped on labs, owned-split routes, and workspace. */
@@ -75,10 +99,21 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html lang="en" className="no-js">
       <head>
         <link rel="icon" href="/favicon.png" />
-        <link rel="stylesheet" href="/assets/css/vendors.min.css" />
-        <link rel="stylesheet" href="/assets/css/icon.min.css" />
-        <link rel="stylesheet" href="/assets/css/style.css" />
-        <link rel="stylesheet" href="/assets/css/responsive.css" />
+        {/* V-1: Bootstrap + icon font only where string chrome still lives. */}
+        {!isOwnedSplitRoute ? (
+          <link rel="stylesheet" href="/assets/css/vendors.min.css" />
+        ) : null}
+        {!isOwnedSplitRoute ? (
+          <link rel="stylesheet" href="/assets/css/icon.min.css" />
+        ) : null}
+        {isOwnedSplitRoute ? (
+          <link rel="stylesheet" href="/preview/owned-split" />
+        ) : (
+          <>
+            <link rel="stylesheet" href="/assets/css/style.css" />
+            <link rel="stylesheet" href="/assets/css/responsive.css" />
+          </>
+        )}
       </head>
         <body
           data-mobile-nav-style="classic"

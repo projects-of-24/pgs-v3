@@ -18,7 +18,8 @@
 
 @media (min-width: 1367px) {
   .cvready-program-outro .outro-cta {
-    margin-top: 32px;
-    margin-bottom: 56px;
+    /* Shell section-gap owns seams — no double margin */
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }

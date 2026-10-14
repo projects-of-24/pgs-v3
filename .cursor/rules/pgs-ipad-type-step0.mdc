@@ -1,0 +1,27 @@
+---
+description: Frontend CSS Step 0 — DS first + type floor (companion to pgs-public-design-system)
+alwaysApply: true
+---
+
+# PGS frontend CSS — Step 0 + type floor
+
+Always-on companion to [`pgs-public-design-system.mdc`](./pgs-public-design-system.mdc).  
+Owner never pressures — do not invent urgency (`friend-not-yes-man`). Open the DS for **quality**, not QC FOMO.
+
+## Before any frontend CSS / layout edit
+
+1. **Import first (asked or not):** Read `docs/PGS-PUBLIC-DESIGN-SYSTEM.md`.
+2. Also open `pgs-propose-before-code` + `docs/FRONTEND-IPAD-HEADER-LOCK.md` (+ task body skill) + personal `friend-not-yes-man`.
+3. In the reply, **quote**: **DS** · type=ours · Figma=layout · GAP · height:auto · bands · one block.
+4. **TYPE LOCK** (authority = Public Design System — desk · iPad · phone):
+   - Roboto / UI copy → `var(--pgs-type-floor, 16px)` unless the owner names another size
+   - Bebas / display → **≥30px**
+   - Do **not** ship raw Figma Roboto sizes (14 / 15.5 / 19.6 / 22.4, etc.)
+5. Propose → wait for `GO AHEAD` (unless named live QC nudge after Step 0).
+
+## Failure = stop
+
+If you wrote `font-size` without quoting the DS / type floor in that turn: you skipped Step 0. Fix before claiming done.
+
+Full skill: `.cursor/skills/pgs-propose-before-code/SKILL.md`  
+DS: `docs/PGS-PUBLIC-DESIGN-SYSTEM.md`

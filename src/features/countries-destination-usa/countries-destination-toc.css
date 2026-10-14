@@ -1,0 +1,301 @@
+/* pgs-country-scoped */
+/**
+ * Country destination TOC + stats — C3 owned CSS.
+ * iPad Figma `26:2820` (449.4 card · links · 28/5 stats · Bebas aside).
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: link ~19.6px · footnote ~14px · “of top…” ~17.9px
+ * ISSUE: below type floor for normal text
+ * PGS IMPLEMENTATION: those at `--pgs-type-floor` (16px). Bebas aside ≥30.
+ *
+ * OWNER LOCK 2026-10-10 — TOC card height:
+ * Study 101 (`26:2820` = 579.24) = **min-height** for ALL tabs
+ * (Cost / Visa / Short / Scholarships / Tracks). Shorter tabs must not
+ * shrink below 101; taller grey/stats may grow the card (`height: auto`).
+ * Links band keeps Study 101 `316.96` so stats align when links are few.
+ * Never use max-height / fixed height on the card (clips grey onto body).
+ */
+
+:where([data-country="usa"]) .countries-destination-toc {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-toc *,
+:where([data-country="usa"]) .countries-destination-toc *::before,
+:where([data-country="usa"]) .countries-destination-toc *::after {
+  box-sizing: border-box;
+}
+
+/*
+ * Scroll cue — Figma phone `503:4707` + Arrow 1 `503:4708`.
+ * Arrow left (scaleX −1) · text starts immediately after. Desk hidden.
+ * Text end (bottom) = arrow start height (top) — owner QC 2026-10-10.
+ * TYPE: DS floor 16 (Figma 12 → adapted).
+ */
+:where([data-country="usa"]) .countries-destination-toc__cue {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 4px;
+  width: min(var(--cd-rail-toc, 449.4px), calc(100% - 32px));
+  margin: 0 auto 12px;
+  color: #000;
+  height: auto;
+  overflow: visible;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__cue-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  /* Shift text only — cue/arrow stay put; text bottom ≈ arrow top (−20 from +20) */
+  transform: translateY(-100%);
+}
+
+:where([data-country="usa"]) .countries-destination-toc__cue-text span {
+  display: block;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__cue-arrow {
+  display: block;
+  flex: 0 0 auto;
+  width: 71px;
+  height: auto;
+  margin: -5px 0 0; /* owner QC — 5px up */
+  transform: scaleX(-1) rotate(30deg); /* flip · then 30° clockwise */
+  pointer-events: none;
+  user-select: none;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  width: min(var(--cd-rail-toc, 449.4px), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 33.6px;
+  border: 1.4px solid #ccc;
+  border-radius: 22.4px;
+  background: #fff;
+  /* Study 101 Figma `26:2820` — min-height lock on every tab TOC */
+  min-height: 579.24px;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+  /* Study 101 links frame — keeps stats/footnote band aligned across tabs */
+  min-height: 316.96px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__link {
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  text-align: left;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__link:hover {
+  text-decoration: underline;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__link:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__stats {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14.56px;
+  width: 100%;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__stat-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 19px;
+  flex: 0 0 auto;
+  padding: 9px 6.7px;
+  border-radius: 9px;
+  background: #f1f1f1;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: flex-start;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__stat-value {
+  margin: 0;
+  color: #000;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.4px;
+}
+
+/* Cost TOC long counts (1,126,690) — still display numerals, not Figma body scrap */
+:where([data-country="usa"]) .countries-destination-toc__stat-value--compact {
+  font-size: 28px;
+  letter-spacing: 0.2px;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__stat-label {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  /* PT1 Figma `35:6820` · `\n` in fixture · wrap long labels inside grey box */
+  white-space: pre-line;
+}
+
+/*
+ * PT1 Figma `35:6814` grey = 168.8 · aside `35:6824` = 232.4.
+ * Owner QC: live grey was ~+100px and overlapped Bebas aside — lock Figma widths.
+ */
+:where([data-country="usa"]) .countries-destination-toc[data-block-gate="pt1"] .countries-destination-toc__stat-box {
+  max-width: 168.8px;
+  width: 100%;
+  min-width: 0;
+}
+
+:where([data-country="usa"]) .countries-destination-toc[data-block-gate="pt1"] .countries-destination-toc__stat-aside {
+  max-width: 232.4px;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__stat-aside {
+  margin: 0;
+  /* Figma rail 113 was too narrow at Bebas ≥30 — widen so UNIVERSITIES stays one word */
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 180px;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 30px; /* TYPE LOCK Bebas ≥30; Figma was 28 */
+  font-weight: 400;
+  line-height: 0.9;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: pre-line;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+/*
+ * Short-Term Figma `33:5791` — aside is Roboto body, not Bebas shout.
+ * TYPE LOCK: floor 16 (reject Figma 16.8). Wider rail ~232.
+ */
+:where([data-country="usa"]) .countries-destination-toc__stat-aside--body {
+  max-width: 232.4px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.56px;
+  text-transform: none;
+  white-space: normal;
+}
+
+:where([data-country="usa"]) .countries-destination-toc__footnote {
+  align-self: flex-end;
+  margin: auto 0 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+  text-align: right;
+}
+
+/*
+ * BD4 desk — layout from QC’d `country-body-layout` (>1366).
+ * Sidebar card = 321px (`.w-35` / `.info-card-countries-usa`).
+ * Left-aligned in sleeve (sidebar edge). Card UI stays modular C3.
+ * min-height 579.24 · type DS — untouched. No sticky until 2-col gate.
+ */
+@media (min-width: 1367px) {
+  /* Desk UK body — cue never shown (modular shell hidden; belt + suspenders) */
+  :where([data-country="usa"]) .countries-destination-toc__cue {
+    display: none;
+  }
+
+  :where([data-country="usa"]) .countries-destination-toc__card {
+    width: 321px;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}
+
+/*
+ * iPad + phone — tighter TOC link stack (desk keeps 28).
+ * Owner QC 2026-10-10: 28 reads too open on narrow rails.
+ */
+@media (max-width: 1366px) {
+  :where([data-country="usa"]) .countries-destination-toc__links {
+    gap: 16px;
+  }
+}
+
+/*
+ * BD4 phone — layout from QC’d `country-body-layout` (≤600).
+ * Sidebar column fills stack (`.w-35` / card → width 100%). Type stays DS.
+ */
+@media (max-width: 600px) {
+  /*
+   * Cue rail = hero photo width (210) · page-centered.
+   * Figma arrow `503:4708` + text `503:4707` sit on the right of that column.
+   */
+  :where([data-country="usa"]) .countries-destination-toc__cue {
+    width: min(210px, 100%);
+    max-width: min(210px, 100%);
+    margin-inline: auto;
+    margin-bottom: 12px;
+    justify-content: flex-end;
+    position: relative;
+    left: 50px; /* owner QC — whole cue block → */
+  }
+
+  :where([data-country="usa"]) .countries-destination-toc__card {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+
+  :where([data-country="usa"]) .countries-destination-toc__cue-arrow {
+    width: min(71px, 24vw);
+  }
+}

@@ -1,6 +1,7 @@
 /**
  * explore Countries hero headline — owned CSS (E1).
  * Desktop centered column `17056:19552` (560.8). Phone opening `466:7910` (151).
+ * iPad 601–1366: Figma `22:1740` column (211.4 left) · type = locked floor (title 36 desk).
  *
  * FIGMA ACCESSIBILITY ADAPTATION
  * ORIGINAL: desktop CTA ~11.2px · hint ~12px · mobile lead ~14px · subtitle/hint ~12px
@@ -16,7 +17,7 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  padding: 0 0 24px;
+  padding: 0; /* GAP: seam = shell --ec-hero-gap only */
   background: #fff;
   overflow-x: clip;
   overflow-y: visible;
@@ -122,14 +123,14 @@
 
 @media (min-width: 1367px) {
   .explore-countries-hero {
-    padding: 0 0 40px;
+    padding: 0; /* GAP hero→image 60 — no pad-bottom */
   }
 }
 
 /* Phone ≤600. Figma opening 151 centered. No 85% rail until owner says too edgy. */
 @media (max-width: 600px) {
   .explore-countries-hero {
-    padding: var(--pgs-premium-mob-hero-pad-top) 0 28px;
+    padding: var(--pgs-premium-mob-hero-pad-top) 0 0; /* GAP hero→image 60 — no pad-bottom */
   }
 
   .explore-countries-hero__inner {
@@ -183,5 +184,94 @@
   .explore-countries-hero__cta-hint {
     text-align: left;
     font-size: var(--pgs-type-floor, 16px);
+  }
+}
+
+/*
+ * iPad 601–1366 — Figma `22:1740` layout (211.4 left stack · full-width CTA).
+ * Type = earlier lock: title desk 36/41.6 · body/CTA `--pgs-type-floor` 16 (not Figma 42/19.6).
+ * Phone ≤600 and desk >1366 untouched. Other iPad blocks hidden in shell.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  /* Top pad = Scholarship iPad (shell pull owns toggle align; 16px = ~20 CSS below toggle). */
+  .explore-countries-hero {
+    padding: 16px 0 0;
+  }
+
+  .explore-countries-hero__inner {
+    padding-inline: 0;
+    gap: 0;
+  }
+
+  .explore-countries-hero__headline {
+    align-self: center;
+    align-items: stretch;
+    text-align: left;
+    gap: 0;
+    width: 211.4px;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .explore-countries-hero__title {
+    margin: 0 0 16.8px;
+    font-family: inherit;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 41.6px;
+    text-align: left;
+  }
+
+  .explore-countries-hero__lead {
+    margin: 0 0 11.2px;
+    width: 100%;
+    max-width: none;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    color: #000;
+    text-align: left;
+  }
+
+  .explore-countries-hero__subtitle {
+    margin: 0 0 16.8px;
+    width: 100%;
+    max-width: none;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.4px;
+    color: #000;
+    text-align: left;
+  }
+
+  .explore-countries-hero__cta-block {
+    align-items: stretch;
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    margin-inline: 0;
+    gap: 11.2px;
+  }
+
+  .explore-countries-hero__cta {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+    border-radius: 5.6px;
+    padding: 8.4px 11.2px;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.1px;
+  }
+
+  .explore-countries-hero__cta-hint {
+    text-align: left;
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0;
   }
 }

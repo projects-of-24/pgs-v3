@@ -2,6 +2,10 @@
 
 PGS V3 is a migration of `project-mtfbwu/purpleguide`, not a redesign. The legacy repository is read-only and is the canonical source for routes, markup, styling, responsive behavior, assets, interactions, business workflows, student flows, Purple Premium, and admin/CMS behavior. `project-mtfbwu/pgs-v3` is the only writable repository. PGS V2 must never be inspected or used.
 
+## Public Design System (every chat — asked or not)
+
+Before UI / CSS / layout / type / Figma→code work: **Read** [`docs/PGS-PUBLIC-DESIGN-SYSTEM.md`](docs/PGS-PUBLIC-DESIGN-SYSTEM.md) first. Owner does not need to remind you. Purpose = quality product, not QC FOMO. Figma = layout only · type/GAP/height = ours (desk · iPad · phone). Rule: `.cursor/rules/pgs-public-design-system.mdc`.
+
 ## Non-negotiable parity rules
 
 - Preserve the legacy DOM structure, class names, section order, CSS, fonts, imagery, responsive behavior, animations, and logged-in/logged-out states where practical.

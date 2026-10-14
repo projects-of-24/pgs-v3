@@ -1,0 +1,38 @@
+---
+description: Always open PGS Public Design System first — every chat, asked or not
+alwaysApply: true
+---
+
+# PGS Public Design System — import first (every chat)
+
+Owner lock **2026-10-10**. Locked for **all work on this project from now on**.
+
+## Why
+
+Open [`docs/PGS-PUBLIC-DESIGN-SYSTEM.md`](../../docs/PGS-PUBLIC-DESIGN-SYSTEM.md) to help the owner ship a **better quality product** — not because you are panicking to pass QC, and not because the owner reminded you.
+
+Companion: personal `friend-not-yes-man` (good friend, not a yes-man · no QC FOMO).
+
+## When
+
+**Every chat / turn** on pgs-v3 that may touch public or student UI, CSS, layout, type, spacing, Figma→code, preview labs, or modular body/chrome — **Read the DS first**, whether the owner asks or not.
+
+If the task is clearly backend-only with zero UI: still know the DS exists; open it the moment UI enters scope.
+
+## What to do
+
+1. **Read** `docs/PGS-PUBLIC-DESIGN-SYSTEM.md` (tool Read — not memory).
+2. **Quote** in the reply: Figma = layout only · type=ours (Roboto 16 / Bebas ≥30) · GAP hero60/rest80 · height:auto · desk·iPad·phone.
+3. Then propose / QC / implement per `pgs-propose-before-code`.
+
+## Hard split (do not renegotiate)
+
+| Figma (any band) | Ours (all bands) |
+|---|---|
+| Layout / composition | Text size · font size · GAP · height:auto |
+
+Never ship Figma Roboto px (`14` / `19.6` / `22.4`). Never invent urgency to skip this file.
+
+## Failure
+
+Skipped DS on a UI turn = broken lock. Stop → open DS → correct course. Do not blame “QC pressure.”

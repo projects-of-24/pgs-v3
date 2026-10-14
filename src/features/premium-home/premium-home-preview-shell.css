@@ -53,17 +53,23 @@
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
+ * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
  */
 .premium-home-preview-shell {
-  --ph-section-gap: 100px;
+  --ph-hero-gap: 60px;
+  --ph-section-gap: 80px;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .premium-home-preview-shell { --ph-section-gap: 60px; }
+  .premium-home-preview-shell { --ph-hero-gap: 60px;
+  --ph-section-gap: 80px; }
 }
 @media (max-width: 600px) {
-  .premium-home-preview-shell { --ph-section-gap: 80px; }
+  .premium-home-preview-shell { --ph-hero-gap: 60px; --ph-section-gap: 80px; }
 }
 .premium-home-preview-shell__body > :not(.premium-home-preview-shell__univ-gap):not(.premium-home-hero) {
   margin-top: var(--ph-section-gap);
+}
+/* Specificity must beat :not():not() or hero seam stays section-gap */
+.premium-home-preview-shell .premium-home-preview-shell__body > .premium-home-hero + * {
+  margin-top: var(--ph-hero-gap);
 }

@@ -846,7 +846,7 @@ function ScholarshipsPanel({
               </>
             ) : null}
             {guide.closing ? (
-              <p className="countriesUSA-contain mb-2">
+              <p className="countriesUSA-contain mb-2 ScholarshipApplyGuide__closing">
                 <strong>{guide.closing}</strong>
               </p>
             ) : null}

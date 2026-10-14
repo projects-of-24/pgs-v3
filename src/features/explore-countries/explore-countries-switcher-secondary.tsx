@@ -88,6 +88,7 @@ export function ExploreCountriesSwitcherSecondary() {
       data-block-gate="e2b"
       data-figma-desktop="17056:19615"
       data-figma-mobile="471:4755"
+      data-figma-ipad="22:1817"
       aria-label="Explore more study destinations"
     >
       <div className="explore-countries-switcher__inner">

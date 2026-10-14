@@ -2,7 +2,7 @@
  * Family — public explore Countries hub body.
  * Desktop Figma `17056:19508` · Mobile `466:7315`.
  * No black side-test banner — body starts at closed toggle (shell margin-top clamp).
- * Blocks land gate-by-gate top-down (E1 → … → E4 → E5–E7 shared modules).
+ * Blocks land gate-by-gate. Shared modules: expense · outro (iPad only) · hub · picks.
  */
 import {
   ExploreCountriesBento,
@@ -12,11 +12,11 @@ import { ExploreCountriesHero } from "./explore-countries-hero";
 import { ExploreCountriesSwitcher } from "./explore-countries-switcher";
 import { ExploreCountriesSwitcherSecondary } from "./explore-countries-switcher-secondary";
 import { ExploreCountriesUniv } from "./explore-countries-univ";
+import { OutroCta } from "@/features/shared/outro-cta/outro-cta";
 import { PgsPicks, type PgsPicksCard } from "@/features/shared/pgs-picks/pgs-picks";
 import { PremiumExpense } from "@/features/shared/premium-expense/premium-expense";
 import { SupportHub } from "@/features/shared/support-hub/support-hub";
 import "./explore-countries-preview-shell.css";
-import "./explore-countries-motion.css";
 import "./explore-countries-spacing.css";
 
 type ExploreCountriesPreviewShellProps = {
@@ -53,6 +53,8 @@ export function ExploreCountriesPreviewShell({
         <ExploreCountriesBentoSecondary />
         <ExploreCountriesUniv />
         <PremiumExpense />
+        {/* iPad Figma only — hidden on desk/phone via shell CSS */}
+        <OutroCta />
         <SupportHub />
         <PgsPicks courses={picks} />
       </div>

@@ -290,7 +290,7 @@ export const DEFAULT_SCHOLARSHIP_GUIDE: ScholarshipGuide = {
     'Apply with a clear plan, without last-minute chaos.',
   ],
   closing:
-    'And if you’re part of #PurplePremium? This whole process is already included.',
+    'And if you’re part of #PurplePremium?\nThis whole process is already included.',
 };
 
 function stripHtml(text: string): string {
@@ -647,9 +647,9 @@ export const USA_CONTENT: CountryPageContent = {
       ],
       fundingStats: {
         values: [
-          { value: '54.5%', label: 'Personal & Family' },
-          { value: '19.0%', label: 'U.S College or UNI' },
-          { value: '26.5%', label: 'Other Sources' },
+          { value: '54.5%', label: 'Personal &\nFamily' },
+          { value: '19.0%', label: 'U.S College\nor UNI' },
+          { value: '26.5%', label: 'Other\nSources' },
         ],
         caption: 'Top Funding\nSources for\nInternational\nStudents',
         sourceNote: OPEN_DOORS_NOTE,
@@ -783,8 +783,8 @@ export const USA_CONTENT: CountryPageContent = {
       ],
       stats: {
         values: [
-          { value: '1,126,690', label: 'studied in person' },
-          { value: '18,129', label: 'studied online from abroad' },
+          { value: '1,126,690', label: 'studied in\nperson' },
+          { value: '18,129', label: 'studied online\nfrom abroad' },
         ],
         caption:
           'These numbers are updated every few years. When the next update is out, you’ll see it live right here.',
@@ -916,10 +916,10 @@ export const USA_CONTENT: CountryPageContent = {
       sidebarLinks: DEFAULT_TRACKS_SIDEBAR_LINKS,
       stats: {
         values: [
-          { value: '3.2%', label: 'Health Professions' },
+          { value: '3.2%', label: 'Health\nProfessions' },
           {
             value: '43.6%',
-            label: 'Math,Engineering &\nComputer Science',
+            label: 'Math,\nEngineering &\nComputer\nScience',
           },
           { value: '14.2%', label: 'Business &\nManagement' },
         ],

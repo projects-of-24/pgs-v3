@@ -14,7 +14,7 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  padding: 73px 0 32px;
+  padding: 0; /* GAP total 60 = shell margin only; no padding-block add */
   background: #fff;
   overflow-x: clip;
   color: #000;

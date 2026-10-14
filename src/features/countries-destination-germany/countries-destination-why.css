@@ -1,0 +1,101 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Why study copy — C4 owned CSS.
+ * iPad Figma `26:2840` (rail ~410 · title 28 Medium · gap 22.4).
+ *
+ * TYPE LOCK: Roboto body → `--pgs-type-floor` (16). Do not ship Figma 19.6.
+ * Title 28 Medium (hierarchy). No Bebas in this block.
+ */
+
+:where([data-country="germany"]) .countries-destination-why {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="germany"]) .countries-destination-why *,
+:where([data-country="germany"]) .countries-destination-why *::before,
+:where([data-country="germany"]) .countries-destination-why *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="germany"]) .countries-destination-why__title {
+  width: min(var(--cd-rail-why, 410.2px), calc(100% - 32px));
+  margin: 0 auto;
+  color: #000;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.56px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-why__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: min(var(--cd-rail-why, 410.2px), calc(100% - 32px));
+  margin: 22.4px auto 0;
+  height: auto;
+}
+
+/* SC2 — Figma `34:6281` · no title · body starts flush */
+:where([data-country="germany"]) .countries-destination-why--no-title .countries-destination-why__body {
+  margin-top: 0;
+}
+
+:where([data-country="germany"]) .countries-destination-why__p {
+  margin: 0 0 1em;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.112px;
+  text-align: left;
+  white-space: pre-line; /* CS2 quoted questions · newlines in fixture */
+}
+
+:where([data-country="germany"]) .countries-destination-why__p:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * BD5 desk — layout from QC’d `country-body-layout` (>1366).
+ * Main column (`.w-80` / `.w-70`) fills remaining sleeve width.
+ * Stacked until 2-col gate → Why fills sleeve. Type / iPad rails untouched.
+ */
+@media (min-width: 1367px) {
+  :where([data-country="germany"]) .countries-destination-why__title,
+  :where([data-country="germany"]) .countries-destination-why__body {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}
+
+/* iPad 601–1366 — LOCKED · do not touch */
+
+/*
+ * BD5 phone — layout from QC’d `country-body-layout` (≤600).
+ * Main column fills stack (`.w-80` → 100%). Type stays DS.
+ */
+@media (max-width: 600px) {
+  :where([data-country="germany"]) .countries-destination-why__title,
+  :where([data-country="germany"]) .countries-destination-why__body {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+
+  /* Mobile font pass — match other section titles (iPad keeps 28) */
+  :where([data-country="germany"]) .countries-destination-why__title {
+    font-size: 30px;
+  }
+}

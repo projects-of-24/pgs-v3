@@ -1,0 +1,919 @@
+/* pgs-country-scoped */
+/**
+ * Country destination template shell — P0.
+ * NEVER add a black side-test banner (owner lock 2026-09-09).
+ * Chrome is LOCKED. Body empty until the next gate (C1 hero).
+ *
+ * Shared template — USA fixture first; other countries import the same shell + content slots.
+ * Pull-up + desk univMeet gap from shared `premium-panel-lock.css`. Do not edit that file.
+ */
+
+@import "../premium-panel/premium-panel-lock.css";
+
+.countries-destination-preview-shell:where([data-country="uk"]) {
+  --pgs-type-floor: 16px;
+  /*
+   * GAP LOCK — owner 2026-10-10. hero→next 60 · rest 80 (all bands).
+   * Applied when body sections mount (C1+).
+   */
+  --cd-hero-gap: 60px;
+  --cd-section-gap: 80px;
+  /*
+   * Body rails — narrow default = Figma `26:2456` (LOCKED lab).
+   * Wide (`data-rail=wide`) = Figma `27:2999` — clamps via min(WIDE, 100% - 32px).
+   */
+  --cd-rail-toc: 449.4px;
+  --cd-rail-why: 410.2px;
+  --cd-rail-overview: 413px;
+  --cd-rail-choose-title: 415.8px;
+  --cd-rail-choose: 410.2px;
+  --cd-rail-tracks: 432.6px;
+  --cd-overview-label-width: 50%;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+  background: #fff;
+  margin-top: var(--pgs-premium-shell-pull);
+  position: relative;
+  z-index: 0;
+}
+
+/*
+ * Wide lab — Figma `27:2999` · /preview/countries-2
+ * Owner 2026-10-10: TOC card width = same as /preview/countries (449.4).
+ * Do not widen TOC to Figma 678. Other blocks keep their wide rails.
+ */
+.countries-destination-preview-shell:where([data-country="uk"])[data-rail="wide"] {
+  --cd-rail-toc: 449.4px; /* match Preview /countries TOC — owner QC */
+  --cd-rail-why: 619px;
+  --cd-rail-overview: 623px;
+  --cd-rail-choose-title: 415.8px;
+  --cd-rail-choose: 410.2px;
+  --cd-rail-tracks: 653px;
+  --cd-overview-label-width: 207px;
+}
+
+.countries-destination-preview-shell:where([data-country="uk"]) *,
+.countries-destination-preview-shell:where([data-country="uk"]) *::before,
+.countries-destination-preview-shell:where([data-country="uk"]) *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="uk"]) .countries-destination-preview-shell__body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* height: auto — owner lock; every segment grows with content */
+  min-height: 0;
+}
+
+:where([data-country="uk"]) .countries-destination-preview-shell__univ-gap {
+  display: none;
+  flex: 0 0 auto;
+  width: 100%;
+  pointer-events: none;
+}
+
+/*
+ * Band split (About method — owner 2026-10-10):
+ * >1366  → desk-qc = /countriesuk React body + owned UK CSS (1:1)
+ * ≤1366  → modular iPad/phone lab (iPad LOCKED — do not restyle)
+ */
+:where([data-country="uk"]) .countries-destination-preview-shell__desk-qc {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+:where([data-country="uk"]) .countries-destination-preview-shell__modular {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 1367px) {
+  .countries-destination-preview-shell:where([data-country="uk"]) {
+    overflow-x: visible;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc {
+    display: block;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular {
+    display: none;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    > .countries-destination-preview-shell__univ-gap {
+    display: block;
+    height: var(--pgs-premium-desk-univ-gap);
+  }
+
+  /*
+   * Desk QC — Figma all-pages-v6 `17056:20986` (overview) + `17056:20997` (choose).
+   * Owned-split was crushing Why Choose mid cards (icon max-width:100% in tiny flex).
+   * Rest of UK body OK — touch only these two. Type stays DS floors where we set size.
+   */
+  /*
+   * Overview table stroke — Figma `17056:20989`.
+   * Owned `.table-border-overflow` draws 1px + table also bordered → double outer.
+   * One stroke only: 0.8px / radius 16 (Figma). Internal rules same weight.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .table-responsive.w-60.table-border-overflow {
+    width: min(362.4px, 100%) !important;
+    max-width: 100%;
+    border: 0 !important; /* kill owned double outer */
+    border-radius: 16px !important;
+    overflow: hidden; /* clip grid to rounded corners */
+    background: #fff;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc table.table-bordered {
+    width: 100%;
+    margin: 0 !important;
+    border: 0.8px solid #000 !important; /* Figma outer */
+    border-radius: 16px !important;
+    overflow: hidden;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    background: #fff;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc table.table-bordered > :not(caption) > * > * {
+    border: 0 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    table.table-bordered
+    th.countriesUSA-title-table-left,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    table.table-bordered
+    td.countriesUSA-title-table-right {
+    border-bottom: 0.8px solid #000 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    table.table-bordered
+    th.countriesUSA-title-table-left {
+    border-right: 0.8px solid #000 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    table.table-bordered
+    tr:last-child
+    th,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    table.table-bordered
+    tr:last-child
+    td {
+    border-bottom: 0 !important;
+  }
+
+  /* Owner: overview value column → black (was owned grey) */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    table.table-bordered
+    td.countriesUSA-title-table-right {
+    color: #000 !important;
+  }
+
+  /* Kill legacy 90px section air — scholarships (and any tab using same pad) */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-scholarship-main
+    > section,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-short-main
+    > section,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-tracks-main
+    > section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Owner QC: Study 101 Why title — margin-top 22 aligns with left TOC */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    #country-study101-why-title.country-study101-why-figma-uk__title {
+    margin-top: 22px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Owner QC: Why Students Choose (`#Study_USA_3`) — section pad 0 */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    #Study_USA_3
+    > section.pt-0.pb-0,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    #Study_USA_3
+    section {
+    padding: 0 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box {
+    width: min(701px, 120%);
+    max-width: none;
+    overflow: visible;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    > .d-flex.align-items-start {
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+    width: 100%;
+    gap: 30px !important; /* DESK LOCK: card/block gap */
+    margin-top: 0 !important; /* kill mt-2 — title→cards via h5 mb 20 */
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    > .d-flex
+    > .w-65 {
+    width: auto !important;
+    flex: 1.05 1 0 !important;
+    min-width: 200px;
+    max-width: 230px;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    > .d-flex
+    > .d-flex.flex-column {
+    /* owned-split may omit Bootstrap .flex-column → default row overlaps mid cards */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: auto !important;
+    flex: 1.15 1 0 !important;
+    min-width: 210px;
+    max-width: 240px;
+    gap: 30px !important; /* owner lock: card/block gap 30 */
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    > .d-flex
+    > .d-flex.flex-column
+    > .w-100 {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .card-box-border {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .card-box-border.d-flex {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .icon-box-position {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 32px;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .icon-box-position
+    img {
+    width: 32px !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    img.mobile-35px {
+    width: 40px !important;
+    max-width: none !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .bg-light-box {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .bg-light-box
+    h6,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    .pt-50
+    h6 {
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  /*
+   * Desk type pass — PGS-PUBLIC-DESIGN-SYSTEM (owner 2026-10-10).
+   * FIGMA ACCESSIBILITY ADAPTATION: Hostinger/UK body scrap 11–15 → floor 16.
+   * Bebas caption scrap 20 → ≥30. Titles/stat numerals left ≥ floor.
+   * Scope: desk-qc only · iPad modular untouched.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc {
+    --pgs-type-floor: 16px;
+  }
+
+  /*
+   * Tab bar — Figma `17056:21873` (964×48 · pad 8 equal T/B).
+   * Live was ~66 (line-height 30 + uneven pad). height:auto · pad 8/8.
+   * FIGMA ACCESSIBILITY ADAPTATION: label 14 → Roboto 16.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new {
+    box-sizing: border-box;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 8px !important;
+    line-height: normal !important;
+    border-radius: 12.8px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    line-height: normal !important;
+    gap: 0;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: normal !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li
+    > a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    /* Modular C2 colors (owner QC) — not Hostinger navy/gray */
+    color: rgba(0, 0, 0, 0.7) !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li.active
+    > a,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li.nav.active
+    > a {
+    color: #000 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li
+    > a:hover,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li
+    > a:focus-visible {
+    color: #000 !important; /* beat global a:hover --base-color */
+  }
+
+  /* Tracks pill owns its own 8px pad — don’t stack on the <a> */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li
+    > a:has(.header_btn-active) {
+    padding: 0 !important;
+    color: #fff !important; /* outer <a> must not paint gray into pill */
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .header_btn-active {
+    box-sizing: border-box;
+    padding: 8px 12px !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li
+    > a:has(.header_btn-active):hover,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    > li
+    > a:has(.header_btn-active):focus-visible,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .header_btn-active:hover,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    a:has(.header_btn-active):hover
+    .header_btn-active {
+    color: #fff !important; /* filled CTA label lock */
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .portfolio-filter
+    a,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-usa-tab-style-new
+    .header_btn-active,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    a,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .countriesUSA-contain,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-study101-why-figma-uk__p,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .countriesUSA-title-table-left,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .countriesUSA-title-table-right,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-section-contain,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .fs-14,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .mobile-fs-14,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-stat-values
+    small,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-stat-values
+    small
+    span,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-study-sidebar__source,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    > .w-50
+    p,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    > .w-50
+    p
+    span {
+    font-size: var(--pgs-type-floor, 16px) !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    .country-stat-caption,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    .country-stat-caption
+    span {
+    font-size: 26px !important; /* owner-named Bebas caption (all tabs) */
+  }
+
+  /* Quote marks used Bebas via .fnt-family — keep floor as Roboto, not display */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .usa-counrty-usa-purple-gray-box
+    span.fnt-family {
+    font-family: Roboto, system-ui, sans-serif !important;
+    font-size: var(--pgs-type-floor, 16px) !important;
+  }
+
+  /*
+   * TOC / 101 sidebar — owner DevTools lock (Study 101 card), all tabs.
+   * Owner lock: width 294 · height 640 · pad 24 24 40 24 (all tabs).
+   * Spacer flexes so stats sit at bottom (Figma composition).
+   * FIGMA ACCESSIBILITY ADAPTATION: Bebas 20→30 · labels 12.8→16.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .d-flex.gap-3
+    > .w-35 {
+    flex: 0 0 294px !important;
+    width: 294px !important;
+    max-width: 294px !important;
+    min-width: 294px !important;
+    height: auto !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa.country-study-sidebar,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa.country-budgeting-card,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa.country-visa-sidebar,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa.country-short-sidebar,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa.country-scholarship-sidebar,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa.country-tracks-sidebar {
+    box-sizing: border-box;
+    width: 294px !important;
+    max-width: 294px !important;
+    min-width: 294px !important;
+    height: 640px !important;
+    min-height: 640px !important;
+    max-height: 640px !important;
+    padding: 24px 24px 40px !important;
+    overflow: visible !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    [class$="__spacer"] {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    [class$="__footer"] {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    .country-stat-sidebar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    .country-stat-values {
+    /* Scholarship lock — hug content · type 24/15 · every tab */
+    flex: 0 0 auto;
+    width: fit-content !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 6px 8px;
+    border-radius: 6.4px;
+    background: #f1f1f1;
+    overflow: visible;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    .country-stat-number {
+    font-size: 24px !important; /* owner: 32 → 24 all tabs */
+    line-height: 1 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    .country-stat-values
+    small,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    .country-stat-values
+    small
+    span {
+    font-size: 15px !important; /* owner-named (exceptional block under DS floor) */
+    margin-top: 4px;
+    display: block;
+    white-space: nowrap; /* each `\n` line stays whole — no baccalaure|ate */
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    .info-card-countries-usa
+    .country-stat-caption {
+    flex: 1 1 auto; /* fill beside grey — beat countries.css max-width 110 */
+    width: auto;
+    max-width: none !important;
+    min-width: 0;
+    margin: 0 !important;
+    line-height: 1 !important;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    .info-card-countries-usa
+    .country-stat-caption
+    span {
+    display: block; /* each content `\n` line */
+    white-space: normal; /* long tab captions wrap in 321; short lines stay whole */
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+    font-size: 26px !important; /* owner-named Bebas caption */
+    line-height: 1 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .info-card-countries-usa
+    [class$="__source"] {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.85rem;
+    left: auto;
+    z-index: 2;
+    font-size: var(--pgs-type-floor, 16px) !important;
+    line-height: 1.2;
+    pointer-events: none;
+  }
+
+  /* Short-term footnote is prose, not a Bebas shout — keep locked 321×580 */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    .country-short-sidebar
+    .country-stat-caption,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    .country-short-sidebar
+    .country-stat-caption
+    span {
+    font-family: Roboto, system-ui, sans-serif !important;
+    font-size: var(--pgs-type-floor, 16px) !important;
+    font-weight: 400 !important;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.35 !important;
+  }
+
+  /*
+   * Scholarship Apply Guide — owned strong was 19px / lh 20 (ghosted wrap).
+   * DS: Roboto · real bold · air between Figma closing lines.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .ScholarshipApplyGuide
+    strong {
+    font-family: Roboto, system-ui, sans-serif !important;
+    font-size: var(--pgs-type-floor, 16px) !important;
+    font-weight: 700 !important;
+    font-synthesis: none;
+    line-height: 1.35 !important;
+    text-shadow: none !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .ScholarshipApplyGuide__closing
+    strong {
+    white-space: pre-line;
+    font-size: 30px !important; /* Figma closing shout · same as modular */
+    line-height: 1.2 !important;
+  }
+
+  /* Owner QC: Track / Field / Ideal For header boxes — 4px gap */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-tracks-columns {
+    gap: 4px !important;
+    column-gap: 4px !important;
+  }
+
+  /*
+   * Intro (Comprehensive Guide… + CTA) — was py-5 ~90 + CTA mb-8 ~77.
+   * Owner QC 2026-10-10: hero → title = 50px (kill Bootstrap .wrapper-content.mt-4 ~66).
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .wrapper-content.mt-4 {
+    margin-top: 0 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    section.mobile-usa-content {
+    padding-top: 50px !important;
+    padding-bottom: 30px !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    section.mobile-usa-content
+    .col-md-4.mb-8 {
+    margin-bottom: 0 !important;
+  }
+
+  /*
+   * Why Choose / Spend — title → cards 20 (kill ReasonsCardGrid section pt 90).
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    section.pt-0.pb-0:has(.usa-counrty-usa-purple-gray-box) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-cost-main
+    h5.countriesUSA-title.mt-5,
+  :where([data-country="uk"]) .countries-destination-preview-shell__desk-qc
+    .country-file-uk
+    h5.countriesUSA-title.mt-5 {
+    margin-bottom: 20px !important;
+  }
+
+}
+
+@media (min-width: 601px) and (max-width: 1366px) {
+  .countries-destination-preview-shell:where([data-country="uk"]) {
+    --cd-hero-gap: 60px;
+    --cd-section-gap: 80px;
+    /* Same iPad shell fit as Explore / Scholarship — closed #toggleBtn ruler */
+    margin-top: calc(-1 * var(--pgs-chrome-strip-pull) + 43.7px - 1.089vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .countries-destination-preview-shell:where([data-country="uk"]) {
+    --cd-hero-gap: 60px;
+    --cd-section-gap: 80px;
+    --pgs-type-floor: 16px;
+    overflow-x: visible;
+    /*
+     * Phone: hero owns the pull (`countries-destination-hero` −57 =
+     * former toggle-lock −77 + 20 down, iPad-style air). No shell pull.
+     */
+    margin-top: 0;
+  }
+
+  /*
+   * Beat `[data-rail=wide]` desk/iPad rail tokens (higher specificity).
+   * Phone rails fill sleeve — country-body mobile lesson.
+   */
+  .countries-destination-preview-shell:where([data-country="uk"])[data-rail="wide"],
+  .countries-destination-preview-shell:where([data-country="uk"])[data-rail="narrow"] {
+    --cd-rail-toc: 100%;
+    --cd-rail-why: 100%;
+    --cd-rail-overview: 100%;
+    --cd-rail-choose-title: 100%;
+    --cd-rail-choose: 100%;
+    --cd-rail-tracks: 100%;
+    --cd-overview-label-width: 50%;
+  }
+
+  /*
+   * Mobile layout — owner 2026-10-10:
+   * Body = full shell width (no 100vw — that skewed L/R vs scrollbar).
+   * Hero centers on page · tabs/panels keep 85% rail.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__body {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__body > .countries-destination-hero {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__body
+    > :not(.countries-destination-hero):not(
+      .countries-destination-preview-shell__univ-gap
+    ) {
+    width: 85%;
+    max-width: 85%;
+    margin-inline: auto;
+  }
+
+  /*
+   * Mobile font pass (2026-10-10) — DS floors on modular body.
+   * Roboto UI ≥16 · Bebas ≥30. Desk/iPad LOCKED — this media only.
+   */
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-tabs__tab,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-toc__link,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-toc__stat-label,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-toc__footnote,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-why__p,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-why__body
+    p,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-overview__table
+    th,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-overview__table
+    td,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-choose__pill-label,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-choose__pill-heading,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-choose__timeline-label,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-choose__tagline,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-choose__quote,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-tracks__body,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-hero__lead,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-hero__subtitle,
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-hero__cta {
+    font-size: var(--pgs-type-floor, 16px) !important;
+  }
+
+  :where([data-country="uk"]) .countries-destination-preview-shell__modular
+    .countries-destination-toc__stat-aside:not(
+      .countries-destination-toc__stat-aside--body
+    ) {
+    font-size: 30px !important; /* Bebas ≥30 */
+  }
+}
+
+/* GAP LOCK — first after hero 60; later siblings 80 */
+:where([data-country="uk"]) .countries-destination-preview-shell__body
+  > :not(.countries-destination-preview-shell__univ-gap):not(
+    .countries-destination-hero
+  ) {
+  margin-top: var(--cd-section-gap);
+}
+:where([data-country="uk"]) .countries-destination-preview-shell
+  .countries-destination-preview-shell__body
+  > .countries-destination-hero
+  + * {
+  margin-top: var(--cd-hero-gap);
+}
+
+/* Panels are wrappers — gap between sections inside tab panels */
+.countries-destination-preview-shell:where([data-country="uk"]) [data-cd-panel] > * + * {
+  margin-top: var(--cd-section-gap);
+}
+.countries-destination-preview-shell:where([data-country="uk"]) [data-cd-panel] > *:first-child {
+  margin-top: 0;
+}

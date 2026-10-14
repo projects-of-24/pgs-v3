@@ -1,0 +1,88 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Do's / Don'ts — V5 CSS pass.
+ * Mobile `.mobile-points-usa` → iPad Figma `30:5220` (stacked Criteria / Do’s / Don’ts).
+ *
+ * TYPE LOCK: Roboto → `--pgs-type-floor` (16). Reject Figma 19.6 / 22.4.
+ * height: auto.
+ */
+
+:where([data-country="canada"]) .countries-destination-visa-dos {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="canada"]) .countries-destination-visa-dos *,
+:where([data-country="canada"]) .countries-destination-visa-dos *::before,
+:where([data-country="canada"]) .countries-destination-visa-dos *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="canada"]) .countries-destination-visa-dos__title {
+  width: min(299.6px, calc(100% - 32px));
+  margin: 0 auto;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.56px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="canada"]) .countries-destination-visa-dos__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: min(372.4px, calc(100% - 32px));
+  margin: 16.8px auto 0;
+  height: auto;
+}
+
+:where([data-country="canada"]) .countries-destination-visa-dos__group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 14px;
+  height: auto;
+}
+
+/* Mobile h6 pill → Figma bordered header */
+:where([data-country="canada"]) .countries-destination-visa-dos__heading {
+  width: 100%;
+  margin: 0;
+  padding: 6px 14px;
+  border: 1.4px solid rgba(0, 0, 0, 0.2);
+  border-radius: 11.2px;
+  background: #fff;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="canada"]) .countries-destination-visa-dos__row {
+  width: 100%;
+  margin: 0;
+  padding: 6px 14px;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.35px;
+  text-align: left;
+  height: auto;
+}

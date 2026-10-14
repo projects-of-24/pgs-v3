@@ -1,0 +1,95 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Visa types — V2 CSS pass (mobile visa-card → iPad).
+ * Figma `30:5086` · prep `30:5085`. Same structure as mobile; sizes from Figma.
+ *
+ * TYPE LOCK: Roboto → `--pgs-type-floor` (16). Reject Figma 19.6 / mobile 14.
+ */
+
+:where([data-country="france"]) .countries-destination-visa-types {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+}
+
+:where([data-country="france"]) .countries-destination-visa-types *,
+:where([data-country="france"]) .countries-destination-visa-types *::before,
+:where([data-country="france"]) .countries-destination-visa-types *::after {
+  box-sizing: border-box;
+}
+
+/*
+ * Shared left rail with prep (“International applicants…”).
+ * Cards stay Figma 294; prep stays 449.4 — both start on the same x.
+ */
+:where([data-country="france"]) .countries-destination-visa-types__list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 16.8px;
+  width: min(294px, calc(100% - 32px));
+  /* same left edge as __prep (449.4 centered), not centered 294 */
+  margin: 0 auto 0 max(16px, calc(50% - min(449.4px, calc(100% - 32px)) / 2));
+  padding: 0;
+  height: auto;
+}
+
+/* Mobile `.visa-card` */
+:where([data-country="france"]) .countries-destination-visa-types__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: auto;
+}
+
+/* Mobile `.visa-card h3` — black bar width-to-text (flush with yellow card) */
+:where([data-country="france"]) .countries-destination-visa-types__name {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 18px;
+  background: #000;
+  color: #fff;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 32px;
+  white-space: nowrap;
+  height: auto;
+}
+
+/* Mobile `.visa-card p` — yellow body; Figma fill #ffc524 */
+:where([data-country="france"]) .countries-destination-visa-types__desc {
+  width: 100%;
+  margin: 0;
+  padding: 11.2px;
+  background: #ffc524;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.56px;
+  height: auto;
+}
+
+:where([data-country="france"]) .countries-destination-visa-types__prep {
+  width: min(449.4px, calc(100% - 32px));
+  margin: 16px auto 0;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.112px;
+  text-align: left;
+  height: auto;
+}

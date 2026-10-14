@@ -10,10 +10,10 @@ Living map for the owner. Update only at **phase ends**, not every pixel tweak.
 
 | Surface | URL | What it is |
 |---|---|---|
-| **Preview (QC mirror)** | `/preview/cvreadyprogram` | Same modular body as live. |
-| **Live (cutover DONE)** | `/cvreadyprogram` | Purified modular React body. Hostinger `cvReadyProgramHtml` archive kept, **not served**. |
+| **Preview (QC mirror)** | `/preview/cvreadyprogram` | Modular body + React chrome + **OWNED_SPLIT (HR-cvready-1/2, 2026-10-11)**. |
+| **Live (cutover DONE)** | `/cvreadyprogram` | Purified modular React body; **string chrome until HR-cvready-3**. Hostinger `cvReadyProgramHtml` archive kept, **not served**. |
 
-Chrome aesthetic polish / iPad = later shared pass.
+**H-R order (owner):** chrome → OWNED_SPLIT → desk + phone QC (DS) → iPad pass later → live cutover.
 
 ---
 
@@ -116,6 +116,7 @@ Shared reusable later: `OutroCta` · `SupportHub`.
 | 2026-09-24 | **CR-OPEN LOCK** | Opening + full modular body locked on preview. Live Hostinger untouched until cutover GO AHEAD. |
 | 2026-09-24 | **CUTOVER** | Owner cutover GO AHEAD — live `/cvreadyprogram` → modular shell (`live`). Hostinger `cvReadyProgramHtml` unhooked (archive kept). |
 | 2026-09-24 | **Hint Figma** | Standalone hint → “select a pre selected group below.” · arrow down to presets (desk `19050:12043` · mob `19055:12561`). Dropped old “Filter out above”. |
+| 2026-10-11 | **Desk type + gap** | DS: Roboto floor 16 (hero body · presets chips · bento copy · howto tip · filter 14→16) · bento numeral 45 · GAP video=hero 60 · opening tight · later 80 · pad stack killed. iPad/phone later. |
 
 ### Opening (locked)
 

@@ -1,10 +1,11 @@
 /**
  * explore Countries university discovery — owned CSS (E4).
- * Desktop `17056:19761` · Mobile ≤600 (`473:4836` + logos/collage).
+ * Desktop `17056:19761` · Mobile ≤600 (`473:4836`) · iPad `22:2166` (532×1358).
  * Page-local fork of Premium Home H7 sizing.
  *
  * FIGMA ACCESSIBILITY ADAPTATION
- * Journey / bullets / connect mob use max(16px, Figma).
+ * Journey / bullets / connect: Roboto `--pgs-type-floor` 16 (Figma often under).
+ * Bebas paths ≥30 on iPad.
  */
 
 .explore-countries-univ {
@@ -322,15 +323,146 @@
   }
 }
 
+/*
+ * iPad 601–1366 — Figma `22:2166` (STEP 7 / E4).
+ * Grey stage 532×1358 · intro+checks · logo grid · paths+connect+collage.
+ * Same DOM; mob-face checks + connect. Desk/phone untouched.
+ */
 @media (min-width: 601px) and (max-width: 1366px) {
+  .explore-countries-univ {
+    padding: 0 0 32px;
+    overflow-x: visible; /* base is clip — do not shear logo rail */
+  }
+
   .explore-countries-univ__panel {
-    padding: 40px 32px;
-    gap: 48px;
+    width: 532px;
+    max-width: calc(100% - 24px);
+    margin: 0 auto;
+    padding: 42px 8px 35px;
+    gap: 54px;
+    border-radius: 12px;
+    align-items: center;
+    overflow: visible; /* 9 logo chips must not clip at panel edge */
+  }
+
+  .explore-countries-univ__intro {
+    max-width: 383.6px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 11.2px;
+  }
+
+  .explore-countries-univ__title {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.25;
+    letter-spacing: 0.2px;
+  }
+
+  .explore-countries-univ__lead {
+    max-width: none;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .explore-countries-univ__journey {
+    max-width: none;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+    letter-spacing: 0.06px;
+  }
+
+  .explore-countries-univ__bullets {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 9.9px;
+    max-width: 352.8px;
+    margin: 0;
+  }
+
+  .explore-countries-univ__bullets li {
+    gap: 5.6px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+    font-weight: 600;
+    white-space: normal;
+  }
+
+  .explore-countries-univ__bullet-check {
+    display: block;
+    flex: 0 0 19.6px;
+    width: 19.6px;
+    height: 19.6px;
+  }
+
+  /*
+   * Logo rail: DOM has 9 chips (desk); Figma row shows 8 @ 50.4.
+   * Fit all 9 inside panel — no fixed 516×50.4 that overflows the 9th.
+   */
+  .explore-countries-univ__logos {
+    gap: 16.8px;
+    width: 100%;
+    max-width: 516.1px;
+    min-width: 0;
   }
 
   .explore-countries-univ__logo-row {
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
+    gap: 7.8px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .explore-countries-univ__logo-item {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    max-width: 50.4px;
+    height: 38.3px;
+    padding: 7.4px 6px;
+    border-radius: 11.2px;
+  }
+
+  .explore-countries-univ__logo {
+    width: 23.5px;
+    height: 23.5px;
+    max-width: 100%;
+  }
+
+  .explore-countries-univ__paths {
+    max-width: 275.8px;
+    margin: 0 auto;
+    font-size: 36px; /* Bebas ≥30 lock */
+    line-height: 0.92;
+    text-align: center;
+  }
+
+  .explore-countries-univ__connect {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 22.4px;
+    width: 494.2px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .explore-countries-univ__connect-copy--desk {
+    display: none;
+  }
+
+  .explore-countries-univ__connect-copy--mob {
+    display: block;
+    max-width: 275.8px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .explore-countries-univ__collage {
+    width: 494.2px;
+    max-width: 100%;
+    border-radius: 11.2px;
   }
 }

@@ -15,7 +15,7 @@ description: >-
 
 # PGS master workflow (do not re-derive)
 
-**Read this skill first** on any PGS task. Companion skills: `pgs-propose-before-code`, `pgs-preflight-db-api-pages` (every implementation: DB · API · pages → owner approve · no YOLO if DB missing), `pgs-scout-what-why-how`, `pgs-modular-public-chrome`, `pgs-public-move-out`, `pgs-no-touch-unapproved-ui`, `pgs-never-invent`, `pgs-owner-teach-map` (owner briefs · deep teach · living maps), `pgs-backend-phase-wire` (backend gates · FE↔BE↔DB map · day-1 security · living Kanban MD), `pgs-student-family-doorman` (anon+standard Family A · Premium Family B separate · no ?premium= mix), `pgs-ipad-paper-pass` (iPad page: chrome import · owned split · design body; ignore phone×1.4), `pgs-ipad-modular-body-pass` (Premium/medical iPad body QC speed: 601–800 stack · 801–1366 wide · freeze QC’d · DevTools→modular · never 767), `pgs-ipad-hero-body` (legacy recall only when owner says recall on mauve-panel — not for modular medical bodies), `pgs-face-card-pass` (listing faces: desk→mob pass · [/preview/purpleevents-face](/preview/purpleevents-face) · full Figma size · no transform scale), `pgs-upcoming-sessions` (E8 rail: 6 fixtures · E8a logic → E8b desk → E8c mob → E8d interact → E8e lock · [#pe-e8](/preview/purpleevents-lite#pe-e8)), `pgs-admin-ops` (Admin/Ops cockpit · one staff id · permission+scope · Reference Bank · [`docs/PGS-ADMIN-OPS.md`](../../docs/PGS-ADMIN-OPS.md)), `pgs-cms` (CMS · [`docs/PGS-CMS.md`](../../docs/PGS-CMS.md)), `pgs-student-ops` (Student Ops · [`docs/PGS-STUDENT-OPS.md`](../../docs/PGS-STUDENT-OPS.md)), `pgs-student-profile` (Profile hub PARKED · [`docs/PGS-STUDENT-PROFILE.md`](../../docs/PGS-STUDENT-PROFILE.md)), `pgs-popups` (Popups + Zoho links · [`docs/PGS-POPUPS.md`](../../docs/PGS-POPUPS.md)), `pgs-content-pass-then-code` (visual/position/next block: content pass, assess, then code).
+**Read this skill first** on any PGS task. **Step 0 (owner 2026-10-10):** open task skills + [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md) **before** inventing or coding — quality over quantity; never skip for “urgency.” Full gate in `pgs-propose-before-code`. Companion skills: `pgs-propose-before-code`, `pgs-preflight-db-api-pages` (every implementation: DB · API · pages → owner approve · no YOLO if DB missing), `pgs-scout-what-why-how`, `pgs-modular-public-chrome`, `pgs-public-move-out`, `pgs-no-touch-unapproved-ui`, `pgs-never-invent`, `pgs-owner-teach-map` (owner briefs · deep teach · living maps), `pgs-backend-phase-wire` (backend gates · FE↔BE↔DB map · day-1 security · living Kanban MD), `pgs-student-family-doorman` (anon+standard Family A · Premium Family B separate · no ?premium= mix), `pgs-ipad-paper-pass` (iPad page: chrome import · owned split · design body; ignore phone×1.4), `pgs-ipad-modular-body-pass` (Premium/medical iPad body QC speed: 601–800 stack · 801–1366 wide · freeze QC’d · DevTools→modular · never 767), `pgs-ipad-hero-body` (legacy recall only when owner says recall on mauve-panel — not for modular medical bodies), `pgs-face-card-pass` (listing faces: desk→mob pass · [/preview/purpleevents-face](/preview/purpleevents-face) · full Figma size · no transform scale), `pgs-upcoming-sessions` (E8 rail: 6 fixtures · E8a logic → E8b desk → E8c mob → E8d interact → E8e lock · [#pe-e8](/preview/purpleevents-lite#pe-e8)), `pgs-admin-ops` (Admin/Ops cockpit · one staff id · permission+scope · Reference Bank · [`docs/PGS-ADMIN-OPS.md`](../../docs/PGS-ADMIN-OPS.md)), `pgs-cms` (CMS · [`docs/PGS-CMS.md`](../../docs/PGS-CMS.md)), `pgs-student-ops` (Student Ops · [`docs/PGS-STUDENT-OPS.md`](../../docs/PGS-STUDENT-OPS.md)), `pgs-student-profile` (Profile hub PARKED · [`docs/PGS-STUDENT-PROFILE.md`](../../docs/PGS-STUDENT-PROFILE.md)), `pgs-popups` (Popups + Zoho links · [`docs/PGS-POPUPS.md`](../../docs/PGS-POPUPS.md)), `pgs-content-pass-then-code` (visual/position/next block: content pass, assess, then code).
 
 Owner docs (detail): [`docs/MODULAR-PUBLIC-FRONTEND.md`](../../docs/MODULAR-PUBLIC-FRONTEND.md) · [`docs/PUBLIC-MOVE-OUT-PLAN.md`](../../docs/PUBLIC-MOVE-OUT-PLAN.md) · [`docs/BACKEND-10-10-PLAN.md`](../../docs/BACKEND-10-10-PLAN.md) · [`docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md`](../../docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md)
 
@@ -41,7 +41,7 @@ LATER   Type floor — final-draft check only, not during fast section QC
         Skill: `pgs-ipad-hero-body` · do not sweep mid-page
 
 ALWAYS  CMS (junior) — leave alone unless owner reopens by name
-ALWAYS  Opus architect plan → owner GO AHEAD → Sonnet 5.5 or this agent implements → gates → owner QC
+ALWAYS  Opus architect plan → owner GO AHEAD → Sonnet 5.5 or this agent implements → mid-build figuring-out → Opus again → gates → owner QC
 ALWAYS  Content pass (assess, no code) → owner confirms the relationship → then code
 ```
 
@@ -89,7 +89,10 @@ One change for that relationship. Re-measure it. Stop for owner QC. Do not start
 **Owner strengths:** product, Figma, SQL/Airtable sense, role “wrong key must fail” tests.  
 **Agent strengths:** Next wiring, RLS, migrations, async plumbing, CodeRabbit-ready diffs.
 
-## Architect, then implement (owner lock 2026-10-02)
+## Architect, then implement (owner lock 2026-10-02 · expanded 2026-10-10)
+
+**Portable skill (all projects):** [`opus-plan-execute`](~/.cursor/skills/opus-plan-execute/SKILL.md) · living MD: [`docs/MODEL-ROUTING.md`](../../docs/MODEL-ROUTING.md)  
+**Frontend remaining (iPad + header formulas, 2026-10-10):** [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md) — do not reinvent bands; Opus plans four bands once, then execute.
 
 **Skill path from now:** Opus plans. Sonnet 5.5 or this agent implements. Do not skip the plan to save a turn.
 
@@ -98,6 +101,8 @@ One change for that relationship. Re-measure it. Stop for owner QC. Do not start
 | 1 | Opus | Pre-build architect plan only. No file edits. |
 | 2 | Owner | `GO AHEAD` on that plan, or a correction |
 | 3 | Sonnet 5.5 or this agent | Implement the approved plan. Targeted diff. Re-measure. |
+| mid | Opus again | Anytime during implement: lots to think / figure out → **STOP** → Opus handoff → resume after plan |
+| effort | This agent vs Sonnet | If execute needs more quality, compare and prefer Sonnet when the gap is real |
 
 **Responsive asks are one plan, not one pass per band (owner lock 2026-09-26).** When the owner asks about desktop, iPad, mobile, or any mix of them, Opus plans all four bands together in one pass. Four bands below. Opus says what each band shows, what carries over from the band above, and what differs, and why. The owner approves that one plan. Then Sonnet 5.5 or this agent builds it in one go. Do not fix desktop, then iPad, then compact iPad, then phone in separate passes on the same component. The header took several passes because each band was done alone.
 
@@ -109,7 +114,7 @@ Opus plan for a responsive ask must include:
 - Which CSS files and media queries change
 - A measure list for the implementer: 1500 · 1100 · 700 · 390 (and 360 for the narrowest phone)
 
-Opus is the architect. Use it for a new band, a new block, a CSS split, an audit, a multi-file pass, or a contract. A live QC nudge the owner already named (“this box is 30px”) stays a direct edit. Do not open a second Opus plan for that nudge.
+Opus is the architect. Use it for a new band, a new block, a CSS split, an audit, a multi-file pass, or a contract. **Owner lock 2026-10-10 (verbatim):** Anything, anytime during implementation, if we have to think a lot or figure out a lot → put that into Opus. Execution: if all data from Opus is in hand → this agent may execute. Sometimes more effort → analysis between this agent and Sonnet. A live QC nudge the owner already named (“this box is 30px”) stays a direct edit. Do not open a second Opus plan for that nudge.
 
 **No separate toy Node/Express mini-project.** Teaching happens inside real PGS rungs.
 
@@ -201,7 +206,7 @@ Each swap: **body only** — shell stays locked · `GO AHEAD /route-or-template`
 - Do not reopen locked chrome while fixing country body margins  
 - **Mobile width (owner lock 2026-09-12):** Figma inset first. If the owner says that block is too edgy, then apply the 85% rail, centered. Do not start at 85%. See `pgs-ipad-hero-body`.
 - **Playwright every pass (owner lock 2026-09-12):** after each body pass, measure 390 / 768 / 1440. Block present, no card overlap, text at least 16px. Do not close the pass on a visual guess.
-- **Gap analysis before lock (owner lock 2026-09-13):** do not tighten section gaps while the page is still being built from Figma. After that page’s Figma-to-code is done, one gap-analysis pass, then the page may be marked lock. USMLE living map: `docs/PREMIUM-MEDICAL-MODULAR.md` gate **GAP**.
+- **Gap analysis before lock (owner lock 2026-09-13 · GAP LOCK 2026-10-03):** do not tighten section gaps while the page is still being built from Figma. After Figma-to-code: one GAP pass, then LOCK. **CSS rhythm: desk 100 · iPad 60 · phone 80.** Living: [`docs/FRONTEND-GAP-ANALYSIS.md`](../../docs/FRONTEND-GAP-ANALYSIS.md). Explore worked example: `docs/EXPLORE-COUNTRIES-MODULAR.md` § GAP. USMLE gate: `docs/PREMIUM-MEDICAL-MODULAR.md` **GAP**.
 - **No black preview banner (owner lock 2026-09-09):** never render a dark/black “Side-test” strip above modular bodies. Body starts at closed `#toggleBtn` via shell `margin-top: calc(-1 * clamp(88px, 11vw, 157px))` — preview and live, desktop and mobile.
 
 **Inventory matrix:** [`docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md`](../../docs/PUBLIC-BODY-TEMPLATE-INVENTORY.md)

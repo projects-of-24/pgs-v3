@@ -1,0 +1,124 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Scholarship Apply Guide — SC4 CSS pass.
+ * Mobile `.ScholarshipApplyGuide` → iPad Figma `34:6365`.
+ *
+ * TYPE LOCK: Roboto → `--pgs-type-floor` (16). Title / closing 30 Medium/Bold.
+ * Reject Figma body 19.6 / closing 28 → floor or ≥30 hierarchy.
+ * height: auto.
+ */
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16.8px;
+  width: min(619px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide *,
+:where([data-country="europe"]) .countries-destination-scholarship-guide *::before,
+:where([data-country="europe"]) .countries-destination-scholarship-guide *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__title {
+  width: 100%;
+  margin: 0;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.7px;
+  text-align: center;
+  height: auto;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  height: auto;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__p {
+  margin: 0 0 1em;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.14px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__pledge {
+  margin: 0.5em 0 1em;
+  color: #000;
+  /* Owner named 16 — “At #PGS, we don’t let that happen.” */
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.14px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__help-intro {
+  margin: 0 0 0.75em;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.14px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__list {
+  width: 100%;
+  margin: 0 0 1.25em;
+  padding: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.14px;
+  /* Owner QC — same left edge as paras (no indent step) */
+  list-style: none;
+  height: auto;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__list li {
+  margin: 0 0 0.75em;
+  padding: 0;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__list li::before {
+  content: "• ";
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__list li:last-child {
+  margin-bottom: 0;
+}
+
+:where([data-country="europe"]) .countries-destination-scholarship-guide__closing {
+  margin: 0;
+  color: #000;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.14px;
+  text-align: left;
+  white-space: pre-line;
+  height: auto;
+}

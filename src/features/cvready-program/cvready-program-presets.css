@@ -183,8 +183,8 @@
   .cvready-program-presets__chip {
     max-width: 200px;
     padding: 6.4px 12.8px;
-    font-size: 19.2px;
-    line-height: 19.2px;
+    font-size: var(--cvready-program-type-floor, var(--pgs-type-floor, 16px));
+    line-height: 1.2;
     letter-spacing: 0.5px;
   }
 }

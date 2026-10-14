@@ -1,12 +1,38 @@
 ---
 name: pgs-propose-before-code
 description: >-
-  Hard stop: no assumptions, no silent coding. Explain plan → owner approves →
-  then implement. Always include before/after, file links, and ELI5 code
-  explanation. Full project order: pgs-master-workflow. Use on every PGS task.
+  Hard stop: Step 0 open skills first (quality over quantity — never skip for
+  speed). No assumptions, no silent coding. Explain plan → owner approves →
+  then implement. Before/after, file links, ELI5. Master: pgs-master-workflow.
 ---
 
 # PGS — propose, get approval, then code
+
+## STEP 0 — pull skills first (owner lock 2026-10-10)
+
+**Owner formula: quality over quantity.** Companion: `friend-not-yes-man` (owner never pressures; do not invent urgency or skip skills).
+
+**Import DS first every chat (asked or not)** — for a better quality product, not QC panic. Always-on: `.cursor/rules/pgs-public-design-system.mdc`.
+
+Before **any** propose, CSS, or QC edit on a PGS task:
+
+1. **Open** the skills/docs for this task (Read tool — not memory). Minimum:
+   - **First:** [`docs/PGS-PUBLIC-DESIGN-SYSTEM.md`](../../docs/PGS-PUBLIC-DESIGN-SYSTEM.md) · personal skill `friend-not-yes-man`
+   - This skill · [`pgs-master-workflow`](../pgs-master-workflow/SKILL.md)
+   - Frontend remaining locks: [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md)
+   - If iPad body: [`pgs-ipad-paper-pass`](../pgs-ipad-paper-pass/SKILL.md) · [`pgs-ipad-modular-body-pass`](../pgs-ipad-modular-body-pass/SKILL.md)
+   - If chrome / shell pull / `#toggleBtn` start: [`pgs-header-chrome-phase`](../pgs-header-chrome-phase/SKILL.md) · [`docs/HEADER-CHROME-PHASE.md`](../../docs/HEADER-CHROME-PHASE.md)
+   - Page living map when one exists (e.g. `docs/EXPLORE-COUNTRIES-MODULAR.md`)
+2. **Quote** the locked formula you will use (**PGS-PUBLIC-DESIGN-SYSTEM** · shell pull · **type floor** · bands · one block · reuse module). Do not re-derive.
+3. **TYPE LOCK (mandatory when the change touches text CSS):** before proposing or writing any `font-size`, state the DS split from [`PGS-PUBLIC-DESIGN-SYSTEM.md`](../../docs/PGS-PUBLIC-DESIGN-SYSTEM.md):
+   - **Figma = design / layout only.** **Text size and font size = ours.**
+   - Roboto / UI copy → `var(--pgs-type-floor, 16px)` unless the owner names another size for that block  
+   - Bebas / display → **≥30px**  
+   - Do **not** ship raw Figma Roboto sizes (e.g. 14 / 15.5 / 19.6 / 22.4) — including sizes above the floor.  
+   - After implement: measure live `font-size` on the band and confirm floor compliance.
+4. **Then** proposal format below — or a named live QC nudge (owner already named the fix) **only after** Step 0.
+
+If Step 0 was skipped → **STOP**. Open skills. Do not invent. Do not code.
 
 **Master workflow (frontend / backend / SaaS order, locks, gates):** [`pgs-master-workflow/SKILL.md`](../pgs-master-workflow/SKILL.md)
 
@@ -30,9 +56,10 @@ description: >-
 
 ## Hard stops
 
+0. **Step 0 — skills first.** Quality over quantity. Never invent urgency (`friend-not-yes-man`). Quote the lock, then propose/edit.
 1. **Do not make your own assumptions.** If something is unclear (breakpoint, Hostinger parity, which surface, invent vs keep), ask. Do not invent a constraint the owner did not state.
 2. **Owner is implementing now.** Do **not** treat Hostinger / legacy freeze as a default blocker unless the owner says so for that task. Hostinger CSS is **reference only** for public chrome — port into `src/app/globals.css` (see `pgs-modular-public-chrome` / `docs/MODULAR-PUBLIC-FRONTEND.md`).
-3. **Opus writes the architect plan. Sonnet 5.5 or this agent implements it after `GO AHEAD`.** Plan only — Opus does not edit files. A live QC nudge the owner already named stays a direct edit. Full path: `pgs-master-workflow` → Architect, then implement.
+3. **Opus writes the architect plan. Sonnet 5.5 or this agent implements it after `GO AHEAD`.** Plan only — Opus does not edit files. Mid-build: lots to think/figure out → **STOP** → Opus again. Execute only when Opus data is complete; if more coding quality needed, compare this agent vs Sonnet. Portable: `opus-plan-execute` · [`docs/MODEL-ROUTING.md`](../../docs/MODEL-ROUTING.md). Frontend remaining locks: [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md) — do not invent bands/formulas. A live QC nudge the owner already named stays a direct edit **after Step 0**. Full path: `pgs-master-workflow` → Architect, then implement.
 4. **Explain that plan → wait for owner approval (`GO AHEAD` / yes) → then change code.** Never silently edit, “quick fix,” or ship CSS/JS/HTML before approval.
 5. **Content pass, then code.** On a position or layout correction: assess the named content relationship first (under which card, which edge, which band). No CSS in that pass. Code only after the owner confirms the assessment. One relationship per edit. See `pgs-master-workflow`.
 6. If you already started editing without approval: **revert immediately**, then propose.
@@ -84,7 +111,12 @@ Then **STOP**. Wait for owner approval.
 
 ## Failure modes
 
+- Skipping Step 0 (coding or inventing without opening skills / carry sheet)  
+- Inventing “QC pressure” / urgency that excuses skipping locks — owner is friend not pressure (`friend-not-yes-man`)  
+- Shipping Figma Roboto `font-size` (14 / 19.6 / etc.) instead of `--pgs-type-floor` / Bebas ≥30 — Figma is design only; type sizes are ours (type lock in Step 0)  
 - Coding first, explaining later  
+- Re-deriving shell pull / bands / type floor when `FRONTEND-IPAD-HEADER-LOCK` already has them  
 - Assuming “Hostinger says hide / don’t touch” without owner saying so for this task  
 - Changing extra files “while we’re here”  
 - Vague “I’ll fix search” with no file links / no before-after / no ELI5  
+

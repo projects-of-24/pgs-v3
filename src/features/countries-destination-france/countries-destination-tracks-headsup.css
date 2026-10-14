@@ -1,0 +1,92 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Popular Study Tracks · A Heads Up — PT5 CSS pass.
+ * Figma `35:6968` — rail 619 (Why) · title 30 Medium · Bebas punch 56.
+ *
+ * TYPE LOCK: Roboto body → `--pgs-type-floor` (16). Reject Figma 19.6 / 30.8.
+ * Bebas punch ≥30 (Figma 56 OK). height: auto.
+ */
+
+:where([data-country="france"]) .countries-destination-tracks-headsup {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup *,
+:where([data-country="france"]) .countries-destination-tracks-headsup *::before,
+:where([data-country="france"]) .countries-destination-tracks-headsup *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__title {
+  width: min(var(--cd-rail-why, 619px), calc(100% - 32px));
+  margin: 0 auto;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.7px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8.4px;
+  width: min(var(--cd-rail-why, 619px), calc(100% - 32px));
+  margin: 16.8px auto 0;
+  height: auto;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__p {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.112px;
+  text-align: left;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__em {
+  font-weight: 700;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__i {
+  font-style: italic;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__em.countries-destination-tracks-headsup__i {
+  font-weight: 700;
+  font-style: italic;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__punch {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16.8px;
+  margin: 0;
+  color: #000;
+  font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  height: auto;
+}
+
+:where([data-country="france"]) .countries-destination-tracks-headsup__punch-part,
+:where([data-country="france"]) .countries-destination-tracks-headsup__punch-sep {
+  flex: 0 0 auto;
+}

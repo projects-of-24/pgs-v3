@@ -1,8 +1,8 @@
 /**
- * Preview QC — Explore Countries on React chrome (H-R pass 1), same tree as /preview/header:
- * Header = <PublicHeader/> · Strip = <PublicStrip/> · Body = ExploreCountriesPreviewShell (QC'd, untouched)
+ * Preview QC — Explore Countries on React chrome (H-R), same tree as live `/explorecountries`:
+ * Header = <PublicHeader/> · Strip = <PublicStrip/> · Body = ExploreCountriesPreviewShell
  * Footer = <PublicFooter/>. No chrome HTML strings on this route.
- * OWNED_SPLIT = next gate (HR-explore-2). Live `/explorecountries` untouched until cutover.
+ * CSS = owned split (layout.tsx OWNED_SPLIT_ROUTES · HR-explore-2 + live cutover 2026-10-10).
  */
 import { LegacyPage } from "@/components/legacy-page";
 import { ExploreCountriesPreviewShell } from "@/features/explore-countries/explore-countries-preview-shell";

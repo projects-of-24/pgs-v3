@@ -1,0 +1,109 @@
+/* pgs-country-scoped */
+/**
+ * Study 101 — “Why Study in USA…” — Figma side-test module.
+ * Desktop 18753:11567 · iPad 18753:11870/11871 · mobile 18753:12071/12072
+ * Root owns padding so global `section` rules cannot move it.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: iPad artboard scales body to ~8.4px / 9.6 leading
+ * ISSUE: fails readable text (WCAG)
+ * PGS: keep hierarchy; iPad title 20px, body 14px / 18px leading
+ */
+
+:where([data-country="europe"]) .country-study101-why-figma-uk {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+:where([data-country="europe"]) .country-study101-why-figma-uk__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19.2px;
+  width: 100%;
+  max-width: 609.6px;
+  box-sizing: border-box;
+}
+
+/* Desktop — 18753:11570 / 11571 */
+:where([data-country="europe"]) .country-study101-why-figma-uk__title {
+  margin: 0;
+  width: 100%;
+  color: #000;
+  font-size: 25.6px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+}
+
+:where([data-country="europe"]) .country-study101-why-figma-uk__body {
+  width: 100%;
+  margin: 0;
+}
+
+:where([data-country="europe"]) .country-study101-why-figma-uk__p {
+  margin: 0 0 16px;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.08px;
+}
+
+:where([data-country="europe"]) .country-study101-why-figma-uk__p:last-child {
+  margin-bottom: 0;
+}
+
+/* iPad 601–1366 — readable adapt of scaled Figma 11870/11871 */
+@media (max-width: 1366px) and (min-width: 601px) {
+  :where([data-country="europe"]) .country-study101-why-figma-uk__inner {
+    max-width: min(365.76px, 100%);
+    gap: 14px;
+  }
+
+  :where([data-country="europe"]) .country-study101-why-figma-uk__title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.24px;
+    line-height: 1.25;
+  }
+
+  :where([data-country="europe"]) .country-study101-why-figma-uk__p {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.05px;
+    margin-bottom: 14px;
+  }
+}
+
+/* Mobile ≤600 — 18753:12071 / 12072 */
+@media (max-width: 600px) {
+  :where([data-country="europe"]) .country-study101-why-figma-uk__inner {
+    max-width: min(293px, 100%);
+    gap: 16px;
+  }
+
+  :where([data-country="europe"]) .country-study101-why-figma-uk__title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  :where([data-country="europe"]) .country-study101-why-figma-uk__p {
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: 0.08px;
+    margin-bottom: 14px;
+  }
+}
+
+/* Body layout lives in country-body-layout.css (country-body-shell-uk). */

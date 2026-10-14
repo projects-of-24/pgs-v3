@@ -1,0 +1,450 @@
+/* pgs-country-scoped */
+/**
+ * Shared country body layout (preview shell).
+ * Class: `.country-file-uk.country-body-shell-uk`
+ * Bands: >1366 desktop · 601–1366 iPad · ≤600 mobile.
+ * Live country routes untouched until owner pulls.
+ *
+ * LOCKED (owner QC 2026-09-05): desktop >1366 + iPad 601–1366 — do not change
+ * without re-propose. Mobile ≤600 under active QC.
+ */
+
+/* Preview shell banner */
+:where([data-country="uk"]) .country-body-shell-uk__banner {
+  margin: 0;
+  padding: 10px 16px;
+  background: #fff8e1;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  color: #111;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/*
+ * Preview shell layout — PGS bands only (>1366 · 601–1366 · ≤600).
+ * Plan A: match live Hostinger *body* edge ratios (reference), not hero chrome.
+ * Desktop: 75% sleeve + 964 rail (same as live — already via style.css; reinforced here).
+ * Mobile: nested 95% → intro 60% → tabs section 90% → tab box 93% (live lesson).
+ * Building new — do not edit Hostinger style.css. Live country routes untouched.
+ */
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding-inline: 0;
+  /* A: match live — do not clip hanging collage/tab bits */
+  overflow-x: visible;
+}
+
+/* Desktop base + iPad: 75% centered page band (Hostinger .wrapper-content lesson) */
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .wrapper-content {
+  width: 75% !important;
+  max-width: 100%;
+  margin-inline: auto !important;
+  box-sizing: border-box;
+  overflow-x: visible;
+}
+
+/* Inner rail: 964 ceiling, fluid when band is narrower */
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-964px {
+  width: min(964px, 100%) !important;
+  max-width: 964px;
+  margin-inline: auto !important;
+  box-sizing: border-box;
+  padding-inline: 0;
+  min-width: 0;
+}
+
+/*
+ * B: keep Study 101 flex + tabs inside the rail (was ~27px wider than rail).
+ * Root cause: Bootstrap `.row` uses margin-inline -15px (gutter), so children
+ * paint ~30px wider than `.w-964px` / `.mobile-box-country`.
+ */
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-964px .row {
+  --bs-gutter-x: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+  .filter-content
+  > .grid-item
+  > .d-flex.gap-3 {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .filter-content,
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .filter-content .grid-item {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-35,
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-80,
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-70 {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-box-country,
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .country-usa-tab-style-new {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Desktop/iPad: tabs fill rail (not Bootstrap-widened 93%-of-overhang). Mobile keeps 93% below. */
+:where([data-country="uk"]) .country-file-uk.country-body-shell-uk .country-usa-tab-style-new {
+  width: 100% !important;
+  margin-inline: 0 !important;
+}
+
+/*
+ * Desktop >1366 only — sidebar card is Hostinger-fixed ~321px.
+ * `.w-35` (35%) + `.w-80` (80%) = 115% → flex-shrink squeezes the side
+ * column under 321px and the card paints over the main column.
+ * iPad / mobile: do not change (owner-locked).
+ */
+@media (min-width: 1367px) {
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .filter-content
+    > .grid-item
+    > .d-flex.gap-3 {
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-35 {
+    width: 321px !important;
+    flex: 0 0 321px;
+    max-width: 321px;
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-80,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-70 {
+    width: auto !important;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .info-card-countries-usa {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/*
+ * iPad 601–1366 — same 75% ratio (fluid); Option B flex;
+ * CANCEL Hostinger ≤767 phone rules (601–767 must stay iPad).
+ */
+@media (max-width: 1366px) and (min-width: 601px) {
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .wrapper-content {
+    width: 75% !important;
+  }
+
+  /* Undo Hostinger phone stacking */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-w-full {
+    width: auto !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-none {
+    display: revert !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .desktop-none {
+    display: none !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-usa-content {
+    width: 100% !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-box-country {
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Sidebar + main: 2-col, shrink so text wraps */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .filter-content
+    > .grid-item
+    > .d-flex.gap-3 {
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+    gap: 12px !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-35 {
+    width: min(32%, 200px) !important;
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-80,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-70 {
+    width: auto !important;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .info-card-countries-usa {
+    height: auto !important;
+    min-height: 0 !important;
+    max-width: 100%;
+  }
+
+  /* Sidebar stats caption — stack under numbers so UNIVERSITIES isn’t crushed */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .info-card-countries-usa
+    .country-stat-sidebar {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .info-card-countries-usa
+    .country-stat-values {
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .info-card-countries-usa
+    .country-stat-caption {
+    max-width: none !important;
+    width: 100%;
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: 14px !important;
+    letter-spacing: 0.02em;
+    line-height: 1.15 !important;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+  }
+
+  /* Narrow iPad 601–767 (Hostinger phone MQ zone) — a bit more side room */
+  @media (max-width: 767px) {
+    :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-35 {
+      width: min(42%, 168px) !important;
+      flex: 0 0 auto;
+    }
+
+    :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .info-card-countries-usa {
+      padding: 0.65rem 0.65rem 1.75rem;
+    }
+
+    :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+      .info-card-countries-usa
+      .country-stat-caption {
+      font-size: 15px !important;
+    }
+  }
+
+  /* Reasons: wrap cards, don’t spill */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .usa-counrty-usa-purple-gray-box
+    > .d-flex.mobile-wrap {
+    flex-wrap: wrap !important;
+    width: 100%;
+    min-width: 0;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .usa-counrty-usa-purple-gray-box
+    .w-65,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .usa-counrty-usa-purple-gray-box
+    .w-50,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .usa-counrty-usa-purple-gray-box
+    .mobile-w-48 {
+    width: auto !important;
+    flex: 1 1 140px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .table-responsive.w-60,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-60.table-border-overflow {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .countriesUSA-contain,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .countriesUSA-title {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .h-250px,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .h-400px {
+    height: auto !important;
+  }
+}
+
+/*
+ * Mobile ≤600 — live Hostinger body edge lesson (reference), PGS cut at 600 not 767.
+ * Sleeve ~95% → intro ~60% → tabs section ~90% of sleeve (~82% vw) → tab box 93%.
+ * Sidebar/main fill the tabs section column (stacked).
+ */
+@media (max-width: 600px) {
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .wrapper-content {
+    width: 95% !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-964px {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  /* Intro narrower than tabs (live ~55–60% of viewport) */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-usa-content {
+    width: 60% !important;
+    max-width: 100%;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+  }
+
+  /* Tabs + Study 101 column — nested gutters like live */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-box-country {
+    width: 90% !important;
+    max-width: 100%;
+    margin-inline: auto !important;
+    padding: 1px 5px !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .country-usa-tab-style-new {
+    width: 93% !important;
+    max-width: 100%;
+    margin-inline: auto !important;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .country-usa-tab-full-width {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    justify-content: flex-start !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-wrap {
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-w-full {
+    width: 100% !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-w-48 {
+    width: 48% !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-none {
+    display: none !important;
+  }
+
+  /*
+   * Hostinger lesson: `.desktop-none` is just “show on phone” (block), not flex.
+   * Forcing flex on ALL desktop-none crushed `.mobile-points-usa` (Do’s/Don’ts)
+   * into 3 tiny columns → letter-per-line wrap. Only flex when the markup is a row.
+   */
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .desktop-none {
+    display: block !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .desktop-none.d-flex,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .desktop-none.align-items-center {
+    display: flex !important;
+    align-items: center;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .desktop-none.mobile-points-usa {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-points-usa h6 {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .mobile-points-usa p {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-35,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-80,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .w-70 {
+    width: 100% !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .info-card-countries-usa {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden;
+    width: 100% !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .info-card-countries-usa [class$="__spacer"] {
+    min-height: 24px;
+    flex: 0 1 auto;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .info-card-countries-usa
+    .country-stat-sidebar {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk
+    .info-card-countries-usa
+    .country-stat-caption {
+    max-width: 110px;
+    font-size: 20px !important;
+    line-height: 1.15 !important;
+  }
+
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .h-250px,
+  :where([data-country="uk"]) .country-file-uk.country-body-shell-uk .h-400px {
+    height: auto !important;
+  }
+
+  /* Figma: one flowing title — hide forced desktop <br> */
+  :where([data-country="uk"]) .country-body-shell-uk__intro-br {
+    display: none;
+  }
+}

@@ -11,7 +11,7 @@ Route: hub for `#exploreCountries` (not a single destination page). Individual c
 | Surface | URL | What it is |
 |---|---|---|
 | **Preview (QC lab)** | `/preview/explorecountries` | Locked chrome + modular body (no black banner). |
-| **Live** | `/explorecountries` | **CUTOVER DONE** — modular React body, Hostinger-free. |
+| **Live** | `/explorecountries` | **H-R LIVE CUTOVER DONE** (2026-10-10) — React chrome + OWNED_SPLIT + modular body. Hostinger CSS/JS/chrome strings unhooked. |
 
 Legacy Hostinger HTML (`src/legacy/generated/explorecountries/*`) kept on disk for rollback; **not** served by live.
 
@@ -30,9 +30,37 @@ Legacy Hostinger HTML (`src/legacy/generated/explorecountries/*`) kept on disk f
 
 | Band | Width | Status |
 |---|---|---|
-| Desktop | **>1366** | Shell ready |
-| Mobile | **≤600** | Shell ready |
-| iPad | **601–1366** | Deferred (hero is not mauve-panel; no `pgs-ipad-hero-body` recall) |
+| Desktop | **>1366** | Body E1–E7 mounted (desk Figma). Do not reopen until iPad passes (owner order 2026-10-10). |
+| Mobile | **≤600** | Body E1–E7 mounted (phone Figma). Do not reopen until iPad passes. |
+| iPad | **601–1366** | **NEXT** — owner rearrange Figma `ipad` file node **`17:3239`** (`ipad explore countries`, 834×8890). Build after OWNED_SPLIT + content-match map below. No phone×1.4 invent. |
+
+### Owner order for this page (2026-10-10)
+
+1. Chrome + body present → **iPad first**  
+2. iPad passes → then desk/phone polish if needed  
+3. All three bands → **gap QC** (GAP LOCK hero 60 · rest 80 · `height: auto`)  
+4. Mark page LOCK  
+
+**Gap band status (2026-10-10):** desk + iPad + **phone** tokens/shell shipped — owner Preview QC pending @ 390.  
+
+### iPad Figma → block map + reuse formula (pulled 2026-10-10 — no code yet)
+
+Source: [ipad / 17:3239](https://www.figma.com/design/hOGQsV81xqKuasRdpdLYdM/ipad?node-id=17-3239) · skill `pgs-ipad-paper-pass` → `pgs-ipad-modular-body-pass` · north star `/preview/purpleusmle-2`.
+
+| Figma order | Gate | Content match | Reuse (do not rebuild) | Page-local arrange |
+|---|---|---|---|---|
+| Hero headline (col **211.4**) + CTA | E1 | Same copy as desk/phone | **≈ Scholarship hub iPad hero** (owner 2026-10-10) — stacked opening + CTA; opening width matches locked **151×1.4** column family | Stack/center on iPad rail; copy Scholarship iPad hero rhythm, not mauve card |
+| Country card + `MOBILE COUNTRIES` chips | E2 | Same switcher DNA; iPad uses **mobile card face** under chips | Chip/href swap logic already in `explore-countries-switcher` | Card ~476 wide · chips 2-row under card |
+| Bento 2-col + “explore more below” hang | E3 | Same “Simple, clear, useful” | Same page module; hang photo formula like other iPad hangs · **iPad stage `height: auto`** (owner 2026-10-10 — no fixed 810.6 air) | Left stacked blue cards · right copy/checks · purple hang |
+| Second country card + chips | E2b | Same as E2, mur stack | `explore-countries-switcher-secondary` | Same card formula as E2 |
+| Second bento (no hang in frame) | E3b | Same bento DNA | Same module as E3 | 2-col only |
+| Univ discovery + logo grid + collage | E4 | Same univ block | `explore-countries-univ` | Centered grey stage ~532 |
+| Expense + doctor hang | E5 | Same shared expense | **`premium-expense`** (USMLE/PLAB/AMC iPad hang already QC’d) | Mount + page margin only |
+| Outro CTA | — | **In iPad Figma; not on desk explore map** | **`outro-cta`** shared (USMLE/Home) | **Owner yes 2026-10-10** — mount on **iPad band** |
+| Support hub | E6 | Same hub | **`support-hub`** | Mount + margin |
+| #Pgs picks | E7 | Same picks | **`pgs-picks`** — iPad formula already locked: title **36** · **85%** rail · **2 cards** · link min-h **190** · arrows **32** | Import only |
+
+**Single formula to reuse (owner):** shared modules keep their QC’d iPad CSS · page shell uses GAP LOCK **60** on iPad · **85%** rail / clamp on compact · compact **601–800** stacks fixed widths · wide **801–1366** keeps 2-col/hang · never 767 · never invent a second Expense/Picks/Hub.
 
 ---
 
@@ -54,8 +82,8 @@ Chrome = LOCKED. Do not rebuild.
 | 9 | #Pgs picks | **E7** | **READY — owner QC** — shared `pgs-picks` · fixture cards until CMS `pgs_picks` wired on route. |
 | — | Frontend body (Figma-to-code) | **FE** | **COMPLETE** in preview lab — E1–E7 mounted · per-gate owner QC still open. |
 | — | Gap analysis | **GAP** | **PASSED — sorted** (2026-09-16) — inventory + rhythm notes below · spacing fixes = separate owner batch. |
-| — | Motion (entrances, chip swap, E3 arrow nudge) | **EM** | **PASSED** — `explore-countries-motion.css` · `prefers-reduced-motion` · live untouched. |
-| — | Live Hostinger-free cutover | **CUTOVER** | **DONE** — `/explorecountries` modular · Hostinger unhooked. Spacing / iPad = later final UI QC. |
+| — | Motion (entrances, chip swap, E3 arrow nudge) | **EM** | **REMOVED** 2026-10-10 — owner cut all page motion; CSS emptied · shell unimported. |
+| — | Live Hostinger-free cutover | **CUTOVER** | **DONE** body 2026-09-16 · **H-R chrome + OWNED_SPLIT** 2026-10-10 (same tree as preview). |
 
 **Mobile width:** Figma inset first. 85% rail only if owner says too edgy.
 
@@ -141,8 +169,8 @@ Approximate **gap between block boxes** (Figma from frame Y/heights · lab = DOM
 | **Wire** | Hero “Set Up a Quick Call” | Visual only · **popup pass**. |
 | **Wire** | Expense “Request it here” | Visual only until expense/popup backend pass. |
 | **Band** | iPad 601–1366 | **Deferred** — not mauve-panel hero. |
-| **Surf** | Live `/explorecountries` | **CUTOVER DONE** — Hostinger unhooked. |
-| **EM** | ~~Motion~~ | **Done** — see EM gate row. Picks carousel scroll unchanged (shared). Swipe = GIF asset. |
+| **Surf** | Live `/explorecountries` | **H-R LIVE DONE** — React chrome + OWNED_SPLIT + modular body. |
+| **EM** | ~~Motion~~ | **Removed** 2026-10-10 — no page animations. Picks carousel scroll unchanged (shared). Swipe = GIF asset. |
 | **A11y** | Type floor sweep | Final-draft pass · per-block adaptations already noted in CSS. |
 
 ### LOCK checklist (after QC + optional S1)
@@ -163,7 +191,7 @@ Approximate **gap between block boxes** (Figma from frame Y/heights · lab = DOM
 | Popup / “Set Up a Quick Call” deep wire | Visual-only until popup pass |
 | CTA label always “UK 101…” | **Primary E2 only.** Secondary E2b swaps `{CODE} 101…` (desk authority). |
 | Inter-block spacing (Figma Y) | **GAP S1/S2** — sorted in GAP section · fix only on owner batch |
-| Motion | **EM passed** — page-local CSS only |
+| Motion | **EM removed** 2026-10-10 — no page animations |
 | Type floor sweep | Final-draft only · do not mid-build |
 | CMS copy slots | Later if needed |
 
@@ -196,14 +224,15 @@ Approximate **gap between block boxes** (Figma from frame Y/heights · lab = DOM
 
 Lab: http://localhost:7100/preview/explorecountries · Live: http://localhost:7100/explorecountries · Owner product PASS + spacing/iPad final QC still open.
 
-### H-R / iPad lane (2026-10-08)
+### H-R / iPad lane (2026-10-08 · updated 2026-10-10)
 
 | Gate | Status |
 |---|---|
 | **HR-explore-1** chrome (preview) | **DONE** — React `PublicHeader` · `PublicStrip` · body · `PublicFooter`. Live still string chrome. |
-| **HR-explore-2** OWNED_SPLIT | Next |
-| iPad body QC | After chrome + owned split + owner Figma/Paper |
-| Live cutover (React chrome) | After body QC |
+| **HR-explore-2** OWNED_SPLIT | **DONE 2026-10-10** — preview + **live** `/explorecountries` on allowlist |
+| iPad body QC | Figma `17:3239` — **iPad PASS** |
+| Desk / phone gap + type | **PASS** — GAP hero60/rest80 · height:auto · phone 10px photo inset |
+| Live cutover (React chrome) | **DONE 2026-10-10** — no chrome DSIH · OWNED_SPLIT · same tree as preview |
 
 | Gate | Engineering | Owner |
 |---|---|---|
@@ -216,7 +245,7 @@ Lab: http://localhost:7100/preview/explorecountries · Live: http://localhost:71
 | E4 | Copy, logo rows, collage picture, a11y type floor | Pending |
 | E5–E7 | Shared imports render; picks fixture carousel | Pending |
 | S1 | Desk @1440: E3b→E4 **262px**, E5→E6 **194px**; mob @390: E3b→E4 **~99px** | Eng **PASS** · owner Pending |
-| EM | Entrances, chip swap, E3 arrow nudge, reduced-motion | Eng **PASS** · owner Pending |
+| EM | Entrances, chip swap, E3 arrow nudge | **REMOVED** 2026-10-10 |
 | E2 | Primary CTA href swap + label lock (lab script) | Eng **PASS** · owner Pending |
 | E3/E3b | Lilac on E3 only (lab script) | Eng **PASS** · owner Pending |
 | E5–E7 | Three shared modules in DOM | Eng **PASS** · owner Pending |
@@ -227,4 +256,4 @@ Lab: http://localhost:7100/preview/explorecountries · Live: http://localhost:71
 ## Preview
 
 - Lab: http://localhost:7100/preview/explorecountries  
-- Live (modular, Hostinger unhooked): http://localhost:7100/explorecountries  
+- Live (React chrome + OWNED_SPLIT + modular body): http://localhost:7100/explorecountries  

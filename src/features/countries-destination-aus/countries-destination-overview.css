@@ -1,0 +1,135 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Overview table — C5 owned CSS.
+ * iPad Figma `26:2846` (rail ~413 · 7 rows · rounded black border).
+ *
+ * TYPE LOCK (PGS-PUBLIC-DESIGN-SYSTEM): Roboto cells → `--pgs-type-floor` (16).
+ * Do not ship Figma 19.6. Title 30 Medium (hierarchy ≥ floor). height: auto.
+ */
+
+:where([data-country="aus"]) .countries-destination-overview {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="aus"]) .countries-destination-overview *,
+:where([data-country="aus"]) .countries-destination-overview *::before,
+:where([data-country="aus"]) .countries-destination-overview *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__title {
+  width: min(var(--cd-rail-overview, 413px), calc(100% - 32px));
+  margin: 0 auto;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.56px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__table-wrap {
+  width: min(var(--cd-rail-overview, 413px), calc(100% - 32px));
+  margin: 33.6px auto 0;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1.12px solid #000;
+  border-radius: 22.4px;
+  overflow: hidden;
+  background: #fff;
+  height: auto;
+  table-layout: fixed;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__row {
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__row:not(:last-child) .countries-destination-overview__label,
+:where([data-country="aus"]) .countries-destination-overview__row:not(:last-child) .countries-destination-overview__value {
+  border-bottom: 1.12px solid #000;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__label,
+:where([data-country="aus"]) .countries-destination-overview__value {
+  padding: 16px 11.2px;
+  vertical-align: middle;
+  text-align: left;
+  height: auto;
+  word-break: break-word;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__label {
+  width: var(--cd-overview-label-width, 50%);
+  border-right: 1.12px solid #000;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.08px;
+}
+
+:where([data-country="aus"]) .countries-destination-overview__value {
+  width: auto;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.1px;
+}
+
+/* Screen-reader-only caption (semantic table) */
+:where([data-country="aus"]) .countries-destination-overview .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ * BD6 desk — layout from QC’d `country-body-layout` (>1366).
+ * Overview lives in main column (`.w-80`) → fills sleeve while stacked.
+ * Table UI / type / iPad rails — untouched.
+ */
+@media (min-width: 1367px) {
+  :where([data-country="aus"]) .countries-destination-overview__title,
+  :where([data-country="aus"]) .countries-destination-overview__table-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}
+
+/* iPad 601–1366 — LOCKED · do not touch */
+
+/*
+ * BD6 phone — layout from QC’d `country-body-layout` (≤600).
+ * Main column / table stack → width 100%. Type stays DS.
+ */
+@media (max-width: 600px) {
+  :where([data-country="aus"]) .countries-destination-overview__title,
+  :where([data-country="aus"]) .countries-destination-overview__table-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}

@@ -1,0 +1,146 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Popular Study Tracks section table — PT3 CSS pass.
+ * Figma `35:6834` — frame x=108 · title + table same left as Why intro.
+ * Hang width 1111.6 · scroll below title · scrollbar hidden.
+ *
+ * TYPE LOCK: Roboto → `--pgs-type-floor` (16). Title 30 Medium.
+ * Reject Figma header 22.4 / body 19.6.
+ * height: auto.
+ */
+
+:where([data-country="aus"]) .countries-destination-tracks-section {
+  --cd-tracks-sec-left: max(
+    16px,
+    calc(50% - min(var(--cd-rail-why, 619px), calc(100% - 32px)) / 2)
+  );
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16.8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+  /*
+   * overflow-x: clip was slicing cells once the hang panned past a left
+   * threshold (owner). Rail still scrolls; section must not re-clip.
+   */
+  overflow-x: visible;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section *,
+:where([data-country="aus"]) .countries-destination-tracks-section *::before,
+:where([data-country="aus"]) .countries-destination-tracks-section *::after {
+  box-sizing: border-box;
+}
+
+/* Figma title 497 · left = intro rail */
+:where([data-country="aus"]) .countries-destination-tracks-section__title {
+  width: min(497px, calc(100% - 32px));
+  margin: 0 16px 0 var(--cd-tracks-sec-left);
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.7px;
+  text-align: left;
+  white-space: pre-line;
+  height: auto;
+}
+
+/*
+ * Rail full-bleed (edge-to-edge pan).
+ * Table margin-left = intro rail so default scrollLeft=0 matches previous.
+ */
+:where([data-country="aus"]) .countries-destination-tracks-section__scroll {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__scroll.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__scroll:focus,
+:where([data-country="aus"]) .countries-destination-tracks-section__scroll:focus-visible,
+:where([data-country="aus"]) .countries-destination-tracks-section__scroll.is-dragging {
+  outline: none;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__scroll::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__table {
+  width: 1111.6px;
+  max-width: none;
+  margin: 0;
+  /* default x = title/intro rail; pan left past this → edge */
+  margin-left: var(--cd-tracks-sec-left);
+  padding-right: 16px;
+  border-collapse: separate;
+  /* SC3 owner QC — 6px col gap · Figma row gap 14 */
+  border-spacing: 6px 14px;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__table th,
+:where([data-country="aus"]) .countries-destination-tracks-section__table td {
+  padding: 5.6px 14px;
+  vertical-align: middle;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__table th {
+  font-weight: 600;
+  border: 1.4px solid rgba(0, 0, 0, 0.2);
+  border-radius: 11.2px;
+}
+
+/* Figma cols: Track 364 · Field ~398 · Ideal For 350 */
+:where([data-country="aus"]) .countries-destination-tracks-section__table th:nth-child(1),
+:where([data-country="aus"]) .countries-destination-tracks-section__table td:nth-child(1) {
+  width: 364px;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__table th:nth-child(2),
+:where([data-country="aus"]) .countries-destination-tracks-section__table td:nth-child(2) {
+  width: 397.6px;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__table th:nth-child(3),
+:where([data-country="aus"]) .countries-destination-tracks-section__table td:nth-child(3) {
+  width: 350px;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks-section__table tbody td {
+  border: none;
+  border-radius: 11.2px;
+}

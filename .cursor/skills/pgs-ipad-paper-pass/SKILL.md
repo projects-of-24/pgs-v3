@@ -10,6 +10,8 @@ description: >-
 # iPad page pass — chrome · CSS · design body
 
 **Owner lock 2026-10-03.**  
+**Carry sheet (formulas · bands · page status · H-R order):** [`docs/FRONTEND-IPAD-HEADER-LOCK.md`](../../docs/FRONTEND-IPAD-HEADER-LOCK.md) — read before inventing breakpoints.  
+**Gap analysis (desk · iPad · phone):** [`docs/FRONTEND-GAP-ANALYSIS.md`](../../docs/FRONTEND-GAP-ANALYSIS.md) — GAP LOCK CSS **100 / 60 / 80**; after Figma→code, before LOCK.  
 **IGNORE all old iPad skills** (`pgs-ipad-hero-body` and any phone×1.4 / “saved mobile card” recipe). That path failed; QC never passed. Do not mention it in proposals.
 
 ## What the owner does
@@ -45,7 +47,7 @@ Desk / iPad / phone = **same content rearranged**. North star for patterns: `/pr
 1. **Content match QC first:** report whether each block’s content matches desk or phone — then how the owner rearranged it. Do not code yet.
 2. **Opus plan:** ask Opus for a top→bottom plan from north-star findings + this Figma/Paper. Then propose → `GO AHEAD`.
 3. **Minimum rail:** `85%` clamp (centered) unless the owner’s design or a named nudge says otherwise.
-4. **Type floors:** Roboto ≥15–16px · Bebas ≥30px.
+4. **Type floors (hard — quote in Step 0):** Roboto = `var(--pgs-type-floor, 16px)` unless owner names another size · Bebas ≥30px. **Figma = design/layout only; text/font size = ours** — never ship raw Figma Roboto px (14 / 19.6 / etc.). Measure after implement.
 5. **Reuse vs rebuild:** prefer shared modular (hero family · Highlights · Picks) and existing page CSS; rebuild only when the reference requires it. **No inventing.**
 6. Build **one block at a time**: propose → `GO AHEAD` → implement → measure → owner QC → next block.
 7. Desk and phone CSS stay until the owner opens those bands.

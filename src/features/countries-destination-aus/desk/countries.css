@@ -1,0 +1,927 @@
+/* pgs-country-scoped */
+/**
+ * Country destination body (T1) — page-scoped overrides.
+ * Bands: >1366 desktop · 601–1366 iPad · ≤600 phone (sync pgs-breakpoints.ts).
+ * Do not use Hostinger 767 here.
+ */
+:where([data-country="aus"]) .country-file-uk .country-stat-sidebar {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-stat-values {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-stat-values > div + div {
+  margin-top: 10px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-stat-number {
+  white-space: nowrap;
+  font-size: clamp(22px, 2.2vw, 32px) !important;
+  letter-spacing: -0.02em;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-stat-caption {
+  flex: 1;
+  min-width: 72px;
+  font-size: 14px !important;
+  line-height: 1.25 !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0 !important;
+}
+
+/* Shared sidebar card sizing — Visa 101 reference */
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  height: 520px;
+  position: relative;
+  padding: 1rem 1rem 2.5rem;
+  box-sizing: border-box;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar__header,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card__header,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar__header,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__header,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar__header,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar__header {
+  flex-shrink: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar__spacer,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card__spacer,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar__spacer,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__spacer,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar__spacer,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar__spacer {
+  flex: 1 1 auto;
+  min-height: 120px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar__footer,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card__footer,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar__footer,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__footer,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar__footer,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar__footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar__source,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card__source,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar__source,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__source,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar__source,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar__source {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.85rem;
+  font-size: 11px;
+  color: #000;
+  font-weight: 400;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar__header a,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card__header a,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar__header a,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__header a,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar__header a,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar__header a {
+  display: block;
+  color: #000 !important;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+/* Shared sidebar stat layout — Visa 101 reference */
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-sidebar,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-sidebar {
+  align-items: center;
+  margin-top: 0;
+  gap: 10px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-values,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-values,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-values,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-values,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-values,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-values {
+  background-color: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-number,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-number,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-number,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-number,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-number,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-number {
+  font-size: 22px !important;
+  line-height: 1 !important;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-values small,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-values small,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-values small,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-values small,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-values small,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-values small {
+  display: block;
+  font-size: 12px;
+  margin-top: 2px;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-caption,
+:where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-caption,
+:where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-caption,
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-caption,
+:where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-caption,
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-caption {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1.15 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  max-width: 110px;
+  min-width: 0;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__footer {
+  margin-bottom: 1.75rem;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-caption {
+  max-width: 132px;
+  margin-bottom: 0.35rem !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-sidebar__source {
+  bottom: 1.35rem;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-main {
+  overflow: visible;
+}
+
+/* Purple envelope #PGS banner */
+:where([data-country="aus"]) .country-file-uk .country-pgs-banner-wrap {
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow: visible;
+  padding-right: 2.5rem;
+  transform: translateX(-0.75rem);
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium-block {
+  margin-top: 2rem;
+  overflow: visible;
+  padding-right: 2.5rem;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium-block .country-pgs-banner-wrap {
+  margin-top: 0;
+  margin-bottom: 1.75rem;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap,
+:where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap {
+  position: relative;
+  isolation: isolate;
+  width: calc(100% - 1.5rem);
+  max-width: calc(100% - 1.5rem);
+}
+
+:where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap .bg-pgs-content,
+:where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap .bg-pgs-content {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  padding: 1.25rem 6.75rem 1.25rem 1.25rem !important;
+  overflow: visible;
+  border-radius: 1rem !important;
+  min-height: 9.5rem;
+  box-sizing: border-box;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap .bg-pgs-content h5,
+:where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap .bg-pgs-content h5 {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  margin-bottom: 0.5rem !important;
+  max-width: 100%;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap .bg-pgs-content p,
+:where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap .bg-pgs-content p {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  max-width: 100%;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap .pgs-badge,
+:where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap .pgs-badge {
+  position: absolute !important;
+  left: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
+  right: -0.35rem !important;
+  transform: translateY(-50%);
+  width: 7rem !important;
+  height: 8.75rem !important;
+  margin: 0 !important;
+  padding: 0 0.35rem 0 2.35rem !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem !important;
+  background-color: #d9e0ff !important;
+  color: #111827 !important;
+  font-size: 1.7rem !important;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 1 !important;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Envelope + JOIN #purplepremium block */
+:where([data-country="aus"]) .country-file-uk .country-cost-premium-block .country-cost-premium {
+  margin-top: 0 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium__portrait {
+  background: #f4e5e4;
+  border: 1px solid #00000033;
+  border-radius: 29px;
+  overflow: hidden;
+  max-width: 389px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium__portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 29px;
+  box-shadow: none;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-decoration: none !important;
+  margin-bottom: 1rem;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium__join {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  text-decoration: underline;
+  line-height: 1.1;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium__brand {
+  display: block;
+  font-size: 2.3rem;
+  font-weight: 400;
+  color: #111827;
+  line-height: 1.1;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-cost-premium__copy p {
+  font-size: 20px !important;
+  font-weight: 500;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .info-card-countries-usa {
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  :where([data-country="aus"]) .country-file-uk .country-study-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-budgeting-card,
+  :where([data-country="aus"]) .country-file-uk .country-visa-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-short-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-tracks-sidebar {
+    min-height: 420px;
+    height: 420px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-study-sidebar__spacer,
+  :where([data-country="aus"]) .country-file-uk .country-budgeting-card__spacer,
+  :where([data-country="aus"]) .country-file-uk .country-visa-sidebar__spacer,
+  :where([data-country="aus"]) .country-file-uk .country-short-sidebar__spacer,
+  :where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar__spacer,
+  :where([data-country="aus"]) .country-file-uk .country-tracks-sidebar__spacer {
+    min-height: 80px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-sidebar,
+  :where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-sidebar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-study-sidebar .country-stat-caption,
+  :where([data-country="aus"]) .country-file-uk .country-budgeting-card .country-stat-caption,
+  :where([data-country="aus"]) .country-file-uk .country-visa-sidebar .country-stat-caption,
+  :where([data-country="aus"]) .country-file-uk .country-short-sidebar .country-stat-caption,
+  :where([data-country="aus"]) .country-file-uk .country-scholarship-sidebar .country-stat-caption,
+  :where([data-country="aus"]) .country-file-uk .country-tracks-sidebar .country-stat-caption {
+    font-size: 16px !important;
+    max-width: none;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap .pgs-badge,
+  :where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap .pgs-badge {
+    left: auto !important;
+    right: 0.15rem !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%);
+    width: 5.5rem !important;
+    height: 7rem !important;
+    padding: 0 0.35rem 0 1.75rem !important;
+    border-radius: 1rem !important;
+    font-size: 1.35rem !important;
+    z-index: 0 !important;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-pgs-card-wrap .bg-pgs-content,
+  :where([data-country="aus"]) .country-file-uk .pgs-track1-card-wrap .bg-pgs-content {
+    padding: 1rem 5.5rem 1rem 1rem !important;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-cost-premium__portrait img {
+    min-height: 320px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-cost-premium__join,
+  :where([data-country="aus"]) .country-file-uk .country-cost-premium__brand {
+    font-size: 1.75rem;
+  }
+}
+
+/* Visa 101 main content */
+:where([data-country="aus"]) .country-file-uk .country-visa-main .visa-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-main .visa-card {
+  flex: 1;
+  min-width: 220px;
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-main .visa-card--narrow {
+  max-width: 45%;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-main .visa-card h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 0;
+  background: #000;
+  color: #fff;
+  width: 165px;
+  padding: 0 13px;
+  line-height: 40px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-main .visa-card p {
+  background: #ffc107;
+  margin: 0;
+  padding: 12px;
+  font-size: 17px;
+  color: #111;
+  width: 224px;
+  line-height: 1.2;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-notes-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-notes-card {
+  background-color: #dce6ff !important;
+  padding: 15px !important;
+  border-radius: 8px;
+  width: 320px;
+  max-width: 100%;
+  margin-top: 40px;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-notes-card h3 {
+  margin-top: 0;
+  font-weight: 700;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-notes-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-notes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-notes-list__num {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+  color: #000 !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-visa-plan-review__list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .helper-box-new .btn-custom {
+  display: inline-block;
+  text-decoration: none;
+  white-space: normal;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Match page Roboto — Hostinger sets Arial on dos-donts / helper CTA */
+:where([data-country="aus"]) .country-file-uk .helper-box-new,
+:where([data-country="aus"]) .country-file-uk .helper-box-new h5,
+:where([data-country="aus"]) .country-file-uk .helper-box-new p,
+:where([data-country="aus"]) .country-file-uk .dos-donts,
+:where([data-country="aus"]) .country-file-uk .mobile-points-usa {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (max-width: 600px) {
+  :where([data-country="aus"]) .country-file-uk .country-visa-main .visa-card--narrow {
+    max-width: 100%;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-visa-main .visa-card p {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .country-visa-notes-card {
+    width: 100%;
+  }
+}
+
+/* Short-Term-Profile Courses */
+:where([data-country="aus"]) .country-file-uk .country-short-cta {
+  display: inline-block;
+  background-color: #ffd54f;
+  color: #000 !important;
+  font-weight: 700;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-cta:hover {
+  color: #000 !important;
+  opacity: 0.9;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-mentor-section {
+  padding: 40px 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-mentor-box {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #00000033;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-mentor-title {
+  display: flex;
+  justify-content: center;
+  color: #000 !important;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-mentor-copy {
+  display: flex;
+  justify-content: center;
+  color: #000;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-courses .county-box-short {
+  width: 100%;
+  max-width: 319px;
+  flex: none;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-courses .img-box-fit img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: block;
+  object-fit: cover;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-body {
+  padding: 15px 0 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-cat {
+  margin-bottom: 12px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-cat span {
+  display: inline-block;
+  background: #000;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #fff;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-metric {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-metric i {
+  font-size: 23px;
+  color: forestgreen;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-heart {
+  display: flex;
+  justify-content: flex-end;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-short-course-heart button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: #e53935;
+  padding: 0;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  :where([data-country="aus"]) .country-file-uk .country-short-courses .county-box-short {
+    width: 70%;
+    max-width: none;
+  }
+}
+
+/* Scholarships */
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .MajorScholarships {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 16px auto;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .MajorScholarships .column h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 5px;
+  color: #000;
+  line-height: 40px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .MajorScholarships .column p {
+  margin: 10px 5px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .ScholarshipApplyGuide {
+  background: #fff;
+  border-radius: 12px;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #222;
+  font-weight: 400;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .ScholarshipApplyGuide p {
+  margin-bottom: 15px;
+  font-size: 14px !important;
+  color: #000;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .ScholarshipApplyGuide ul {
+  margin: 10px 0 20px 20px;
+  padding: 0;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .ScholarshipApplyGuide ul li {
+  font-size: 14px;
+  list-style: disc;
+  line-height: 18px;
+  font-weight: 400;
+  color: #000;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-scholarship-main .ScholarshipApplyGuide strong {
+  font-weight: 600;
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  :where([data-country="aus"]) .country-file-uk .country-scholarship-main .MajorScholarships {
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+}
+
+/* Popular Study Tracks */
+:where([data-country="aus"]) .country-file-uk .country-tracks-sidebar {
+  background: #fff;
+  border-radius: 12px;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-tracks-main .border-section-set {
+  margin-top: 1.5rem;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-tracks-main .border-section-set h4 {
+  margin-bottom: 12px;
+  font-size: 26px;
+  font-weight: 500;
+  color: #000;
+  white-space: normal;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-tracks-main .country-tracks-columns {
+  min-width: max-content;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-tracks-main .border-section-set h6 {
+  margin-bottom: 8px;
+  border: 1px solid #00000033;
+  width: 100%;
+  border-radius: 9px;
+  padding: 2px 9px;
+  font-size: 19px;
+  font-weight: 500;
+  color: #000;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-tracks-main .border-section-set p {
+  padding-left: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #000;
+}
+
+:where([data-country="aus"]) .country-file-uk .country-tracks-main .text-underline {
+  text-decoration: underline;
+}
+
+/*
+ * Country HERO ONLY — Hostinger-class path (other country routes / CountryPage).
+ * `/countriesuk` uses modular `.country-hero-figma-uk` instead — do not restyle that here.
+ * Beat Hostinger: `.mobile-hero-coutry .overlap-gap-section { width: 50% !important }`
+ * and `.mobile-hero-coutry .hero-country-box { height: auto !important }`.
+ * Figma: desktop 1366×303 · iPad 716×194 · mobile 210×357
+ * Bands: >1366 / 601–1366 / ≤600
+ */
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  overflow: visible;
+  padding-top: 0;
+}
+
+/* Kill Hostinger 50%-width trap on the hero stack */
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-stack {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1366px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* Flags: static for now — do not absolute-position until hero QC passes */
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-flag-slot {
+  position: static !important;
+  display: block !important;
+  width: 126px !important;
+  height: 54px !important;
+  max-width: 126px !important;
+  max-height: 54px !important;
+  margin: 0 0 10px auto !important;
+  padding: 0 !important;
+  top: auto !important;
+  right: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  overflow: hidden !important;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-flag-slot img,
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-flag-slot .flag {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: right center;
+  display: block;
+  border-radius: 10px;
+  margin: 0 !important;
+}
+
+/* Desktop hero banner — Figma 1366×303 */
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 1366px !important;
+  height: 303px !important;
+  max-height: 303px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  border-radius: 16px;
+  box-sizing: border-box !important;
+}
+
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+  border-radius: 16px;
+}
+
+:where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box img.desktop-none {
+  display: none !important;
+}
+
+/* iPad — Figma 716×194 */
+@media (max-width: 1366px) and (min-width: 601px) {
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-stack {
+    max-width: 716px !important;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-flag-slot {
+    width: 88px !important;
+    height: 38px !important;
+    max-width: 88px !important;
+    max-height: 38px !important;
+    margin-bottom: 8px !important;
+    border-radius: 8px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box {
+    max-width: 716px !important;
+    height: 194px !important;
+    max-height: 194px !important;
+    border-radius: 14px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box img {
+    border-radius: 14px;
+  }
+}
+
+/* Mobile — Figma 210×357 portrait */
+@media (max-width: 600px) {
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .overlap-gap-section.country-hero-stack,
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-stack {
+    max-width: 210px !important;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .country-hero-flag-slot {
+    width: 76px !important;
+    height: 33px !important;
+    max-width: 76px !important;
+    max-height: 33px !important;
+    margin-bottom: 6px !important;
+    border-radius: 8px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box {
+    max-width: 210px !important;
+    width: 210px !important;
+    height: 357px !important;
+    max-height: 357px !important;
+    border-radius: 14px;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box img {
+    border-radius: 14px;
+    object-position: center top;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box img.mobile-none {
+    display: none !important;
+  }
+
+  :where([data-country="aus"]) .country-file-uk .mobile-hero-coutry .hero-country-box img.desktop-none {
+    display: block !important;
+  }
+}

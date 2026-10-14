@@ -1,11 +1,8 @@
 /**
- * /countriesfrance — own Photoshop file (@/features/countries-france).
- * Header and footer stay shared. Body edits here do not change the other countries.
+ * Live `/countriesfrance` — **own** template copy `@/features/countries-destination-france`
+ * (forked from USA QC template 2026-10-10). Content pass later.
  */
-import { CountryBodyShell } from "@/features/countries-france/country-body-shell";
-import { buildCountryHeroFigmaHtml } from "@/features/countries-france/country-hero-figma";
-import { getCountryContent } from "@/features/countries-france/content";
-import { composeCountryPublicPage } from "@/features/countries/compose-country-public-page";
+import { composeCountriesDestinationLivePage } from "@/features/countries-destination-france/compose-countries-destination-live-page";
 import { cmsMetadata } from "@/lib/cms-metadata";
 
 export async function generateMetadata() {
@@ -14,10 +11,6 @@ export async function generateMetadata() {
 
 export const dynamic = "force-dynamic";
 
-export default async function CountriesFrancePage() {
-  return composeCountryPublicPage("countriesfrance", {
-    Body: CountryBodyShell,
-    getContent: getCountryContent,
-    buildHero: buildCountryHeroFigmaHtml,
-  });
+export default async function CountriesPage() {
+  return composeCountriesDestinationLivePage();
 }

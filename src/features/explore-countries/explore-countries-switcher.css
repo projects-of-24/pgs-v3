@@ -1,10 +1,11 @@
 /**
  * explore Countries country switcher — owned CSS (E2).
  * Desktop `17056:19694` (card 520.8×524.8 + chips). Phone card `466:7966` (290×532) + chips under.
+ * iPad 601–1366: Figma `22:2140` (card ~476×527 · chips 2-row under · mobile face).
  * Selected chip fill `#8d66ff`. CTA green `#0abf8c`.
  *
  * FIGMA ACCESSIBILITY ADAPTATION
- * ORIGINAL: mobile CTA label ~14px
+ * ORIGINAL: mobile CTA label ~14px · iPad Figma CTA ~15.5px
  * ISSUE: below readable floor for controls
  * PGS IMPLEMENTATION: CTA at `--pgs-type-floor` (16px). Green look stays.
  */
@@ -214,6 +215,145 @@
   }
 }
 
+/*
+ * iPad 601–1366 — Figma `22:2140` (E2) · E2b reuses same card (`22:1817`).
+ * Stacked: card 475.9×527.3 · media 426.6×311.2 · chips wrap under.
+ * Mobile face (inline country, chips--mob). Desk + phone untouched. No phone×1.4.
+ * Type: CTA Roboto `--pgs-type-floor` 16 · Bebas study/country ≥30.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .explore-countries-switcher {
+    padding: 0 0 28px;
+  }
+
+  .explore-countries-switcher__inner {
+    padding-inline: 0;
+    width: 100%;
+    gap: 19.7px; /* Figma stack gap */
+  }
+
+  .explore-countries-switcher__row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 475.9px;
+    margin-inline: auto;
+  }
+
+  .explore-countries-switcher__card {
+    width: 475.9px;
+    max-width: 100%;
+    height: 527.3px;
+    border-radius: 22.1px;
+    overflow: hidden;
+  }
+
+  /* Owner QC: photo path only — 10px inset; swipe GIF stays its own absolute slot */
+  .explore-countries-switcher__media {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    width: auto;
+    max-width: none;
+    height: 311.2px;
+    border-radius: 11px;
+    z-index: 1;
+  }
+
+  .explore-countries-switcher__body {
+    left: 50%;
+    right: auto;
+    top: 368.2px;
+    transform: translateX(calc(-50% - 68.98px));
+    width: 260.5px;
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 17.7px;
+    z-index: 3;
+  }
+
+  .explore-countries-switcher__titles {
+    gap: 8.8px;
+    width: 100%;
+  }
+
+  .explore-countries-switcher__study-in {
+    font-size: 35.3px;
+    line-height: 1;
+  }
+
+  /* Figma iPad = one text node (space-joined), same as phone */
+  .explore-countries-switcher__country {
+    display: block;
+    width: 100%;
+    font-size: 48.6px;
+    line-height: 0.9;
+  }
+
+  .explore-countries-switcher__country-line {
+    display: inline;
+  }
+
+  .explore-countries-switcher__country-space {
+    display: inline;
+  }
+
+  .explore-countries-switcher__cta {
+    position: static;
+    margin-top: 0;
+    border-radius: 8.8px;
+    padding: 8.8px;
+    z-index: 4;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.1;
+  }
+
+  .explore-countries-switcher__swipe {
+    left: 341.8px;
+    right: auto;
+    top: 408.3px;
+    bottom: auto;
+    width: 82px;
+    height: 82px;
+    z-index: 2;
+  }
+
+  .explore-countries-switcher__chips--desk {
+    display: none;
+  }
+
+  .explore-countries-switcher__chips--mob {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 7.4px;
+    width: 280.7px;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-inline: auto;
+  }
+
+  .explore-countries-switcher__chips--mob .explore-countries-switcher__chip {
+    padding: 10.8px 5.9px;
+    font-size: 59.1px;
+    line-height: 0.9;
+    min-height: 0;
+  }
+
+  /* E2b Figma `22:1831` — wider chip rail for ger/fra/mur/europe/others */
+  .explore-countries-switcher--secondary .explore-countries-switcher__chips--mob {
+    width: 319.1px;
+  }
+}
+
 /* Phone ≤600 — Figma card 290×532, chips row under. No 85% rail until owner says too edgy.
  * Body frame `466:8018` = 236×109 at top 339. CTA at y=77 inside that frame.
  * Country is one Figma text (space-joined), not stacked desk lines — stacking shoved CTA into swipe. */
@@ -243,12 +383,14 @@
     overflow: hidden;
   }
 
+  /* Same as iPad owner QC — photo path 10px inset (was 15 / centered 247) */
   .explore-countries-switcher__media {
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 247px;
-    max-width: 247px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    width: auto;
+    max-width: none;
     height: 310px;
     border-radius: 8px;
     z-index: 1;
@@ -257,7 +399,8 @@
   .explore-countries-switcher__body {
     left: 50%;
     right: auto;
-    top: 339px;
+    /* Photo bottom 10+310=320 · same ~47px air as iPad (368.2−321.2) → body @ 367 */
+    top: 367px;
     transform: translateX(-50%);
     width: 236px;
     height: auto;

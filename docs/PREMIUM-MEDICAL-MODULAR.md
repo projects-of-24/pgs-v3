@@ -49,6 +49,20 @@ iPad hero recall (`pgs-ipad-hero-body`): copy the phone card once, save as its o
 
 Owner lock (2026-10-03): **Roboto** minimum **15–16px** (token `--pgs-type-floor` → 16 unless a named block uses 15). **Bebas** minimum **30px**. Chrome **locked**. Body clamp recipes from lab-2 are the default for next pages.
 
+### HEIGHT AUTO (owner 2026-10-10) — every segment / block
+
+**How the owner designed it:** each body block (hero, stage, section, hang cluster) grows with its content. **`height: auto` only.**
+
+| Do | Do not |
+|---|---|
+| `height: auto` on section / stage / in-flow block roots | Invent a fixed stage height that reserves white under the last content |
+| Hang via **in-flow** layout + `overflow: visible` | “Fit the hang” by locking `height: 810px` (etc.) and leaving empty air below the photo |
+| GAP LOCK margin (hero **60** · rest **80**) as the only seam air | Fixed height **+** section gap stacking into a fake huge gap |
+
+**Exception:** desk absolute-position stages may keep a Figma height **only** when children are `position: absolute` and that height equals the real content bottom (no spare pad for hang). Prefer in-flow + `height: auto` on iPad/phone.
+
+Carry: [`FRONTEND-IPAD-HEADER-LOCK.md`](./FRONTEND-IPAD-HEADER-LOCK.md) · skill `pgs-ipad-modular-body-pass` · `friend-not-yes-man`.
+
 **Chrome click QC (cutover 2026-10-03):** after OWNED_SPLIT, hamburger (≤1366) and `#toggleBtn` must open. Fixed in `pgs-header-chrome-reset` (no visibility transition) · `legacy-page` (no `children` rewire) · toggle `z-index: 5`. Skill: `pgs-ipad-modular-body-pass` / `pgs-ipad-paper-pass`.
 
 **Later final-draft type pass — do not do it during fast section QC.** Lift sub-floor Roboto (13/14 → 16) and sub-30 Bebas when owner opens that pass. Do not invent sizes mid-QC.
@@ -96,7 +110,7 @@ Chrome = LOCKED. Do not rebuild.
 | 30 | Support hub | **U31** | **READY — owner QC** Shared `support-hub`. Desktop `17056:21414`. Phone `433:4717`. Email is the locked spelling, one line. |
 | 31 | #Pgs picks | **U32** | **READY — owner QC** Shared `pgs-picks`. Desk title 48 · **iPad 36** · phone 24. iPad = mobile face · 2 cards · 85% · **link min-height 190** · **arrows 32** (owner DevTools 2026-10-03). Wheel + drag. Later switch — do not switch now. |
 | — | Frontend | **COMPLETE** | Visual body done. Hostinger did not have real destinations except Enroll. Those links wait for the backend pass, one control at a time. Not wired in this mark. |
-| — | Gap analysis | **GAP** | After Figma-to-code is done. Before LOCK. Do not fix spacing mid-build. Owner marked frontend complete before this pass. |
+| — | Gap analysis | **GAP** | After Figma-to-code · before LOCK. Do not fix spacing mid-build. **GAP LOCK hero→next 60 · rest 80** (owner 2026-10-10) — see [`FRONTEND-GAP-ANALYSIS.md`](./FRONTEND-GAP-ANALYSIS.md). Lab-2 shells already carry the token. Content-to-content (no padding-block on the gap). |
 | — | Motion | last | After visual lock |
 | — | CMS and backend pass | **later** | Same pass, not a side job. One control at a time. Includes: button destinations (Enroll was the only Hostinger link). Country select + this medical template + slug + live, tied to the full country list. USMLE, then PLAB, then AMC. Not built now. |
 | — | Live lab-2 cutover | **CUTOVER** | **DONE** — USMLE Gate 1 · PLAB Gate 2b · AMC Gate 3b (2026-10-03). |

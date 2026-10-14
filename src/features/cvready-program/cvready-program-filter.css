@@ -7,11 +7,10 @@
 
 .cvready-program-filter {
   /*
-   * FIGMA ACCESSIBILITY ADAPTATION (owner 2026-09-24)
-   * ORIGINAL Figma chips ~10.75–12.8 · prior PGS floor 16
-   * OWNER: Filter/Sort labels + chips → 14px (closer to Figma density)
+   * DS lock 2026-10-11 (desk type pass): Filter/Sort → type floor 16.
+   * Was owner-named 14 (2026-09-24) for Figma density; DS wins.
    */
-  --cvready-program-type-floor: 14px;
+  --cvready-program-type-floor: 16px;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;

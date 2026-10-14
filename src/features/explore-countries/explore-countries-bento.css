@@ -1,16 +1,17 @@
 /**
- * explore Countries bento — owned CSS (E3 desk + mob).
+ * explore Countries bento — owned CSS (E3 desk + mob + iPad).
  * Desktop `17056:19564` stage 876.8×443.2.
  * Mobile `470:4751` 303.24×579 — no grey panel; 2-col flex.
+ * iPad 601–1366: Figma `22:1776` — same DOM; 2-col + hang (~425 stage).
  *
  * Overflow / stack (desk):
  * - Stage overflow visible — lilac hangs below grey panel.
  * - Lilac overflow clip — grad photo may hang past lilac right and is clipped.
  * - Explore label + arrow are stage-absolute siblings over lilac.
  *
- * FIGMA ACCESSIBILITY ADAPTATION
- * Tip chips + desk title/body stay 14px (Figma). Checklist desk 16px.
- * Mob title 16px; tip/body/checks 14px per Figma.
+ * FIGMA ACCESSIBILITY / TYPE FLOOR
+ * Desk + iPad Roboto: `--pgs-type-floor` 16 (owner DESK TYPE GAP 2026-10-10).
+ * Bebas explore hang ≥30. Phone ≤600 type pass = later gate.
  */
 
 .explore-countries-bento {
@@ -121,18 +122,18 @@
 
 .explore-countries-bento__chip-line {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--pgs-type-floor, 16px);
   font-weight: 500;
-  line-height: 16px;
+  line-height: 1.2;
   letter-spacing: 0.08px;
   white-space: pre-line;
 }
 
 .explore-countries-bento__chip-plus {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--pgs-type-floor, 16px);
   font-weight: 400;
-  line-height: 22.4px;
+  line-height: 1.35;
 }
 
 .explore-countries-bento__chip-plus--mob {
@@ -154,16 +155,16 @@
 .explore-countries-bento__title {
   margin: 0;
   color: #000;
-  font-size: 14px;
+  font-size: var(--pgs-type-floor, 16px);
   font-weight: 600;
-  line-height: 16px;
+  line-height: 1.2;
   letter-spacing: 0.08px;
 }
 
 .explore-countries-bento__body {
   margin: 0;
   color: var(--bento-muted);
-  font-size: 14px;
+  font-size: var(--pgs-type-floor, 16px);
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.2px;
@@ -251,9 +252,9 @@
   align-items: flex-start;
   color: #000;
   font-family: "Bebas Neue", Impact, Haettenschweiler, sans-serif;
-  font-size: 28.8px;
+  font-size: 30px; /* Bebas floor — was Figma 28.8 */
   font-weight: 400;
-  line-height: 28px;
+  line-height: 0.95;
   text-transform: lowercase;
   z-index: 3;
   pointer-events: none;
@@ -302,7 +303,7 @@
     gap: 20px;
     width: 303.24px;
     max-width: 100%;
-    height: 579px;
+    height: auto; /* GAP + height:auto — hang in-flow, no fixed 579 air */
     margin: 0 auto;
     position: relative;
   }
@@ -436,14 +437,20 @@
     line-height: normal;
   }
 
-  /* Figma Group 1000001807 — left 147, top 344 within 303×579 stage */
+  /*
+   * E3 hang — in-flow under checks (DOM already in col--right).
+   * Was absolute @ 147/344 in fixed 579 stage → reserved air under photo.
+   * Owner height:auto 2026-10-10.
+   */
   .explore-countries-bento__explore-cluster {
     display: block;
-    position: absolute;
-    left: 147px;
-    top: 344px;
+    position: relative;
+    left: auto;
+    top: auto;
+    flex: 0 0 auto;
     width: 112px;
     height: 235px;
+    margin-top: 12px;
   }
 
   .explore-countries-bento__explore {
@@ -483,19 +490,224 @@
   }
 }
 
-/* —— E3b second bento — Group 317 / mob `471:4781` (no lilac) —— */
-.explore-countries-bento--e3b .explore-countries-bento__stage {
-  height: 280px;
-  overflow: hidden;
+/*
+ * iPad 601–1366 — E3 `22:1776` (+ hang) · E3b `22:1842` (no hang, stage 604.8).
+ * Shared 2-col: left cards · right copy+checks. Type floor 16. Desk/phone untouched.
+ */
+@media (min-width: 601px) and (max-width: 1366px) {
+  .explore-countries-bento {
+    padding: 0 0 32px;
+    display: block;
+  }
+
+  .explore-countries-bento .explore-countries-bento__stage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    width: 424.7px;
+    max-width: 100%;
+    height: auto; /* owner 2026-10-10 — no fixed stage air; hang in-flow */
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+  }
+
+  .explore-countries-bento .explore-countries-bento__panel {
+    display: none;
+  }
+
+  .explore-countries-bento .explore-countries-bento__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .explore-countries-bento .explore-countries-bento__col--cards {
+    gap: 16.8px;
+    width: 186.7px;
+    flex: 0 0 auto;
+  }
+
+  .explore-countries-bento .explore-countries-bento__col--right {
+    width: 210px;
+    flex: 0 0 auto;
+    gap: 22.4px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__card,
+  .explore-countries-bento .explore-countries-bento__card--shortlist,
+  .explore-countries-bento .explore-countries-bento__card--apps {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 186.7px;
+    height: 294px;
+    border-width: 0.9px;
+    border-radius: 14.3px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__card-icon {
+    top: 19.7px;
+    left: 9.9px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .explore-countries-bento
+    .explore-countries-bento__card--apps
+    .explore-countries-bento__card-icon {
+    top: 19.7px;
+    left: 9.9px;
+    width: 44.8px;
+    height: 44.8px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__chip {
+    padding: 3.6px 7.2px;
+    border-radius: 9px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__chip-line {
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.09px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__chip-plus--desk {
+    display: none;
+  }
+
+  .explore-countries-bento .explore-countries-bento__chip-plus--mob {
+    display: block;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+  }
+
+  .explore-countries-bento .explore-countries-bento__copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 205.8px;
+    gap: 8.4px;
+    z-index: auto;
+  }
+
+  .explore-countries-bento .explore-countries-bento__title {
+    font-size: var(--pgs-type-floor, 16px);
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+
+  .explore-countries-bento .explore-countries-bento__body {
+    color: #000;
+    font-size: var(--pgs-type-floor, 16px);
+    letter-spacing: 0.4px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__checks--desk {
+    display: none;
+  }
+
+  .explore-countries-bento .explore-countries-bento__checks--mob {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: flex;
+    width: 210px;
+    padding: 0;
+    gap: 16.8px;
+    z-index: auto;
+  }
+
+  .explore-countries-bento .explore-countries-bento__check {
+    gap: 13.4px;
+    align-items: center;
+  }
+
+  .explore-countries-bento .explore-countries-bento__check-mark {
+    width: 30.5px;
+    height: 30.5px;
+    border-radius: 4.5px;
+  }
+
+  .explore-countries-bento .explore-countries-bento__check-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: var(--pgs-type-floor, 16px);
+    letter-spacing: 0.4px;
+    line-height: normal;
+  }
+
+  /*
+   * E3 hang only (E3b has no explore DOM).
+   * Under checks · Figma gap ~27.2 · inset −8.8.
+   */
+  .explore-countries-bento:not(.explore-countries-bento--e3b)
+    .explore-countries-bento__explore-cluster {
+    display: block;
+    position: relative;
+    left: -8.8px;
+    top: auto;
+    flex: 0 0 auto;
+    width: 156.8px;
+    height: 329px;
+    margin-top: 4.8px;
+  }
+
+  .explore-countries-bento:not(.explore-countries-bento--e3b)
+    .explore-countries-bento__explore {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 156.8px;
+    height: 329px;
+    border-radius: 11.2px;
+  }
+
+  .explore-countries-bento:not(.explore-countries-bento--e3b)
+    .explore-countries-bento__explore-photo {
+    left: 43.4px;
+    top: 144.2px;
+    width: 118.4px;
+    height: 184.8px;
+  }
+
+  .explore-countries-bento:not(.explore-countries-bento--e3b)
+    .explore-countries-bento__explore-label {
+    left: 12.6px;
+    top: 40.6px;
+    font-size: 33.6px;
+    line-height: 0.9;
+  }
+
+  .explore-countries-bento:not(.explore-countries-bento--e3b)
+    .explore-countries-bento__explore-arrow {
+    left: 7px;
+    top: 138.6px;
+    width: 50.4px;
+    height: 50.4px;
+  }
 }
 
-.explore-countries-bento--e3b .explore-countries-bento__panel {
-  height: 280px;
+/* —— E3b desk — Group 317 / mob `471:4781` (no lilac) —— */
+@media (min-width: 1367px) {
+  .explore-countries-bento--e3b .explore-countries-bento__stage {
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .explore-countries-bento--e3b .explore-countries-bento__panel {
+    height: 280px;
+  }
 }
 
 @media (max-width: 600px) {
   .explore-countries-bento--e3b .explore-countries-bento__stage {
-    height: 432px;
+    height: auto; /* height:auto lock — no fixed 432 air */
     overflow: visible;
   }
 }

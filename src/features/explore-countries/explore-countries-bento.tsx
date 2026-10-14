@@ -86,6 +86,7 @@ function ExploreCountriesBentoBlock({
       data-block-gate={gate}
       data-figma-desktop={figmaDesktop}
       data-figma-mobile={figmaMobile}
+      data-figma-ipad={variant === "e3b" ? "22:1842" : "22:1776"}
       aria-labelledby={titleId}
     >
       <div className="explore-countries-bento__stage">
@@ -135,43 +136,43 @@ function ExploreCountriesBentoBlock({
 
           <BentoChecks items={b.checksDesk} band="desk" />
           <BentoChecks items={b.checksMob} band="mob" />
-        </div>
 
-        {showExplore ? (
-          <>
-            <div className="explore-countries-bento__explore-cluster">
-              <div
-                className="explore-countries-bento__explore"
-                aria-hidden="true"
-              >
-                <div className="explore-countries-bento__explore-photo">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={b.gradSrc} alt="" />
+          {showExplore ? (
+            <>
+              <div className="explore-countries-bento__explore-cluster">
+                <div
+                  className="explore-countries-bento__explore"
+                  aria-hidden="true"
+                >
+                  <div className="explore-countries-bento__explore-photo">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={b.gradSrc} alt="" />
+                  </div>
                 </div>
+                <p className="explore-countries-bento__explore-label">
+                  {b.exploreLines.map((line) => (
+                    <span
+                      key={line}
+                      className="explore-countries-bento__explore-line"
+                    >
+                      {line}
+                    </span>
+                  ))}
+                </p>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className="explore-countries-bento__explore-arrow"
+                  src={b.arrowSrc}
+                  alt=""
+                  aria-hidden="true"
+                />
               </div>
-              <p className="explore-countries-bento__explore-label">
-                {b.exploreLines.map((line) => (
-                  <span
-                    key={line}
-                    className="explore-countries-bento__explore-line"
-                  >
-                    {line}
-                  </span>
-                ))}
-              </p>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="explore-countries-bento__explore-arrow"
-                src={b.arrowSrc}
-                alt=""
-                aria-hidden="true"
-              />
-            </div>
-            <span className="explore-countries-bento__explore-sr">
-              Explore more below. {b.gradAlt}
-            </span>
-          </>
-        ) : null}
+              <span className="explore-countries-bento__explore-sr">
+                Explore more below. {b.gradAlt}
+              </span>
+            </>
+          ) : null}
+        </div>
       </div>
     </section>
   );

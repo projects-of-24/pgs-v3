@@ -1,0 +1,61 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — STEM / USMLE / Non-STEM — C7 owned CSS.
+ * iPad Figma `26:2954` (rail ~433 · title↔body 18 · stack gap 33.6).
+ *
+ * TYPE LOCK (PGS-PUBLIC-DESIGN-SYSTEM): Roboto body → `--pgs-type-floor` (16).
+ * Do not ship Figma 19.6. Titles 30 Medium. height: auto.
+ */
+
+:where([data-country="aus"]) .countries-destination-tracks {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 33.6px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks *,
+:where([data-country="aus"]) .countries-destination-tracks *::before,
+:where([data-country="aus"]) .countries-destination-tracks *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks__block {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: min(var(--cd-rail-tracks, 432.6px), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 0;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks__title {
+  margin: 0;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.7px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="aus"]) .countries-destination-tracks__body {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.14px;
+  text-align: left;
+  height: auto;
+}

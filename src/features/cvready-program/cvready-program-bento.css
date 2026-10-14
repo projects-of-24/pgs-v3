@@ -211,13 +211,13 @@
   }
 
   .cvready-program-bento__stat-value {
-    font-size: 45.6px;
+    font-size: 45px;
     line-height: 51.2px;
     letter-spacing: -0.25px;
   }
 
   .cvready-program-bento__stat-copy {
-    font-size: 19.2px;
+    font-size: var(--cvready-program-type-floor, var(--pgs-type-floor, 16px));
     line-height: 25.6px;
   }
 

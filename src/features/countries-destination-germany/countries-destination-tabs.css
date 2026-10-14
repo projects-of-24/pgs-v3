@@ -1,0 +1,175 @@
+/* pgs-country-scoped */
+/**
+ * Country destination tabs — C2 owned CSS.
+ * iPad Figma `26:2808` (460.6 rail · wrap chips · black Popular Tracks).
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: chip label ~19.6px · CTA ~22px
+ * ISSUE: below / over type floor for UI copy
+ * PGS IMPLEMENTATION: labels at `--pgs-type-floor` (16px). Black CTA look stays.
+ */
+
+:where([data-country="germany"]) .countries-destination-tabs {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs *,
+:where([data-country="germany"]) .countries-destination-tabs *::before,
+:where([data-country="germany"]) .countries-destination-tabs *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 0 5.6px;
+  width: min(460.6px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 11.2px;
+  border: 1.12px solid rgba(0, 0, 0, 0.2);
+  border-radius: 17.92px;
+  background: #fff;
+  height: auto;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__tab {
+  display: inline-grid;
+  justify-items: center;
+  align-items: center;
+  margin: 0;
+  padding: 11.2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: inherit;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.35px;
+  text-align: center;
+  cursor: pointer;
+  height: auto;
+  white-space: nowrap;
+}
+
+/*
+ * Bold-active width reserve — selected weight 800 must not reflow wrap
+ * (Short-Term-Profile Courses was jumping to its own line). Owner 2026-10-10.
+ */
+:where([data-country="germany"]) .countries-destination-tabs__tab:not(.countries-destination-tabs__tab--cta)::after {
+  content: attr(data-label);
+  grid-area: 1 / 1;
+  font-weight: 700; /* match selected Bold width */
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__label {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__tab.is-selected {
+  color: #000;
+  font-weight: 700; /* Figma Bold — reserve ::after matches */
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__tab.is-selected .countries-destination-tabs__label {
+  font-weight: 700;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__tab--cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(276.64px, 100%);
+  margin-top: 5.6px;
+  padding: 11.2px;
+  border-radius: 11.2px;
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.28px;
+  white-space: normal;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__tab--cta.is-selected,
+:where([data-country="germany"]) .countries-destination-tabs__tab--cta[aria-selected="true"] {
+  color: #fff;
+  font-weight: 600;
+}
+
+:where([data-country="germany"]) .countries-destination-tabs__tab:focus-visible {
+  outline: 3px solid #150035;
+  outline-offset: 2px;
+}
+
+/*
+ * BD3 desk — layout from QC’d `country-body-layout` (>1366).
+ * Tab box fills sleeve rail (`.country-usa-tab-style-new` width 100%).
+ * Chip UI stays modular C2 — not Hostinger portfolio-filter. Type stays DS.
+ */
+@media (min-width: 1367px) {
+  :where([data-country="germany"]) .countries-destination-tabs__panel {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+  }
+}
+
+/* iPad 601–1366 — QC’d modular 460.6 rail · untouched */
+
+/*
+ * BD3 phone — Figma `503:5082` wrap (layout only · type stays DS 16):
+ * Row1 Study | Cost | Visa · Row2 Short-Term | Scholarships · Row3 Tracks CTA.
+ *
+ * FIGMA ACCESSIBILITY ADAPTATION
+ * ORIGINAL: chip Roboto 14 · pad 8 · tracking 0.25
+ * ISSUE: DS floor 16 + bold reserve is ~6px wider than Short+Scholarships at 85% sleeve
+ * PGS IMPLEMENTATION: pad 8×6 · tracking 0.25 · CTA flex-basis 100% (own row) · width 197.6
+ */
+@media (max-width: 600px) {
+  :where([data-country="germany"]) .countries-destination-tabs__panel {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    padding: 8px;
+    gap: 0 4px;
+    border-width: 0.8px;
+    border-radius: 12.8px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-tabs__tab:not(.countries-destination-tabs__tab--cta) {
+    padding: 8px 6px;
+    letter-spacing: 0.25px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-tabs__tab:not(.countries-destination-tabs__tab--cta)::after {
+    letter-spacing: 0.25px;
+  }
+
+  :where([data-country="germany"]) .countries-destination-tabs__tab--cta {
+    flex-basis: 100%;
+    align-self: flex-start;
+    width: min(197.6px, 100%);
+    max-width: min(197.6px, 100%);
+    margin-top: 0;
+    padding: 8px;
+    border-radius: 8px;
+  }
+}

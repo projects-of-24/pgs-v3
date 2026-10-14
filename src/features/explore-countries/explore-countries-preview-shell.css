@@ -45,26 +45,330 @@
   pointer-events: none;
 }
 
+/*
+ * Outro = shared `outro-cta` module. Explore desk/phone Figma omit it —
+ * mount in DOM for iPad only (owner yes 2026-10-10).
+ */
+.explore-countries-preview-shell .outro-cta {
+  display: none;
+}
+
 @media (min-width: 1367px) {
   .explore-countries-preview-shell__univ-gap {
     display: block;
     height: var(--pgs-premium-desk-univ-gap);
   }
+
+  /*
+   * DESK TYPE+GAP (STEP 12) — section gap via sibling margin only (desk try 60).
+   * Kill shared-module extra tops (expense 237 · hub 52 · picks 294).
+   * Do not edit shared CSS files.
+   */
+  .explore-countries-preview-shell .premium-expense.premium-expense,
+  .explore-countries-preview-shell .support-hub.support-hub,
+  .explore-countries-preview-shell .pgs-picks.pgs-picks {
+    margin-top: 0;
+  }
 }
 
 /*
- * GAP LOCK — owner 2026-10-03. desk 100 · iPad 60 · phone 80.
- * Replaces explore-countries-spacing.css Figma Y gaps.
+ * GAP LOCK — owner 2026-10-10. hero→next **60** · rest **80** (all bands).
+ * Total = content-to-content: sibling margin-top only · sections lose padding-block.
  */
 .explore-countries-preview-shell {
-  --ec-section-gap: 100px;
+  --ec-hero-gap: 60px;
+  --ec-section-gap: 80px;
+}
+
+/*
+ * All bands: kill padding on the GAP seam (not token+pad stack).
+ * Hero: pad-bottom only — keep iPad pad-top (toggle align). Later sections: both.
+ */
+.explore-countries-preview-shell .explore-countries-hero {
+  padding-bottom: 0;
+}
+.explore-countries-preview-shell .explore-countries-switcher,
+.explore-countries-preview-shell .explore-countries-bento,
+.explore-countries-preview-shell .explore-countries-univ {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 @media (min-width: 601px) and (max-width: 1366px) {
-  .explore-countries-preview-shell { --ec-section-gap: 60px; }
+  .explore-countries-preview-shell { --ec-hero-gap: 60px; --ec-section-gap: 80px; }
+
+  /*
+   * Aesthetic start = closed #toggleBtn (skill pgs-header-chrome-phase · FRONTEND-IPAD-HEADER-LOCK).
+   * Same iPad shell fit as Scholarship / Finance — hero ~20 CSS below toggle top.
+   * Do not invent a new pull; strip height is the ruler.
+   */
+  .explore-countries-preview-shell {
+    margin-top: calc(-1 * var(--pgs-chrome-strip-pull) + 43.7px - 1.089vw);
+  }
+
+  /*
+   * iPad QC — full body through E7 (STEP 11). No later-block hide.
+   * Shared modules only — no rebuild. Desk >1366 and phone ≤600 keep full body
+   * (outro stays hidden there via base rule above).
+   */
+  .explore-countries-preview-shell__body
+    > :not(.explore-countries-preview-shell__univ-gap):not(.explore-countries-hero):not(
+      .explore-countries-switcher
+    ):not(.explore-countries-bento):not(.explore-countries-univ):not(.premium-expense):not(
+      .outro-cta
+    ):not(.support-hub):not(.pgs-picks) {
+    display: none;
+  }
+
+  /*
+   * E7 — shared `pgs-picks` · Figma `22:2059`.
+   * iPad formula already locked in module CSS (title 36 · 85% · 2 cards ·
+   * link min-h 190 · arrows 32). Mount only + GAP LOCK margin.
+   */
+  .explore-countries-preview-shell .pgs-picks {
+    margin-top: var(--ec-section-gap); /* GAP LOCK rest 80 */
+  }
+
+  /*
+   * E6 — shared `support-hub` · Figma `22:2036` (~524 stack: blurb → brand → channels).
+   * Same DOM; phone-stack face under explore shell (desk row stays >1366).
+   */
+  .explore-countries-preview-shell .support-hub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
+    width: min(523.6px, calc(100% - 24px));
+    margin-top: var(--ec-section-gap); /* GAP LOCK rest 80 */
+    margin-inline: auto;
+  }
+
+  .explore-countries-preview-shell .support-hub__row {
+    display: contents;
+  }
+
+  .explore-countries-preview-shell .support-hub__blurb {
+    order: -1;
+    flex: none;
+    width: min(462px, 100%);
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  .explore-countries-preview-shell .support-hub__brand-col {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    width: min(491px, 100%);
+    padding: 27px 22px;
+    border-radius: 13px;
+    background: #000;
+  }
+
+  .explore-countries-preview-shell .support-hub__brand {
+    padding: 0;
+    background: transparent;
+    font-size: 45px;
+    line-height: 1.08;
+  }
+
+  .explore-countries-preview-shell .support-hub__label {
+    padding-left: 0;
+    color: #fff;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.28;
+  }
+
+  .explore-countries-preview-shell .support-hub__channels {
+    flex: none;
+    gap: 18px;
+    width: min(491px, 100%);
+    padding: 0 17px;
+  }
+
+  .explore-countries-preview-shell .support-hub__badge {
+    min-width: 118px;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .explore-countries-preview-shell .support-hub__link {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .explore-countries-preview-shell .support-hub__link img {
+    flex-basis: 47px;
+    width: 47px;
+    height: 47px;
+  }
+
+  /* Shared outro — iPad show; Figma `22:2029` is crop, not column width */
+  .explore-countries-preview-shell .outro-cta {
+    display: flex;
+    width: min(360px, calc(100% - 48px));
+    margin-top: var(--ec-section-gap); /* GAP LOCK rest 80 */
+    margin-inline: auto;
+  }
+
+  .explore-countries-preview-shell .outro-cta__eyebrow {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+    letter-spacing: 1px;
+  }
+
+  .explore-countries-preview-shell .outro-cta__title {
+    font-size: 30px; /* ≥ floor; keep hierarchy above body */
+    line-height: 1.25;
+  }
+
+  .explore-countries-preview-shell .outro-cta__body {
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.4;
+  }
+
+  .explore-countries-preview-shell .outro-cta__cta {
+    font-size: var(--pgs-type-floor, 16px);
+    min-height: 48px;
+  }
+
+  /*
+   * E5 — Figma `22:2013` (364 stack · card + doctor hang + student below).
+   * Shared module; phone-stack face × Figma width (not desk stage, not USMLE 2-col).
+   * Type: Bebas title ≥30 · Roboto CTA/note/body `--pgs-type-floor` 16.
+   */
+  .explore-countries-preview-shell .premium-expense {
+    width: min(364px, calc(100% - 24px));
+    margin-top: var(--ec-section-gap); /* GAP LOCK rest 80 */
+    margin-inline: auto;
+  }
+
+  .explore-countries-preview-shell .premium-expense__stage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .explore-countries-preview-shell .premium-expense__card {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    padding: 40.6px 22.4px 100.8px;
+    overflow: visible;
+  }
+
+  .explore-countries-preview-shell .premium-expense__title,
+  .explore-countries-preview-shell .premium-expense__cta,
+  .explore-countries-preview-shell .premium-expense__note,
+  .explore-countries-preview-shell .premium-expense__body {
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
+  }
+
+  .explore-countries-preview-shell .premium-expense__title {
+    width: 222.6px;
+    font-size: 30px; /* Bebas floor */
+    line-height: 1;
+  }
+
+  .explore-countries-preview-shell .premium-expense__cta {
+    display: inline-flex;
+    width: auto;
+    min-width: 165.2px;
+    margin-top: 16.8px;
+    padding: 11.2px 16.8px;
+    border-radius: 4.2px;
+    font-size: var(--pgs-type-floor, 16px);
+    line-height: 1.2;
+  }
+
+  .explore-countries-preview-shell .premium-expense__note {
+    width: 277.2px;
+    margin-top: 14px;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .explore-countries-preview-shell .premium-expense__body {
+    width: 254.8px;
+    margin-top: 16.8px;
+    font-size: var(--pgs-type-floor, 16px);
+  }
+
+  .explore-countries-preview-shell .premium-expense__doctor {
+    position: relative;
+    top: auto;
+    left: auto;
+    align-self: flex-end;
+    width: 186.2px;
+    height: 306.6px;
+    margin: -84px 22.4px 0 0;
+  }
+
+  .explore-countries-preview-shell .premium-expense__doctor img {
+    top: -5%;
+    left: -103.43%;
+    width: 291.25%;
+    height: 106.19%;
+  }
+
+  .explore-countries-preview-shell .premium-expense__student {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    width: 235.8px;
+    height: 351.7px;
+    margin: 51px auto 0;
+    border-radius: 8.4px;
+    transform: none;
+  }
+
+  .explore-countries-preview-shell .premium-expense__student img {
+    top: -40.61%;
+    left: -19.95%;
+    width: 124.7%;
+    height: 181.21%;
+  }
 }
+/*
+ * PHONE GAP PASS (≤600) — same lock as desk/iPad: hero 60 · rest 80 · height:auto.
+ * Kill shared USMLE-frame tops (expense 110/237 · hub 52 · picks 294/77).
+ */
 @media (max-width: 600px) {
-  .explore-countries-preview-shell { --ec-section-gap: 80px; }
+  .explore-countries-preview-shell {
+    --ec-hero-gap: 60px;
+    --ec-section-gap: 80px;
+  }
+
+  .explore-countries-preview-shell .premium-expense.premium-expense,
+  .explore-countries-preview-shell .support-hub.support-hub,
+  .explore-countries-preview-shell .pgs-picks.pgs-picks {
+    margin-top: var(--ec-section-gap);
+  }
+
+  /* Phone keeps pad-top on hero for chrome; pad-bottom already 0 via shell + hero.css */
+  .explore-countries-preview-shell .explore-countries-hero {
+    padding-bottom: 0;
+  }
+
+  .explore-countries-preview-shell .explore-countries-switcher,
+  .explore-countries-preview-shell .explore-countries-bento,
+  .explore-countries-preview-shell .explore-countries-univ {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 .explore-countries-preview-shell__body > :not(.explore-countries-preview-shell__univ-gap):not(.explore-countries-hero) {
   margin-top: var(--ec-section-gap);
+}
+/* Specificity must beat :not():not() body rule or hero seam stays 80 */
+.explore-countries-preview-shell .explore-countries-preview-shell__body > .explore-countries-hero + * {
+  margin-top: var(--ec-hero-gap);
 }

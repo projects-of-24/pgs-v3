@@ -1,0 +1,230 @@
+/* pgs-country-scoped */
+/**
+ * Country destination — Why choose bentos — C6 owned CSS.
+ * iPad Figma `26:2867` (rail ~410 · chips · combo · timeline + blurb).
+ *
+ * TYPE LOCK (PGS-PUBLIC-DESIGN-SYSTEM): Roboto body/chips → `--pgs-type-floor` (16).
+ * Do not ship Figma 19.6. Title 30 Medium. height: auto · flex (no absolute stage).
+ */
+
+:where([data-country="usa"]) .countries-destination-choose {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: #fff;
+  font-family: Roboto, system-ui, sans-serif;
+  height: auto;
+  scroll-margin-top: 96px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose *,
+:where([data-country="usa"]) .countries-destination-choose *::before,
+:where([data-country="usa"]) .countries-destination-choose *::after {
+  box-sizing: border-box;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__title {
+  width: min(var(--cd-rail-choose-title, 415.8px), calc(100% - 32px));
+  margin: 0 auto;
+  color: #000;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.56px;
+  text-align: left;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* iPad LOCKED C6 — desk card gap lives in desk-qc only */
+  width: min(var(--cd-rail-choose, 410.2px), calc(100% - 32px));
+  margin: 16px auto 0;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__chips {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px; /* iPad LOCKED C6 */
+  width: 100%;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__card {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 14px;
+  background: #fff;
+  height: auto;
+  min-width: 0;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__card--chip {
+  display: flex;
+  flex: 1 1 160px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 160px;
+  padding: 40px 12px 24px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__icon {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__pill {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 12px;
+  border-radius: 9px;
+  background: #d9f1fd;
+  color: #000;
+  text-align: center;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__pill-heading {
+  margin: 0;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.09px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__pill-label {
+  margin: 0;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.09px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__card--combo {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 48px 12px 22px;
+  border-radius: 18px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__combo-icons {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__combo-icons img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__plus {
+  color: #000;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__combo-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__combo-body .countries-destination-choose__pill {
+  flex: 1 1 140px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px; /* iPad LOCKED C6 */
+  width: 100%;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__card--timeline {
+  display: flex;
+  flex: 1 1 220px;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  min-height: 140px;
+  padding: 20px 16px;
+  border-radius: 18px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__heart {
+  flex: 0 0 auto;
+  width: 37px;
+  height: 41px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__timeline-label {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__blurb {
+  flex: 1 1 180px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: auto;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__tagline {
+  margin: 0;
+  color: #000;
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.112px;
+}
+
+:where([data-country="usa"]) .countries-destination-choose__quote {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: var(--pgs-type-floor, 16px);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.28px;
+  height: auto;
+}

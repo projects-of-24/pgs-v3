@@ -18,7 +18,8 @@
 
 @media (min-width: 1367px) {
   .cvready-program-support-hub .support-hub {
-    margin-top: 24px;
-    margin-bottom: 64px;
+    /* Shell section-gap owns seams — no double margin */
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
